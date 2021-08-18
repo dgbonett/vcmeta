@@ -7,7 +7,7 @@ Authors@R: c(
     person(given = "Robert J.", family = "Calin-Jageman", email = "rcalinjageman@dom.edu", role = "ctb", "cre"))
 Description: This package provides functions for varying coefficient meta-
   analysis methods. These methods do not assume effect size homogeneity. 
-  Subgroup effect size comparisons, general linear effect size constrasts, 
+  Subgroup effect size comparisons, general linear effect size contrasts, 
   and linear models of effect sizes based on varying coefficient methods 
   can be used to describe effect size heterogeneity. Varying coefficient 
   meta-analysis methods do not require the unrealistic assumptions of the 
