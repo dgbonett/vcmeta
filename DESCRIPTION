@@ -3,8 +3,8 @@ Type: Package
 Title: Varying Coefficient Meta-Analysis
 Version: 1.0.0
 Authors@R: c(
-    person(given = "Douglas G.", family = "Bonett", email = "dgbonett@ucsc.edu", role = c("aut", "cre")),
-    person(given = "Robert J.", family = "Calin-Jageman", email = "rcalinjageman@dom.edu", role = "ctb", "cre"))
+    person("Douglas G.", "Bonett", email = "dgbonett@ucsc.edu", role = c("aut", "cre")),
+    person("Robert J.", "Calin-Jageman", email = "rcalinjageman@dom.edu", role = c("ctb")))
 Description: This package provides functions for varying coefficient meta-
   analysis methods. These methods do not assume effect size homogeneity. 
   Subgroup effect size comparisons, general linear effect size contrasts, 
