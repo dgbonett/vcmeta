@@ -16,7 +16,6 @@ URL: https://github.com/dgbonett/vcmeta
 BugReports: https://github.com/dgbonett/vcmeta/issues
 License: GPL-3
 Encoding: UTF-8
-LazyData: true
 Imports: 
   stats, mathjaxr, Rdpack, ggplot2
 RoxygenNote: 7.1.1
