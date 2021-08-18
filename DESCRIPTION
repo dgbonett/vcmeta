@@ -1,0 +1,27 @@
+Package: vcmeta
+Type: Package
+Title: Varying Coefficient Meta-Analysis
+Version: 1.0.0
+Authors@R: c(
+    person(given = "Douglas G.", family = "Bonett", email = "dgbonett@ucsc.edu", role = c("aut", "cre")),
+    person(given = "Robert J.", family = "Calin-Jageman", email = "rcalinjageman@dom.edu", role = "ctb", "cre"))
+Description: This package provides functions for varying coefficient meta-
+  analysis methods. These methods do not assume effect size homogeneity. 
+  Subgroup effect size comparisons, general linear effect size constrasts, 
+  and linear models of effect sizes based on varying coefficient methods 
+  can be used to describe effect size heterogeneity. Varying coefficient 
+  meta-analysis methods do not require the unrealistic assumptions of the 
+  traditional fixed-effect and random-effects meta-analysis methods. 
+URL: https://github.com/dgbonett/vcmeta
+BugReports: https://github.com/dgbonett/vcmeta/issues
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Imports: 
+  stats, mathjaxr, Rdpack, ggplot2
+RoxygenNote: 7.1.1
+Roxygen: list(markdown = TRUE)
+RdMacros: Rdpack, mathjaxr
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
