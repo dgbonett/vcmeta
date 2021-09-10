@@ -1,0 +1,47 @@
+url: https://dgbonett.github.io/vcmeta
+
+template:
+  params:
+  bootswatch: cosmo
+
+authors:
+  Douglas G. Bonett:
+  href: https://people.ucsc.edu/~dgbonett/
+  
+reference:
+  - title: Meta-analysis
+    desc:  Overall effect sizes and CIs across groups of studies
+    contents:
+    - starts_with("meta.ave.")
+
+  - title: Meta-analysis of categorical moderators
+    desc:  Estimate differences between linear contrasts of groups of studies
+    contents:
+    - starts_with("meta.lc.")
+
+  - title: Meta-regression
+    desc:  Estimate relationships between quantitative predictors and effect sizes in groups of studies
+    contents:
+    - starts_with("meta.lm.")
+
+  - title: Meta-sub
+    desc:  Estimate differences in relationships found in groups of studies
+    contents:
+    - starts_with("meta.sub.")
+
+  - title: Replication
+    desc:  Compare original and replication results
+    contents:
+    - starts_with("replicate.")
+
+  - title: Standard errors
+    desc:  Standard errors for various effects
+    contents:
+    - starts_with("se.")
+
+  - title: Miscellaneous
+    desc:  Additional functions
+    contents:
+    - ci.fisher
+    - cor.from.t
+
