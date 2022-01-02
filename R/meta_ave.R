@@ -330,9 +330,10 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' @param   sd2		vector of sample SDs for measurement 2
 #' @param   cor		vector of sample correlations for paired measurements
 #' @param   n		vector of sample sizes
-#' @param   stdzr		set to 0 for square root average variance standardizer
-#'          	set to 1 for measurement 1 SD standardizer
-#'          	set to 2 for measurement 2 SD standardizer
+#' @param   stdzr		
+#' * set to 0 for square root average variance standardizer 
+#' * set to 1 for group 1 SD standardizer 
+#' * set to 2 for group 2 SD standardizer 
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
