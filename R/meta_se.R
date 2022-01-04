@@ -264,7 +264,7 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #' 
 #' 
 #' @param    cor	sample Pearson or partial correlation  
-#' @param    q		number of control variables (0 for Pearson)  
+#' @param    s		number of control variables (0 for Pearson)  
 #' @param    n		sample size
 #'   
 #'   
@@ -288,7 +288,7 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #' 
 #' @export
 se.cor <- function(cor, q, n) {
-  se.cor <- sqrt((1 - cor^2)^2/(n - 3 - q))
+  se.cor <- sqrt((1 - cor^2)^2/(n - 3 - s))
   out <- t(c(cor, se.cor))
   colnames(out) <- c("Estimate", "SE")
   rownames(out) <- c("Correlation:")
