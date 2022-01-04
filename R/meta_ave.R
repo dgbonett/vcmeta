@@ -659,14 +659,14 @@ meta.ave.meanratio.ps <- function(
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average Pearson or partial correlation. The sample correlations must 
 #' be all Pearson correlations or all partial correlations. Use the 
-#' meta.ave.gen function to meta-analysis any combination of Pearson,
+#' meta.ave.gen function to meta-analyze any combination of Pearson,
 #' partial, or Spearman correlations.
 #' 
 #' 
 #' @param alpha	alpha level for 1-alpha confidence
 #' @param n     	vector of sample sizes 
 #' @param cor   	vector of sample correlations 
-#' @param q     	number of control variables
+#' @param s     	number of control variables
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
@@ -699,11 +699,11 @@ meta.ave.meanratio.ps <- function(
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.ave.cor <- function(alpha, n, cor, q, bystudy = TRUE) {
+meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
   nt <- sum(n)
-  var.cor <- (1 - cor^2)^2/ (n - 3 - q)
+  var.cor <- (1 - cor^2)^2/ (n - 3 - s)
   ave.cor <- sum(cor)/m
   se.ave <- sqrt(sum(var.cor)/m^2)
   z.ave <- log((1 + ave.cor)/(1 - ave.cor))/2
@@ -714,8 +714,8 @@ meta.ave.cor <- function(alpha, n, cor, q, bystudy = TRUE) {
   out <- cbind(ave.cor, se.ave, ll, ul)
   row <- "Average"
   if (bystudy) {
-    se.cor <- sqrt((1 - cor^2)^2/ (n - 1 - q))
-    se.z <- sqrt(1/(n - 3 - q))
+    se.cor <- sqrt((1 - cor^2)^2/ (n - 1 - s))
+    se.z <- sqrt(1/(n - 3 - s))
     z.cor <- log((1 + cor)/(1 - cor))/2
     ll0 <- z.cor - z*se.z
     ul0 <- z.cor + z*se.z
