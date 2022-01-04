@@ -16,7 +16,7 @@
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     n      	vector of sample sizes 
 #' @param     cor    	vector of sample Pearson correlations 
-#' @param     q      	number of control variables (set to 0 for Pearson)
+#' @param     s      	number of control variables (set to 0 for Pearson)
 #' @param     group  	vector of group indicators:
 #' * 1 for set A
 #' * 2 for set B
@@ -54,11 +54,11 @@
 #'
 #' @importFrom stats qnorm
 #' @export
-meta.sub.cor <- function(alpha, n, cor, q, group) {
+meta.sub.cor <- function(alpha, n, cor, s, group) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
   nt <- sum(n)
-  var <- (1 - cor^2)^2/(n - 3 - q)
+  var <- (1 - cor^2)^2/(n - 3 - s)
   g1 <- (group == rep(1, m))*1
   g2 <- (group == rep(2, m))*1
   m1 <- sum(g1)
