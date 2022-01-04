@@ -639,7 +639,7 @@ meta.lm.cor.gen <- function(alpha, cor, se, X) {
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a Fisher-
-#' transformed Pearson or partial correlation.The estimates are OLS
+#' transformed Pearson or partial correlation. The estimates are OLS
 #' estimates with standard errors that accommodate residual heteroscedasticity.
 #' The correlations are Fisher-transformed and hence the parameter estimates
 #' do not have a simple interpretation. However, the hypothesis test results
@@ -649,7 +649,7 @@ meta.lm.cor.gen <- function(alpha, cor, se, X) {
 #' @param     alpha	alpha level for 1-alpha confidence
 #' @param     n     vector of sample sizes
 #' @param     cor		vector of Pearson or partial correlations 
-#' @param     q     number of control variables
+#' @param     s     number of control variables
 #' @param     X		  matrix of predictor values
 #' 
 #' 
@@ -682,12 +682,12 @@ meta.lm.cor.gen <- function(alpha, cor, se, X) {
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
 #' @export
-meta.lm.cor <- function(alpha, n, cor, q, X) {
+meta.lm.cor <- function(alpha, n, cor, s, X) {
   m <- length(n)
   nt <- sum(n)
   z <- qnorm(1 - alpha/2)
   zcor <- log((1 + cor)/(1 - cor))/2
-  zvar <- 1/(n - 3 - q)
+  zvar <- 1/(n - 3 - s)
   x0 <- matrix(c(1), m, 1)
   X <- cbind(x0, X)
   q <- ncol(X)
@@ -1301,7 +1301,7 @@ meta.lm.prop.ps <- function(alpha, f11, f12, f21, f22, X) {
 }
 
 
-#' Meta-regression analysis for G agreement indicces
+#' Meta-regression analysis for G agreement indices
 #' 
 #'
 #' @description
