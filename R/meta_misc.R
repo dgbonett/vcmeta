@@ -45,6 +45,7 @@ ci.fisher <- function(alpha, cor, se) {
 }
 
 
+#  cor.from.t
 #' Compute Pearson correlation between paired measurements from t statistic
 #' 
 #' @description 
@@ -55,10 +56,10 @@ ci.fisher <- function(alpha, cor, se) {
 #' standardized mean differences in paired-samples studies.
 #' 
 #' 
-#' @param m1 sample mean for measurement 1 
-#' @param m2 sample mean for measurement 2 
-#' @param sd1 sample standard deviation for measurement 1 
-#' @param sd2 sample standard deviation for measurement 2 
+#' @param m1 estimated mean for measurement 1 
+#' @param m2 estimated mean for measurement 2 
+#' @param sd1 estimated standard deviation for measurement 1 
+#' @param sd2 estimated standard deviation for measurement 2 
 #' @param t value for paired-samples t-test
 #' @param n sample size
 #'  
