@@ -12,10 +12,10 @@
 #'
 #'  
 #' @param alpha  	alpha level for 1-alpha confidence
-#' @param m1     	vector of sample means for group 1 
-#' @param m2     	vector of sample means for group 2 
-#' @param sd1    	vector of sample SDs for group 1
-#' @param sd2    	vector of sample SDs for group 2
+#' @param m1     	vector of estimated means for group 1 
+#' @param m2     	vector of estimated means for group 2 
+#' @param sd1    	vector of estimated SDs for group 1
+#' @param sd2    	vector of estimated SDs for group 2
 #' @param n1     	vector of group 1 sample size
 #' @param n2     	vector of group 2 sample sizes
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
@@ -102,18 +102,18 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 #' is not assumed.
 #'
 #'
-#' @param alpha		 alpha level for 1-alpha confidence
-#' @param m1		 vector of sample means for group 1
-#' @param m2		 vector of sample means for group 2
-#' @param sd1		 vector of sample SDs for group 1
-#' @param sd2		 vector of sample SDs for group 2
+#' @param alpha	 alpha level for 1-alpha confidence
+#' @param m1		 vector of estimated means for group 1
+#' @param m2		 vector of estimated means for group 2
+#' @param sd1		 vector of estimated SDs for group 1
+#' @param sd2		 vector of estimated SDs for group 2
 #' @param n1		 vector of group 1 sample sizes
 #' @param n2		 vector of group 2 sample sizes
 #' @param stdzr
-#' * set to 0 for square root average variance standardizer 
+#' * set to 0 for square root unweighted  average variance standardizer 
 #' * set to 1 for group 1 SD standardizer 
 #' * set to 2 for group 2 SD standardizer 
-#' * set to 3 for square root weighted variance standardizer
+#' * set to 3 for square root weighted average variance standardizer
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #'
 #'
@@ -234,12 +234,12 @@ meta.ave.stdmean2 <- function(
 #'
 #'
 #' @param   alpha		alpha level for 1-alpha confidence
-#' @param   m1		vector of sample means for measurement 1 
-#' @param   m2		vector of sample means for measurement 2 
-#' @param   sd1		vector of sample SDs for measurement 1
-#' @param   sd2		vector of sample SDs for measurement 2
-#' @param   cor		vector of sample correlations for paired measurements
-#' @param   n		vector of sample sizes
+#' @param   m1		vector of estimated means for measurement 1 
+#' @param   m2		vector of estimated means for measurement 2 
+#' @param   sd1		vector of estimated SDs for measurement 1
+#' @param   sd2		vector of estimated SDs for measurement 2
+#' @param   cor		vector of estimated correlations for paired measurements
+#' @param   n		  vector of sample sizes
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
@@ -324,14 +324,14 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #'
 #'
 #' @param   alpha		alpha level for 1-alpha confidence
-#' @param   m1		vector of sample means for measurement 1 
-#' @param   m2		vector of sample means for measurement 2 
-#' @param   sd1		vector of sample SDs for measurement 1
-#' @param   sd2		vector of sample SDs for measurement 2
-#' @param   cor		vector of sample correlations for paired measurements
-#' @param   n		vector of sample sizes
+#' @param   m1		vector of estimated means for measurement 1 
+#' @param   m2		vector of estimated means for measurement 2 
+#' @param   sd1		vector of estimated SDs for measurement 1
+#' @param   sd2		vector of estimated SDs for measurement 2
+#' @param   cor		vector of estimated correlations for paired measurements
+#' @param   n		  vector of sample sizes
 #' @param   stdzr		
-#' * set to 0 for square root average variance standardizer 
+#' * set to 0 for square root unweighted average variance standardizer 
 #' * set to 1 for group 1 SD standardizer 
 #' * set to 2 for group 2 SD standardizer 
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
@@ -444,10 +444,10 @@ meta.ave.stdmean.ps <- function(
 #'
 #'
 #' @param   alpha  	alpha level for 1-alpha confidence
-#' @param   m1     	vector of sample means for group 1
-#' @param   m2     	vector of sample means for group 2
-#' @param   sd1    	vector of sample SDs for group 1
-#' @param   sd2    	vector of sample SDs for group 2
+#' @param   m1     	vector of estimated means for group 1
+#' @param   m2     	vector of estimated means for group 2
+#' @param   sd1    	vector of estimated SDs for group 1
+#' @param   sd2    	vector of estimated SDs for group 2
 #' @param   n1     	vector of group 1 sample size
 #' @param   n2     	vector of group 2 sample sizes
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
@@ -459,7 +459,7 @@ meta.ave.stdmean.ps <- function(
 #'  * SE - standard error 
 #'  * LL - lower limit of the confidence interval
 #'  * UL - upper limit of the confidence interval 
-#'  * exp(Estimate) - the exponentiated estimate (the geometric mean)
+#'  * exp(Estimate) - the exponentiated estimate 
 #'  * exp(LL) - lower limit of the exponentiated confidence interval
 #'  * exp(UL) - upper limit of the exponentiated confidence interval
 #'  * df - degrees of freedom
@@ -555,12 +555,12 @@ meta.ave.meanratio2 <- function(
 #'
 #'
 #' @param   alpha		alpha level for 1-alpha confidence
-#' @param   m1		vector of sample means for measurement 1
-#' @param   m2		vector of sample means for measurement 2
-#' @param   sd1		vector of sample SDs for measurement 1
-#' @param   sd2		vector of sample SDs for measurement 2
-#' @param   cor		vector of sample correlations for paired measurements
-#' @param   n		vector of sample sizes
+#' @param   m1		vector of estimated means for measurement 1
+#' @param   m2		vector of estimated means for measurement 2
+#' @param   sd1		vector of estimated SDs for measurement 1
+#' @param   sd2		vector of estimated SDs for measurement 2
+#' @param   cor		vector of estimated correlations for paired measurements
+#' @param   n		  vector of sample sizes
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
 #'
 #'
@@ -571,7 +571,7 @@ meta.ave.meanratio2 <- function(
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
-#'  * exp(Estimate) - the exponentiated estimate (the geometric mean)
+#'  * exp(Estimate) - the exponentiated estimate 
 #'  * exp(LL) - lower limit of the exponentiated confidence interval
 #'  * exp(UL) - upper limit of the exponentiated confidence interval
 #'  * df - degrees of freedom
@@ -657,15 +657,15 @@ meta.ave.meanratio.ps <- function(
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
-#' average Pearson or partial correlation. The sample correlations must 
-#' be all Pearson correlations or all partial correlations. Use the 
-#' meta.ave.gen function to meta-analyze any combination of Pearson,
-#' partial, or Spearman correlations.
+#' average Pearson or partial correlation from two or more studies. The 
+#' sample correlations must be all Pearson correlations or all partial
+#' correlations. Use the meta.ave.gen function to meta-analyze any 
+#' combination of Pearson, partial, or Spearman correlations.
 #' 
 #' 
 #' @param alpha	alpha level for 1-alpha confidence
 #' @param n     	vector of sample sizes 
-#' @param cor   	vector of sample correlations 
+#' @param cor   	vector of estimated correlations 
 #' @param s     	number of control variables
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
@@ -738,16 +738,16 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
-#' average slope coefficient in a simple linear regression model. A 
-#' Satterthwaite adjustment to the degrees of freedom is used to improve 
-#' the accuracy of the confidence interval.
+#' average slope coefficient in a simple linear regression model from two
+#' or more studies. A Satterthwaite adjustment to the degrees of freedom
+#' is used to improve the accuracy of the confidence interval.
 #' 
 #' 
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    n     	vector of sample sizes 
-#' @param    cor   	vector of sample correlations 
-#' @param    sdy   	vector of SDs of y
-#' @param    sdx   	vector of SDs of x
+#' @param    cor   	vector of estimated correlations 
+#' @param    sdy   	vector of estimated SDs of y
+#' @param    sdx   	vector of estimated SDs of x
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
@@ -818,8 +818,8 @@ meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
-#' average slope coefficient from a general linear model (ANOVA, ANCOVA,
-#' multiple regression) or a path model.
+#' average slope coefficient in a general linear model (ANOVA, ANCOVA,
+#' multiple regression) or a path model from two or more studies.
 #'
 #'
 #' @param alpha alpha level for 1-alpha confidence
@@ -863,7 +863,7 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
   ave.b <- sum(slope)/m
   se.ave <- sqrt(sum(var.b)/m^2)
   u1 <- sum(var.b)^2
-  u2 <- sum(var.b^2/(n - s- 1))
+  u2 <- sum(var.b^2/(n - s - 1))
   df <- u1/u2
   t <- qt(1 - alpha/2, df)
   ll <- ave.b - t*se.ave
@@ -892,15 +892,15 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
-#' average Spearman correlation. The Spearman correlation is preferred to
-#' the Pearson correlation if the relation between the two quantitative
-#' variables is monotonic rather than linear or if the bivariate normality 
-#' assumption is not plausible.
+#' average Spearman correlation from two or more studies. The Spearman 
+#' correlation is preferred to the Pearson correlation if the relation 
+#' between the two quantitative variables is monotonic rather than linear
+#' or if the bivariate normality assumption is not plausible.
 #'
 #'
 #' @param    alpha	  alpha level for 1-alpha confidence
 #' @param    n     	  vector of sample sizes 
-#' @param    cor   	  vector of sample Spearman correlations 
+#' @param    cor   	  vector of estimated Spearman correlations 
 #' @param    bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #'   
