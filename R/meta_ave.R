@@ -984,10 +984,10 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #'
 #' 
 #' @param    alpha 	alpha level for 1-alpha confidence
-#' @param    m1	  	vector of sample means for group 1 
-#' @param    m2     vector of sample means for group 2 
-#' @param    sd1		vector of sample SDs for group 1
-#' @param    sd2		vector of sample SDs for group 2
+#' @param    m1	  	vector of estimated means for group 1 
+#' @param    m2     vector of estimated means for group 2 
+#' @param    sd1		vector of estimated SDs for group 1
+#' @param    sd2		vector of estimated SDs for group 2
 #' @param    n1		  vector of group 1 sample sizes
 #' @param    n2		  vector of group 2 sample sizes
 #' @param    type		
@@ -1106,7 +1106,7 @@ meta.ave.pbcor <- function(
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    n     	vector of sample sizes 
-#' @param    cor   	vector of sample semipartial correlations 
+#' @param    cor   	vector of estimated semipartial correlations 
 #' @param    r2  	  vector of squared multiple correlations for full model
 #' @param bystudy   logical to also return each study estimate (TRUE) or not
 #' 
@@ -1182,7 +1182,7 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    n     	vector of sample sizes 
 #' @param    rel   	vector of sample reliabilities 
-#' @param    q     	number of measurements (e.g., items) used to compute 
+#' @param    r     	number of measurements (e.g., items) used to compute 
 #' each reliability
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
@@ -1216,13 +1216,13 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.ave.cronbach <- function(alpha, n, rel, q, bystudy = TRUE) {
+meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
   nt <- sum(n)
   hn <- m/sum(1/n)
-  a <- ((q - 2)*(m - 1))^.25
-  var.rel <- 2*q*(1 - rel)^2/((q - 1)*(n - 2 - a))
+  a <- ((r - 2)*(m - 1))^.25
+  var.rel <- 2*r*(1 - rel)^2/((r - 1)*(n - 2 - a))
   ave.rel <- sum(rel)/m
   se.ave <- sqrt(sum(var.rel)/m^2)
   log.ave <- log(1 - ave.rel) - log(hn/(hn - 1))
@@ -1231,7 +1231,7 @@ meta.ave.cronbach <- function(alpha, n, rel, q, bystudy = TRUE) {
   out <- cbind(ave.rel, se.ave, ll, ul)
   row <- "Average"
   if (bystudy) {
-    se.rel <- sqrt(2*q*(1 - rel)^2/((q - 1)*(n - 2)))
+    se.rel <- sqrt(2*r*(1 - rel)^2/((r - 1)*(n - 2)))
     log.rel <- log(1 - rel) - log(n/(n - 1))
     ul <- 1 - exp(log.rel - z*se.rel/(1 - rel))
     ll <- 1 - exp(log.rel + z*se.rel/(1 - rel))
@@ -1251,7 +1251,7 @@ meta.ave.cronbach <- function(alpha, n, rel, q, bystudy = TRUE) {
 #'  
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
-#' geometric mean odds ratio from two or more studies. 
+#' geometric average odds ratio from two or more studies. 
 #'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
@@ -1345,7 +1345,7 @@ meta.ave.odds <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
-#' geometric mean proportion ratio from two or more studies. 
+#' geometric average proportion ratio from two or more studies. 
 #'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
@@ -1679,13 +1679,14 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
   return (out)
 }
 
+
 #  meta.ave.gen
 #' Confidence interval for an average of any parameter 
 #' 
 #'
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
-#' average of any type of parameter. 
+#' average of any type of parameter from two or more studies. 
 #' 
 #' @param    alpha	alpha level for 1-alpha confidence
 #' @param    est   	vector of parameter estimates 
@@ -1746,17 +1747,18 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 }
 
 
-#  meta.ave.cc
+#  meta.ave.gen.cc
 #' Confidence interval for an average effect size using a constant coefficient model 
 #'
 #'
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
-#' a weighted average effect using the constant coefficient (fixed-effect)
-#' meta-analysis model. The weighted average estimate will be biased regardless 
-#' of number of studies or sample size per study and the actual confidence interval
-#' coverage probability can be much smaller than the specified confidence level
-#' when the true effect sizes are not identical across studies. 
+#' weighted average effect from two or more studies using the constant
+#' coefficient (fixed-effect) meta-analysis model. The weighted average 
+#' estimate will be biased regardless of number of studies or sample size
+#' per study and the actual confidence interval coverage probability can]
+#' be much smaller than the specified confidence level when the true effect
+#' sizes are not identical across studies. 
 #'    
 #' 
 #' @param    alpha 	alpha level for 1-alpha confidence
@@ -1823,26 +1825,28 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 }
 
 
-#  meta.ave.rc
+#  meta.ave.gen.rc
 #' Confidence interval for an average effect size using a random coefficient model 
 #' 
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
-#' a weighted average effect using the random coefficient (random-effects)
-#' meta-analysis model. An estimate of effect-sze heterogeneity (tau-squared)
-#' is also computed. The random coefficient model assumes that the studies
-#' in the meta-analysis are a random sample from some definable superpopulation
-#' of studies. This assumption is difficult to justify. The weighted average
+#' a weighted average effect from multiple studies using the random 
+#' coefficient (random-effects) meta-analysis model. An estimate of 
+#' effect-sze heterogeneity (tau-squared) is also computed. The random 
+#' coefficient model assumes that the studies in the meta-analysis are 
+#' a random sample from some definable superpopulation of studies. This
+#' assumption is very difficult to justify. The weighted average
 #' estimate will be biased regardless of number of studies or sample size
 #' per study and the actual confidence interval coverage probability can 
 #' much smaller than the specified confidence level if the effect sizes are 
 #' correlated with the weights. This method also assume that the true effects 
 #' sizes in the superpopulation of studies have a normal distribution. A large
 #' number of studies, each with a large sample size, is required to assess the
-#' superpopulation normality assumption. The traditional confidence interval
-#' for the population tau-squared is hypersensitive to very minor and difficult
-#' to detect violations of the superpopulation normality assumption. 
+#' superpopulation normality assumption and to accurately estimate tau-squared. 
+#' The traditional confidence interval for the population tau-squared is 
+#' hypersensitive to very minor and difficult to detect violations of the 
+#' superpopulation normality assumption. 
 #' 
 #' 
 #' @param    alpha 	alpha level for 1-alpha confidence
