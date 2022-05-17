@@ -12,18 +12,18 @@
 #' 
 #'  
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     m1    	vector of sample means for group 1 
-#' @param     m2    	vector of sample means for group 2
-#' @param     sd1   	vector of sample SDs for group 1
-#' @param     sd2   	vector of sample SDs for group 2
+#' @param     m1    	vector of estimated means for group 1 
+#' @param     m2    	vector of estimated means for group 2
+#' @param     sd1   	vector of estimated SDs for group 1
+#' @param     sd2   	vector of estimated SDs for group 2
 #' @param     n1    	vector of group 1 sample sizes
 #' @param     n2    	vector of group 2 sample sizes
 #' @param     X     	matrix of predictor values
 #' 
 #' 
 #' @return
-#' Returns a matrix.  The first row is for the intercept with one additional 
-#' row per predictor.  The matrix has the following columns:
+#' Returns a matrix. The first row is for the intercept with one additional 
+#' row per predictor. The matrix has the following columns:
 #' * Estimate - OLS estimate
 #' * SE - standard error
 #' * t - t-value
@@ -85,6 +85,7 @@ meta.lm.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 }
 
 
+# meta.lm.stdmean2
 #' Meta-regression analysis for 2-group standardized mean differences
 #' 
 #' 
@@ -96,18 +97,18 @@ meta.lm.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #'  
 #
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m1    	vector of sample means for group 1 
-#' @param     m2    	vector of sample means for group 2
-#' @param     sd1   	vector of sample SDs for group 1
-#' @param     sd2   	vector of sample SDs for group 2
+#' @param     m1    	vector of estimated means for group 1 
+#' @param     m2    	vector of estimated means for group 2
+#' @param     sd1   	vector of estimated SDs for group 1
+#' @param     sd2   	vector of estimated SDs for group 2
 #' @param     n1    	vector of group 1 sample sizes
 #' @param     n2    	vector of group 2 sample sizes
 #' @param     X     	matrix of predictor values
 #' @param stdzr
-#' * set to 0 for square root average variance standardizer 
+#' * set to 0 for square root unweighted average variance standardizer 
 #' * set to 1 for group 1 SD standardizer 
 #' * set to 2 for group 2 SD standardizer 
-#' * set to 3 for square root weighted variance standardizer
+#' * set to 3 for square root weighted average variance standardizer
 #' 
 #' 
 #' @return
@@ -193,6 +194,7 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
 }
 
 
+# meta.lm.mean.ps
 #' Meta-regression analysis for paired-samples mean differences
 #' 
 #' 
@@ -204,11 +206,11 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m1    	vector of sample means for group 1 
-#' @param     m2    	vector of sample means for group 2
-#' @param     sd1   	vector of sample SDs for group 1
-#' @param     sd2   	vector of sample SDs for group 2
-#' @param     cor   	vector of correlations
+#' @param     m1    	vector of estimated means for group 1 
+#' @param     m2    	vector of estimated means for group 2
+#' @param     sd1   	vector of estimated SDs for group 1
+#' @param     sd2   	vector of estimated SDs for group 2
+#' @param     cor   	vector of estimated correlations
 #' @param     n     	vector of sample sizes
 #' @param     X     	matrix of predictor values
 #' 
@@ -274,6 +276,7 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 }
 
 
+#  meta.lm.stdmean.ps
 #' Meta-regression analysis for paired-samples standardized mean differences
 #' 
 #' 
@@ -285,15 +288,15 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m1    	vector of sample means for group 1 
-#' @param     m2    	vector of sample means for group 2
-#' @param     sd1   	vector of sample SDs for group 1
-#' @param     sd2   	vector of sample SDs for group 2
-#' @param     cor   	vector of correlations
+#' @param     m1    	vector of estimated means for group 1 
+#' @param     m2    	vector of estimated means for group 2
+#' @param     sd1   	vector of estimated SDs for group 1
+#' @param     sd2   	vector of estimated SDs for group 2
+#' @param     cor   	vector of estimated correlations
 #' @param     n     	vector of sample sizes
 #' @param     X     	matrix of predictor values
 #' @param stdzr
-#' * set to 0 for square root average variance standardizer 
+#' * set to 0 for square root unweighted average variance standardizer 
 #' * set to 1 for group 1 SD standardizer 
 #' * set to 2 for group 2 SD standardizer 
 #' 
@@ -375,6 +378,7 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
 }
 
 
+#  meta.lm.meanratio2
 #' Meta-regression analysis for 2-group log mean ratios
 #' 
 #' 
@@ -386,10 +390,10 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m1    	vector of sample means for group 1 
-#' @param     m2    	vector of sample means for group 2
-#' @param     sd1   	vector of sample SDs for group 1
-#' @param     sd2   	vector of sample SDs for group 2
+#' @param     m1    	vector of estimated means for group 1 
+#' @param     m2    	vector of estimated means for group 2
+#' @param     sd1   	vector of estimated SDs for group 1
+#' @param     sd2   	vector of estoimated SDs for group 2
 #' @param     n1    	vector of group 1 sample sizes
 #' @param     n2    	vector of group 2 sample sizes
 #' @param     X     	matrix of predictor values
@@ -469,6 +473,7 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 }
 
 
+#  meta.lm.meanratio.ps
 #' Meta-regression analysis for paired-samples log mean ratios
 #' 
 #' 
@@ -480,11 +485,11 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' 
 #' 
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m1    	vector of sample means for group 1 
-#' @param     m2    	vector of sample means for group 2
-#' @param     sd1   	vector of sample SDs for group 1
-#' @param     sd2   	vector of sample SDs for group 2
-#' @param     cor   	vector of correlations
+#' @param     m1    	vector of estimated means for group 1 
+#' @param     m2    	vector of estimated means for group 2
+#' @param     sd1   	vector of estimated SDs for group 1
+#' @param     sd2   	vector of estimated SDs for group 2
+#' @param     cor   	vector of estimated correlations
 #' @param     n     	vector of sample sizes
 #' @param     X     	matrix of predictor values
 #' 
@@ -562,16 +567,17 @@ meta.lm.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 }
 
 
+#  meta.lm.cor.gen
 #' Meta-regression analysis for correlations 
 #' 
 #'  
 #' @description
 #' This function estimates the intercept and slope coefficients in a
-#' meta-regression model where the dependent variable is a Fisher-
-#' transformed correlation. The correlations can be of different types 
+#' meta-regression model where the dependent variable is a 
+#' Fisher-transformed correlation. The correlations can be of different types 
 #' (e.g., Pearson, partial, Spearman). The estimates are OLS estimates
 #' with standard errors that accommodate residual heteroscedasticity. 
-#' This function uses sample correlations and their standard errors as 
+#' This function uses estimated correlations and their standard errors as 
 #' input. The correlations are Fisher-transformed and hence the parameter
 #' estimates do not have a simple interpretation. However, the hypothesis 
 #' test results can be used to decide if a population slope is either 
@@ -579,7 +585,7 @@ meta.lm.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' 
 #' 
 #' @param     alpha	 alpha level for 1-alpha confidence
-#' @param     cor		 vector of sample correlations 
+#' @param     cor		 vector of estimated correlations 
 #' @param     se		 number of control variables
 #' @param     X		   matrix of predictor values
 #' 
@@ -632,14 +638,14 @@ meta.lm.cor.gen <- function(alpha, cor, se, X) {
   return (out)
 }
 
-
+#  meta.lm.cor
 #' Meta-regression analysis for Pearson or partial correlations
 #' 
 #' 
 #' @description
 #' This function estimates the intercept and slope coefficients in a
-#' meta-regression model where the dependent variable is a Fisher-
-#' transformed Pearson or partial correlation. The estimates are OLS
+#' meta-regression model where the dependent variable is a 
+#' Fisher-transformed Pearson or partial correlation. The estimates are OLS
 #' estimates with standard errors that accommodate residual heteroscedasticity.
 #' The correlations are Fisher-transformed and hence the parameter estimates
 #' do not have a simple interpretation. However, the hypothesis test results
@@ -648,7 +654,7 @@ meta.lm.cor.gen <- function(alpha, cor, se, X) {
 #' 
 #' @param     alpha	alpha level for 1-alpha confidence
 #' @param     n     vector of sample sizes
-#' @param     cor		vector of Pearson or partial correlations 
+#' @param     cor		vector of estimated Pearson or partial correlations 
 #' @param     s     number of control variables
 #' @param     X		  matrix of predictor values
 #' 
@@ -707,13 +713,14 @@ meta.lm.cor <- function(alpha, n, cor, s, X) {
 }
 
 
+#  meta.lm.spear
 #' Meta-regression analysis for Spearman correlations 
 #' 
 #'  
 #' @description
 #' This function estimates the intercept and slope coefficients in a
-#' meta-regression model where the dependent variable is a Fisher-
-#' transformed Spearman correlation. The estimates are OLS estimates 
+#' meta-regression model where the dependent variable is a 
+#' Fisher-transformed Spearman correlation. The estimates are OLS estimates 
 #' with standard errors that accommodate residual heteroscedasticity. 
 #' The correlations are Fisher-transformed and hence the parameter 
 #' estimates do not have a simple interpretation. However, the hypothesis
@@ -723,7 +730,7 @@ meta.lm.cor <- function(alpha, n, cor, s, X) {
 #' 
 #' @param     alpha	 alpha level for 1-alpha confidence
 #' @param     n      vector of sample sizes
-#' @param     cor		 vector of Spearman correlations 
+#' @param     cor		 vector of estimated Spearman correlations 
 #' @param     X		   matrix of predictor values
 #' 
 #' 
@@ -779,7 +786,7 @@ meta.lm.spear <- function(alpha, n, cor, X) {
   return (out)
 }
 
-
+#  meta.lm.semipart
 #' Meta-regression analysis for semipartial correlations
 #' 
 #'  
@@ -795,8 +802,8 @@ meta.lm.spear <- function(alpha, n, cor, X) {
 #' 
 #' @param     alpha	 alpha level for 1-alpha confidence
 #' @param     n      vector of sample sizes
-#' @param     cor		 vector of sample semipartial correlations
-#' @param     r2     vector of squared multiple correlations for full model
+#' @param     cor		 vector of estimated semipartial correlations
+#' @param     r2     vector of estimated squared multiple correlations for full model
 #' @param     X		   matrix of predictor values
 #' 
 #' 
@@ -854,7 +861,7 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
   return (out)
 }
 
-
+#  meta.lm.cronbach
 #' Meta-regression analysis for Cronbach reliabilities 
 #' 
 #'
@@ -864,14 +871,14 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
 #' Cronbach reliablity. The estimates are OLS estimates with standard errors
 #' that accommodate residual heteroscedasticity. The exponentiated slope 
 #' estimate for a predictor variable describes a multiplicative change in 
-#  the non-reliability associated with a 1-unit increase in that predictor 
+#  non-reliability associated with a 1-unit increase in that predictor 
 #' variable. 
 #' 
 #' 
 #' @param     alpha	 alpha level for 1-alpha confidence
 #' @param     n		   vector of sample sizes 
-#' @param     rel		 vector of sample alpha reliabilities 
-#' @param     q		   number of measurements (e.g., items) 
+#' @param     rel		 vector of estimated reliabilities 
+#' @param     r		   number of measurements (e.g., items) 
 #' @param     X		   matrix of predictor values
 #' 
 #' 
@@ -906,14 +913,14 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
 #' @export
-meta.lm.cronbach <- function(alpha, n, rel, q, X) {
+meta.lm.cronbach <- function(alpha, n, rel, r, X) {
   m <- length(n)
   nt <- sum(n)
   z <- qnorm(1 - alpha/2)
   hn <- m/sum(1/n)
-  a <- ((q - 2)*(m - 1))^.25
+  a <- ((r - 2)*(m - 1))^.25
   log.rel <- log(1 - rel) - log(hn/(hn - 1))
-  var.rel <- 2*q*(1 - rel)^2/((q - 1)*(n - 2 - a))
+  var.rel <- 2*r*(1 - rel)^2/((r - 1)*(n - 2 - a))
   var.log <- var.rel/(1 - rel)^2
   x0 <- matrix(c(1), m, 1)
   X <- cbind(x0, X)
@@ -934,6 +941,7 @@ meta.lm.cronbach <- function(alpha, n, rel, q, X) {
 }
 
 
+#  meta.lm.odds
 #' Meta-regression analysis for odds ratios 
 #' 
 #' 
@@ -1035,6 +1043,7 @@ meta.lm.odds <- function(alpha, f1, f2, n1, n2, X) {
 }
 
 
+#  meta.lm.propratio2
 #' Meta-regression analysis for proportion ratios 
 #' 
 #'
@@ -1139,6 +1148,7 @@ meta.lm.propratio2 <- function(alpha, f1, f2, n1, n2, X) {
 }
 
 
+#  meta.lm.prop2
 #' Meta-regression analysis for 2-group proportion differences 
 #' 
 #'
@@ -1219,6 +1229,7 @@ meta.lm.prop2 <- function(alpha, f1, f2, n1, n2, X) {
 }
 
 
+#  meta.lm.prop.ps
 #' Meta-regression analysis for paired-samples proportion differences 
 #' 
 #' 
@@ -1301,6 +1312,7 @@ meta.lm.prop.ps <- function(alpha, f11, f12, f21, f22, X) {
 }
 
 
+#  meta.lm.agree
 #' Meta-regression analysis for G agreement indices
 #' 
 #'
@@ -1375,20 +1387,20 @@ meta.lm.agree <- function(alpha, f11, f12, f21, f22, X) {
   return (out)
 }
 
-
-#' Meta-regression analysis for single means
+#  meta.lm.mean1
+#' Meta-regression analysis for 1-group means
 #' 
 #'
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a mean
-#' from a single group. The estimates are OLS estimates with
+#' from one group. The estimates are OLS estimates with
 #' standard errors that accomodate residual heteroscedasticity. 
 #' 
 #' 
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m     	vector of sample means
-#' @param     sd    	vector of sample standard deviations
+#' @param     m     	vector of estimated means
+#' @param     sd    	vector of estimated standard deviations
 #' @param     n     	vector of sample sizes
 #' @param     X     	matrix of predictor values
 #' 
@@ -1448,14 +1460,14 @@ meta.lm.mean1 <- function(alpha, m, sd, n, X) {
   return(out)
 }
 
-
-#' Meta-regression analysis for single proportions
+#  meta.lm.prop1
+#' Meta-regression analysis for 1-group proportions
 #' 
 #' 
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a proportion
-#' from a single group. The estimates are OLS estimates with
+#' from one group. The estimates are OLS estimates with
 #' standard errors that accomodate residual heteroscedasticity. 
 #' 
 #'
@@ -1516,7 +1528,7 @@ meta.lm.prop1 <- function(alpha, f, n, X) {
 }
 
 
-# meta.lm.gen
+#  meta.lm.gen
 #' Meta-regression analysis for any type of effect size
 #' 
 #' 
