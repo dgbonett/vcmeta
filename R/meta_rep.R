@@ -29,8 +29,8 @@
 #' 
 #' 
 #' @return A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
 #' * Row 4 estimates the average effect size between the two studies
 #'
@@ -145,8 +145,8 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' 
 #' @return
 #' A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
 #' * Row 4 estimates the average effect size between the two studies
 #' 
@@ -259,8 +259,8 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
 #' 
 #' @return
 #' A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
 #' * Row 4 estimates the average effect size between the two studies
 #' 
@@ -359,8 +359,8 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' 
 #' @return
 #' A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
 #' * Row 4 estimates the average effect size between the two studies
 #' 
@@ -560,8 +560,8 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 #'   
 #' @return
 #' A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
 #' * Row 4 estimates the average effect size between the two studies
 #' 
