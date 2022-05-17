@@ -1,6 +1,6 @@
 # ================= Multi-study Linear Models ============
 
-# meta.lm.mean2
+#  meta.lm.mean2
 #' Meta-regression analysis for 2-group mean differences
 #' 
 #' 
@@ -85,7 +85,7 @@ meta.lm.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 }
 
 
-# meta.lm.stdmean2
+#  meta.lm.stdmean2
 #' Meta-regression analysis for 2-group standardized mean differences
 #' 
 #' 
@@ -194,7 +194,7 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
 }
 
 
-# meta.lm.mean.ps
+#  meta.lm.mean.ps
 #' Meta-regression analysis for paired-samples mean differences
 #' 
 #' 
@@ -1459,6 +1459,7 @@ meta.lm.mean1 <- function(alpha, m, sd, n, X) {
   rownames(out) <- row
   return(out)
 }
+
 
 #  meta.lm.prop1
 #' Meta-regression analysis for 1-group proportions
