@@ -375,8 +375,7 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' 
 #' 
 #' @examples
-#' replicate.stdmean.ps(
-#'   alpha = .05, 
+#' replicate.stdmean.ps(alpha = .05, 
 #'   m11 = 86.22, m12 = 70.93, sd11 = 14.89, sd12 = 12.32, cor1 = .765, n1 = 20, 
 #'   m21 = 84.81, m22 = 77.24, sd21 = 15.68, sd22 = 16.95, cor2 = .702, n2 = 75
 #' )
