@@ -15,7 +15,7 @@
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     n      	vector of sample sizes 
-#' @param     cor    	vector of sample Pearson correlations 
+#' @param     cor    	vector of estimated Pearson correlations 
 #' @param     s      	number of control variables (set to 0 for Pearson)
 #' @param     group  	vector of group indicators:
 #' * 1 for set A
@@ -24,9 +24,9 @@
 #' 
 #'
 #' @return Returns a matrix with three rows:
-#' * Row 1 - Estimate for Set A
-#' * Row 2 - Estimate for Set B
-#' * Row 3 - Estimate for difference, Set A - Set B
+#' * Row 1 - estimate for Set A
+#' * Row 2 - estimate for Set B
+#' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
 #' * Estimate - estimate of average correlation or difference
@@ -104,7 +104,7 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     n      	vector of sample sizes 
-#' @param     cor    	vector of sample Spearman correlations 
+#' @param     cor    	vector of estimated Spearman correlations 
 #' @param     group  	vector of group indicators:
 #' * 1 for set A
 #' * 2 for set B
@@ -112,9 +112,9 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #' 
 #' 
 #' @return Returns a matrix with three rows:
-#' * Row 1 - Estimate for Set A
-#' * Row 2 - Estimate for Set B
-#' * Row 3 - Estimate for difference, Set A - Set B
+#' * Row 1 - estimate for Set A
+#' * Row 2 - estimate for Set B
+#' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
 #' * Estimate - estimate of average correlation or difference
@@ -197,10 +197,10 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #'    
 #'    
 #' @param     alpha   	alpha level for 1-alpha confidence
-#' @param     m1    	  vector of sample means for group 1 
-#' @param     m2    	  vector of sample means for group 2 
-#' @param     sd1   	  vector of sample SDs for group 1
-#' @param     sd2   	  vector of sample SDs for group 2
+#' @param     m1    	  vector of estimated means for group 1 
+#' @param     m2    	  vector of estimated means for group 2 
+#' @param     sd1   	  vector of estimated SDs for group 1
+#' @param     sd2   	  vector of estimated SDs for group 2
 #' @param     n1    	  vector of group 1 sample sizes
 #' @param     n2    	  vector of group 2 sample sizes
 #' @param     type  	
@@ -213,9 +213,9 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' 
 #' 
 #' @return Returns a matrix with three rows:
-#' * Row 1 - Estimate for Set A
-#' * Row 2 - Estimate for Set B
-#' * Row 3 - Estimate for difference, Set A - Set B
+#' * Row 1 - estimate for Set A
+#' * Row 2 - estimate for Set B
+#' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
 #' * Estimate - estimate of average correlation or difference
@@ -316,7 +316,7 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     n      	vector of sample sizes 
-#' @param     cor    	vector of sample semi-partial correlations 
+#' @param     cor    	vector of estimated semi-partial correlations 
 #' @param     r2   	  vector of squared multiple correlations for a model that
 #' includes the IV and all control variables
 #' @param     group  	vector of group indicators:
@@ -326,9 +326,9 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 #' 
 #' 
 #' @return Returns a matrix with three rows:
-#' * Row 1 - Estimate for Set A
-#' * Row 2 - Estimate for Set B
-#' * Row 3 - Estimate for difference, Set A - Set B
+#' * Row 1 - estimate for Set A
+#' * Row 2 - estimate for Set B
+#' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
 #' * Estimate - estimate of average correlation or difference
@@ -406,8 +406,8 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     n      	vector of sample sizes 
-#' @param     rel    	vector of sample Cronbach reliabilities 
-#' @param     q      	number of measurements (e.g., items)
+#' @param     rel    	vector of estimated Cronbach reliabilities 
+#' @param     r      	number of measurements (e.g., items)
 #' @param     group  	vector of group indicators:
 #' * 1 for set A
 #' * 2 for set B
@@ -415,9 +415,9 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #' 
 #' 
 #' @return Returns a matrix with three rows:
-#' * Row 1 - Estimate for Set A
-#' * Row 2 - Estimate for Set B
-#' * Row 3 - Estimate for difference, Set A - Set B
+#' * Row 1 - estimate for Set A
+#' * Row 2 - estimate for Set B
+#' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
 #' * Estimate - estimate of average correlation or difference
@@ -430,8 +430,8 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #' n <- c(120, 170, 150, 135)
 #' rel <- c(.89, .87, .73, .71)
 #' group <- c(1, 1, 2, 2)
-#' q <- 10
-#' meta.sub.cronbach(.05, n, rel, q, group)
+#' r <- 10
+#' meta.sub.cronbach(.05, n, rel, r, group)
 #' 
 #' # Should return: 
 #' #                Estimate         SE        LL        UL
@@ -446,7 +446,7 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #'
 #' @importFrom stats qnorm
 #' @export
-meta.sub.cronbach <- function(alpha, n, rel, q, group) {
+meta.sub.cronbach <- function(alpha, n, rel, r, group) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
   nt <- sum(n)
@@ -456,10 +456,10 @@ meta.sub.cronbach <- function(alpha, n, rel, q, group) {
   m2 <- sum(g2)
   hn1 <- m1/sum(g1/n)
   hn2 <- m2/sum(g2/n)
-  a1 <- ((q - 2)*(m1 - 1))^.25
-  var1 <- 2*q*(1 - rel)^2/((q - 1)*(n - 2 - a1))
-  a2 <- ((q - 2)*(m2 - 1))^.25
-  var2 <- 2*q*(1 - rel)^2/((q - 1)*(n - 2 - a2))
+  a1 <- ((r - 2)*(m1 - 1))^.25
+  var1 <- 2*r*(1 - rel)^2/((r - 1)*(n - 2 - a1))
+  a2 <- ((r - 2)*(m2 - 1))^.25
+  var2 <- 2*r*(1 - rel)^2/((r - 1)*(n - 2 - a2))
   ave.A <- sum(g1*rel)/m1
   se.ave.A <- sqrt(sum(g1*var1)/m1^2)
   log.A <- log(1 - ave.A) - log(hn1/(hn1 - 1))
