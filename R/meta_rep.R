@@ -1,5 +1,4 @@
 # ================ Compare Effect Sizes in Replication Study ===============
-
 #  replicate.mean2
 #' Compares 2-group mean differences in original and follow-up studies
 #' 
@@ -17,14 +16,14 @@
 #' @param    alpha		 alpha level for 1-alpha confidence
 #' @param    m11		   estimated mean for group 1 in original study 
 #' @param    m12		   estimated mean for group 2 in original study
-#' @param    m21    	 estimated mean for group 1 in follow-up study 
-#' @param    m22    	 estimated mean for group 2 in follow-up study
 #' @param    sd11   	 estimated SD for group 1 in original study
 #' @param    sd12   	 estimated SD for group 2 in original study
-#' @param    sd21   	 estimated SD for group 1 in follow-up study
-#' @param    sd22   	 estimated SD for group 2 in follow-up study
 #' @param    n11    	 sample size for group 1 in original study
 #' @param    n12    	 sample size for group 2 in original study
+#' @param    m21    	 estimated mean for group 1 in follow-up study 
+#' @param    m22    	 estimated mean for group 2 in follow-up study
+#' @param    sd21   	 estimated SD for group 1 in follow-up study
+#' @param    sd22   	 estimated SD for group 2 in follow-up study
 #' @param    n21    	 sample size for group 1 in follow-up study
 #' @param    n22    	 sample size for group 2 in follow-up study
 #' 
@@ -132,15 +131,15 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' @param    alpha		 alpha level for 1-alpha confidence
 #' @param    m11		   estimated mean for group 1 in original study 
 #' @param    m12		   estimated mean for group 2 in original study
-#' @param    m21    	 estimated mean for group 1 in follow-up study 
-#' @param    m22    	 estimated mean for group 2 in follow-up study
 #' @param    sd11   	 estimated SD for group 1 in original study
 #' @param    sd12   	 estimated SD for group 2 in original study
+#' @param    n1    	   sample size in original study
+#' @param    cor1    	 estimated correlation of paired observations in orginal study
+#' @param    m21    	 estimated mean for group 1 in follow-up study 
+#' @param    m22    	 estimated mean for group 2 in follow-up study
 #' @param    sd21   	 estimated SD for group 1 in follow-up study
 #' @param    sd22   	 estimated SD for group 2 in follow-up study
-#' @param    n1    	   sample size in original study
 #' @param    n2    	   sample size in follow-up study
-#' @param    cor1    	 estimated correlation of paired observations in orginal study
 #' @param    cor2    	 estimated correlation of paired observations in follow-up study
 #' 
 #' 
@@ -246,14 +245,14 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
 #' @param    alpha		 alpha level for 1-alpha confidence
 #' @param    m11		   estimated mean for group 1 in original study 
 #' @param    m12		   estimated mean for group 2 in original study
-#' @param    m21    	 estimated mean for group 1 in follow-up study 
-#' @param    m22    	 estimated mean for group 2 in follow-up study
 #' @param    sd11   	 estimated SD for group 1 in original study
 #' @param    sd12   	 estimated SD for group 2 in original study
-#' @param    sd21   	 estimated SD for group 1 in follow-up study
-#' @param    sd22   	 estimated SD for group 2 in follow-up study
 #' @param    n11    	 sample size for group 1 in original study
 #' @param    n12    	 sample size for group 2 in original study
+#' @param    m21    	 estimated mean for group 1 in follow-up study 
+#' @param    m22    	 estimated mean for group 2 in follow-up study
+#' @param    sd21   	 estimated SD for group 1 in follow-up study
+#' @param    sd22   	 estimated SD for group 2 in follow-up study
 #' @param    n21    	 sample size for group 1 in follow-up study
 #' @param    n22    	 sample size for group 2 in follow-up study
 #' 
@@ -452,8 +451,8 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
 #' 
 #' @return
 #' A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
 #' * Row 4 estimates the average effect size between the two studies
 #' 
@@ -540,7 +539,7 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 }
 
 
-# replicate.gen
+#  replicate.gen
 #' Compares effect sizes in the original and follow-up studies
 #'
 #'
@@ -555,8 +554,8 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 #'
 #' @param    alpha		 alpha level for 1-alpha confidence 
 #' @param    est1  	   estimated effect size in original study
-#' @param    est2  	   estimated effect size in follow-up study
 #' @param    se1    	 effect size standard error in original study
+#' @param    est2  	   estimated effect size in follow-up study
 #' @param    se2    	 effect size standard error in follow-up study
 #'   
 #' @return
