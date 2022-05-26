@@ -16,7 +16,7 @@
 #' @param m2     	vector of estimated means for group 2 
 #' @param sd1    	vector of estimated SDs for group 1
 #' @param sd2    	vector of estimated SDs for group 2
-#' @param n1     	vector of group 1 sample size
+#' @param n1     	vector of group 1 sample sizes
 #' @param n2     	vector of group 2 sample sizes
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #'
@@ -448,7 +448,7 @@ meta.ave.stdmean.ps <- function(
 #' @param   m2     	vector of estimated means for group 2
 #' @param   sd1    	vector of estimated SDs for group 1
 #' @param   sd2    	vector of estimated SDs for group 2
-#' @param   n1     	vector of group 1 sample size
+#' @param   n1     	vector of group 1 sample sizes
 #' @param   n2     	vector of group 2 sample sizes
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
 #'
