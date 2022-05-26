@@ -671,4 +671,107 @@ se.slope <- function(cor, sdy, sdx, n) {
 }
 
 
+# se.prop2 ===============================================================
+#' Computes the Agresti-Caffo estimate and standard error for a 2-group
+#' proportion difference
+#' 
+#' 
+#' @description
+#' This function can be used to compute the standard error of a 
+#' 2-group proportion difference using the two sample proportions and sample
+#' sizes. The effect size estimate and standard error output from this
+#' function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
+#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
+#' applications where compatible proportion differences from a combination of 
+#' 2-group and paired-samples studies are used in the meta-analysis. 
+#' 
+#' 
+#' @param    f1   number of participants in group 1 who have the outcome
+#' @param    f2	  number of participants in group 2 who have the outcome
+#' @param    n1	  group 1 sample size
+#' @param    n2	  group 2 sample size
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimate of proportion difference
+#' * SE - standard error
+#' 
+#'  
+#' @examples
+#' se.prop2(31, 16, 40, 40)
+#'
+#' # Should return:
+#' #                         Estimate        SE
+#' # Proportion difference: 0.3571429 0.1002777
+#' 
+#' 
+#' @references
+#' \insertRef{Agresti2000}{vcmeta}
+#'
+#'
+#' @export
+se.prop2 <- function(f1, f2, n1, n2) {
+ p1 <- (f1 + 1)/(n1 + 2)
+ p2 <- (f2 + 1)/(n2 + 2)
+ est <- p1 - p2
+ se <- sqrt(p1*(1 - p1)/(n1 + 2) + p2*(1 - p2)/(n2 + 2))
+ out <- t(c(est, se))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- c("Proportion difference:")
+ return(out)
+}
+
+
+# se.prop.ps ================================================================
+#' Computes the Bonett-Price estimate and standard error for a paired-samples
+#' proportion difference
+#' 
+#' 
+#' @description
+#' This function can be used to compute the standard error of a 
+#' paired-samples proportion difference using the frequency counts from a 
+#' 2 x 2 contingency table. The effect size estimate and standard error
+#' output from this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
+#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
+#' applications where compatible proportion differences from a combination of
+#' 2-group and paired-samples studies are used in the meta-analysis. 
+#' 
+#' 
+#' @param   f00    number of participants with y = 0 and x = 0
+#' @param   f01    number of participants with y = 0 and x = 1
+#' @param   f10    number of participants with y = 1 and x = 0
+#' @param   f11    number of participants with y = 1 and x = 1
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimate of proportion difference
+#' * SE - standard error
+#' 
+#'  
+#' @examples
+#' se.prop.ps(16, 64, 5, 15)
+#'
+#' # Should return:
+#' #                         Estimate         SE
+#' # Proportion difference: 0.5784314 0.05953213
+#' 
+#' 
+#' @references
+#' \insertRef{Agresti2000}{vcmeta}
+#'
+#'
+#' @export
+se.prop.ps <- function(f00, f01, f10, f11) {
+ n <- f00 + f01 + f10 + f11
+ p01 <- (f01 + 1)/(n + 2)
+ p10 <- (f10 + 1)/(n + 2)
+ est <- p01 - p10
+ se <- sqrt(((p01 + p10) - (p01 - p10)^2)/(n + 2))
+ out <- t(c(est, se))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- c("Proportion difference:")
+ return(out)
+}
 
