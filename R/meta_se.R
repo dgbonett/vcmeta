@@ -671,7 +671,7 @@ se.slope <- function(cor, sdy, sdx, n) {
 }
 
 
-# se.prop2 ===============================================================
+# se.prop2 
 #' Computes the Agresti-Caffo estimate and standard error for a 2-group
 #' proportion difference
 #' 
@@ -723,7 +723,7 @@ se.prop2 <- function(f1, f2, n1, n2) {
 }
 
 
-# se.prop.ps ================================================================
+# se.prop.ps 
 #' Computes the Bonett-Price estimate and standard error for a paired-samples
 #' proportion difference
 #' 
