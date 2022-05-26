@@ -77,3 +77,56 @@ cor.from.t <- function(m1, m2, sd1, sd2, t, n) {
   cor <- ((sd1^2 + sd2^2) - n*(m1 - m2)^2/t^2)/(2*sd1*sd2)
   return (cor)
 }
+
+
+# meta.chitest 
+#' Computes a chi-square test of effect-size homogeneity
+#' 
+#'
+#' @description
+#' Computes a chi-square test of effect size homogeneity and p-value using 
+#' effect-size estimates and their standard errors from two or more studies.
+#' This test should not be used to justify the use of a constant coeffient
+#' (fixed-effect) meta-analysis. This test can be used to justify the 
+#' estimation of an average effect size in a varying coefficient model.
+#' 
+#' 
+#' @param    est  	vector of effect-size estimates
+#' @param    se		vector of effect-size standard errors
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Q - chi-square test statitic
+#' * df - degrees of freedom
+#' * p - p-value
+#' 
+#'  
+#' @examples
+#' est = c(.297, .324, .281, .149) 
+#' se = c(.082, .051, .047, .094)
+#' meta.chitest(est, se)
+#'
+#' # Should return:
+#' #         Q df         p
+#' #  2.706526  3 0.4391195
+#' 
+#' 
+#' @references
+#'
+#'
+#' @importFrom stats pchisq
+#' @export
+meta.chitest <- function(est, se) {
+ df <- length(est) - 1
+ w <- 1/se^2
+ ave <- sum(w*est)/sum(w)
+ Q <- sum(w*(est - ave)*(est - ave))
+ p <- 1 - pchisq(Q, df)
+ out <- t(c(Q, df, p))
+ colnames(out) <- c("Q", "df", "p")
+ rownames(out) <- c("")
+ return(out)
+} 
+
+
