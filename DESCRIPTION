@@ -12,14 +12,7 @@ Description: Implements functions for varying coefficient meta-analysis methods.
   effect size heterogeneity. Varying coefficient meta-analysis methods do not 
   require the unrealistic assumptions of the traditional fixed-effect and 
   random-effects meta-analysis methods.  
-  For details, see: 
-  Bonett (2008) <doi:10.1037/a0012868>, 
-  Bonett (2009) <doi:10.1037/a0016619>,
-  Bonett (2010) <doi:10.1037/a0020142>,
-  Bonett & Price (2014) <doi:10.1111/bmsp.12024>,
-  Bonett & Price (2015) <doi:10.1111/bmsp.12024>,
-  Bonett (2020) <doi:10.1111/bmsp.12189>,
-  Bonett (2021) <doi:10.1177/1094428120911088>.
+  For details see:  Statistical Methods for Psychologists, Volume 5, <https://dgbonett.sites.ucsc.edu/>.
 URL: https://github.com/dgbonett/vcmeta
 BugReports: https://github.com/dgbonett/vcmeta/issues
 License: GPL-3
