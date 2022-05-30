@@ -103,8 +103,8 @@ cor.from.t <- function(m1, m2, sd1, sd2, t, n) {
 #' 
 #'  
 #' @examples
-#' est = c(.297, .324, .281, .149) 
-#' se = c(.082, .051, .047, .094)
+#' est <- c(.297, .324, .281, .149) 
+#' se <- c(.082, .051, .047, .094)
 #' meta.chitest(est, se)
 #'
 #' # Should return:
