@@ -9,15 +9,15 @@ meta.ave.mean.ps(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m1}{vector of estimated means for measurement 1}
+\item{m1}{vector of sample means for measurement 1}
 
-\item{m2}{vector of estimated means for measurement 2}
+\item{m2}{vector of sample means for measurement 2}
 
-\item{sd1}{vector of estimated SDs for measurement 1}
+\item{sd1}{vector of sample SDs for measurement 1}
 
-\item{sd2}{vector of estimated SDs for measurement 2}
+\item{sd2}{vector of sample SDs for measurement 2}
 
-\item{cor}{vector of estimated correlations for paired measurements}
+\item{cor}{vector of sample correlations for paired measurements}
 
 \item{n}{vector of sample sizes}
 

@@ -11,7 +11,7 @@ meta.ave.spear(alpha, n, cor, bystudy = TRUE)
 
 \item{n}{vector of sample sizes}
 
-\item{cor}{vector of estimated Spearman correlations}
+\item{cor}{vector of sample Spearman correlations}
 
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
@@ -28,10 +28,10 @@ each study.  The matrix has the following columns:
 }
 \description{
 Computes the estimate, standard error, and confidence interval for an
-average Spearman correlation from two or more studies. The Spearman
-correlation is preferred to the Pearson correlation if the relation
-between the two quantitative variables is monotonic rather than linear
-or if the bivariate normality assumption is not plausible.
+average Spearman correlation. The Spearman correlation is preferred to
+the Pearson correlation if the relation between the two quantitative
+variables is monotonic rather than linear or if the bivariate normality
+assumption is not plausible.
 }
 \examples{
 n <- c(150, 200, 300, 200, 350)

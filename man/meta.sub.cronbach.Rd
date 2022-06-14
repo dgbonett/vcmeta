@@ -5,16 +5,16 @@
 \title{Confidence interval for a difference in average Cronbach
 reliabilities for two sets of studies}
 \usage{
-meta.sub.cronbach(alpha, n, rel, r, group)
+meta.sub.cronbach(alpha, n, rel, q, group)
 }
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
 \item{n}{vector of sample sizes}
 
-\item{rel}{vector of estimated Cronbach reliabilities}
+\item{rel}{vector of sample Cronbach reliabilities}
 
-\item{r}{number of measurements (e.g., items)}
+\item{q}{number of measurements (e.g., items)}
 
 \item{group}{vector of group indicators:
 \itemize{
@@ -26,9 +26,9 @@ meta.sub.cronbach(alpha, n, rel, r, group)
 \value{
 Returns a matrix with three rows:
 \itemize{
-\item Row 1 - estimate for Set A
-\item Row 2 - estimate for Set B
-\item Row 3 - estimate for difference, Set A - Set B
+\item Row 1 - Estimate for Set A
+\item Row 2 - Estimate for Set B
+\item Row 3 - Estimate for difference, Set A - Set B
 }
 
 The columns are:
@@ -50,8 +50,8 @@ is assumed to be the same for all studies.
 n <- c(120, 170, 150, 135)
 rel <- c(.89, .87, .73, .71)
 group <- c(1, 1, 2, 2)
-r <- 10
-meta.sub.cronbach(.05, n, rel, r, group)
+q <- 10
+meta.sub.cronbach(.05, n, rel, q, group)
 
 # Should return: 
 #                Estimate         SE        LL        UL

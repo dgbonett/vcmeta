@@ -7,9 +7,9 @@
 se.semipartial(cor, r2, n)
 }
 \arguments{
-\item{cor}{estimated semipartial correlation}
+\item{cor}{sample semipartial correlation}
 
-\item{r2}{estimated squared multiple correlation for full model}
+\item{r2}{squared multiple correlation for full model}
 
 \item{n}{sample size}
 }
@@ -22,7 +22,7 @@ Returns a one-row matrix:
 }
 \description{
 This function can be used to compute the standard error of a
-semipartial correlation using the estimated correlation, sample
+semipartial correlation using the sample correlation, sample
 size, and squared multiple correlation for the full model.
 The effect size estimate and standard error output from this
 function can be used as input in the \link[vcmeta]{meta.ave.gen},

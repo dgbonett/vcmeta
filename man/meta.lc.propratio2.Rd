@@ -32,7 +32,7 @@ has the following columns:
 }
 \description{
 Computes the estimate, standard error, and confidence interval for an
-exponentiated log-linear contrast of 2-group proportion ratios from
+exponentiated log-linear contrast of 2-group proportion odds ratios from
 two or more studies.
 }
 \examples{

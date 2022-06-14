@@ -9,11 +9,11 @@ replicate.cor(alpha, cor1, n1, cor2, n2, s)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{cor1}{estimated Pearson correlation between y and x in original study}
+\item{cor1}{sample Pearson correlation between y and x in original study}
 
 \item{n1}{sample size in original study}
 
-\item{cor2}{estimated Pearson correlation between y and x in follow-up study}
+\item{cor2}{sample Pearson correlation between y and x in follow-up study}
 
 \item{n2}{sample size in follow-up study}
 
@@ -22,8 +22,8 @@ replicate.cor(alpha, cor1, n1, cor2, n2, s)
 \value{
 A 4-row matrix. The rows are:
 \itemize{
-\item Row 1 summarizes the original study
-\item Row 2 summarizes the follow-up study
+\item Row 1 summarizes the Original study
+\item Row 2 summarizes the Follow-up study
 \item Row 3 estimates the difference between studies
 \item Row 4 estimates the average effect size between the two studies
 }

@@ -11,7 +11,7 @@ meta.ave.semipart(alpha, n, cor, r2, bystudy = TRUE)
 
 \item{n}{vector of sample sizes}
 
-\item{cor}{vector of estimated semipartial correlations}
+\item{cor}{vector of sample semipartial correlations}
 
 \item{r2}{vector of squared multiple correlations for full model}
 

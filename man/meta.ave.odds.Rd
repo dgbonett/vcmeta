@@ -35,7 +35,7 @@ each study.  The matrix has the following columns:
 }
 \description{
 Computes the estimate, standard error, and confidence interval for a
-geometric average odds ratio from two or more studies.
+geometric mean odds ratio from two or more studies.
 }
 \examples{
 n1 <- c(204, 201, 932, 130, 77)

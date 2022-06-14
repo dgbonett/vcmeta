@@ -9,22 +9,22 @@ meta.lm.stdmean.ps(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m1}{vector of estimated means for group 1}
+\item{m1}{vector of sample means for group 1}
 
-\item{m2}{vector of estimated means for group 2}
+\item{m2}{vector of sample means for group 2}
 
-\item{sd1}{vector of estimated SDs for group 1}
+\item{sd1}{vector of sample SDs for group 1}
 
-\item{sd2}{vector of estimated SDs for group 2}
+\item{sd2}{vector of sample SDs for group 2}
 
-\item{cor}{vector of estimated correlations}
+\item{cor}{vector of correlations}
 
 \item{n}{vector of sample sizes}
 
 \item{X}{matrix of predictor values}
 
 \item{stdzr}{\itemize{
-\item set to 0 for square root unweighted average variance standardizer
+\item set to 0 for square root average variance standardizer
 \item set to 1 for group 1 SD standardizer
 \item set to 2 for group 2 SD standardizer
 }}

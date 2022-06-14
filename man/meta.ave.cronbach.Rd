@@ -4,7 +4,7 @@
 \alias{meta.ave.cronbach}
 \title{Confidence interval for an average Cronbach alpha reliability}
 \usage{
-meta.ave.cronbach(alpha, n, rel, r, bystudy = TRUE)
+meta.ave.cronbach(alpha, n, rel, q, bystudy = TRUE)
 }
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
@@ -13,7 +13,7 @@ meta.ave.cronbach(alpha, n, rel, r, bystudy = TRUE)
 
 \item{rel}{vector of sample reliabilities}
 
-\item{r}{number of measurements (e.g., items) used to compute
+\item{q}{number of measurements (e.g., items) used to compute
 each reliability}
 
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}

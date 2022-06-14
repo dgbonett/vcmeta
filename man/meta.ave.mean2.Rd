@@ -9,13 +9,13 @@ meta.ave.mean2(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m1}{vector of estimated means for group 1}
+\item{m1}{vector of sample means for group 1}
 
-\item{m2}{vector of estimated means for group 2}
+\item{m2}{vector of sample means for group 2}
 
-\item{sd1}{vector of estimated SDs for group 1}
+\item{sd1}{vector of sample SDs for group 1}
 
-\item{sd2}{vector of estimated SDs for group 2}
+\item{sd2}{vector of sample SDs for group 2}
 
 \item{n1}{vector of group 1 sample size}
 

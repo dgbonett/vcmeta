@@ -10,22 +10,22 @@ meta.lc.stdmean.ps(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m1}{vector of estimated means for group 1}
+\item{m1}{vector of sample means for group 1}
 
-\item{m2}{vector of estimated means for group 2}
+\item{m2}{vector of sample means for group 2}
 
-\item{sd1}{vector of estimated SDs for group 1}
+\item{sd1}{vector of sample SDs for group 1}
 
-\item{sd2}{vector of estimated SDs for group 2}
+\item{sd2}{vector of sample SDs for group 2}
 
-\item{cor}{vector of estimated correlations for paired measurements}
+\item{cor}{vector of sample correlations for paired measurements}
 
 \item{n}{vector of sample sizes}
 
 \item{v}{vector of contrast coefficients}
 
 \item{stdzr}{\itemize{
-\item set to 0 for square root unweighted average variance standardizer
+\item set to 0 for square root average variance standardizer
 \item set to 1 for group 1 SD standardizer
 \item set to 2 for group 2 SD standardizer
 }}
@@ -44,6 +44,8 @@ has the following columns:
 Computes the estimate, standard error, and confidence interval for a
 linear contrast of paired-samples standardized mean differences from two or
 more studies. Equal variances within or across studies is not assumed.
+This function has ane option to use a square root average variance standardizer
+or a single group standard deviation standardizer.
 }
 \examples{
 m1 <- c(53, 60, 53, 57)

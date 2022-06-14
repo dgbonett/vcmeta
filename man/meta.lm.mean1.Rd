@@ -2,16 +2,16 @@
 % Please edit documentation in R/meta_model.R
 \name{meta.lm.mean1}
 \alias{meta.lm.mean1}
-\title{Meta-regression analysis for 1-group means}
+\title{Meta-regression analysis for single means}
 \usage{
 meta.lm.mean1(alpha, m, sd, n, X)
 }
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m}{vector of estimated means}
+\item{m}{vector of sample means}
 
-\item{sd}{vector of estimated standard deviations}
+\item{sd}{vector of sample standard deviations}
 
 \item{n}{vector of sample sizes}
 
@@ -33,7 +33,7 @@ row per predictor.  The matrix has the following columns:
 \description{
 This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a mean
-from one group. The estimates are OLS estimates with
+from a single group. The estimates are OLS estimates with
 standard errors that accomodate residual heteroscedasticity.
 }
 \examples{

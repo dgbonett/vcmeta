@@ -9,13 +9,13 @@ meta.ave.meanratio2(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m1}{vector of estimated means for group 1}
+\item{m1}{vector of sample means for group 1}
 
-\item{m2}{vector of estimated means for group 2}
+\item{m2}{vector of sample means for group 2}
 
-\item{sd1}{vector of estimated SDs for group 1}
+\item{sd1}{vector of sample SDs for group 1}
 
-\item{sd2}{vector of estimated SDs for group 2}
+\item{sd2}{vector of sample SDs for group 2}
 
 \item{n1}{vector of group 1 sample size}
 
@@ -31,7 +31,7 @@ TRUE also returns 1 row per study.  The matrix has the following columns:
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
-\item exp(Estimate) - the exponentiated estimate
+\item exp(Estimate) - the exponentiated estimate (the geometric mean)
 \item exp(LL) - lower limit of the exponentiated confidence interval
 \item exp(UL) - upper limit of the exponentiated confidence interval
 \item df - degrees of freedom

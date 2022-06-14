@@ -24,35 +24,35 @@ replicate.stdmean.ps(
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m11}{estimated mean for group 1 in original study}
+\item{m11}{sample mean for group 1 in original study}
 
-\item{m12}{estimated mean for group 2 in original study}
+\item{m12}{sample mean for group 2 in original study}
 
-\item{sd11}{estimated SD for group 1 in original study}
+\item{sd11}{sample SD for group 1 in original study}
 
-\item{sd12}{estimated SD for group 2 in original study}
+\item{sd12}{sample SD for group 2 in original study}
 
-\item{cor1}{estimated correlation of paired observations in orginal study}
+\item{cor1}{sample correlation of paired observations in orginal study}
 
-\item{n1}{estimated size in original study}
+\item{n1}{sample size in original study}
 
-\item{m21}{estimated mean for group 1 in follow-up study}
+\item{m21}{sample mean for group 1 in follow-up study}
 
-\item{m22}{estimated mean for group 2 in follow-up study}
+\item{m22}{sample mean for group 2 in follow-up study}
 
-\item{sd21}{estimated SD for group 1 in follow-up study}
+\item{sd21}{sample SD for group 1 in follow-up study}
 
-\item{sd22}{estimated SD for group 2 in follow-up study}
+\item{sd22}{sample SD for group 2 in follow-up study}
 
-\item{cor2}{estimated correlation of paired observations in follow-up study}
+\item{cor2}{sample correlation of paired observations in follow-up study}
 
 \item{n2}{sample size in follow-up study}
 }
 \value{
 A 4-row matrix. The rows are:
 \itemize{
-\item Row 1 summarizes the original study
-\item Row 2 summarizes the follow-up study
+\item Row 1 summarizes the Original study
+\item Row 2 summarizes the Follow-up study
 \item Row 3 estimates the difference between studies
 \item Row 4 estimates the average effect size between the two studies
 }
@@ -73,7 +73,8 @@ be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with appropriat
 contrast coefficients. The confidence level for the difference is 1 – 2alpha.
 }
 \examples{
-replicate.stdmean.ps(alpha = .05, 
+replicate.stdmean.ps(
+  alpha = .05, 
   m11 = 86.22, m12 = 70.93, sd11 = 14.89, sd12 = 12.32, cor1 = .765, n1 = 20, 
   m21 = 84.81, m22 = 77.24, sd21 = 15.68, sd22 = 16.95, cor2 = .702, n2 = 75
 )

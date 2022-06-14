@@ -4,16 +4,16 @@
 \alias{meta.lm.cronbach}
 \title{Meta-regression analysis for Cronbach reliabilities}
 \usage{
-meta.lm.cronbach(alpha, n, rel, r, X)
+meta.lm.cronbach(alpha, n, rel, q, X)
 }
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
 \item{n}{vector of sample sizes}
 
-\item{rel}{vector of estimated reliabilities}
+\item{rel}{vector of sample alpha reliabilities}
 
-\item{r}{number of measurements (e.g., items)}
+\item{q}{number of measurements (e.g., items)}
 
 \item{X}{matrix of predictor values}
 }

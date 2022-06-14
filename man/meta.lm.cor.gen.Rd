@@ -9,7 +9,7 @@ meta.lm.cor.gen(alpha, cor, se, X)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{cor}{vector of estimated correlations}
+\item{cor}{vector of sample correlations}
 
 \item{se}{number of control variables}
 
@@ -29,11 +29,11 @@ row per predictor.  The matrix has the following columns:
 }
 \description{
 This function estimates the intercept and slope coefficients in a
-meta-regression model where the dependent variable is a
-Fisher-transformed correlation. The correlations can be of different types
+meta-regression model where the dependent variable is a Fisher-
+transformed correlation. The correlations can be of different types
 (e.g., Pearson, partial, Spearman). The estimates are OLS estimates
 with standard errors that accommodate residual heteroscedasticity.
-This function uses estimated correlations and their standard errors as
+This function uses sample correlations and their standard errors as
 input. The correlations are Fisher-transformed and hence the parameter
 estimates do not have a simple interpretation. However, the hypothesis
 test results can be used to decide if a population slope is either

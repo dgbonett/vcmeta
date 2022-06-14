@@ -9,7 +9,7 @@ meta.lc.gen(alpha, est, se, v)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{est}{vector of parameter estimates}
+\item{est}{vector of sample estimates}
 
 \item{se}{vector of standard errors}
 

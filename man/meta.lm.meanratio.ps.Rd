@@ -9,15 +9,15 @@ meta.lm.meanratio.ps(alpha, m1, m2, sd1, sd2, cor, n, X)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m1}{vector of estimated means for group 1}
+\item{m1}{vector of sample means for group 1}
 
-\item{m2}{vector of estimated means for group 2}
+\item{m2}{vector of sample means for group 2}
 
-\item{sd1}{vector of estimated SDs for group 1}
+\item{sd1}{vector of sample SDs for group 1}
 
-\item{sd2}{vector of estimated SDs for group 2}
+\item{sd2}{vector of sample SDs for group 2}
 
-\item{cor}{vector of estimated correlations}
+\item{cor}{vector of correlations}
 
 \item{n}{vector of sample sizes}
 

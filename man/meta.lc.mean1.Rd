@@ -9,9 +9,9 @@ meta.lc.mean1(alpha, m, sd, n, v, eqvar = FALSE)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m}{vector of estimated means}
+\item{m}{vector of sample means}
 
-\item{sd}{vector of estimated standard deviations}
+\item{sd}{vector of sample standard deviations}
 
 \item{n}{vector of sample sizes}
 
@@ -37,8 +37,8 @@ has the following columns:
 Computes the estimate, standard error, and confidence interval for a
 linear contrast of means from two or more studies. This function will
 use either an unequal variance (recommended) or an equal variance method.
-A Satterthwaite adjustment to the degrees of freedom is used with the
-unequal variance method.
+A Satterthwaite adjustment to the degrees of is used with the unequal
+variance method.
 }
 \examples{
 m <- c(33.5, 37.9, 38.0, 44.1)

@@ -7,11 +7,11 @@
 se.slope(cor, sdy, sdx, n)
 }
 \arguments{
-\item{cor}{estimated Pearson correlation}
+\item{cor}{sample Pearson correlation}
 
-\item{sdy}{estimated standard deviation of the response variable}
+\item{sdy}{sample standard deviation of the response variable}
 
-\item{sdx}{estimated standard deviation of the predictor variable}
+\item{sdx}{sample standard deviation of the predictor variable}
 
 \item{n}{sample size}
 }
@@ -24,11 +24,11 @@ Returns a one-row matrix:
 }
 \description{
 This function can be used to compute a slope and its standard error
-for a simple linear regression model using the estimated Pearson
-correlation and the estimated standard deviations of response and
-predictor variables. This function is useful in a meta-analysis of
-slopes of a simple linear regression model where some studies report
-the Pearson correlation but not the slope.
+for a simple linear regression model using the sample Pearson
+correlation and the standard deviations of response and predictor
+variables. This function is useful in a meta-analysis of slopes of
+a simple linear regression model where some studies report the Pearson
+correlation but not the slope.
 }
 \examples{
 se.slope(.392, 4.54, 2.89, 60)

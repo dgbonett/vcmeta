@@ -4,16 +4,16 @@
 \alias{meta.ave.cor}
 \title{Confidence interval for an average Pearson or partial correlation}
 \usage{
-meta.ave.cor(alpha, n, cor, s, bystudy = TRUE)
+meta.ave.cor(alpha, n, cor, q, bystudy = TRUE)
 }
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
 \item{n}{vector of sample sizes}
 
-\item{cor}{vector of estimated correlations}
+\item{cor}{vector of sample correlations}
 
-\item{s}{number of control variables}
+\item{q}{number of control variables}
 
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
@@ -30,10 +30,10 @@ each study.  The matrix has the following columns:
 }
 \description{
 Computes the estimate, standard error, and confidence interval for an
-average Pearson or partial correlation from two or more studies. The
-sample correlations must be all Pearson correlations or all partial
-correlations. Use the meta.ave.gen function to meta-analyze any
-combination of Pearson, partial, or Spearman correlations.
+average Pearson or partial correlation. The sample correlations must
+be all Pearson correlations or all partial correlations. Use the
+meta.ave.gen function to meta-analysis any combination of Pearson,
+partial, or Spearman correlations.
 }
 \examples{
 n <- c(55, 190, 65, 35)

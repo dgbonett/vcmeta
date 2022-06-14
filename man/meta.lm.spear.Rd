@@ -11,7 +11,7 @@ meta.lm.spear(alpha, n, cor, X)
 
 \item{n}{vector of sample sizes}
 
-\item{cor}{vector of estimated Spearman correlations}
+\item{cor}{vector of Spearman correlations}
 
 \item{X}{matrix of predictor values}
 }
@@ -29,8 +29,8 @@ row per predictor.  The matrix has the following columns:
 }
 \description{
 This function estimates the intercept and slope coefficients in a
-meta-regression model where the dependent variable is a
-Fisher-transformed Spearman correlation. The estimates are OLS estimates
+meta-regression model where the dependent variable is a Fisher-
+transformed Spearman correlation. The estimates are OLS estimates
 with standard errors that accommodate residual heteroscedasticity.
 The correlations are Fisher-transformed and hence the parameter
 estimates do not have a simple interpretation. However, the hypothesis
