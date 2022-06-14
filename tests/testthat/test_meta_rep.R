@@ -112,3 +112,37 @@ test_that("replicate.gen returns valid matrix", {
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
 })
+
+
+test_that("replicate.oddsratio returns valid matrix", {
+  colnames_expected <- c("Estimate", "SE", "z", "p", "LL", "UL")
+  
+  res <- replicate.prop2(.05, 21, 16, 40, 40, 19, 13, 60, 60)
+  
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+test_that("replicate.prop2 returns valid matrix", {
+  colnames_expected <- c("Estimate", "SE", "z", "p", "exp(LL)", "exp(UL)")  
+  
+  res <- replicate.oddsratio(.05, 1.39, .302, 1.48, .206)
+  
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+test_that("replicate.slope returns valid matrix", {
+  colnames_expected <- c("Estimate", "SE", "t", "p", "LL", "UL", "df")  
+  
+  res <- replicate.slope(.05, 23.4, 5.16, 50, 18.5, 4.48, 90, 4)
+  
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})

@@ -10,21 +10,23 @@ meta.ave.stdmean.ps(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy = TRUE)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m1}{vector of sample means for measurement 1}
+\item{m1}{vector of estimated means for measurement 1}
 
-\item{m2}{vector of sample means for measurement 2}
+\item{m2}{vector of estimated means for measurement 2}
 
-\item{sd1}{vector of sample SDs for measurement 1}
+\item{sd1}{vector of estimated SDs for measurement 1}
 
-\item{sd2}{vector of sample SDs for measurement 2}
+\item{sd2}{vector of estimated SDs for measurement 2}
 
-\item{cor}{vector of sample correlations for paired measurements}
+\item{cor}{vector of estimated correlations for paired measurements}
 
 \item{n}{vector of sample sizes}
 
-\item{stdzr}{set to 0 for square root average variance standardizer
-set to 1 for measurement 1 SD standardizer
-set to 2 for measurement 2 SD standardizer}
+\item{stdzr}{\itemize{
+\item set to 0 for square root unweighted average variance standardizer
+\item set to 1 for group 1 SD standardizer
+\item set to 2 for group 2 SD standardizer
+}}
 
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }

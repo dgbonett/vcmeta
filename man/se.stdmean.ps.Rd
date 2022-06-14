@@ -23,7 +23,6 @@ se.stdmean.ps(m1, m2, sd1, sd2, cor, n, stdzr)
 \item set to 0 for square root average variance standardizer
 \item set to 1 for group 1 SD standardizer
 \item set to 2 for group 2 SD standardizer
-\item set to 3 for square root weighted variance standardizer
 }}
 }
 \value{

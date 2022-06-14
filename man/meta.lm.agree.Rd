@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_model.R
 \name{meta.lm.agree}
 \alias{meta.lm.agree}
-\title{Meta-regression analysis for G agreement indicces}
+\title{Meta-regression analysis for G agreement indices}
 \usage{
 meta.lm.agree(alpha, f11, f12, f21, f22, X)
 }

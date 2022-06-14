@@ -12,7 +12,7 @@ meta.sub.semipart(alpha, n, cor, r2, group)
 
 \item{n}{vector of sample sizes}
 
-\item{cor}{vector of sample semi-partial correlations}
+\item{cor}{vector of estimated semi-partial correlations}
 
 \item{r2}{vector of squared multiple correlations for a model that
 includes the IV and all control variables}
@@ -27,9 +27,9 @@ includes the IV and all control variables}
 \value{
 Returns a matrix with three rows:
 \itemize{
-\item Row 1 - Estimate for Set A
-\item Row 2 - Estimate for Set B
-\item Row 3 - Estimate for difference, Set A - Set B
+\item Row 1 - estimate for Set A
+\item Row 2 - estimate for Set B
+\item Row 3 - estimate for difference, Set A - Set B
 }
 
 The columns are:

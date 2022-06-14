@@ -1690,9 +1690,9 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #'
 #'  
 #' @param alpha  	alpha level for 1-alpha confidence
-#' @param v     	vector of sample variances 
+#' @param var   	vector of sample variances 
 #' @param n     	vector of sample sizes
-#' @param bystudy   logical to also return each study estimate (TRUE) or not
+#' @param bystudy logical to also return each study estimate (TRUE) or not
 #'
 #'
 #' @return Returns a matrix.  The first row is the average estimate

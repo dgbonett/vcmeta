@@ -738,6 +738,7 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 
 
 # replicate.slope 
+#' Computes confidence intervals for a slope in original and follow-up studies
 #' @description 
 #' Computes confidence intervals for a slope in original and follow-up studies,
 #' the difference in slopes, and the average of the slopes (equal error 

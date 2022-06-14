@@ -4,16 +4,16 @@
 \alias{meta.lm.cor}
 \title{Meta-regression analysis for Pearson or partial correlations}
 \usage{
-meta.lm.cor(alpha, n, cor, q, X)
+meta.lm.cor(alpha, n, cor, s, X)
 }
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
 \item{n}{vector of sample sizes}
 
-\item{cor}{vector of Pearson or partial correlations}
+\item{cor}{vector of estimated Pearson or partial correlations}
 
-\item{q}{number of control variables}
+\item{s}{number of control variables}
 
 \item{X}{matrix of predictor values}
 }
@@ -31,8 +31,8 @@ row per predictor.  The matrix has the following columns:
 }
 \description{
 This function estimates the intercept and slope coefficients in a
-meta-regression model where the dependent variable is a Fisher-
-transformed Pearson or partial correlation.The estimates are OLS
+meta-regression model where the dependent variable is a
+Fisher-transformed Pearson or partial correlation. The estimates are OLS
 estimates with standard errors that accommodate residual heteroscedasticity.
 The correlations are Fisher-transformed and hence the parameter estimates
 do not have a simple interpretation. However, the hypothesis test results

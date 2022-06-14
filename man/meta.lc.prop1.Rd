@@ -9,7 +9,7 @@ meta.lc.prop1(alpha, f, n, v)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{f}{vector of sample frequency counts}
+\item{f}{vector of frequency counts}
 
 \item{n}{vector of sample sizes}
 

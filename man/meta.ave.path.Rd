@@ -33,8 +33,8 @@ each study.  The matrix has the following columns:
 }
 \description{
 Computes the estimate, standard error, and confidence interval for an
-average slope coefficient from a general linear model (ANOVA, ANCOVA,
-multiple regression) or a path model.
+average slope coefficient in a general linear model (ANOVA, ANCOVA,
+multiple regression) or a path model from two or more studies.
 }
 \examples{
  

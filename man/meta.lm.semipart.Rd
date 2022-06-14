@@ -11,9 +11,9 @@ meta.lm.semipart(alpha, n, cor, r2, X)
 
 \item{n}{vector of sample sizes}
 
-\item{cor}{vector of sample semipartial correlations}
+\item{cor}{vector of estimated semipartial correlations}
 
-\item{r2}{vector of squared multiple correlations for full model}
+\item{r2}{vector of estimated squared multiple correlations for full model}
 
 \item{X}{matrix of predictor values}
 }

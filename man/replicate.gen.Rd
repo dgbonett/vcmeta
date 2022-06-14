@@ -9,19 +9,19 @@ replicate.gen(alpha, est1, se1, est2, se2)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{est1}{sample effect size in original study}
+\item{est1}{estimated effect size in original study}
 
 \item{se1}{effect size standard error in original study}
 
-\item{est2}{sample effect size in follow-up study}
+\item{est2}{estimated effect size in follow-up study}
 
 \item{se2}{effect size standard error in follow-up study}
 }
 \value{
 A 4-row matrix. The rows are:
 \itemize{
-\item Row 1 summarizes the Original study
-\item Row 2 summarizes the Follow-up study
+\item Row 1 summarizes the original study
+\item Row 2 summarizes the follow-up study
 \item Row 3 estimates the difference between studies
 \item Row 4 estimates the average effect size between the two studies
 }
