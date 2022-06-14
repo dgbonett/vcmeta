@@ -7,7 +7,7 @@
 se.spear(cor, n)
 }
 \arguments{
-\item{cor}{sample Spearman correlation}
+\item{cor}{estimated Spearman correlation}
 
 \item{n}{sample size}
 }
@@ -20,7 +20,7 @@ Returns a one-row matrix:
 }
 \description{
 This function can be used to compute the standard error of a
-Spearman correlation using the sample correlation and sample
+Spearman correlation using the estimated correlation and sample
 size. The standard error from this function can be used as input
 in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
 \link[vcmeta]{meta.lm.gen} functions in applications where a combination

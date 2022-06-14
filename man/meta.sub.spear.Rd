@@ -12,7 +12,7 @@ meta.sub.spear(alpha, n, cor, group)
 
 \item{n}{vector of sample sizes}
 
-\item{cor}{vector of sample Spearman correlations}
+\item{cor}{vector of estimated Spearman correlations}
 
 \item{group}{vector of group indicators:
 \itemize{
@@ -24,9 +24,9 @@ meta.sub.spear(alpha, n, cor, group)
 \value{
 Returns a matrix with three rows:
 \itemize{
-\item Row 1 - Estimate for Set A
-\item Row 2 - Estimate for Set B
-\item Row 3 - Estimate for difference, Set A - Set B
+\item Row 1 - estimate for Set A
+\item Row 2 - estimate for Set B
+\item Row 3 - estimate for difference, Set A - Set B
 }
 
 The columns are:

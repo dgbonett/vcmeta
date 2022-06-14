@@ -10,13 +10,13 @@ meta.lc.stdmean2(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m1}{vector of sample means for group 1}
+\item{m1}{vector of estimated means for group 1}
 
-\item{m2}{vector of sample means for group 2}
+\item{m2}{vector of estimated means for group 2}
 
-\item{sd1}{vector of sample SDs for group 1}
+\item{sd1}{vector of estimated SDs for group 1}
 
-\item{sd2}{vector of sample SDs for group 2}
+\item{sd2}{vector of estimated SDs for group 2}
 
 \item{n1}{vector of group 1 sample sizes}
 
@@ -25,10 +25,10 @@ meta.lc.stdmean2(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr)
 \item{v}{vector of contrast coefficients}
 
 \item{stdzr}{\itemize{
-\item set to 0 for square root average variance standardizer
+\item set to 0 for square root unweighted average variance standardizer
 \item set to 1 for group 1 SD standardizer
 \item set to 2 for group 2 SD standardizer
-\item set to 3 for square root weighted variance standardizer
+\item set to 3 for square root weighted average variance standardizer
 }}
 }
 \value{

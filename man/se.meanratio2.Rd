@@ -7,13 +7,13 @@
 se.meanratio2(m1, m2, sd1, sd2, n1, n2)
 }
 \arguments{
-\item{m1}{sample mean for group 1}
+\item{m1}{estimated mean for group 1}
 
-\item{m2}{sample mean for group 2}
+\item{m2}{estimated mean for group 2}
 
-\item{sd1}{sample standard deviation for group 1}
+\item{sd1}{estimated standard deviation for group 1}
 
-\item{sd2}{sample standard deviation for group 2}
+\item{sd2}{estimated standard deviation for group 2}
 
 \item{n1}{group 1 sample size}
 
@@ -30,12 +30,13 @@ Returns a one-row matrix:
 }
 \description{
 This function can be used to compute the standard error of a
-2-group mean ratio using the two sample means, sample standard
+2-group mean ratio using the two estimated means, estimated standard
 deviations, and sample sizes. The effect size estimate and standard
-error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
-\link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
-application where compatible mean ratios from a combination of 2-group
-and paired-samples experiments are used in the meta-analysis.
+error output from this function can be used as input in the
+\link[vcmeta]{meta.ave.gen},  \link[vcmeta]{meta.lc.gen}, and
+link[vcmeta]{meta.lm.gen} functions in application where compatible
+mean ratios from a combination of 2-group and paired-samples experiments
+are used in the meta-analysis.
 }
 \examples{
 se.meanratio2(21.9, 16.1, 3.82, 3.21, 40, 40)

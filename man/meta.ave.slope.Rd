@@ -11,11 +11,11 @@ meta.ave.slope(alpha, n, cor, sdy, sdx, bystudy = TRUE)
 
 \item{n}{vector of sample sizes}
 
-\item{cor}{vector of sample correlations}
+\item{cor}{vector of estimated correlations}
 
-\item{sdy}{vector of SDs of y}
+\item{sdy}{vector of estimated SDs of y}
 
-\item{sdx}{vector of SDs of x}
+\item{sdx}{vector of estimated SDs of x}
 
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
@@ -33,9 +33,9 @@ each study.  The matrix has the following columns:
 }
 \description{
 Computes the estimate, standard error, and confidence interval for an
-average slope coefficient in a simple linear regression model. A
-Satterthwaite adjustment to the degrees of freedom is used to improve
-the accuracy of the confidence interval.
+average slope coefficient in a simple linear regression model from two
+or more studies. A Satterthwaite adjustment to the degrees of freedom
+is used to improve the accuracy of the confidence interval.
 }
 \examples{
 n <- c(45, 85, 50, 60)

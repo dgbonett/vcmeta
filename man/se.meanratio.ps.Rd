@@ -7,15 +7,15 @@
 se.meanratio.ps(m1, m2, sd1, sd2, cor, n)
 }
 \arguments{
-\item{m1}{sample mean for measurement 1}
+\item{m1}{estimated mean for measurement 1}
 
-\item{m2}{sample mean for measurement 2}
+\item{m2}{estimated mean for measurement 2}
 
-\item{sd1}{sample standard deviation for measurement 1}
+\item{sd1}{estimated standard deviation for measurement 1}
 
-\item{sd2}{sample standard deviation for measurement 2}
+\item{sd2}{estimated standard deviation for measurement 2}
 
-\item{cor}{smple correlation for measurements 1 and 2}
+\item{cor}{estimated correlation for measurements 1 and 2}
 
 \item{n}{sample size}
 }
@@ -30,9 +30,9 @@ Returns a one-row matrix:
 }
 \description{
 This function can be used to compute the standard error of a
-paired-samples mean ratio using the two sample means, sample
-effect size estimate and standard error output from this function
-can be used as input in the \link[vcmeta]{meta.ave.gen},
+paired-samples mean ratio using the estimated eans, estimated
+size. The effect size estimate and standard error output from
+this function can be used as input in the \link[vcmeta]{meta.ave.gen},
 \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
 application where compatible mean ratios from a combination of 2-group
 and paired-samples experiments are used in the meta-analysis.

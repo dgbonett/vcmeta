@@ -29,7 +29,7 @@ frequency counts and sample sizes can be obtained from a 2x2
 contingency table. This function is useful in a meta-analysis of
 odds ratios where some studies report the sample odds ratio and its
 standard error and other studies only report the frequency counts
-(or a 2x2 contingency table. The log odds ratio and standard error
+or a 2x2 contingency table. The log odds ratio and standard error
 output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
 \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions.
 }

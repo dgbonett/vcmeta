@@ -28,20 +28,22 @@ each study.  The matrix has the following columns:
 }
 \description{
 Computes the estimate, standard error, and confidence interval for a
-a weighted average effect using the random coefficient (random-effects)
-meta-analysis model. An estimate of effect-sze heterogeneity (tau-squared)
-is also computed. The random coefficient model assumes that the studies
-in the meta-analysis are a random sample from some definable superpopulation
-of studies. This assumption is difficult to justify. The weighted average
+a weighted average effect from multiple studies using the random
+coefficient (random-effects) meta-analysis model. An estimate of
+effect-sze heterogeneity (tau-squared) is also computed. The random
+coefficient model assumes that the studies in the meta-analysis are
+a random sample from some definable superpopulation of studies. This
+assumption is very difficult to justify. The weighted average
 estimate will be biased regardless of number of studies or sample size
 per study and the actual confidence interval coverage probability can
 much smaller than the specified confidence level if the effect sizes are
 correlated with the weights. This method also assume that the true effects
 sizes in the superpopulation of studies have a normal distribution. A large
 number of studies, each with a large sample size, is required to assess the
-superpopulation normality assumption. The traditional confidence interval
-for the population tau-squared is hypersensitive to very minor and difficult
-to detect violations of the superpopulation normality assumption.
+superpopulation normality assumption and to accurately estimate tau-squared.
+The traditional confidence interval for the population tau-squared is
+hypersensitive to very minor and difficult to detect violations of the
+superpopulation normality assumption.
 }
 \examples{
 est <- c(.022, .751, .421, .287, .052, .146, .562, .904)
