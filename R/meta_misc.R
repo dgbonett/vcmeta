@@ -113,6 +113,7 @@ cor.from.t <- function(m1, m2, sd1, sd2, t, n) {
 #' 
 #' 
 #' @references
+#'  \insertRef{Borenstein2009}{vcmeta}
 #'
 #'
 #' @importFrom stats pchisq

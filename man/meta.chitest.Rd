@@ -38,5 +38,5 @@ meta.chitest(est, se)
 
 }
 \references{
-
+\insertRef{Borenstein2009}{vcmeta}
 }
