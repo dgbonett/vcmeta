@@ -1,4 +1,4 @@
-vcmeta v1.0.1 (Release date: 2022/06/30)
+vcmeta v1.1.0 (Release date: 2022/06/30)
 ==============
 
 Changes:
