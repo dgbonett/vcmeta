@@ -108,3 +108,23 @@ test_that("se.slope returns valid matrix", {
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
 })
+
+test_that("se.prop2 returns valid matrix", {
+  colnames_expected <- c("Estimate", "SE")
+  
+  res <- se.prop2(31, 16, 40, 40)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+test_that("se.prop.ps returns valid matrix", {
+  colnames_expected <- c("Estimate", "SE")
+
+  res <- se.prop.ps(16, 64, 5, 15)
+
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})

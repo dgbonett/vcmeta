@@ -24,25 +24,25 @@ replicate.stdmean2(
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m11}{sample mean for group 1 in original study}
+\item{m11}{estimated mean for group 1 in original study}
 
-\item{m12}{sample mean for group 2 in original study}
+\item{m12}{estimated mean for group 2 in original study}
 
-\item{sd11}{sample SD for group 1 in original study}
+\item{sd11}{estimated SD for group 1 in original study}
 
-\item{sd12}{sample SD for group 2 in original study}
+\item{sd12}{estimated SD for group 2 in original study}
 
 \item{n11}{sample size for group 1 in original study}
 
 \item{n12}{sample size for group 2 in original study}
 
-\item{m21}{sample mean for group 1 in follow-up study}
+\item{m21}{estimated mean for group 1 in follow-up study}
 
-\item{m22}{sample mean for group 2 in follow-up study}
+\item{m22}{estimated mean for group 2 in follow-up study}
 
-\item{sd21}{sample SD for group 1 in follow-up study}
+\item{sd21}{estimated SD for group 1 in follow-up study}
 
-\item{sd22}{sample SD for group 2 in follow-up study}
+\item{sd22}{estimated SD for group 2 in follow-up study}
 
 \item{n21}{sample size for group 1 in follow-up study}
 
@@ -51,8 +51,8 @@ replicate.stdmean2(
 \value{
 A 4-row matrix. The rows are:
 \itemize{
-\item Row 1 summarizes the Original study
-\item Row 2 summarizes the Follow-up study
+\item Row 1 summarizes the original study
+\item Row 2 summarizes the follow-up study
 \item Row 3 estimates the difference between studies
 \item Row 4 estimates the average effect size between the two studies
 }

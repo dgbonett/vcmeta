@@ -28,7 +28,7 @@ each study.  The matrix has the following columns:
 }
 \description{
 Computes the estimate, standard error, and confidence interval for an
-average of any type of parameter.
+average of any type of parameter from two or more studies.
 }
 \examples{
 

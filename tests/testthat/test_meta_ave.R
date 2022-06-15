@@ -357,3 +357,16 @@ test_that("meta.ave.gen.rc returns valid matrix", {
 })
 
 
+test_that("meta.ave.var returns valid matrix", {
+  colnames_expected <- c(
+    "Estimate", "LL", "UL"
+  )
+  
+  var <- c(26.63, 22.45, 34.12)
+  n <- c(40, 30, 50)
+  res <- meta.ave.var(.05, var, n, bystudy = TRUE)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})

@@ -10,13 +10,13 @@ meta.sub.pbcor(alpha, m1, m2, sd1, sd2, n1, n2, type, group)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m1}{vector of sample means for group 1}
+\item{m1}{vector of estimated means for group 1}
 
-\item{m2}{vector of sample means for group 2}
+\item{m2}{vector of estimated means for group 2}
 
-\item{sd1}{vector of sample SDs for group 1}
+\item{sd1}{vector of estimated SDs for group 1}
 
-\item{sd2}{vector of sample SDs for group 2}
+\item{sd2}{vector of estimated SDs for group 2}
 
 \item{n1}{vector of group 1 sample sizes}
 
@@ -37,9 +37,9 @@ meta.sub.pbcor(alpha, m1, m2, sd1, sd2, n1, n2, type, group)
 \value{
 Returns a matrix with three rows:
 \itemize{
-\item Row 1 - Estimate for Set A
-\item Row 2 - Estimate for Set B
-\item Row 3 - Estimate for difference, Set A - Set B
+\item Row 1 - estimate for Set A
+\item Row 2 - estimate for Set B
+\item Row 3 - estimate for difference, Set A - Set B
 }
 
 The columns are:

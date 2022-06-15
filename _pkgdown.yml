@@ -44,4 +44,5 @@ reference:
     contents:
     - ci.fisher
     - cor.from.t
+    - meta.chitest
 

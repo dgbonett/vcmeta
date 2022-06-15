@@ -1,13 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://dgbonett.github.io/vcmeta/404.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/authors.html</loc>
+  </url>
+  <url>
     <loc>https://dgbonett.github.io/vcmeta/index.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/news/index.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/ci.fisher.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/cor.from.t.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/index.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.agree.html</loc>
@@ -22,10 +34,10 @@
     <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.cc.html</loc>
   </url>
   <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.rc.html</loc>
+    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.html</loc>
   </url>
   <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.html</loc>
+    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.rc.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.mean.ps.html</loc>
@@ -74,6 +86,12 @@
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.stdmean2.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.var.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/meta.chitest.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.agree.html</loc>
@@ -202,7 +220,16 @@
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean2.html</loc>
   </url>
   <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.oddsratio.html</loc>
+  </url>
+  <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.plot.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop2.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.slope.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.stdmean.ps.html</loc>
@@ -230,6 +257,12 @@
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/se.pbcor.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/se.prop.ps.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/se.prop2.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/se.semipartial.html</loc>

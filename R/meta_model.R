@@ -393,7 +393,7 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
 #' @param     m1    	vector of estimated means for group 1 
 #' @param     m2    	vector of estimated means for group 2
 #' @param     sd1   	vector of estimated SDs for group 1
-#' @param     sd2   	vector of estoimated SDs for group 2
+#' @param     sd2   	vector of estimated SDs for group 2
 #' @param     n1    	vector of group 1 sample sizes
 #' @param     n2    	vector of group 2 sample sizes
 #' @param     X     	matrix of predictor values

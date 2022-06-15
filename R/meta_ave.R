@@ -16,7 +16,7 @@
 #' @param m2     	vector of estimated means for group 2 
 #' @param sd1    	vector of estimated SDs for group 1
 #' @param sd2    	vector of estimated SDs for group 2
-#' @param n1     	vector of group 1 sample size
+#' @param n1     	vector of group 1 sample sizes
 #' @param n2     	vector of group 2 sample sizes
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #'
@@ -448,7 +448,7 @@ meta.ave.stdmean.ps <- function(
 #' @param   m2     	vector of estimated means for group 2
 #' @param   sd1    	vector of estimated SDs for group 1
 #' @param   sd2    	vector of estimated SDs for group 2
-#' @param   n1     	vector of group 1 sample size
+#' @param   n1     	vector of group 1 sample sizes
 #' @param   n2     	vector of group 2 sample sizes
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
 #'
@@ -1680,6 +1680,72 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 }
 
 
+# meta.ave.var 
+#' Confidence interval for an average variance
+#'
+#'
+#' @description
+#' Computes the estimate and confidence interval for an average variance 
+#' from two or more studies. 
+#'
+#'  
+#' @param alpha  	alpha level for 1-alpha confidence
+#' @param var   	vector of sample variances 
+#' @param n     	vector of sample sizes
+#' @param bystudy logical to also return each study estimate (TRUE) or not
+#'
+#'
+#' @return Returns a matrix.  The first row is the average estimate
+#' across all studies.  If bystudy is true, there is 1 additional row for
+#' each study.  The matrix has the following columns:
+#' * Estimate - the estimated variance
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' var <- c(26.63, 22.45, 34.12)
+#' n <- c(40, 30, 50)
+#' meta.ave.var(.05, var, n, bystudy = TRUE)
+#'
+#' # Should return:
+#' #         Estimate       LL       UL
+#' # Average 27.73333 21.45679 35.84589
+#' # Study 1 26.63000 17.86939 43.90614
+#' # Study 2 22.45000 14.23923 40.57127
+#' # Study 3 34.12000 23.80835 52.98319
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @importFrom stats qchisq
+#' @export
+meta.ave.var <- function(alpha, var, n, bystudy = TRUE) {
+ m <- length(n)
+ z <- qnorm(1 - alpha/2)
+ var.var <- 2*var^2/(n - 1)
+ ave.var <- sum(var)/m
+ se.ave <- sqrt(sum(var.var)/m^2)
+ ln.ave <- log(ave.var)
+ ll <- exp(ln.ave - z*se.ave/ave.var)
+ ul <- exp(ln.ave + z*se.ave/ave.var)
+ out <- cbind(ave.var, ll, ul)
+ row <- "Average"
+ if (bystudy) {
+   chi.U <- qchisq(1 - alpha/2, (n - 1))
+   ll <- (n - 1)*var/chi.U
+   chi.L <- qchisq(alpha/2, (n - 1))
+   ul <- (n - 1)*var/chi.L
+   row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+   row <- rbind(row, row2)
+   out2 <- cbind(var, ll, ul)
+   out <- rbind(out, out2)
+ }
+ colnames(out) <- c("Estimate", "LL", "UL")
+ rownames(out) <- row
+ return (out)
+}
+
+
 #  meta.ave.gen
 #' Confidence interval for an average of any parameter 
 #' 
@@ -1756,7 +1822,7 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #' weighted average effect from two or more studies using the constant
 #' coefficient (fixed-effect) meta-analysis model. The weighted average 
 #' estimate will be biased regardless of number of studies or sample size
-#' per study and the actual confidence interval coverage probability can]
+#' per study and the actual confidence interval coverage probability can
 #' be much smaller than the specified confidence level when the true effect
 #' sizes are not identical across studies. 
 #'    
@@ -1929,4 +1995,5 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
  rownames(out) <- row 
  return (out)
 }
+
 

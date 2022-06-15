@@ -7,13 +7,13 @@
 cor.from.t(m1, m2, sd1, sd2, t, n)
 }
 \arguments{
-\item{m1}{sample mean for measurement 1}
+\item{m1}{estimated mean for measurement 1}
 
-\item{m2}{sample mean for measurement 2}
+\item{m2}{estimated mean for measurement 2}
 
-\item{sd1}{sample standard deviation for measurement 1}
+\item{sd1}{estimated standard deviation for measurement 1}
 
-\item{sd2}{sample standard deviation for measurement 2}
+\item{sd2}{estimated standard deviation for measurement 2}
 
 \item{t}{value for paired-samples t-test}
 

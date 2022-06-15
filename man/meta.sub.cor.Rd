@@ -5,16 +5,16 @@
 \title{Confidence interval for a difference in average Pearson or partial
 correlations for two sets of studies}
 \usage{
-meta.sub.cor(alpha, n, cor, q, group)
+meta.sub.cor(alpha, n, cor, s, group)
 }
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
 \item{n}{vector of sample sizes}
 
-\item{cor}{vector of sample Pearson correlations}
+\item{cor}{vector of estimated Pearson correlations}
 
-\item{q}{number of control variables (set to 0 for Pearson)}
+\item{s}{number of control variables (set to 0 for Pearson)}
 
 \item{group}{vector of group indicators:
 \itemize{
@@ -26,9 +26,9 @@ meta.sub.cor(alpha, n, cor, q, group)
 \value{
 Returns a matrix with three rows:
 \itemize{
-\item Row 1 - Estimate for Set A
-\item Row 2 - Estimate for Set B
-\item Row 3 - Estimate for difference, Set A - Set B
+\item Row 1 - estimate for Set A
+\item Row 2 - estimate for Set B
+\item Row 3 - estimate for difference, Set A - Set B
 }
 
 The columns are:

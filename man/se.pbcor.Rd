@@ -7,13 +7,13 @@
 se.pbcor(m1, m2, sd1, sd2, n1, n2, type)
 }
 \arguments{
-\item{m1}{sample mean for group 1}
+\item{m1}{estimated mean for group 1}
 
-\item{m2}{sample mean for group 2}
+\item{m2}{estimated mean for group 2}
 
-\item{sd1}{sample standard deviation for group 1}
+\item{sd1}{estimated standard deviation for group 1}
 
-\item{sd2}{sample standard deviation for group 2}
+\item{sd2}{estimated standard deviation for group 2}
 
 \item{n1}{group 1 sample size}
 
@@ -34,10 +34,10 @@ Returns a one-row matrix:
 \description{
 The function computes a point-biserial correlation and its standard
 error for two types of point-biserial correlations in 2-group designs
-using the sample means, sample standard deviations, and samples sizes.
-One type of point-biserial correlation uses an unweighted average of
-variances and is appropriate for 2-group experimental designs. The
-other type of point-biserial correlation uses an weighted average of
+using the estimated means, estimated standard deviations, and samples
+sizes. One type of point-biserial correlation uses an unweighted average
+of variances and is appropriate for 2-group experimental designs. The
+other type of point-biserial correlation uses a weighted average of
 variances and is appropriate for 2-group nonexperimental designs with
 simple random sampling. This function is useful in a meta-analysis of
 compatible point-biserial correlations where some studies used a 2-group
