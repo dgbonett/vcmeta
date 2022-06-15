@@ -743,7 +743,7 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 #' Computes confidence intervals for a slope in original and follow-up studies,
 #' the difference in slopes, and the average of the slopes (equal error 
 #' variances between studies is not assumed). The confidence interval for the
-#' difference uses a 1 - 2*alpha confidence level. Use the replicate.gen 
+#' difference uses a 1 - 2alpha confidence level. Use the replicate.gen 
 #' function for slopes in other types of models (e.g., binary logistic, ordinal 
 #' logistic, SEM). 
 #'
