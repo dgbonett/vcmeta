@@ -31,7 +31,7 @@ Computes the estimate, standard error, and confidence interval for a
 weighted average effect from two or more studies using the constant
 coefficient (fixed-effect) meta-analysis model. The weighted average
 estimate will be biased regardless of number of studies or sample size
-per study and the actual confidence interval coverage probability can]
+per study and the actual confidence interval coverage probability can
 be much smaller than the specified confidence level when the true effect
 sizes are not identical across studies.
 }
