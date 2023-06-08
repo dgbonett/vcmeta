@@ -21,9 +21,9 @@
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #'
 #'
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy 
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -117,8 +117,9 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #'
 #'
-#' @return A matrix.  First row is the overall average estimate.  If bystudy
-#' is TRUE also returns 1 row per study.  The matrix has the following columns:
+#' @return
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -243,8 +244,9 @@ meta.ave.stdmean2 <- function(
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return A matrix.  First row is the overall average estimate.  If bystudy
-#' is TRUE also returns 1 row per study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -337,8 +339,9 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return A matrix.  First row is the overall average estimate.  If bystudy
-#' is TRUE also returns 1 row per study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -437,7 +440,7 @@ meta.ave.stdmean.ps <- function(
 #'
 #'
 #' @description
-#' Computes the estimate, standard error, and confidence interval for an 
+#' Computes the estimate, standard error, and confidence interval for a 
 #' geometric average mean ratio from two or more 2-group studies. A Satterthwaite 
 #' adjustment to the degrees of freedom is used to improve the accuracy of the
 #' confidence intervals. Equal variances within or across studies is not assumed.
@@ -453,8 +456,9 @@ meta.ave.stdmean.ps <- function(
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
 #'
 #'
-#' @return A matrix.  First row is the overall average estimate.  If bystudy is
-#'  TRUE also returns 1 row per study.  The matrix has the following columns: 
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy 
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns: 
 #'  * Estimate - the estimated effect size 
 #'  * SE - standard error 
 #'  * LL - lower limit of the confidence interval
@@ -528,15 +532,7 @@ meta.ave.meanratio2 <- function(
     out2 <- cbind(logratio, se, ll, ul, exp(logratio), exp(ll), exp(ul), df)
     out <- rbind(out, out2)
   }
-  colnames(out) <- c(
-    "Estimate", 
-    "SE", "LL", 
-    "UL", 
-    "exp(Estimate)", 
-    "exp(LL)", 
-    "exp(UL)",
-    "df"
-  )
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "exp(Estimate)", "exp(LL)", "exp(UL)", "df")
   rownames(out) <- row 
   return(out)
 }
@@ -547,7 +543,7 @@ meta.ave.meanratio2 <- function(
 #'
 #'
 #' @description
-#' Computes the estimate, standard error, and confidence interval for an 
+#' Computes the estimate, standard error, and confidence interval for a 
 #' geometric average mean ratio from two or more paired-samples studies. A 
 #' Satterthwaite adjustment to the degrees of freedom is used to improve the 
 #' accuracy of the confidence interval for the average effect size. Equal 
@@ -564,9 +560,9 @@ meta.ave.meanratio2 <- function(
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
 #'
 #'
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -637,16 +633,7 @@ meta.ave.meanratio.ps <- function(
     out2 <- cbind(logratio, se, ll, ul, exp(logratio), exp(ll), exp(ul), df)
     out <- rbind(out, out2)
   }
-  colnames(out) <- c(
-    "Estimate", 
-    "SE", 
-    "LL", 
-    "UL", 
-    "exp(Estimate)", 
-    "exp(LL)", 
-    "exp(UL)",
-    "df"
-  )
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "exp(Estimate)", "exp(LL)", "exp(UL)", "df")
   rownames(out) <- row 
   return(out)
 }
@@ -670,9 +657,9 @@ meta.ave.meanratio.ps <- function(
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -751,9 +738,9 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -830,9 +817,9 @@ meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy 
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -904,9 +891,9 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
 #' @param    bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #'   
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -996,9 +983,9 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #'    
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -1111,9 +1098,9 @@ meta.ave.pbcor <- function(
 #' @param bystudy   logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -1187,9 +1174,9 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -1262,9 +1249,9 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 #' @param    bystudy  logical to also return each study estimate (TRUE) or not
 #'
 #'  
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -1325,15 +1312,7 @@ meta.ave.odds <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
     out2 <- cbind(lor, se, ll, ul, exp(lor), exp(ll), exp(ul))
     out <- rbind(out, out2)
   }
-  colnames(out) <- c(
-    "Estimate", 
-    "SE", 
-    "LL", 
-    "UL", 
-    "exp(Estimate)", 
-    "exp(LL)", 
-    "exp(UL)"
-  )
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "exp(Estimate)", "exp(LL)", "exp(UL)")
   rownames(out) <- row
   return (out)
 }
@@ -1356,9 +1335,9 @@ meta.ave.odds <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' @param    bystudy  logical to also return each study estimate (TRUE) or not
 #'    
 #'    
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -1423,15 +1402,7 @@ meta.ave.propratio2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
     out2 <- cbind(lrr, se, ll, ul, exp(lrr), exp(ll), exp(ul))
     out <- rbind(out, out2)
   }
-  colnames(out) <- c(
-    "Estimate", 
-    "SE", 
-    "LL", 
-    "UL", 
-    "exp(Estimate)", 
-    "exp(LL)", 
-    "exp(UL)"
-  )
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "exp(Estimate)", "exp(LL)", "exp(UL)")
   rownames(out) <- row
   return (out)
 }
@@ -1455,9 +1426,9 @@ meta.ave.propratio2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' @param bystudy     logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -1541,9 +1512,9 @@ meta.ave.prop2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -1623,9 +1594,9 @@ meta.ave.prop.ps <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' @param    bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -1695,9 +1666,9 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' @param bystudy logical to also return each study estimate (TRUE) or not
 #'
 #'
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated variance
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -1760,9 +1731,9 @@ meta.ave.var <- function(alpha, var, n, bystudy = TRUE) {
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -1833,9 +1804,9 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
@@ -1921,9 +1892,9 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
-#' @return Returns a matrix.  The first row is the average estimate
-#' across all studies.  If bystudy is true, there is 1 additional row for
-#' each study.  The matrix has the following columns:
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is true, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - the estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
