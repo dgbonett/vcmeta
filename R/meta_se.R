@@ -61,7 +61,7 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #  estimated standard deviations, estimated Pearson correlation, 
 #' and sample size. The effect size estimate and standard error 
 #' output from this function can be used as input in the
-#' \link[vcmeta]{meta.ave.gen}, #' \link[vcmeta]{meta.lc.gen}, 
+#' \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, 
 #' and \link[vcmeta]{meta.lm.gen} functions in applications where 
 #' compatible mean differences from a combination of 2-group
 #' and paired-samples experiments are used in the meta-analysis. 
@@ -522,9 +522,9 @@ se.odds <- function(f1, n1, f2, n2) {
 #' @description
 #' This function can be used to compute the standard error of a 
 #' 2-group mean ratio using the two estimated means, estimated standard
-#' deviations, and sample sizes. The effect size estimate and standard 
+#' deviations, and sample sizes. The log-mean estimate and standard 
 #' error output from this function can be used as input in the
-#' \link[vcmeta]{meta.ave.gen},  \link[vcmeta]{meta.lc.gen}, and
+#' \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
 #' link[vcmeta]{meta.lm.gen} functions in application where compatible
 #' mean ratios from a combination of 2-group and paired-samples experiments
 #' are used in the meta-analysis.
@@ -577,7 +577,7 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' This function can be used to compute the standard error of a 
 #' paired-samples mean ratio using the estimated eans, estimated
 #  standard deviations, estimated Pearson correlation, and sample 
-#' size. The effect size estimate and standard error output from
+#' size. The log-mean estimate and standard error output from
 #' this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
 #' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
 #' application where compatible mean ratios from a combination of 2-group
