@@ -1282,8 +1282,8 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' 
 #' 
 #' @examples
-#' f11 <- c(17, 28, 19)
-#' f12 <- c(43, 56, 49)
+#' f11 <- c(43, 56, 49)
+#' f12 <- c(7, 2, 9)
 #' f21 <- c(3, 5, 5)
 #' f22 <- c(37, 54, 39)
 #' v <- c(.5, .5, -1)
@@ -1291,7 +1291,7 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' 
 #' # Should return:
 #' #            Estimate        SE         LL        UL
-#' # Contrast 0.07692783 0.1138407 -0.1461958 0.3000515
+#' # Contrast 0.1022939 0.07972357 -0.05396142 0.2585492
 #' 
 #' 
 #' @importFrom stats qnorm
