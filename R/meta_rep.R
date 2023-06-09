@@ -238,7 +238,7 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' difference from an original study and a follow-up study. Confidence intervals
 #' for the difference and average effect size also are computed. The same results 
 #' can be obtained using the \link[vcmeta]{meta.lc.stdmean2} function with 
-#' appopriate contrast coefficients. The confidence level for the difference is
+#' appropriate contrast coefficients. The confidence level for the difference is
 #' 1 – 2alpha.
 #' 
 #' 
