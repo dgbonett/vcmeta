@@ -1,5 +1,4 @@
 # ================= Effect Size Standard Errors ============
-
 # se.mean2 
 #' Computes the standard error for a 2-group mean difference
 #' 
@@ -263,11 +262,11 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #' as input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
 #' and \link[vcmeta]{meta.lm.gen} functions in applications where a 
 #' combination of different types of correlations are used in the
-# meta-analysis. 
+#' meta-analysis. 
 #' 
 #' 
 #' @param    cor	estimated Pearson or partial correlation  
-#' @param    s		number of control variables (0 for Pearson)  
+#' @param    s		number of control variables (set to 0 for Pearson)  
 #' @param    n		sample size
 #'   
 #'   
@@ -388,6 +387,7 @@ se.semipartial <- function(cor, r2, n) {
  rownames(out) <- c("Semipartial correlation:")
  return(out)
 }
+
 
 # se.pbcor
 #' Computes the standard error for a point-biserial correlation 
@@ -630,8 +630,8 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #'
 #' @description 
 #' This function can be used to compute a slope and its standard error
-#' for a simple linear regression model using the estimated Pearson
-#' correlation and the estimated standard deviations of response and 
+#' for a simple linear regression model (random-x model) using the estimated 
+#' Pearson correlation and the estimated standard deviations of response and 
 #' predictor variables. This function is useful in a meta-analysis of 
 #' slopes of a simple linear regression model where some studies report
 #' the Pearson correlation but not the slope.
