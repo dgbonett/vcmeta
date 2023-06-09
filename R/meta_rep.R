@@ -69,9 +69,9 @@
 #' @importFrom stats qt
 #' @importFrom stats pt
 #' @export
-replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, 
-  m21, m22, sd21, sd22, n21, n22){
-  v11 <- sd11^2; v12 <- sd12^2; v21 <- sd21^2; v22 <- sd22^2
+replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd21, sd22, n21, n22){
+  v11 <- sd11^2; v12 <- sd12^2 
+  v21 <- sd21^2; v22 <- sd22^2
   est1 <- m11 - m12
   est2 <- m21 - m22
   est3 <- est1 - est2
@@ -185,9 +185,9 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' @importFrom stats qt
 #' @importFrom stats pt
 #' @export
-replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, 
-  m21, m22, sd21, sd22, cor2, n2) {
-  v11 <- sd11^2;  v12 <- sd12^2;  v21 <- sd21^2;  v22 <- sd22^2
+replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, sd21, sd22, cor2, n2) {
+  v11 <- sd11^2;  v12 <- sd12^2
+  v21 <- sd21^2;  v22 <- sd22^2
   vd1 <- v11 + v12 - 2*cor1*sd11*sd12
   vd2 <- v21 + v22 - 2*cor2*sd21*sd22
   est1 <- m11 - m12
@@ -290,8 +290,7 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
 #' 
 #' @importFrom stats qnorm
 #' @export
-replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, 
-  m21, m22, sd21, sd22, n21, n22) {
+replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd21, sd22, n21, n22) {
   zcrit1 <- qnorm(1 - alpha/2)
   zcrit2 <- qnorm(1 - alpha)
   v11 <- sd11^2
@@ -348,7 +347,7 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' @param    sd11   	 estimated SD for group 1 in original study
 #' @param    sd12   	 estimated SD for group 2 in original study
 #' @param    cor1    	 estimated correlation of paired observations in orginal study
-#' @param    n1        estimated size in original study
+#' @param    n1        sample size in original study
 #' @param    m21    	 estimated mean for group 1 in follow-up study 
 #' @param    m22    	 estimated mean for group 2 in follow-up study
 #' @param    sd21   	 estimated SD for group 1 in follow-up study
@@ -392,8 +391,7 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' 
 #' @importFrom stats qnorm
 #' @export
-replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
-  m21, m22, sd21, sd22, cor2, n2) {
+replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, sd21, sd22, cor2, n2) {
   zcrit1 <- qnorm(1 - alpha/2)
   zcrit2 <- qnorm(1 - alpha)
   v11 <- sd11^2
@@ -446,7 +444,7 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
 #' @param    cor2  	 estimated Pearson correlation between y and x in follow-up study
 #' @param    n1    	 sample size in original study
 #' @param    n2    	 sample size in follow-up study
-#' @param    s     	 number of control variables in each study (0 for Pearson)
+#' @param    s     	 number of control variables in each study (set to 0 for Pearson)
 #' 
 #' 
 #' @return
@@ -563,8 +561,8 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 #' 
 #' 
 #' @return A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
 #' * Row 4 estimates the average effect size of the two studies
 #'
@@ -657,21 +655,21 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' @description 
 #' This function computes confidence intervals for an odds ratio from an
 #' original study and a follow-up study. Confidence intervals for the
-#' ratio and average oods ratio size also are computed. The confidence level 
-#' for the difference is 1 – 2alpha.
+#' ratio of odds ratios and average odds ratio size also are computed. 
+#' The confidence level for the difference is 1 – 2alpha.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
 #' @param    est1		   estimate of log odds ratio 1 in original study 
-#' @param    se1		   standard error of log odds ration in original study
+#' @param    se1		   standard error of log odds ratio in original study
 #' @param    est2   	 estimate of log odds ratio in follow-up study 
 #' @param    se2    	 standard error of log odds ratio in follow-up study
 #' 
 #' 
 #' @return A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
-#' * Row 3 estimates the difference between studies
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the ratio of odds ratios between studies
 #' * Row 4 estimates the average effect size of the two studies
 #'
 #'
@@ -696,7 +694,7 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' #                         exp(LL)  exp(UL)
 #' # Original:             2.2212961 7.256583
 #' # Follow-up:            2.9336501 6.578144
-#' # Original - Follow-up: 0.5147653 1.713551
+#' # Original/Fllow-up:    0.5147653 1.713551
 #' # Average:              1.0024257 2.052222
 #' 
 #' 
@@ -732,17 +730,18 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
   out4 <- t(c(est4, se4, z4, p4, ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "exp(LL)", "exp(UL)")
-  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  rownames(out) <- c("Original:", "Follow-up:", "Original/Follow-up:", "Average:")
   return(out)
 }
 
 
 # replicate.slope 
 #' Computes confidence intervals for a slope in original and follow-up studies
+#'
 #' @description 
 #' Computes confidence intervals for a slope in original and follow-up studies,
-#' the difference in slopes, and the average of the slopes (equal error 
-#' variances between studies is not assumed). The confidence interval for the
+#' the difference in slopes, and the average of the slopes. Equality of error 
+#' variances between studies is not assumed. The confidence interval for the
 #' difference uses a 1 - 2alpha confidence level. Use the replicate.gen 
 #' function for slopes in other types of models (e.g., binary logistic, ordinal 
 #' logistic, SEM). 
@@ -759,8 +758,8 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 #' 
 #' 
 #' @return A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
 #' * Row 4 estimates the average effect size of the two studies
 #'
@@ -838,7 +837,7 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
 
 
 #  replicate.gen
-#' Compares effect sizes in the original and follow-up studies
+#' Compares effect sizes in original and follow-up studies
 #'
 #'
 #' @description 
@@ -918,7 +917,4 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
   return(out)
 }
-
-
-
 
