@@ -194,7 +194,7 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' an unweighted variance and is approrpaite for 2-group experimental
 #' designs. The other type uses a weighted variance and is appropriate
 #' for 2-group nonexperimental designs with simple random sampling. 
-#' Equal variances within or across studies is not assumed.
+#' Equality of variances within or across studies is not assumed.
 #'    
 #'    
 #' @param     alpha   	alpha level for 1-alpha confidence
@@ -304,6 +304,7 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
   rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
   return (out)
 }
+
 
 #  meta.sub.semipart
 #' Confidence interval for a difference in average semipartial 
@@ -563,6 +564,7 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   return(out)
 }
 
+
 # meta.lc.stdmean2
 #' Confidence interval for a linear contrast of standardized mean 
 #' differences from 2-group studies  
@@ -741,6 +743,7 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
   return(out)
 }
 
+
 #  meta.lc.stdmean.ps
 #' Confidence interval for a linear contrast of standardized 
 #' mean differences from paired-samples studies 
@@ -915,6 +918,7 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   rownames(out) <- "Contrast"
   return(out)
 }
+
 
 #  meta.lc.meanratio.ps
 #' Confidence interval for a log-linear contrast of mean ratios from 
@@ -1386,6 +1390,7 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
   rownames(out) <- "Contrast"
   return(out)
 }
+
 
 # meta.lc.prop1
 #' Confidence interval for a linear contrast of proportions. 
