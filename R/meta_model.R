@@ -7,7 +7,7 @@
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a 2-group
-#' mean difference. The estimates are OLS estimates with standard
+#' mean difference. The estimates are OLS estimates with robust standard
 #' errors that accommodate residual heteroscedasticity.  
 #' 
 #'  
@@ -93,7 +93,7 @@ meta.lm.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a 2-group
 #' standardized mean difference. The estimates are OLS estimates with
-#' standard errors that accommodate residual heteroscedasticity. 
+#' robust standard errors that accommodate residual heteroscedasticity. 
 #'  
 #
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -201,7 +201,7 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a paired-samples
-#' mean difference. The estimates are OLS estimates with standard
+#' mean difference. The estimates are OLS estimates with robust standard
 #' errors that accommodate residual heteroscedasticity. 
 #' 
 #'  
@@ -284,7 +284,7 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a paired-samples
 #' standardized mean difference. The estimates are OLS estimates with  
-#' standard errors that accommodate residual heteroscedasticity. 
+#' robust standard errors that accommodate residual heteroscedasticity. 
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -385,8 +385,11 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a 2-group
-#' log mean ratio. The estimates are OLS estimates with standard
-#' errors that accommodate residual heteroscedasticity. 
+#' log mean ratio. The estimates are OLS estimates with robust standard
+#' errors that accommodate residual heteroscedasticity. The exponentiated 
+#' slope estimate for a predictor variable describes a multiplicative
+#' change in the mean ratio associated with a 1-unit increase in that 
+#' predictor variable. 
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -457,17 +460,8 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
   p <- round(2*(1 - pnorm(abs(z))), digits = 3)
   out <- cbind(b, se, z, p, ll, ul, exp(b), exp(ll), exp(ul))
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
-  colnames(out) <- c(
-    "Estimate", 
-    "SE", 
-    "z", 
-    "p", 
-    "LL", 
-    "UL", 
-    "exp(Estimate)", 
-    "exp(LL)", 
-    "exp(UL)"
-  )
+  colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL", 
+    "exp(Estimate)", "exp(LL)", "exp(UL)")
   rownames(out) <- row
   return(out)
 }
@@ -480,8 +474,11 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a paired-samples
-#' log mean ratio. The estimates are OLS estimates with standard
-#' errors that accommodate residual heteroscedasticity. 
+#' log mean ratio. The estimates are OLS estimates with robust standard
+#' errors that accommodate residual heteroscedasticity. The exponentiated 
+#' slope estimate for a predictor variable describes a multiplicative
+#' change in the mean ratio associated with a 1-unit increase in that 
+#' predictor variable. 
 #' 
 #' 
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -551,17 +548,8 @@ meta.lm.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
   p <- round(2*(1 - pnorm(abs(z))), digits = 3)
   out <- cbind(b, se, z, p, ll, ul, exp(b), exp(ll), exp(ul))
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
-  colnames(out) <- c(
-    "Estimate", 
-    "SE", 
-    "z", 
-    "p", 
-    "LL", 
-    "UL", 
-    "exp(Estimate)", 
-    "exp(LL)", 
-    "exp(UL)"
-  )
+  colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL", 
+    "exp(Estimate)", "exp(LL)", "exp(UL)")
   rownames(out) <- row
   return(out)
 }
@@ -576,7 +564,7 @@ meta.lm.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' meta-regression model where the dependent variable is a 
 #' Fisher-transformed correlation. The correlations can be of different types 
 #' (e.g., Pearson, partial, Spearman). The estimates are OLS estimates
-#' with standard errors that accommodate residual heteroscedasticity. 
+#' with robust standard errors that accommodate residual heteroscedasticity. 
 #' This function uses estimated correlations and their standard errors as 
 #' input. The correlations are Fisher-transformed and hence the parameter
 #' estimates do not have a simple interpretation. However, the hypothesis 
@@ -646,7 +634,7 @@ meta.lm.cor.gen <- function(alpha, cor, se, X) {
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a 
 #' Fisher-transformed Pearson or partial correlation. The estimates are OLS
-#' estimates with standard errors that accommodate residual heteroscedasticity.
+#' estimates with robust standard errors that accommodate residual heteroscedasticity.
 #' The correlations are Fisher-transformed and hence the parameter estimates
 #' do not have a simple interpretation. However, the hypothesis test results
 #' can be used to decide if a population slope is either positive or negative.
@@ -721,7 +709,7 @@ meta.lm.cor <- function(alpha, n, cor, s, X) {
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a 
 #' Fisher-transformed Spearman correlation. The estimates are OLS estimates 
-#' with standard errors that accommodate residual heteroscedasticity. 
+#' with robust standard errors that accommodate residual heteroscedasticity. 
 #' The correlations are Fisher-transformed and hence the parameter 
 #' estimates do not have a simple interpretation. However, the hypothesis
 #' test results can be used to decide if a population slope is either 
@@ -792,12 +780,12 @@ meta.lm.spear <- function(alpha, n, cor, X) {
 #'  
 #' @description
 #' This function estimates the intercept and slope coefficients in a
-#' meta-regression model where the dependent variable is a Fisher-
-#' transformed semipartial correlation. The estimates are OLS estimates
-#' with standard errors that accommodate residual heteroscedasticity. 
-#' The correlations are Fisher-transformed and hence the parameter estimates
+#' meta-regression model where the dependent variable is a Fisher-transformed
+#' semipartial correlation. The estimates are OLS estimates with robust
+#' standard errors that accommodate residual heteroscedasticity.  The
+#' correlations are Fisher-transformed and hence the parameter estimates
 #' do not have a simple interpretation. However, the hypothesis test results
-#' can be used to decide if a population slope is either positive or negativ
+#' can be used to decide if a population slope is either positive or negative.
 #'  
 #' 
 #' @param     alpha	 alpha level for 1-alpha confidence
@@ -868,8 +856,8 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a log-complement
-#' Cronbach reliablity. The estimates are OLS estimates with standard errors
-#' that accommodate residual heteroscedasticity. The exponentiated slope 
+#' Cronbach reliablity. The estimates are OLS estimates with robust standard 
+#' errors that accommodate residual heteroscedasticity. The exponentiated slope 
 #' estimate for a predictor variable describes a multiplicative change in 
 #  non-reliability associated with a 1-unit increase in that predictor 
 #' variable. 
@@ -948,7 +936,7 @@ meta.lm.cronbach <- function(alpha, n, rel, r, X) {
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a log odds
-#' ratio. The estimates are OLS estimates with standard errors
+#' ratio. The estimates are OLS estimates with robust standard errors
 #' that accommodate residual heteroscedasticity. The exponentiated 
 #' slope estimate for a predictor variable describes a multiplicative
 #' change in the odds ratio associated with a 1-unit increase in that 
@@ -1027,17 +1015,8 @@ meta.lm.odds <- function(alpha, f1, f2, n1, n2, X) {
   p <- round(2*(1 - pnorm(abs(z))), digits = 3)
   out <- cbind(b, se, z, p, ll, ul, exp.b, exp.ll, exp.ul)
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
-  colnames(out) <- c(
-    "Estimate", 
-    "SE", 
-    "z", 
-    "p", 
-    "LL", 
-    "UL", 
-    "exp(Estimate)", 
-    "exp(LL)", 
-    "exp(UL)"
-  )
+  colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL", 
+    "exp(Estimate)", "exp(LL)", "exp(UL)")
   rownames(out) <- row
   return (out)
 }
@@ -1048,9 +1027,9 @@ meta.lm.odds <- function(alpha, f1, f2, n1, n2, X) {
 #' 
 #'
 #' @description
-#' This function estimates the intercept and slope coefficients in
-#' a meta-regression model where the dependent variable is a 
-#' log proportion ratio. The estimates are OLS estimates with standard 
+#' This function estimates the intercept and slope coefficients in a
+#' meta-regression model where the dependent variable is a log
+#' proportion ratio. The estimates are OLS estimates with robust standard 
 #' errors that accommodate residual heteroscedasticity. The exponentiated 
 #' slope estimate for a predictor variable describes a multiplicative 
 #' change in the proportion ratio associated with a 1-unit increase in 
@@ -1132,17 +1111,8 @@ meta.lm.propratio2 <- function(alpha, f1, f2, n1, n2, X) {
   p <- round(2*(1 - pnorm(abs(z))), digits = 3)
   out <- cbind(b, se, z, p, ll, ul, exp.b, exp.ll, exp.ul)
   row <- t(t(paste0(rep("b", q), seq(1:q)-1)))
-  colnames(out) <- c(
-    "Estimate", 
-    "SE", 
-    "z", 
-    "p", 
-    "LL", 
-    "UL", 
-    "exp(Estimate)", 
-    "exp(LL)", 
-    "exp(UL)"
-  )
+  colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL", 
+    "exp(Estimate)", "exp(LL)", "exp(UL)")
   rownames(out) <- row
   return (out)
 }
@@ -1156,7 +1126,7 @@ meta.lm.propratio2 <- function(alpha, f1, f2, n1, n2, X) {
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a 2-group
 #' proportion difference. The estimates are OLS estimates with
-#' standard errors that accommodate residual heteroscedasticity. 
+#' robust standard errors that accommodate residual heteroscedasticity. 
 #' 
 #' 
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1237,7 +1207,7 @@ meta.lm.prop2 <- function(alpha, f1, f2, n1, n2, X) {
 #' This function estimates the intercept and slope coefficients 
 #' in a meta-regression model where the dependent variable is a 
 #' paired-samples proportion difference. The estimates are OLS 
-#' estimates with standard errors that accommodate residual 
+#' estimates with robust standard errors that accommodate residual 
 #' heteroscedasticity.  		
 #' 				
 #'
@@ -1319,7 +1289,7 @@ meta.lm.prop.ps <- function(alpha, f11, f12, f21, f22, X) {
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a G-index of
-#' agreement. The estimates are OLS estimates with standard errors 
+#' agreement. The estimates are OLS estimates with robust standard errors 
 #' that accomodate residual heteroscedasticity. 
 #' 
 #' 
@@ -1394,7 +1364,7 @@ meta.lm.agree <- function(alpha, f11, f12, f21, f22, X) {
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a mean
-#' from one group. The estimates are OLS estimates with
+#' from one group. The estimates are OLS estimates with robust
 #' standard errors that accomodate residual heteroscedasticity. 
 #' 
 #' 
@@ -1468,7 +1438,7 @@ meta.lm.mean1 <- function(alpha, m, sd, n, X) {
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is a proportion
-#' from one group. The estimates are OLS estimates with
+#' from one group. The estimates are OLS estimates with robust
 #' standard errors that accomodate residual heteroscedasticity. 
 #' 
 #'
@@ -1536,8 +1506,8 @@ meta.lm.prop1 <- function(alpha, f, n, X) {
 #' @description
 #' This function estimates the intercept and slope coefficients in a
 #' meta-regression model where the dependent variable is any type of
-#' effect size. The estimates are OLS estimates with standard errors 
-#' that accomodate residual heteroscedasticity. 
+#' effect size. The estimates are OLS estimates with robust standard 
+#' errors that accomodate residual heteroscedasticity. 
 #' 
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
