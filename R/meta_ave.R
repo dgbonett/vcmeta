@@ -8,7 +8,7 @@
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average mean difference from two or more 2-group studies. A Satterthwaite 
 #' adjustment to the degrees of freedom is used to improve the accuracy of the
-#' confidence intervals. Equal variances within or across studies is not assumed.
+#' confidence intervals. Equality of variances within or across studies is not assumed.
 #'
 #'  
 #' @param alpha  	alpha level for 1-alpha confidence
@@ -98,7 +98,7 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average standardized mean difference from two or more 2-group studies.
 #' Unweighted variances, weighted variances, and single group variance are
-#' options for the standardizer. Equal variances within or across studies 
+#' options for the standardizer. Equality of variances within or across studies 
 #' is not assumed.
 #'
 #'
@@ -231,7 +231,7 @@ meta.ave.stdmean2 <- function(
 #' average mean difference from two or more paired-samples studies.
 #' A Satterthwaite adjustment to the degrees of freedom is used to improve 
 #' the accuracy of the confidence interval for the average effect size. 
-#' Equal variances within or across studies is not assumed.
+#' Equality of variances within or across studies is not assumed.
 #'
 #'
 #' @param   alpha		alpha level for 1-alpha confidence
@@ -321,7 +321,7 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average standardized mean difference from two or more paired-samples
 #' studies. Unweighted variances and single group variance are options 
-#' for the standardizer. Equal variances within or across studies is not
+#' for the standardizer. Equality of variances within or across studies is not
 #' assumed.
 #'
 #'
@@ -443,7 +443,7 @@ meta.ave.stdmean.ps <- function(
 #' Computes the estimate, standard error, and confidence interval for a 
 #' geometric average mean ratio from two or more 2-group studies. A Satterthwaite 
 #' adjustment to the degrees of freedom is used to improve the accuracy of the
-#' confidence intervals. Equal variances within or across studies is not assumed.
+#' confidence intervals. Equality of variances within or across studies is not assumed.
 #'
 #'
 #' @param   alpha  	alpha level for 1-alpha confidence
@@ -546,8 +546,8 @@ meta.ave.meanratio2 <- function(
 #' Computes the estimate, standard error, and confidence interval for a 
 #' geometric average mean ratio from two or more paired-samples studies. A 
 #' Satterthwaite adjustment to the degrees of freedom is used to improve the 
-#' accuracy of the confidence interval for the average effect size. Equal 
-#' variances within or across studies is not assumed.
+#' accuracy of the confidence interval for the average effect size. Equality 
+#' of variances within or across studies is not assumed.
 #'
 #'
 #' @param   alpha		alpha level for 1-alpha confidence
