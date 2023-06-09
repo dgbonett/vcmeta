@@ -1,5 +1,4 @@
 # ================= Average of Estimates from Multiple Studies  ============
-
 #  meta.ave.mean2
 #' Confidence interval for an average mean difference from 2-group studies 
 #'
@@ -149,17 +148,7 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.ave.stdmean2 <- function(
-  alpha, 
-  m1, 
-  m2, 
-  sd1, 
-  sd2, 
-  n1, 
-  n2, 
-  stdzr, 
-  bystudy = TRUE
-) {
+meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = TRUE) {
   df1 <- n1 - 1
   df2 <- n2 - 1
   m <- length(m1)
@@ -370,17 +359,7 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.ave.stdmean.ps <- function(
-  alpha, 
-  m1, 
-  m2, 
-  sd1, 
-  sd2, 
-  cor, 
-  n, 
-  stdzr, 
-  bystudy = TRUE
-) {
+meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy = TRUE) {
   df <- n - 1
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
@@ -495,16 +474,7 @@ meta.ave.stdmean.ps <- function(
 #'
 #' @importFrom stats qt
 #' @export
-meta.ave.meanratio2 <- function(
-  alpha, 
-  m1, 
-  m2, 
-  sd1, 
-  sd2, 
-  n1, 
-  n2, 
-  bystudy = TRUE
-) {
+meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
   m <- length(m1)
   nt <- sum(n1 + n2)
   v <- rep(1, m)*(1/m)
@@ -599,16 +569,7 @@ meta.ave.meanratio2 <- function(
 #'
 #' @importFrom stats qt
 #'@export
-meta.ave.meanratio.ps <- function(
-  alpha,
-  m1, 
-  m2, 
-  sd1, 
-  sd2, 
-  cor, 
-  n, 
-  bystudy = TRUE
-) {
+meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
   m <- length(m1)
   nt <- sum(n)
   v <- rep(1, m)*(1/m)
@@ -638,6 +599,7 @@ meta.ave.meanratio.ps <- function(
   return(out)
 }
 
+
 #  meta.ave.cor
 #' Confidence interval for an average Pearson or partial correlation
 #' 
@@ -653,7 +615,7 @@ meta.ave.meanratio.ps <- function(
 #' @param alpha	alpha level for 1-alpha confidence
 #' @param n     	vector of sample sizes 
 #' @param cor   	vector of estimated correlations 
-#' @param s     	number of control variables
+#' @param s     	number of control variables (set to 0 for Pearson)
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
@@ -1015,17 +977,7 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.ave.pbcor <- function(
-  alpha, 
-  m1, 
-  m2, 
-  sd1, 
-  sd2, 
-  n1, 
-  n2, 
-  type, 
-  bystudy = TRUE
-) {
+meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE) {
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
   n <- n1 + n2
@@ -1157,6 +1109,7 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
   return (out)
 }
 
+
 #  meta.ave.cronbach
 #' Confidence interval for an average Cronbach alpha reliability 
 #' 
@@ -1231,6 +1184,7 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
   rownames(out) <- row
   return (out)
 }
+
 
 #  meta.ave.odds
 #' Confidence interval for average odds ratio from 2-group studies
@@ -1966,5 +1920,4 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
  rownames(out) <- row 
  return (out)
 }
-
 
