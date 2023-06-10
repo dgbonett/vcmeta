@@ -32,7 +32,7 @@
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 4 estimates the average effect size for the two studies
 #'
 #'
 #' The columns are:
@@ -148,7 +148,7 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd2
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 4 estimates the average effect size for the two studies
 #' 
 #' 
 #' The columns are:
@@ -262,7 +262,7 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 4 estimates the average effect size for the two studies
 #' 
 #' 
 #' The columns are:
@@ -361,7 +361,7 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 4 estimates the average effect size for the two studies
 #' 
 #' 
 #' The columns are:
@@ -444,7 +444,7 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
 #' @param    cor2  	 estimated Pearson correlation between y and x in follow-up study
 #' @param    n1    	 sample size in original study
 #' @param    n2    	 sample size in follow-up study
-#' @param    s     	 number of control variables in each study (set to 0 for Pearson)
+#' @param    s     	 number of control variables in each study (0 for Pearson)
 #' 
 #' 
 #' @return
@@ -452,7 +452,7 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 4 estimates the average effect size for the two studies
 #' 
 #' 
 #' The columns are:
@@ -469,10 +469,10 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
 #'
 #' # Should return:
 #' #                      Estimate         SE        z            p        LL        UL
-#' #  Original:              0.598 0.11396058 6.589418 4.708045e-09 0.4355043 0.7227538
-#' #  Follow-up:             0.324 0.07124705 4.819037 2.865955e-06 0.1939787 0.4428347
-#' #  Original - Follow-up:  0.274 0.09708614 2.633335 8.455096e-03 0.1065496 0.4265016
-#' #  Average:               0.461 0.04854307 7.634998 2.264855e-14 0.3725367 0.5411607
+#' # Original:                0.598 0.07320782 6.589418 4.708045e-09 0.4355043 0.7227538
+#' # Follow-up:               0.324 0.06376782 4.819037 2.865955e-06 0.1939787 0.4428347
+#' # Original - Follow-up:    0.274 0.09708614 2.633335 8.455096e-03 0.1065496 0.4265016
+#' # Average:                 0.461 0.04854307 7.634998 2.264855e-14 0.3725367 0.5411607
 #' 
 #' 
 #' @references
@@ -488,36 +488,34 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
   zcrit2 <- qnorm(1 - alpha)
   zr1 <- log((1 + cor1)/(1 - cor1))/2
   zr2 <- log((1 + cor2)/(1 - cor2))/2
-  v1 <- (1 - cor1^2)^2/(n1 - 3 - s)
-  v2 <- (1 - cor2^2)^2/(n2 - 3 - s)
+  se1 <- sqrt((1 - cor1^2)^2/(n1 - 3 - s))
+  se2 <- sqrt((1 - cor2^2)^2/(n2 - 3 - s))
   dif <- cor1 - cor2
   ave <- (cor1 + cor2)/2
   ave.z <- log((1 + ave)/(1 - ave))/2
-  se1 <- sqrt(1/((n1 - 3 - s)))
-  se2 <- sqrt(1/((n2 - 3 - s)))
-  v1 <- (1 - cor1^2)^2/(n1 - 3 - s)
-  v2 <- (1 - cor2^2)^2/(n2 - 3 - s)
-  se3 <- sqrt(v1 + v2)
-  se4 <- sqrt(v1 + v2)/2
-  se4.z <- sqrt(((v1 + v2)/4)/(1 - ave^2))
+  se1.z <- sqrt(1/((n1 - 3 - s)))
+  se2.z <- sqrt(1/((n2 - 3 - s)))
+  se3 <- sqrt(se1^2 + se2^2)
+  se4 <- sqrt(se1^2 + se2^2)/2
+  se4.z <- sqrt(((se1^2 + se2^2)/4)/(1 - ave^2))
   t1 <- cor1*sqrt(n1 - 2)/sqrt(1 - cor1^2) 
   t2 <- cor2*sqrt(n2 - 2)/sqrt(1 - cor2^2) 
-  t3 <- (zr1 - zr2)/sqrt(se1^2 + se2^2)
-  t4 <- (zr1 + zr2)/sqrt(se1^2 + se2^2)
+  t3 <- (zr1 - zr2)/sqrt(se1.z^2 + se2.z^2)
+  t4 <- (zr1 + zr2)/sqrt(se1.z^2 + se2.z^2)
   pval1 <- 2*(1 - pt(abs(t1), n1 - 2 - s))
   pval2 <- 2*(1 - pt(abs(t2), n2 - 2 - s))
   pval3 <- 2*(1 - pnorm(abs(t3)))
   pval4 <- 2*(1 - pnorm(abs(t4)))
-  ll0a <- zr1 - zcrit1*se1;  ul0a <- zr1 + zcrit1*se1
+  ll0a <- zr1 - zcrit1*se1.z;  ul0a <- zr1 + zcrit1*se1.z
   ll1a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
   ul1a <- (exp(2*ul0a) - 1)/(exp(2*ul0a) + 1)
-  ll0b <- zr1 - zcrit2*se1;  ul0b <- zr1 + zcrit2*se1
+  ll0b <- zr1 - zcrit2*se1.z;  ul0b <- zr1 + zcrit2*se1.z
   ll1b <- (exp(2*ll0b) - 1)/(exp(2*ll0b) + 1)
   ul1b <- (exp(2*ul0b) - 1)/(exp(2*ul0b) + 1)
-  ll0a <- zr2 - zcrit1*se2;  ul0a <- zr2 + zcrit1*se2
+  ll0a <- zr2 - zcrit1*se2.z;  ul0a <- zr2 + zcrit1*se2.z
   ll2a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
   ul2a <- (exp(2*ul0a) - 1)/(exp(2*ul0a) + 1)
-  ll0b <- zr2 - zcrit2*se2;  ul0b <- zr2 + zcrit2*se2
+  ll0b <- zr2 - zcrit2*se2.z;  ul0b <- zr2 + zcrit2*se2.z
   ll2b <- (exp(2*ll0b) - 1)/(exp(2*ll0b) + 1)
   ul2b <- (exp(2*ul0b) - 1)/(exp(2*ul0b) + 1)
   ll3 <- dif - sqrt((cor1 - ll1b)^2 + (ul2b - cor2)^2)
@@ -564,7 +562,7 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size of the two studies
+#' * Row 4 estimates the average effect size for the two studies
 #'
 #'
 #' The columns are:
@@ -670,7 +668,7 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the ratio of odds ratios between studies
-#' * Row 4 estimates the average effect size of the two studies
+#' * Row 4 estimates the average effect size for the two studies
 #'
 #'
 #' The columns are:
@@ -761,7 +759,7 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size of the two studies
+#' * Row 4 estimates the average effect size for the two studies
 #'
 #'
 #' The columns are:
@@ -860,7 +858,7 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
 #' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 4 estimates the average effect size for the two studies
 #' 
 #' 
 #' Columns are:
@@ -912,6 +910,111 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
   out2 <- t(c(est2, se2, z2, pval2, ll2, ul2))
   out3 <- t(c(est3, se3, z3, pval3, ll3, ul3))
   out4 <- t(c(est4, se4, z4, pval4, ll4, ul4))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
+  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  return(out)
+}
+
+
+# replicate.spear ===============================================================
+#' Compares Spearman correlations in original and follow-up studies
+#' 
+#'                           
+#' @description 
+#' This function can be used to compare and combine Spearman correlations from
+#' the original study and the follow-up study. The confidence level for the 
+#' difference is 1 – 2alpha.
+#' 
+#' 
+#' @param    alpha	 alpha level for 1-alpha confidence
+#' @param    cor1  	 estimated Spearman correlation between y and x in original study
+#' @param    cor2  	 estimated Spearman correlation between y and x in follow-up study
+#' @param    n1    	 sample size in original study
+#' @param    n2    	 sample size in follow-up study
+#' 
+#' 
+#' @return
+#' A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference between studies
+#' * Row 4 estimates the average effect size for the two studies
+#' 
+#' 
+#' The columns are:
+#' * Estimate - Spearman correlation estimate
+#' * SE - standard error
+#' * z - z-value
+#' * p - p-value
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' replicate.spear(.05, .598, 80, .324, 200)
+#'
+#' # Should return:
+#' #                      Estimate         SE        z            p         LL        UL
+#' # Original:                0.598 0.07948367 5.315140 1.065752e-07 0.41985966 0.7317733
+#' # Follow-up:               0.324 0.06541994 4.570582 4.863705e-06 0.19049455 0.4457384
+#' # Original - Follow-up:    0.274 0.10294378 3.437975 5.860809e-04 0.09481418 0.4342171
+#' # Average:                 0.461 0.05147189 9.967944 0.000000e+00 0.36695230 0.5457190
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats pt
+#' @importFrom stats pnorm
+#' @importFrom stats qnorm
+#' @export
+replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
+  zcrit1 <- qnorm(1 - alpha/2)
+  zcrit2 <- qnorm(1 - alpha)
+  dif <- cor1 - cor2
+  ave <- (cor1 + cor2)/2
+  ave.z <- log((1 + ave)/(1 - ave))/2
+  zr1 <- log((1 + cor1)/(1 - cor1))/2
+  zr2 <- log((1 + cor2)/(1 - cor2))/2
+  se1 <- sqrt((1 + cor1^2/2)*(1 - cor1^2)^2/(n1 - 3))
+  se2 <- sqrt((1 + cor2^2/2)*(1 - cor2^2)^2/(n2 - 3))
+  se1.z <- sqrt((1 + cor1^2/2)/((n1 - 3)))
+  se2.z <- sqrt((1 + cor2^2/2)/((n2 - 3)))
+  se3 <- sqrt(se1^2 + se2^2)
+  se4 <- sqrt(se1^2 + se2^2)/2
+  se4.z <- sqrt(((se1^2 + se2^2)/4)/(1 - ave^2))
+  t1 <- cor1*sqrt(n1 - 1) 
+  t2 <- cor2*sqrt(n2 - 1)
+  t3 <- (zr1 - zr2)/sqrt(se1^2 + se2^2)
+  t4 <- (zr1 + zr2)/sqrt(se1^2 + se2^2)
+  pval1 <- 2*(1 - pnorm(abs(t1)))
+  pval2 <- 2*(1 - pnorm(abs(t2)))
+  pval3 <- 2*(1 - pnorm(abs(t3)))
+  pval4 <- 2*(1 - pnorm(abs(t4)))
+  ll0a <- zr1 - zcrit1*se1.z;  ul0a <- zr1 + zcrit1*se1.z
+  ll1a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
+  ul1a <- (exp(2*ul0a) - 1)/(exp(2*ul0a) + 1)
+  ll0a <- zr2 - zcrit1*se2.z;  ul0a <- zr2 + zcrit1*se2.z
+  ll2a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
+  ul2a <- (exp(2*ul0a) - 1)/(exp(2*ul0a) + 1)
+  ll0b <- zr1 - zcrit2*se1.z;  ul0b <- zr1 + zcrit2*se1.z
+  ll1b <- (exp(2*ll0b) - 1)/(exp(2*ll0b) + 1)
+  ul1b <- (exp(2*ul0b) - 1)/(exp(2*ul0b) + 1)
+  ll0b <- zr2 - zcrit2*se2.z;  ul0b <- zr2 + zcrit2*se2.z
+  ll2b <- (exp(2*ll0b) - 1)/(exp(2*ll0b) + 1)
+  ul2b <- (exp(2*ul0b) - 1)/(exp(2*ul0b) + 1)
+  ll3 <- dif - sqrt((cor1 - ll1b)^2 + (ul2b - cor2)^2)
+  ul3 <- dif + sqrt((ul1b - cor1)^2 + (cor2 - ll2b)^2)
+  ll0 <- ave.z - zcrit1*se4.z
+  ul0 <- ave.z + zcrit1*se4.z
+  ll4 <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+  ul4 <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+  out1 <- t(c(cor1, se1, t1, pval1, ll1a, ul1a))
+  out2 <- t(c(cor2, se2, t2, pval2, ll2a, ul2a))
+  out3 <- t(c(dif, se3, t3, pval3, ll3, ul3))
+  out4 <- t(c(ave, se4, t4, pval4, ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
