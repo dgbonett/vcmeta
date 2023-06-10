@@ -458,7 +458,7 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
 #' The columns are:
 #' * Estimate - Pearson or partial correlation estimate
 #' * SE - standard error
-#' * z - z-value
+#' * z - t-value for rows 1 and 2; z-value for rows 3 and 4
 #' * p - p-value
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
