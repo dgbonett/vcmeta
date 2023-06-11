@@ -1,5 +1,5 @@
-# ================= Effect Size Standard Errors ============
-# se.mean2 
+# ================= Effect Size Standard Errors ====================
+# se.mean2 =========================================================
 #' Computes the standard error for a 2-group mean difference
 #' 
 #' 
@@ -51,7 +51,7 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
 }
 
 
-# se.mean.ps
+# se.mean.ps =========================================================
 #' Computes the standard error for a paired-samples mean difference
 #' 
 #' 
@@ -103,7 +103,7 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 }
 
 
-# se.stdmean2 		
+# se.stdmean2 =========================================================		
 #' Computes the standard error for a 2-group standardized mean difference
 #' 
 #' 
@@ -181,7 +181,7 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 }
 
 
-# se.stdmean.ps 		
+# se.stdmean.ps =========================================================		
 #' Computes the standard error for a paired-samples standardized mean difference
 #' 
 #'
@@ -250,7 +250,7 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 }
 
 
-# se.cor
+# se.cor =========================================================
 #' Computes the standard error for a Pearson or partial correlation 
 #' 
 #'
@@ -298,7 +298,7 @@ se.cor <- function(cor, s, n) {
 }
 
 
-# se.spear
+# se.spear =========================================================
 #' Computes the standard error for a Spearman correlation 
 #' 
 #' 
@@ -343,7 +343,7 @@ se.spear <- function(cor, n) {
 }
 
 
-# se.semipart
+# se.semipart =========================================================
 #' Computes the standard error for a semipartial correlation 
 #' 
 #'
@@ -389,7 +389,7 @@ se.semipartial <- function(cor, r2, n) {
 }
 
 
-# se.pbcor
+# se.pbcor =========================================================
 #' Computes the standard error for a point-biserial correlation 
 #' 
 #'
@@ -464,7 +464,7 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
 }
 
 
-# se.odds
+# se.odds =========================================================
 #' Computes the standard error for a log odds ratio 
 #' 
 #'
@@ -515,7 +515,7 @@ se.odds <- function(f1, n1, f2, n2) {
 }
 
 
-# se.meanratio2
+# se.meanratio2 =========================================================
 #' Computes the standard error for a 2-group log mean ratio
 #' 
 #' 
@@ -569,7 +569,7 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 }
 
 
-# se.meanratio.ps
+# se.meanratio.ps =========================================================
 #' Computes the standard error for a paired-samples log mean ratio
 #' 
 #' 
@@ -624,7 +624,7 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
 }
 
 
-# se.slope
+# se.slope =========================================================
 #' Computes a slope and standard error
 #' 
 #'
@@ -671,7 +671,7 @@ se.slope <- function(cor, sdy, sdx, n) {
 }
 
 
-# se.prop2 
+# se.prop2 ========================================================= 
 #' Computes the Agresti-Caffo estimate and standard error for a 2-group
 #' proportion difference
 #' 
@@ -723,7 +723,7 @@ se.prop2 <- function(f1, f2, n1, n2) {
 }
 
 
-# se.prop.ps 
+# se.prop.ps =========================================================
 #' Computes the Bonett-Price estimate and standard error for a paired-samples
 #' proportion difference
 #' 
@@ -773,5 +773,202 @@ se.prop.ps <- function(f00, f01, f10, f11) {
  colnames(out) <- c("Estimate", "SE")
  rownames(out) <- c("Proportion difference:")
  return(out)
+}
+
+
+# se.ave.mean2.dep ============================================================
+#' Computes the standard error for the average of 2-group mean differences from 
+#' two parallel measurement response variables in the same sample 
+#'                       
+#' 
+#' @description
+#' In a study that reports a 2-group mean difference for two response
+#' variables that satisfy the conditions of parallel measurments, this function
+#' can be used to compute the standard error of the average of the two mean 
+#' differences using the two estimated means, estimated standard deviations, 
+#' estimated within-group correlation between the two response variables, and 
+#' the two sample sizes. The average mean difference and standard error output 
+#' from this function can then be used as input in the
+#' \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, or 
+#' \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some studies
+#' have used one of the two parallel response variables and other studies have
+#' used the other parallel response variable. 
+#' 
+#' 
+#' @param    m1A	estimated mean for variable A in group 1 
+#' @param    m2A	estimated mean for variable A in group 2 
+#' @param    sd1A	estimated standard deviation for variable A in group 1
+#' @param    sd2A	estimated standard deviation for variable A in group 2
+#' @param    m1B	estimated mean for variable B in group 1 
+#' @param    m2B	estimated mean for variable B in group 2 
+#' @param    sd1B	estimated standard deviation for variable B in group 1
+#' @param    sd2B	estimated standard deviation for variable B in group 2
+#' @param    rAB	estimated within-group correlation between variables A and B
+#' @param    n1		group 1 sample size
+#' @param    n2		group 2 sample size
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimate of average mean difference
+#' * SE - standard error 
+#' * VAR(A) - variance of mean difference for variable A
+#' * VAR(B) - variance of mean difference for variable B
+#' * COV(A,B) - covariance of mean differences for variables A and B
+#' 
+#'  
+#' @examples
+#' se.ave.mean2.dep(21.9, 16.1, 3.82, 3.21, 24.8, 17.1, 3.57, 3.64, .785, 40, 40)
+#'
+#' # Should return:
+#' #      Estimate        SE    VAR(A)    VAR(B)  COV(A,B)
+#' # [1,]     6.75 0.7526878 0.6224125 0.6498625 0.4969403
+#' 
+#' 
+#' @export
+se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1, n2) {
+  m1 <- (m1A + m1B)/2
+  m2 <- (m2A + m2B)/2
+  est <- m1 - m2
+  v1 <- sd1A^2/n1 + sd2A^2/n2 
+  v2 <- sd1B^2/n1 + sd2B^2/n2
+  cov <- rAB*sd1A*sd1B/n1 + rAB*sd2A*sd2B/n2
+  se <- sqrt((v1 + v2 + 2*cov)/4)
+  out <- t(c(est, se, v1, v2, cov))
+  colnames(out) <- c("Estimate", "SE", "VAR(A)", "VAR(B)", "COV(A,B)")
+  return(out)
+}
+
+
+# se.ave.cor.over =============================================================
+#' Computes the standard error for the average of two Pearson correlations with 
+#' one variable in common that have been estimated from the same sample 
+#'     
+#' 
+#' @description
+#' In a study that reports the sample size and three correlations (cor12, cor13, 
+#' and cor23 where variable 1 is called the "overlapping" variable), and 
+#' variables 2 and 3 are different measurements of the same attribute, this 
+#' function can be used to compute the average of cor12 and cor13 and its 
+#' standard error. The average correlation and the standard error from this 
+#' function can then be used as input in the \link[vcmeta]{meta.ave.gen} or 
+#' \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some studies
+#' have reported cor12 and other studies have reported cor13. 
+#' 
+#' 
+#' @param    cor12	estimated correlation between variables 1 and 2 
+#' @param    cor13	estimated correlation between variables 1 and 3 
+#' @param    cor23	estimated correlation between variables 2 and 3
+#' @param    n		sample size
+#' 
+#' 
+#' @return
+#' Returns a two-row matrix. The first row gives results for the average 
+#' correlation and the second row gives the results with a Fisher
+#' transformation. The columns are:
+#' * Estimate - estimated average of cor12 and cor13
+#' * SE - standard error 
+#' * VAR(cor12) - variance of cor12 
+#' * VAR(cor13) - variance of cor13
+#' * COV(cor12,cor13) - covariance of cor12 and cor13
+#' 
+#'  
+#' @examples
+#' se.ave.cor.over(.462, .518, .755, 100)
+#'
+#' # Should return:
+#' #               Estimate         SE  VAR(cor12) VAR(cor13) COV(cor12,cor13)
+#' # Correlation  0.4900000 0.07087351 0.006378045 0.00551907      0.004097553
+#' # Fisher       0.5360603 0.09326690 0.010309278 0.01030928      0.007119936
+#'
+#'
+#' @export
+se.ave.cor.over <- function(cor12, cor13, cor23, n) {
+  est1 <- (cor12 + cor13)/2
+  cov1 <- ((cor23 - cor12*cor13/2)*(1 - cor12^2 - cor13^2 - cor23^2) + cor23^3)/(n - 3)
+  v1 <- (1 - cor12^2)^2/(n - 3)
+  v2 <- (1 - cor13^2)^2/(n - 3)
+  se1 <- sqrt((v1 + v2 + 2*cov1)/4)
+  est2 <- log((1 + est1)/(1 - est1))/2 
+  se2 <- se1/(1 - est1^2)
+  cov2 <- cov1/((1 - cor12^2)*(1 - cor13^2))
+  v1.z <- 1/(n - 3)
+  v2.z <- 1/(n - 3)
+  out1 <- t(c(est1, se1, v1, v2, cov1))
+  out2 <- t(c(est2, se2, v1.z, v2.z, cov2))
+  out <- rbind(out1, out2)
+  colnames(out) <- c("Estimate", "SE", "VAR(cor12)", "VAR(cor13)", "COV(cor12,cor13)")
+  rownames(out) <- c("Correlation", "Fisher")
+  return(out)
+}
+
+
+# se.ave.cor.nonover ==========================================================
+#' Computes the standard error for the average of two Pearson correlations with 
+#' no variables in common that have been estimated from the same sample 
+#'
+#' 
+#' @description
+#' In a study that reports the sample size and six correlations (cor12, cor34,
+#' (cor13, cor14, cor23, and cor24) where variables 1 and 3 are different 
+#' measurements of the same attribute and variables 2 and 4 are different 
+#' measurements of the same attribute, this function can be used to compute the 
+#' average of cor12 and cor34 and its standard error. Note that cor12 and cor34
+#' have no variable in common (i.e., no "overlapping" variable). The average 
+#' correlation and the standard error from this function can then be used as 
+#' input in the \link[vcmeta]{meta.ave.gen} or \link[vcmeta]{meta.lm.gen} 
+#' functions in a meta-analysis where some studies have reported cor12 and 
+#' other studies have reported cor34. 
+#' 
+#' 
+#' @param    cor12	estimated correlation between variables 1 and 2 
+#' @param    cor34	estimated correlation between variables 3 and 4 
+#' @param    cor13	estimated correlation between variables 1 and 3
+#' @param    cor14	estimated correlation between variables 1 and 4
+#' @param    cor23	estimated correlation between variables 2 and 3
+#' @param    cor24	estimated correlation between variables 2 and 4
+#' @param    n		sample size
+#' 
+#' 
+#' @return
+#' Returns a two-row matrix. The first row gives results for the average 
+#' correlation and the second row gives the results with a Fisher
+#' transformation. The columns are:
+#' * Estimate - estimated average of cor12 and cor34
+#' * SE - standard error 
+#' * VAR(cor12) - variance of cor12 
+#' * VAR(cor34) - variance of cor34
+#' * COV(cor12,cor34) - covariance of cor12 and cor34
+#' 
+#'  
+#' @examples
+#' se.ave.cor.nonover(.357, .398, .755, .331, .347, .821, 100)
+#'
+#' # Should return:
+#' #             Estimate         SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
+#' # Correlation 0.377500 0.07768887 0.00784892 0.007301895      0.004495714
+#' # Fisher      0.397141 0.09059993 0.01030928 0.010309278      0.006122153
+#'
+#'
+#' @export
+se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
+  est1 <- (cor12 + cor34)/2
+  c1 <- (cor12*cor34)*(cor13^2 + cor14^2 + cor23^2 + cor24^2)/2 + cor13*cor24 + cor14*cor23
+  c2 <- (cor12*cor13*cor14 + cor12*cor23*cor24 + cor13*cor23*cor34 + cor14*cor24*cor34)
+  cov1 <- (c1 - c2)/(n - 3)
+  v1 <- (1 - cor12^2)^2/(n - 3)
+  v2 <- (1 - cor34^2)^2/(n - 3)
+  se1 <- sqrt((v1 + v2 + 2*cov1)/4)
+  est2 <- log((1 + est1)/(1 - est1))/2 
+  se2 <- se1/(1 - est1^2)
+  cov2 <- cov1/((1 - cor12^2)*(1 - cor34^2))
+  v1.z <- 1/(n - 3)
+  v2.z <- 1/(n - 3)
+  out1 <- t(c(est1, se1, v1, v2, cov1))
+  out2 <- t(c(est2, se2, v1.z, v2.z, cov2))
+  out <- rbind(out1, out2)
+  colnames(out) <- c("Estimate", "SE", "VAR(cor12)", "VAR(cor34)", "COV(cor12,cor34)")
+  rownames(out) <- c("Correlation", "Fisher")
+  return(out)
 }
 
