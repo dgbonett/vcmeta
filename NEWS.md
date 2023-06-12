@@ -3,8 +3,8 @@ vcmeta v1.2.0 (Release date: 2023/06/xx)
 
 Changes:
 
-* New functions for standard errors: se.ave.mean2.dep, se.ave.cor.over, se.ave.cor.nonover
-* New function for replication studies: replicate.spear
+* New functions for standard errors:  se.ave.mean2.dep, se.ave.cor.over, se.ave.cor.nonover
+* New function for replication studies:  replicate.spear
 * Corrected the displayed standard errors in replicate.cor
 
 
@@ -15,9 +15,9 @@ vcmeta v1.1.0 (Release date: 2022/06/30)
 Changes:
 
 * Updated documentation for several functions
-* New functions for standard errors: se.prop2, se.prop.ps
-* New function for chi-square test of homegeniety: meta.chitest
-* New function for confidence interval for an average variance: meta.ave.var
+* New functions for standard errors:  se.prop2, se.prop.ps
+* New function for chi-square test of homegeniety:  meta.chitest
+* New function for confidence interval for an average variance:  meta.ave.var
 * New functions for replication studies: replicate.prop2, replicate.oddsratio, replicate.slope 
 * For consistency, updated parameter names in the following functions:
     * meta.lm.cronbach now takes (alpha, n, rel, r, X) rather than (alpha, n, rel, q, X)
