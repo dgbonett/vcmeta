@@ -1,5 +1,4 @@
 # ================= Miscellaneous Functions ================
-
 # ci.fisher
 #' Fisher confidence interval for any type of correlation.
 #' 
@@ -45,7 +44,7 @@ ci.fisher <- function(alpha, cor, se) {
 }
 
 
-#  cor.from.t
+#  cor.from.t =============================================================
 #' Compute Pearson correlation between paired measurements from t statistic
 #' 
 #' @description 
@@ -79,7 +78,7 @@ cor.from.t <- function(m1, m2, sd1, sd2, t, n) {
 }
 
 
-# meta.chitest 
+# meta.chitest ========================================================
 #' Computes a chi-square test of effect-size homogeneity
 #' 
 #'
@@ -130,4 +129,37 @@ meta.chitest <- function(est, se) {
  return(out)
 } 
 
+
+#  stdmean2.from.t ============================================================
+#' Computes Cohen's d from pooled-variance t statistic
+#' 
+#' @description 
+#' This function computes Cohen's d for a 2-group design (which is a 
+#' standardized mean difference with a weighted variance standardizer) using 
+#' a pooled-variance independent-samples t statistic and the two sample sizes. 
+#' This function also computes an equal-variance standard error for Cohen's d. 
+#' 
+#' 
+#' @param t  	pooled-variance t statistic  
+#' @param n1 	sample size for group 1 
+#' @param n2 	sample size for group 2 
+#'  
+#' @return
+#' Returns Cohen's d and its equal-variance standard error
+#' 
+#' @examples
+#' stdmean2.from.t(3.27, 25, 25)
+#'
+#' # Should return:
+#' #       Estimate       SE
+#' # [1,] 0.9439677 0.298801
+#' 
+#' @export
+stdmean2.from.t <- function(t, n1, n2) {
+  d <- t*sqrt((n1 + n2)^2/(n1*n2*(n1 + n2 - 2)))
+  se <- sqrt(d^2*(1/(n1 - 1) + 1/(n2 - 1))/8 + 1/n1 + 1/n2)
+  out <- t(c(d, se))
+  colnames(out) <- c("Estimate", "SE")
+  return (out)
+}
 
