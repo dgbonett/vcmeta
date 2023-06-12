@@ -5,7 +5,7 @@ Changes:
 
 * New functions for standard errors: se.ave.mean2.dep, se.ave.cor.over, se.ave.cor.nonover
 * New function for replication studies: replicate.spear
-* Corrected the displayed standard errors replicate.cor
+* Corrected the displayed standard errors in replicate.cor
 
 
 
