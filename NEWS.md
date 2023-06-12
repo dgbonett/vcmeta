@@ -1,3 +1,14 @@
+vcmeta v1.2.0 (Release date: 2023/06/xx)
+==============
+
+Changes:
+
+* New functions for standard errors: se.ave.mean2.dep, se.ave.cor.over, se.ave.cor.nonover
+* New function for replication studies: replicate.spear
+* Corrected the displayed standard errors replicate.cor
+
+
+
 vcmeta v1.1.0 (Release date: 2022/06/30)
 ==============
 
