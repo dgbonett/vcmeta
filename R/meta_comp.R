@@ -1006,8 +1006,8 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f1     	vector of group 1 event counts
-#' @param     f2     	vector of group 2 event counts
+#' @param     f1     	vector of group 1 frequency counts
+#' @param     f2     	vector of group 2 frequency counts
 #' @param     n1     	vector of group 1 sample sizes 
 #' @param     n2     	vector of group 2 sample sizes
 #' @param     v      	vector of contrast coefficients
@@ -1071,8 +1071,8 @@ meta.lc.odds <- function(alpha, f1, f2, n1, n2, v) {
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f1     	vector of group 1 event counts
-#' @param     f2     	vector of group 2 event counts
+#' @param     f1     	vector of group 1 frequency counts
+#' @param     f2     	vector of group 2 frequency counts
 #' @param     n1     	vector of group 1 sample sizes 
 #' @param     n2     	vector of group 2 sample sizes
 #' @param     v      	vector of contrast coefficients
@@ -1138,8 +1138,8 @@ meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f1     	vector of group 1 event counts
-#' @param     f2     	vector of group 2 event counts
+#' @param     f1     	vector of group 1 frequency counts
+#' @param     f2     	vector of group 2 frequency counts
 #' @param     n1     	vector of group 1 sample sizes 
 #' @param     n2     	vector of group 2 sample sizes
 #' @param     v      	vector of contrast coefficients
@@ -1205,10 +1205,10 @@ meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f11    	vector of frequencies in cell 1,1
-#' @param     f12    	vector of frequencies in cell 1,2
-#' @param     f21    	vector of frequencies in cell 2,1
-#' @param     f22    	vector of frequencies in cell 2,2
+#' @param     f11    	vector of frequency counts in cell 1,1
+#' @param     f12    	vector of frequency counts in cell 1,2
+#' @param     f21    	vector of frequency counts in cell 2,1
+#' @param     f22    	vector of frequency counts in cell 2,2
 #' @param     v      	vector of contrast coefficients
 #' 
 #' 
@@ -1271,10 +1271,10 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f11    	vector of frequencies in cell 1,1
-#' @param     f12    	vector of frequencies in cell 1,2
-#' @param     f21    	vector of frequencies in cell 2,1
-#' @param     f22    	vector of frequencies in cell 2,2
+#' @param     f11    	vector of frequency counts in cell 1,1
+#' @param     f12    	vector of frequency counts in cell 1,2
+#' @param     f21    	vector of frequency counts in cell 2,1
+#' @param     f22    	vector of frequency counts in cell 2,2
 #' @param     v      	vector of contrast coefficients
 #' 
 #' @return
