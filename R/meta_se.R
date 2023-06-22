@@ -17,8 +17,8 @@
 #' @param    m2		estimated mean for group 2 
 #' @param    sd1	estimated standard deviation for group 1
 #' @param    sd2	estimated standard deviation for group 2
-#' @param    n1		group 1 sample size
-#' @param    n2		group 2 sample size
+#' @param    n1		sample size for group 1
+#' @param    n2		sample size for group 2
 #' 
 #' 
 #' @return
@@ -122,8 +122,8 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' @param    m2		  sample mean for group 2 
 #' @param    sd1		sample standard deviation for group 1
 #' @param    sd2		sample standard deviation for group 2
-#' @param    n1		  group 1 sample size
-#' @param    n2		  group 2 sample size
+#' @param    n1		  sample size for group 1
+#' @param    n2		  sample size for group 2
 #' @param stdzr
 #' * set to 0 for square root average variance standardizer 
 #' * set to 1 for group 1 SD standardizer 
@@ -412,8 +412,8 @@ se.semipartial <- function(cor, r2, n) {
 #' @param    m2		estimated mean for group 2 
 #' @param    sd1	estimated standard deviation for group 1
 #' @param    sd2	estimated standard deviation for group 2
-#' @param    n1		group 1 sample size
-#' @param    n2		group 2 sample size
+#' @param    n1		sample size for group 1
+#' @param    n2		sample size for group 2
 #' @param    type		
 #' * set to 1 for weighted variance average
 #' * set to 2 for unweighted variance average
@@ -481,8 +481,8 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
 #' 
 #' @param    f1		number of participants who have the outcome of interest in group 1 
 #' @param    f2		number of participants who have the outcome of interest in group 2   
-#' @param    n1		group 1 sample size
-#' @param    n2		group 2 sample size
+#' @param    n1		sample size for group 1
+#' @param    n2		sample size for group 2 
 #' 
 #' 
 #' @return
@@ -533,8 +533,8 @@ se.odds <- function(f1, n1, f2, n2) {
 #' @param    m2		estimated mean for group 2 
 #' @param    sd1	estimated standard deviation for group 1
 #' @param    sd2	estimated standard deviation for group 2
-#' @param    n1		group 1 sample size
-#' @param    n2		group 2 sample size
+#' @param    n1		sample size for group 1
+#' @param    n2		sample size for group 2
 #' 
 #' 
 #' @return
@@ -687,8 +687,8 @@ se.slope <- function(cor, sdy, sdx, n) {
 #' 
 #' @param    f1   number of participants in group 1 who have the outcome
 #' @param    f2	  number of participants in group 2 who have the outcome
-#' @param    n1	  group 1 sample size
-#' @param    n2	  group 2 sample size
+#' @param    n1	  sample size for group 1
+#' @param    n2	  sample size for group 2
 #' 
 #' 
 #' @return
@@ -803,8 +803,8 @@ se.prop.ps <- function(f00, f01, f10, f11) {
 #' @param    sd1B	   estimated standard deviation for variable B in group 1
 #' @param    sd2B	   estimated standard deviation for variable B in group 2
 #' @param    rAB	   estimated within-group correlation between variables A and B
-#' @param    n1		   group 1 sample size
-#' @param    n2		   group 2 sample size
+#' @param    n1		   sample size for group 1
+#' @param    n2		   sample size for group 2
 #' 
 #' 
 #' @return
