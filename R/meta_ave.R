@@ -1,5 +1,5 @@
 # ================= Average of Estimates from Multiple Studies  ============
-#  meta.ave.mean2
+#  meta.ave.mean2 ==========================================================
 #' Confidence interval for an average mean difference from 2-group studies 
 #'
 #'
@@ -88,7 +88,7 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 }
 
 
-#  meta.ave.stdmean2
+#  meta.ave.stdmean2 ==========================================================
 #' Confidence interval for an average standardized mean difference
 #' from 2-group studies
 #'
@@ -211,7 +211,7 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
 }
 
 
-#  meta.ave.mean.ps
+#  meta.ave.mean.ps ==========================================================
 #' Confidence interval for an average mean difference from paired-samples studies
 #' 
 #' 
@@ -301,7 +301,7 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 }
 
 
-#  meta.ave.stdmean.ps
+#  meta.ave.stdmean.ps ==========================================================
 #' Confidence interval for an average standardized mean difference from 
 #' paired-samples studies  
 #' 
@@ -414,7 +414,7 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
 }
 
 
-#  meta.ave.meanratio2
+#  meta.ave.meanratio2 ==========================================================
 #' Confidence interval for an average mean ratio from 2-group studies 
 #'
 #'
@@ -508,7 +508,7 @@ meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 }
 
 
-#  meta.ave.meanratio.ps
+#  meta.ave.meanratio.ps ==========================================================
 #' Confidence interval for an average mean ratio from paired-samples studies
 #'
 #'
@@ -600,7 +600,7 @@ meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRU
 }
 
 
-#  meta.ave.cor
+#  meta.ave.cor ==========================================================
 #' Confidence interval for an average Pearson or partial correlation
 #' 
 #' 
@@ -681,7 +681,7 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
 }
 
 
-#  meta.ave.slope
+#  meta.ave.slope ==========================================================
 #' Confidence interval for an average slope coefficient
 #' 
 #' 
@@ -760,7 +760,7 @@ meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
 }
 
 
-#  meta.ave.path
+#  meta.ave.path ==========================================================
 #' Confidence interval for an average slope coefficient in a general 
 #' linear model or a path model. 
 #' 
@@ -835,7 +835,7 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
 }
 
 
-#  meta.ave.spear
+#  meta.ave.spear ==========================================================
 #' Confidence interval for an average Spearman correlation 
 #' 
 #' 
@@ -916,7 +916,7 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 }
 
 
-#  meta.ave.pbcor
+#  meta.ave.pbcor ==========================================================
 #' Confidence interval for an average point-biserial correlation
 #'
 #'
@@ -1034,7 +1034,7 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
 }
 
 
-#  meta.ave.semipart
+#  meta.ave.semipart ==========================================================
 #' Confidence interval for an average semipartial correlation 
 #' 
 #' 
@@ -1110,7 +1110,7 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
 }
 
 
-#  meta.ave.cronbach
+#  meta.ave.cronbach ==========================================================
 #' Confidence interval for an average Cronbach alpha reliability 
 #' 
 #' 
@@ -1186,7 +1186,7 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 }
 
 
-#  meta.ave.odds
+#  meta.ave.odds ==========================================================
 #' Confidence interval for average odds ratio from 2-group studies
 #'  
 #'  
@@ -1196,8 +1196,8 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 #'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
-#' @param    f1     	vector of group 1 event counts
-#' @param    f2     	vector of group 2 event counts
+#' @param    f1     	vector of group 1 frequency counts
+#' @param    f2     	vector of group 2 frequency counts
 #' @param    n1     	vector of group 1 sample sizes 
 #' @param    n2     	vector of group 2 sample sizes
 #' @param    bystudy  logical to also return each study estimate (TRUE) or not
@@ -1272,7 +1272,7 @@ meta.ave.odds <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 }
 
 
-#  meta.ave.propratio2
+#  meta.ave.propratio2 ==========================================================
 #' Confidence interval for an average proportion ratio from 2-group studies 
 #' 
 #' 
@@ -1282,8 +1282,8 @@ meta.ave.odds <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
-#' @param    f1     	vector of group 1 event counts
-#' @param    f2     	vector of group 2 event counts
+#' @param    f1     	vector of group 1 frequency counts
+#' @param    f2     	vector of group 2 frequency counts
 #' @param    n1     	vector of group 1 sample sizes 
 #' @param    n2     	vector of group 2 sample sizes
 #' @param    bystudy  logical to also return each study estimate (TRUE) or not
@@ -1362,7 +1362,7 @@ meta.ave.propratio2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 }
 
 
-#  meta.ave.prop2
+#  meta.ave.prop2 ==========================================================
 #' Confidence interval for an average proportion difference in 
 #' 2-group studies 
 #' 
@@ -1373,8 +1373,8 @@ meta.ave.propratio2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
-#' @param    f1     	vector of group 1 event counts
-#' @param    f2     	vector of group 2 event counts
+#' @param    f1     	vector of group 1 frequency counts
+#' @param    f2     	vector of group 2 frequency counts
 #' @param    n1     	vector of group 1 sample sizes 
 #' @param    n2     	vector of group 2 sample sizes
 #' @param bystudy     logical to also return each study estimate (TRUE) or not
@@ -1448,7 +1448,7 @@ meta.ave.prop2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 }
 
 
-#  meta.ave.prop.ps
+#  meta.ave.prop.ps ==========================================================
 #' Confidence interval for an average proportion difference in 
 #' paired-samples studies  
 #' 
@@ -1459,10 +1459,10 @@ meta.ave.prop2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
-#' @param    f11    	vector of frequencies in cell 1,1
-#' @param    f12    	vector of frequencies in cell 1,2
-#' @param    f21    	vector of frequencies in cell 2,1
-#' @param    f22    	vector of frequencies in cell 2,2
+#' @param    f11    	vector of frequency counts in cell 1,1
+#' @param    f12    	vector of frequency counts in cell 1,2
+#' @param    f21    	vector of frequency counts in cell 2,1
+#' @param    f22    	vector of frequency counts in cell 2,2
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
@@ -1529,7 +1529,7 @@ meta.ave.prop.ps <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 }
 
 
-#  meta.ave.agree
+#  meta.ave.agree ==========================================================
 #' Confidence interval for an average G-index agreement coefficient 
 #' 
 #' 
@@ -1541,10 +1541,10 @@ meta.ave.prop.ps <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
-#' @param    f11    	vector of frequencies in cell 1,1
-#' @param    f12    	vector of frequencies in cell 1,2
-#' @param    f21    	vector of frequencies in cell 2,1
-#' @param    f22    	vector of frequencies in cell 2,2
+#' @param    f11    	vector of frequency counts in cell 1,1
+#' @param    f12    	vector of frequency counts in cell 1,2
+#' @param    f21    	vector of frequency counts in cell 2,1
+#' @param    f22    	vector of frequency counts in cell 2,2
 #' @param    bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
@@ -1605,7 +1605,7 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 }
 
 
-# meta.ave.var 
+# meta.ave.var ==========================================================
 #' Confidence interval for an average variance
 #'
 #'
@@ -1671,7 +1671,7 @@ meta.ave.var <- function(alpha, var, n, bystudy = TRUE) {
 }
 
 
-#  meta.ave.gen
+#  meta.ave.gen ==========================================================
 #' Confidence interval for an average of any parameter 
 #' 
 #'
@@ -1738,8 +1738,9 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 }
 
 
-#  meta.ave.gen.cc
-#' Confidence interval for an average effect size using a constant coefficient model 
+#  meta.ave.gen.cc ==========================================================
+#' Confidence interval for an average effect size using a constant 
+#' coefficient model 
 #'
 #'
 #' @description
@@ -1816,8 +1817,9 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 }
 
 
-#  meta.ave.gen.rc
-#' Confidence interval for an average effect size using a random coefficient model 
+#  meta.ave.gen.rc ==========================================================
+#' Confidence interval for an average effect size using a random coefficient 
+#' model 
 #' 
 #' 
 #' @description
