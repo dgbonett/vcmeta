@@ -548,12 +548,12 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    f11		   sample count for group 1 in original study 
-#' @param    f12		   sample count for group 2 in original study
-#' @param    f21    	 sample count for group 1 in follow-up study 
-#' @param    f22    	 sample count for group 2 in follow-up study
+#' @param    f11		   frequency count for group 1 in original study 
+#' @param    f12		   frequency count for group 2 in original study
 #' @param    n11    	 sample size for group 1 in original study
 #' @param    n12    	 sample size for group 2 in original study
+#' @param    f21    	 frequency count for group 1 in follow-up study 
+#' @param    f22    	 frequency count for group 2 in follow-up study
 #' @param    n21    	 sample size for group 1 in follow-up study
 #' @param    n22    	 sample size for group 2 in follow-up study
 #' 
@@ -929,8 +929,8 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
 #' @param    cor1  	 estimated Spearman correlation between y and x in original study
-#' @param    cor2  	 estimated Spearman correlation between y and x in follow-up study
 #' @param    n1    	 sample size in original study
+#' @param    cor2  	 estimated Spearman correlation between y and x in follow-up study
 #' @param    n2    	 sample size in follow-up study
 #' 
 #' 
