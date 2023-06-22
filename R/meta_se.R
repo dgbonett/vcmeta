@@ -1,4 +1,3 @@
-# ================= Effect Size Standard Errors ====================
 # se.mean2 =========================================================
 #' Computes the standard error for a 2-group mean difference
 #' 
@@ -795,17 +794,17 @@ se.prop.ps <- function(f00, f01, f10, f11) {
 #' used the other parallel response variable. 
 #' 
 #' 
-#' @param    m1A	estimated mean for variable A in group 1 
-#' @param    m2A	estimated mean for variable A in group 2 
-#' @param    sd1A	estimated standard deviation for variable A in group 1
-#' @param    sd2A	estimated standard deviation for variable A in group 2
-#' @param    m1B	estimated mean for variable B in group 1 
-#' @param    m2B	estimated mean for variable B in group 2 
-#' @param    sd1B	estimated standard deviation for variable B in group 1
-#' @param    sd2B	estimated standard deviation for variable B in group 2
-#' @param    rAB	estimated within-group correlation between variables A and B
-#' @param    n1		group 1 sample size
-#' @param    n2		group 2 sample size
+#' @param    m1A	   estimated mean for variable A in group 1 
+#' @param    m2A	   estimated mean for variable A in group 2 
+#' @param    sd1A	   estimated standard deviation for variable A in group 1
+#' @param    sd2A	   estimated standard deviation for variable A in group 2
+#' @param    m1B	   estimated mean for variable B in group 1 
+#' @param    m2B	   estimated mean for variable B in group 2 
+#' @param    sd1B	   estimated standard deviation for variable B in group 1
+#' @param    sd2B	   estimated standard deviation for variable B in group 2
+#' @param    rAB	   estimated within-group correlation between variables A and B
+#' @param    n1		   group 1 sample size
+#' @param    n2		   group 2 sample size
 #' 
 #' 
 #' @return
@@ -859,7 +858,7 @@ se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1
 #' @param    cor12	estimated correlation between variables 1 and 2 
 #' @param    cor13	estimated correlation between variables 1 and 3 
 #' @param    cor23	estimated correlation between variables 2 and 3
-#' @param    n		sample size
+#' @param    n		  sample size
 #' 
 #' 
 #' @return
@@ -921,13 +920,13 @@ se.ave.cor.over <- function(cor12, cor13, cor23, n) {
 #' other studies have reported cor34. 
 #' 
 #' 
-#' @param    cor12	estimated correlation between variables 1 and 2 
-#' @param    cor34	estimated correlation between variables 3 and 4 
-#' @param    cor13	estimated correlation between variables 1 and 3
-#' @param    cor14	estimated correlation between variables 1 and 4
-#' @param    cor23	estimated correlation between variables 2 and 3
-#' @param    cor24	estimated correlation between variables 2 and 4
-#' @param    n		sample size
+#' @param    cor12	  estimated correlation between variables 1 and 2 
+#' @param    cor34	  estimated correlation between variables 3 and 4 
+#' @param    cor13	  estimated correlation between variables 1 and 3
+#' @param    cor14	  estimated correlation between variables 1 and 4
+#' @param    cor23	  estimated correlation between variables 2 and 3
+#' @param    cor24	  estimated correlation between variables 2 and 4
+#' @param    n		    sample size
 #' 
 #' 
 #' @return
