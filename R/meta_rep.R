@@ -1,4 +1,3 @@
-# ================ Compare Effect Sizes in Replication Study ===============
 #  replicate.mean2
 #' Compares 2-group mean differences in original and follow-up studies
 #' 
@@ -440,9 +439,9 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
 #' 
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
-#' @param    cor1  	 estimated Pearson correlation between y and x in original study
-#' @param    cor2  	 estimated Pearson correlation between y and x in follow-up study
+#' @param    cor1  	 estimated Pearson correlation in original study
 #' @param    n1    	 sample size in original study
+#' @param    cor2  	 estimated Pearson correlation in follow-up study
 #' @param    n2    	 sample size in follow-up study
 #' @param    s     	 number of control variables in each study (0 for Pearson)
 #' 
@@ -648,7 +647,7 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 
 
 # replicate.oddsratio 
-#' Compares 2-group proportion differences in original and follow-up studies
+#' Compares 2-group odds ratios in original and follow-up studies
 #' 
 #' @description 
 #' This function computes confidence intervals for an odds ratio from an
@@ -734,7 +733,7 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 
 
 # replicate.slope 
-#' Computes confidence intervals for a slope in original and follow-up studies
+#' Compares slope coefficients in original and follow-up studies
 #'
 #' @description 
 #' Computes confidence intervals for a slope in original and follow-up studies,
@@ -928,9 +927,9 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
 #' 
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
-#' @param    cor1  	 estimated Spearman correlation between y and x in original study
+#' @param    cor1  	 estimated Spearman correlation in original study
 #' @param    n1    	 sample size in original study
-#' @param    cor2  	 estimated Spearman correlation between y and x in follow-up study
+#' @param    cor2  	 estimated Spearman correlation in follow-up study
 #' @param    n2    	 sample size in follow-up study
 #' 
 #' 
