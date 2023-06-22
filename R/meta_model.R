@@ -1,5 +1,3 @@
-# ================= Multi-study Linear Models ============
-
 #  meta.lm.mean2
 #' Meta-regression analysis for 2-group mean differences
 #' 
@@ -944,8 +942,8 @@ meta.lm.cronbach <- function(alpha, n, rel, r, X) {
 #' 
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f1     	vector of group 1 event counts
-#' @param     f2     	vector of group 2 event counts
+#' @param     f1     	vector of group 1 frequency counts
+#' @param     f2     	vector of group 2 frequency counts
 #' @param     n1     	vector of group 1 sample sizes 
 #' @param     n2     	vector of group 2 sample sizes
 #' @param     X     	matrix of predictor values
@@ -1037,8 +1035,8 @@ meta.lm.odds <- function(alpha, f1, f2, n1, n2, X) {
 #' 
 #' 
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f1     	vector of group 1 event counts
-#' @param     f2     	vector of group 2 event counts
+#' @param     f1     	vector of group 1 frequency counts
+#' @param     f2     	vector of group 2 frequency counts
 #' @param     n1     	vector of group 1 sample sizes 
 #' @param     n2     	vector of group 2 sample sizes
 #' @param     X      	matrix of predictor values
@@ -1130,8 +1128,8 @@ meta.lm.propratio2 <- function(alpha, f1, f2, n1, n2, X) {
 #' 
 #' 
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f1     	vector of group 1 event counts
-#' @param     f2     	vector of group 2 event counts
+#' @param     f1     	vector of group 1 frequency counts
+#' @param     f2     	vector of group 2 frequency counts
 #' @param     n1     	vector of group 1 sample sizes 
 #' @param     n2     	vector of group 2 sample sizes
 #' @param     X      	matrix of predictor values
@@ -1212,10 +1210,10 @@ meta.lm.prop2 <- function(alpha, f1, f2, n1, n2, X) {
 #' 				
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f11    	vector of frequencies in cell 1,1
-#' @param     f12    	vector of frequencies in cell 1,2
-#' @param     f21    	vector of frequencies in cell 2,1
-#' @param     f22    	vector of frequencies in cell 2,2
+#' @param     f11    	vector of frequency counts in cell 1,1
+#' @param     f12    	vector of frequency counts in cell 1,2
+#' @param     f21    	vector of frequency counts in cell 2,1
+#' @param     f22    	vector of frequency counts in cell 2,2
 #' @param     X      	matrix of predictor values
 #' 
 #' 
@@ -1294,10 +1292,10 @@ meta.lm.prop.ps <- function(alpha, f11, f12, f21, f22, X) {
 #' 
 #' 
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f11    	vector of frequencies in cell 1,1
-#' @param     f12    	vector of frequencies in cell 1,2
-#' @param     f21    	vector of frequencies in cell 2,1
-#' @param     f22    	vector of frequencies in cell 2,2
+#' @param     f11    	vector of frequency counts in cell 1,1
+#' @param     f12    	vector of frequency counts in cell 1,2
+#' @param     f21    	vector of frequency counts in cell 2,1
+#' @param     f22    	vector of frequency counts in cell 2,2
 #' @param     X      	matrix of predictor values
 #' 
 #' @return
@@ -1443,7 +1441,7 @@ meta.lm.mean1 <- function(alpha, m, sd, n, X) {
 #' 
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f      	vector of sample frequency counts
+#' @param     f      	vector of frequency counts
 #' @param     n      	vector of sample sizes
 #' @param     X     	matrix of predictor values
 #' 
