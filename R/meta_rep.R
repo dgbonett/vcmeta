@@ -1,5 +1,5 @@
-#  replicate.mean2
-#' Compares 2-group mean differences in original and follow-up studies
+#  replicate.mean2 ============================================================
+#' Compares and combines 2-group mean differences in original and follow-up studies
 #' 
 #'
 #' @description 
@@ -113,8 +113,8 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd2
 }
 
 
-#  replicate.mean.ps
-#' Compares paired-samples mean differences in original and follow-up studies
+#  replicate.mean.ps ============================================================
+#' Compares and combines paired-samples mean differences in original and follow-up studies
 #' 
 #'
 #' @description 
@@ -227,8 +227,8 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 }
 
 
-#  replicate.stdmean2
-#' Compares 2-group standardized mean differences in original and 
+#  replicate.stdmean2 ============================================================
+#' Compares and combines 2-group standardized mean differences in original and 
 #' follow-up studies
 #' 
 #'
@@ -327,8 +327,8 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
 }
 
 
-#  replicate.stdmean.ps
-#' Compares paired-samples standardized mean differences in original and 
+#  replicate.stdmean.ps ============================================================
+#' Compares and combines paired-samples standardized mean differences in original and 
 #' follow-up studies
 #' 
 #' 
@@ -428,8 +428,8 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
 }
 
 
-#  replicate.cor
-#' Compares Pearson or partial correlations in original and follow-up studies
+#  replicate.cor ============================================================
+#' Compares and combines Pearson or partial correlations in original and follow-up studies
 #' 
 #'
 #' @description 
@@ -534,8 +534,8 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 }
 
 
-# replicate.prop2 
-#' Compares 2-group proportion differences in original and follow-up studies
+# replicate.prop2 ============================================================
+#' Compares and combines 2-group proportion differences in original and follow-up studies
 #' 
 #'
 #' @description 
@@ -646,8 +646,8 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 }
 
 
-# replicate.oddsratio 
-#' Compares 2-group odds ratios in original and follow-up studies
+# replicate.oddsratio ============================================================
+#' Compares and combines odds ratios in original and follow-up studies
 #' 
 #' @description 
 #' This function computes confidence intervals for an odds ratio from an
@@ -657,7 +657,7 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    est1		   estimate of log odds ratio 1 in original study 
+#' @param    est1		   estimate of log odds ratio in original study 
 #' @param    se1		   standard error of log odds ratio in original study
 #' @param    est2   	 estimate of log odds ratio in follow-up study 
 #' @param    se2    	 standard error of log odds ratio in follow-up study
@@ -732,8 +732,8 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 }
 
 
-# replicate.slope 
-#' Compares slope coefficients in original and follow-up studies
+# replicate.slope ============================================================ 
+#' Compares and combines slope coefficients in original and follow-up studies
 #'
 #' @description 
 #' Computes confidence intervals for a slope in original and follow-up studies,
@@ -833,8 +833,8 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
 }
 
 
-#  replicate.gen
-#' Compares effect sizes in original and follow-up studies
+#  replicate.gen ============================================================
+#' Compares and combines effect sizes in original and follow-up studies
 #'
 #'
 #' @description 
@@ -917,7 +917,7 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
 
 
 # replicate.spear ===============================================================
-#' Compares Spearman correlations in original and follow-up studies
+#' Compares and combines Spearman correlations in original and follow-up studies
 #' 
 #'                           
 #' @description 
@@ -1021,7 +1021,7 @@ replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
 
 
 #  replicate.prop1 ============================================================
-#' Compares single proportion in original and follow-up studies
+#' Compares and combines single proportion in original and follow-up studies
 #' 
 #'
 #' @description 
@@ -1038,7 +1038,6 @@ replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
 #' @param    n1     	 sample size in original study
 #' @param    f2 	   	 frequency count in follow-up study 
 #' @param    n2    	 	 sample size for in follow-up study
-
 #' 
 #' 
 #' @return A 4-row matrix. The rows are:
@@ -1101,13 +1100,13 @@ replicate.prop1 <- function(alpha, f1, n1, f2, n2){
 
 
 #  replicate.mean1 ============================================================
-#' Compares single mean in original and follow-up studies
+#' Compares and combines single mean in original and follow-up studies
 #' 
 #'
 #' @description 
 #' This function computes confidence intervals for a single mean from an 
 #' original study and a follow-up study. Confidence intervals for the
-#' difference between the two mean and average of the two means also are
+#' difference between the two means and average of the two means also are
 #' computed. A Satterthwaite adjustment to the degrees of freedom is used to
 #' improve the accuracy of the confidence intervals for the difference and
 #' average. The same results can be obtained using the \link[vcmeta]{meta.lc.mean1}
@@ -1122,7 +1121,6 @@ replicate.prop1 <- function(alpha, f1, n1, f2, n2){
 #' @param    m2 	   	 estimated mean in follow-up study 
 #' @param    sd2   		 estimated SD in follow-up study
 #' @param    n2    	 	 sample size for in follow-up study
-
 #' 
 #' 
 #' @return A 4-row matrix. The rows are:
