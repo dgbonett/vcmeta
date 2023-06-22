@@ -966,7 +966,6 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
 #' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
-#' @importFrom stats pt
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
 #' @export
