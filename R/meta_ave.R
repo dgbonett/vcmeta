@@ -1,4 +1,3 @@
-# ================= Average of Estimates from Multiple Studies  ============
 #  meta.ave.mean2 ==========================================================
 #' Confidence interval for an average mean difference from 2-group studies 
 #'
