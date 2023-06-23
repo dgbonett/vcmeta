@@ -4,7 +4,7 @@
 #' 
 #' @description
 #' This function can be used to compute the standard error of a 
-#' 2-group mean difference using the two estimated means, estimated 
+#' 2-group mean difference using the estimated means, estimated 
 #' standard deviations, and sample sizes. The effect size estimate 
 #' and standard error output from this function can be used as input
 #' in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, 
@@ -56,7 +56,7 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' 
 #' @description
 #' This function can be used to compute the standard error of a 
-#' paired-samples mean difference using the two estimated means, 
+#' paired-samples mean difference using the estimated means, 
 #  estimated standard deviations, estimated Pearson correlation, 
 #' and sample size. The effect size estimate and standard error 
 #' output from this function can be used as input in the
@@ -108,7 +108,7 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' 
 #' @description
 #' This function computes the standard error of a 2-group standardized
-#' mean difference using the sample sizes and the estimated sample means
+#' mean difference using the sample sizes and the estimated means
 #  and standard deviations. Use the square root average variance
 #' standardizer (stdzr = 0) for 2-group experimental designs. Use the 
 #' square root weighted variance standardizer (stdzr = 3) for 2-group 
@@ -190,8 +190,8 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 #'
 #' @description
 #' This function computes the standard error of a paired-samples standardized
-#' mean difference using the sample size and estimated sample means, standard 
-#' deviations, and correlation. The effect size estimate and standard error
+#' mean difference using the sample size and estimated means, standard 
+#' deviations, and estimated correlation. The effect size estimate and standard error
 #' output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
 #' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
 #' applications where compatible standardized mean differences from a combination
@@ -526,8 +526,8 @@ se.odds <- function(f1, n1, f2, n2) {
 #' 
 #' @description
 #' This function can be used to compute the standard error of a 
-#' 2-group mean ratio using the two estimated means, estimated standard
-#' deviations, and sample sizes. The log-mean estimate and standard 
+#' 2-group log mean ratio using the estimated means, estimated standard
+#' deviations, and sample sizes. The log mean estimate and standard 
 #' error output from this function can be used as input in the
 #' \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
 #' link[vcmeta]{meta.lm.gen} functions in application where compatible
@@ -580,7 +580,7 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' 
 #' @description
 #' This function can be used to compute the standard error of a 
-#' paired-samples mean ratio using the estimated means, estimated
+#' paired-samples log mean ratio using the estimated means, estimated
 #  standard deviations, estimated Pearson correlation, and sample 
 #' size. The log-mean estimate and standard error output from
 #' this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
@@ -683,7 +683,7 @@ se.slope <- function(cor, sdy, sdx, n) {
 #' 
 #' @description
 #' This function can be used to compute the standard error of a 
-#' 2-group proportion difference using the two sample proportions and sample
+#' 2-group proportion difference using the frequency counts and sample
 #' sizes. The effect size estimate and standard error output from this
 #' function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
 #' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
@@ -764,7 +764,7 @@ se.prop2 <- function(f1, f2, n1, n2) {
 #' 
 #' 
 #' @references
-#' \insertRef{Agresti2000}{vcmeta}
+#' \insertRef{Bonett2012}{vcmeta}
 #'
 #'
 #' @export
