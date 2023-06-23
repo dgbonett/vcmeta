@@ -107,21 +107,25 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' 
 #' 
 #' @description
-#' Use the square root average variance standardizer (stdzr = 0) for 2-group
-#' experimental designs. Use the square root weighted variance standardizer
-#' (stdzr = 3) for 2-group nonexperimental designs with simple random sampling.
-#' The single-group standardizers (stdzr = 1 and stdzr = 2) can be used with
-#' either 2-group experimental or nonexperimental designs. The effect size 
-#' estimate and standard error output from this function can be used as input
-#' in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} 
-#' functions in applications where compatible standardized mean differences from a 
-#' combination of 2-group and paired-samples experiments are used in the meta-analysis. 
+#' This function computes the standard error of a 2-group standardized
+#' mean difference using the sample sizes and the estimated sample means
+#  and standard deviations. Use the square root average variance
+#' standardizer (stdzr = 0) for 2-group experimental designs. Use the 
+#' square root weighted variance standardizer (stdzr = 3) for 2-group 
+#' nonexperimental designs with simple random sampling. The single-group 
+#' standardizers (stdzr = 1 and stdzr = 2) can be used with either 
+#' 2-group experimental or nonexperimental designs. The effect size 
+#' estimate and standard error output from this function can be used as 
+#' input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
+#' and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
+#' standardized mean differences from a combination of 2-group and 
+#' paired-samples experiments are used in the meta-analysis. 
 #'
 #' 
-#' @param    m1		  sample mean for group 1 
-#' @param    m2		  sample mean for group 2 
-#' @param    sd1		sample standard deviation for group 1
-#' @param    sd2		sample standard deviation for group 2
+#' @param    m1		  estimated mean for group 1 
+#' @param    m2		  estimated mean for group 2 
+#' @param    sd1		estimated standard deviation for group 1
+#' @param    sd2		estimated standard deviation for group 2
 #' @param    n1		  sample size for group 1
 #' @param    n2		  sample size for group 2
 #' @param stdzr
@@ -185,18 +189,20 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 #' 
 #'
 #' @description
-#' The effect size estimate and standard error output from this function can be used 
-#' as input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and 
-#' \link[vcmeta]{meta.lm.gen} functions in applications where compatible standardized 
-#' mean differences from a combination of 2-group and paired-samples experiments are 
-#' used in the meta-analysis. 
+#' This function computes the standard error of a paired-samples standardized
+#' mean difference using the sample size and estimated sample means, standard 
+#' deviations, and correlation. The effect size estimate and standard error
+#' output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
+#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
+#' applications where compatible standardized mean differences from a combination
+#' of 2-group and paired-samples experiments are used in the meta-analysis. 
 #' 
 #' 
-#' @param    m1		sample mean for measurement 1 
-#' @param    m2		sample mean for measurement 2 
-#' @param    sd1	sample standard deviation for measurement 1
-#' @param    sd2	sample standard deviation for measurement 2
-#' @param    cor	sample correlation for measurements 1 and 2
+#' @param    m1		estimated mean for measurement 1 
+#' @param    m2		estimated mean for measurement 2 
+#' @param    sd1	estimated standard deviation for measurement 1
+#' @param    sd2	estimated standard deviation for measurement 2
+#' @param    cor	estimated correlation for measurements 1 and 2
 #' @param    n		sample size
 #' @param stdzr
 #' * set to 0 for square root average variance standardizer 
@@ -393,7 +399,7 @@ se.semipartial <- function(cor, r2, n) {
 #' 
 #'
 #' @description
-#' The function computes a point-biserial correlation and its standard 
+#' This function computes a point-biserial correlation and its standard 
 #' error for two types of point-biserial correlations in 2-group designs
 #' using the estimated means, estimated standard deviations, and samples
 #' sizes. One type of point-biserial correlation uses an unweighted average
@@ -574,7 +580,7 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' 
 #' @description
 #' This function can be used to compute the standard error of a 
-#' paired-samples mean ratio using the estimated eans, estimated
+#' paired-samples mean ratio using the estimated means, estimated
 #  standard deviations, estimated Pearson correlation, and sample 
 #' size. The log-mean estimate and standard error output from
 #' this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
@@ -723,8 +729,8 @@ se.prop2 <- function(f1, f2, n1, n2) {
 
 
 # se.prop.ps =========================================================
-#' Computes the Bonett-Price estimate and standard error for a paired-samples
-#' proportion difference
+#' Computes the Bonett-Price estimate and standard error for a 
+#' paired-samples proportion difference
 #' 
 #' 
 #' @description
@@ -850,7 +856,7 @@ se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1
 #' variables 2 and 3 are different measurements of the same attribute, this 
 #' function can be used to compute the average of cor12 and cor13 and its 
 #' standard error. The average correlation and the standard error from this 
-#' function can then be used as input in the \link[vcmeta]{meta.ave.gen} or 
+#' function can be used as input in the \link[vcmeta]{meta.ave.gen} or 
 #' \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some studies
 #' have reported cor12 and other studies have reported cor13. 
 #' 
@@ -914,7 +920,7 @@ se.ave.cor.over <- function(cor12, cor13, cor23, n) {
 #' measurements of the same attribute, this function can be used to compute the 
 #' average of cor12 and cor34 and its standard error. Note that cor12 and cor34
 #' have no variable in common (i.e., no "overlapping" variable). The average 
-#' correlation and the standard error from this function can then be used as 
+#' correlation and the standard error from this function can be used as 
 #' input in the \link[vcmeta]{meta.ave.gen} or \link[vcmeta]{meta.lm.gen} 
 #' functions in a meta-analysis where some studies have reported cor12 and 
 #' other studies have reported cor34. 
@@ -969,5 +975,67 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
   colnames(out) <- c("Estimate", "SE", "VAR(cor12)", "VAR(cor34)", "COV(cor12,cor34)")
   rownames(out) <- c("Correlation", "Fisher")
   return(out)
+}
+
+
+#  se.tetra ==================================================================
+#' Computes the standard error for a tetrachoric approximation  
+#'
+#'
+#' @description
+#' This function can be used to compute an estimate of a tetrachoric 
+#' approximation and its standard error using the frequency counts from a
+#' 2 x 2 contingency table for two artifically dichotomous variables. A 
+#' tetrachoric approximation could be compatible with a Pearson correlation
+#' in a meta-analysis. The tetrachoric approximation and the standard error 
+#' from this function can be used as input in the \link[vcmeta]{meta.ave.gen} 
+#' or \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some 
+#' studies have reported Pearson correlations between quantitative variables 
+#' x and y and other studies have reported a 2 x 2 contingency table for
+#' dichotomized versions of variables x and y. 
+#'
+#'
+#' @param   f00    number of participants with y = 0 and x = 0
+#' @param   f01    number of participants with y = 0 and x = 1
+#' @param   f10    number of participants with y = 1 and x = 0
+#' @param   f11    number of participants with y = 1 and x = 1
+#'
+#'
+#' @references
+#' \insertRef{Bonett2005}{statpsych}
+#'
+#'
+#' @return
+#' Returns a 1-row matrix. The columns are:
+#' * Estimate - estimate of tetrachoric approximation
+#' * SE - standard error
+#'
+#'
+#' @examples
+#' se.tetra(46, 15, 54, 85)
+#'
+#' # Should return:
+#' #       Estimate         SE 
+#' # [1,] 0.5135167 0.09358336
+#'
+#'
+#' @export
+se.tetra <- function(f00, f01, f10, f11) {
+ n <- f00 + f01 + f10 + f11
+ or <- (f11 + .5)*(f00 + .5)/((f01 + .5)*(f10 + .5))
+ r1 <- (f00 + f01 + 1)/(n + 2)
+ r2 <- (f10 + f11 + 1)/(n + 2)
+ c1 <- (f00 + f10 + 1)/(n + 2)
+ c2 <- (f01 + f11 + 1)/(n + 2)
+ pmin <- min(c1, c2, r1, r2)
+ c <- (1 - abs(r1 - c1)/5 - (.5 - pmin)^2)/2
+ lor <- log(or)
+ se.lor <- sqrt(1/(f00 + .5) + 1/(f01 + .5) + 1/(f10 + .5) + 1/(f11 + .5))
+ tetra <- cos(3.14159/(1 + or^c))
+ k <- (3.14159*c*or^c)*sin(3.14159/(1 + or^c))/(1 + or^c)^2
+ se <- k*se.lor
+ out <- t(c(tetra, se))
+ colnames(out) <- c("Estimate", "SE")
+ return(out)
 }
 
