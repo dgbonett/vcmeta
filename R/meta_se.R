@@ -7,7 +7,7 @@
 #' 2-group mean difference using the two estimated means, estimated 
 #' standard deviations, and sample sizes. The effect size estimate 
 #' and standard error output from this function can be used as input
-#' in the \link[vcmeta]{meta.ave.gen},  \link[vcmeta]{meta.lc.gen}, 
+#' in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, 
 #' and \link[vcmeta]{meta.lm.gen} functions in applications where 
 #' compatible mean differences from a combination of 2-group
 #' and paired-samples experiments are used in the meta-analysis. 
@@ -794,7 +794,7 @@ se.prop.ps <- function(f00, f01, f10, f11) {
 #' estimated within-group correlation between the two response variables, and 
 #' the two sample sizes. The average mean difference and standard error output 
 #' from this function can then be used as input in the
-#' \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, or 
+#' \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and 
 #' \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some studies
 #' have used one of the two parallel response variables and other studies have
 #' used the other parallel response variable. 
@@ -856,7 +856,7 @@ se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1
 #' variables 2 and 3 are different measurements of the same attribute, this 
 #' function can be used to compute the average of cor12 and cor13 and its 
 #' standard error. The average correlation and the standard error from this 
-#' function can be used as input in the \link[vcmeta]{meta.ave.gen} or 
+#' function can be used as input in the \link[vcmeta]{meta.ave.gen} and 
 #' \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some studies
 #' have reported cor12 and other studies have reported cor13. 
 #' 
@@ -921,7 +921,7 @@ se.ave.cor.over <- function(cor12, cor13, cor23, n) {
 #' average of cor12 and cor34 and its standard error. Note that cor12 and cor34
 #' have no variable in common (i.e., no "overlapping" variable). The average 
 #' correlation and the standard error from this function can be used as 
-#' input in the \link[vcmeta]{meta.ave.gen} or \link[vcmeta]{meta.lm.gen} 
+#' input in the \link[vcmeta]{meta.ave.gen} and \link[vcmeta]{meta.lm.gen} 
 #' functions in a meta-analysis where some studies have reported cor12 and 
 #' other studies have reported cor34. 
 #' 
@@ -989,7 +989,7 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
 #' tetrachoric approximation could be compatible with a Pearson correlation
 #' in a meta-analysis. The tetrachoric approximation and the standard error 
 #' from this function can be used as input in the \link[vcmeta]{meta.ave.gen} 
-#' or \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some 
+#' and \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some 
 #' studies have reported Pearson correlations between quantitative variables 
 #' x and y and other studies have reported a 2 x 2 contingency table for
 #' dichotomized versions of variables x and y. 
