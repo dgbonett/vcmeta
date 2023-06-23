@@ -1002,7 +1002,7 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
 #'
 #'
 #' @references
-#' \insertRef{Bonett2005}{statpsych}
+#' \insertRef{Bonett2005}{vcmeta}
 #'
 #'
 #' @return
