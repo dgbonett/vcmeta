@@ -856,9 +856,9 @@ se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1
 #' variables 2 and 3 are different measurements of the same attribute, this 
 #' function can be used to compute the average of cor12 and cor13 and its 
 #' standard error. The average correlation and the standard error from this 
-#' function can be used as input in the \link[vcmeta]{meta.ave.gen} and 
-#' \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some studies
-#' have reported cor12 and other studies have reported cor13. 
+#' function can be used as input in the \link[vcmeta]{meta.ave.gen} function
+#' in a meta-analysis where some studies have reported cor12 and other studies
+#' have reported cor13. 
 #' 
 #' 
 #' @param    cor12	estimated correlation between variables 1 and 2 
@@ -921,9 +921,8 @@ se.ave.cor.over <- function(cor12, cor13, cor23, n) {
 #' average of cor12 and cor34 and its standard error. Note that cor12 and cor34
 #' have no variable in common (i.e., no "overlapping" variable). The average 
 #' correlation and the standard error from this function can be used as 
-#' input in the \link[vcmeta]{meta.ave.gen} and \link[vcmeta]{meta.lm.gen} 
-#' functions in a meta-analysis where some studies have reported cor12 and 
-#' other studies have reported cor34. 
+#' input in the \link[vcmeta]{meta.ave.gen} function in a meta-analysis where
+#' some studies have reported cor12 and other studies have reported cor34. 
 #' 
 #' 
 #' @param    cor12	  estimated correlation between variables 1 and 2 
@@ -989,10 +988,10 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
 #' A tetrachoric approximation could be compatible with a Pearson correlation
 #' in a meta-analysis. The tetrachoric approximation and the standard error 
 #' from this function can be used as input in the \link[vcmeta]{meta.ave.gen} 
-#' and \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some 
-#' studies have reported Pearson correlations between quantitative variables 
-#' x and y and other studies have reported a 2 x 2 contingency table for
-#' dichotomous measurements of variables x and y. 
+#' function in a meta-analysis where some studies have reported Pearson 
+#' correlations between quantitative variables x and y and other studies have
+#' reported a 2 x 2 contingency table for dichotomous measurements of variables
+#' x and y. 
 #'
 #'
 #' @param   f00    number of participants with y = 0 and x = 0
@@ -1051,10 +1050,9 @@ se.tetra <- function(f00, f01, f10, f11) {
 #' variable is artifically dichotomous. A biserial-phi correlation could be 
 #' compatible with a point-biserial correlation in a meta-analysis. The 
 #' biserial-phi estimate and the standard error from this function can be used 
-#' as input in the \link[vcmeta]{meta.ave.gen} or \link[vcmeta]{meta.lm.gen} 
-#' functions in a meta-analysis where a point-biserial correlation has been 
-#' obtained in some studies and a biserial-phi correlation has been obtained
-#' in other studies.  
+#' as input in the \link[vcmeta]{meta.ave.gen} function in a meta-analysis 
+#' where a point-biserial correlation has been obtained in some studies and
+#' a biserial-phi correlation has been obtained in other studies.  
 #'
 #'
 #' @param   f1     number of participants in group 1 who have the attribute
