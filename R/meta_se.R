@@ -979,20 +979,20 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
 
 
 #  se.tetra ==================================================================
-#' Computes the standard error for a tetrachoric approximation  
+#' Computes the standard error for a tetrachoric correlation approximation  
 #'
 #'
 #' @description
 #' This function can be used to compute an estimate of a tetrachoric 
-#' approximation and its standard error using the frequency counts from a
-#' 2 x 2 contingency table for two artifically dichotomous variables. A 
-#' tetrachoric approximation could be compatible with a Pearson correlation
+#' correlation approximation and its standard error using the frequency counts
+#' from a 2 x 2 contingency table for two artifically dichotomous variables.
+#' A tetrachoric approximation could be compatible with a Pearson correlation
 #' in a meta-analysis. The tetrachoric approximation and the standard error 
 #' from this function can be used as input in the \link[vcmeta]{meta.ave.gen} 
 #' and \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some 
 #' studies have reported Pearson correlations between quantitative variables 
 #' x and y and other studies have reported a 2 x 2 contingency table for
-#' dichotomized versions of variables x and y. 
+#' dichotomous measurements of variables x and y. 
 #'
 #'
 #' @param   f00    number of participants with y = 0 and x = 0
@@ -1035,6 +1035,65 @@ se.tetra <- function(f00, f01, f10, f11) {
  k <- (3.14159*c*or^c)*sin(3.14159/(1 + or^c))/(1 + or^c)^2
  se <- k*se.lor
  out <- t(c(tetra, se))
+ colnames(out) <- c("Estimate", "SE")
+ return(out)
+}
+
+
+#  se.biphi ==================================================================
+#' Computes the standard error for a biserial-phi correlation  
+#'
+#'
+#' @description
+#' This function can be used to compute an estimate of a biserial-phi  
+#' correlation and its standard error using the frequency counts from a 2 x 2
+#' contingency table where one variable is naturally dichotomous and the other
+#' variable is artifically dichotomous. A biserial-phi correlation could be 
+#' compatible with a point-biserial correlation in a meta-analysis. The 
+#' biserial-phi estimate and the standard error from this function can be used 
+#' as input in the \link[vcmeta]{meta.ave.gen} or \link[vcmeta]{meta.lm.gen} 
+#' functions in a meta-analysis where a point-biserial correlation has been 
+#' obtained in some studies and a biserial-phi correlation has been obtained
+#' in other studies.  
+#'
+#'
+#' @param   f1     number of participants in group 1 who have the attribute
+#' @param   f2     number of participants in group 2 who have the attribute
+#' @param   n1     sample size for group 1
+#' @param   n2     sample size for group 2
+#'
+#'
+#' @return
+#' Returns a 1-row matrix. The columns are:
+#' * Estimate - estimate of biserial-phi correlation 
+#' * SE - standard error
+#'
+#'
+#' @examples
+#' se.biphi(34, 22, 50, 50)
+#'
+#' # Should return:
+#' #       Estimate        SE 
+#' # [1,]   0.27539 0.1074594
+#'
+#'
+#' @export
+se.biphi <- function(f1, f2, n1, n2) {
+ if (f1 > n1) {stop("f cannot be greater than n")}
+ if (f2 > n2) {stop("f cannot be greater than n")}
+ f00 <- f1
+ f10 <- n1 - f1
+ f01 <- f2
+ f11 <- n2 - f2
+ p1 <- n1/(n1 + n2)
+ p2 <- n2/(n1 + n2)
+ or <- (f11 + .5)*(f00 + .5)/((f01 + .5)*(f10 + .5))
+ lor <- log(or)
+ se.lor <- sqrt(1/(f00 + .5) + 1/(f01 + .5) + 1/(f10 + .5) + 1/(f11 + .5))
+ c <- 2.89/(p1*p2)
+ biphi <- lor/sqrt(lor^2 + c)
+ se.biphi <- sqrt(c^2/(lor^2 + c)^3)*se.lor
+ out <- t(c(biphi, se.biphi))
  colnames(out) <- c("Estimate", "SE")
  return(out)
 }
