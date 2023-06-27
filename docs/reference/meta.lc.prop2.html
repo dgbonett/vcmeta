@@ -55,7 +55,7 @@ linear contrast of 2-group proportion differences from two or more studies.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.lc.prop2</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">f1</span>, <span class="va">f2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="va">v</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.lc.prop2</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">f1</span>, <span class="va">f2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="va">v</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -65,11 +65,11 @@ linear contrast of 2-group proportion differences from two or more studies.</p>
 
 
 <dt>f1</dt>
-<dd><p>vector of group 1 event counts</p></dd>
+<dd><p>vector of group 1 frequency counts</p></dd>
 
 
 <dt>f2</dt>
-<dd><p>vector of group 2 event counts</p></dd>
+<dd><p>vector of group 2 frequency counts</p></dd>
 
 
 <dt>n1</dt>
@@ -88,8 +88,7 @@ linear contrast of 2-group proportion differences from two or more studies.</p>
     <h2>Value</h2>
     
 
-<p>Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:</p><ul><li><p>Estimate - estimate of the linear contrast</p></li>
+<p>Returns 1-row matrix with the following columns:</p><ul><li><p>Estimate - estimate of the linear contrast</p></li>
 <li><p>SE - standard error</p></li>
 <li><p>LL - lower limit of the confidence interval</p></li>
 <li><p>UL - upper limit of the confidence interval</p></li>
@@ -99,26 +98,26 @@ has the following columns:</p><ul><li><p>Estimate - estimate of the linear contr
     <p>Bonett DG, Price RM (2014).
 “Meta-analysis methods for risk differences.”
 <em>British Journal of Mathematical and Statistical Psychology</em>, <b>67</b>(3), 371--387.
-ISSN 00071102, doi: <a href="https://doi.org/10.1111/bmsp.12024" class="external-link">10.1111/bmsp.12024</a>
+ISSN 00071102, <a href="https://doi.org/10.1111/bmsp.12024" class="external-link">doi:10.1111/bmsp.12024</a>
 , <a href="https://onlinelibrary.wiley.com/doi/10.1111/bmsp.12024" class="external-link">https://onlinelibrary.wiley.com/doi/10.1111/bmsp.12024</a>.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">150</span>, <span class="fl">150</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">150</span>, <span class="fl">150</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">50</span>, <span class="fl">25</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.lc.prop2</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">f1</span>, <span class="va">f2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="va">v</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">150</span>, <span class="fl">150</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span>, <span class="fl">150</span>, <span class="fl">150</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">16</span>, <span class="fl">50</span>, <span class="fl">25</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">7</span>, <span class="fl">15</span>, <span class="fl">20</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="op">-</span><span class="fl">1</span>, <span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.lc.prop2</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">f1</span>, <span class="va">f2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="va">v</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate         SE         LL        UL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contrast -0.05466931 0.09401019 -0.2389259 0.1295873</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return:</span></span>
-<span class="r-in"><span class="co">#             Estimate         SE         LL        UL</span></span>
-<span class="r-in"><span class="co"># Contrast -0.05466931 0.09401019 -0.2389259 0.1295873</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return:</span></span></span>
+<span class="r-in"><span><span class="co">#             Estimate         SE         LL        UL</span></span></span>
+<span class="r-in"><span><span class="co"># Contrast -0.05466931 0.09401019 -0.2389259 0.1295873</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -133,7 +132,7 @@ ISSN 00071102, doi: <a href="https://doi.org/10.1111/bmsp.12024" class="external
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

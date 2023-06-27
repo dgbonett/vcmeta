@@ -2,18 +2,18 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.cor}
 \alias{replicate.cor}
-\title{Compares Pearson or partial correlations in original and follow-up studies}
+\title{Compares and combines Pearson or partial correlations in original and follow-up studies}
 \usage{
 replicate.cor(alpha, cor1, n1, cor2, n2, s)
 }
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{cor1}{estimated Pearson correlation between y and x in original study}
+\item{cor1}{estimated Pearson correlation in original study}
 
 \item{n1}{sample size in original study}
 
-\item{cor2}{estimated Pearson correlation between y and x in follow-up study}
+\item{cor2}{estimated Pearson correlation in follow-up study}
 
 \item{n2}{sample size in follow-up study}
 
@@ -25,14 +25,14 @@ A 4-row matrix. The rows are:
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
 \item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size between the two studies
+\item Row 4 estimates the average effect size for the two studies
 }
 
 The columns are:
 \itemize{
-\item Estimate - Pearson or partial correlation estimate
+\item Estimate - Pearson or partial correlation estimate (single study, difference, average)
 \item SE - standard error
-\item z - z-value
+\item z - t-value for rows 1 and 2; z-value for rows 3 and 4
 \item p - p-value
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -48,10 +48,10 @@ replicate.cor(.05, .598, 80, .324, 200, 0)
 
 # Should return:
 #                      Estimate         SE        z            p        LL        UL
-#  Original:              0.598 0.11396058 6.589418 4.708045e-09 0.4355043 0.7227538
-#  Follow-up:             0.324 0.07124705 4.819037 2.865955e-06 0.1939787 0.4428347
-#  Original - Follow-up:  0.274 0.09708614 2.633335 8.455096e-03 0.1065496 0.4265016
-#  Average:               0.461 0.04854307 7.634998 2.264855e-14 0.3725367 0.5411607
+# Original:                0.598 0.07320782 6.589418 4.708045e-09 0.4355043 0.7227538
+# Follow-up:               0.324 0.06376782 4.819037 2.865955e-06 0.1939787 0.4428347
+# Original - Follow-up:    0.274 0.09708614 2.633335 8.455096e-03 0.1065496 0.4265016
+# Average:                 0.461 0.04854307 7.634998 2.264855e-14 0.3725367 0.5411607
 
 
 }

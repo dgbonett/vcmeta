@@ -32,8 +32,7 @@ meta.lc.stdmean2(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr)
 }}
 }
 \value{
-Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:
+Returns 1-row matrix with the following columns:
 \itemize{
 \item Estimate - estimate of linear contrast
 \item SE - standard error
@@ -44,7 +43,7 @@ has the following columns:
 \description{
 Computes the estimate, standard error, and confidence interval for a
 linear contrast of 2-group standardized mean differences from two or
-more studies. Equal variances within or across studies is not assumed.
+more studies. Equality of variances within or across studies is not assumed.
 Use the square root average variance standardizer (stdzr = 0) for 2-group
 experimental designs.  Use the square root weighted variance standardizer
 (stdzr = 3) for 2-group nonexperimental designs with simple random sampling.

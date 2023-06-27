@@ -15,9 +15,9 @@ se.meanratio2(m1, m2, sd1, sd2, n1, n2)
 
 \item{sd2}{estimated standard deviation for group 2}
 
-\item{n1}{group 1 sample size}
+\item{n1}{sample size for group 1}
 
-\item{n2}{group 2 sample size}
+\item{n2}{sample size for group 2}
 }
 \value{
 Returns a one-row matrix:
@@ -25,15 +25,13 @@ Returns a one-row matrix:
 \item Estimate - estimate of log mean ratio
 \item SE - standard error
 }
-
-
 }
 \description{
 This function can be used to compute the standard error of a
-2-group mean ratio using the two estimated means, estimated standard
-deviations, and sample sizes. The effect size estimate and standard
+2-group log mean ratio using the estimated means, estimated standard
+deviations, and sample sizes. The log mean estimate and standard
 error output from this function can be used as input in the
-\link[vcmeta]{meta.ave.gen},  \link[vcmeta]{meta.lc.gen}, and
+\link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
 link[vcmeta]{meta.lm.gen} functions in application where compatible
 mean ratios from a combination of 2-group and paired-samples experiments
 are used in the meta-analysis.

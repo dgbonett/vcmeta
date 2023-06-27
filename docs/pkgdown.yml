@@ -1,8 +1,8 @@
-pandoc: 2.14.0.3
-pkgdown: 2.0.4
+pandoc: 3.1.1
+pkgdown: 2.0.7
 pkgdown_sha: ~
 articles: {}
-last_built: 2022-06-14T22:19Z
+last_built: 2023-06-27T02:31Z
 urls:
   reference: https://dgbonett.github.io/vcmeta/reference
   article: https://dgbonett.github.io/vcmeta/articles

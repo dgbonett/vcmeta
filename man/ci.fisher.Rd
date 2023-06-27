@@ -20,7 +20,7 @@ interval
 \description{
 This function computes a confidence interval for any type
 correlation using an estimated correlation and its standard
-error. This function should be used with the meta.ave.gen
+error. This function should be used with the \link[vcmeta]{meta.ave.gen}
 function when the effect size is a correlation. Use the
 estimated average correlation and it standard error from
 meta.ave.gen (when the effect size is a correlation) in the

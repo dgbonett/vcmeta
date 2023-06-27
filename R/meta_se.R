@@ -547,7 +547,6 @@ se.odds <- function(f1, n1, f2, n2) {
 #' Returns a one-row matrix:
 #' * Estimate - estimate of log mean ratio
 #' * SE - standard error
-#' @return
 #'  
 #' @examples
 #' se.meanratio2(21.9, 16.1, 3.82, 3.21, 40, 40)
@@ -601,7 +600,6 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' Returns a one-row matrix:
 #' * Estimate - estimate of log mean ratio
 #' * SE - standard error
-#' @return
 #'  
 #' @examples
 #' se.meanratio.ps(21.9, 16.1, 3.82, 3.21, .748, 40)

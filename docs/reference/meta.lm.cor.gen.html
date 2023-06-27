@@ -3,7 +3,7 @@
 meta-regression model where the dependent variable is a
 Fisher-transformed correlation. The correlations can be of different types
 (e.g., Pearson, partial, Spearman). The estimates are OLS estimates
-with standard errors that accommodate residual heteroscedasticity.
+with robust standard errors that accommodate residual heteroscedasticity.
 This function uses estimated correlations and their standard errors as
 input. The correlations are Fisher-transformed and hence the parameter
 estimates do not have a simple interpretation. However, the hypothesis
@@ -62,7 +62,7 @@ positive or negative."><!-- mathjax --><script src="https://cdnjs.cloudflare.com
 meta-regression model where the dependent variable is a
 Fisher-transformed correlation. The correlations can be of different types
 (e.g., Pearson, partial, Spearman). The estimates are OLS estimates
-with standard errors that accommodate residual heteroscedasticity.
+with robust standard errors that accommodate residual heteroscedasticity.
 This function uses estimated correlations and their standard errors as
 input. The correlations are Fisher-transformed and hence the parameter
 estimates do not have a simple interpretation. However, the hypothesis
@@ -71,7 +71,7 @@ positive or negative.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.lm.cor.gen</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">cor</span>, <span class="va">se</span>, <span class="va">X</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.lm.cor.gen</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">cor</span>, <span class="va">se</span>, <span class="va">X</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -107,22 +107,22 @@ row per predictor.  The matrix has the following columns:</p><ul><li><p>Estimate
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">cor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.40</span>, <span class="fl">.65</span>, <span class="fl">.60</span>, <span class="fl">.45</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.182</span>, <span class="fl">.114</span>, <span class="fl">.098</span>, <span class="fl">.132</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">25</span>, <span class="fl">23</span>, <span class="fl">19</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="va">x1</span>, <span class="fl">4</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.lm.cor.gen</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">cor</span>, <span class="va">se</span>, <span class="va">X</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">cor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.40</span>, <span class="fl">.65</span>, <span class="fl">.60</span>, <span class="fl">.45</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.182</span>, <span class="fl">.114</span>, <span class="fl">.098</span>, <span class="fl">.132</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">25</span>, <span class="fl">23</span>, <span class="fl">19</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="va">x1</span>, <span class="fl">4</span>, <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.lm.cor.gen</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">cor</span>, <span class="va">se</span>, <span class="va">X</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>       Estimate         SE          z     p</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> b0 -0.47832153 0.63427931 -0.7541181 0.451</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> b1  0.05047154 0.02879859  1.7525699 0.080</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return: </span></span>
-<span class="r-in"><span class="co">#       Estimate         SE          z     p</span></span>
-<span class="r-in"><span class="co"># b0 -0.47832153 0.63427931 -0.7541181 0.451</span></span>
-<span class="r-in"><span class="co"># b1  0.05047154 0.02879859  1.7525699 0.080</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return: </span></span></span>
+<span class="r-in"><span><span class="co">#       Estimate         SE          z     p</span></span></span>
+<span class="r-in"><span><span class="co"># b0 -0.47832153 0.63427931 -0.7541181 0.451</span></span></span>
+<span class="r-in"><span><span class="co"># b1  0.05047154 0.02879859  1.7525699 0.080</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -137,7 +137,7 @@ row per predictor.  The matrix has the following columns:</p><ul><li><p>Estimate
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

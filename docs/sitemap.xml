@@ -217,6 +217,9 @@
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean.ps.html</loc>
   </url>
   <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean1.html</loc>
+  </url>
+  <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean2.html</loc>
   </url>
   <url>
@@ -226,16 +229,34 @@
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.plot.html</loc>
   </url>
   <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop1.html</loc>
+  </url>
+  <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop2.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.slope.html</loc>
   </url>
   <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.spear.html</loc>
+  </url>
+  <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.stdmean.ps.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.stdmean2.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/se.ave.cor.nonover.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/se.ave.cor.over.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/se.ave.mean2.dep.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/se.biphi.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/se.cor.html</loc>
@@ -278,5 +299,11 @@
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/se.stdmean2.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/se.tetra.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/stdmean2.from.t.html</loc>
   </url>
 </urlset>

@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.mean.ps}
 \alias{replicate.mean.ps}
-\title{Compares paired-samples mean differences in original and follow-up studies}
+\title{Compares and combines paired-samples mean differences in original and follow-up studies}
 \usage{
 replicate.mean.ps(
   alpha,
@@ -53,12 +53,12 @@ A 4-row matrix. The rows are:
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
 \item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size between the two studies
+\item Row 4 estimates the average effect size for the two studies
 }
 
 The columns are:
 \itemize{
-\item Estimate - effect size estimate
+\item Estimate - mean difference estimate (single study, difference, average)
 \item SE - standard error
 \item df - degrees of freedom
 \item t - t-value

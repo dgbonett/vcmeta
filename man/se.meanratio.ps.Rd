@@ -25,13 +25,11 @@ Returns a one-row matrix:
 \item Estimate - estimate of log mean ratio
 \item SE - standard error
 }
-
-
 }
 \description{
 This function can be used to compute the standard error of a
-paired-samples mean ratio using the estimated eans, estimated
-size. The effect size estimate and standard error output from
+paired-samples log mean ratio using the estimated means, estimated
+size. The log-mean estimate and standard error output from
 this function can be used as input in the \link[vcmeta]{meta.ave.gen},
 \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
 application where compatible mean ratios from a combination of 2-group

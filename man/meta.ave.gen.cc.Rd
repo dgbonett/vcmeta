@@ -2,7 +2,8 @@
 % Please edit documentation in R/meta_ave.R
 \name{meta.ave.gen.cc}
 \alias{meta.ave.gen.cc}
-\title{Confidence interval for an average effect size using a constant coefficient model}
+\title{Confidence interval for an average effect size using a constant
+coefficient model}
 \usage{
 meta.ave.gen.cc(alpha, est, se, bystudy = TRUE)
 }
@@ -16,9 +17,8 @@ meta.ave.gen.cc(alpha, est, se, bystudy = TRUE)
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
 \value{
-Returns a matrix.  The first row is the average estimate
-across all studies.  If bystudy is true, there is 1 additional row for
-each study.  The matrix has the following columns:
+Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
 \item Estimate - the estimated effect size
 \item SE - standard error

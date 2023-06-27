@@ -32,7 +32,7 @@ This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a
 Fisher-transformed correlation. The correlations can be of different types
 (e.g., Pearson, partial, Spearman). The estimates are OLS estimates
-with standard errors that accommodate residual heteroscedasticity.
+with robust standard errors that accommodate residual heteroscedasticity.
 This function uses estimated correlations and their standard errors as
 input. The correlations are Fisher-transformed and hence the parameter
 estimates do not have a simple interpretation. However, the hypothesis

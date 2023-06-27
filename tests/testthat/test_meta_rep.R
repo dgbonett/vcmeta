@@ -146,3 +146,40 @@ test_that("replicate.slope returns valid matrix", {
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
 })
+
+
+
+test_that("replicate.spear returns valid matrix", {
+  colnames_expected <- c("Estimate", "SE", "z", "p", "LL", "UL")  
+
+  res <- replicate.spear(.05, .598, 80, .324, 200)
+  
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+
+test_that("replicate.mean1 returns valid matrix", {
+  colnames_expected <- c("Estimate", "SE", "LL", "UL", "df")  
+  
+  res <- replicate.mean1(.05, 21.9, 3.82, 40, 25.2, 3.98, 75)
+  
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+
+test_that("replicate.prop1 returns valid matrix", {
+  colnames_expected <- c("Estimate", "SE", "LL", "UL")  
+  
+  res <- replicate.prop1(.05, 21, 300, 35, 400)
+  
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})

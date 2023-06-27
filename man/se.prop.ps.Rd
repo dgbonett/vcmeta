@@ -2,8 +2,8 @@
 % Please edit documentation in R/meta_se.R
 \name{se.prop.ps}
 \alias{se.prop.ps}
-\title{Computes the Bonett-Price estimate and standard error for a paired-samples
-proportion difference}
+\title{Computes the Bonett-Price estimate and standard error for a
+paired-samples proportion difference}
 \usage{
 se.prop.ps(f00, f01, f10, f11)
 }
@@ -42,5 +42,5 @@ se.prop.ps(16, 64, 5, 15)
 
 }
 \references{
-\insertRef{Agresti2000}{vcmeta}
+\insertRef{Bonett2012}{vcmeta}
 }

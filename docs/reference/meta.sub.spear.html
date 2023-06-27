@@ -60,7 +60,7 @@ exclusive sets of studies. Each set can have one or more studies.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.sub.spear</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">n</span>, <span class="va">cor</span>, <span class="va">group</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.sub.spear</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">n</span>, <span class="va">cor</span>, <span class="va">group</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -104,22 +104,22 @@ correlations. <em>Psychological Methods</em>, 13, 173-189.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">55</span>, <span class="fl">190</span>, <span class="fl">65</span>, <span class="fl">35</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">cor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.40</span>, <span class="fl">.65</span>, <span class="fl">.60</span>, <span class="fl">.45</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">group</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">0</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.sub.spear</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">n</span>, <span class="va">cor</span>, <span class="va">group</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">55</span>, <span class="fl">190</span>, <span class="fl">65</span>, <span class="fl">35</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.40</span>, <span class="fl">.65</span>, <span class="fl">.60</span>, <span class="fl">.45</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">group</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">0</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.sub.spear</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">n</span>, <span class="va">cor</span>, <span class="va">group</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                Estimate         SE         LL        UL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Set A:            0.525 0.06483629  0.3865928 0.6402793</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Set B:            0.600 0.08829277  0.3992493 0.7458512</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Set A - Set B:   -0.075 0.10954158 -0.2760700 0.1564955</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return:</span></span>
-<span class="r-in"><span class="co">#                Estimate         SE         LL        UL</span></span>
-<span class="r-in"><span class="co"># Set A:            0.525 0.06483629  0.3865928 0.6402793</span></span>
-<span class="r-in"><span class="co"># Set B:            0.600 0.08829277  0.3992493 0.7458512</span></span>
-<span class="r-in"><span class="co"># Set A - Set B:   -0.075 0.10954158 -0.2760700 0.1564955</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return:</span></span></span>
+<span class="r-in"><span><span class="co">#                Estimate         SE         LL        UL</span></span></span>
+<span class="r-in"><span><span class="co"># Set A:            0.525 0.06483629  0.3865928 0.6402793</span></span></span>
+<span class="r-in"><span><span class="co"># Set B:            0.600 0.08829277  0.3992493 0.7458512</span></span></span>
+<span class="r-in"><span><span class="co"># Set A - Set B:   -0.075 0.10954158 -0.2760700 0.1564955</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -134,7 +134,7 @@ correlations. <em>Psychological Methods</em>, 13, 173-189.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

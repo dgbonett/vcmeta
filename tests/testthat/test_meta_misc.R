@@ -26,3 +26,14 @@ test_that("meta.chitest returns valid vector", {
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
 })
+
+
+test_that("stdmean2.from.t returns valid matrix", {
+  colnames_expected <- c("Estimate", "SE")
+
+  res <- stdmean2.from.t(3.27, 25, 25)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})

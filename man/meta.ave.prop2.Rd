@@ -10,9 +10,9 @@ meta.ave.prop2(alpha, f1, f2, n1, n2, bystudy = TRUE)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{f1}{vector of group 1 event counts}
+\item{f1}{vector of group 1 frequency counts}
 
-\item{f2}{vector of group 2 event counts}
+\item{f2}{vector of group 2 frequency counts}
 
 \item{n1}{vector of group 1 sample sizes}
 
@@ -21,9 +21,8 @@ meta.ave.prop2(alpha, f1, f2, n1, n2, bystudy = TRUE)
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
 \value{
-Returns a matrix.  The first row is the average estimate
-across all studies.  If bystudy is true, there is 1 additional row for
-each study.  The matrix has the following columns:
+Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
 \item Estimate - the estimated effect size
 \item SE - standard error

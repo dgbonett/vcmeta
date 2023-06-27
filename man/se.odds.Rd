@@ -9,11 +9,11 @@ se.odds(f1, n1, f2, n2)
 \arguments{
 \item{f1}{number of participants who have the outcome of interest in group 1}
 
-\item{n1}{group 1 sample size}
+\item{n1}{sample size for group 1}
 
 \item{f2}{number of participants who have the outcome of interest in group 2}
 
-\item{n2}{group 2 sample size}
+\item{n2}{sample size for group 2}
 }
 \value{
 Returns a one-row matrix:

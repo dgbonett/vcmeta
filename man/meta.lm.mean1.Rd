@@ -33,7 +33,7 @@ row per predictor.  The matrix has the following columns:
 \description{
 This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a mean
-from one group. The estimates are OLS estimates with
+from one group. The estimates are OLS estimates with robust
 standard errors that accomodate residual heteroscedasticity.
 }
 \examples{

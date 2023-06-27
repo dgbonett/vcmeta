@@ -45,4 +45,5 @@ reference:
     - ci.fisher
     - cor.from.t
     - meta.chitest
+    - stdmean2.from.t
 

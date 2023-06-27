@@ -4,7 +4,7 @@
 2-group studies — meta.lc.mean2"><meta property="og:description" content="Computes the estimate, standard error, and confidence interval for a
 linear contrast of 2-group mean differences from two or more studies.
 A Satterthwaite adjustment to the degrees of freedom is used to improve
-the accuracy of the confidence interval. Equal variances within or across
+the accuracy of the confidence interval. Equality of variances within or across
 studies is not assumed."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
@@ -59,12 +59,12 @@ studies is not assumed."><!-- mathjax --><script src="https://cdnjs.cloudflare.c
     <p>Computes the estimate, standard error, and confidence interval for a
 linear contrast of 2-group mean differences from two or more studies.
 A Satterthwaite adjustment to the degrees of freedom is used to improve
-the accuracy of the confidence interval. Equal variances within or across
+the accuracy of the confidence interval. Equality of variances within or across
 studies is not assumed.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.lc.mean2</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">m1</span>, <span class="va">m2</span>, <span class="va">sd1</span>, <span class="va">sd2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="va">v</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.lc.mean2</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">m1</span>, <span class="va">m2</span>, <span class="va">sd1</span>, <span class="va">sd2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="va">v</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -105,8 +105,7 @@ studies is not assumed.</p>
     <h2>Value</h2>
     
 
-<p>Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:</p><ul><li><p>Estimate - estimate of the linear contrast</p></li>
+<p>Returns 1-row matrix with the following columns:</p><ul><li><p>Estimate - estimate of the linear contrast</p></li>
 <li><p>SE - standard error</p></li>
 <li><p>LL - lower limit of the confidence interval</p></li>
 <li><p>UL - upper limit of the confidence interval</p></li>
@@ -117,28 +116,28 @@ has the following columns:</p><ul><li><p>Estimate - estimate of the linear contr
     <p>Bonett DG (2009).
 “Meta-analytic interval estimation for standardized and unstandardized mean differences.”
 <em>Psychological Methods</em>, <b>14</b>(3), 225--238.
-ISSN 1939-1463, doi: <a href="https://doi.org/10.1037/a0016619" class="external-link">10.1037/a0016619</a>
+ISSN 1939-1463, <a href="https://doi.org/10.1037/a0016619" class="external-link">doi:10.1037/a0016619</a>
 , <a href="https://doi.apa.org/getdoi.cfm?doi=10.1037/a0016619" class="external-link">https://doi.apa.org/getdoi.cfm?doi=10.1037/a0016619</a>.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">45.1</span>, <span class="fl">39.2</span>, <span class="fl">36.3</span>, <span class="fl">34.5</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30.0</span>, <span class="fl">35.1</span>, <span class="fl">35.3</span>, <span class="fl">36.2</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">sd1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10.7</span>, <span class="fl">10.5</span>, <span class="fl">9.4</span>, <span class="fl">11.5</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">sd2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12.3</span>, <span class="fl">12.0</span>, <span class="fl">10.4</span>, <span class="fl">9.6</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">25</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">20</span>, <span class="fl">48</span>, <span class="fl">26</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.5</span>, <span class="op">-</span><span class="fl">.5</span>, <span class="op">-</span><span class="fl">.5</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.lc.mean2</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">m1</span>, <span class="va">m2</span>, <span class="va">sd1</span>, <span class="va">sd2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="va">v</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">45.1</span>, <span class="fl">39.2</span>, <span class="fl">36.3</span>, <span class="fl">34.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30.0</span>, <span class="fl">35.1</span>, <span class="fl">35.3</span>, <span class="fl">36.2</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sd1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10.7</span>, <span class="fl">10.5</span>, <span class="fl">9.4</span>, <span class="fl">11.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sd2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12.3</span>, <span class="fl">12.0</span>, <span class="fl">10.4</span>, <span class="fl">9.6</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">20</span>, <span class="fl">50</span>, <span class="fl">25</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">20</span>, <span class="fl">48</span>, <span class="fl">26</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.5</span>, <span class="op">-</span><span class="fl">.5</span>, <span class="op">-</span><span class="fl">.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.lc.mean2</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">m1</span>, <span class="va">m2</span>, <span class="va">sd1</span>, <span class="va">sd2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="va">v</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          Estimate       SE       LL       UL       df</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contrast     9.95 2.837787 4.343938 15.55606 153.8362</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return:</span></span>
-<span class="r-in"><span class="co">#          Estimate       SE       LL       UL       df</span></span>
-<span class="r-in"><span class="co"># Contrast     9.95 2.837787 4.343938 15.55606 153.8362</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return:</span></span></span>
+<span class="r-in"><span><span class="co">#          Estimate       SE       LL       UL       df</span></span></span>
+<span class="r-in"><span><span class="co"># Contrast     9.95 2.837787 4.343938 15.55606 153.8362</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -153,7 +152,7 @@ ISSN 1939-1463, doi: <a href="https://doi.org/10.1037/a0016619" class="external-
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

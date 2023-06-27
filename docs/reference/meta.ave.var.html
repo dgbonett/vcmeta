@@ -55,7 +55,7 @@ from two or more studies.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.ave.var</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">var</span>, <span class="va">n</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.ave.var</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">var</span>, <span class="va">n</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -80,32 +80,31 @@ from two or more studies.</p>
     <h2>Value</h2>
     
 
-<p>Returns a matrix.  The first row is the average estimate
-across all studies.  If bystudy is true, there is 1 additional row for
-each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the estimated variance</p></li>
+<p>Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the estimated variance</p></li>
 <li><p>LL - lower limit of the confidence interval</p></li>
 <li><p>UL - upper limit of the confidence interval</p></li>
 </ul></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">26.63</span>, <span class="fl">22.45</span>, <span class="fl">34.12</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">30</span>, <span class="fl">50</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.ave.var</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">var</span>, <span class="va">n</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">var</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">26.63</span>, <span class="fl">22.45</span>, <span class="fl">34.12</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">30</span>, <span class="fl">50</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.ave.var</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">var</span>, <span class="va">n</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         Estimate       LL       UL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Average 27.73333 21.45679 35.84589</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 1 26.63000 17.86939 43.90614</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 2 22.45000 14.23923 40.57127</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 3 34.12000 23.80835 52.98319</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return:</span></span>
-<span class="r-in"><span class="co">#         Estimate       LL       UL</span></span>
-<span class="r-in"><span class="co"># Average 27.73333 21.45679 35.84589</span></span>
-<span class="r-in"><span class="co"># Study 1 26.63000 17.86939 43.90614</span></span>
-<span class="r-in"><span class="co"># Study 2 22.45000 14.23923 40.57127</span></span>
-<span class="r-in"><span class="co"># Study 3 34.12000 23.80835 52.98319</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return:</span></span></span>
+<span class="r-in"><span><span class="co">#         Estimate       LL       UL</span></span></span>
+<span class="r-in"><span><span class="co"># Average 27.73333 21.45679 35.84589</span></span></span>
+<span class="r-in"><span><span class="co"># Study 1 26.63000 17.86939 43.90614</span></span></span>
+<span class="r-in"><span><span class="co"># Study 2 22.45000 14.23923 40.57127</span></span></span>
+<span class="r-in"><span><span class="co"># Study 3 34.12000 23.80835 52.98319</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -120,7 +119,7 @@ each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the 
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

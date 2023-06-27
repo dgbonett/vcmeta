@@ -55,7 +55,7 @@ linear contrast of any type of effect size from two or more studies.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.lc.gen</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">est</span>, <span class="va">se</span>, <span class="va">v</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.lc.gen</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">est</span>, <span class="va">se</span>, <span class="va">v</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -80,8 +80,7 @@ linear contrast of any type of effect size from two or more studies.</p>
     <h2>Value</h2>
     
 
-<p>Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:</p><ul><li><p>Estimate - estimate of linear contrast</p></li>
+<p>Returns 1-row matrix with the following columns:</p><ul><li><p>Estimate - estimate of linear contrast</p></li>
 <li><p>SE - standard error</p></li>
 <li><p>LL - lower limit of the confidence interval</p></li>
 <li><p>UL - upper limit of the confidence interval</p></li>
@@ -89,17 +88,17 @@ has the following columns:</p><ul><li><p>Estimate - estimate of linear contrast<
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">est</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.55</span>, <span class="fl">.59</span>, <span class="fl">.44</span>, <span class="fl">.48</span>, <span class="fl">.26</span>, <span class="fl">.19</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.054</span>, <span class="fl">.098</span>, <span class="fl">.029</span>, <span class="fl">.084</span>, <span class="fl">.104</span>, <span class="fl">.065</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.5</span>, <span class="op">-</span><span class="fl">.25</span>, <span class="op">-</span><span class="fl">.25</span>, <span class="op">-</span><span class="fl">.25</span>, <span class="op">-</span><span class="fl">.25</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.lc.gen</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">est</span>, <span class="va">se</span>, <span class="va">v</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">est</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.55</span>, <span class="fl">.59</span>, <span class="fl">.44</span>, <span class="fl">.48</span>, <span class="fl">.26</span>, <span class="fl">.19</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.054</span>, <span class="fl">.098</span>, <span class="fl">.029</span>, <span class="fl">.084</span>, <span class="fl">.104</span>, <span class="fl">.065</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.5</span>, <span class="op">-</span><span class="fl">.25</span>, <span class="op">-</span><span class="fl">.25</span>, <span class="op">-</span><span class="fl">.25</span>, <span class="op">-</span><span class="fl">.25</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.lc.gen</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">est</span>, <span class="va">se</span>, <span class="va">v</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          Estimate         SE        LL        UL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contrast   0.2275 0.06755461 0.0950954 0.3599046</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return: </span></span>
-<span class="r-in"><span class="co">#          Estimate         SE        LL        UL</span></span>
-<span class="r-in"><span class="co"># Contrast   0.2275 0.06755461 0.0950954 0.3599046</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return: </span></span></span>
+<span class="r-in"><span><span class="co">#          Estimate         SE        LL        UL</span></span></span>
+<span class="r-in"><span><span class="co"># Contrast   0.2275 0.06755461 0.0950954 0.3599046</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -114,7 +113,7 @@ has the following columns:</p><ul><li><p>Estimate - estimate of linear contrast<
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

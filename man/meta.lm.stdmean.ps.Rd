@@ -45,7 +45,7 @@ row per predictor.  The matrix has the following columns:
 This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a paired-samples
 standardized mean difference. The estimates are OLS estimates with
-standard errors that accommodate residual heteroscedasticity.
+robust standard errors that accommodate residual heteroscedasticity.
 }
 \examples{
 

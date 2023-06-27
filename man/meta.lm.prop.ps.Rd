@@ -9,13 +9,13 @@ meta.lm.prop.ps(alpha, f11, f12, f21, f22, X)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{f11}{vector of frequencies in cell 1,1}
+\item{f11}{vector of frequency counts in cell 1,1}
 
-\item{f12}{vector of frequencies in cell 1,2}
+\item{f12}{vector of frequency counts in cell 1,2}
 
-\item{f21}{vector of frequencies in cell 2,1}
+\item{f21}{vector of frequency counts in cell 2,1}
 
-\item{f22}{vector of frequencies in cell 2,2}
+\item{f22}{vector of frequency counts in cell 2,2}
 
 \item{X}{matrix of predictor values}
 }
@@ -35,7 +35,7 @@ row per predictor.  The matrix has the following columns:
 This function estimates the intercept and slope coefficients
 in a meta-regression model where the dependent variable is a
 paired-samples proportion difference. The estimates are OLS
-estimates with standard errors that accommodate residual
+estimates with robust standard errors that accommodate residual
 heteroscedasticity.
 }
 \examples{

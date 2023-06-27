@@ -32,8 +32,8 @@ row per predictor.  The matrix has the following columns:
 \description{
 This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a log-complement
-Cronbach reliablity. The estimates are OLS estimates with standard errors
-that accommodate residual heteroscedasticity. The exponentiated slope
+Cronbach reliablity. The estimates are OLS estimates with robust standard
+errors that accommodate residual heteroscedasticity. The exponentiated slope
 estimate for a predictor variable describes a multiplicative change in
 variable.
 }

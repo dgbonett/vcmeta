@@ -9,7 +9,7 @@ se.cor(cor, s, n)
 \arguments{
 \item{cor}{estimated Pearson or partial correlation}
 
-\item{s}{number of control variables (0 for Pearson)}
+\item{s}{number of control variables (set to 0 for Pearson)}
 
 \item{n}{sample size}
 }
@@ -28,6 +28,7 @@ estimate and standard error output from this function can be used
 as input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
 and \link[vcmeta]{meta.lm.gen} functions in applications where a
 combination of different types of correlations are used in the
+meta-analysis.
 }
 \examples{
 se.cor(.40, 0, 55)

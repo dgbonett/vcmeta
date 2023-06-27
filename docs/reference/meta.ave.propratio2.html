@@ -55,7 +55,7 @@ geometric average proportion ratio from two or more studies.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.ave.propratio2</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">f1</span>, <span class="va">f2</span>, <span class="va">n1</span>, <span class="va">n2</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.ave.propratio2</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">f1</span>, <span class="va">f2</span>, <span class="va">n1</span>, <span class="va">n2</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -65,11 +65,11 @@ geometric average proportion ratio from two or more studies.</p>
 
 
 <dt>f1</dt>
-<dd><p>vector of group 1 event counts</p></dd>
+<dd><p>vector of group 1 frequency counts</p></dd>
 
 
 <dt>f2</dt>
-<dd><p>vector of group 2 event counts</p></dd>
+<dd><p>vector of group 2 frequency counts</p></dd>
 
 
 <dt>n1</dt>
@@ -88,9 +88,8 @@ geometric average proportion ratio from two or more studies.</p>
     <h2>Value</h2>
     
 
-<p>Returns a matrix.  The first row is the average estimate
-across all studies.  If bystudy is true, there is 1 additional row for
-each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the estimated effect size</p></li>
+<p>Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the estimated effect size</p></li>
 <li><p>SE - standard error</p></li>
 <li><p>LL - lower limit of the confidence interval</p></li>
 <li><p>UL - upper limit of the confidence interval</p></li>
@@ -103,17 +102,17 @@ each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the 
     <p>Price RM, Bonett DG (2008).
 “Confidence intervals for a ratio of two independent binomial proportions.”
 <em>Statistics in Medicine</em>, <b>27</b>(26), 5497--5508.
-ISSN 02776715, doi: <a href="https://doi.org/10.1002/sim.3376" class="external-link">10.1002/sim.3376</a>
+ISSN 02776715, <a href="https://doi.org/10.1002/sim.3376" class="external-link">doi:10.1002/sim.3376</a>
 , <a href="https://onlinelibrary.wiley.com/doi/10.1002/sim.3376" class="external-link">https://onlinelibrary.wiley.com/doi/10.1002/sim.3376</a>.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">204</span>, <span class="fl">201</span>, <span class="fl">932</span>, <span class="fl">130</span>, <span class="fl">77</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">106</span>, <span class="fl">103</span>, <span class="fl">415</span>, <span class="fl">132</span>, <span class="fl">83</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">24</span>, <span class="fl">40</span>, <span class="fl">93</span>, <span class="fl">14</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">9</span>, <span class="fl">28</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.ave.propratio2</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">f1</span>, <span class="va">f2</span>, <span class="va">n1</span>, <span class="va">n2</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">204</span>, <span class="fl">201</span>, <span class="fl">932</span>, <span class="fl">130</span>, <span class="fl">77</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">106</span>, <span class="fl">103</span>, <span class="fl">415</span>, <span class="fl">132</span>, <span class="fl">83</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">24</span>, <span class="fl">40</span>, <span class="fl">93</span>, <span class="fl">14</span>, <span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12</span>, <span class="fl">9</span>, <span class="fl">28</span>, <span class="fl">3</span>, <span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.ave.propratio2</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">f1</span>, <span class="va">f2</span>, <span class="va">n1</span>, <span class="va">n2</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           Estimate        SE          LL        UL exp(Estimate)   exp(LL)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Average 0.84705608 0.2528742  0.35143178 1.3426804      2.332769 1.4211008</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 1 0.03604257 0.3297404 -0.61023681 0.6823220      1.036700 0.5432222</span>
@@ -128,24 +127,24 @@ ISSN 02776715, doi: <a href="https://doi.org/10.1002/sim.3376" class="external-l
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 3  2.208350</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 4 14.493677</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 5 31.026662</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co">#  Should return:</span></span>
-<span class="r-in"><span class="co">#           Estimate        SE          LL        UL </span></span>
-<span class="r-in"><span class="co"># Average 0.84705608 0.2528742  0.35143178 1.3426804</span></span>
-<span class="r-in"><span class="co"># Study 1 0.03604257 0.3297404 -0.61023681 0.6823220</span></span>
-<span class="r-in"><span class="co"># Study 2 0.81008932 0.3442007  0.13546839 1.4847103</span></span>
-<span class="r-in"><span class="co"># Study 3 0.38746839 0.2065227 -0.01730864 0.7922454</span></span>
-<span class="r-in"><span class="co"># Study 4 1.49316811 0.6023296  0.31262374 2.6737125</span></span>
-<span class="r-in"><span class="co"># Study 5 1.50851199 0.9828420 -0.41782290 3.4348469</span></span>
-<span class="r-in"><span class="co">#     exp(Estimate)   exp(LL)   exp(UL)</span></span>
-<span class="r-in"><span class="co"># Average  2.332769 1.4211008  3.829294</span></span>
-<span class="r-in"><span class="co"># Study 1  1.036700 0.5432222  1.978466</span></span>
-<span class="r-in"><span class="co"># Study 2  2.248109 1.1450730  4.413686</span></span>
-<span class="r-in"><span class="co"># Study 3  1.473246 0.9828403  2.208350</span></span>
-<span class="r-in"><span class="co"># Study 4  4.451175 1.3670071 14.493677</span></span>
-<span class="r-in"><span class="co"># Study 5  4.520000 0.6584788 31.026662</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co">#  Should return:</span></span></span>
+<span class="r-in"><span><span class="co">#           Estimate        SE          LL        UL </span></span></span>
+<span class="r-in"><span><span class="co"># Average 0.84705608 0.2528742  0.35143178 1.3426804</span></span></span>
+<span class="r-in"><span><span class="co"># Study 1 0.03604257 0.3297404 -0.61023681 0.6823220</span></span></span>
+<span class="r-in"><span><span class="co"># Study 2 0.81008932 0.3442007  0.13546839 1.4847103</span></span></span>
+<span class="r-in"><span><span class="co"># Study 3 0.38746839 0.2065227 -0.01730864 0.7922454</span></span></span>
+<span class="r-in"><span><span class="co"># Study 4 1.49316811 0.6023296  0.31262374 2.6737125</span></span></span>
+<span class="r-in"><span><span class="co"># Study 5 1.50851199 0.9828420 -0.41782290 3.4348469</span></span></span>
+<span class="r-in"><span><span class="co">#     exp(Estimate)   exp(LL)   exp(UL)</span></span></span>
+<span class="r-in"><span><span class="co"># Average  2.332769 1.4211008  3.829294</span></span></span>
+<span class="r-in"><span><span class="co"># Study 1  1.036700 0.5432222  1.978466</span></span></span>
+<span class="r-in"><span><span class="co"># Study 2  2.248109 1.1450730  4.413686</span></span></span>
+<span class="r-in"><span><span class="co"># Study 3  1.473246 0.9828403  2.208350</span></span></span>
+<span class="r-in"><span><span class="co"># Study 4  4.451175 1.3670071 14.493677</span></span></span>
+<span class="r-in"><span><span class="co"># Study 5  4.520000 0.6584788 31.026662</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -160,7 +159,7 @@ ISSN 02776715, doi: <a href="https://doi.org/10.1002/sim.3376" class="external-l
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

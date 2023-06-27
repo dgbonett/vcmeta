@@ -24,8 +24,8 @@ meta.ave.mean.ps(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE)
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
 \value{
-A matrix.  First row is the overall average estimate.  If bystudy
-is TRUE also returns 1 row per study.  The matrix has the following columns:
+Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
 \item Estimate - the estimated effect size
 \item SE - standard error
@@ -39,7 +39,7 @@ Computes the estimate, standard error, and confidence interval for an
 average mean difference from two or more paired-samples studies.
 A Satterthwaite adjustment to the degrees of freedom is used to improve
 the accuracy of the confidence interval for the average effect size.
-Equal variances within or across studies is not assumed.
+Equality of variances within or across studies is not assumed.
 }
 \examples{
 m1 <- c(53, 60, 53, 57)

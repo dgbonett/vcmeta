@@ -1922,3 +1922,7 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
  return (out)
 }
 
+
+use_imports <- function() {
+  mathjaxr::preview_rd()
+}

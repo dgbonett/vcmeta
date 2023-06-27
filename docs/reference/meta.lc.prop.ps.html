@@ -60,7 +60,7 @@ or more studies.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.lc.prop.ps</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">f11</span>, <span class="va">f12</span>, <span class="va">f21</span>, <span class="va">f22</span>, <span class="va">v</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.lc.prop.ps</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">f11</span>, <span class="va">f12</span>, <span class="va">f21</span>, <span class="va">f22</span>, <span class="va">v</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -70,19 +70,19 @@ or more studies.</p>
 
 
 <dt>f11</dt>
-<dd><p>vector of frequencies in cell 1,1</p></dd>
+<dd><p>vector of frequency counts in cell 1,1</p></dd>
 
 
 <dt>f12</dt>
-<dd><p>vector of frequencies in cell 1,2</p></dd>
+<dd><p>vector of frequency counts in cell 1,2</p></dd>
 
 
 <dt>f21</dt>
-<dd><p>vector of frequencies in cell 2,1</p></dd>
+<dd><p>vector of frequency counts in cell 2,1</p></dd>
 
 
 <dt>f22</dt>
-<dd><p>vector of frequencies in cell 2,2</p></dd>
+<dd><p>vector of frequency counts in cell 2,2</p></dd>
 
 
 <dt>v</dt>
@@ -93,8 +93,7 @@ or more studies.</p>
     <h2>Value</h2>
     
 
-<p>Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:</p><ul><li><p>Estimate - estimate of linear contrast</p></li>
+<p>Returns 1-row matrix with the following columns:</p><ul><li><p>Estimate - estimate of linear contrast</p></li>
 <li><p>SE - standard error</p></li>
 <li><p>LL - lower limit of the confidence interval</p></li>
 <li><p>UL - upper limit of the confidence interval</p></li>
@@ -104,26 +103,26 @@ has the following columns:</p><ul><li><p>Estimate - estimate of linear contrast<
     <p>Bonett DG, Price RM (2014).
 “Meta-analysis methods for risk differences.”
 <em>British Journal of Mathematical and Statistical Psychology</em>, <b>67</b>(3), 371--387.
-ISSN 00071102, doi: <a href="https://doi.org/10.1111/bmsp.12024" class="external-link">10.1111/bmsp.12024</a>
+ISSN 00071102, <a href="https://doi.org/10.1111/bmsp.12024" class="external-link">doi:10.1111/bmsp.12024</a>
 , <a href="https://onlinelibrary.wiley.com/doi/10.1111/bmsp.12024" class="external-link">https://onlinelibrary.wiley.com/doi/10.1111/bmsp.12024</a>.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">f11</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">28</span>, <span class="fl">19</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f12</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">43</span>, <span class="fl">56</span>, <span class="fl">49</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f21</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f22</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">37</span>, <span class="fl">54</span>, <span class="fl">39</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.5</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.lc.prop.ps</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">f11</span>, <span class="va">f12</span>, <span class="va">f21</span>, <span class="va">f22</span>, <span class="va">v</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f11</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">28</span>, <span class="fl">19</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f12</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">43</span>, <span class="fl">56</span>, <span class="fl">49</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f21</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f22</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">37</span>, <span class="fl">54</span>, <span class="fl">39</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.5</span>, <span class="op">-</span><span class="fl">1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.lc.prop.ps</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">f11</span>, <span class="va">f12</span>, <span class="va">f21</span>, <span class="va">f22</span>, <span class="va">v</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate         SE         LL       UL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contrast -0.01436285 0.06511285 -0.1419817 0.113256</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return:</span></span>
-<span class="r-in"><span class="co">#              Estimate         SE         LL       UL</span></span>
-<span class="r-in"><span class="co">#  Contrast -0.01436285 0.06511285 -0.1419817 0.113256</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return:</span></span></span>
+<span class="r-in"><span><span class="co">#              Estimate         SE         LL       UL</span></span></span>
+<span class="r-in"><span><span class="co">#  Contrast -0.01436285 0.06511285 -0.1419817 0.113256</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -138,7 +137,7 @@ ISSN 00071102, doi: <a href="https://doi.org/10.1111/bmsp.12024" class="external
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -58,7 +58,7 @@ average proportion difference from two or more studies.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.ave.prop.ps</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">f11</span>, <span class="va">f12</span>, <span class="va">f21</span>, <span class="va">f22</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.ave.prop.ps</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">f11</span>, <span class="va">f12</span>, <span class="va">f21</span>, <span class="va">f22</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -68,19 +68,19 @@ average proportion difference from two or more studies.</p>
 
 
 <dt>f11</dt>
-<dd><p>vector of frequencies in cell 1,1</p></dd>
+<dd><p>vector of frequency counts in cell 1,1</p></dd>
 
 
 <dt>f12</dt>
-<dd><p>vector of frequencies in cell 1,2</p></dd>
+<dd><p>vector of frequency counts in cell 1,2</p></dd>
 
 
 <dt>f21</dt>
-<dd><p>vector of frequencies in cell 2,1</p></dd>
+<dd><p>vector of frequency counts in cell 2,1</p></dd>
 
 
 <dt>f22</dt>
-<dd><p>vector of frequencies in cell 2,2</p></dd>
+<dd><p>vector of frequency counts in cell 2,2</p></dd>
 
 
 <dt>bystudy</dt>
@@ -91,9 +91,8 @@ average proportion difference from two or more studies.</p>
     <h2>Value</h2>
     
 
-<p>Returns a matrix.  The first row is the average estimate
-across all studies.  If bystudy is true, there is 1 additional row for
-each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the estimated effect size</p></li>
+<p>Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the estimated effect size</p></li>
 <li><p>SE - standard error</p></li>
 <li><p>LL - lower limit of the confidence interval</p></li>
 <li><p>UL - upper limit of the confidence interval</p></li>
@@ -103,31 +102,31 @@ each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the 
     <p>Bonett DG, Price RM (2014).
 “Meta-analysis methods for risk differences.”
 <em>British Journal of Mathematical and Statistical Psychology</em>, <b>67</b>(3), 371--387.
-ISSN 00071102, doi: <a href="https://doi.org/10.1111/bmsp.12024" class="external-link">10.1111/bmsp.12024</a>
+ISSN 00071102, <a href="https://doi.org/10.1111/bmsp.12024" class="external-link">doi:10.1111/bmsp.12024</a>
 , <a href="https://onlinelibrary.wiley.com/doi/10.1111/bmsp.12024" class="external-link">https://onlinelibrary.wiley.com/doi/10.1111/bmsp.12024</a>.</p>
     </div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">f11</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">28</span>, <span class="fl">19</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f12</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">43</span>, <span class="fl">56</span>, <span class="fl">49</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f21</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">f22</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">37</span>, <span class="fl">54</span>, <span class="fl">39</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.ave.prop.ps</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">f11</span>, <span class="va">f12</span>, <span class="va">f21</span>, <span class="va">f22</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">f11</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">17</span>, <span class="fl">28</span>, <span class="fl">19</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f12</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">43</span>, <span class="fl">56</span>, <span class="fl">49</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f21</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3</span>, <span class="fl">5</span>, <span class="fl">5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">f22</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">37</span>, <span class="fl">54</span>, <span class="fl">39</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.ave.prop.ps</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">f11</span>, <span class="va">f12</span>, <span class="va">f21</span>, <span class="va">f22</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          Estimate         SE        LL        UL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Average 0.3809573 0.03000016 0.3221581 0.4397565</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 1 0.3921569 0.05573055 0.2829270 0.5013867</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 2 0.3517241 0.04629537 0.2609869 0.4424614</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 3 0.3859649 0.05479300 0.2785726 0.4933572</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return:</span></span>
-<span class="r-in"><span class="co">#          Estimate         SE        LL        UL</span></span>
-<span class="r-in"><span class="co"># Average 0.3809573 0.03000016 0.3221581 0.4397565</span></span>
-<span class="r-in"><span class="co"># Study 1 0.3921569 0.05573055 0.2829270 0.5013867</span></span>
-<span class="r-in"><span class="co"># Study 2 0.3517241 0.04629537 0.2609869 0.4424614</span></span>
-<span class="r-in"><span class="co"># Study 3 0.3859649 0.05479300 0.2785726 0.4933572</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return:</span></span></span>
+<span class="r-in"><span><span class="co">#          Estimate         SE        LL        UL</span></span></span>
+<span class="r-in"><span><span class="co"># Average 0.3809573 0.03000016 0.3221581 0.4397565</span></span></span>
+<span class="r-in"><span><span class="co"># Study 1 0.3921569 0.05573055 0.2829270 0.5013867</span></span></span>
+<span class="r-in"><span><span class="co"># Study 2 0.3517241 0.04629537 0.2609869 0.4424614</span></span></span>
+<span class="r-in"><span><span class="co"># Study 3 0.3859649 0.05479300 0.2785726 0.4933572</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -142,7 +141,7 @@ ISSN 00071102, doi: <a href="https://doi.org/10.1111/bmsp.12024" class="external
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

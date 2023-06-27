@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.gen}
 \alias{replicate.gen}
-\title{Compares effect sizes in the original and follow-up studies}
+\title{Compares and combines effect sizes in original and follow-up studies}
 \usage{
 replicate.gen(alpha, est1, se1, est2, se2)
 }
@@ -23,12 +23,12 @@ A 4-row matrix. The rows are:
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
 \item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size between the two studies
+\item Row 4 estimates the average effect size for the two studies
 }
 
 Columns are:
 \itemize{
-\item Estimate - effect size estimate
+\item Estimate - effect size estimate (single study, difference, average)
 \item SE - standard error
 \item z - z-value
 \item p - p-value

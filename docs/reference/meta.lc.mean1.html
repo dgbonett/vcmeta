@@ -61,7 +61,7 @@ unequal variance method.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.lc.mean1</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">m</span>, <span class="va">sd</span>, <span class="va">n</span>, <span class="va">v</span>, eqvar <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.lc.mean1</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">m</span>, <span class="va">sd</span>, <span class="va">n</span>, <span class="va">v</span>, eqvar <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -96,8 +96,7 @@ unequal variance method.</p>
     <h2>Value</h2>
     
 
-<p>Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:</p><ul><li><p>Estimate - estimate of linear contrast</p></li>
+<p>Returns 1-row matrix with the following columns:</p><ul><li><p>Estimate - estimate of linear contrast</p></li>
 <li><p>SE - standard error</p></li>
 <li><p>LL - lower limit of the confidence interval</p></li>
 <li><p>UL - upper limit of the confidence interval</p></li>
@@ -112,18 +111,18 @@ ISU University Pres, Ames, Iowa.</p>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">33.5</span>, <span class="fl">37.9</span>, <span class="fl">38.0</span>, <span class="fl">44.1</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">sd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3.84</span>, <span class="fl">3.84</span>, <span class="fl">3.65</span>, <span class="fl">4.98</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.5</span>, <span class="op">-</span><span class="fl">.5</span>, <span class="op">-</span><span class="fl">.5</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.lc.mean1</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">m</span>, <span class="va">sd</span>, <span class="va">n</span>, <span class="va">v</span>, eqvar <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">m</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">33.5</span>, <span class="fl">37.9</span>, <span class="fl">38.0</span>, <span class="fl">44.1</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sd</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">3.84</span>, <span class="fl">3.84</span>, <span class="fl">3.65</span>, <span class="fl">4.98</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">10</span>, <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">v</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.5</span>, <span class="fl">.5</span>, <span class="op">-</span><span class="fl">.5</span>, <span class="op">-</span><span class="fl">.5</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.lc.mean1</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">m</span>, <span class="va">sd</span>, <span class="va">n</span>, <span class="va">v</span>, eqvar <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          Estimate       SE        LL        UL       df</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Contrast    -5.35 1.300136 -7.993583 -2.706417 33.52169</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return:</span></span>
-<span class="r-in"><span class="co">#          Estimate       SE        LL        UL       df</span></span>
-<span class="r-in"><span class="co"># Contrast    -5.35 1.300136 -7.993583 -2.706417 33.52169</span></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return:</span></span></span>
+<span class="r-in"><span><span class="co">#          Estimate       SE        LL        UL       df</span></span></span>
+<span class="r-in"><span><span class="co"># Contrast    -5.35 1.300136 -7.993583 -2.706417 33.52169</span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -138,7 +137,7 @@ ISU University Pres, Ames, Iowa.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

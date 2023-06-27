@@ -58,7 +58,7 @@ types of point-biserial correlations can be analyzed. One type uses
 an unweighted variance and is approrpaite for 2-group experimental
 designs. The other type uses a weighted variance and is appropriate
 for 2-group nonexperimental designs with simple random sampling.
-Equal variances within or across studies is not assumed.
+Equality of variances within or across studies is not assumed.
 }
 \examples{
 m1 <- c(45.1, 39.2, 36.3, 34.5)

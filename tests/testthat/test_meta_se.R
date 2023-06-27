@@ -128,3 +128,57 @@ test_that("se.prop.ps returns valid matrix", {
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
 })
+
+
+test_that("se.ave.mean2.dep returns valid matrix", {
+  colnames_expected <- c("Estimate",        "SE",    "VAR(A)",    "VAR(B)",  "COV(A,B)")
+  
+  res <- se.ave.mean2.dep(21.9, 16.1, 3.82, 3.21, 24.8, 17.1, 3.57, 3.64, .785, 40, 40)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+
+test_that("se.ave.cor.over returns valid matrix", {
+  colnames_expected <- c("Estimate",        "SE",   "VAR(cor12)", "VAR(cor13)", "COV(cor12,cor13)")
+  
+  res <- se.ave.cor.over(.462, .518, .755, 100)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+
+test_that("se.ave.cor.nonover returns valid matrix", {
+  colnames_expected <- c("Estimate",        "SE",   "VAR(cor12)", "VAR(cor34)", "COV(cor12,cor34)")
+  
+  res <- se.ave.cor.nonover(.357, .398, .755, .331, .347, .821, 100)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+
+test_that("se.tetra returns valid matrix", {
+  colnames_expected <- c("Estimate",        "SE")
+  
+  res <- se.tetra(46, 15, 54, 85)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+test_that("se.biphi returns valid matrix", {
+  colnames_expected <- c("Estimate",        "SE")
+  
+  res <- se.biphi(34, 22, 50, 50)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
