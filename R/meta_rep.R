@@ -3,13 +3,14 @@
 #' 
 #'
 #' @description 
-#' This function computes confidence intervals for a 2-group mean difference
-#' from an original study and a follow-up study. Confidence intervals for the
-#' difference and average effect size also are computed. A Satterthwaite
-#' adjustment to the degrees of freedom is used to improve the accuracy of the
-#' confidence intervals. The same results can be obtained using the \link[vcmeta]{meta.lc.mean2}
-#' function with appropriate contrast coefficients. The confidence level for the
-#' difference is 1 – 2alpha, which is recommended for equivalence testing.
+#' This function computes confidence intervals from an original study and a 
+#' follow-up study where the effect size is a 2-group mean difference. Confidence
+#' intervals for the difference and average effect size also are computed. A 
+#' Satterthwaite adjustment to the degrees of freedom is used to improve the 
+#' accuracy of the confidence intervals. The same results can be obtained using
+#' the \link[vcmeta]{meta.lc.mean2} function with appropriate contrast coefficients. 
+#' The confidence level for the difference is 1 – 2alpha, which is recommended for 
+#' equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
