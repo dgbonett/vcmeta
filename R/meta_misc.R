@@ -164,3 +164,143 @@ stdmean2.from.t <- function(t, n1, n2) {
   return (out)
 }
 
+
+#' table.from.odds ============================================================
+#' Computes the cell frequencies in a 2x2 table using the marginal proportions
+#' and odds ratio 
+#'                   
+#'                         
+#' @description 
+#' This function computes the cell proportions and frequencies in a 2x2 
+#' contingency table using the reported marginal proportions, estimated odds 
+#' ratio, and total sample size. The cell frequncies could then be used to
+#' compute other measures of effect size. In the output, "cell ij" refers to
+#' row i and column j.
+#' 
+#' 
+#' @param    p1row	    marginal proportion for row 1
+#' @param    p1col	    marginal proportion for column 1 
+#' @param    or         estimated odds ratio
+#' @param    n          total sample size
+#' 
+#' 
+#' @return A 2-row matrix. The rows are:
+#' * Row 1 gives the four computed cell proportions 
+#' * Row 2 gives the four computed cell frequencies
+#'
+#'
+#' The columns are:
+#' * Cell 11 - proportion and frequency for cell 11
+#' * Cell 12 - proportion and frequency for cell 12
+#' * Cell 21 - proportion and frequency for cell 21
+#' * Cell 22 - proportion and frequency for cell 22
+#'    
+#' 
+#' @examples
+#' table.from.odds(.17, .5, 3.18, 100)
+#'
+#' # Should return:
+#' #                cell 11    cell 12    cell 21    cell 22
+#' # Proportion:  0.1233262 0.04667383  0.3766738  0.4533262
+#' # Frequency:  12.0000000 5.00000000 38.0000000 45.0000000
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2007}{vcmeta}           
+#' 
+#' 
+#' @export
+table.from.odds <- function(p1row, p1col, or, n){
+ if (or <= 0) {stop("the odds ratio must be greater than 0")}
+ p2row <- 1 - p1row
+ if (or != 1){
+  a <- or*(p1row + p1col) + p2row - p1col
+  b <- sqrt(a^2 - 4*p1row*p1col*or*(or - 1))
+  p11 <- (a - b)/(2*(or - 1))}
+ else {
+  p11 <- p1row*p1col
+ }
+ p12 <- p1row - p11
+ p21 <- p1col - p11
+ p22 <- 1 - (p11 + p12 + p21)
+ f11 <- round(n*p11)
+ f12 <- round(n*p12)
+ f21 <- round(n*p21)
+ f22 <- n - (f11 + f12 + f21)
+ out1 <- t(c(p11, p12, p21, p22))
+ out2 <- t(c(f11, f12, f21, f22))
+ out <- rbind(out1, out2)
+ colnames(out) <- c("cell 11", "cell 12", " cell 21", "cell 22")
+ rownames(out) <- c("Proportion:", "Frequency:")
+ return(out)
+}
+
+
+#' table.from.phi ============================================================
+#' Computes the cell frequencies in a 2x2 table using the marginal proportions
+#' and phi coefficient 
+#'                   
+#'                         
+#' @description 
+#' This function computes the cell proportions and frequencies in a 2x2 
+#' contingency table using the reported marginal proportions, estimated phi  
+#' coefficient, and total sample size. The cell frequncies could then be used  
+#' to compute other measures of effect size. In the output, "cell ij" refers 
+#' to row i and column j. 
+#' 
+#' 
+#' @param    p1row	    marginal proportion for row 1
+#' @param    p1col	    marginal proportion for column 1 
+#' @param    phi        estimated phi coefficient
+#' @param    n          total sample size
+#' 
+#' 
+#' @return A 2-row matrix. The rows are:
+#' * Row 1 gives the four computed cell proportions 
+#' * Row 2 gives the four computed cell frequencies
+#'
+#'
+#' The columns are:
+#' * Cell 11 - proportion and frequency for cell 11
+#' * Cell 12 - proportion and frequency for cell 12
+#' * Cell 21 - proportion and frequency for cell 21
+#' * Cell 22 - proportion and frequency for cell 22
+#'    
+#' 
+#' @examples
+#' table.from.phi(.28, .64, .38, 200)
+#'
+#' # Should return:
+#' #                cell 11   cell 12    cell 21    cell 22
+#' # Proportion:  0.2610974 0.0189026  0.3789026  0.3410974
+#' # Frequency   52.0000000 4.0000000 76.0000000 68.0000000
+#' 
+#' 
+#' @export                                  
+table.from.phi <- function(p1row, p1col, phi, n){
+ if (abs(phi) > 1) {stop("phi must be between -1 and 1")}
+ p2row <- 1 - p1row
+ p2col <- 1 - p1col
+ phimax <- sqrt(p1col*p2row/(p1row*p2col))
+ if (phimax > 1) {phimax = 1/phimax}
+ phimin <- sqrt(p2col*p2row/(p1row*p1col))
+ if (phimin > 1) {phimin = 1/phimin}
+ if (phi > phimax) {stop("phi is too large for given marginal proportions")}
+ if (phi < -phimin) {stop("phi is too small for given marginal proportions")}
+ a <- sqrt(p1row*p2row*p1col*p2col)
+ p11 <- a*phi + p1row*p1col
+ p12 <- p1row - p11
+ p21 <- p1col - p11
+ p22 <- 1 - (p11 + p12 + p21)
+ f11 <- round(n*p11)
+ f12 <- round(n*p12)
+ f21 <- round(n*p21)
+ f22 <- n - (f11 + f12 + f21)
+ out1 <- t(c(p11, p12, p21, p22))
+ out2 <- t(c(f11, f12, f21, f22))
+ out <- rbind(out1, out2)
+ colnames(out) <- c("cell 11", "cell 12", " cell 21", "cell 22")
+ rownames(out) <- c("Proportion:", "Frequency")
+ return(out)
+}
+
