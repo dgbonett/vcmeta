@@ -1196,3 +1196,198 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
   return(out)
 }
+
+
+# replicate.ratio.prop2 =======================================================
+#' Compares and combines 2-group proportion ratios in original and follow-up 
+#' studies
+#' 
+#'
+#' @description 
+#' This function computes confidence intervals from an original study and a 
+#' follow-up study where the effect size is a 2-group proportion ratio. 
+#' Confidence intervals for the ratio and geometric average of effect sizes
+#' also are computed. The confidence level for the ratio is 1 – 2alpha, which
+#' is recommended for equivalence testing.
+#' 
+#' 
+#' @param    alpha	     alpha level for 1-alpha confidence																																																																																																																																																	21q```````````````````````																																												`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````lpha		 alpha level for 1-alpha confidence
+#' @param    f11		 frequency count for group 1 in original study 
+#' @param    f12		 frequency count for group 2 in original study
+#' @param    n11    	 sample size for group 1 in original study
+#' @param    n12    	 sample size for group 2 in original study
+#' @param    f21    	 frequency count for group 1 in follow-up study 
+#' @param    f22    	 frequency count for group 2 in follow-up study
+#' @param    n21    	 sample size for group 1 in follow-up study
+#' @param    n22    	 sample size for group 2 in follow-up study
+#' 
+#' 
+#' @return A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the ratio of proportion ratios
+#' * Row 4 estimates the geometric average proportion ratio
+#'
+#'
+#' The columns are:
+#' * Estimate - proportion difference estimate (single study, ratio, average)
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#'    
+#' 
+#' @examples
+#' replicate.ratio.prop2(.05, 21, 16, 40, 40, 19, 13, 60, 60)
+#'
+#' # Should return:
+#' #                      Estimate        LL       UL
+#' # Original:           1.3076923 0.8068705 2.119373
+#' # Follow-up:          1.4528302 0.7939881 2.658372
+#' # Original/Follow-up: 0.9000999 0.4703209 1.722611
+#' # Average:            1.3783522 0.9362893 2.029132
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @importFrom stats pnorm
+#' @export
+replicate.ratio.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
+  zcrit1 <- qnorm(1 - alpha/2)
+  zcrit2 <- qnorm(1 - alpha)
+  p11 <- (f11 + 1/4)/(n11 + 7/4)
+  p12 <- (f12 + 1/4)/(n12 + 7/4)
+  v11 <- 1/(f11 + 1/4 + (f11 + 1/4)^2/(n11 - f11 + 3/2))
+  v12 <- 1/(f12 + 1/4 + (f12 + 1/4)^2/(n12 - f12 + 3/2))
+  se1 <- sqrt(v11 + v12)
+  est1 <- log(p11/p12)
+  p21 <- (f21 + 1/4)/(n21 + 7/4)
+  p22 <- (f22 + 1/4)/(n22 + 7/4)
+  v21 <- 1/(f21 + 1/4 + (f21 + 1/4)^2/(n21 - f21 + 3/2))
+  v22 <- 1/(f22 + 1/4 + (f22 + 1/4)^2/(n22 - f22 + 3/2))
+  se2 <- sqrt(v21 + v22)
+  est2 <- log(p21/p22)
+  est3 <- est1 - est2
+  est4 <- (est1 + est2)/2
+  se3 <- sqrt(se1^2 + se2^2)
+  se4 <- se3/2
+  ll1 <- exp(est1 - zcrit1*se1);  ul1 <- exp(est1 + zcrit1*se1)
+  ll2 <- exp(est2 - zcrit1*se2);  ul2 <- exp(est2 + zcrit1*se2)
+  ll3 <- exp(est3 - zcrit2*se3);  ul3 <- exp(est3 + zcrit2*se3)
+  ll4 <- exp(est4 - zcrit1*se4);  ul4 <- exp(est4 + zcrit1*se4)
+  out1 <- t(c(exp(est1), ll1, ul1))
+  out2 <- t(c(exp(est2), ll2, ul2))
+  out3 <- t(c(exp(est3), ll3, ul3))
+  out4 <- t(c(exp(est4), ll4, ul4))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "LL", "UL")
+  rownames(out) <- c("Original:", "Follow-up:", "Original/Follow-up:", "Average:")
+  return(out)
+}
+
+
+# replicate.prop.ps ===========================================================
+#' Compares and combines paired-samples proportion differences in original and 
+#' follow-up studies
+#'                   
+#'
+#' @description 
+#' This function computes confidence intervals from an original study and a 
+#' follow-up study where the effect size is a paired-samples proportion 
+#' difference. Confidence intervals for the difference and average of effect
+#' sizes also are computed. The confidence level for the difference is
+#' 1 – 2alpha, which is recommended for equivalence testing.
+#' 
+#' 
+#' @param    alpha	 alpha level for 1-alpha confidence
+#' @param    f1		 vector of frequency counts for 2x2 table in original study 
+#' @param    f2		 vector of frequency counts for 2x2 table in follow-up study
+#' 
+#' 
+#' @return A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in proportion differences
+#' * Row 4 estimates the average proportion difference 
+#'
+#'
+#' The columns are:
+#' * Estimate - proportion difference estimate (single study, difference, average)
+#' * SE - standard error
+#' * z - z-value
+#' * p - p-value
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#'    
+#' 
+#' @examples
+#' f1 <- c(42, 2, 15, 61)
+#' f2 <- c(69, 5, 31, 145)
+#' replicate.prop.ps(.05, f1, f2)
+#'
+#' # Should return:
+#' #                           Estimate         SE           z            p
+#' # Original:              0.106557377 0.03440159  3.09745539 1.951898e-03
+#' # Follow-up:             0.103174603 0.02358274  4.37500562 1.214294e-05
+#' # Original - Follow-up:  0.003852359 0.04097037  0.09402793 9.250870e-01
+#' # Average:               0.105511837 0.02048519  5.15064083 2.595979e-07
+#' #                                LL         UL
+#' # Original:              0.03913151 0.17398325
+#' # Follow-up:             0.05695329 0.14939592
+#' # Original - Follow-up: -0.06353791 0.07124263
+#' # Average:               0.06536161 0.14566206
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @importFrom stats pnorm
+#' @export
+replicate.prop.ps <- function(alpha, f1, f2){
+  zcrit1 <- qnorm(1 - alpha/2)
+  zcrit2 <- qnorm(1 - alpha)
+  n1 <- sum(f1)
+  p01 <- (f1[2] + 1)/(n1 + 2)
+  p10 <- (f1[3] + 1)/(n1 + 2)
+  est1 <- p10 - p01
+  se1 <- sqrt(((p01 + p10) - (p01 - p10)^2)/(n1 + 2))
+  n2 <- sum(f2)
+  p01 <- (f2[2] + 1)/(n2 + 2)
+  p10 <- (f2[3] + 1)/(n2 + 2)
+  est2 <- p10 - p01
+  se2 <- sqrt(((p01 + p10) - (p01 - p10)^2)/(n2 + 2))
+  p011 <- (f1[2] + .5)/(n1 + 1)
+  p101 <- (f1[3] + .5)/(n1 + 1)
+  p012 <- (f2[2] + .5)/(n2 + 1)
+  p102 <- (f2[3] + .5)/(n2 + 1)
+  est3 <- p101 - p011 - p102 + p012
+  v1 = ((p101 + p011) - (p101 - p011)^2)/(n1 + 1)
+  v2 = ((p102 + p012) - (p102 - p012)^2)/(n2 + 1)
+  se3 <- sqrt(v1 + v2)
+  est4 <- ((p101 - p011) + (p102 - p012))/2
+  se4 <- se3/2
+  z1 <- est1/se1
+  z2 <- est2/se2
+  z3 <- est3/se3
+  z4 <- est4/se4
+  p1 <- 2*(1 - pnorm(abs(z1)))
+  p2 <- 2*(1 - pnorm(abs(z2)))
+  p3 <- 2*(1 - pnorm(abs(z3))) 
+  p4 <- 2*(1 - pnorm(abs(z4)))
+  ll1 <- est1 - zcrit1*se1;  ul1 <- est1 + zcrit1*se1
+  ll2 <- est2 - zcrit1*se2;  ul2 <- est2 + zcrit1*se2
+  ll3 <- est3 - zcrit2*se3;  ul3 <- est3 + zcrit2*se3
+  ll4 <- est4 - zcrit1*se4;  ul4 <- est4 + zcrit1*se4
+  out1 <- t(c(est1, se1, z1, p1, ll1, ul1))
+  out2 <- t(c(est2, se2, z2, p2, ll2, ul2))
+  out3 <- t(c(est3, se3, z3, p3, ll3, ul3))
+  out4 <- t(c(est4, se4, z4, p4, ll4, ul4))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
+  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  return(out)
+}
+
