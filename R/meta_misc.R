@@ -14,7 +14,7 @@
 #'
 #'
 #' @param alpha alpha value for 1-alpha confidence
-#' @param cor   estimate of correlation 
+#' @param cor   estimated correlation 
 #' @param se    standard error of estimated correlation
 #' 
 #' 
@@ -44,7 +44,7 @@ ci.fisher <- function(alpha, cor, se) {
 
 
 #  cor.from.t =============================================================
-#' Compute Pearson correlation between paired measurements from t statistic
+#' Computes Pearson correlation between paired measurements from t statistic
 #' 
 #' @description 
 #' This function computes the Pearson correlation between paired 
