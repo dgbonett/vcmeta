@@ -238,20 +238,20 @@ table.from.odds <- function(p1row, p1col, or, n){
 
 #' table.from.phi ============================================================
 #' Computes the cell frequencies in a 2x2 table using the marginal proportions
-#' and phi coefficient 
+#' and phi correlation 
 #'                   
 #'                         
 #' @description 
 #' This function computes the cell proportions and frequencies in a 2x2 
 #' contingency table using the reported marginal proportions, estimated phi  
-#' coefficient, and total sample size. The cell frequncies could then be used  
+#' correlation, and total sample size. The cell frequncies could then be used  
 #' to compute other measures of effect size. In the output, "cell ij" refers 
 #' to row i and column j. 
 #' 
 #' 
 #' @param    p1row	    marginal proportion for row 1
 #' @param    p1col	    marginal proportion for column 1 
-#' @param    phi        estimated phi coefficient
+#' @param    phi        estimated phi correlation
 #' @param    n          total sample size
 #' 
 #' 
