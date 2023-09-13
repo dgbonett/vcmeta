@@ -514,7 +514,7 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 #'
 #' @return 
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of the linear contrast
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -577,7 +577,7 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' Use the square root average variance standardizer (stdzr = 0) for 2-group
 #' experimental designs.  Use the square root weighted variance standardizer
 #' (stdzr = 3) for 2-group nonexperimental designs with simple random sampling.
-#' The stdzr = 1 and stdzr = 2 options can be used with either 2-group experimental
+#' The stdzr = 1 and stdzr = 2 options can be used with either experimental
 #' or nonexperimental designs.
 #'
 #'
@@ -598,7 +598,7 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' 
 #' @return 
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of linear contrast
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -694,7 +694,7 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' 
 #' @return 
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of linear contrast
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -771,7 +771,7 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' 
 #' @return 
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of linear contrast
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -860,11 +860,11 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' 
 #' @return 
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of log-linear contrast
+#' * Estimate - estimated log-linear contrast
 #' * SE - standard error of log-linear contrast
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
-#' * exp(Estimate) - the exponentiated estimate
+#' * exp(Estimate) - exponentiated log-linear contrast
 #' * exp(LL) - lower limit of the exponentiated confidence interval
 #' * exp(UL) - upper limit of the exponentiated confidence interval
 #' * df - degrees of freedom
@@ -945,11 +945,11 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' 
 #' @return
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of log-linear contrast
+#' * Estimate - estimatedf log-linear contrast
 #' * SE - standard error of log-linear contrast
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
-#' * exp(Estimate) -  exponentiated estimate of log-linear function
+#' * exp(Estimate) - exponentiated log-linear contrast
 #' * exp(LL) - lower limit of the exponentiated confidence interval
 #' * exp(UL) - upper limit of the exponentiated confidence interval
 #' * df - degrees of freedom
@@ -1015,9 +1015,9 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' 
 #' @return 
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of log-linear contrast
+#' * Estimate - estimated log-linear contrast
 #' * SE - standard error of log-linear contrast
-#' * exp(Estimate) - the exponentiated contrast
+#' * exp(Estimate) - exponentiated log-linear contrast
 #' * exp(LL) - lower limit of the exponentiated confidence interval
 #' * exp(UL) - upper limit of the exponentiated confidence interval
 #' 
@@ -1079,9 +1079,9 @@ meta.lc.odds <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' @return 
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of log-linear contrast
+#' * Estimate - estimated log-linear contrast
 #' * SE - standard error of log-linear contrast
-#' * exp(Estimate) - the exponentiated contrast
+#' * exp(Estimate) - exponentiated log-linear contrast
 #' * exp(LL) - lower limit of the exponentiated confidence interval
 #' * exp(UL) - upper limit of the exponentiated confidence interval
 #' 
@@ -1133,7 +1133,7 @@ meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' 
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
+#' Computes the estimate, standard error, and adjusted Wald confidence interval for a 
 #' linear contrast of 2-group proportion differences from two or more studies.
 #'
 #'
@@ -1147,10 +1147,10 @@ meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
 #'
 #' @return
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of the linear contrast
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
+#' * LL - lower limit of the adjusted Wald confidence interval
+#' * UL - upper limit of the adjusted Wald confidence interval
 #' 
 #' 
 #' @examples
@@ -1199,9 +1199,9 @@ meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' 
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
-#' linear contrast of paired-samples group proportion differences from two
-#' or more studies.
+#' Computes the estimate, standard error, and adjusted Wald confidence interval
+#' for a linear contrast of paired-samples proportion differences from two or
+#' more studies.
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1214,10 +1214,10 @@ meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' @return
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of linear contrast
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
+#' * LL - lower limit of the adjusted Wald confidence interval
+#' * UL - upper limit of the adjusted Wald confidence interval
 #' 
 #' 
 #' @examples
@@ -1264,10 +1264,10 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' 
 #' 
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
-#' linear contrast of G-index of agreement coefficients from two or more 
-#' studies. This function assumes that two raters each provide a dichotomous
-#' rating for a sample of objects.
+#' Computes the estimate, standard error, and adjusted Wald confidence 
+#' interval for a linear contrast of G-index of agreement coefficients 
+#' from two or more studies. This function assumes that two raters each
+#' provide a dichotomous rating for a sample of objects.
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1279,10 +1279,10 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' 
 #' @return
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of linear contrast
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
+#' * LL - lower limit of the adjusted Wald confidence interval
+#' * UL - upper limit of the adjusted Wald confidence interval
 #' 
 #' 
 #' @examples
@@ -1320,7 +1320,7 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 
 
 # meta.lc.mean1
-#' Confidence interval a for a linear contrast of means
+#' Confidence interval for a linear contrast of means
 #' 
 #'
 #' @description
@@ -1342,7 +1342,7 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 #' 
 #' @return
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of linear contrast
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -1409,7 +1409,7 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
 #'
 #' @return
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate -estimate of linear contrast
+#' * Estimate -estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the adjusted Wald confidence interval
 #' * UL - upper limit of the adjusted Wald confidence interval
@@ -1463,7 +1463,7 @@ meta.lc.prop1 <- function(alpha, f, n, v) {
 #' 
 #' @return
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimate of linear contrast
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
