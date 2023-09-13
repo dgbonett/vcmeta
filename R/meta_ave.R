@@ -441,7 +441,7 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
 #'  * SE - standard error 
 #'  * LL - lower limit of the confidence interval
 #'  * UL - upper limit of the confidence interval 
-#'  * exp(Estimate) - the exponentiated estimate 
+#'  * exp(Estimate) - exponentiated estimate 
 #'  * exp(LL) - lower limit of the exponentiated confidence interval
 #'  * exp(UL) - upper limit of the exponentiated confidence interval
 #'  * df - degrees of freedom
@@ -536,7 +536,7 @@ meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
-#'  * exp(Estimate) - the exponentiated estimate 
+#'  * exp(Estimate) - exponentiated estimate 
 #'  * exp(LL) - lower limit of the exponentiated confidence interval
 #'  * exp(UL) - upper limit of the exponentiated confidence interval
 #'  * df - degrees of freedom
@@ -925,10 +925,11 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #' of point-biserial correlations can be meta-analyzed. One type uses
 #' an unweighted variance and is appropriate in 2-group experimental
 #' designs. The other type uses a weighted variance and is appropriate in
-#' 2-group nonexperimental designs with simple random sampling within each 
-#' group. This function requires all point-biserial correlations to be of
-#' the same type.  Use the meta.ave.gen function to meta-analyze any
-#' combination of biserial correlation types. 
+#' 2-group nonexperimental designs with simple random sampling (but not
+#' stratified random sample) within each study. This function requires 
+#' all point-biserial correlations to be of the same type.  Use the
+#' meta.ave.gen function to meta-analyze any combination of biserial
+#' correlation types. 
 #'
 #' 
 #' @param    alpha 	alpha level for 1-alpha confidence
@@ -1194,7 +1195,7 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 #'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
-#' @param    f1     	vector of group 1 frequency counts
+#' @param    f1     	vector of group 1 frequency counts 
 #' @param    f2     	vector of group 2 frequency counts
 #' @param    n1     	vector of group 1 sample sizes 
 #' @param    n2     	vector of group 2 sample sizes
@@ -1294,7 +1295,7 @@ meta.ave.odds <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
-#' * exp(Estimate) - the exponentiated estimate
+#' * exp(Estimate) - exponentiated estimate
 #' * exp(LL) - lower limit of the exponentiated confidence interval
 #' * exp(UL) - upper limit of the exponentiated confidence interval
 #' 
@@ -1610,7 +1611,9 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #'
 #' @description
 #' Computes the estimate and confidence interval for an average variance 
-#' from two or more studies. 
+#' from two or more studies. The estimated average variance or the
+#' upper limit could be used as a variance planning value in sample
+#' size planning.
 #'
 #'  
 #' @param alpha  	 alpha level for 1-alpha confidence
