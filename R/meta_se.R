@@ -11,6 +11,7 @@
 #' and \link[vcmeta]{meta.lm.gen} functions in applications where 
 #' compatible mean differences from a combination of 2-group
 #' and paired-samples experiments are used in the meta-analysis. 
+#' Equality of variances is not asumed.
 #' 
 #' 
 #' @param    m1		estimated mean for group 1 
@@ -64,6 +65,7 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' and \link[vcmeta]{meta.lm.gen} functions in applications where 
 #' compatible mean differences from a combination of 2-group
 #' and paired-samples experiments are used in the meta-analysis. 
+#' Equality of variances is not assumed.
 #' 
 #' 
 #' @param    m1		estimated mean for measurement 1 
@@ -119,7 +121,8 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
 #' and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
 #' standardized mean differences from a combination of 2-group and 
-#' paired-samples experiments are used in the meta-analysis. 
+#' paired-samples experiments are used in the meta-analysis. Equality 
+#' of variances is not assumed.
 #'
 #' 
 #' @param    m1		  estimated mean for group 1 
@@ -196,6 +199,7 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 #' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
 #' applications where compatible standardized mean differences from a combination
 #' of 2-group and paired-samples experiments are used in the meta-analysis. 
+#' Equality of variances is not assumed.
 #' 
 #' 
 #' @param    m1		estimated mean for measurement 1 
@@ -400,7 +404,7 @@ se.semipartial <- function(cor, r2, n) {
 #' This function computes a point-biserial correlation and its standard 
 #' error for two types of point-biserial correlations in 2-group designs
 #' using the estimated means, estimated standard deviations, and samples
-#' sizes. Eqiality of variances is not assumed. One type of point-biserial
+#' sizes. Equality of variances is not assumed. One type of point-biserial
 #' correlation uses an unweighted average of variances and is recommended
 #' for 2-group experimental designs. The other type of point-biserial 
 #' correlation uses a weighted average of variances and is recommended for
@@ -531,7 +535,7 @@ se.odds <- function(f1, n1, f2, n2) {
 #' \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
 #' \link[vcmeta]{meta.lm.gen} functions in application where compatible
 #' mean ratios from a combination of 2-group and paired-samples experiments
-#' are used in the meta-analysis.
+#' are used in the meta-analysis. Equality of variances is not assumed.
 #' 
 #' 
 #' @param    m1		estimated mean for group 1 
@@ -585,6 +589,7 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
 #' applications where compatible mean ratios from a combination of 2-group
 #' and paired-samples experiments are used in the meta-analysis. 
+#' Equality of variances is not assumed.
 #' 
 #' 
 #' @param    m1		estimated mean for measurement 1 
@@ -794,7 +799,8 @@ se.prop.ps <- function(f00, f01, f10, f11) {
 #' \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and 
 #' \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some studies
 #' have used one of the two parallel response variables and other studies have
-#' used the other parallel response variable. 
+#' used the other parallel response variable. Equality of variances is not
+#' assumed.
 #' 
 #' 
 #' @param    m1A	   estimated mean for variable A in group 1 
