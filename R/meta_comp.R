@@ -29,7 +29,7 @@
 #' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
-#' * Estimate - estimate of average correlation or difference
+#' * Estimate - estimated average correlation or difference
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -118,7 +118,7 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
-#' * Estimate - estimate of average correlation or difference
+#' * Estimate - estimated average correlation or difference
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -191,10 +191,11 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' difference in average point-biserial correlations for two mutually
 #' exclusive sets of studies. Each set can have one or more studies. Two 
 #' types of point-biserial correlations can be analyzed. One type uses
-#' an unweighted variance and is approrpaite for 2-group experimental
-#' designs. The other type uses a weighted variance and is appropriate
-#' for 2-group nonexperimental designs with simple random sampling. 
-#' Equality of variances within or across studies is not assumed.
+#' an unweighted variance and is recommended for 2-group experimental
+#' designs. The other type uses a weighted variance and is recommended
+#' for 2-group nonexperimental designs with simple random sampling (but
+#' not stratified random sampling) within each study. Equality of 
+#' variances within or across studies is not assumed.
 #'    
 #'    
 #' @param     alpha   	alpha level for 1-alpha confidence
@@ -220,7 +221,7 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
-#' * Estimate - estimate of average correlation or difference
+#' * Estimate - estimated average correlation or difference
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -335,7 +336,7 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 #' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
-#' * Estimate - estimate of average correlation or difference
+#' * Estimate - estimated average correlation or difference
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -425,7 +426,7 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
-#' * Estimate - estimate of average correlation or difference
+#' * Estimate - estimated average correlation or difference
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
