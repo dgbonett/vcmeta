@@ -387,7 +387,8 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
 #' errors that accommodate residual heteroscedasticity. The exponentiated 
 #' slope estimate for a predictor variable describes a multiplicative
 #' change in the mean ratio associated with a 1-unit increase in that 
-#' predictor variable. 
+#' predictor variable, controlling for all other predictor variables
+#' in the model.
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -476,7 +477,8 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' errors that accommodate residual heteroscedasticity. The exponentiated 
 #' slope estimate for a predictor variable describes a multiplicative
 #' change in the mean ratio associated with a 1-unit increase in that 
-#' predictor variable. 
+#' predictor variable, controlling for all other predictor variables
+#' in the model.
 #' 
 #' 
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -857,8 +859,8 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
 #' Cronbach reliablity. The estimates are OLS estimates with robust standard 
 #' errors that accommodate residual heteroscedasticity. The exponentiated slope 
 #' estimate for a predictor variable describes a multiplicative change in 
-#  non-reliability associated with a 1-unit increase in that predictor 
-#' variable. 
+#' non-reliability associated with a 1-unit increase in that predictor 
+#' variable, controlling for all other predictor variables in the model.
 #' 
 #' 
 #' @param     alpha	 alpha level for 1-alpha confidence
@@ -938,7 +940,8 @@ meta.lm.cronbach <- function(alpha, n, rel, r, X) {
 #' that accommodate residual heteroscedasticity. The exponentiated 
 #' slope estimate for a predictor variable describes a multiplicative
 #' change in the odds ratio associated with a 1-unit increase in that 
-#' predictor variable. 
+#' predictor variable, controlling for all other predictor variables
+#' in the model.
 #' 
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1031,7 +1034,8 @@ meta.lm.odds <- function(alpha, f1, f2, n1, n2, X) {
 #' errors that accommodate residual heteroscedasticity. The exponentiated 
 #' slope estimate for a predictor variable describes a multiplicative 
 #' change in the proportion ratio associated with a 1-unit increase in 
-#' that predictor variable. 
+#' that predictor variable, controlling for all other predictor variables
+#' in the model.
 #' 
 #' 
 #' @param     alpha  	alpha level for 1-alpha confidence
