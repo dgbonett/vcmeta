@@ -5,11 +5,12 @@
 #' @description 
 #' This function computes confidence intervals from an original study and a 
 #' follow-up study where the effect size is a 2-group mean difference. Confidence
-#' intervals for the difference and average effect size also are computed. A 
+#' intervals for the difference and average effect size are also computed. 
+#' Equality of variances within or across studies is not assumed. A
 #' Satterthwaite adjustment to the degrees of freedom is used to improve the 
 #' accuracy of the confidence intervals. The same results can be obtained using
 #' the \link[vcmeta]{meta.lc.mean2} function with appropriate contrast coefficients. 
-#' The confidence level for the difference is 1 – 2alpha, which is recommended for 
+#' The confidence level for the difference is 1 – 2*alpha, which is recommended for 
 #' equivalence testing.
 #' 
 #' 
@@ -121,12 +122,13 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd2
 #' @description 
 #' This function computes confidence intervals from an original study and a 
 #' follow-up study where the effect size is a paired-samples mean difference. 
-#' Confidence intervals for the difference and average effect size also are
-#' computed. A Satterthwaite adjustment to the degrees of freedom is used to 
+#' Confidence intervals for the difference and average effect size are also
+#' computed. Equality of variances within or across studies is not assumed. 
+#' A Satterthwaite adjustment to the degrees of freedom is used to 
 #' improve the accuracy of the confidence intervals for the difference and 
 #' average. The same results can be obtained using the \link[vcmeta]{meta.lc.mean.ps} 
 #' function with appropriate contrast coefficients. The confidence level for 
-#' the difference is 1 – 2alpha, which is recommended for equivalence testing.
+#' the difference is 1 – 2*alpha, which is recommended for equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -238,9 +240,10 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' This function computes confidence intervals from an original study and a 
 #' follow-up study where the effect size is a 2-group standardized mean 
 #' difference. Confidence intervals for the difference and average effect 
-#' size also are computed. The same results can be obtained using the
+#' size are also computed. Equality of variances within or across studies
+#' is not assumed. The same results can be obtained using the
 #' \link[vcmeta]{meta.lc.stdmean2} function with appropriate contrast coefficients. 
-#' The confidence level for the difference is 1 – 2alpha, which is recommended 
+#' The confidence level for the difference is 1 – 2*alpha, which is recommended 
 #' for equivalence testing.
 #' 
 #' 
@@ -338,10 +341,11 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
 #' @description 
 #' This function computes confidence intervals from an original study and a follow-up
 #' study where the effect size is a paired-samples standardized mean difference. 
-#' Confidence intervals for the difference and average effect size also are computed.
-#' The same results can be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function 
-#' with appropriate contrast coefficients. The confidence level for the difference is
-#' 1 – 2alpha, which is recommended for equivalence testing.
+#' Confidence intervals for the difference and average effect size are also computed.
+#' Equality of variances within or across studies is not assumed. The same results
+#' can be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with 
+#' appropriate contrast coefficients. The confidence level for the difference is
+#' 1 – 2*alpha, which is recommended for equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -439,7 +443,7 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
 #' @description 
 #' This function can be used to compare and combine Pearson or partial 
 #' correlations from an original study and a follow-up study. The 
-#' confidence level for the difference is 1 – 2alpha, which is recommended 
+#' confidence level for the difference is 1 – 2*alpha, which is recommended 
 #' for equivalence testing.
 #' 
 #' 
@@ -546,11 +550,11 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 #'
 #' @description 
 #' This function computes confidence intervals from an original study and a
-#' follow-up study where the effect size is a 2-group proportion mean difference. 
-#' Confidence intervals for the difference and average effect size also are 
+#' follow-up study where the effect size is a 2-group proportion difference. 
+#' Confidence intervals for the difference and average effect size are also 
 #' computed. The same results can be obtained using the \link[vcmeta]{meta.lc.prop2} 
 #' function with appropriate contrast coefficients. The confidence level for 
-#' the difference is 1 – 2alpha, which is recommended for equivalence testing.
+#' the difference is 1 – 2*alpha, which is recommended for equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -659,8 +663,8 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' @description 
 #' This function computes confidence intervals for an odds ratio from an
 #' original study and a follow-up study. Confidence intervals for the
-#' ratio of odds ratios and geometric average odds ratio also are 
-#' computed. The confidence level for the difference is 1 – 2alpha, which
+#' ratio of odds ratios and geometric average odds ratio are also  
+#' computed. The confidence level for the ratio of ratios is 1 – 2*alpha, which
 #' is recommended for equivalence testing.
 #' 
 #' 
@@ -744,12 +748,13 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 #' Compares and combines slope coefficients in original and follow-up studies
 #'
 #' @description 
-#' Computes confidence intervals for a slope in original and follow-up studies,
-#' the difference in slopes, and the average of the slopes. Equality of error 
-#' variances between studies is not assumed. The confidence interval for the
-#' difference uses a 1 - 2alpha confidence level, which is recommended for 
-#' equivalence testing. Use the \link[vcmeta]{replicate.gen} function for 
-#' slopes in other types of models (e.g., binary logistic, ordinal logistic, SEM). 
+#' This function computes confidence intervals for a slope from the original and
+#' follow-up studies, the difference in slopes, and the average of the slopes. 
+#' Equality of error variances across studies is not assumed. The confidence 
+#' interval for the difference uses a 1 - 2*alpha confidence level, which is 
+#' recommended for equivalence testing. Use the \link[vcmeta]{replicate.gen} 
+#' function for slopes in other types of models (e.g., binary logistic, ordinal 
+#' logistic, SEM). 
 #'
 #'
 #' @param    alpha	alpha level for 1-alpha or 1 - 2alpha confidence
@@ -850,7 +855,7 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
 #' effect size estimate and its standard error from the original study and 
 #' the follow-up study. The same results can be obtained using the
 #' \link[vcmeta]{meta.lc.gen} function with appropriate contrast coefficients. 
-#' The confidence level for the difference is 1 – 2alpha, which is
+#' The confidence level for the difference is 1 – 2*alpha, which is
 #' recommended for equivalence testing.
 #' 
 #'
@@ -931,7 +936,7 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
 #' @description 
 #' This function can be used to compare and combine Spearman correlations from
 #' an original study and a follow-up study. The confidence level for the 
-#' difference is 1 – 2alpha, which is recommended for equivalence testing.
+#' difference is 1 – 2*alpha, which is recommended for equivalence testing.
 #' 
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
@@ -1036,9 +1041,9 @@ replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
 #' This function computes confidence intervals for a single proportion from an 
 #' original study and a follow-up study. Confidence intervals for the
 #' difference between the two proportions and average of the two proportions 
-#' also are computed. The same results can be obtained using the \link[vcmeta]{meta.lc.prop1}
+#' are also computed. The same results can be obtained using the \link[vcmeta]{meta.lc.prop1}
 #' function with appropriate contrast coefficients. The confidence level for the
-#' difference is 1 – 2alpha, which is recommended for equivalence testing.
+#' difference is 1 – 2*alpha, which is recommended for equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -1114,12 +1119,14 @@ replicate.prop1 <- function(alpha, f1, n1, f2, n2){
 #' @description 
 #' This function computes confidence intervals for a single mean from an 
 #' original study and a follow-up study. Confidence intervals for the
-#' difference between the two means and average of the two means also are
-#' computed. A Satterthwaite adjustment to the degrees of freedom is used to
-#' improve the accuracy of the confidence intervals for the difference and
-#' average. The same results can be obtained using the \link[vcmeta]{meta.lc.mean1}
-#' function with appropriate contrast coefficients. The confidence level for the
-#' difference is 1 – 2alpha, which is recommended for equivalence testing.
+#' difference between the two means and average of the two means are also
+#' computed. Equality of variances across studies is not assumed. A 
+#' Satterthwaite adjustment to the degrees of freedom is used to improve 
+#' the accuracy of the confidence intervals for the difference and average. 
+#' The same results can be obtained using the \link[vcmeta]{meta.lc.mean1} 
+#' function with appropriate contrast coefficients. The confidence level 
+#' for the difference is 1 – 2*alpha, which is recommended for equivalence
+#' testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -1207,13 +1214,13 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
 #' This function computes confidence intervals from an original study and a 
 #' follow-up study where the effect size is a 2-group proportion ratio. 
 #' Confidence intervals for the ratio and geometric average of effect sizes
-#' also are computed. The confidence level for the ratio is 1 – 2alpha, which
-#' is recommended for equivalence testing.
+#' are also computed. The confidence level for the ratio of ratios is 1 – 2*alpha, 
+#' which is recommended for equivalence testing.
 #' 
 #' 
-#' @param    alpha	     alpha level for 1-alpha confidence																																																																																																																																																	21q```````````````````````																																												`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````lpha		 alpha level for 1-alpha confidence
-#' @param    f11		 frequency count for group 1 in original study 
-#' @param    f12		 frequency count for group 2 in original study
+#' @param    alpha	   alpha level for 1-alpha confidence																																																																																																																																																	21q```````````````````````																																												`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````lpha		 alpha level for 1-alpha confidence
+#' @param    f11		   frequency count for group 1 in original study 
+#' @param    f12		   frequency count for group 2 in original study
 #' @param    n11    	 sample size for group 1 in original study
 #' @param    n12    	 sample size for group 2 in original study
 #' @param    f21    	 frequency count for group 1 in follow-up study 
@@ -1296,13 +1303,13 @@ replicate.ratio.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22)
 #' This function computes confidence intervals from an original study and a 
 #' follow-up study where the effect size is a paired-samples proportion 
 #' difference. Confidence intervals for the difference and average of effect
-#' sizes also are computed. The confidence level for the difference is
-#' 1 – 2alpha, which is recommended for equivalence testing.
+#' sizes are also computed. The confidence level for the difference is
+#' 1 – 2*alpha, which is recommended for equivalence testing.
 #' 
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
-#' @param    f1		 vector of frequency counts for 2x2 table in original study 
-#' @param    f2		 vector of frequency counts for 2x2 table in follow-up study
+#' @param    f1		   vector of frequency counts for 2x2 table in original study 
+#' @param    f2		   vector of frequency counts for 2x2 table in follow-up study
 #' 
 #' 
 #' @return A 4-row matrix. The rows are:
