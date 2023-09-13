@@ -1099,3 +1099,48 @@ se.biphi <- function(f1, f2, n1, n2) {
  return(out)
 }
 
+
+# se.cohen =========================================================		
+#' Computes the standard error for Cohen's d
+#' 
+#' 
+#' @description
+#' This function computes the standard error of Cohen's d using the
+#' sample sizes and an estimate of Cohen's d. Cohen's d and its 
+#' standard error assume equal variances. The estimate of Cohen's d
+#' along with the standard error output from this function can be used 
+#' as input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
+#' and \link[vcmeta]{meta.lm.gen} functions in applications where 
+#' different types of compatible standardized mean differences are 
+#' used in the meta-analysis. 
+#'
+#' 
+#' @param    d		  estimated estimated Cohen's d
+#' @param    n1		  sample size for group 1
+#' @param    n2		  sample size for group 2
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated Cohen's d
+#' * SE - standard error
+#' 
+#' 
+#' @examples
+#' se.cohen(.78, 35, 50)
+#'
+#' # Should return: 
+#' #            Estimate        SE
+#' # Cohen's d:     0.78 0.2288236
+#'
+#'
+#' @export
+se.cohen <- function(d, n1, n2) {
+  df1 <- n1 - 1
+  df2 <- n2 - 1
+  se <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
+  out <- t(c(d, se))
+  colnames(out) <- c("Estimate", "SE")
+  rownames(out) <- c("Cohen's d:")
+  return(out)
+}
