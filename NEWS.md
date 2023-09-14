@@ -1,3 +1,12 @@
+vcmeta v1.3.0 (Release date: 2023/xx/xx)
+==============
+
+Changes:
+
+* New functions: se.cohen, replicate.ratio.prop2, replicate.prop.ps, table.from.odds, table.from.phi, meta.sub.gen
+
+
+
 vcmeta v1.2.0 (Release date: 2023/06/xx)
 ==============
 
