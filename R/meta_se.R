@@ -885,9 +885,9 @@ se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1
 #' se.ave.cor.over(.462, .518, .755, 100)
 #'
 #' # Should return:
-#' #               Estimate         SE  VAR(cor12) VAR(cor13) COV(cor12,cor13)
-#' # Correlation  0.4900000 0.07087351 0.006378045 0.00551907      0.004097553
-#' # Fisher       0.5360603 0.09326690 0.010309278 0.01030928      0.007119936
+#' #                Estimate         SE  VAR(cor12) VAR(cor13) COV(cor12,cor13)
+#' # Correlation:  0.4900000 0.07087351 0.006378045 0.00551907      0.004097553
+#' # Fisher:       0.5360603 0.09326690 0.010309278 0.01030928      0.007119936
 #'
 #'
 #' @export
@@ -906,7 +906,7 @@ se.ave.cor.over <- function(cor12, cor13, cor23, n) {
   out2 <- t(c(est2, se2, v1.z, v2.z, cov2))
   out <- rbind(out1, out2)
   colnames(out) <- c("Estimate", "SE", "VAR(cor12)", "VAR(cor13)", "COV(cor12,cor13)")
-  rownames(out) <- c("Correlation", "Fisher")
+  rownames(out) <- c("Correlation: ", "Fisher: ")
   return(out)
 }
 
@@ -952,9 +952,9 @@ se.ave.cor.over <- function(cor12, cor13, cor23, n) {
 #' se.ave.cor.nonover(.357, .398, .755, .331, .347, .821, 100)
 #'
 #' # Should return:
-#' #             Estimate         SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
-#' # Correlation 0.377500 0.07768887 0.00784892 0.007301895      0.004495714
-#' # Fisher      0.397141 0.09059993 0.01030928 0.010309278      0.006122153
+#' #               Estimate         SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
+#' # Correlation:  0.377500 0.07768887 0.00784892 0.007301895      0.004495714
+#' # Fisher:       0.397141 0.09059993 0.01030928 0.010309278      0.006122153
 #'
 #'
 #' @export
@@ -975,7 +975,7 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
   out2 <- t(c(est2, se2, v1.z, v2.z, cov2))
   out <- rbind(out1, out2)
   colnames(out) <- c("Estimate", "SE", "VAR(cor12)", "VAR(cor34)", "COV(cor12,cor34)")
-  rownames(out) <- c("Correlation", "Fisher")
+  rownames(out) <- c("Correlation: ", "Fisher: ")
   return(out)
 }
 
@@ -1076,7 +1076,7 @@ se.tetra <- function(f00, f01, f10, f11) {
 #'
 #' # Should return:
 #' #               Estimate        SE 
-#' # Biserial phi:  0.27539 0.1074594
+#' # Biserial-phi:  0.27539 0.1074594
 #'
 #'
 #' @export
@@ -1097,7 +1097,7 @@ se.biphi <- function(f1, f2, n1, n2) {
  se.biphi <- sqrt(c^2/(lor^2 + c)^3)*se.lor
  out <- t(c(biphi, se.biphi))
  colnames(out) <- c("Estimate", "SE")
- rownames(out) <- "Biserial phi: "
+ rownames(out) <- "Biserial-phi: "
  return(out)
 }
 
