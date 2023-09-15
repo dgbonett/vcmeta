@@ -68,12 +68,16 @@ ci.fisher <- function(alpha, cor, se) {
 #' cor.from.t(9.4, 9.8, 1.26, 1.40, 2.27, 30)
 #'
 #' # Should return:
-#' # [1] 0.7415209
+#' #                Estimate
+#' # Correlation:  0.7415209
 #' 
+#'
 #' @export
 cor.from.t <- function(m1, m2, sd1, sd2, t, n) {
-  cor <- ((sd1^2 + sd2^2) - n*(m1 - m2)^2/t^2)/(2*sd1*sd2)
-  return (cor)
+  out <- t(((sd1^2 + sd2^2) - n*(m1 - m2)^2/t^2)/(2*sd1*sd2))
+  colnames(out) <- c("Estimate")
+  rownames(out) <- c("Correlation: ")
+  return (out)
 }
 
 
@@ -152,8 +156,8 @@ meta.chitest <- function(est, se) {
 #' stdmean2.from.t(3.27, 25, 25)
 #'
 #' # Should return:
-#' #       Estimate       SE
-#' # [1,] 0.9439677 0.298801
+#' #             Estimate       SE
+#' # Cohen's d  0.9439677 0.298801
 #' 
 #' @export
 stdmean2.from.t <- function(t, n1, n2) {
@@ -161,6 +165,7 @@ stdmean2.from.t <- function(t, n1, n2) {
   se <- sqrt(d^2*(1/(n1 - 1) + 1/(n2 - 1))/8 + 1/n1 + 1/n2)
   out <- t(c(d, se))
   colnames(out) <- c("Estimate", "SE")
+  rownames(out) <- c("Cohen's d: ")
   return (out)
 }
 
