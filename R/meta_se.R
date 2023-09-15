@@ -273,7 +273,7 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #'   
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of Pearson or partial correlation
+#' * Estimate - Pearson or partial correlation (from input)
 #' * SE - standard error
 #' 
 #' 
@@ -318,7 +318,7 @@ se.cor <- function(cor, s, n) {
 #'   
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of Spearman correlation
+#' * Estimate - Spearman correlation (from input)
 #' * SE - standard error
 #' 
 #' 
@@ -366,7 +366,7 @@ se.spear <- function(cor, n) {
 #'   
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of semipartial correlation
+#' * Estimate - semipartial correlation (from input)
 #' * SE - standard error
 #' 
 #' 
