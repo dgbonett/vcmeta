@@ -128,7 +128,7 @@ meta.chitest <- function(est, se) {
  p <- 1 - pchisq(Q, df)
  out <- t(c(Q, df, p))
  colnames(out) <- c("Q", "df", "p")
- rownames(out) <- c("")
+ rownames(out) <- ""
  return(out)
 } 
 
