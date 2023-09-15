@@ -148,17 +148,7 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.ave.stdmean2 <- function(
-  alpha, 
-  m1, 
-  m2, 
-  sd1, 
-  sd2, 
-  n1, 
-  n2, 
-  stdzr, 
-  bystudy = TRUE
-) {
+meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = TRUE) {
   df1 <- n1 - 1
   df2 <- n2 - 1
   m <- length(m1)
