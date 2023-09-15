@@ -32,8 +32,8 @@
 #' se.mean2(21.9, 16.1, 3.82, 3.21, 40, 40)
 #'
 #  # Should return:
-#' #                  Estimate        SE
-#' # Mean difference:      5.8 0.7889312
+#' #                   Estimate        SE
+#' # Mean difference:       5.8 0.7889312
 #' 
 #' 
 #' @references
@@ -46,7 +46,7 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
   se <- sqrt(sd1^2/n1 + sd2^2/n2)
   out <- t(c(d, se))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Mean difference:")
+  rownames(out) <- "Mean difference: "
   return(out)
 }
 
@@ -86,8 +86,8 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' se.mean.ps(23.9, 25.1, 1.76, 2.01, .78, 25)
 #'
 #' # Should return:
-#' #                  Estimate        SE
-#' # Mean difference:     -1.2 0.2544833
+#' #                   Estimate        SE
+#' # Mean difference:      -1.2 0.2544833
 #' 
 #' @references
 #' \insertRef{Snedecor1980}{vcmeta}
@@ -99,7 +99,7 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
   se <- sqrt((sd1^2 + sd2^2 - 2*cor*sd1*sd2)/n)
   out <- t(c(d, se))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Mean difference:")
+  rownames(out) <- "Mean difference: "
   return(out)
 }
 
@@ -148,8 +148,8 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' se.stdmean2(21.9, 16.1, 3.82, 3.21, 40, 40, 0)
 #'
 #' # Should return: 
-#' #                               Estimate        SE
-#' # Standardized mean difference: 1.643894 0.2629049
+#' #                                Estimate        SE
+#' # Standardized mean difference:  1.643894 0.2629049
 #' 
 #' 
 #' @references
@@ -182,7 +182,7 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
   }
   out <- t(c(d, se))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Standardized mean difference:")
+  rownames(out) <- "Standardized mean difference: "
   return(out)
 }
 
@@ -223,8 +223,8 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 #' se.stdmean.ps(23.9, 25.1, 1.76, 2.01, .78, 25, 0)
 #'
 #' # Should return: 
-#' #                                  Estimate        SE
-#' # Standardizedd mean difference: -0.6352097 0.1602852
+#' #                                   Estimate        SE
+#' # Standardizedd mean difference:  -0.6352097 0.1602852
 #' 
 #' 
 #' @references
@@ -254,7 +254,7 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
   }
   out <- t(c(d, se))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Standardized mean difference:")
+  rownames(out) <- "Standardized mean difference: "
   return(out)
 }
 
@@ -288,8 +288,8 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #' se.cor(.40, 0, 55)
 #'
 #' # Should return: 
-#' #              Estimate       SE
-#' # Correlation:      0.4 0.116487
+#' #               Estimate       SE
+#' # Correlation:       0.4 0.116487
 #' 
 #' 
 #' @references
@@ -301,7 +301,7 @@ se.cor <- function(cor, s, n) {
   se.cor <- sqrt((1 - cor^2)^2/(n - 3 - s))
   out <- t(c(cor, se.cor))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Correlation:")
+  rownames(out) <- "Correlation: "
   return(out)
 }
 
@@ -346,7 +346,7 @@ se.spear <- function(cor, n) {
   se.cor <- sqrt((1 - cor^2)^2*(1 + cor^2/2)/(n - 3))
   out <- t(c(cor, se.cor))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Correlation:")
+  rownames(out) <- "Spearman correlation: "
   return(out)
 }
 
@@ -380,8 +380,8 @@ se.spear <- function(cor, n) {
 #' se.semipartial(.40, .25, 60)
 #'
 #' # Should return: 
-#' #                          Estimate        SE
-#' # Semipartial correlation:      0.4 0.1063262
+#' #                           Estimate        SE
+#' # Semipartial correlation:       0.4 0.1063262
 #' 
 #' 
 #' @export
@@ -391,7 +391,7 @@ se.semipartial <- function(cor, r2, n) {
  se.cor <- sqrt(a/(n - 3))
  out <- t(c(cor, se.cor))
  colnames(out) <- c("Estimate", "SE")
- rownames(out) <- c("Semipartial correlation:")
+ rownames(out) <- "Semipartial correlation: "
  return(out)
 }
 
@@ -438,8 +438,8 @@ se.semipartial <- function(cor, r2, n) {
 #' se.pbcor(21.9, 16.1, 3.82, 3.21, 40, 40, 1)
 #'
 #' #  Should return: 
-#' #                               Estimate         SE
-#' #  Point-biserial correlation: 0.6349786 0.05981325
+#' #                                Estimate         SE
+#' #  Point-biserial correlation:  0.6349786 0.05981325
 #' 
 #' 
 #' @references
@@ -467,7 +467,7 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
   }
   out <- t(c(cor, se.cor))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Point-biserial correlation:")
+  rownames(out) <- "Point-biserial correlation: "
   return(out)
 }
 
@@ -504,8 +504,8 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
 #' se.odds(36, 50, 21, 50)
 #'
 #' # Should return: 
-#' #                 Estimate        SE
-#' # Log odds ratio: 1.239501 0.4204435
+#' #                  Estimate        SE
+#' # Log odds ratio:  1.239501 0.4204435
 #' 
 #' 
 #' @references
@@ -518,7 +518,7 @@ se.odds <- function(f1, n1, f2, n2) {
   se.log.OR <- sqrt(1/(f1 + .5) + 1/(f2 + .5) + 1/(n1 - f1 + .5) + 1/(n2 - f2 + .5))
   out <- t(c(log.OR, se.log.OR))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- "Log odds ratio:"
+  rownames(out) <- "Log odds ratio: "
   return(out)
 }
 
@@ -555,8 +555,8 @@ se.odds <- function(f1, n1, f2, n2) {
 #' se.meanratio2(21.9, 16.1, 3.82, 3.21, 40, 40)
 #'
 #' # Should return:
-#' #                  Estimate       SE
-#' # Log mean ratio: 0.3076674 0.041886
+#' #                   Estimate       SE
+#' # Log mean ratio:  0.3076674 0.041886
 #' 
 #' 
 #' @references
@@ -571,7 +571,7 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
   se <- sqrt(var1 + var2)
   out <- t(c(logratio, se))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- "Log mean ratio:"
+  rownames(out) <- "Log mean ratio: "
   return(out)
 }
 
@@ -609,8 +609,8 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' se.meanratio.ps(21.9, 16.1, 3.82, 3.21, .748, 40)
 #'
 #' # Should return:
-#' #                  Estimate         SE
-#' # Log mean ratio: 0.3076674 0.02130161
+#' #                   Estimate         SE
+#' # Log mean ratio:  0.3076674 0.02130161
 #' 
 #' 
 #' @references
@@ -626,7 +626,7 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
  se <- sqrt(var1 + var2 - 2*cov)
  out <- t(c(logratio, se))
  colnames(out) <- c("Estimate", "SE")
- rownames(out) <- "Log mean ratio:"
+ rownames(out) <- "Log mean ratio: "
  return(out)
 }
 
@@ -659,8 +659,8 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' se.slope(.392, 4.54, 2.89, 60)
 #'
 #' # Should return: 
-#' #         Estimate        SE
-#' # Slope: 0.6158062 0.1897647
+#' #          Estimate        SE
+#' # Slope:  0.6158062 0.1897647
 #' 
 #' 
 #' @references
@@ -673,7 +673,7 @@ se.slope <- function(cor, sdy, sdx, n) {
   se.slope <- sqrt((sdy^2*(1 - cor^2)*(n - 1))/(sdx^2*(n - 1)*(n - 2)))
   out <- t(c(slope, se.slope))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Slope:")
+  rownames(out) <- "Slope: "
   return(out)
 }
 
@@ -709,8 +709,8 @@ se.slope <- function(cor, sdy, sdx, n) {
 #' se.prop2(31, 16, 40, 40)
 #'
 #' # Should return:
-#' #                         Estimate        SE
-#' # Proportion difference: 0.3571429 0.1002777
+#' #                          Estimate        SE
+#' # Proportion difference:  0.3571429 0.1002777
 #' 
 #' 
 #' @references
@@ -725,7 +725,7 @@ se.prop2 <- function(f1, f2, n1, n2) {
  se <- sqrt(p1*(1 - p1)/(n1 + 2) + p2*(1 - p2)/(n2 + 2))
  out <- t(c(est, se))
  colnames(out) <- c("Estimate", "SE")
- rownames(out) <- c("Proportion difference:")
+ rownames(out) <- "Proportion difference: "
  return(out)
 }
 
@@ -761,8 +761,8 @@ se.prop2 <- function(f1, f2, n1, n2) {
 #' se.prop.ps(16, 64, 5, 15)
 #'
 #' # Should return:
-#' #                         Estimate         SE
-#' # Proportion difference: 0.5784314 0.05953213
+#' #                          Estimate         SE
+#' # Proportion difference:  0.5784314 0.05953213
 #' 
 #' 
 #' @references
@@ -778,7 +778,7 @@ se.prop.ps <- function(f00, f01, f10, f11) {
  se <- sqrt(((p01 + p10) - (p01 - p10)^2)/(n + 2))
  out <- t(c(est, se))
  colnames(out) <- c("Estimate", "SE")
- rownames(out) <- c("Proportion difference:")
+ rownames(out) <- "Proportion difference: "
  return(out)
 }
 
@@ -1017,8 +1017,8 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
 #' se.tetra(46, 15, 54, 85)
 #'
 #' # Should return:
-#' #       Estimate         SE 
-#' # [1,] 0.5135167 0.09358336
+#' #                Estimate         SE 
+#' # Tetrachoric:  0.5135167 0.09358336
 #'
 #'
 #' @export
@@ -1038,6 +1038,7 @@ se.tetra <- function(f00, f01, f10, f11) {
  se <- k*se.lor
  out <- t(c(tetra, se))
  colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Tetrachoric: "
  return(out)
 }
 
@@ -1074,8 +1075,8 @@ se.tetra <- function(f00, f01, f10, f11) {
 #' se.biphi(34, 22, 50, 50)
 #'
 #' # Should return:
-#' #       Estimate        SE 
-#' # [1,]   0.27539 0.1074594
+#' #               Estimate        SE 
+#' # Biserial phi:  0.27539 0.1074594
 #'
 #'
 #' @export
@@ -1096,6 +1097,7 @@ se.biphi <- function(f1, f2, n1, n2) {
  se.biphi <- sqrt(c^2/(lor^2 + c)^3)*se.lor
  out <- t(c(biphi, se.biphi))
  colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Biserial phi: "
  return(out)
 }
 
@@ -1141,6 +1143,6 @@ se.cohen <- function(d, n1, n2) {
   se <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
   out <- t(c(d, se))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Cohen's d:")
+  rownames(out) <- "Cohen's d: "
   return(out)
 }
