@@ -1,46 +1,48 @@
 # ================= Miscellaneous Functions ============
 
-# ci.fisher
-#' Fisher confidence interval for any type of correlation.
+# meta.ave.fisher =============================================================
+#' Fisher confidence interval for an average correlation.
 #' 
 #'
 #' @description 
-#' This function computes a confidence interval for any type
-#' correlation using an estimated correlation and its standard 
-#' error. This function should be used with the meta.ave.gen
-#' function when the effect size is a correlation. Use the 
-#' estimated average correlation and it standard error from 
-#' meta.ave.gen (when the effect size is a correlation) in the 
-#' ci.fisher function to obtain a more accurate confidence interval
-#' for the population average correlation. 
+#' This function should be used with the \link[vcmeta]{meta.ave.gen}
+#' function when the effect size is a correlation. Use the estimated average
+#' correlation and it standard error from meta.ave.gen in this function to 
+#' obtain a more accurate confidence interval for the population average 
+#' correlation. 
 #'
 #'
 #' @param alpha alpha value for 1-alpha confidence
-#' @param cor   estimate of correlation 
-#' @param se    standard error of estimated correlation
+#' @param cor   estimate of average correlation 
+#' @param se    standard error of average correlation
 #' 
 #' 
-#' @return A 2-element vector with lower and upper bounds of the confidence
-#' interval
+#' @return
+#' Returns a 1-row matrix. The columns are:
+#' * Estimate - estimate of average correlation (from input) 
+#' * LL - lower limit of the confidence interval
+#' * UL - lower limit of the confidence interval
 #' 
 #' @examples 
-#' ci.fisher(0.05, 0.50, .10)
+#' meta.ave.fisher(0.05, 0.376, .054)
 #'
 #' # Should return:
-#' # [1] 0.2802723 0.6699402
+#' # Estimate        LL        UL
+#' #    0.376 0.2656039 0.4766632
 #' 
 #' 
-#' @importFrom Rdpack reprompt
 #' @importFrom stats qnorm
 #' @export
-ci.fisher <- function(alpha, cor, se) {
+meta.ave.fisher <- function(alpha, cor, se) {
   z <- qnorm(1 - alpha/2)
   zr <- log((1 + cor)/(1 - cor))/2
   ll0 <- zr - z*se/(1 - cor^2)
   ul0 <- zr + z*se/(1 - cor^2)
   ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out <- c(ll, ul)
+  out <- t(c(cor, ll, ul))
+  colnames(out) <- c("Estimate", "LL", "UL")
+  rownames(out) <- ""
   return(out)
 }
 
