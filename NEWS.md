@@ -4,6 +4,7 @@ vcmeta v1.3.0 (Release date: 2023/xx/xx)
 Changes:
 
 * New functions: se.cohen, replicate.ratio.prop2, replicate.prop.ps, table.from.odds, table.from.phi, meta.sub.gen
+* The ci.fisher function has been renamed meta.ave.fisher
 
 
 
