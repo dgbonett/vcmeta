@@ -1,5 +1,5 @@
 # ================= Sub-group Comparison of Effect Sizes ============
-#  meta.sub.cor
+#  meta.sub.cor =====================================================
 #' Confidence interval for a difference in average Pearson or partial 
 #' correlations for two sets of studies 
 #' 
@@ -91,7 +91,7 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 }
 
 
-#  meta.sub.spear
+#  meta.sub.spear =============================================
 #' Confidence interval for a difference in average Spearman 
 #' correlations for two sets of studies
 #' 
@@ -181,7 +181,7 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 }
 
 
-#  meta.sub.pbcor
+#  meta.sub.pbcor ===============================================
 #' Confidence interval for a difference in average point-biserial
 #' correlations for two sets of studies 
 #' 
@@ -307,7 +307,7 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 }
 
 
-#  meta.sub.semipart
+#  meta.sub.semipart =========================================
 #' Confidence interval for a difference in average semipartial 
 #' correlations for two sets of studies 
 #' 
@@ -396,7 +396,7 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 }
 
 
-#  meta.sub.cronbach
+#  meta.sub.cronbach ==============================================
 #' Confidence interval for a difference in average Cronbach 
 #' reliabilities for two sets of studies 
 #' 
@@ -490,8 +490,87 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 }
 
 
-# ================= Linear Contrasts of Effect Sizes ============
-#  meta.lc.mean2
+#  meta.sub.gen ===============================================================
+#' Confidence interval for a difference in average effect size for two sets 
+#' of studies 
+#' 
+#' 
+#' @description
+#' Computes the estimate, standard error, and confidence interval for a 
+#' difference in the average effect size (any type of effect size) for
+#' two mutually exclusive sets of studies. Each set can have one or more 
+#' studies. All of the effects sizes should be compatible. 
+#'
+#'
+#' @param     alpha  	alpha level for 1-alpha confidence
+#' @param     est    	vector of estimated effect sizes 
+#' @param     se    	vector of effect size standard errors 
+#' @param     group  	vector of group indicators:
+#' * 1 for set A
+#' * 2 for set B
+#' * 0 to ignore
+#' 
+#'
+#' @return 
+#' Returns a matrix with three rows:
+#' * Row 1 - estimate for Set A
+#' * Row 2 - estimate for Set B
+#' * Row 3 - estimate for difference, Set A - Set B
+#'
+#' The columns are:
+#' * Estimate - estimated average effect size or difference
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' est <- c(.920, .896, .760, .745)
+#' se <- c(.098, .075, .069, .055) 
+#' group <- c(1, 1, 2, 2)
+#' meta.sub.gen(.05, est, se, group)
+#' 
+#' # Should return:
+#' #                Estimate         SE          LL        UL
+#' # Set A:           0.9080 0.06170292 0.787064504 1.0289355
+#' # Set B:           0.7525 0.04411916 0.666028042 0.8389720
+#' # Set A - Set B:   0.1555 0.07585348 0.006829917 0.3041701
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.sub.gen <- function(alpha, est, se, group) {
+  m <- length(est)
+  z <- qnorm(1 - alpha/2)
+  var <- se^2
+  g1 <- (group == rep(1, m))*1
+  g2 <- (group == rep(2, m))*1
+  m1 <- sum(g1)
+  m2 <- sum(g2)
+  ave.A <- sum(g1*est)/m1
+  se.ave.A <- sqrt(sum(g1*var)/m1^2)
+  ll.A <- ave.A - z*se.ave.A
+  ul.A <- ave.A + z*se.ave.A
+  ave.B <- sum(g2*est)/m2
+  se.ave.B <- sqrt(sum(g2*var)/m2^2)
+  ll.B <- ave.B - z*se.ave.B
+  ul.B <- ave.B + z*se.ave.B
+  diff <- ave.A - ave.B
+  se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
+  ll.diff <- diff - z*se.diff
+  ul.diff <- diff + z*se.diff
+  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
+  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
+  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out <- rbind(out1, out2, out3)
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
+  return (out)
+}
+
+
+# ================= Linear Contrasts of Effect Sizes ================
+#  meta.lc.mean2 ====================================================
 #' Confidence interval for a linear contrast of mean differences from
 #' 2-group studies
 #'
@@ -566,7 +645,7 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 }
 
 
-# meta.lc.stdmean2
+# meta.lc.stdmean2 ==================================================
 #' Confidence interval for a linear contrast of standardized mean 
 #' differences from 2-group studies  
 #' 
@@ -670,7 +749,7 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 }
 
 
-#  meta.lc.mean.ps
+#  meta.lc.mean.ps ====================================================
 #' Confidence interval for a linear contrast of mean differences from 
 #' paired-samples studies 
 #' 
@@ -745,7 +824,7 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 }
 
 
-#  meta.lc.stdmean.ps
+#  meta.lc.stdmean.ps ===================================================
 #' Confidence interval for a linear contrast of standardized 
 #' mean differences from paired-samples studies 
 #' 
@@ -836,7 +915,7 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 }
 
 
-#  meta.lc.meanratio2
+#  meta.lc.meanratio2 =================================================
 #' Confidence interval for a log-linear contrast of mean ratios from
 #' 2-group studies  	
 #' 
@@ -921,7 +1000,7 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 }
 
 
-#  meta.lc.meanratio.ps
+#  meta.lc.meanratio.ps ================================================
 #' Confidence interval for a log-linear contrast of mean ratios from 
 #' paired-samples studies 
 #' 
@@ -997,7 +1076,7 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 }
 
 
-#  meta.lc.odds
+#  meta.lc.odds =====================================================
 #' Confidence interval for a log-linear contrast of odds ratios 
 #' 
 #' 
@@ -1061,7 +1140,7 @@ meta.lc.odds <- function(alpha, f1, f2, n1, n2, v) {
 }
 
 
-#  meta.lc.propratio2
+#  meta.lc.propratio2 =====================================================
 #' Confidence interval for a log-linear contrast of proportion ratios from 2-group studies
 #' 
 #' 
@@ -1129,7 +1208,7 @@ meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
 } 
 
 
-#  meta.lc.prop2
+#  meta.lc.prop2 =============================================================
 #' Confidence interval for a linear contrast of proportion differences in 2-group studies 
 #' 
 #' 
@@ -1194,7 +1273,7 @@ meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
 }
 
 
-# meta.lc.prop.ps
+# meta.lc.prop.ps =======================================================
 #' Confidence interval for a linear contrast of proportion differences in 
 #' paired-samples studies 
 #' 
@@ -1260,7 +1339,7 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 }
 
 
-#  meta.lc.agree
+#  meta.lc.agree ===================================================
 #' Confidence interval for a linear contrast of G-index coefficients  
 #' 
 #' 
@@ -1320,7 +1399,7 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 }
 
 
-# meta.lc.mean1
+# meta.lc.mean1 ===================================================
 #' Confidence interval for a linear contrast of means
 #' 
 #'
@@ -1393,8 +1472,8 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
 }
 
 
-# meta.lc.prop1
-#' Confidence interval for a linear contrast of proportions. 
+# meta.lc.prop1 ==============================================
+#' Confidence interval for a linear contrast of proportions 
 #' 
 #' 
 #' @description
@@ -1447,7 +1526,7 @@ meta.lc.prop1 <- function(alpha, f, n, v) {
 }
 
 
-#  meta.lc.gen
+#  meta.lc.gen =====================================================
 #' Confidence interval for a linear contrast of effect sizes 
 #' 
 #' 
