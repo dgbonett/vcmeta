@@ -1911,8 +1911,10 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
  ul <- w2.est + z*se.w2
  out1 <- cbind(t2, se.t2, ll.t2, ul.t2)
  out2 <- cbind(w2.est, se.w2, ll, ul)
+ out <- rbind(out1, out2)
  row1 <- "Tau-squared"
  row2 <- "Average"
+ row <- rbind(row1, row2)
  if (bystudy) {
    ll <- est - z*se
    ul <- est + z*se
