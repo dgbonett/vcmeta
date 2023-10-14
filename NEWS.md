@@ -9,7 +9,7 @@ Changes:
 
 
 
-vcmeta v1.2.0 (Release date: 2023/06/xx)
+vcmeta v1.2.0 (Release date: 2023/06/26)
 ==============
 
 Changes:
