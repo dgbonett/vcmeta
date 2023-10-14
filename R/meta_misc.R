@@ -196,10 +196,10 @@ stdmean2.from.t <- function(t, n1, n2) {
 #'
 #'
 #' The columns are:
-#' * Cell 11 - proportion and frequency for cell 11
-#' * Cell 12 - proportion and frequency for cell 12
-#' * Cell 21 - proportion and frequency for cell 21
-#' * Cell 22 - proportion and frequency for cell 22
+#' * cell 11 - proportion and frequency for cell 11
+#' * cell 12 - proportion and frequency for cell 12
+#' * cell 21 - proportion and frequency for cell 21
+#' * cell 22 - proportion and frequency for cell 22
 #'    
 #' 
 #' @examples
@@ -267,10 +267,10 @@ table.from.odds <- function(p1row, p1col, or, n){
 #'
 #'
 #' The columns are:
-#' * Cell 11 - proportion and frequency for cell 11
-#' * Cell 12 - proportion and frequency for cell 12
-#' * Cell 21 - proportion and frequency for cell 21
-#' * Cell 22 - proportion and frequency for cell 22
+#' * cell 11 - proportion and frequency for cell 11
+#' * cell 12 - proportion and frequency for cell 12
+#' * cell 21 - proportion and frequency for cell 21
+#' * cell 22 - proportion and frequency for cell 22
 #'    
 #' 
 #' @examples
