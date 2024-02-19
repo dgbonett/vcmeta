@@ -6,7 +6,8 @@
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average mean difference from two or more 2-group studies. A Satterthwaite 
 #' adjustment to the degrees of freedom is used to improve the accuracy of the
-#' confidence intervals. Equality of variances within or across studies is not assumed.
+#' confidence intervals. Equality of variances within or across studies is not
+#' assumed.
 #'
 #'  
 #' @param alpha  	 alpha level for 1-alpha confidence
