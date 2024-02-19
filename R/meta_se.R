@@ -1102,22 +1102,21 @@ se.biphi <- function(f1, f2, n1, n2) {
 }
 
 
-# se.cohen =========================================================		
+# se.cohen ====================================================================		
 #' Computes the standard error for Cohen's d
 #' 
 #' 
 #' @description
-#' This function computes the standard error of Cohen's d using the
-#' sample sizes and an estimate of Cohen's d. Cohen's d and its 
-#' standard error assume equal variances. The estimate of Cohen's d
-#' along with the standard error output from this function can be used 
-#' as input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
-#' and \link[vcmeta]{meta.lm.gen} functions in applications where 
-#' different types of compatible standardized mean differences are 
-#' used in the meta-analysis. 
+#' This function computes the standard error of Cohen's d using only the two 
+#' sample sizes and an estimate of Cohen's d. Cohen's d and its standard error 
+#' assume equal variances. The estimate of Cohen's d, with the standard error
+#' output from this function, can be used as input in the \link[vcmeta]{meta.ave.gen},
+#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
+#' applications where different types of compatible standardized mean 
+#' differences are used in the meta-analysis. 
 #'
 #' 
-#' @param    d		  estimated estimated Cohen's d
+#' @param    d		  estimated Cohen's d
 #' @param    n1		  sample size for group 1
 #' @param    n2		  sample size for group 2
 #' 
