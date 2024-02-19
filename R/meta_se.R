@@ -833,8 +833,8 @@ se.prop.ps <- function(f00, f01, f10, f11) {
 #' se.ave.mean2.dep(21.9, 16.1, 3.82, 3.21, 24.8, 17.1, 3.57, 3.64, .785, 40, 40)
 #'
 #' # Should return:
-#' #      Estimate        SE    VAR(A)    VAR(B)  COV(A,B)
-#' # [1,]     6.75 0.7526878 0.6224125 0.6498625 0.4969403
+#' #                          Estimate        SE    VAR(A)    VAR(B)  COV(A,B)
+#' # Average mean difference:     6.75 0.7526878 0.6224125 0.6498625 0.4969403
 #' 
 #' 
 #' @export
@@ -848,6 +848,7 @@ se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1
   se <- sqrt((v1 + v2 + 2*cov)/4)
   out <- t(c(est, se, v1, v2, cov))
   colnames(out) <- c("Estimate", "SE", "VAR(A)", "VAR(B)", "COV(A,B)")
+  rownames(out) <- "Average mean difference: "
   return(out)
 }
 
