@@ -156,6 +156,9 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' \insertRef{Bonett2009a}{vcmeta}
 #'
 #'
+#' @seealso \link[vcmeta]{se.cohen}
+#'
+#'
 #' @export
 se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
   df1 <- n1 - 1
@@ -1134,6 +1137,9 @@ se.biphi <- function(f1, f2, n1, n2) {
 #' # Should return: 
 #' #            Estimate        SE
 #' # Cohen's d:     0.78 0.2288236
+#'
+#'
+#' @seealso \link[vcmeta]{se.stdmean2}
 #'
 #'
 #' @export
