@@ -1,4 +1,4 @@
-# se.mean2 =========================================================
+# se.mean2 =================================================================
 #' Computes the standard error for a 2-group mean difference
 #' 
 #' 
@@ -51,7 +51,7 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
 }
 
 
-# se.mean.ps =========================================================
+# se.mean.ps =================================================================
 #' Computes the standard error for a paired-samples mean difference
 #' 
 #' 
@@ -104,7 +104,7 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 }
 
 
-# se.stdmean2 =========================================================		
+# se.stdmean2 ================================================================		
 #' Computes the standard error for a 2-group standardized mean difference
 #' 
 #' 
@@ -187,8 +187,9 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 }
 
 
-# se.stdmean.ps =========================================================		
-#' Computes the standard error for a paired-samples standardized mean difference
+# se.stdmean.ps ==============================================================	
+#' Computes the standard error for a paired-samples standardized mean 
+#' difference
 #' 
 #'
 #' @description
@@ -259,7 +260,7 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 }
 
 
-# se.cor =========================================================
+# se.cor ==========================================================
 #' Computes the standard error for a Pearson or partial correlation 
 #' 
 #'
@@ -306,7 +307,7 @@ se.cor <- function(cor, s, n) {
 }
 
 
-# se.spear =========================================================
+# se.spear ===================================================================
 #' Computes the standard error for a Spearman correlation 
 #' 
 #' 
@@ -351,7 +352,7 @@ se.spear <- function(cor, n) {
 }
 
 
-# se.semipart =========================================================
+# se.semipart ================================================================
 #' Computes the standard error for a semipartial correlation 
 #' 
 #'
@@ -396,7 +397,7 @@ se.semipartial <- function(cor, r2, n) {
 }
 
 
-# se.pbcor =========================================================
+# se.pbcor ==============================================================
 #' Computes the standard error for a point-biserial correlation 
 #' 
 #'
@@ -472,7 +473,7 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
 }
 
 
-# se.odds =========================================================
+# se.odds ====================================================================
 #' Computes the standard error for a log odds ratio 
 #' 
 #'
@@ -576,7 +577,7 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 }
 
 
-# se.meanratio.ps =========================================================
+# se.meanratio.ps =============================================================
 #' Computes the standard error for a paired-samples log mean ratio
 #' 
 #' 
@@ -631,7 +632,7 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
 }
 
 
-# se.slope =========================================================
+# se.slope =================================================================
 #' Computes a slope and standard error
 #' 
 #'
@@ -678,7 +679,7 @@ se.slope <- function(cor, sdy, sdx, n) {
 }
 
 
-# se.prop2 ========================================================= 
+# se.prop2 =================================================================== 
 #' Computes the estimate and standard error for a 2-group proportion 
 #' difference
 #' 
@@ -730,7 +731,7 @@ se.prop2 <- function(f1, f2, n1, n2) {
 }
 
 
-# se.prop.ps =========================================================
+# se.prop.ps ==============================================================
 #' Computes the estimate and standard error for a paired-samples
 #' proportion difference
 #' 
