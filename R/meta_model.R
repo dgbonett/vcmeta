@@ -1,4 +1,4 @@
-#  meta.lm.mean2
+#  meta.lm.mean2 ===========================================================
 #' Meta-regression analysis for 2-group mean differences
 #' 
 #' 
@@ -83,7 +83,7 @@ meta.lm.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 }
 
 
-#  meta.lm.stdmean2
+#  meta.lm.stdmean2 ==========================================================
 #' Meta-regression analysis for 2-group standardized mean differences
 #' 
 #' 
@@ -192,7 +192,7 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
 }
 
 
-#  meta.lm.mean.ps
+#  meta.lm.mean.ps ==========================================================
 #' Meta-regression analysis for paired-samples mean differences
 #' 
 #' 
@@ -274,7 +274,7 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 }
 
 
-#  meta.lm.stdmean.ps
+#  meta.lm.stdmean.ps =======================================================
 #' Meta-regression analysis for paired-samples standardized mean differences
 #' 
 #' 
@@ -376,7 +376,7 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
 }
 
 
-#  meta.lm.meanratio2
+#  meta.lm.meanratio2 =======================================================
 #' Meta-regression analysis for 2-group log mean ratios
 #' 
 #' 
@@ -466,7 +466,7 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 }
 
 
-#  meta.lm.meanratio.ps
+#  meta.lm.meanratio.ps =====================================================
 #' Meta-regression analysis for paired-samples log mean ratios
 #' 
 #' 
@@ -555,7 +555,7 @@ meta.lm.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 }
 
 
-#  meta.lm.cor.gen
+#  meta.lm.cor.gen ==========================================================
 #' Meta-regression analysis for correlations 
 #' 
 #'  
@@ -626,7 +626,7 @@ meta.lm.cor.gen <- function(alpha, cor, se, X) {
   return (out)
 }
 
-#  meta.lm.cor
+#  meta.lm.cor ==============================================================
 #' Meta-regression analysis for Pearson or partial correlations
 #' 
 #' 
@@ -701,7 +701,7 @@ meta.lm.cor <- function(alpha, n, cor, s, X) {
 }
 
 
-#  meta.lm.spear
+#  meta.lm.spear ============================================================
 #' Meta-regression analysis for Spearman correlations 
 #' 
 #'  
@@ -774,7 +774,7 @@ meta.lm.spear <- function(alpha, n, cor, X) {
   return (out)
 }
 
-#  meta.lm.semipart
+#  meta.lm.semipart =========================================================
 #' Meta-regression analysis for semipartial correlations
 #' 
 #'  
@@ -849,7 +849,7 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
   return (out)
 }
 
-#  meta.lm.cronbach
+#  meta.lm.cronbach =========================================================
 #' Meta-regression analysis for Cronbach reliabilities 
 #' 
 #'
@@ -929,7 +929,7 @@ meta.lm.cronbach <- function(alpha, n, rel, r, X) {
 }
 
 
-#  meta.lm.odds
+#  meta.lm.odds =============================================================
 #' Meta-regression analysis for odds ratios 
 #' 
 #' 
@@ -1023,7 +1023,7 @@ meta.lm.odds <- function(alpha, f1, f2, n1, n2, X) {
 }
 
 
-#  meta.lm.propratio2
+#  meta.lm.propratio2 =======================================================
 #' Meta-regression analysis for proportion ratios 
 #' 
 #'
@@ -1120,7 +1120,7 @@ meta.lm.propratio2 <- function(alpha, f1, f2, n1, n2, X) {
 }
 
 
-#  meta.lm.prop2
+#  meta.lm.prop2 ============================================================
 #' Meta-regression analysis for 2-group proportion differences 
 #' 
 #'
@@ -1201,7 +1201,7 @@ meta.lm.prop2 <- function(alpha, f1, f2, n1, n2, X) {
 }
 
 
-#  meta.lm.prop.ps
+#  meta.lm.prop.ps ==========================================================
 #' Meta-regression analysis for paired-samples proportion differences 
 #' 
 #' 
@@ -1284,7 +1284,7 @@ meta.lm.prop.ps <- function(alpha, f11, f12, f21, f22, X) {
 }
 
 
-#  meta.lm.agree
+#  meta.lm.agree ============================================================
 #' Meta-regression analysis for G agreement indices
 #' 
 #'
@@ -1359,7 +1359,7 @@ meta.lm.agree <- function(alpha, f11, f12, f21, f22, X) {
   return (out)
 }
 
-#  meta.lm.mean1
+#  meta.lm.mean1 ============================================================
 #' Meta-regression analysis for 1-group means
 #' 
 #'
@@ -1433,7 +1433,7 @@ meta.lm.mean1 <- function(alpha, m, sd, n, X) {
 }
 
 
-#  meta.lm.prop1
+#  meta.lm.prop1 ============================================================
 #' Meta-regression analysis for 1-group proportions
 #' 
 #' 
@@ -1501,7 +1501,7 @@ meta.lm.prop1 <- function(alpha, f, n, X) {
 }
 
 
-#  meta.lm.gen
+#  meta.lm.gen ==============================================================
 #' Meta-regression analysis for any type of effect size
 #' 
 #' 
