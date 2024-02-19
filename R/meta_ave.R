@@ -1749,11 +1749,14 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
 #' weighted average effect from two or more studies using the constant
-#' coefficient (fixed-effect) meta-analysis model. The weighted average 
-#' estimate will be biased regardless of number of studies or sample size
-#' per study and the actual confidence interval coverage probability can
-#' be much smaller than the specified confidence level when the true effect
-#' sizes are not identical across studies. 
+#' coefficient (fixed-effect) meta-analysis model. 
+#'
+#'
+#' @details
+#' The weighted average estimate will be biased regardless of number of 
+#' studies or sample size per study and the actual confidence interval 
+#' coverage probability can be much smaller than the specified confidence
+#' level when the true effect sizes are not identical across studies. 
 #'    
 #' 
 #' @param    alpha 	alpha level for 1-alpha confidence
@@ -1829,9 +1832,12 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' Computes the estimate, standard error, and confidence interval for a 
 #' weighted average effect from multiple studies using the random 
 #' coefficient (random-effects) meta-analysis model. An estimate of 
-#' effect-size heterogeneity (tau-squared) is also computed. The random 
-#' coefficient model assumes that the studies in the meta-analysis are 
-#' a random sample from some definable superpopulation of studies. This
+#' effect-size heterogeneity (tau-squared) is also computed. 
+#'
+#'
+#' @ details
+#' The random coefficient model assumes that the studies in the meta-analysis
+#' are a random sample from some definable superpopulation of studies. This
 #' assumption is very difficult to justify. The weighted average
 #' estimate will be biased regardless of number of studies or sample size
 #' per study and the actual confidence interval coverage probability can 
