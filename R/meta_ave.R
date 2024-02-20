@@ -1682,10 +1682,10 @@ meta.ave.var <- function(alpha, var, n, bystudy = TRUE) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average of any type of parameter from two or more studies. 
 #' 
-#' @param    alpha	alpha level for 1-alpha confidence
-#' @param    est   	vector of parameter estimates 
-#' @param    se    	vector of standard errors
-#' @param bystudy   logical to also return each study estimate (TRUE) or not
+#' @param    alpha	  alpha level for 1-alpha confidence
+#' @param    est   	  vector of parameter estimates 
+#' @param    se    	  vector of standard errors
+#' @param    bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
 #' @return 
@@ -1753,16 +1753,19 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #'
 #'
 #' @details
-#' The weighted average estimate will be biased regardless of number of 
-#' studies or sample size per study and the actual confidence interval 
+#' The weighted average estimate will be biased regardless of the number of 
+#' studies or the sample size in each study. The actual confidence interval 
 #' coverage probability can be much smaller than the specified confidence
-#' level when the true effect sizes are not identical across studies. 
+#' level when the true effect sizes are not identical across studies. The
+#' constant coefficient model should be used with caution. This function is
+#' included in the vcmeta package primarily for classroom demonstrations to
+#' illustrate the characteristics of this method.
 #'    
 #' 
-#' @param    alpha 	alpha level for 1-alpha confidence
-#' @param    est   	vector of parameter estimates 
-#' @param    se    	vector of standard errors
-#' @param bystudy   logical to also return each study estimate (TRUE) or not
+#' @param    alpha 	  alpha level for 1-alpha confidence
+#' @param    est   	  vector of parameter estimates 
+#' @param    se    	  vector of standard errors
+#' @param    bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
 #' @return 
@@ -1838,18 +1841,21 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' @ details
 #' The random coefficient model assumes that the studies in the meta-analysis
 #' are a random sample from some definable superpopulation of studies. This
-#' assumption is very difficult to justify. The weighted average
-#' estimate will be biased regardless of number of studies or sample size
-#' per study and the actual confidence interval coverage probability can 
+#' assumption is very difficult to justify. The weighted average estimate
+#' will be biased regardless of the number of studies or the sample size
+#' in each study. The actual confidence interval coverage probability can 
 #' much smaller than the specified confidence level if the effect sizes are 
-#' correlated with the weights. The confidence interval for tau-squared 
-#' assume that the true effects sizes in the superpopulation of studies 
-#' have a normal distribution. A large number of studies, each with a large 
-#' sample size, is required to assess the superpopulation normality 
-#' assumption and to accurately estimate tau-squared. The confidence 
-#' interval for the population tau-squared is hypersensitive to very minor
-#' and difficult to detect violations of the superpopulation normality 
-#' assumption. 
+#' correlated with the weights (which occurs frequently). The confidence 
+#' interval for tau-squared assumes that the true effect sizes in the
+#' superpopulation of studies have a normal distribution. A large number 
+#' of studies, each with a large sample size, is required to assess the 
+#' superpopulation normality assumption and to accurately estimate 
+#' tau-squared. The confidence interval for the population tau-squared is
+#' hypersensitive to very minor and difficult-to-detect violations of the 
+#' superpopulation normality assumption. The random coefficient model 
+#' should be used with caution. This function is included in the vcmeta
+#' package primarily for classroom demonstrations to illustrate the
+#' characteristics of this method.
 #' 
 #' 
 #' @param    alpha 	alpha level for 1-alpha confidence
