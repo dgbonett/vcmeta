@@ -1682,9 +1682,9 @@ meta.ave.var <- function(alpha, var, n, bystudy = TRUE) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average of any type of parameter from two or more studies. 
 #' 
-#' @param    alpha	  alpha level for 1-alpha confidence
-#' @param    est   	  vector of parameter estimates 
-#' @param    se    	  vector of standard errors
+#' @param    alpha  	alpha level for 1-alpha confidence
+#' @param    est     	vector of parameter estimates 
+#' @param    se      	vector of standard errors
 #' @param    bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
