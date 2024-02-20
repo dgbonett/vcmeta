@@ -1858,10 +1858,10 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' characteristics of this method.
 #' 
 #' 
-#' @param    alpha 	alpha level for 1-alpha confidence
-#' @param    est   	vector of parameter estimates 
-#' @param    se    	vector of standard errors
-#' @param bystudy   logical to also return each study estimate (TRUE) or not
+#' @param    alpha 	  alpha level for 1-alpha confidence
+#' @param    est   	  vector of parameter estimates 
+#' @param    se      	vector of standard errors
+#' @param    bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
 #' @return 
