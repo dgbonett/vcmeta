@@ -138,8 +138,7 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #' 
 #' 
 #' @references
-#' Bonett, D.G. (2008). Meta-analytic interval estimation for bivariate
-#' correlations. *Psychological Methods*, 13, 173-189.
+#' \insertRef{Bonett2008a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
