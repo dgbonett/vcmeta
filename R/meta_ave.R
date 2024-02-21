@@ -1681,6 +1681,7 @@ meta.ave.var <- function(alpha, var, n, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average of any type of parameter from two or more studies. 
+#'
 #' 
 #' @param    alpha  	alpha level for 1-alpha confidence
 #' @param    est     	vector of parameter estimates 
@@ -1756,11 +1757,15 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #' The weighted average estimate will be biased regardless of the number of 
 #' studies or the sample size in each study. The actual confidence interval 
 #' coverage probability can be much smaller than the specified confidence
-#' level when the true effect sizes are not identical across studies. The
-#' constant coefficient model should be used with caution, and the varying
-#' coefficient model is the recommended alternative. This function is included 
-#' in the vcmeta package primarily for classroom demonstrations to illustrate
-#' the characteristics of the constant coefficient model.
+#' level when the population effect sizes are not identical across studies. 
+#'
+#' The constant coefficient model should be used with caution, and the varying
+#' coefficient methods in this package are the recommended alternatives. The 
+#' varying coefficient methods do not require effect-size homogeneity across 
+#' the selected studies. This constant coefficient meta-analysis function is 
+#' included in the vcmeta package primarily for classroom  demonstrations to 
+#' illustrate the problematic characteristics of the constant coefficient 
+#' meta-analysis model.
 #'    
 #' 
 #' @param    alpha   	  alpha level for 1-alpha confidence
@@ -1799,6 +1804,9 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #' @references
 #' * \insertRef{Hedges1985}{vcmeta}
 #' * \insertRef{Borenstein2009}{vcmeta}
+#'
+#'
+#' @seealso \link[vcmeta]{meta.ave.gen}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1853,11 +1861,16 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' superpopulation normality assumption and to accurately estimate 
 #' tau-squared. The confidence interval for the population tau-squared is
 #' hypersensitive to very minor and difficult-to-detect violations of the 
-#' superpopulation normality assumption. The random coefficient model 
-#' should be used with caution, and the varying coefficient model is the 
-#' recommended alternative. This function is included in the vcmeta package
-#' primarily for classroom demonstrations to illustrate the characteristics
-#' of the random coefficient model.
+#' superpopulation normality assumption. 
+#'
+#' The random coefficient model should be used with caution, and the varying 
+#' coefficient methods in this package are the recommended alternative. The 
+#' varying coefficient methods allows the effect sizes to differ across studies
+#' but do not require the studies to be a random sample from a definable 
+#' superpopoulation of studies. This random coefficient function is included 
+#' in the vcmeta package primarily for classroom demonstrations to illustrate
+#' the problimatic characteristics of the random coefficient meta-analysis
+#' model.
 #' 
 #' 
 #' @param    alpha    alpha level for 1-alpha confidence
@@ -1896,6 +1909,9 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' @references
 #' * \insertRef{Hedges1985}{vcmeta}
 #' * \insertRef{Borenstein2009}{vcmeta}
+#'
+#'
+#' @seealso \link[vcmeta]{meta.ave.gen}
 #' 
 #' 
 #' @importFrom stats qnorm
