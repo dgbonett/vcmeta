@@ -1757,9 +1757,10 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #' studies or the sample size in each study. The actual confidence interval 
 #' coverage probability can be much smaller than the specified confidence
 #' level when the true effect sizes are not identical across studies. The
-#' constant coefficient model should be used with caution. This function is
-#' included in the vcmeta package primarily for classroom demonstrations to
-#' illustrate the characteristics of this method.
+#' constant coefficient model should be used with caution, and the varying
+#' coefficient model is the recommended alternative. This function is included 
+#' in the vcmeta package primarily for classroom demonstrations to illustrate
+#' the characteristics of the constant coefficient model.
 #'    
 #' 
 #' @param    alpha   	  alpha level for 1-alpha confidence
@@ -1853,9 +1854,10 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' tau-squared. The confidence interval for the population tau-squared is
 #' hypersensitive to very minor and difficult-to-detect violations of the 
 #' superpopulation normality assumption. The random coefficient model 
-#' should be used with caution. This function is included in the vcmeta
-#' package primarily for classroom demonstrations to illustrate the
-#' characteristics of this method.
+#' should be used with caution, and the varying coefficient model is the 
+#' recommended alternative. This function is included in the vcmeta package
+#' primarily for classroom demonstrations to illustrate the characteristics
+#' of the random coefficient model.
 #' 
 #' 
 #' @param    alpha    alpha level for 1-alpha confidence
