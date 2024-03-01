@@ -36,7 +36,7 @@ the ggplot API
 }
 \description{
 Generates a forest plot to visualize effect sizes estimates and overall
-averages from the meta.ave functions in vcmeta.  If the column
+averages from the meta.ave functions in vcmeta. If the column
 exp(Estimate) is present, this function plots the exponentiated
 effect size and CI found in columns exp(Estimate), exp(LL), and exp(UL).
 Otherwise, this function plots the effect size and CI found in

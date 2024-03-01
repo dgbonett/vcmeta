@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.slope}
 \alias{replicate.slope}
-\title{Computes confidence intervals for a slope in original and follow-up studies}
+\title{Compares and combines slope coefficients in original and follow-up studies}
 \usage{
 replicate.slope(alpha, b1, se1, n1, b2, se2, n2, s)
 }
@@ -26,15 +26,15 @@ replicate.slope(alpha, b1, se1, n1, b2, se2, n2, s)
 \value{
 A 4-row matrix. The rows are:
 \itemize{
-\item Row 1 summarizes the Original study
-\item Row 2 summarizes the Follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size of the two studies
+\item Row 1 summarizes the original study
+\item Row 2 summarizes the follow-up study
+\item Row 3 estimates the difference in slopes
+\item Row 4 estimates the average slope
 }
 
 The columns are:
 \itemize{
-\item Estimate - effect size estimate
+\item Estimate - slope estimate (single study, difference, average)
 \item SE - standard error
 \item t - t-value
 \item p - p-value
@@ -44,10 +44,11 @@ The columns are:
 }
 }
 \description{
-Computes confidence intervals for a slope in original and follow-up studies,
-the difference in slopes, and the average of the slopes (equal error
-variances between studies is not assumed). The confidence interval for the
-difference uses a 1 - 2*alpha confidence level. Use the replicate.gen
+This function computes confidence intervals for a slope from the original and
+follow-up studies, the difference in slopes, and the average of the slopes.
+Equality of error variances across studies is not assumed. The confidence
+interval for the difference uses a 1 - 2*alpha confidence level, which is
+recommended for equivalence testing. Use the \link[vcmeta]{replicate.gen}
 function for slopes in other types of models (e.g., binary logistic, ordinal
 logistic, SEM).
 }

@@ -2,20 +2,21 @@
 % Please edit documentation in R/meta_se.R
 \name{se.stdmean.ps}
 \alias{se.stdmean.ps}
-\title{Computes the standard error for a paired-samples standardized mean difference}
+\title{Computes the standard error for a paired-samples standardized mean
+difference}
 \usage{
 se.stdmean.ps(m1, m2, sd1, sd2, cor, n, stdzr)
 }
 \arguments{
-\item{m1}{sample mean for measurement 1}
+\item{m1}{estimated mean for measurement 1}
 
-\item{m2}{sample mean for measurement 2}
+\item{m2}{estimated mean for measurement 2}
 
-\item{sd1}{sample standard deviation for measurement 1}
+\item{sd1}{estimated standard deviation for measurement 1}
 
-\item{sd2}{sample standard deviation for measurement 2}
+\item{sd2}{estimated standard deviation for measurement 2}
 
-\item{cor}{sample correlation for measurements 1 and 2}
+\item{cor}{estimated correlation for measurements 1 and 2}
 
 \item{n}{sample size}
 
@@ -28,23 +29,26 @@ se.stdmean.ps(m1, m2, sd1, sd2, cor, n, stdzr)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of standardized mean difference
+\item Estimate - estimated standardized mean difference
 \item SE - standard error
 }
 }
 \description{
-The effect size estimate and standard error output from this function can be used
-as input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
-\link[vcmeta]{meta.lm.gen} functions in applications where compatible standardized
-mean differences from a combination of 2-group and paired-samples experiments are
-used in the meta-analysis.
+This function computes the standard error of a paired-samples standardized
+mean difference using the sample size and estimated means, standard
+deviations, and estimated correlation. The effect size estimate and standard error
+output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
+\link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
+applications where compatible standardized mean differences from a combination
+of 2-group and paired-samples experiments are used in the meta-analysis.
+Equality of variances is not assumed.
 }
 \examples{
 se.stdmean.ps(23.9, 25.1, 1.76, 2.01, .78, 25, 0)
 
 # Should return: 
-#                                  Estimate        SE
-# Standardizedd mean difference: -0.6352097 0.1602852
+#                                   Estimate        SE
+# Standardizedd mean difference:  -0.6352097 0.1602852
 
 
 }

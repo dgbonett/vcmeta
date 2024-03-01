@@ -44,7 +44,7 @@ Returns a matrix with three rows:
 
 The columns are:
 \itemize{
-\item Estimate - estimate of average correlation or difference
+\item Estimate - estimated average correlation or difference
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -55,10 +55,11 @@ Computes the estimate, standard error, and confidence interval for a
 difference in average point-biserial correlations for two mutually
 exclusive sets of studies. Each set can have one or more studies. Two
 types of point-biserial correlations can be analyzed. One type uses
-an unweighted variance and is approrpaite for 2-group experimental
-designs. The other type uses a weighted variance and is appropriate
-for 2-group nonexperimental designs with simple random sampling.
-Equal variances within or across studies is not assumed.
+an unweighted variance and is recommended for 2-group experimental
+designs. The other type uses a weighted variance and is recommended
+for 2-group nonexperimental designs with simple random sampling (but
+not stratified random sampling) within each study. Equality of
+variances within or across studies is not assumed.
 }
 \examples{
 m1 <- c(45.1, 39.2, 36.3, 34.5)

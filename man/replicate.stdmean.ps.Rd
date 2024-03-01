@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.stdmean.ps}
 \alias{replicate.stdmean.ps}
-\title{Compares paired-samples standardized mean differences in original and
+\title{Compares and combines paired-samples standardized mean differences in original and
 follow-up studies}
 \usage{
 replicate.stdmean.ps(
@@ -34,7 +34,7 @@ replicate.stdmean.ps(
 
 \item{cor1}{estimated correlation of paired observations in orginal study}
 
-\item{n1}{estimated size in original study}
+\item{n1}{sample size in original study}
 
 \item{m21}{estimated mean for group 1 in follow-up study}
 
@@ -53,30 +53,31 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size between the two studies
+\item Row 3 estimates the difference in standardized mean differences
+\item Row 4 estimates the average standardized mean difference
 }
 
 The columns are:
 \itemize{
-\item Estimate - effect size estimate
+\item Estimate - standardized mean difference estimate (single study, difference, average)
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
 }
 }
 \description{
-This function computes confidence intervals for a paired-samples standardized
-mean difference from an original study and a follow-up study. Confidence intervals
-for the difference and average effect size also are computed. The same results can
-be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with appropriate
-contrast coefficients. The confidence level for the difference is 1 – 2alpha.
+This function computes confidence intervals from an original study and a follow-up
+study where the effect size is a paired-samples standardized mean difference.
+Confidence intervals for the difference and average effect size are also computed.
+Equality of variances within or across studies is not assumed. The same results
+can be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with
+appropriate contrast coefficients. The confidence level for the difference is
+1 – 2*alpha, which is recommended for equivalence testing.
 }
 \examples{
 replicate.stdmean.ps(alpha = .05, 
   m11 = 86.22, m12 = 70.93, sd11 = 14.89, sd12 = 12.32, cor1 = .765, n1 = 20, 
-  m21 = 84.81, m22 = 77.24, sd21 = 15.68, sd22 = 16.95, cor2 = .702, n2 = 75
-)
+  m21 = 84.81, m22 = 77.24, sd21 = 15.68, sd22 = 16.95, cor2 = .702, n2 = 75)
 
 # Should return:
 #                         Estimate         SE        LL        UL

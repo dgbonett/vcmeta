@@ -9,32 +9,32 @@ se.cor(cor, s, n)
 \arguments{
 \item{cor}{estimated Pearson or partial correlation}
 
-\item{s}{number of control variables (0 for Pearson)}
+\item{s}{number of control variables (set to 0 for Pearson)}
 
 \item{n}{sample size}
 }
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of Pearson or partial correlation
+\item Estimate - Pearson or partial correlation (from input)
 \item SE - standard error
 }
 }
 \description{
 This function can be used to compute the standard error of a
-Pearson or partial correlation using the estimatede correlation,
-sample size, and number of control variables. The effect size
-estimate and standard error output from this function can be used
-as input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
-and \link[vcmeta]{meta.lm.gen} functions in applications where a
-combination of different types of correlations are used in the
+Pearson or partial correlation using the estimated correlation,
+sample size, and number of control variables. The correlation,
+along with the standard error output from this function, can be used
+as input in the \link[vcmeta]{meta.ave.gen} function in applications
+where a combination of different types of correlations are used in
+the meta-analysis.
 }
 \examples{
 se.cor(.40, 0, 55)
 
 # Should return: 
-#              Estimate       SE
-# Correlation:      0.4 0.116487
+#               Estimate       SE
+# Correlation:       0.4 0.116487
 
 
 }

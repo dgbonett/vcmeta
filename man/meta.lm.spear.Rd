@@ -31,7 +31,7 @@ row per predictor.  The matrix has the following columns:
 This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a
 Fisher-transformed Spearman correlation. The estimates are OLS estimates
-with standard errors that accommodate residual heteroscedasticity.
+with robust standard errors that accommodate residual heteroscedasticity.
 The correlations are Fisher-transformed and hence the parameter
 estimates do not have a simple interpretation. However, the hypothesis
 test results can be used to decide if a population slope is either

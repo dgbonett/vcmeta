@@ -25,10 +25,9 @@ meta.lc.mean2(alpha, m1, m2, sd1, sd2, n1, n2, v)
 \item{v}{vector of contrast coefficients}
 }
 \value{
-Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:
+Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of the linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -39,7 +38,7 @@ has the following columns:
 Computes the estimate, standard error, and confidence interval for a
 linear contrast of 2-group mean differences from two or more studies.
 A Satterthwaite adjustment to the degrees of freedom is used to improve
-the accuracy of the confidence interval. Equal variances within or across
+the accuracy of the confidence interval. Equality of variances within or across
 studies is not assumed.
 }
 \examples{

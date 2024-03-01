@@ -18,7 +18,7 @@ average of any type of parameter from two or more studies."><!-- mathjax --><scr
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vcmeta</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
       </span>
     </div>
 
@@ -55,7 +55,7 @@ average of any type of parameter from two or more studies.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.ave.gen</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">est</span>, <span class="va">se</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.ave.gen</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">est</span>, <span class="va">se</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -80,9 +80,8 @@ average of any type of parameter from two or more studies.</p>
     <h2>Value</h2>
     
 
-<p>Returns a matrix.  The first row is the average estimate
-across all studies.  If bystudy is true, there is 1 additional row for
-each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the estimated effect size</p></li>
+<p>Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:</p><ul><li><p>Estimate - estimated effect size</p></li>
 <li><p>SE - standard error</p></li>
 <li><p>LL - lower limit of the confidence interval</p></li>
 <li><p>UL - upper limit of the confidence interval</p></li>
@@ -90,10 +89,10 @@ each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the 
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"></span>
-<span class="r-in"><span class="va">est</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.022</span>, <span class="fl">.751</span>, <span class="fl">.421</span>, <span class="fl">.287</span>, <span class="fl">.052</span>, <span class="fl">.146</span>, <span class="fl">.562</span>, <span class="fl">.904</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.124</span>, <span class="fl">.464</span>, <span class="fl">.102</span>, <span class="fl">.592</span>, <span class="fl">.864</span>, <span class="fl">.241</span>, <span class="fl">.252</span>, <span class="fl">.318</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.ave.gen</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">est</span>, <span class="va">se</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">est</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.022</span>, <span class="fl">.751</span>, <span class="fl">.421</span>, <span class="fl">.287</span>, <span class="fl">.052</span>, <span class="fl">.146</span>, <span class="fl">.562</span>, <span class="fl">.904</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">se</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.124</span>, <span class="fl">.464</span>, <span class="fl">.102</span>, <span class="fl">.592</span>, <span class="fl">.864</span>, <span class="fl">.241</span>, <span class="fl">.252</span>, <span class="fl">.318</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.ave.gen</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">est</span>, <span class="va">se</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>         Estimate        SE          LL        UL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Average 0.393125 0.1561622  0.08705266 0.6991973</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 1 0.022000 0.1240000 -0.22103553 0.2650355</span>
@@ -104,20 +103,20 @@ each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the 
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 6 0.146000 0.2410000 -0.32635132 0.6183513</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 7 0.562000 0.2520000  0.06808908 1.0559109</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 8 0.904000 0.3180000  0.28073145 1.5272685</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return:</span></span>
-<span class="r-in"><span class="co">#          Estimate        SE          LL        UL</span></span>
-<span class="r-in"><span class="co"># Average  0.393125 0.1561622  0.08705266 0.6991973</span></span>
-<span class="r-in"><span class="co"># Study 1  0.022000 0.1240000 -0.22103553 0.2650355</span></span>
-<span class="r-in"><span class="co"># Study 2  0.751000 0.4640000 -0.15842329 1.6604233</span></span>
-<span class="r-in"><span class="co"># Study 3  0.421000 0.1020000  0.22108367 0.6209163</span></span>
-<span class="r-in"><span class="co"># Study 4  0.287000 0.5920000 -0.87329868 1.4472987</span></span>
-<span class="r-in"><span class="co"># Study 5  0.052000 0.8640000 -1.64140888 1.7454089</span></span>
-<span class="r-in"><span class="co"># Study 6  0.146000 0.2410000 -0.32635132 0.6183513</span></span>
-<span class="r-in"><span class="co"># Study 7  0.562000 0.2520000  0.06808908 1.0559109</span></span>
-<span class="r-in"><span class="co"># Study 8  0.904000 0.3180000  0.28073145 1.5272685</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return:</span></span></span>
+<span class="r-in"><span><span class="co">#          Estimate        SE          LL        UL</span></span></span>
+<span class="r-in"><span><span class="co"># Average  0.393125 0.1561622  0.08705266 0.6991973</span></span></span>
+<span class="r-in"><span><span class="co"># Study 1  0.022000 0.1240000 -0.22103553 0.2650355</span></span></span>
+<span class="r-in"><span><span class="co"># Study 2  0.751000 0.4640000 -0.15842329 1.6604233</span></span></span>
+<span class="r-in"><span><span class="co"># Study 3  0.421000 0.1020000  0.22108367 0.6209163</span></span></span>
+<span class="r-in"><span><span class="co"># Study 4  0.287000 0.5920000 -0.87329868 1.4472987</span></span></span>
+<span class="r-in"><span><span class="co"># Study 5  0.052000 0.8640000 -1.64140888 1.7454089</span></span></span>
+<span class="r-in"><span><span class="co"># Study 6  0.146000 0.2410000 -0.32635132 0.6183513</span></span></span>
+<span class="r-in"><span><span class="co"># Study 7  0.562000 0.2520000  0.06808908 1.0559109</span></span></span>
+<span class="r-in"><span><span class="co"># Study 8  0.904000 0.3180000  0.28073145 1.5272685</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -132,7 +131,7 @@ each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the 
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

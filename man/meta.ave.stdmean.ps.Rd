@@ -31,10 +31,10 @@ meta.ave.stdmean.ps(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy = TRUE)
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
 \value{
-A matrix.  First row is the overall average estimate.  If bystudy
-is TRUE also returns 1 row per study.  The matrix has the following columns:
+Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
-\item Estimate - the estimated effect size
+\item Estimate - estimated effect size
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -44,7 +44,7 @@ is TRUE also returns 1 row per study.  The matrix has the following columns:
 Computes the estimate, standard error, and confidence interval for an
 average standardized mean difference from two or more paired-samples
 studies. Unweighted variances and single group variance are options
-for the standardizer. Equal variances within or across studies is not
+for the standardizer. Equality of variances within or across studies is not
 assumed.
 }
 \examples{

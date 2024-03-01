@@ -1,6 +1,5 @@
 # ================= Sub-group Comparison of Effect Sizes ============
-
-#  meta.sub.cor
+#  meta.sub.cor =====================================================
 #' Confidence interval for a difference in average Pearson or partial 
 #' correlations for two sets of studies 
 #' 
@@ -23,13 +22,14 @@
 #' * 0 to ignore
 #' 
 #'
-#' @return Returns a matrix with three rows:
+#' @return 
+#' Returns a matrix with three rows:
 #' * Row 1 - estimate for Set A
 #' * Row 2 - estimate for Set B
 #' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
-#' * Estimate - estimate of average correlation or difference
+#' * Estimate - estimated average correlation or difference
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -91,7 +91,7 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 }
 
 
-#  meta.sub.spear
+#  meta.sub.spear =============================================
 #' Confidence interval for a difference in average Spearman 
 #' correlations for two sets of studies
 #' 
@@ -111,13 +111,14 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #' * 0 to ignore
 #' 
 #' 
-#' @return Returns a matrix with three rows:
+#' @return 
+#' Returns a matrix with three rows:
 #' * Row 1 - estimate for Set A
 #' * Row 2 - estimate for Set B
 #' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
-#' * Estimate - estimate of average correlation or difference
+#' * Estimate - estimated average correlation or difference
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -137,8 +138,7 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #' 
 #' 
 #' @references
-#' Bonett, D.G. (2008). Meta-analytic interval estimation for bivariate
-#' correlations. *Psychological Methods*, 13, 173-189.
+#' \insertRef{Bonett2008a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -180,7 +180,7 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 }
 
 
-#  meta.sub.pbcor
+#  meta.sub.pbcor ===============================================
 #' Confidence interval for a difference in average point-biserial
 #' correlations for two sets of studies 
 #' 
@@ -190,10 +190,11 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' difference in average point-biserial correlations for two mutually
 #' exclusive sets of studies. Each set can have one or more studies. Two 
 #' types of point-biserial correlations can be analyzed. One type uses
-#' an unweighted variance and is approrpaite for 2-group experimental
-#' designs. The other type uses a weighted variance and is appropriate
-#' for 2-group nonexperimental designs with simple random sampling. 
-#' Equal variances within or across studies is not assumed.
+#' an unweighted variance and is recommended for 2-group experimental
+#' designs. The other type uses a weighted variance and is recommended
+#' for 2-group nonexperimental designs with simple random sampling (but
+#' not stratified random sampling) within each study. Equality of 
+#' variances within or across studies is not assumed.
 #'    
 #'    
 #' @param     alpha   	alpha level for 1-alpha confidence
@@ -212,13 +213,14 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' * 0 to ignore
 #' 
 #' 
-#' @return Returns a matrix with three rows:
+#' @return 
+#' Returns a matrix with three rows:
 #' * Row 1 - estimate for Set A
 #' * Row 2 - estimate for Set B
 #' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
-#' * Estimate - estimate of average correlation or difference
+#' * Estimate - estimated average correlation or difference
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -303,7 +305,8 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
   return (out)
 }
 
-#  meta.sub.semipart
+
+#  meta.sub.semipart =========================================
 #' Confidence interval for a difference in average semipartial 
 #' correlations for two sets of studies 
 #' 
@@ -325,13 +328,14 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 #' * 0 to ignore
 #' 
 #' 
-#' @return Returns a matrix with three rows:
+#' @return 
+#' Returns a matrix with three rows:
 #' * Row 1 - estimate for Set A
 #' * Row 2 - estimate for Set B
 #' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
-#' * Estimate - estimate of average correlation or difference
+#' * Estimate - estimated average correlation or difference
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -391,7 +395,7 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 }
 
 
-#  meta.sub.cronbach
+#  meta.sub.cronbach ==============================================
 #' Confidence interval for a difference in average Cronbach 
 #' reliabilities for two sets of studies 
 #' 
@@ -414,13 +418,14 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #' * 0 to ignore
 #' 
 #' 
-#' @return Returns a matrix with three rows:
+#' @return 
+#' Returns a matrix with three rows:
 #' * Row 1 - estimate for Set A
 #' * Row 2 - estimate for Set B
 #' * Row 3 - estimate for difference, Set A - Set B
 #'
 #' The columns are:
-#' * Estimate - estimate of average correlation or difference
+#' * Estimate - estimated average correlation or difference
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -484,9 +489,87 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 }
 
 
-# ================= Linear Contrasts of Effect Sizes ============
+#  meta.sub.gen ===============================================================
+#' Confidence interval for a difference in average effect size for two sets 
+#' of studies 
+#' 
+#' 
+#' @description
+#' Computes the estimate, standard error, and confidence interval for a 
+#' difference in the average effect size (any type of effect size) for
+#' two mutually exclusive sets of studies. Each set can have one or more 
+#' studies. All of the effects sizes should be compatible. 
+#'
+#'
+#' @param     alpha  	alpha level for 1-alpha confidence
+#' @param     est    	vector of estimated effect sizes 
+#' @param     se    	vector of effect size standard errors 
+#' @param     group  	vector of group indicators:
+#' * 1 for set A
+#' * 2 for set B
+#' * 0 to ignore
+#' 
+#'
+#' @return 
+#' Returns a matrix with three rows:
+#' * Row 1 - estimate for Set A
+#' * Row 2 - estimate for Set B
+#' * Row 3 - estimate for difference, Set A - Set B
+#'
+#' The columns are:
+#' * Estimate - estimated average effect size or difference
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' est <- c(.920, .896, .760, .745)
+#' se <- c(.098, .075, .069, .055) 
+#' group <- c(1, 1, 2, 2)
+#' meta.sub.gen(.05, est, se, group)
+#' 
+#' # Should return:
+#' #                Estimate         SE          LL        UL
+#' # Set A:           0.9080 0.06170292 0.787064504 1.0289355
+#' # Set B:           0.7525 0.04411916 0.666028042 0.8389720
+#' # Set A - Set B:   0.1555 0.07585348 0.006829917 0.3041701
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.sub.gen <- function(alpha, est, se, group) {
+  m <- length(est)
+  z <- qnorm(1 - alpha/2)
+  var <- se^2
+  g1 <- (group == rep(1, m))*1
+  g2 <- (group == rep(2, m))*1
+  m1 <- sum(g1)
+  m2 <- sum(g2)
+  ave.A <- sum(g1*est)/m1
+  se.ave.A <- sqrt(sum(g1*var)/m1^2)
+  ll.A <- ave.A - z*se.ave.A
+  ul.A <- ave.A + z*se.ave.A
+  ave.B <- sum(g2*est)/m2
+  se.ave.B <- sqrt(sum(g2*var)/m2^2)
+  ll.B <- ave.B - z*se.ave.B
+  ul.B <- ave.B + z*se.ave.B
+  diff <- ave.A - ave.B
+  se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
+  ll.diff <- diff - z*se.diff
+  ul.diff <- diff + z*se.diff
+  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
+  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
+  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out <- rbind(out1, out2, out3)
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
+  return (out)
+}
 
-#  meta.lc.mean2
+
+# ================= Linear Contrasts of Effect Sizes ================
+#  meta.lc.mean2 ====================================================
 #' Confidence interval for a linear contrast of mean differences from
 #' 2-group studies
 #'
@@ -495,7 +578,7 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 #' Computes the estimate, standard error, and confidence interval for a 
 #' linear contrast of 2-group mean differences from two or more studies.
 #' A Satterthwaite adjustment to the degrees of freedom is used to improve
-#' the accuracy of the confidence interval. Equal variances within or across
+#' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
 #'
 #'
@@ -508,9 +591,9 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 #' @param    n2    	vector of group 2 sample sizes
 #' @param    v     	vector of contrast coefficients
 #'
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of the linear contrast
+#' @return 
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -560,7 +643,8 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   return(out)
 }
 
-# meta.lc.stdmean2
+
+# meta.lc.stdmean2 ==================================================
 #' Confidence interval for a linear contrast of standardized mean 
 #' differences from 2-group studies  
 #' 
@@ -568,11 +652,11 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
 #' linear contrast of 2-group standardized mean differences from two or 
-#' more studies. Equal variances within or across studies is not assumed. 
+#' more studies. Equality of variances within or across studies is not assumed. 
 #' Use the square root average variance standardizer (stdzr = 0) for 2-group
 #' experimental designs.  Use the square root weighted variance standardizer
 #' (stdzr = 3) for 2-group nonexperimental designs with simple random sampling.
-#' The stdzr = 1 and stdzr = 2 options can be used with either 2-group experimental
+#' The stdzr = 1 and stdzr = 2 options can be used with either experimental
 #' or nonexperimental designs.
 #'
 #'
@@ -591,9 +675,9 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' * set to 3 for square root weighted average variance standardizer
 #' 
 #' 
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of linear contrast
+#' @return 
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -664,7 +748,7 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 }
 
 
-#  meta.lc.mean.ps
+#  meta.lc.mean.ps ====================================================
 #' Confidence interval for a linear contrast of mean differences from 
 #' paired-samples studies 
 #' 
@@ -673,7 +757,7 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' Computes the estimate, standard error, and confidence interval for a 
 #' linear contrast of paired-samples mean differences from two or more studies.
 #' A Satterthwaite adjustment to the degrees of freedom is used to improve
-#' the accuracy of the confidence interval. Equal variances within or across
+#' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
 #'
 #'
@@ -687,9 +771,9 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' @param    v     	vector of contrast coefficients
 #' 
 #' 
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of linear contrast
+#' @return 
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -738,15 +822,16 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
   return(out)
 }
 
-#  meta.lc.stdmean.ps
-#' Confidence interval for a  linear contrast of standardized 
+
+#  meta.lc.stdmean.ps ===================================================
+#' Confidence interval for a linear contrast of standardized 
 #' mean differences from paired-samples studies 
 #' 
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
 #' linear contrast of paired-samples standardized mean differences from two or 
-#' more studies. Equal variances within or across studies is not assumed. 
+#' more studies. Equality of variances within or across studies is not assumed. 
 #'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
@@ -763,9 +848,9 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' * set to 2 for group 2 SD standardizer 
 #' 
 #' 
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of linear contrast
+#' @return 
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -829,7 +914,7 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 }
 
 
-#  meta.lc.meanratio2
+#  meta.lc.meanratio2 =================================================
 #' Confidence interval for a log-linear contrast of mean ratios from
 #' 2-group studies  	
 #' 
@@ -838,7 +923,7 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' Computes the estimate, standard error, and confidence interval for a 
 #' log-linear contrast of 2-group mean ratio from two or more studies. A
 #' Satterthwaite adjustment to the degrees of freedom is used to improve
-#' the accuracy of the confidence interval. Equal variances within or across
+#' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
 #'
 #'
@@ -852,13 +937,13 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' @param    v     	vector of contrast coefficients
 #' 
 #' 
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of log-linear contrast
+#' @return 
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated log-linear contrast
 #' * SE - standard error of log-linear contrast
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
-#' * exp(Estimate) - the exponentiated estimate
+#' * exp(Estimate) - exponentiated log-linear contrast
 #' * exp(LL) - lower limit of the exponentiated confidence interval
 #' * exp(UL) - upper limit of the exponentiated confidence interval
 #' * df - degrees of freedom
@@ -913,7 +998,8 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   return(out)
 }
 
-#  meta.lc.meanratio.ps
+
+#  meta.lc.meanratio.ps ================================================
 #' Confidence interval for a log-linear contrast of mean ratios from 
 #' paired-samples studies 
 #' 
@@ -922,7 +1008,7 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' Computes the estimate, standard error, and confidence interval for a 
 #' log-linear contrast of paired-sample mean ratios from two or more studies.
 #' A Satterthwaite adjustment to the degrees of freedom is used to improve
-#' the accuracy of the confidence interval. Equal variances within or across
+#' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
 #'
 #'
@@ -936,13 +1022,13 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' @param    v     	vector of contrast coefficients
 #' 
 #' 
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of log-linear contrast
+#' @return
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimatedf log-linear contrast
 #' * SE - standard error of log-linear contrast
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
-#' * exp(Estimate) -  exponentiated estimate of log-linear function
+#' * exp(Estimate) - exponentiated log-linear contrast
 #' * exp(LL) - lower limit of the exponentiated confidence interval
 #' * exp(UL) - upper limit of the exponentiated confidence interval
 #' * df - degrees of freedom
@@ -989,7 +1075,7 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 }
 
 
-#  meta.lc.odds
+#  meta.lc.odds =====================================================
 #' Confidence interval for a log-linear contrast of odds ratios 
 #' 
 #' 
@@ -999,18 +1085,18 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f1     	vector of group 1 event counts
-#' @param     f2     	vector of group 2 event counts
+#' @param     f1     	vector of group 1 frequency counts
+#' @param     f2     	vector of group 2 frequency counts
 #' @param     n1     	vector of group 1 sample sizes 
 #' @param     n2     	vector of group 2 sample sizes
 #' @param     v      	vector of contrast coefficients
 #' 
 #' 
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of log-linear contrast
+#' @return 
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated log-linear contrast
 #' * SE - standard error of log-linear contrast
-#' * exp(Estimate) - the exponentiated contrast
+#' * exp(Estimate) - exponentiated log-linear contrast
 #' * exp(LL) - lower limit of the exponentiated confidence interval
 #' * exp(UL) - upper limit of the exponentiated confidence interval
 #' 
@@ -1053,7 +1139,7 @@ meta.lc.odds <- function(alpha, f1, f2, n1, n2, v) {
 }
 
 
-#  meta.lc.propratio2
+#  meta.lc.propratio2 =====================================================
 #' Confidence interval for a log-linear contrast of proportion ratios from 2-group studies
 #' 
 #' 
@@ -1064,17 +1150,17 @@ meta.lc.odds <- function(alpha, f1, f2, n1, n2, v) {
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f1     	vector of group 1 event counts
-#' @param     f2     	vector of group 2 event counts
+#' @param     f1     	vector of group 1 frequency counts
+#' @param     f2     	vector of group 2 frequency counts
 #' @param     n1     	vector of group 1 sample sizes 
 #' @param     n2     	vector of group 2 sample sizes
 #' @param     v      	vector of contrast coefficients
 #' 
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of log-linear contrast
+#' @return 
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated log-linear contrast
 #' * SE - standard error of log-linear contrast
-#' * exp(Estimate) - the exponentiated contrast
+#' * exp(Estimate) - exponentiated log-linear contrast
 #' * exp(LL) - lower limit of the exponentiated confidence interval
 #' * exp(UL) - upper limit of the exponentiated confidence interval
 #' 
@@ -1121,29 +1207,29 @@ meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
 } 
 
 
-#  meta.lc.prop2
+#  meta.lc.prop2 =============================================================
 #' Confidence interval for a linear contrast of proportion differences in 2-group studies 
 #' 
 #' 
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
+#' Computes the estimate, standard error, and adjusted Wald confidence interval for a 
 #' linear contrast of 2-group proportion differences from two or more studies.
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f1     	vector of group 1 event counts
-#' @param     f2     	vector of group 2 event counts
+#' @param     f1     	vector of group 1 frequency counts
+#' @param     f2     	vector of group 2 frequency counts
 #' @param     n1     	vector of group 1 sample sizes 
 #' @param     n2     	vector of group 2 sample sizes
 #' @param     v      	vector of contrast coefficients
 #' 
 #'
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of the linear contrast
+#' @return
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
+#' * LL - lower limit of the adjusted Wald confidence interval
+#' * UL - upper limit of the adjusted Wald confidence interval
 #' 
 #' 
 #' @examples
@@ -1186,31 +1272,31 @@ meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
 }
 
 
-# meta.lc.prop.ps
+# meta.lc.prop.ps =======================================================
 #' Confidence interval for a linear contrast of proportion differences in 
 #' paired-samples studies 
 #' 
 #' 
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
-#' linear contrast of paired-samples group proportion differences from two
-#' or more studies.
+#' Computes the estimate, standard error, and adjusted Wald confidence interval
+#' for a linear contrast of paired-samples proportion differences from two or
+#' more studies.
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f11    	vector of frequencies in cell 1,1
-#' @param     f12    	vector of frequencies in cell 1,2
-#' @param     f21    	vector of frequencies in cell 2,1
-#' @param     f22    	vector of frequencies in cell 2,2
+#' @param     f11    	vector of frequency counts in cell 1,1
+#' @param     f12    	vector of frequency counts in cell 1,2
+#' @param     f21    	vector of frequency counts in cell 2,1
+#' @param     f22    	vector of frequency counts in cell 2,2
 #' @param     v      	vector of contrast coefficients
 #' 
 #' 
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of linear contrast
+#' @return
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
+#' * LL - lower limit of the adjusted Wald confidence interval
+#' * UL - upper limit of the adjusted Wald confidence interval
 #' 
 #' 
 #' @examples
@@ -1252,35 +1338,35 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 }
 
 
-#  meta.lc.agree
+#  meta.lc.agree ===================================================
 #' Confidence interval for a linear contrast of G-index coefficients  
 #' 
 #' 
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
-#' linear contrast of G-index of agreement coefficients from two or more 
-#' studies. This function assumes that two raters each provide a dichotomous
-#' rating for a sample of objects.
+#' Computes the estimate, standard error, and adjusted Wald confidence 
+#' interval for a linear contrast of G-index of agreement coefficients 
+#' from two or more studies. This function assumes that two raters each
+#' provide a dichotomous rating for a sample of objects.
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
-#' @param     f11    	vector of frequencies in cell 1,1
-#' @param     f12    	vector of frequencies in cell 1,2
-#' @param     f21    	vector of frequencies in cell 2,1
-#' @param     f22    	vector of frequencies in cell 2,2
+#' @param     f11    	vector of frequency counts in cell 1,1
+#' @param     f12    	vector of frequency counts in cell 1,2
+#' @param     f21    	vector of frequency counts in cell 2,1
+#' @param     f22    	vector of frequency counts in cell 2,2
 #' @param     v      	vector of contrast coefficients
 #' 
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of linear contrast
+#' @return
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
+#' * LL - lower limit of the adjusted Wald confidence interval
+#' * UL - upper limit of the adjusted Wald confidence interval
 #' 
 #' 
 #' @examples
-#' f11 <- c(17, 28, 19)
-#' f12 <- c(43, 56, 49)
+#' f11 <- c(43, 56, 49)
+#' f12 <- c(7, 2, 9)
 #' f21 <- c(3, 5, 5)
 #' f22 <- c(37, 54, 39)
 #' v <- c(.5, .5, -1)
@@ -1288,7 +1374,7 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' 
 #' # Should return:
 #' #            Estimate        SE         LL        UL
-#' # Contrast 0.07692783 0.1138407 -0.1461958 0.3000515
+#' # Contrast 0.1022939 0.07972357 -0.05396142 0.2585492
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1312,8 +1398,8 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 }
 
 
-# meta.lc.mean1
-#' Confidence interval a for a linear contrast of means
+# meta.lc.mean1 ===================================================
+#' Confidence interval for a linear contrast of means
 #' 
 #'
 #' @description
@@ -1333,9 +1419,9 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 #' * FALSE for unequal variance method
 #' * TRUE for equal variance method
 #' 
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of linear contrast
+#' @return
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -1384,8 +1470,9 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
   return(out)
 }
 
-# meta.lc.prop1
-#' Confidence interval for a linear contrast of proportions. 
+
+# meta.lc.prop1 ==============================================
+#' Confidence interval for a linear contrast of proportions 
 #' 
 #' 
 #' @description
@@ -1399,9 +1486,9 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
 #' @param     v       vector of contrast coefficients
 #' 
 #'
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate -estimate of linear contrast
+#' @return
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate -estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the adjusted Wald confidence interval
 #' * UL - upper limit of the adjusted Wald confidence interval
@@ -1438,7 +1525,7 @@ meta.lc.prop1 <- function(alpha, f, n, v) {
 }
 
 
-#  meta.lc.gen
+#  meta.lc.gen =====================================================
 #' Confidence interval for a linear contrast of effect sizes 
 #' 
 #' 
@@ -1453,9 +1540,9 @@ meta.lc.prop1 <- function(alpha, f, n, v) {
 #' @param     v     	vector of contrast coefficients
 #' 
 #' 
-#' @return Returns 1-row matrix with the estimate for the contrast. The matrix
-#'   has the following columns: 
-#' * Estimate - estimate of linear contrast
+#' @return
+#' Returns 1-row matrix with the following columns: 
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -1484,6 +1571,4 @@ meta.lc.gen <- function(alpha, est, se, v) {
   rownames(out) <- "Contrast"
   return(out)
 }
-
-
 

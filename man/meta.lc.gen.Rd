@@ -16,10 +16,9 @@ meta.lc.gen(alpha, est, se, v)
 \item{v}{vector of contrast coefficients}
 }
 \value{
-Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:
+Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval

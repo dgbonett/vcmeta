@@ -1,31 +1,30 @@
-# ================= Effect Size Standard Errors ============
-
-# se.mean2 
+# se.mean2 =================================================================
 #' Computes the standard error for a 2-group mean difference
 #' 
 #' 
 #' @description
 #' This function can be used to compute the standard error of a 
-#' 2-group mean difference using the two estimated means, estimated 
+#' 2-group mean difference using the estimated means, estimated 
 #' standard deviations, and sample sizes. The effect size estimate 
 #' and standard error output from this function can be used as input
-#' in the \link[vcmeta]{meta.ave.gen},  \link[vcmeta]{meta.lc.gen}, 
+#' in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, 
 #' and \link[vcmeta]{meta.lm.gen} functions in applications where 
 #' compatible mean differences from a combination of 2-group
 #' and paired-samples experiments are used in the meta-analysis. 
+#' Equality of variances is not asumed.
 #' 
 #' 
 #' @param    m1		estimated mean for group 1 
 #' @param    m2		estimated mean for group 2 
 #' @param    sd1	estimated standard deviation for group 1
 #' @param    sd2	estimated standard deviation for group 2
-#' @param    n1		group 1 sample size
-#' @param    n2		group 2 sample size
+#' @param    n1		sample size for group 1
+#' @param    n2		sample size for group 2
 #' 
 #' 
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of mean difference
+#' * Estimate - estimated mean difference
 #' * SE - standard error
 #' 
 #'  
@@ -33,8 +32,8 @@
 #' se.mean2(21.9, 16.1, 3.82, 3.21, 40, 40)
 #'
 #  # Should return:
-#' #                  Estimate        SE
-#' # Mean difference:      5.8 0.7889312
+#' #                   Estimate        SE
+#' # Mean difference:       5.8 0.7889312
 #' 
 #' 
 #' @references
@@ -47,25 +46,26 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
   se <- sqrt(sd1^2/n1 + sd2^2/n2)
   out <- t(c(d, se))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Mean difference:")
+  rownames(out) <- "Mean difference: "
   return(out)
 }
 
 
-# se.mean.ps
+# se.mean.ps =================================================================
 #' Computes the standard error for a paired-samples mean difference
 #' 
 #' 
 #' @description
 #' This function can be used to compute the standard error of a 
-#' paired-samples mean difference using the two estimated means, 
-#  estimated standard deviations, estimated Pearson correlation, 
+#' paired-samples mean difference using the estimated means, 
+#' estimated standard deviations, estimated Pearson correlation, 
 #' and sample size. The effect size estimate and standard error 
 #' output from this function can be used as input in the
-#' \link[vcmeta]{meta.ave.gen}, #' \link[vcmeta]{meta.lc.gen}, 
+#' \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, 
 #' and \link[vcmeta]{meta.lm.gen} functions in applications where 
 #' compatible mean differences from a combination of 2-group
 #' and paired-samples experiments are used in the meta-analysis. 
+#' Equality of variances is not assumed.
 #' 
 #' 
 #' @param    m1		estimated mean for measurement 1 
@@ -78,7 +78,7 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' 
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of mean difference
+#' * Estimate - estimated mean difference
 #' * SE - standard error
 #' 
 #' 
@@ -86,8 +86,8 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' se.mean.ps(23.9, 25.1, 1.76, 2.01, .78, 25)
 #'
 #' # Should return:
-#' #                  Estimate        SE
-#' # Mean difference:     -1.2 0.2544833
+#' #                   Estimate        SE
+#' # Mean difference:      -1.2 0.2544833
 #' 
 #' @references
 #' \insertRef{Snedecor1980}{vcmeta}
@@ -99,33 +99,38 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
   se <- sqrt((sd1^2 + sd2^2 - 2*cor*sd1*sd2)/n)
   out <- t(c(d, se))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Mean difference:")
+  rownames(out) <- "Mean difference: "
   return(out)
 }
 
 
-# se.stdmean2 		
+# se.stdmean2 ================================================================		
 #' Computes the standard error for a 2-group standardized mean difference
 #' 
 #' 
 #' @description
-#' Use the square root average variance standardizer (stdzr = 0) for 2-group
-#' experimental designs. Use the square root weighted variance standardizer
-#' (stdzr = 3) for 2-group nonexperimental designs with simple random sampling.
-#' The single-group standardizers (stdzr = 1 and stdzr = 2) can be used with
-#' either 2-group experimental or nonexperimental designs. The effect size 
-#' estimate and standard error output from this function can be used as input
-#' in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} 
-#' functions in applications where compatible standardized mean differences from a 
-#' combination of 2-group and paired-samples experiments are used in the meta-analysis. 
+#' This function computes the standard error of a 2-group standardized
+#' mean difference using the sample sizes and the estimated means
+#  and standard deviations. Use the square root average variance
+#' standardizer (stdzr = 0) for 2-group experimental designs. Use the 
+#' square root weighted variance standardizer (stdzr = 3) for 2-group 
+#' nonexperimental designs with simple random sampling. The single-group 
+#' standardizers (stdzr = 1 and stdzr = 2) can be used with either 
+#' 2-group experimental or nonexperimental designs. The effect size 
+#' estimate and standard error output from this function can be used as 
+#' input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
+#' and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
+#' standardized mean differences from a combination of 2-group and 
+#' paired-samples experiments are used in the meta-analysis. Equality 
+#' of variances is not assumed.
 #'
 #' 
-#' @param    m1		  sample mean for group 1 
-#' @param    m2		  sample mean for group 2 
-#' @param    sd1		sample standard deviation for group 1
-#' @param    sd2		sample standard deviation for group 2
-#' @param    n1		  group 1 sample size
-#' @param    n2		  group 2 sample size
+#' @param    m1		  estimated mean for group 1 
+#' @param    m2		  estimated mean for group 2 
+#' @param    sd1		estimated standard deviation for group 1
+#' @param    sd2		estimated standard deviation for group 2
+#' @param    n1		  sample size for group 1
+#' @param    n2		  sample size for group 2
 #' @param stdzr
 #' * set to 0 for square root average variance standardizer 
 #' * set to 1 for group 1 SD standardizer 
@@ -135,7 +140,7 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' 
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of standardized mean difference
+#' * Estimate - estimated standardized mean difference
 #' * SE - standard error
 #' 
 #' 
@@ -143,12 +148,15 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' se.stdmean2(21.9, 16.1, 3.82, 3.21, 40, 40, 0)
 #'
 #' # Should return: 
-#' #                               Estimate        SE
-#' # Standardized mean difference: 1.643894 0.2629049
+#' #                                Estimate        SE
+#' # Standardized mean difference:  1.643894 0.2629049
 #' 
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#'
+#' @seealso \link[vcmeta]{se.cohen}
 #'
 #'
 #' @export
@@ -177,28 +185,32 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
   }
   out <- t(c(d, se))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Standardized mean difference:")
+  rownames(out) <- "Standardized mean difference: "
   return(out)
 }
 
 
-# se.stdmean.ps 		
-#' Computes the standard error for a paired-samples standardized mean difference
+# se.stdmean.ps ==============================================================	
+#' Computes the standard error for a paired-samples standardized mean 
+#' difference
 #' 
 #'
 #' @description
-#' The effect size estimate and standard error output from this function can be used 
-#' as input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and 
-#' \link[vcmeta]{meta.lm.gen} functions in applications where compatible standardized 
-#' mean differences from a combination of 2-group and paired-samples experiments are 
-#' used in the meta-analysis. 
+#' This function computes the standard error of a paired-samples standardized
+#' mean difference using the sample size and estimated means, standard 
+#' deviations, and estimated correlation. The effect size estimate and standard error
+#' output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
+#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
+#' applications where compatible standardized mean differences from a combination
+#' of 2-group and paired-samples experiments are used in the meta-analysis. 
+#' Equality of variances is not assumed.
 #' 
 #' 
-#' @param    m1		sample mean for measurement 1 
-#' @param    m2		sample mean for measurement 2 
-#' @param    sd1	sample standard deviation for measurement 1
-#' @param    sd2	sample standard deviation for measurement 2
-#' @param    cor	sample correlation for measurements 1 and 2
+#' @param    m1		estimated mean for measurement 1 
+#' @param    m2		estimated mean for measurement 2 
+#' @param    sd1	estimated standard deviation for measurement 1
+#' @param    sd2	estimated standard deviation for measurement 2
+#' @param    cor	estimated correlation for measurements 1 and 2
 #' @param    n		sample size
 #' @param stdzr
 #' * set to 0 for square root average variance standardizer 
@@ -207,7 +219,7 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 #'  
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of standardized mean difference
+#' * Estimate - estimated standardized mean difference
 #' * SE - standard error
 #' 
 #' 
@@ -215,8 +227,8 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 #' se.stdmean.ps(23.9, 25.1, 1.76, 2.01, .78, 25, 0)
 #'
 #' # Should return: 
-#' #                                  Estimate        SE
-#' # Standardizedd mean difference: -0.6352097 0.1602852
+#' #                                   Estimate        SE
+#' # Standardizedd mean difference:  -0.6352097 0.1602852
 #' 
 #' 
 #' @references
@@ -246,28 +258,27 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
   }
   out <- t(c(d, se))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Standardized mean difference:")
+  rownames(out) <- "Standardized mean difference: "
   return(out)
 }
 
 
-# se.cor
+# se.cor ==========================================================
 #' Computes the standard error for a Pearson or partial correlation 
 #' 
 #'
 #' @description
 #' This function can be used to compute the standard error of a 
-#' Pearson or partial correlation using the estimatede correlation, 
-#' sample size, and number of control variables. The effect size 
-#' estimate and standard error output from this function can be used 
-#' as input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
-#' and \link[vcmeta]{meta.lm.gen} functions in applications where a 
-#' combination of different types of correlations are used in the
-# meta-analysis. 
+#' Pearson or partial correlation using the estimated correlation, 
+#' sample size, and number of control variables. The correlation, 
+#' along with the standard error output from this function, can be used 
+#' as input in the \link[vcmeta]{meta.ave.gen} function in applications
+#' where a combination of different types of correlations are used in
+#' the meta-analysis. 
 #' 
 #' 
 #' @param    cor	estimated Pearson or partial correlation  
-#' @param    s		number of control variables (0 for Pearson)  
+#' @param    s		number of control variables (set to 0 for Pearson)  
 #' @param    n		sample size
 #'   
 #'   
@@ -281,8 +292,8 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #' se.cor(.40, 0, 55)
 #'
 #' # Should return: 
-#' #              Estimate       SE
-#' # Correlation:      0.4 0.116487
+#' #               Estimate       SE
+#' # Correlation:       0.4 0.116487
 #' 
 #' 
 #' @references
@@ -294,22 +305,22 @@ se.cor <- function(cor, s, n) {
   se.cor <- sqrt((1 - cor^2)^2/(n - 3 - s))
   out <- t(c(cor, se.cor))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Correlation:")
+  rownames(out) <- "Correlation: "
   return(out)
 }
 
 
-# se.spear
+# se.spear ===================================================================
 #' Computes the standard error for a Spearman correlation 
 #' 
 #' 
 #' @description
-#' This function can be used to compute the standard error of a 
-#' Spearman correlation using the estimated correlation and sample 
-#' size. The standard error from this function can be used as input 
-#' in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
-#' \link[vcmeta]{meta.lm.gen} functions in applications where a combination
-#' of different types of correlations are used in the meta-analysis. 
+#' This function can be used to compute the Bonett-Wright standard
+#' error of a Spearman correlation using the estimated correlation
+#' and sample size. The standard error from this function can be used
+#' as input in the \link[vcmeta]{meta.ave.gen} function in applications 
+#' where a combination of different types of correlations are used in 
+#' the meta-analysis. 
 #' 
 #' 
 #' @param    cor		estimated Spearman correlation  
@@ -339,12 +350,12 @@ se.spear <- function(cor, n) {
   se.cor <- sqrt((1 - cor^2)^2*(1 + cor^2/2)/(n - 3))
   out <- t(c(cor, se.cor))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Correlation:")
+  rownames(out) <- "Spearman correlation: "
   return(out)
 }
 
 
-# se.semipart
+# se.semipart ================================================================
 #' Computes the standard error for a semipartial correlation 
 #' 
 #'
@@ -353,10 +364,9 @@ se.spear <- function(cor, n) {
 #' semipartial correlation using the estimated correlation, sample 
 #' size, and squared multiple correlation for the full model.
 #' The effect size estimate and standard error output from this 
-#' function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
-#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions
-#' in applications where a combination of different types of correlations
-#' are used in the meta-analysis. 
+#' function can be used as input in the \link[vcmeta]{meta.ave.gen} 
+#' function in applications where a combination of different types
+#' of correlations are used in the meta-analysis. 
 #' 
 #' 
 #' @param    cor	estimated semipartial correlation  
@@ -374,8 +384,8 @@ se.spear <- function(cor, n) {
 #' se.semipartial(.40, .25, 60)
 #'
 #' # Should return: 
-#' #                          Estimate        SE
-#' # Semipartial correlation:      0.4 0.1063262
+#' #                           Estimate        SE
+#' # Semipartial correlation:       0.4 0.1063262
 #' 
 #' 
 #' @export
@@ -385,36 +395,38 @@ se.semipartial <- function(cor, r2, n) {
  se.cor <- sqrt(a/(n - 3))
  out <- t(c(cor, se.cor))
  colnames(out) <- c("Estimate", "SE")
- rownames(out) <- c("Semipartial correlation:")
+ rownames(out) <- "Semipartial correlation: "
  return(out)
 }
 
-# se.pbcor
+
+# se.pbcor ==============================================================
 #' Computes the standard error for a point-biserial correlation 
 #' 
 #'
 #' @description
-#' The function computes a point-biserial correlation and its standard 
+#' This function computes a point-biserial correlation and its standard 
 #' error for two types of point-biserial correlations in 2-group designs
 #' using the estimated means, estimated standard deviations, and samples
-#' sizes. One type of point-biserial correlation uses an unweighted average
-#' of variances and is appropriate for 2-group experimental designs. The 
-#' other type of point-biserial correlation uses a weighted average of
-#' variances and is appropriate for 2-group nonexperimental designs with
-#' simple random sampling. This function is useful in a meta-analysis of
-#' compatible point-biserial correlations where some studies used a 2-group 
-#' experimental design and other studies used a 2-group nonexperimental 
-#' design. The effect size estimate and standard error output from this 
-#' function can  be used as input in the \link[vcmeta]{meta.ave.gen}, 
-#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions.
+#' sizes. Equality of variances is not assumed. One type of point-biserial
+#' correlation uses an unweighted average of variances and is recommended
+#' for 2-group experimental designs. The other type of point-biserial 
+#' correlation uses a weighted average of variances and is recommended for
+#' 2-group nonexperimental designs with simple random sampling (but not 
+#' stratified random sampling). This function is useful in a meta-analysis
+#' of compatible point-biserial correlations where some studies used a 
+#' 2-group experimental design and other studies used a 2-group 
+#' nonexperimental design. The effect size estimate and standard error 
+#' output from this function can  be used as input in the
+#' \link[vcmeta]{meta.ave.gen} function.
 #'
 #' 
 #' @param    m1		estimated mean for group 1 
 #' @param    m2		estimated mean for group 2 
 #' @param    sd1	estimated standard deviation for group 1
 #' @param    sd2	estimated standard deviation for group 2
-#' @param    n1		group 1 sample size
-#' @param    n2		group 2 sample size
+#' @param    n1		sample size for group 1
+#' @param    n2		sample size for group 2
 #' @param    type		
 #' * set to 1 for weighted variance average
 #' * set to 2 for unweighted variance average
@@ -422,7 +434,7 @@ se.semipartial <- function(cor, r2, n) {
 #' 
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of point-biserial correlation
+#' * Estimate - estimated point-biserial correlation
 #' * SE - standard error
 #' 
 #' 
@@ -430,8 +442,8 @@ se.semipartial <- function(cor, r2, n) {
 #' se.pbcor(21.9, 16.1, 3.82, 3.21, 40, 40, 1)
 #'
 #' #  Should return: 
-#' #                               Estimate         SE
-#' #  Point-biserial correlation: 0.6349786 0.05981325
+#' #                                Estimate         SE
+#' #  Point-biserial correlation:  0.6349786 0.05981325
 #' 
 #' 
 #' @references
@@ -459,12 +471,12 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
   }
   out <- t(c(cor, se.cor))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Point-biserial correlation:")
+  rownames(out) <- "Point-biserial correlation: "
   return(out)
 }
 
 
-# se.odds
+# se.odds ====================================================================
 #' Computes the standard error for a log odds ratio 
 #' 
 #'
@@ -480,15 +492,15 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
 #' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions.
 #' 
 #' 
-#' @param    f1		number of participants who have the outcome of interest in group 1 
-#' @param    f2		number of participants who have the outcome of interest in group 2   
-#' @param    n1		group 1 sample size
-#' @param    n2		group 2 sample size
+#' @param    f1		number of participants who have the outcome in group 1 
+#' @param    f2		number of participants who have the outcome in group 2   
+#' @param    n1		sample size for group 1
+#' @param    n2		sample size for group 2 
 #' 
 #' 
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of log odds ratio
+#' * Estimate - estimated log odds ratio
 #' * SE - standard error
 #' 
 #' 
@@ -496,8 +508,8 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
 #' se.odds(36, 50, 21, 50)
 #'
 #' # Should return: 
-#' #                 Estimate        SE
-#' # Log odds ratio: 1.239501 0.4204435
+#' #                  Estimate        SE
+#' # Log odds ratio:  1.239501 0.4204435
 #' 
 #' 
 #' @references
@@ -510,46 +522,45 @@ se.odds <- function(f1, n1, f2, n2) {
   se.log.OR <- sqrt(1/(f1 + .5) + 1/(f2 + .5) + 1/(n1 - f1 + .5) + 1/(n2 - f2 + .5))
   out <- t(c(log.OR, se.log.OR))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- "Log odds ratio:"
+  rownames(out) <- "Log odds ratio: "
   return(out)
 }
 
 
-# se.meanratio2
+# se.meanratio2 =========================================================
 #' Computes the standard error for a 2-group log mean ratio
 #' 
 #' 
 #' @description
 #' This function can be used to compute the standard error of a 
-#' 2-group mean ratio using the two estimated means, estimated standard
-#' deviations, and sample sizes. The effect size estimate and standard 
+#' 2-group log mean ratio using the estimated means, estimated standard
+#' deviations, and sample sizes. The log mean estimate and standard 
 #' error output from this function can be used as input in the
-#' \link[vcmeta]{meta.ave.gen},  \link[vcmeta]{meta.lc.gen}, and
-#' link[vcmeta]{meta.lm.gen} functions in application where compatible
+#' \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
+#' \link[vcmeta]{meta.lm.gen} functions in application where compatible
 #' mean ratios from a combination of 2-group and paired-samples experiments
-#' are used in the meta-analysis.
+#' are used in the meta-analysis. Equality of variances is not assumed.
 #' 
 #' 
 #' @param    m1		estimated mean for group 1 
 #' @param    m2		estimated mean for group 2 
 #' @param    sd1	estimated standard deviation for group 1
 #' @param    sd2	estimated standard deviation for group 2
-#' @param    n1		group 1 sample size
-#' @param    n2		group 2 sample size
+#' @param    n1		sample size for group 1
+#' @param    n2		sample size for group 2
 #' 
 #' 
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of log mean ratio
+#' * Estimate - estimated log mean ratio
 #' * SE - standard error
-#' @return
 #'  
 #' @examples
 #' se.meanratio2(21.9, 16.1, 3.82, 3.21, 40, 40)
 #'
 #' # Should return:
-#' #                  Estimate       SE
-#' # Log mean ratio: 0.3076674 0.041886
+#' #                   Estimate       SE
+#' # Log mean ratio:  0.3076674 0.041886
 #' 
 #' 
 #' @references
@@ -564,24 +575,25 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
   se <- sqrt(var1 + var2)
   out <- t(c(logratio, se))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- "Log mean ratio:"
+  rownames(out) <- "Log mean ratio: "
   return(out)
 }
 
 
-# se.meanratio.ps
+# se.meanratio.ps =============================================================
 #' Computes the standard error for a paired-samples log mean ratio
 #' 
 #' 
 #' @description
 #' This function can be used to compute the standard error of a 
-#' paired-samples mean ratio using the estimated eans, estimated
-#  standard deviations, estimated Pearson correlation, and sample 
-#' size. The effect size estimate and standard error output from
+#' paired-samples log mean ratio using the estimated means, estimated
+#'  standard deviations, estimated Pearson correlation, and sample 
+#' size. The log-mean estimate and standard error output from
 #' this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
 #' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
-#' application where compatible mean ratios from a combination of 2-group
+#' applications where compatible mean ratios from a combination of 2-group
 #' and paired-samples experiments are used in the meta-analysis. 
+#' Equality of variances is not assumed.
 #' 
 #' 
 #' @param    m1		estimated mean for measurement 1 
@@ -594,16 +606,15 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' 
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of log mean ratio
+#' * Estimate - estimated log mean ratio
 #' * SE - standard error
-#' @return
 #'  
 #' @examples
 #' se.meanratio.ps(21.9, 16.1, 3.82, 3.21, .748, 40)
 #'
 #' # Should return:
-#' #                  Estimate         SE
-#' # Log mean ratio: 0.3076674 0.02130161
+#' #                   Estimate         SE
+#' # Log mean ratio:  0.3076674 0.02130161
 #' 
 #' 
 #' @references
@@ -619,21 +630,21 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
  se <- sqrt(var1 + var2 - 2*cov)
  out <- t(c(logratio, se))
  colnames(out) <- c("Estimate", "SE")
- rownames(out) <- "Log mean ratio:"
+ rownames(out) <- "Log mean ratio: "
  return(out)
 }
 
 
-# se.slope
+# se.slope =================================================================
 #' Computes a slope and standard error
 #' 
 #'
 #' @description 
 #' This function can be used to compute a slope and its standard error
-#' for a simple linear regression model using the estimated Pearson
-#' correlation and the estimated standard deviations of response and 
-#' predictor variables. This function is useful in a meta-analysis of 
-#' slopes of a simple linear regression model where some studies report
+#' for a simple linear regression model (random-x model) using the estimated 
+#' Pearson correlation and the estimated standard deviations of the 
+#' response and predictor variables. This function is useful in a meta-analysis
+#' of slopes of a simple linear regression model where some studies report
 #' the Pearson correlation but not the slope.
 #' 
 #'
@@ -644,7 +655,7 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #'   
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of slope
+#' * Estimate - estimated slope
 #' * SE - standard error
 #' 
 #' 
@@ -652,8 +663,8 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' se.slope(.392, 4.54, 2.89, 60)
 #'
 #' # Should return: 
-#' #         Estimate        SE
-#' # Slope: 0.6158062 0.1897647
+#' #          Estimate        SE
+#' # Slope:  0.6158062 0.1897647
 #' 
 #' 
 #' @references
@@ -666,21 +677,21 @@ se.slope <- function(cor, sdy, sdx, n) {
   se.slope <- sqrt((sdy^2*(1 - cor^2)*(n - 1))/(sdx^2*(n - 1)*(n - 2)))
   out <- t(c(slope, se.slope))
   colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- c("Slope:")
+  rownames(out) <- "Slope: "
   return(out)
 }
 
 
-# se.prop2 
-#' Computes the Agresti-Caffo estimate and standard error for a 2-group
-#' proportion difference
+# se.prop2 =================================================================== 
+#' Computes the estimate and standard error for a 2-group proportion 
+#' difference
 #' 
 #' 
 #' @description
-#' This function can be used to compute the standard error of a 
-#' 2-group proportion difference using the two sample proportions and sample
-#' sizes. The effect size estimate and standard error output from this
-#' function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
+#' This function can be used to compute the Agresti-Caffo standard 
+#' error of a 2-group proportion difference using the frequency 
+#' counts and sample sizes. The effect size estimate and standard 
+#' error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
 #' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
 #' applications where compatible proportion differences from a combination of 
 #' 2-group and paired-samples studies are used in the meta-analysis. 
@@ -688,13 +699,13 @@ se.slope <- function(cor, sdy, sdx, n) {
 #' 
 #' @param    f1   number of participants in group 1 who have the outcome
 #' @param    f2	  number of participants in group 2 who have the outcome
-#' @param    n1	  group 1 sample size
-#' @param    n2	  group 2 sample size
+#' @param    n1	  sample size for group 1
+#' @param    n2	  sample size for group 2
 #' 
 #' 
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of proportion difference
+#' * Estimate - estimated proportion difference
 #' * SE - standard error
 #' 
 #'  
@@ -702,8 +713,8 @@ se.slope <- function(cor, sdy, sdx, n) {
 #' se.prop2(31, 16, 40, 40)
 #'
 #' # Should return:
-#' #                         Estimate        SE
-#' # Proportion difference: 0.3571429 0.1002777
+#' #                          Estimate        SE
+#' # Proportion difference:  0.3571429 0.1002777
 #' 
 #' 
 #' @references
@@ -718,21 +729,21 @@ se.prop2 <- function(f1, f2, n1, n2) {
  se <- sqrt(p1*(1 - p1)/(n1 + 2) + p2*(1 - p2)/(n2 + 2))
  out <- t(c(est, se))
  colnames(out) <- c("Estimate", "SE")
- rownames(out) <- c("Proportion difference:")
+ rownames(out) <- "Proportion difference: "
  return(out)
 }
 
 
-# se.prop.ps 
-#' Computes the Bonett-Price estimate and standard error for a paired-samples
+# se.prop.ps ==============================================================
+#' Computes the estimate and standard error for a paired-samples
 #' proportion difference
 #' 
 #' 
 #' @description
-#' This function can be used to compute the standard error of a 
-#' paired-samples proportion difference using the frequency counts from a 
-#' 2 x 2 contingency table. The effect size estimate and standard error
-#' output from this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
+#' This function can be used to compute the Bonett-Price standard error 
+#' of a paired-samples proportion difference using the frequency counts 
+#' from a 2 x 2 contingency table. The effect size estimate and standard 
+#' error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
 #' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
 #' applications where compatible proportion differences from a combination of
 #' 2-group and paired-samples studies are used in the meta-analysis. 
@@ -746,7 +757,7 @@ se.prop2 <- function(f1, f2, n1, n2) {
 #' 
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimate of proportion difference
+#' * Estimate - estimated proportion difference
 #' * SE - standard error
 #' 
 #'  
@@ -754,12 +765,12 @@ se.prop2 <- function(f1, f2, n1, n2) {
 #' se.prop.ps(16, 64, 5, 15)
 #'
 #' # Should return:
-#' #                         Estimate         SE
-#' # Proportion difference: 0.5784314 0.05953213
+#' #                          Estimate         SE
+#' # Proportion difference:  0.5784314 0.05953213
 #' 
 #' 
 #' @references
-#' \insertRef{Agresti2000}{vcmeta}
+#' \insertRef{Bonett2012}{vcmeta}
 #'
 #'
 #' @export
@@ -771,7 +782,374 @@ se.prop.ps <- function(f00, f01, f10, f11) {
  se <- sqrt(((p01 + p10) - (p01 - p10)^2)/(n + 2))
  out <- t(c(est, se))
  colnames(out) <- c("Estimate", "SE")
- rownames(out) <- c("Proportion difference:")
+ rownames(out) <- "Proportion difference: "
  return(out)
 }
 
+
+# se.ave.mean2.dep ============================================================
+#' Computes the standard error for the average of 2-group mean differences from 
+#' two parallel measurement response variables in the same sample 
+#'                       
+#' 
+#' @description
+#' In a study that reports a 2-group mean difference for two response
+#' variables that satisfy the conditions of parallel measurments, this function
+#' can be used to compute the standard error of the average of the two mean 
+#' differences using the two estimated means, estimated standard deviations, 
+#' estimated within-group correlation between the two response variables, and 
+#' the two sample sizes. The average mean difference and standard error output 
+#' from this function can then be used as input in the
+#' \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and 
+#' \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some studies
+#' have used one of the two parallel response variables and other studies have
+#' used the other parallel response variable. Equality of variances is not
+#' assumed.
+#' 
+#' 
+#' @param    m1A	   estimated mean for variable A in group 1 
+#' @param    m2A	   estimated mean for variable A in group 2 
+#' @param    sd1A	   estimated standard deviation for variable A in group 1
+#' @param    sd2A	   estimated standard deviation for variable A in group 2
+#' @param    m1B	   estimated mean for variable B in group 1 
+#' @param    m2B	   estimated mean for variable B in group 2 
+#' @param    sd1B	   estimated standard deviation for variable B in group 1
+#' @param    sd2B	   estimated standard deviation for variable B in group 2
+#' @param    rAB	   estimated within-group correlation between variables A and B
+#' @param    n1		   sample size for group 1
+#' @param    n2		   sample size for group 2
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated average mean difference
+#' * SE - standard error 
+#' * VAR(A) - variance of mean difference for variable A
+#' * VAR(B) - variance of mean difference for variable B
+#' * COV(A,B) - covariance of mean differences for variables A and B
+#' 
+#'  
+#' @examples
+#' se.ave.mean2.dep(21.9, 16.1, 3.82, 3.21, 24.8, 17.1, 3.57, 3.64, .785, 40, 40)
+#'
+#' # Should return:
+#' #                          Estimate        SE    VAR(A)    VAR(B)  COV(A,B)
+#' # Average mean difference:     6.75 0.7526878 0.6224125 0.6498625 0.4969403
+#' 
+#' 
+#' @export
+se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1, n2) {
+  m1 <- (m1A + m1B)/2
+  m2 <- (m2A + m2B)/2
+  est <- m1 - m2
+  v1 <- sd1A^2/n1 + sd2A^2/n2 
+  v2 <- sd1B^2/n1 + sd2B^2/n2
+  cov <- rAB*sd1A*sd1B/n1 + rAB*sd2A*sd2B/n2
+  se <- sqrt((v1 + v2 + 2*cov)/4)
+  out <- t(c(est, se, v1, v2, cov))
+  colnames(out) <- c("Estimate", "SE", "VAR(A)", "VAR(B)", "COV(A,B)")
+  rownames(out) <- "Average mean difference: "
+  return(out)
+}
+
+
+# se.ave.cor.over =============================================================
+#' Computes the standard error for the average of two Pearson correlations with 
+#' one variable in common that have been estimated from the same sample 
+#'     
+#' 
+#' @description
+#' In a study that reports the sample size and three correlations (cor12, cor13, 
+#' and cor23 where variable 1 is called the "overlapping" variable), and 
+#' variables 2 and 3 are different measurements of the same attribute, this 
+#' function can be used to compute the average of cor12 and cor13 and its 
+#' standard error. The average correlation and the standard error from this 
+#' function can be used as input in the \link[vcmeta]{meta.ave.gen} function
+#' in a meta-analysis where some studies have reported cor12 and other studies
+#' have reported cor13. 
+#' 
+#' 
+#' @param    cor12	estimated correlation between variables 1 and 2 
+#' @param    cor13	estimated correlation between variables 1 and 3 
+#' @param    cor23	estimated correlation between variables 2 and 3
+#' @param    n		  sample size
+#' 
+#' 
+#' @return
+#' Returns a two-row matrix. The first row gives results for the average 
+#' correlation and the second row gives the results with a Fisher
+#' transformation. The columns are:
+#' * Estimate - estimated average of cor12 and cor13
+#' * SE - standard error 
+#' * VAR(cor12) - variance of cor12 
+#' * VAR(cor13) - variance of cor13
+#' * COV(cor12,cor13) - covariance of cor12 and cor13
+#' 
+#'  
+#' @examples
+#' se.ave.cor.over(.462, .518, .755, 100)
+#'
+#' # Should return:
+#' #                Estimate         SE  VAR(cor12) VAR(cor13) COV(cor12,cor13)
+#' # Correlation:  0.4900000 0.07087351 0.006378045 0.00551907      0.004097553
+#' # Fisher:       0.5360603 0.09326690 0.010309278 0.01030928      0.007119936
+#'
+#'
+#' @export
+se.ave.cor.over <- function(cor12, cor13, cor23, n) {
+  est1 <- (cor12 + cor13)/2
+  cov1 <- ((cor23 - cor12*cor13/2)*(1 - cor12^2 - cor13^2 - cor23^2) + cor23^3)/(n - 3)
+  v1 <- (1 - cor12^2)^2/(n - 3)
+  v2 <- (1 - cor13^2)^2/(n - 3)
+  se1 <- sqrt((v1 + v2 + 2*cov1)/4)
+  est2 <- log((1 + est1)/(1 - est1))/2 
+  se2 <- se1/(1 - est1^2)
+  cov2 <- cov1/((1 - cor12^2)*(1 - cor13^2))
+  v1.z <- 1/(n - 3)
+  v2.z <- 1/(n - 3)
+  out1 <- t(c(est1, se1, v1, v2, cov1))
+  out2 <- t(c(est2, se2, v1.z, v2.z, cov2))
+  out <- rbind(out1, out2)
+  colnames(out) <- c("Estimate", "SE", "VAR(cor12)", "VAR(cor13)", "COV(cor12,cor13)")
+  rownames(out) <- c("Correlation: ", "Fisher: ")
+  return(out)
+}
+
+
+# se.ave.cor.nonover ==========================================================
+#' Computes the standard error for the average of two Pearson correlations with 
+#' no variables in common that have been estimated from the same sample 
+#'
+#' 
+#' @description
+#' In a study that reports the sample size and six correlations (cor12, cor34,
+#' cor13, cor14, cor23, and cor24) where variables 1 and 3 are different 
+#' measurements of one attribute and variables 2 and 4 are different 
+#' measurements of a second attribute, this function can be used to compute the 
+#' average of cor12 and cor34 and its standard error. Note that cor12 and cor34
+#' have no variable in common (i.e., no "overlapping" variable). The average 
+#' correlation and the standard error from this function can be used as 
+#' input in the \link[vcmeta]{meta.ave.gen} function in a meta-analysis where
+#' some studies have reported cor12 and other studies have reported cor34. 
+#' 
+#' 
+#' @param    cor12	  estimated correlation between variables 1 and 2 
+#' @param    cor34	  estimated correlation between variables 3 and 4 
+#' @param    cor13	  estimated correlation between variables 1 and 3
+#' @param    cor14	  estimated correlation between variables 1 and 4
+#' @param    cor23	  estimated correlation between variables 2 and 3
+#' @param    cor24	  estimated correlation between variables 2 and 4
+#' @param    n		    sample size
+#' 
+#' 
+#' @return
+#' Returns a two-row matrix. The first row gives results for the average 
+#' correlation and the second row gives the results with a Fisher
+#' transformation. The columns are:
+#' * Estimate - estimated average of cor12 and cor34
+#' * SE - standard error 
+#' * VAR(cor12) - variance of cor12 
+#' * VAR(cor34) - variance of cor34
+#' * COV(cor12,cor34) - covariance of cor12 and cor34
+#' 
+#'  
+#' @examples
+#' se.ave.cor.nonover(.357, .398, .755, .331, .347, .821, 100)
+#'
+#' # Should return:
+#' #               Estimate         SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
+#' # Correlation:  0.377500 0.07768887 0.00784892 0.007301895      0.004495714
+#' # Fisher:       0.397141 0.09059993 0.01030928 0.010309278      0.006122153
+#'
+#'
+#' @export
+se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
+  est1 <- (cor12 + cor34)/2
+  c1 <- (cor12*cor34)*(cor13^2 + cor14^2 + cor23^2 + cor24^2)/2 + cor13*cor24 + cor14*cor23
+  c2 <- (cor12*cor13*cor14 + cor12*cor23*cor24 + cor13*cor23*cor34 + cor14*cor24*cor34)
+  cov1 <- (c1 - c2)/(n - 3)
+  v1 <- (1 - cor12^2)^2/(n - 3)
+  v2 <- (1 - cor34^2)^2/(n - 3)
+  se1 <- sqrt((v1 + v2 + 2*cov1)/4)
+  est2 <- log((1 + est1)/(1 - est1))/2 
+  se2 <- se1/(1 - est1^2)
+  cov2 <- cov1/((1 - cor12^2)*(1 - cor34^2))
+  v1.z <- 1/(n - 3)
+  v2.z <- 1/(n - 3)
+  out1 <- t(c(est1, se1, v1, v2, cov1))
+  out2 <- t(c(est2, se2, v1.z, v2.z, cov2))
+  out <- rbind(out1, out2)
+  colnames(out) <- c("Estimate", "SE", "VAR(cor12)", "VAR(cor34)", "COV(cor12,cor34)")
+  rownames(out) <- c("Correlation: ", "Fisher: ")
+  return(out)
+}
+
+
+#  se.tetra ==================================================================
+#' Computes the standard error for a tetrachoric correlation approximation  
+#'
+#'
+#' @description
+#' This function can be used to compute an estimate of a tetrachoric 
+#' correlation approximation and its standard error using the frequency counts
+#' from a 2 x 2 contingency table for two artifically dichotomous variables.
+#' A tetrachoric approximation could be compatible with a Pearson correlation
+#' in a meta-analysis. The tetrachoric approximation and the standard error 
+#' from this function can be used as input in the \link[vcmeta]{meta.ave.gen} 
+#' function in a meta-analysis where some studies have reported Pearson 
+#' correlations between quantitative variables x and y and other studies have
+#' reported a 2 x 2 contingency table for dichotomous measurements of variables
+#' x and y. 
+#'
+#'
+#' @param   f00    number of participants with y = 0 and x = 0
+#' @param   f01    number of participants with y = 0 and x = 1
+#' @param   f10    number of participants with y = 1 and x = 0
+#' @param   f11    number of participants with y = 1 and x = 1
+#'
+#'
+#' @references
+#' \insertRef{Bonett2005}{vcmeta}
+#'
+#'
+#' @return
+#' Returns a 1-row matrix. The columns are:
+#' * Estimate - estimated tetrachoric approximation
+#' * SE - standard error
+#'
+#'
+#' @examples
+#' se.tetra(46, 15, 54, 85)
+#'
+#' # Should return:
+#' #                Estimate         SE 
+#' # Tetrachoric:  0.5135167 0.09358336
+#'
+#'
+#' @export
+se.tetra <- function(f00, f01, f10, f11) {
+ n <- f00 + f01 + f10 + f11
+ or <- (f11 + .5)*(f00 + .5)/((f01 + .5)*(f10 + .5))
+ r1 <- (f00 + f01 + 1)/(n + 2)
+ r2 <- (f10 + f11 + 1)/(n + 2)
+ c1 <- (f00 + f10 + 1)/(n + 2)
+ c2 <- (f01 + f11 + 1)/(n + 2)
+ pmin <- min(c1, c2, r1, r2)
+ c <- (1 - abs(r1 - c1)/5 - (.5 - pmin)^2)/2
+ lor <- log(or)
+ se.lor <- sqrt(1/(f00 + .5) + 1/(f01 + .5) + 1/(f10 + .5) + 1/(f11 + .5))
+ tetra <- cos(3.14159/(1 + or^c))
+ k <- (3.14159*c*or^c)*sin(3.14159/(1 + or^c))/(1 + or^c)^2
+ se <- k*se.lor
+ out <- t(c(tetra, se))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Tetrachoric: "
+ return(out)
+}
+
+
+#  se.biphi ==================================================================
+#' Computes the standard error for a biserial-phi correlation  
+#'
+#'
+#' @description
+#' This function can be used to compute an estimate of a biserial-phi  
+#' correlation and its standard error using the frequency counts from a 2 x 2
+#' contingency table where one variable is naturally dichotomous and the other
+#' variable is artifically dichotomous. A biserial-phi correlation could be 
+#' compatible with a point-biserial correlation in a meta-analysis. The 
+#' biserial-phi estimate and the standard error from this function can be used 
+#' as input in the \link[vcmeta]{meta.ave.gen} function in a meta-analysis 
+#' where a point-biserial correlation has been obtained in some studies and
+#' a biserial-phi correlation has been obtained in other studies.  
+#'
+#'
+#' @param   f1     number of participants in group 1 who have the attribute
+#' @param   f2     number of participants in group 2 who have the attribute
+#' @param   n1     sample size for group 1
+#' @param   n2     sample size for group 2
+#'
+#'
+#' @return
+#' Returns a 1-row matrix. The columns are:
+#' * Estimate - estimated biserial-phi correlation 
+#' * SE - standard error
+#'
+#'
+#' @examples
+#' se.biphi(34, 22, 50, 50)
+#'
+#' # Should return:
+#' #               Estimate        SE 
+#' # Biserial-phi:  0.27539 0.1074594
+#'
+#'
+#' @export
+se.biphi <- function(f1, f2, n1, n2) {
+ if (f1 > n1) {stop("f cannot be greater than n")}
+ if (f2 > n2) {stop("f cannot be greater than n")}
+ f00 <- f1
+ f10 <- n1 - f1
+ f01 <- f2
+ f11 <- n2 - f2
+ p1 <- n1/(n1 + n2)
+ p2 <- n2/(n1 + n2)
+ or <- (f11 + .5)*(f00 + .5)/((f01 + .5)*(f10 + .5))
+ lor <- log(or)
+ se.lor <- sqrt(1/(f00 + .5) + 1/(f01 + .5) + 1/(f10 + .5) + 1/(f11 + .5))
+ c <- 2.89/(p1*p2)
+ biphi <- lor/sqrt(lor^2 + c)
+ se.biphi <- sqrt(c^2/(lor^2 + c)^3)*se.lor
+ out <- t(c(biphi, se.biphi))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Biserial-phi: "
+ return(out)
+}
+
+
+# se.cohen ====================================================================		
+#' Computes the standard error for Cohen's d
+#' 
+#' 
+#' @description
+#' This function computes the standard error of Cohen's d using only the two 
+#' sample sizes and an estimate of Cohen's d. Cohen's d and its standard error 
+#' assume equal variances. The estimate of Cohen's d, with the standard error
+#' output from this function, can be used as input in the \link[vcmeta]{meta.ave.gen},
+#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
+#' applications where different types of compatible standardized mean 
+#' differences are used in the meta-analysis. 
+#'
+#' 
+#' @param    d		  estimated Cohen's d
+#' @param    n1		  sample size for group 1
+#' @param    n2		  sample size for group 2
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - Cohen's d (from input)
+#' * SE - standard error
+#' 
+#' 
+#' @examples
+#' se.cohen(.78, 35, 50)
+#'
+#' # Should return: 
+#' #            Estimate        SE
+#' # Cohen's d:     0.78 0.2288236
+#'
+#'
+#' @seealso \link[vcmeta]{se.stdmean2}
+#'
+#'
+#' @export
+se.cohen <- function(d, n1, n2) {
+  df1 <- n1 - 1
+  df2 <- n2 - 1
+  se <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
+  out <- t(c(d, se))
+  colnames(out) <- c("Estimate", "SE")
+  rownames(out) <- "Cohen's d: "
+  return(out)
+}

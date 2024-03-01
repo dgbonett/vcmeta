@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.stdmean2}
 \alias{replicate.stdmean2}
-\title{Compares 2-group standardized mean differences in original and
+\title{Compares and combines 2-group standardized mean differences in original and
 follow-up studies}
 \usage{
 replicate.stdmean2(
@@ -53,25 +53,27 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size between the two studies
+\item Row 3 estimates the difference in standardized mean differences
+\item Row 4 estimates the average standardized mean difference
 }
 
 The columns are:
 \itemize{
-\item Estimate - effect size estimate
+\item Estimate - standardized mean difference estimate (single study, difference, average)
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
 }
 }
 \description{
-This function computes confidence intervals for a 2-group standardized mean
-difference from an original study and a follow-up study. Confidence intervals
-for the difference and average effect size also are computed. The same results
-can be obtained using the \link[vcmeta]{meta.lc.stdmean2} function with
-appopriate contrast coefficients. The confidence level for the difference is
-1 – 2alpha.
+This function computes confidence intervals from an original study and a
+follow-up study where the effect size is a 2-group standardized mean
+difference. Confidence intervals for the difference and average effect
+size are also computed. Equality of variances within or across studies
+is not assumed. The same results can be obtained using the
+\link[vcmeta]{meta.lc.stdmean2} function with appropriate contrast coefficients.
+The confidence level for the difference is 1 – 2*alpha, which is recommended
+for equivalence testing.
 }
 \examples{
 replicate.stdmean2(.05, 21.9, 16.1, 3.82, 3.21, 40, 40, 

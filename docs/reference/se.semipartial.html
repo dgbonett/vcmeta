@@ -3,10 +3,9 @@
 semipartial correlation using the estimated correlation, sample
 size, and squared multiple correlation for the full model.
 The effect size estimate and standard error output from this
-function can be used as input in the meta.ave.gen,
-meta.lc.gen, and meta.lm.gen functions
-in applications where a combination of different types of correlations
-are used in the meta-analysis."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+function can be used as input in the meta.ave.gen
+function in applications where a combination of different types
+of correlations are used in the meta-analysis."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
@@ -24,7 +23,7 @@ are used in the meta-analysis."><!-- mathjax --><script src="https://cdnjs.cloud
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vcmeta</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
       </span>
     </div>
 
@@ -60,14 +59,13 @@ are used in the meta-analysis."><!-- mathjax --><script src="https://cdnjs.cloud
 semipartial correlation using the estimated correlation, sample
 size, and squared multiple correlation for the full model.
 The effect size estimate and standard error output from this
-function can be used as input in the <a href="meta.ave.gen.html">meta.ave.gen</a>,
-<a href="meta.lc.gen.html">meta.lc.gen</a>, and <a href="meta.lm.gen.html">meta.lm.gen</a> functions
-in applications where a combination of different types of correlations
-are used in the meta-analysis.</p>
+function can be used as input in the <a href="meta.ave.gen.html">meta.ave.gen</a>
+function in applications where a combination of different types
+of correlations are used in the meta-analysis.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">se.semipartial</span><span class="op">(</span><span class="va">cor</span>, <span class="va">r2</span>, <span class="va">n</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">se.semipartial</span><span class="op">(</span><span class="va">cor</span>, <span class="va">r2</span>, <span class="va">n</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -88,21 +86,21 @@ are used in the meta-analysis.</p>
     <h2>Value</h2>
     
 
-<p>Returns a one-row matrix:</p><ul><li><p>Estimate - estimate of semipartial correlation</p></li>
+<p>Returns a one-row matrix:</p><ul><li><p>Estimate - semipartial correlation (from input)</p></li>
 <li><p>SE - standard error</p></li>
 </ul></div>
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="fu">se.semipartial</span><span class="op">(</span><span class="fl">.40</span>, <span class="fl">.25</span>, <span class="fl">60</span><span class="op">)</span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                          Estimate        SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Semipartial correlation:      0.4 0.1063262</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return: </span></span>
-<span class="r-in"><span class="co">#                          Estimate        SE</span></span>
-<span class="r-in"><span class="co"># Semipartial correlation:      0.4 0.1063262</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">se.semipartial</span><span class="op">(</span><span class="fl">.40</span>, <span class="fl">.25</span>, <span class="fl">60</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                           Estimate        SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Semipartial correlation:       0.4 0.1063262</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return: </span></span></span>
+<span class="r-in"><span><span class="co">#                           Estimate        SE</span></span></span>
+<span class="r-in"><span><span class="co"># Semipartial correlation:       0.4 0.1063262</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -117,7 +115,7 @@ are used in the meta-analysis.</p>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

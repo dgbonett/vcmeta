@@ -1,26 +1,26 @@
 # replicate.plot
-#' Plot to compare estimates from an original and follow-up study
+#' Plot to compare estimates from original and follow-up studies
 #'
 #'
 #' @description 
 #' Generates a basic plot using ggplot2 to visualize the estimates from
-#' and original and follow-up study
+#' and original and follow-up studies.
 #'  
 #'  
 #' @param result - a result matrix from any of the replicate functions in vcmeta
 #' @param focus - Optional specification of the focus of the plot; 
 #'   defaults to 'Both'
-#' * Both - a bit busy; plots each estimate, differencence, and average
+#' * Both - plots each estimate, differencence, and average
 #' * Difference - plot each estimate and difference between them
 #' * Average - plot each estimate and the average effect size
-#' @param reference_line Optional x-value for a reference line.  Only applies
-#'   if focuse is 'Difference' or 'Both'.  Defaults to NULL, in which case a 
+#' @param reference_line - Optional x-value for a reference line. Only applies
+#'   if focus is 'Difference' or 'Both'. Defaults to NULL, in which case a 
 #'   reference line is not drawn.
 #' @param diamond_height - Optional height of the diamond representing average
 #'  effect size. Only applies if focus is 'Average' or 'Both'.
 #'  Defaults to 0.2
 #' @param difference_axis_ticks - Optional requested number of ticks on the
-#'   difference axis.  Only applies if focus is 'Difference' or 'Both'. 
+#'   difference axis. Only applies if focus is 'Difference' or 'Both'. 
 #'   Defaults to 5.
 #' @param ggtheme - optional ggplot2 theme object; defaults to theme_classic()
 #' 
@@ -32,14 +32,14 @@
 #'    
 #' @examples    
 #' # Compare Damisch et al., 2010 to Calin-Jageman & Caldwell 2014
-#' # Damisch et al., 2010, Exp 1, German participants made 10 mini-golf putts
-#' #  Half were told they had a 'lucky' golf ball; half were not
-#' #  Found a large but uncertain improvement in shots made in the luck condition
+#' # Damisch et al., 2010, Exp 1, German participants made 10 mini-golf putts.
+#' # Half were told they had a 'lucky' golf ball; half were not.
+#' # Found a large but uncertain improvement in shots made in the luck condition
 #' # Calin-Jageman & Caldwell, 2014, Exp 1, was a pre-registered replication with
-#' #  input from Damisch, though with English-speaking participants
+#' # input from Damisch, though with English-speaking participants.
 #' #
-#' # Here we compare the effect sizes, in original units,for the two studies
-#' # Use the replicate.mean2 function because the design is 2-group between-subs
+#' # Here we compare the effect sizes, in original units, for the two studies.
+#' # Use the replicate.mean2 function because the design is a 2-group design.
 #' 
 #' library(ggplot2)
 #' damisch_v_calinjageman_raw <- replicate.mean2(
@@ -73,7 +73,7 @@
 #' )
 #' 
 #' 
-#' # Kind of busy, but plot the comparison with both difference and average
+#' # Plot the comparison with both difference and average.
 #' # In this case, store the plot for manipulation
 #' myplot <- replicate.plot(
 #'   damisch_v_calinjageman_raw,
@@ -310,11 +310,11 @@ replicate.plot <- function(
 #'
 #' @description 
 #' Generates a forest plot to visualize effect sizes estimates and overall
-#'   averages from the meta.ave functions in vcmeta.  If the column
-#'   exp(Estimate) is present, this function plots the exponentiated
-#'   effect size and CI found in columns exp(Estimate), exp(LL), and exp(UL).
-#'   Otherwise, this function plots the effect size and CI found in
-#'   the columns Estimate, LL, and UL.
+#' averages from the meta.ave functions in vcmeta. If the column
+#' exp(Estimate) is present, this function plots the exponentiated
+#' effect size and CI found in columns exp(Estimate), exp(LL), and exp(UL).
+#' Otherwise, this function plots the effect size and CI found in
+#' the columns Estimate, LL, and UL.
 #'  
 #'  
 #' @param result - a result matrix from any of the replicate functions in vcmeta

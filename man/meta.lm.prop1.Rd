@@ -9,7 +9,7 @@ meta.lm.prop1(alpha, f, n, X)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{f}{vector of sample frequency counts}
+\item{f}{vector of frequency counts}
 
 \item{n}{vector of sample sizes}
 
@@ -30,7 +30,7 @@ row per predictor.  The matrix has the following columns:
 \description{
 This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a proportion
-from one group. The estimates are OLS estimates with
+from one group. The estimates are OLS estimates with robust
 standard errors that accomodate residual heteroscedasticity.
 }
 \examples{

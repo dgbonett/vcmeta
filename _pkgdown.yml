@@ -42,7 +42,10 @@ reference:
   - title: Miscellaneous
     desc:  Additional functions
     contents:
-    - ci.fisher
+    - meta.ave.fisher
     - cor.from.t
     - meta.chitest
+    - stdmean2.from.t
+    - table.from.odds
+    - table.from.phi
 

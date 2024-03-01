@@ -17,7 +17,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vcmeta</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
       </span>
     </div>
 
@@ -63,13 +63,19 @@
         </td>
         <td><p>Confidence interval for an average Cronbach alpha reliability</p></td>
       </tr><tr><td>
+          <p><code><a href="meta.ave.fisher.html">meta.ave.fisher()</a></code> </p>
+        </td>
+        <td><p>Fisher confidence interval for an average correlation.</p></td>
+      </tr><tr><td>
           <p><code><a href="meta.ave.gen.cc.html">meta.ave.gen.cc()</a></code> </p>
         </td>
-        <td><p>Confidence interval for an average effect size using a constant coefficient model</p></td>
+        <td><p>Confidence interval for an average effect size using a constant
+coefficient model</p></td>
       </tr><tr><td>
           <p><code><a href="meta.ave.gen.rc.html">meta.ave.gen.rc()</a></code> </p>
         </td>
-        <td><p>Confidence interval for an average effect size using a random coefficient model</p></td>
+        <td><p>Confidence interval for an average effect size using a random coefficient
+model</p></td>
       </tr><tr><td>
           <p><code><a href="meta.ave.gen.html">meta.ave.gen()</a></code> </p>
         </td>
@@ -167,7 +173,7 @@ paired-samples studies</p></td>
       </tr><tr><td>
           <p><code><a href="meta.lc.mean1.html">meta.lc.mean1()</a></code> </p>
         </td>
-        <td><p>Confidence interval a for a linear contrast of means</p></td>
+        <td><p>Confidence interval for a linear contrast of means</p></td>
       </tr><tr><td>
           <p><code><a href="meta.lc.mean2.html">meta.lc.mean2()</a></code> </p>
         </td>
@@ -195,7 +201,7 @@ paired-samples studies</p></td>
       </tr><tr><td>
           <p><code><a href="meta.lc.prop1.html">meta.lc.prop1()</a></code> </p>
         </td>
-        <td><p>Confidence interval for a linear contrast of proportions.</p></td>
+        <td><p>Confidence interval for a linear contrast of proportions</p></td>
       </tr><tr><td>
           <p><code><a href="meta.lc.prop2.html">meta.lc.prop2()</a></code> </p>
         </td>
@@ -207,7 +213,7 @@ paired-samples studies</p></td>
       </tr><tr><td>
           <p><code><a href="meta.lc.stdmean.ps.html">meta.lc.stdmean.ps()</a></code> </p>
         </td>
-        <td><p>Confidence interval for a  linear contrast of standardized
+        <td><p>Confidence interval for a linear contrast of standardized
 mean differences from paired-samples studies</p></td>
       </tr><tr><td>
           <p><code><a href="meta.lc.stdmean2.html">meta.lc.stdmean2()</a></code> </p>
@@ -309,6 +315,11 @@ correlations for two sets of studies</p></td>
         <td><p>Confidence interval for a difference in average Cronbach
 reliabilities for two sets of studies</p></td>
       </tr><tr><td>
+          <p><code><a href="meta.sub.gen.html">meta.sub.gen()</a></code> </p>
+        </td>
+        <td><p>Confidence interval for a difference in average effect size for two sets
+of studies</p></td>
+      </tr><tr><td>
           <p><code><a href="meta.sub.pbcor.html">meta.sub.pbcor()</a></code> </p>
         </td>
         <td><p>Confidence interval for a difference in average point-biserial
@@ -330,50 +341,97 @@ correlations for two sets of studies</p></td>
       </tr></tbody><tbody><tr><td>
           <p><code><a href="replicate.cor.html">replicate.cor()</a></code> </p>
         </td>
-        <td><p>Compares Pearson or partial correlations in original and follow-up studies</p></td>
+        <td><p>Compares and combines Pearson or partial correlations in original and
+follow-up studies</p></td>
       </tr><tr><td>
           <p><code><a href="replicate.gen.html">replicate.gen()</a></code> </p>
         </td>
-        <td><p>Compares effect sizes in the original and follow-up studies</p></td>
+        <td><p>Compares and combines effect sizes in original and follow-up studies</p></td>
       </tr><tr><td>
           <p><code><a href="replicate.mean.ps.html">replicate.mean.ps()</a></code> </p>
         </td>
-        <td><p>Compares paired-samples mean differences in original and follow-up studies</p></td>
+        <td><p>Compares and combines paired-samples mean differences in original and follow-up studies</p></td>
+      </tr><tr><td>
+          <p><code><a href="replicate.mean1.html">replicate.mean1()</a></code> </p>
+        </td>
+        <td><p>Compares and combines single mean in original and follow-up studies</p></td>
       </tr><tr><td>
           <p><code><a href="replicate.mean2.html">replicate.mean2()</a></code> </p>
         </td>
-        <td><p>Compares 2-group mean differences in original and follow-up studies</p></td>
+        <td><p>Compares and combines 2-group mean differences in original and follow-up studies</p></td>
       </tr><tr><td>
           <p><code><a href="replicate.oddsratio.html">replicate.oddsratio()</a></code> </p>
         </td>
-        <td><p>Compares 2-group proportion differences in original and follow-up studies</p></td>
+        <td><p>Compares and combines odds ratios in original and follow-up studies</p></td>
       </tr><tr><td>
           <p><code><a href="replicate.plot.html">replicate.plot()</a></code> </p>
         </td>
-        <td><p>Plot to compare estimates from an original and follow-up study</p></td>
+        <td><p>Plot to compare estimates from original and follow-up studies</p></td>
+      </tr><tr><td>
+          <p><code><a href="replicate.prop.ps.html">replicate.prop.ps()</a></code> </p>
+        </td>
+        <td><p>Compares and combines paired-samples proportion differences in original and
+follow-up studies</p></td>
+      </tr><tr><td>
+          <p><code><a href="replicate.prop1.html">replicate.prop1()</a></code> </p>
+        </td>
+        <td><p>Compares and combines single proportion in original and follow-up studies</p></td>
       </tr><tr><td>
           <p><code><a href="replicate.prop2.html">replicate.prop2()</a></code> </p>
         </td>
-        <td><p>Compares 2-group proportion differences in original and follow-up studies</p></td>
+        <td><p>Compares and combines 2-group proportion differences in original and
+follow-up studies</p></td>
+      </tr><tr><td>
+          <p><code><a href="replicate.ratio.prop2.html">replicate.ratio.prop2()</a></code> </p>
+        </td>
+        <td><p>Compares and combines 2-group proportion ratios in original and follow-up
+studies</p></td>
       </tr><tr><td>
           <p><code><a href="replicate.slope.html">replicate.slope()</a></code> </p>
         </td>
-        <td><p>Computes confidence intervals for a slope in original and follow-up studies</p></td>
+        <td><p>Compares and combines slope coefficients in original and follow-up studies</p></td>
+      </tr><tr><td>
+          <p><code><a href="replicate.spear.html">replicate.spear()</a></code> </p>
+        </td>
+        <td><p>Compares and combines Spearman correlations in original and follow-up studies</p></td>
       </tr><tr><td>
           <p><code><a href="replicate.stdmean.ps.html">replicate.stdmean.ps()</a></code> </p>
         </td>
-        <td><p>Compares paired-samples standardized mean differences in original and
+        <td><p>Compares and combines paired-samples standardized mean differences in original and
 follow-up studies</p></td>
       </tr><tr><td>
           <p><code><a href="replicate.stdmean2.html">replicate.stdmean2()</a></code> </p>
         </td>
-        <td><p>Compares 2-group standardized mean differences in original and
+        <td><p>Compares and combines 2-group standardized mean differences in original and
 follow-up studies</p></td>
       </tr></tbody><tbody><tr><th colspan="2">
           <h2 id="standard-errors">Standard errors <a href="#standard-errors" class="anchor" aria-hidden="true"></a></h2>
           <p class="section-desc"></p><p>Standard errors for various effects</p>
         </th>
       </tr></tbody><tbody><tr><td>
+          <p><code><a href="se.ave.cor.nonover.html">se.ave.cor.nonover()</a></code> </p>
+        </td>
+        <td><p>Computes the standard error for the average of two Pearson correlations with
+no variables in common that have been estimated from the same sample</p></td>
+      </tr><tr><td>
+          <p><code><a href="se.ave.cor.over.html">se.ave.cor.over()</a></code> </p>
+        </td>
+        <td><p>Computes the standard error for the average of two Pearson correlations with
+one variable in common that have been estimated from the same sample</p></td>
+      </tr><tr><td>
+          <p><code><a href="se.ave.mean2.dep.html">se.ave.mean2.dep()</a></code> </p>
+        </td>
+        <td><p>Computes the standard error for the average of 2-group mean differences from
+two parallel measurement response variables in the same sample</p></td>
+      </tr><tr><td>
+          <p><code><a href="se.biphi.html">se.biphi()</a></code> </p>
+        </td>
+        <td><p>Computes the standard error for a biserial-phi correlation</p></td>
+      </tr><tr><td>
+          <p><code><a href="se.cohen.html">se.cohen()</a></code> </p>
+        </td>
+        <td><p>Computes the standard error for Cohen's d</p></td>
+      </tr><tr><td>
           <p><code><a href="se.cor.html">se.cor()</a></code> </p>
         </td>
         <td><p>Computes the standard error for a Pearson or partial correlation</p></td>
@@ -404,13 +462,13 @@ follow-up studies</p></td>
       </tr><tr><td>
           <p><code><a href="se.prop.ps.html">se.prop.ps()</a></code> </p>
         </td>
-        <td><p>Computes the Bonett-Price estimate and standard error for a paired-samples
+        <td><p>Computes the estimate and standard error for a paired-samples
 proportion difference</p></td>
       </tr><tr><td>
           <p><code><a href="se.prop2.html">se.prop2()</a></code> </p>
         </td>
-        <td><p>Computes the Agresti-Caffo estimate and standard error for a 2-group
-proportion difference</p></td>
+        <td><p>Computes the estimate and standard error for a 2-group proportion
+difference</p></td>
       </tr><tr><td>
           <p><code><a href="se.semipartial.html">se.semipartial()</a></code> </p>
         </td>
@@ -426,27 +484,48 @@ proportion difference</p></td>
       </tr><tr><td>
           <p><code><a href="se.stdmean.ps.html">se.stdmean.ps()</a></code> </p>
         </td>
-        <td><p>Computes the standard error for a paired-samples standardized mean difference</p></td>
+        <td><p>Computes the standard error for a paired-samples standardized mean
+difference</p></td>
       </tr><tr><td>
           <p><code><a href="se.stdmean2.html">se.stdmean2()</a></code> </p>
         </td>
         <td><p>Computes the standard error for a 2-group standardized mean difference</p></td>
+      </tr><tr><td>
+          <p><code><a href="se.tetra.html">se.tetra()</a></code> </p>
+        </td>
+        <td><p>Computes the standard error for a tetrachoric correlation approximation</p></td>
       </tr></tbody><tbody><tr><th colspan="2">
           <h2 id="miscellaneous">Miscellaneous <a href="#miscellaneous" class="anchor" aria-hidden="true"></a></h2>
           <p class="section-desc"></p><p>Additional functions</p>
         </th>
       </tr></tbody><tbody><tr><td>
-          <p><code><a href="ci.fisher.html">ci.fisher()</a></code> </p>
+          <p><code><a href="meta.ave.fisher.html">meta.ave.fisher()</a></code> </p>
         </td>
-        <td><p>Fisher confidence interval for any type of correlation.</p></td>
+        <td><p>Fisher confidence interval for an average correlation.</p></td>
       </tr><tr><td>
           <p><code><a href="cor.from.t.html">cor.from.t()</a></code> </p>
         </td>
-        <td><p>Compute Pearson correlation between paired measurements from t statistic</p></td>
+        <td><p>Computes Pearson correlation between paired measurements from t statistic</p></td>
       </tr><tr><td>
           <p><code><a href="meta.chitest.html">meta.chitest()</a></code> </p>
         </td>
         <td><p>Computes a chi-square test of effect-size homogeneity</p></td>
+      </tr><tr><td>
+          <p><code><a href="stdmean2.from.t.html">stdmean2.from.t()</a></code> </p>
+        </td>
+        <td><p>Computes Cohen's d from pooled-variance t statistic</p></td>
+      </tr><tr><td>
+          <p><code><a href="table.from.odds.html">table.from.odds()</a></code> </p>
+        </td>
+        <td><p>table.from.odds ============================================================
+Computes the cell frequencies in a 2x2 table using the marginal proportions
+and odds ratio</p></td>
+      </tr><tr><td>
+          <p><code><a href="table.from.phi.html">table.from.phi()</a></code> </p>
+        </td>
+        <td><p>table.from.phi ============================================================
+Computes the cell frequencies in a 2x2 table using the marginal proportions
+and phi correlation</p></td>
       </tr></tbody></table></div>
 
   <div class="col-md-3 hidden-xs hidden-sm" id="pkgdown-sidebar">
@@ -460,7 +539,7 @@ proportion difference</p></td>
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

@@ -22,27 +22,27 @@ se.meanratio.ps(m1, m2, sd1, sd2, cor, n)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of log mean ratio
+\item Estimate - estimated log mean ratio
 \item SE - standard error
 }
-
-
 }
 \description{
 This function can be used to compute the standard error of a
-paired-samples mean ratio using the estimated eans, estimated
-size. The effect size estimate and standard error output from
+paired-samples log mean ratio using the estimated means, estimated
+standard deviations, estimated Pearson correlation, and sample
+size. The log-mean estimate and standard error output from
 this function can be used as input in the \link[vcmeta]{meta.ave.gen},
 \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
-application where compatible mean ratios from a combination of 2-group
+applications where compatible mean ratios from a combination of 2-group
 and paired-samples experiments are used in the meta-analysis.
+Equality of variances is not assumed.
 }
 \examples{
 se.meanratio.ps(21.9, 16.1, 3.82, 3.21, .748, 40)
 
 # Should return:
-#                  Estimate         SE
-# Log mean ratio: 0.3076674 0.02130161
+#                   Estimate         SE
+# Log mean ratio:  0.3076674 0.02130161
 
 
 }

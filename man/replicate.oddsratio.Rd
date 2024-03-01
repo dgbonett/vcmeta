@@ -2,16 +2,16 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.oddsratio}
 \alias{replicate.oddsratio}
-\title{Compares 2-group proportion differences in original and follow-up studies}
+\title{Compares and combines odds ratios in original and follow-up studies}
 \usage{
 replicate.oddsratio(alpha, est1, se1, est2, se2)
 }
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{est1}{estimate of log odds ratio 1 in original study}
+\item{est1}{estimate of log odds ratio in original study}
 
-\item{se1}{standard error of log odds ration in original study}
+\item{se1}{standard error of log odds ratio in original study}
 
 \item{est2}{estimate of log odds ratio in follow-up study}
 
@@ -20,15 +20,15 @@ replicate.oddsratio(alpha, est1, se1, est2, se2)
 \value{
 A 4-row matrix. The rows are:
 \itemize{
-\item Row 1 summarizes the Original study
-\item Row 2 summarizes the Follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size of the two studies
+\item Row 1 summarizes the original study
+\item Row 2 summarizes the follow-up study
+\item Row 3 estimates the ratio of odds ratios
+\item Row 4 estimates the geometric average odds ratio
 }
 
 The columns are:
 \itemize{
-\item Estimate - effect size estimate
+\item Estimate - odds ratio estimate (single study, ratio, average)
 \item SE - standard error
 \item z - z-value
 \item p - p-value
@@ -39,8 +39,9 @@ The columns are:
 \description{
 This function computes confidence intervals for an odds ratio from an
 original study and a follow-up study. Confidence intervals for the
-ratio and average oods ratio size also are computed. The confidence level
-for the difference is 1 – 2alpha.
+ratio of odds ratios and geometric average odds ratio are also
+computed. The confidence level for the ratio of ratios is 1 – 2*alpha, which
+is recommended for equivalence testing.
 }
 \examples{
 replicate.oddsratio(.05, 1.39, .302, 1.48, .206)
@@ -49,12 +50,12 @@ replicate.oddsratio(.05, 1.39, .302, 1.48, .206)
 #                          Estimate        SE          z            p
 # Original:              1.39000000 0.3020000  4.6026490 4.171509e-06
 # Follow-up:             1.48000000 0.2060000  7.1844660 6.747936e-13
-# Original - Follow-up: -0.06273834 0.3655681 -0.1716188 8.637372e-01
+# Original/Follow-up:   -0.06273834 0.3655681 -0.1716188 8.637372e-01
 # Average:               0.36067292 0.1827840  1.9732190 4.847061e-02
 #                         exp(LL)  exp(UL)
 # Original:             2.2212961 7.256583
 # Follow-up:            2.9336501 6.578144
-# Original - Follow-up: 0.5147653 1.713551
+# Original/Fllow-up:    0.5147653 1.713551
 # Average:              1.0024257 2.052222
 
 

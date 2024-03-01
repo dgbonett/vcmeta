@@ -16,18 +16,19 @@ meta.ave.var(alpha, var, n, bystudy = TRUE)
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
 \value{
-Returns a matrix.  The first row is the average estimate
-across all studies.  If bystudy is true, there is 1 additional row for
-each study.  The matrix has the following columns:
+Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
-\item Estimate - the estimated variance
+\item Estimate - estimated variance
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
 }
 }
 \description{
 Computes the estimate and confidence interval for an average variance
-from two or more studies.
+from two or more studies. The estimated average variance or the
+upper limit could be used as a variance planning value in sample
+size planning.
 }
 \examples{
 var <- c(26.63, 22.45, 34.12)

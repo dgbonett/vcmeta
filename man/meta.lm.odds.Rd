@@ -9,9 +9,9 @@ meta.lm.odds(alpha, f1, f2, n1, n2, X)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{f1}{vector of group 1 event counts}
+\item{f1}{vector of group 1 frequency counts}
 
-\item{f2}{vector of group 2 event counts}
+\item{f2}{vector of group 2 frequency counts}
 
 \item{n1}{vector of group 1 sample sizes}
 
@@ -37,11 +37,12 @@ row per predictor.  The matrix has the following columns:
 \description{
 This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a log odds
-ratio. The estimates are OLS estimates with standard errors
+ratio. The estimates are OLS estimates with robust standard errors
 that accommodate residual heteroscedasticity. The exponentiated
 slope estimate for a predictor variable describes a multiplicative
 change in the odds ratio associated with a 1-unit increase in that
-predictor variable.
+predictor variable, controlling for all other predictor variables
+in the model.
 }
 \examples{
 n1 <- c(204, 201, 932, 130, 77)

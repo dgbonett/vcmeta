@@ -9,9 +9,9 @@ meta.lc.prop2(alpha, f1, f2, n1, n2, v)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{f1}{vector of group 1 event counts}
+\item{f1}{vector of group 1 frequency counts}
 
-\item{f2}{vector of group 2 event counts}
+\item{f2}{vector of group 2 frequency counts}
 
 \item{n1}{vector of group 1 sample sizes}
 
@@ -20,17 +20,16 @@ meta.lc.prop2(alpha, f1, f2, n1, n2, v)
 \item{v}{vector of contrast coefficients}
 }
 \value{
-Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:
+Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of the linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
-\item LL - lower limit of the confidence interval
-\item UL - upper limit of the confidence interval
+\item LL - lower limit of the adjusted Wald confidence interval
+\item UL - upper limit of the adjusted Wald confidence interval
 }
 }
 \description{
-Computes the estimate, standard error, and confidence interval for a
+Computes the estimate, standard error, and adjusted Wald confidence interval for a
 linear contrast of 2-group proportion differences from two or more studies.
 }
 \examples{

@@ -14,17 +14,17 @@ se.spear(cor, n)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of Spearman correlation
+\item Estimate - Spearman correlation (from input)
 \item SE - standard error
 }
 }
 \description{
-This function can be used to compute the standard error of a
-Spearman correlation using the estimated correlation and sample
-size. The standard error from this function can be used as input
-in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
-\link[vcmeta]{meta.lm.gen} functions in applications where a combination
-of different types of correlations are used in the meta-analysis.
+This function can be used to compute the Bonett-Wright standard
+error of a Spearman correlation using the estimated correlation
+and sample size. The standard error from this function can be used
+as input in the \link[vcmeta]{meta.ave.gen} function in applications
+where a combination of different types of correlations are used in
+the meta-analysis.
 }
 \examples{
 se.spear(.40, 55)

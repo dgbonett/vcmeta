@@ -30,8 +30,8 @@ row per predictor.  The matrix has the following columns:
 \description{
 This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is any type of
-effect size. The estimates are OLS estimates with standard errors
-that accomodate residual heteroscedasticity.
+effect size. The estimates are OLS estimates with robust standard
+errors that accomodate residual heteroscedasticity.
 }
 \examples{
 est <- c(4.1, 4.7, 4.9, 5.7, 6.6, 7.3)

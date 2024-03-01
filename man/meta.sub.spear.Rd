@@ -31,7 +31,7 @@ Returns a matrix with three rows:
 
 The columns are:
 \itemize{
-\item Estimate - estimate of average correlation or difference
+\item Estimate - estimated average correlation or difference
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -57,6 +57,5 @@ meta.sub.spear(.05, n, cor, group)
 
 }
 \references{
-Bonett, D.G. (2008). Meta-analytic interval estimation for bivariate
-correlations. \emph{Psychological Methods}, 13, 173-189.
+\insertRef{Bonett2008a}{vcmeta}
 }

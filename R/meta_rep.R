@@ -1,16 +1,17 @@
-# ================ Compare Effect Sizes in Replication Study ===============
-#  replicate.mean2
-#' Compares 2-group mean differences in original and follow-up studies
+#  replicate.mean2 ============================================================
+#' Compares and combines 2-group mean differences in original and follow-up studies
 #' 
 #'
 #' @description 
-#' This function computes confidence intervals for a 2-group mean difference
-#' from an original study and a follow-up study. Confidence intervals for the
-#' difference and average effect size also are computed. A Satterthwaite
-#' adjustment to the degrees of freedom is used to improve the accuracy of the
-#' confidence intervals. The same results can be obtained using the \link[vcmeta]{meta.lc.mean2}
-#' function with appropriate contrast coefficients. The confidence level for the
-#' difference is 1 – 2alpha.
+#' This function computes confidence intervals from an original study and a 
+#' follow-up study where the effect size is a 2-group mean difference. Confidence
+#' intervals for the difference and average effect size are also computed. 
+#' Equality of variances within or across studies is not assumed. A
+#' Satterthwaite adjustment to the degrees of freedom is used to improve the 
+#' accuracy of the confidence intervals. The same results can be obtained using
+#' the \link[vcmeta]{meta.lc.mean2} function with appropriate contrast coefficients. 
+#' The confidence level for the difference is 1 – 2*alpha, which is recommended for 
+#' equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -31,12 +32,12 @@
 #' @return A 4-row matrix. The rows are:
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
-#' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 3 estimates the difference in mean differences
+#' * Row 4 estimates the average mean difference
 #'
 #'
 #' The columns are:
-#' * Estimate - effect size estimate
+#' * Estimate - mean difference estimate (single study, difference, average)
 #' * SE - standard error
 #' * t - t-value
 #' * p - p-value
@@ -69,9 +70,9 @@
 #' @importFrom stats qt
 #' @importFrom stats pt
 #' @export
-replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, 
-  m21, m22, sd21, sd22, n21, n22){
-  v11 <- sd11^2; v12 <- sd12^2; v21 <- sd21^2; v22 <- sd22^2
+replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd21, sd22, n21, n22){
+  v11 <- sd11^2; v12 <- sd12^2 
+  v21 <- sd21^2; v22 <- sd22^2
   est1 <- m11 - m12
   est2 <- m21 - m22
   est3 <- est1 - est2
@@ -114,18 +115,20 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 }
 
 
-#  replicate.mean.ps
-#' Compares paired-samples mean differences in original and follow-up studies
+#  replicate.mean.ps ============================================================
+#' Compares and combines paired-samples mean differences in original and follow-up studies
 #' 
 #'
 #' @description 
-#' This function computes confidence intervals for a paired-samples mean difference
-#' from an original study and a follow-up study. Confidence intervals for the
-#' difference and average effect size also are computed. A Satterthwaite
-#' adjustment to the degrees of freedom is used to improve the accuracy of the
-#' confidence intervals for the difference and average. The same results can be 
-#' obtained using the \link[vcmeta]{meta.lc.mean.ps} function with appropriate 
-#' contrast coefficients. The confidence level for the difference is 1 – 2alpha.
+#' This function computes confidence intervals from an original study and a 
+#' follow-up study where the effect size is a paired-samples mean difference. 
+#' Confidence intervals for the difference and average effect size are also
+#' computed. Equality of variances within or across studies is not assumed. 
+#' A Satterthwaite adjustment to the degrees of freedom is used to 
+#' improve the accuracy of the confidence intervals for the difference and 
+#' average. The same results can be obtained using the \link[vcmeta]{meta.lc.mean.ps} 
+#' function with appropriate contrast coefficients. The confidence level for 
+#' the difference is 1 – 2*alpha, which is recommended for equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -147,12 +150,12 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' A 4-row matrix. The rows are:
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
-#' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 3 estimates the difference in mean differences
+#' * Row 4 estimates the average mean difference
 #' 
 #' 
 #' The columns are:
-#' * Estimate - effect size estimate
+#' * Estimate - mean difference estimate (single study, difference, average)
 #' * SE - standard error
 #' * df - degrees of freedom
 #' * t - t-value
@@ -185,9 +188,9 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' @importFrom stats qt
 #' @importFrom stats pt
 #' @export
-replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, 
-  m21, m22, sd21, sd22, cor2, n2) {
-  v11 <- sd11^2;  v12 <- sd12^2;  v21 <- sd21^2;  v22 <- sd22^2
+replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, sd21, sd22, cor2, n2) {
+  v11 <- sd11^2;  v12 <- sd12^2
+  v21 <- sd21^2;  v22 <- sd22^2
   vd1 <- v11 + v12 - 2*cor1*sd11*sd12
   vd2 <- v21 + v22 - 2*cor2*sd21*sd22
   est1 <- m11 - m12
@@ -228,18 +231,20 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
 }
 
 
-#  replicate.stdmean2
-#' Compares 2-group standardized mean differences in original and 
+#  replicate.stdmean2 ============================================================
+#' Compares and combines 2-group standardized mean differences in original and 
 #' follow-up studies
 #' 
 #'
 #' @description 
-#' This function computes confidence intervals for a 2-group standardized mean 
-#' difference from an original study and a follow-up study. Confidence intervals
-#' for the difference and average effect size also are computed. The same results 
-#' can be obtained using the \link[vcmeta]{meta.lc.stdmean2} function with 
-#' appopriate contrast coefficients. The confidence level for the difference is
-#' 1 – 2alpha.
+#' This function computes confidence intervals from an original study and a 
+#' follow-up study where the effect size is a 2-group standardized mean 
+#' difference. Confidence intervals for the difference and average effect 
+#' size are also computed. Equality of variances within or across studies
+#' is not assumed. The same results can be obtained using the
+#' \link[vcmeta]{meta.lc.stdmean2} function with appropriate contrast coefficients. 
+#' The confidence level for the difference is 1 – 2*alpha, which is recommended 
+#' for equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -261,12 +266,12 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
 #' A 4-row matrix. The rows are:
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
-#' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 3 estimates the difference in standardized mean differences
+#' * Row 4 estimates the average standardized mean difference
 #' 
 #' 
 #' The columns are:
-#' * Estimate - effect size estimate
+#' * Estimate - standardized mean difference estimate (single study, difference, average)
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -290,8 +295,7 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
 #' 
 #' @importFrom stats qnorm
 #' @export
-replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, 
-  m21, m22, sd21, sd22, n21, n22) {
+replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd21, sd22, n21, n22) {
   zcrit1 <- qnorm(1 - alpha/2)
   zcrit2 <- qnorm(1 - alpha)
   v11 <- sd11^2
@@ -329,17 +333,19 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 }
 
 
-#  replicate.stdmean.ps
-#' Compares paired-samples standardized mean differences in original and 
+#  replicate.stdmean.ps ============================================================
+#' Compares and combines paired-samples standardized mean differences in original and 
 #' follow-up studies
 #' 
 #' 
 #' @description 
-#' This function computes confidence intervals for a paired-samples standardized
-#' mean difference from an original study and a follow-up study. Confidence intervals
-#' for the difference and average effect size also are computed. The same results can
-#' be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with appropriate 
-#' contrast coefficients. The confidence level for the difference is 1 – 2alpha.
+#' This function computes confidence intervals from an original study and a follow-up
+#' study where the effect size is a paired-samples standardized mean difference. 
+#' Confidence intervals for the difference and average effect size are also computed.
+#' Equality of variances within or across studies is not assumed. The same results
+#' can be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with 
+#' appropriate contrast coefficients. The confidence level for the difference is
+#' 1 – 2*alpha, which is recommended for equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -348,7 +354,7 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' @param    sd11   	 estimated SD for group 1 in original study
 #' @param    sd12   	 estimated SD for group 2 in original study
 #' @param    cor1    	 estimated correlation of paired observations in orginal study
-#' @param    n1        estimated size in original study
+#' @param    n1        sample size in original study
 #' @param    m21    	 estimated mean for group 1 in follow-up study 
 #' @param    m22    	 estimated mean for group 2 in follow-up study
 #' @param    sd21   	 estimated SD for group 1 in follow-up study
@@ -361,12 +367,12 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' A 4-row matrix. The rows are:
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
-#' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 3 estimates the difference in standardized mean differences
+#' * Row 4 estimates the average standardized mean difference
 #' 
 #' 
 #' The columns are:
-#' * Estimate - effect size estimate
+#' * Estimate - standardized mean difference estimate (single study, difference, average)
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -375,8 +381,7 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' @examples
 #' replicate.stdmean.ps(alpha = .05, 
 #'   m11 = 86.22, m12 = 70.93, sd11 = 14.89, sd12 = 12.32, cor1 = .765, n1 = 20, 
-#'   m21 = 84.81, m22 = 77.24, sd21 = 15.68, sd22 = 16.95, cor2 = .702, n2 = 75
-#' )
+#'   m21 = 84.81, m22 = 77.24, sd21 = 15.68, sd22 = 16.95, cor2 = .702, n2 = 75)
 #'
 #' # Should return:
 #' #                         Estimate         SE        LL        UL
@@ -392,8 +397,7 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12,
 #' 
 #' @importFrom stats qnorm
 #' @export
-replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
-  m21, m22, sd21, sd22, cor2, n2) {
+replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, sd21, sd22, cor2, n2) {
   zcrit1 <- qnorm(1 - alpha/2)
   zcrit2 <- qnorm(1 - alpha)
   v11 <- sd11^2
@@ -431,20 +435,22 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
 }
 
 
-#  replicate.cor
-#' Compares Pearson or partial correlations in original and follow-up studies
+#  replicate.cor ============================================================
+#' Compares and combines Pearson or partial correlations in original and 
+#' follow-up studies
 #' 
 #'
 #' @description 
 #' This function can be used to compare and combine Pearson or partial 
-#' correlations from the original study and the follow-up study. The 
-#' confidence level for the difference is 1 – 2alpha.
+#' correlations from an original study and a follow-up study. The 
+#' confidence level for the difference is 1 – 2*alpha, which is recommended 
+#' for equivalence testing.
 #' 
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
-#' @param    cor1  	 estimated Pearson correlation between y and x in original study
-#' @param    cor2  	 estimated Pearson correlation between y and x in follow-up study
+#' @param    cor1  	 estimated Pearson correlation in original study
 #' @param    n1    	 sample size in original study
+#' @param    cor2  	 estimated Pearson correlation in follow-up study
 #' @param    n2    	 sample size in follow-up study
 #' @param    s     	 number of control variables in each study (0 for Pearson)
 #' 
@@ -453,14 +459,14 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
 #' A 4-row matrix. The rows are:
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
-#' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 3 estimates the difference in correlations
+#' * Row 4 estimates the average correlation
 #' 
 #' 
 #' The columns are:
-#' * Estimate - Pearson or partial correlation estimate
+#' * Estimate - Pearson or partial correlation estimate (single study, difference, average)
 #' * SE - standard error
-#' * z - z-value
+#' * z - t-value for rows 1 and 2; z-value for rows 3 and 4
 #' * p - p-value
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -470,11 +476,11 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1,
 #' replicate.cor(.05, .598, 80, .324, 200, 0)
 #'
 #' # Should return:
-#' #                      Estimate         SE        z            p        LL        UL
-#' #  Original:              0.598 0.11396058 6.589418 4.708045e-09 0.4355043 0.7227538
-#' #  Follow-up:             0.324 0.07124705 4.819037 2.865955e-06 0.1939787 0.4428347
-#' #  Original - Follow-up:  0.274 0.09708614 2.633335 8.455096e-03 0.1065496 0.4265016
-#' #  Average:               0.461 0.04854307 7.634998 2.264855e-14 0.3725367 0.5411607
+#' #                       Estimate         SE        z            p        LL        UL
+#' # Original:                0.598 0.07320782 6.589418 4.708045e-09 0.4355043 0.7227538
+#' # Follow-up:               0.324 0.06376782 4.819037 2.865955e-06 0.1939787 0.4428347
+#' # Original - Follow-up:    0.274 0.09708614 2.633335 8.455096e-03 0.1065496 0.4265016
+#' # Average:                 0.461 0.04854307 7.634998 2.264855e-14 0.3725367 0.5411607
 #' 
 #' 
 #' @references
@@ -490,36 +496,34 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
   zcrit2 <- qnorm(1 - alpha)
   zr1 <- log((1 + cor1)/(1 - cor1))/2
   zr2 <- log((1 + cor2)/(1 - cor2))/2
-  v1 <- (1 - cor1^2)^2/(n1 - 3 - s)
-  v2 <- (1 - cor2^2)^2/(n2 - 3 - s)
+  se1 <- sqrt((1 - cor1^2)^2/(n1 - 3 - s))
+  se2 <- sqrt((1 - cor2^2)^2/(n2 - 3 - s))
   dif <- cor1 - cor2
   ave <- (cor1 + cor2)/2
   ave.z <- log((1 + ave)/(1 - ave))/2
-  se1 <- sqrt(1/((n1 - 3 - s)))
-  se2 <- sqrt(1/((n2 - 3 - s)))
-  v1 <- (1 - cor1^2)^2/(n1 - 3 - s)
-  v2 <- (1 - cor2^2)^2/(n2 - 3 - s)
-  se3 <- sqrt(v1 + v2)
-  se4 <- sqrt(v1 + v2)/2
-  se4.z <- sqrt(((v1 + v2)/4)/(1 - ave^2))
+  se1.z <- sqrt(1/((n1 - 3 - s)))
+  se2.z <- sqrt(1/((n2 - 3 - s)))
+  se3 <- sqrt(se1^2 + se2^2)
+  se4 <- sqrt(se1^2 + se2^2)/2
+  se4.z <- sqrt(((se1^2 + se2^2)/4)/(1 - ave^2))
   t1 <- cor1*sqrt(n1 - 2)/sqrt(1 - cor1^2) 
   t2 <- cor2*sqrt(n2 - 2)/sqrt(1 - cor2^2) 
-  t3 <- (zr1 - zr2)/sqrt(se1^2 + se2^2)
-  t4 <- (zr1 + zr2)/sqrt(se1^2 + se2^2)
+  t3 <- (zr1 - zr2)/sqrt(se1.z^2 + se2.z^2)
+  t4 <- (zr1 + zr2)/sqrt(se1.z^2 + se2.z^2)
   pval1 <- 2*(1 - pt(abs(t1), n1 - 2 - s))
   pval2 <- 2*(1 - pt(abs(t2), n2 - 2 - s))
   pval3 <- 2*(1 - pnorm(abs(t3)))
   pval4 <- 2*(1 - pnorm(abs(t4)))
-  ll0a <- zr1 - zcrit1*se1;  ul0a <- zr1 + zcrit1*se1
+  ll0a <- zr1 - zcrit1*se1.z;  ul0a <- zr1 + zcrit1*se1.z
   ll1a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
   ul1a <- (exp(2*ul0a) - 1)/(exp(2*ul0a) + 1)
-  ll0b <- zr1 - zcrit2*se1;  ul0b <- zr1 + zcrit2*se1
+  ll0b <- zr1 - zcrit2*se1.z;  ul0b <- zr1 + zcrit2*se1.z
   ll1b <- (exp(2*ll0b) - 1)/(exp(2*ll0b) + 1)
   ul1b <- (exp(2*ul0b) - 1)/(exp(2*ul0b) + 1)
-  ll0a <- zr2 - zcrit1*se2;  ul0a <- zr2 + zcrit1*se2
+  ll0a <- zr2 - zcrit1*se2.z;  ul0a <- zr2 + zcrit1*se2.z
   ll2a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
   ul2a <- (exp(2*ul0a) - 1)/(exp(2*ul0a) + 1)
-  ll0b <- zr2 - zcrit2*se2;  ul0b <- zr2 + zcrit2*se2
+  ll0b <- zr2 - zcrit2*se2.z;  ul0b <- zr2 + zcrit2*se2.z
   ll2b <- (exp(2*ll0b) - 1)/(exp(2*ll0b) + 1)
   ul2b <- (exp(2*ul0b) - 1)/(exp(2*ul0b) + 1)
   ll3 <- dif - sqrt((cor1 - ll1b)^2 + (ul2b - cor2)^2)
@@ -539,38 +543,40 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 }
 
 
-# replicate.prop2 
-#' Compares 2-group proportion differences in original and follow-up studies
+# replicate.prop2 ============================================================
+#' Compares and combines 2-group proportion differences in original and 
+#' follow-up studies
 #' 
 #'
 #' @description 
-#' This function computes confidence intervals for a 2-group proportion difference
-#' from an original study and a follow-up study. Confidence intervals for the
-#' difference and average effect size also are computed. The same results can be 
-#' obtained using the \link[vcmeta]{meta.lc.prop2} function with appropriate 
-#' contrast coefficients. The confidence level for the difference is 1 – 2alpha.
+#' This function computes confidence intervals from an original study and a
+#' follow-up study where the effect size is a 2-group proportion difference. 
+#' Confidence intervals for the difference and average effect size are also 
+#' computed. The same results can be obtained using the \link[vcmeta]{meta.lc.prop2} 
+#' function with appropriate contrast coefficients. The confidence level for 
+#' the difference is 1 – 2*alpha, which is recommended for equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    f11		   sample count for group 1 in original study 
-#' @param    f12		   sample count for group 2 in original study
-#' @param    f21    	 sample count for group 1 in follow-up study 
-#' @param    f22    	 sample count for group 2 in follow-up study
+#' @param    f11		   frequency count for group 1 in original study 
+#' @param    f12		   frequency count for group 2 in original study
 #' @param    n11    	 sample size for group 1 in original study
 #' @param    n12    	 sample size for group 2 in original study
+#' @param    f21    	 frequency count for group 1 in follow-up study 
+#' @param    f22    	 frequency count for group 2 in follow-up study
 #' @param    n21    	 sample size for group 1 in follow-up study
 #' @param    n22    	 sample size for group 2 in follow-up study
 #' 
 #' 
 #' @return A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
-#' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size of the two studies
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in proportion differences
+#' * Row 4 estimates the average proportion difference
 #'
 #'
 #' The columns are:
-#' * Estimate - effect size estimate
+#' * Estimate - proportion difference estimate (single study, difference, average)
 #' * SE - standard error
 #' * z - z-value
 #' * p - p-value
@@ -651,32 +657,33 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 }
 
 
-# replicate.oddsratio 
-#' Compares 2-group proportion differences in original and follow-up studies
+# replicate.oddsratio ============================================================
+#' Compares and combines odds ratios in original and follow-up studies
 #' 
 #' @description 
 #' This function computes confidence intervals for an odds ratio from an
 #' original study and a follow-up study. Confidence intervals for the
-#' ratio and average oods ratio size also are computed. The confidence level 
-#' for the difference is 1 – 2alpha.
+#' ratio of odds ratios and geometric average odds ratio are also  
+#' computed. The confidence level for the ratio of ratios is 1 – 2*alpha, which
+#' is recommended for equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    est1		   estimate of log odds ratio 1 in original study 
-#' @param    se1		   standard error of log odds ration in original study
+#' @param    est1		   estimate of log odds ratio in original study 
+#' @param    se1		   standard error of log odds ratio in original study
 #' @param    est2   	 estimate of log odds ratio in follow-up study 
 #' @param    se2    	 standard error of log odds ratio in follow-up study
 #' 
 #' 
 #' @return A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
-#' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size of the two studies
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the ratio of odds ratios 
+#' * Row 4 estimates the geometric average odds ratio
 #'
 #'
 #' The columns are:
-#' * Estimate - effect size estimate
+#' * Estimate - odds ratio estimate (single study, ratio, average)
 #' * SE - standard error
 #' * z - z-value
 #' * p - p-value
@@ -691,12 +698,12 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' #                          Estimate        SE          z            p
 #' # Original:              1.39000000 0.3020000  4.6026490 4.171509e-06
 #' # Follow-up:             1.48000000 0.2060000  7.1844660 6.747936e-13
-#' # Original - Follow-up: -0.06273834 0.3655681 -0.1716188 8.637372e-01
+#' # Original/Follow-up:   -0.06273834 0.3655681 -0.1716188 8.637372e-01
 #' # Average:               0.36067292 0.1827840  1.9732190 4.847061e-02
 #' #                         exp(LL)  exp(UL)
 #' # Original:             2.2212961 7.256583
 #' # Follow-up:            2.9336501 6.578144
-#' # Original - Follow-up: 0.5147653 1.713551
+#' # Original/Fllow-up:    0.5147653 1.713551
 #' # Average:              1.0024257 2.052222
 #' 
 #' 
@@ -732,18 +739,20 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
   out4 <- t(c(est4, se4, z4, p4, ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "exp(LL)", "exp(UL)")
-  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  rownames(out) <- c("Original:", "Follow-up:", "Original/Follow-up:", "Average:")
   return(out)
 }
 
 
-# replicate.slope 
-#' Computes confidence intervals for a slope in original and follow-up studies
+# replicate.slope ============================================================ 
+#' Compares and combines slope coefficients in original and follow-up studies
+#'
 #' @description 
-#' Computes confidence intervals for a slope in original and follow-up studies,
-#' the difference in slopes, and the average of the slopes (equal error 
-#' variances between studies is not assumed). The confidence interval for the
-#' difference uses a 1 - 2alpha confidence level. Use the replicate.gen 
+#' This function computes confidence intervals for a slope from the original and
+#' follow-up studies, the difference in slopes, and the average of the slopes. 
+#' Equality of error variances across studies is not assumed. The confidence 
+#' interval for the difference uses a 1 - 2*alpha confidence level, which is 
+#' recommended for equivalence testing. Use the \link[vcmeta]{replicate.gen} 
 #' function for slopes in other types of models (e.g., binary logistic, ordinal 
 #' logistic, SEM). 
 #'
@@ -759,14 +768,14 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 #' 
 #' 
 #' @return A 4-row matrix. The rows are:
-#' * Row 1 summarizes the Original study
-#' * Row 2 summarizes the Follow-up study
-#' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size of the two studies
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in slopes
+#' * Row 4 estimates the average slope
 #'
 #'
 #' The columns are:
-#' * Estimate - effect size estimate
+#' * Estimate - slope estimate (single study, difference, average)
 #' * SE - standard error
 #' * t - t-value
 #' * p - p-value
@@ -837,17 +846,17 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
 }
 
 
-#  replicate.gen
-#' Compares effect sizes in the original and follow-up studies
+#  replicate.gen ============================================================
+#' Compares and combines effect sizes in original and follow-up studies
 #'
 #'
 #' @description 
-#' This function can be used to compare and combine any effect size (e.g.,odds
-#' ratio, proportion ratio, proportion difference, slope coefficient, etc.)
-#' using the effect size estimate and its standard error from the original study
-#' and the follow-up study. The same results can be obtained using the
+#' This function can be used to compare and combine any effect size using the 
+#' effect size estimate and its standard error from the original study and 
+#' the follow-up study. The same results can be obtained using the
 #' \link[vcmeta]{meta.lc.gen} function with appropriate contrast coefficients. 
-#' The confidence level for the difference is 1 – 2alpha.
+#' The confidence level for the difference is 1 – 2*alpha, which is
+#' recommended for equivalence testing.
 #' 
 #'
 #' @param    alpha		 alpha level for 1-alpha confidence 
@@ -860,12 +869,12 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
 #' A 4-row matrix. The rows are:
 #' * Row 1 summarizes the original study
 #' * Row 2 summarizes the follow-up study
-#' * Row 3 estimates the difference between studies
-#' * Row 4 estimates the average effect size between the two studies
+#' * Row 3 estimates the difference in effect sizes
+#' * Row 4 estimates the average effect size
 #' 
 #' 
 #' Columns are:
-#' * Estimate - effect size estimate
+#' * Estimate - effect size estimate (single study, difference, average)
 #' * SE - standard error
 #' * z - z-value
 #' * p - p-value
@@ -920,5 +929,472 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
 }
 
 
+# replicate.spear ===============================================================
+#' Compares and combines Spearman correlations in original and follow-up studies
+#' 
+#'                           
+#' @description 
+#' This function can be used to compare and combine Spearman correlations from
+#' an original study and a follow-up study. The confidence level for the 
+#' difference is 1 – 2*alpha, which is recommended for equivalence testing.
+#' 
+#' 
+#' @param    alpha	 alpha level for 1-alpha confidence
+#' @param    cor1  	 estimated Spearman correlation in original study
+#' @param    n1    	 sample size in original study
+#' @param    cor2  	 estimated Spearman correlation in follow-up study
+#' @param    n2    	 sample size in follow-up study
+#' 
+#' 
+#' @return
+#' A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in correlations
+#' * Row 4 estimates the average correlation 
+#' 
+#' 
+#' The columns are:
+#' * Estimate - Spearman correlation estimate (single study, difference, average)
+#' * SE - standard error
+#' * z - z-value
+#' * p - p-value
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' replicate.spear(.05, .598, 80, .324, 200)
+#'
+#' # Should return:
+#' #                       Estimate         SE        z            p         LL        UL
+#' # Original:                0.598 0.07948367 5.315140 1.065752e-07 0.41985966 0.7317733
+#' # Follow-up:               0.324 0.06541994 4.570582 4.863705e-06 0.19049455 0.4457384
+#' # Original - Follow-up:    0.274 0.10294378 3.437975 5.860809e-04 0.09481418 0.4342171
+#' # Average:                 0.461 0.05147189 9.967944 0.000000e+00 0.36695230 0.5457190
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats pnorm
+#' @importFrom stats qnorm
+#' @export
+replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
+  zcrit1 <- qnorm(1 - alpha/2)
+  zcrit2 <- qnorm(1 - alpha)
+  dif <- cor1 - cor2
+  ave <- (cor1 + cor2)/2
+  ave.z <- log((1 + ave)/(1 - ave))/2
+  zr1 <- log((1 + cor1)/(1 - cor1))/2
+  zr2 <- log((1 + cor2)/(1 - cor2))/2
+  se1 <- sqrt((1 + cor1^2/2)*(1 - cor1^2)^2/(n1 - 3))
+  se2 <- sqrt((1 + cor2^2/2)*(1 - cor2^2)^2/(n2 - 3))
+  se1.z <- sqrt((1 + cor1^2/2)/((n1 - 3)))
+  se2.z <- sqrt((1 + cor2^2/2)/((n2 - 3)))
+  se3 <- sqrt(se1^2 + se2^2)
+  se4 <- sqrt(se1^2 + se2^2)/2
+  se4.z <- sqrt(((se1^2 + se2^2)/4)/(1 - ave^2))
+  t1 <- cor1*sqrt(n1 - 1) 
+  t2 <- cor2*sqrt(n2 - 1)
+  t3 <- (zr1 - zr2)/sqrt(se1^2 + se2^2)
+  t4 <- (zr1 + zr2)/sqrt(se1^2 + se2^2)
+  pval1 <- 2*(1 - pnorm(abs(t1)))
+  pval2 <- 2*(1 - pnorm(abs(t2)))
+  pval3 <- 2*(1 - pnorm(abs(t3)))
+  pval4 <- 2*(1 - pnorm(abs(t4)))
+  ll0a <- zr1 - zcrit1*se1.z;  ul0a <- zr1 + zcrit1*se1.z
+  ll1a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
+  ul1a <- (exp(2*ul0a) - 1)/(exp(2*ul0a) + 1)
+  ll0a <- zr2 - zcrit1*se2.z;  ul0a <- zr2 + zcrit1*se2.z
+  ll2a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
+  ul2a <- (exp(2*ul0a) - 1)/(exp(2*ul0a) + 1)
+  ll0b <- zr1 - zcrit2*se1.z;  ul0b <- zr1 + zcrit2*se1.z
+  ll1b <- (exp(2*ll0b) - 1)/(exp(2*ll0b) + 1)
+  ul1b <- (exp(2*ul0b) - 1)/(exp(2*ul0b) + 1)
+  ll0b <- zr2 - zcrit2*se2.z;  ul0b <- zr2 + zcrit2*se2.z
+  ll2b <- (exp(2*ll0b) - 1)/(exp(2*ll0b) + 1)
+  ul2b <- (exp(2*ul0b) - 1)/(exp(2*ul0b) + 1)
+  ll3 <- dif - sqrt((cor1 - ll1b)^2 + (ul2b - cor2)^2)
+  ul3 <- dif + sqrt((ul1b - cor1)^2 + (cor2 - ll2b)^2)
+  ll0 <- ave.z - zcrit1*se4.z
+  ul0 <- ave.z + zcrit1*se4.z
+  ll4 <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+  ul4 <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+  out1 <- t(c(cor1, se1, t1, pval1, ll1a, ul1a))
+  out2 <- t(c(cor2, se2, t2, pval2, ll2a, ul2a))
+  out3 <- t(c(dif, se3, t3, pval3, ll3, ul3))
+  out4 <- t(c(ave, se4, t4, pval4, ll4, ul4))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
+  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  return(out)
+}
 
+
+#  replicate.prop1 ============================================================
+#' Compares and combines single proportion in original and follow-up studies
+#' 
+#'
+#' @description 
+#' This function computes confidence intervals for a single proportion from an 
+#' original study and a follow-up study. Confidence intervals for the
+#' difference between the two proportions and average of the two proportions 
+#' are also computed. The same results can be obtained using the \link[vcmeta]{meta.lc.prop1}
+#' function with appropriate contrast coefficients. The confidence level for the
+#' difference is 1 – 2*alpha, which is recommended for equivalence testing.
+#' 
+#' 
+#' @param    alpha		 alpha level for 1-alpha confidence
+#' @param    f1	  	   frequency count in original study 
+#' @param    n1     	 sample size in original study
+#' @param    f2 	   	 frequency count in follow-up study 
+#' @param    n2    	 	 sample size for in follow-up study
+#' 
+#' 
+#' @return A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in proportions
+#' * Row 4 estimates the average proportion
+#'
+#'
+#' The columns are:
+#' * Estimate - proportion estimate (single study, difference, average)
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#'    
+#' 
+#' @examples
+#' replicate.prop1(.05, 21, 300, 35, 400)
+#'
+#' # Should return:
+#' #                          Estimate         SE          LL         UL
+#' # Original:              0.07565789 0.01516725  0.04593064 0.10538515
+#' # Follow-up:             0.09158416 0.01435033  0.06345803 0.11971029
+#' # Original - Follow-up: -0.01670456 0.02065098 -0.05067239 0.01726328
+#' # Average:               0.08119996 0.01032549  0.06096237 0.10143755
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+replicate.prop1 <- function(alpha, f1, n1, f2, n2){
+  est1 <- (f1 + 2)/(n1 + 4)
+  est2 <- (f2 + 2)/(n2 + 4)
+  est1.d <- (f1 + 1)/(n1 + 2) 
+  est2.d <- (f2 + 1)/(n2 + 2)
+  est3 <- est1.d - est2.d
+  est4 <- (est1.d + est2.d)/2
+  se1 <- sqrt(est1*(1 - est1)/(n1 + 4))
+  se2 <- sqrt(est2*(1 - est2)/(n2 + 4))
+  se3 <- sqrt(est1.d*(1 - est1.d)/(n1 + 2) + est2.d*(1 - est2.d)/(n2 + 2))
+  se4 <- se3/2
+  zcrit1 <- qnorm(1 - alpha/2)
+  zcrit3 <- qnorm(1 - alpha)
+  ll1 <- est1 - zcrit1*se1;  ul1 <- est1 + zcrit1*se1
+  ll2 <- est2 - zcrit1*se2;  ul2 <- est2 + zcrit1*se2
+  ll3 <- est3 - zcrit3*se3;  ul3 <- est3 + zcrit3*se3
+  ll4 <- est4 - zcrit1*se4;  ul4 <- est4 + zcrit1*se4
+  out1 <- t(c(est1, se1, ll1, ul1))
+  out2 <- t(c(est2, se2, ll2, ul2))
+  out3 <- t(c(est3, se3, ll3, ul3))
+  out4 <- t(c(est4, se4, ll4, ul4))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  return(out)
+}
+
+
+#  replicate.mean1 ============================================================
+#' Compares and combines single mean in original and follow-up studies
+#' 
+#'
+#' @description 
+#' This function computes confidence intervals for a single mean from an 
+#' original study and a follow-up study. Confidence intervals for the
+#' difference between the two means and average of the two means are also
+#' computed. Equality of variances across studies is not assumed. A 
+#' Satterthwaite adjustment to the degrees of freedom is used to improve 
+#' the accuracy of the confidence intervals for the difference and average. 
+#' The same results can be obtained using the \link[vcmeta]{meta.lc.mean1} 
+#' function with appropriate contrast coefficients. The confidence level 
+#' for the difference is 1 – 2*alpha, which is recommended for equivalence
+#' testing.
+#' 
+#' 
+#' @param    alpha		 alpha level for 1-alpha confidence
+#' @param    m1	  	   estimated mean in original study 
+#' @param    sd1   	   estimated SD in original study
+#' @param    n1     	 sample size in original study
+#' @param    m2 	   	 estimated mean in follow-up study 
+#' @param    sd2   		 estimated SD in follow-up study
+#' @param    n2    	 	 sample size for in follow-up study
+#' 
+#' 
+#' @return A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in means
+#' * Row 4 estimates the average mean
+#'
+#'
+#' The columns are:
+#' * Estimate - mean estimate (single study, difference, average)
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' * df - degrees of freedom
+#'    
+#' 
+#' @examples
+#' replicate.mean1(.05, 21.9, 3.82, 40, 25.2, 3.98, 75)
+#'
+#' # Should return:
+#' #                       Estimate        SE        LL        UL       df
+#' # Original:                21.90 0.6039950 20.678305 23.121695 39.00000
+#' # Follow-up:               25.20 0.4595708 24.284285 26.115715 74.00000
+#' # Original - Follow-up:    -3.30 0.7589567 -4.562527 -2.037473 82.63282
+#' # Average:                 23.55 0.3794784 22.795183 24.304817 82.63282
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qt
+#' @export
+replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
+  v1 <- sd1^2
+  v2 <- sd2^2
+  est1 <- m1
+  est2 <- m2
+  est3 <- est1 - est2
+  est4 <- (est1 + est2)/2
+  se1 <- sqrt(v1/n1)
+  se2 <- sqrt(v2/n2)
+  se3 <- sqrt(se1^2 + se2^2)
+  se4 <- se3/2
+  v1 <- v1^2/(n1^3 - n1^2)
+  v2 <- v2^2/(n2^3 - n2^2)
+  df1 <- n1 - 1
+  df2 <- n2 - 1
+  df3 <- (se3^4)/(v1 + v2)
+  tcrit1 <- qt(1 - alpha/2, df1)
+  tcrit2 <- qt(1 - alpha/2, df2)
+  tcrit3 <- qt(1 - alpha, df3)
+  tcrit4 <- qt(1 - alpha/2, df3)
+  ll1 <- est1 - tcrit1*se1;  ul1 <- est1 + tcrit1*se1
+  ll2 <- est2 - tcrit2*se2;  ul2 <- est2 + tcrit2*se2
+  ll3 <- est3 - tcrit3*se3;  ul3 <- est3 + tcrit3*se3
+  ll4 <- est4 - tcrit4*se4;  ul4 <- est4 + tcrit4*se4
+  out1 <- t(c(est1, se1, ll1, ul1, df1))
+  out2 <- t(c(est2, se2, ll2, ul2, df2))
+  out3 <- t(c(est3, se3, ll3, ul3, df3))
+  out4 <- t(c(est4, se4, ll4, ul4, df3))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "df")
+  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  return(out)
+}
+
+
+# replicate.ratio.prop2 =======================================================
+#' Compares and combines 2-group proportion ratios in original and follow-up 
+#' studies
+#' 
+#'
+#' @description 
+#' This function computes confidence intervals from an original study and a 
+#' follow-up study where the effect size is a 2-group proportion ratio. 
+#' Confidence intervals for the ratio and geometric average of effect sizes
+#' are also computed. The confidence level for the ratio of ratios is 1 – 2*alpha, 
+#' which is recommended for equivalence testing.
+#' 
+#' 
+#' @param    alpha	   alpha level for 1-alpha confidence																																																																																																																																																	21q```````````````````````																																												`````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````lpha		 alpha level for 1-alpha confidence
+#' @param    f11		   frequency count for group 1 in original study 
+#' @param    f12		   frequency count for group 2 in original study
+#' @param    n11    	 sample size for group 1 in original study
+#' @param    n12    	 sample size for group 2 in original study
+#' @param    f21    	 frequency count for group 1 in follow-up study 
+#' @param    f22    	 frequency count for group 2 in follow-up study
+#' @param    n21    	 sample size for group 1 in follow-up study
+#' @param    n22    	 sample size for group 2 in follow-up study
+#' 
+#' 
+#' @return A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the ratio of proportion ratios
+#' * Row 4 estimates the geometric average proportion ratio
+#'
+#'
+#' The columns are:
+#' * Estimate - proportion difference estimate (single study, ratio, average)
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#'    
+#' 
+#' @examples
+#' replicate.ratio.prop2(.05, 21, 16, 40, 40, 19, 13, 60, 60)
+#'
+#' # Should return:
+#' #                      Estimate        LL       UL
+#' # Original:           1.3076923 0.8068705 2.119373
+#' # Follow-up:          1.4528302 0.7939881 2.658372
+#' # Original/Follow-up: 0.9000999 0.4703209 1.722611
+#' # Average:            1.3783522 0.9362893 2.029132
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @importFrom stats pnorm
+#' @export
+replicate.ratio.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
+  zcrit1 <- qnorm(1 - alpha/2)
+  zcrit2 <- qnorm(1 - alpha)
+  p11 <- (f11 + 1/4)/(n11 + 7/4)
+  p12 <- (f12 + 1/4)/(n12 + 7/4)
+  v11 <- 1/(f11 + 1/4 + (f11 + 1/4)^2/(n11 - f11 + 3/2))
+  v12 <- 1/(f12 + 1/4 + (f12 + 1/4)^2/(n12 - f12 + 3/2))
+  se1 <- sqrt(v11 + v12)
+  est1 <- log(p11/p12)
+  p21 <- (f21 + 1/4)/(n21 + 7/4)
+  p22 <- (f22 + 1/4)/(n22 + 7/4)
+  v21 <- 1/(f21 + 1/4 + (f21 + 1/4)^2/(n21 - f21 + 3/2))
+  v22 <- 1/(f22 + 1/4 + (f22 + 1/4)^2/(n22 - f22 + 3/2))
+  se2 <- sqrt(v21 + v22)
+  est2 <- log(p21/p22)
+  est3 <- est1 - est2
+  est4 <- (est1 + est2)/2
+  se3 <- sqrt(se1^2 + se2^2)
+  se4 <- se3/2
+  ll1 <- exp(est1 - zcrit1*se1);  ul1 <- exp(est1 + zcrit1*se1)
+  ll2 <- exp(est2 - zcrit1*se2);  ul2 <- exp(est2 + zcrit1*se2)
+  ll3 <- exp(est3 - zcrit2*se3);  ul3 <- exp(est3 + zcrit2*se3)
+  ll4 <- exp(est4 - zcrit1*se4);  ul4 <- exp(est4 + zcrit1*se4)
+  out1 <- t(c(exp(est1), ll1, ul1))
+  out2 <- t(c(exp(est2), ll2, ul2))
+  out3 <- t(c(exp(est3), ll3, ul3))
+  out4 <- t(c(exp(est4), ll4, ul4))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "LL", "UL")
+  rownames(out) <- c("Original:", "Follow-up:", "Original/Follow-up:", "Average:")
+  return(out)
+}
+
+
+# replicate.prop.ps ===========================================================
+#' Compares and combines paired-samples proportion differences in original and 
+#' follow-up studies
+#'                   
+#'
+#' @description 
+#' This function computes confidence intervals from an original study and a 
+#' follow-up study where the effect size is a paired-samples proportion 
+#' difference. Confidence intervals for the difference and average of effect
+#' sizes are also computed. The confidence level for the difference is
+#' 1 – 2*alpha, which is recommended for equivalence testing.
+#' 
+#' 
+#' @param    alpha	 alpha level for 1-alpha confidence
+#' @param    f1		   vector of frequency counts for 2x2 table in original study 
+#' @param    f2		   vector of frequency counts for 2x2 table in follow-up study
+#' 
+#' 
+#' @return A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in proportion differences
+#' * Row 4 estimates the average proportion difference 
+#'
+#'
+#' The columns are:
+#' * Estimate - proportion difference estimate (single study, difference, average)
+#' * SE - standard error
+#' * z - z-value
+#' * p - p-value
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#'    
+#' 
+#' @examples
+#' f1 <- c(42, 2, 15, 61)
+#' f2 <- c(69, 5, 31, 145)
+#' replicate.prop.ps(.05, f1, f2)
+#'
+#' # Should return:
+#' #                           Estimate         SE           z            p
+#' # Original:              0.106557377 0.03440159  3.09745539 1.951898e-03
+#' # Follow-up:             0.103174603 0.02358274  4.37500562 1.214294e-05
+#' # Original - Follow-up:  0.003852359 0.04097037  0.09402793 9.250870e-01
+#' # Average:               0.105511837 0.02048519  5.15064083 2.595979e-07
+#' #                                LL         UL
+#' # Original:              0.03913151 0.17398325
+#' # Follow-up:             0.05695329 0.14939592
+#' # Original - Follow-up: -0.06353791 0.07124263
+#' # Average:               0.06536161 0.14566206
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @importFrom stats pnorm
+#' @export
+replicate.prop.ps <- function(alpha, f1, f2){
+  zcrit1 <- qnorm(1 - alpha/2)
+  zcrit2 <- qnorm(1 - alpha)
+  n1 <- sum(f1)
+  p01 <- (f1[2] + 1)/(n1 + 2)
+  p10 <- (f1[3] + 1)/(n1 + 2)
+  est1 <- p10 - p01
+  se1 <- sqrt(((p01 + p10) - (p01 - p10)^2)/(n1 + 2))
+  n2 <- sum(f2)
+  p01 <- (f2[2] + 1)/(n2 + 2)
+  p10 <- (f2[3] + 1)/(n2 + 2)
+  est2 <- p10 - p01
+  se2 <- sqrt(((p01 + p10) - (p01 - p10)^2)/(n2 + 2))
+  p011 <- (f1[2] + .5)/(n1 + 1)
+  p101 <- (f1[3] + .5)/(n1 + 1)
+  p012 <- (f2[2] + .5)/(n2 + 1)
+  p102 <- (f2[3] + .5)/(n2 + 1)
+  est3 <- p101 - p011 - p102 + p012
+  v1 = ((p101 + p011) - (p101 - p011)^2)/(n1 + 1)
+  v2 = ((p102 + p012) - (p102 - p012)^2)/(n2 + 1)
+  se3 <- sqrt(v1 + v2)
+  est4 <- ((p101 - p011) + (p102 - p012))/2
+  se4 <- se3/2
+  z1 <- est1/se1
+  z2 <- est2/se2
+  z3 <- est3/se3
+  z4 <- est4/se4
+  p1 <- 2*(1 - pnorm(abs(z1)))
+  p2 <- 2*(1 - pnorm(abs(z2)))
+  p3 <- 2*(1 - pnorm(abs(z3))) 
+  p4 <- 2*(1 - pnorm(abs(z4)))
+  ll1 <- est1 - zcrit1*se1;  ul1 <- est1 + zcrit1*se1
+  ll2 <- est2 - zcrit1*se2;  ul2 <- est2 + zcrit1*se2
+  ll3 <- est3 - zcrit2*se3;  ul3 <- est3 + zcrit2*se3
+  ll4 <- est4 - zcrit1*se4;  ul4 <- est4 + zcrit1*se4
+  out1 <- t(c(est1, se1, z1, p1, ll1, ul1))
+  out2 <- t(c(est2, se2, z2, p2, ll2, ul2))
+  out3 <- t(c(est3, se3, z3, p3, ll3, ul3))
+  out4 <- t(c(est4, se4, z4, p4, ll4, ul4))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
+  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  return(out)
+}
 

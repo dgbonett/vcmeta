@@ -7,17 +7,17 @@
 se.stdmean2(m1, m2, sd1, sd2, n1, n2, stdzr)
 }
 \arguments{
-\item{m1}{sample mean for group 1}
+\item{m1}{estimated mean for group 1}
 
-\item{m2}{sample mean for group 2}
+\item{m2}{estimated mean for group 2}
 
-\item{sd1}{sample standard deviation for group 1}
+\item{sd1}{estimated standard deviation for group 1}
 
-\item{sd2}{sample standard deviation for group 2}
+\item{sd2}{estimated standard deviation for group 2}
 
-\item{n1}{group 1 sample size}
+\item{n1}{sample size for group 1}
 
-\item{n2}{group 2 sample size}
+\item{n2}{sample size for group 2}
 
 \item{stdzr}{\itemize{
 \item set to 0 for square root average variance standardizer
@@ -29,30 +29,37 @@ se.stdmean2(m1, m2, sd1, sd2, n1, n2, stdzr)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of standardized mean difference
+\item Estimate - estimated standardized mean difference
 \item SE - standard error
 }
 }
 \description{
-Use the square root average variance standardizer (stdzr = 0) for 2-group
-experimental designs. Use the square root weighted variance standardizer
-(stdzr = 3) for 2-group nonexperimental designs with simple random sampling.
-The single-group standardizers (stdzr = 1 and stdzr = 2) can be used with
-either 2-group experimental or nonexperimental designs. The effect size
-estimate and standard error output from this function can be used as input
-in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen}
-functions in applications where compatible standardized mean differences from a
-combination of 2-group and paired-samples experiments are used in the meta-analysis.
+This function computes the standard error of a 2-group standardized
+mean difference using the sample sizes and the estimated means
+standardizer (stdzr = 0) for 2-group experimental designs. Use the
+square root weighted variance standardizer (stdzr = 3) for 2-group
+nonexperimental designs with simple random sampling. The single-group
+standardizers (stdzr = 1 and stdzr = 2) can be used with either
+2-group experimental or nonexperimental designs. The effect size
+estimate and standard error output from this function can be used as
+input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
+and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
+standardized mean differences from a combination of 2-group and
+paired-samples experiments are used in the meta-analysis. Equality
+of variances is not assumed.
 }
 \examples{
 se.stdmean2(21.9, 16.1, 3.82, 3.21, 40, 40, 0)
 
 # Should return: 
-#                               Estimate        SE
-# Standardized mean difference: 1.643894 0.2629049
+#                                Estimate        SE
+# Standardized mean difference:  1.643894 0.2629049
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+}
+\seealso{
+\link[vcmeta]{se.cohen}
 }

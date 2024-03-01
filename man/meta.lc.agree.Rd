@@ -9,35 +9,34 @@ meta.lc.agree(alpha, f11, f12, f21, f22, v)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{f11}{vector of frequencies in cell 1,1}
+\item{f11}{vector of frequency counts in cell 1,1}
 
-\item{f12}{vector of frequencies in cell 1,2}
+\item{f12}{vector of frequency counts in cell 1,2}
 
-\item{f21}{vector of frequencies in cell 2,1}
+\item{f21}{vector of frequency counts in cell 2,1}
 
-\item{f22}{vector of frequencies in cell 2,2}
+\item{f22}{vector of frequency counts in cell 2,2}
 
 \item{v}{vector of contrast coefficients}
 }
 \value{
-Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:
+Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
-\item LL - lower limit of the confidence interval
-\item UL - upper limit of the confidence interval
+\item LL - lower limit of the adjusted Wald confidence interval
+\item UL - upper limit of the adjusted Wald confidence interval
 }
 }
 \description{
-Computes the estimate, standard error, and confidence interval for a
-linear contrast of G-index of agreement coefficients from two or more
-studies. This function assumes that two raters each provide a dichotomous
-rating for a sample of objects.
+Computes the estimate, standard error, and adjusted Wald confidence
+interval for a linear contrast of G-index of agreement coefficients
+from two or more studies. This function assumes that two raters each
+provide a dichotomous rating for a sample of objects.
 }
 \examples{
-f11 <- c(17, 28, 19)
-f12 <- c(43, 56, 49)
+f11 <- c(43, 56, 49)
+f12 <- c(7, 2, 9)
 f21 <- c(3, 5, 5)
 f22 <- c(37, 54, 39)
 v <- c(.5, .5, -1)
@@ -45,7 +44,7 @@ meta.lc.agree(.05, f11, f12, f21, f22, v)
 
 # Should return:
 #            Estimate        SE         LL        UL
-# Contrast 0.07692783 0.1138407 -0.1461958 0.3000515
+# Contrast 0.1022939 0.07972357 -0.05396142 0.2585492
 
 
 }

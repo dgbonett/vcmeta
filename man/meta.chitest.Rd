@@ -23,8 +23,7 @@ Returns a one-row matrix:
 Computes a chi-square test of effect size homogeneity and p-value using
 effect-size estimates and their standard errors from two or more studies.
 This test should not be used to justify the use of a constant coeffient
-(fixed-effect) meta-analysis. This test can be used to justify the
-estimation of an average effect size in a varying coefficient model.
+(fixed-effect) meta-analysis.
 }
 \examples{
 est <- c(.297, .324, .281, .149) 

@@ -10,22 +10,21 @@ meta.ave.prop.ps(alpha, f11, f12, f21, f22, bystudy = TRUE)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{f11}{vector of frequencies in cell 1,1}
+\item{f11}{vector of frequency counts in cell 1,1}
 
-\item{f12}{vector of frequencies in cell 1,2}
+\item{f12}{vector of frequency counts in cell 1,2}
 
-\item{f21}{vector of frequencies in cell 2,1}
+\item{f21}{vector of frequency counts in cell 2,1}
 
-\item{f22}{vector of frequencies in cell 2,2}
+\item{f22}{vector of frequency counts in cell 2,2}
 
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
 \value{
-Returns a matrix.  The first row is the average estimate
-across all studies.  If bystudy is true, there is 1 additional row for
-each study.  The matrix has the following columns:
+Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
-\item Estimate - the estimated effect size
+\item Estimate - estimated effect size
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval

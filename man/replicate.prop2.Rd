@@ -2,24 +2,25 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.prop2}
 \alias{replicate.prop2}
-\title{Compares 2-group proportion differences in original and follow-up studies}
+\title{Compares and combines 2-group proportion differences in original and
+follow-up studies}
 \usage{
 replicate.prop2(alpha, f11, f12, n11, n12, f21, f22, n21, n22)
 }
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{f11}{sample count for group 1 in original study}
+\item{f11}{frequency count for group 1 in original study}
 
-\item{f12}{sample count for group 2 in original study}
+\item{f12}{frequency count for group 2 in original study}
 
 \item{n11}{sample size for group 1 in original study}
 
 \item{n12}{sample size for group 2 in original study}
 
-\item{f21}{sample count for group 1 in follow-up study}
+\item{f21}{frequency count for group 1 in follow-up study}
 
-\item{f22}{sample count for group 2 in follow-up study}
+\item{f22}{frequency count for group 2 in follow-up study}
 
 \item{n21}{sample size for group 1 in follow-up study}
 
@@ -28,15 +29,15 @@ replicate.prop2(alpha, f11, f12, n11, n12, f21, f22, n21, n22)
 \value{
 A 4-row matrix. The rows are:
 \itemize{
-\item Row 1 summarizes the Original study
-\item Row 2 summarizes the Follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size of the two studies
+\item Row 1 summarizes the original study
+\item Row 2 summarizes the follow-up study
+\item Row 3 estimates the difference in proportion differences
+\item Row 4 estimates the average proportion difference
 }
 
 The columns are:
 \itemize{
-\item Estimate - effect size estimate
+\item Estimate - proportion difference estimate (single study, difference, average)
 \item SE - standard error
 \item z - z-value
 \item p - p-value
@@ -45,11 +46,12 @@ The columns are:
 }
 }
 \description{
-This function computes confidence intervals for a 2-group proportion difference
-from an original study and a follow-up study. Confidence intervals for the
-difference and average effect size also are computed. The same results can be
-obtained using the \link[vcmeta]{meta.lc.prop2} function with appropriate
-contrast coefficients. The confidence level for the difference is 1 – 2alpha.
+This function computes confidence intervals from an original study and a
+follow-up study where the effect size is a 2-group proportion difference.
+Confidence intervals for the difference and average effect size are also
+computed. The same results can be obtained using the \link[vcmeta]{meta.lc.prop2}
+function with appropriate contrast coefficients. The confidence level for
+the difference is 1 – 2*alpha, which is recommended for equivalence testing.
 }
 \examples{
 replicate.prop2(.05, 21, 16, 40, 40, 19, 13, 60, 60)

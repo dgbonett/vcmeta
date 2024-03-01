@@ -41,8 +41,12 @@ row per predictor.  The matrix has the following columns:
 \description{
 This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a 2-group
-log mean ratio. The estimates are OLS estimates with standard
-errors that accommodate residual heteroscedasticity.
+log mean ratio. The estimates are OLS estimates with robust standard
+errors that accommodate residual heteroscedasticity. The exponentiated
+slope estimate for a predictor variable describes a multiplicative
+change in the mean ratio associated with a 1-unit increase in that
+predictor variable, controlling for all other predictor variables
+in the model.
 }
 \examples{
 n1 <- c(65, 30, 29, 45, 50)

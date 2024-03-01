@@ -29,11 +29,10 @@ meta.ave.pbcor(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE)
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
 \value{
-Returns a matrix.  The first row is the average estimate
-across all studies.  If bystudy is true, there is 1 additional row for
-each study.  The matrix has the following columns:
+Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
-\item Estimate - the estimated effect size
+\item Estimate - estimated effect size
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -45,10 +44,11 @@ average point-biserial correlation from two or more studies. Two types
 of point-biserial correlations can be meta-analyzed. One type uses
 an unweighted variance and is appropriate in 2-group experimental
 designs. The other type uses a weighted variance and is appropriate in
-2-group nonexperimental designs with simple random sampling within each
-group. This function requires all point-biserial correlations to be of
-the same type.  Use the meta.ave.gen function to meta-analyze any
-combination of biserial correlation types.
+2-group nonexperimental designs with simple random sampling (but not
+stratified random sample) within each study. This function requires
+all point-biserial correlations to be of the same type.  Use the
+meta.ave.gen function to meta-analyze any combination of biserial
+correlation types.
 }
 \examples{
 m1 <- c(21.9, 23.1, 19.8)

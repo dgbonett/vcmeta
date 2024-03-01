@@ -2,8 +2,8 @@
 % Please edit documentation in R/meta_se.R
 \name{se.prop2}
 \alias{se.prop2}
-\title{Computes the Agresti-Caffo estimate and standard error for a 2-group
-proportion difference}
+\title{Computes the estimate and standard error for a 2-group proportion
+difference}
 \usage{
 se.prop2(f1, f2, n1, n2)
 }
@@ -12,22 +12,22 @@ se.prop2(f1, f2, n1, n2)
 
 \item{f2}{number of participants in group 2 who have the outcome}
 
-\item{n1}{group 1 sample size}
+\item{n1}{sample size for group 1}
 
-\item{n2}{group 2 sample size}
+\item{n2}{sample size for group 2}
 }
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of proportion difference
+\item Estimate - estimated proportion difference
 \item SE - standard error
 }
 }
 \description{
-This function can be used to compute the standard error of a
-2-group proportion difference using the two sample proportions and sample
-sizes. The effect size estimate and standard error output from this
-function can be used as input in the \link[vcmeta]{meta.ave.gen},
+This function can be used to compute the Agresti-Caffo standard
+error of a 2-group proportion difference using the frequency
+counts and sample sizes. The effect size estimate and standard
+error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
 \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
 applications where compatible proportion differences from a combination of
 2-group and paired-samples studies are used in the meta-analysis.
@@ -36,8 +36,8 @@ applications where compatible proportion differences from a combination of
 se.prop2(31, 16, 40, 40)
 
 # Should return:
-#                         Estimate        SE
-# Proportion difference: 0.3571429 0.1002777
+#                          Estimate        SE
+# Proportion difference:  0.3571429 0.1002777
 
 
 }

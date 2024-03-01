@@ -20,7 +20,7 @@ is used to improve the accuracy of the confidence interval."><!-- mathjax --><sc
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vcmeta</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
       </span>
     </div>
 
@@ -59,7 +59,7 @@ is used to improve the accuracy of the confidence interval.</p>
     </div>
 
     <div id="ref-usage">
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="fu">meta.ave.slope</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">n</span>, <span class="va">cor</span>, <span class="va">sdy</span>, <span class="va">sdx</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">meta.ave.slope</span><span class="op">(</span><span class="va">alpha</span>, <span class="va">n</span>, <span class="va">cor</span>, <span class="va">sdy</span>, <span class="va">sdx</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div id="arguments">
@@ -92,9 +92,8 @@ is used to improve the accuracy of the confidence interval.</p>
     <h2>Value</h2>
     
 
-<p>Returns a matrix.  The first row is the average estimate
-across all studies.  If bystudy is true, there is 1 additional row for
-each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the estimated effect size</p></li>
+<p>Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:</p><ul><li><p>Estimate - estimated effect size</p></li>
 <li><p>SE - standard error</p></li>
 <li><p>LL - lower limit of the confidence interval</p></li>
 <li><p>UL - upper limit of the confidence interval</p></li>
@@ -103,27 +102,27 @@ each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the 
 
     <div id="ref-examples">
     <h2>Examples</h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">45</span>, <span class="fl">85</span>, <span class="fl">50</span>, <span class="fl">60</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">cor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.24</span>, <span class="fl">.35</span>, <span class="fl">.16</span>, <span class="fl">.20</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">sdy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12.2</span>, <span class="fl">14.1</span>, <span class="fl">11.7</span>, <span class="fl">15.9</span><span class="op">)</span></span>
-<span class="r-in"><span class="va">sdx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.34</span>, <span class="fl">1.87</span>, <span class="fl">2.02</span>, <span class="fl">2.37</span><span class="op">)</span></span>
-<span class="r-in"><span class="fu">meta.ave.slope</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">n</span>, <span class="va">cor</span>, <span class="va">sdy</span>, <span class="va">sdx</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">45</span>, <span class="fl">85</span>, <span class="fl">50</span>, <span class="fl">60</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">cor</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.24</span>, <span class="fl">.35</span>, <span class="fl">.16</span>, <span class="fl">.20</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sdy</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">12.2</span>, <span class="fl">14.1</span>, <span class="fl">11.7</span>, <span class="fl">15.9</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sdx</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1.34</span>, <span class="fl">1.87</span>, <span class="fl">2.02</span>, <span class="fl">2.37</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.ave.slope</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">n</span>, <span class="va">cor</span>, <span class="va">sdy</span>, <span class="va">sdx</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>          Estimate        SE         LL       UL       df</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Average 1.7731542 0.4755417  0.8335021 2.712806 149.4777</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 1 2.1850746 1.3084468 -0.4536599 4.823809  43.0000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 2 2.6390374 0.7262491  1.1945573 4.083518  83.0000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 3 0.9267327 0.8146126 -0.7111558 2.564621  48.0000</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 4 1.3417722 0.8456799 -0.3510401 3.034584  58.0000</span>
-<span class="r-in"></span>
-<span class="r-in"><span class="co"># Should return:</span></span>
-<span class="r-in"><span class="co">#          Estimate        SE         LL       UL       df</span></span>
-<span class="r-in"><span class="co"># Average 1.7731542 0.4755417  0.8335021 2.712806 149.4777</span></span>
-<span class="r-in"><span class="co"># Study 1 2.1850746 1.3084468 -0.4536599 4.823809  43.0000</span></span>
-<span class="r-in"><span class="co"># Study 2 2.6390374 0.7262491  1.1945573 4.083518  83.0000</span></span>
-<span class="r-in"><span class="co"># Study 3 0.9267327 0.8146126 -0.7111558 2.564621  48.0000</span></span>
-<span class="r-in"><span class="co"># Study 4 1.3417722 0.8456799 -0.3510401 3.034584  58.0000</span></span>
-<span class="r-in"></span>
-<span class="r-in"></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return:</span></span></span>
+<span class="r-in"><span><span class="co">#          Estimate        SE         LL       UL       df</span></span></span>
+<span class="r-in"><span><span class="co"># Average 1.7731542 0.4755417  0.8335021 2.712806 149.4777</span></span></span>
+<span class="r-in"><span><span class="co"># Study 1 2.1850746 1.3084468 -0.4536599 4.823809  43.0000</span></span></span>
+<span class="r-in"><span><span class="co"># Study 2 2.6390374 0.7262491  1.1945573 4.083518  83.0000</span></span></span>
+<span class="r-in"><span><span class="co"># Study 3 0.9267327 0.8146126 -0.7111558 2.564621  48.0000</span></span></span>
+<span class="r-in"><span><span class="co"># Study 4 1.3417722 0.8456799 -0.3510401 3.034584  58.0000</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span></span></span>
 </code></pre></div>
     </div>
   </div>
@@ -138,7 +137,7 @@ each study.  The matrix has the following columns:</p><ul><li><p>Estimate - the 
 </div>
 
 <div class="pkgdown">
-  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.4.</p>
+  <p></p><p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.0.7.</p>
 </div>
 
       </footer></div>

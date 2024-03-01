@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_plots.R
 \name{replicate.plot}
 \alias{replicate.plot}
-\title{Plot to compare estimates from an original and follow-up study}
+\title{Plot to compare estimates from original and follow-up studies}
 \usage{
 replicate.plot(
   result,
@@ -23,14 +23,16 @@ replicate.plot(
 defaults to 'Both'
 }
 \itemize{
-\item Both - a bit busy; plots each estimate, differencence, and average
+\item Both - plots each estimate, differencence, and average
 \item Difference - plot each estimate and difference between them
 \item Average - plot each estimate and the average effect size
 }}
 
-\item{reference_line}{Optional x-value for a reference line.  Only applies
-if focuse is 'Difference' or 'Both'.  Defaults to NULL, in which case a
-reference line is not drawn.}
+\item{reference_line}{\itemize{
+\item Optional x-value for a reference line. Only applies
+if focus is 'Difference' or 'Both'. Defaults to NULL, in which case a
+reference line is not drawn.
+}}
 
 \item{diamond_height}{\itemize{
 \item Optional height of the diamond representing average
@@ -40,7 +42,7 @@ Defaults to 0.2
 
 \item{difference_axis_ticks}{\itemize{
 \item Optional requested number of ticks on the
-difference axis.  Only applies if focus is 'Difference' or 'Both'.
+difference axis. Only applies if focus is 'Difference' or 'Both'.
 Defaults to 5.
 }}
 
@@ -54,19 +56,19 @@ the ggplot API
 }
 \description{
 Generates a basic plot using ggplot2 to visualize the estimates from
-and original and follow-up study
+and original and follow-up studies.
 }
 \examples{
    
 # Compare Damisch et al., 2010 to Calin-Jageman & Caldwell 2014
-# Damisch et al., 2010, Exp 1, German participants made 10 mini-golf putts
-#  Half were told they had a 'lucky' golf ball; half were not
-#  Found a large but uncertain improvement in shots made in the luck condition
+# Damisch et al., 2010, Exp 1, German participants made 10 mini-golf putts.
+# Half were told they had a 'lucky' golf ball; half were not.
+# Found a large but uncertain improvement in shots made in the luck condition
 # Calin-Jageman & Caldwell, 2014, Exp 1, was a pre-registered replication with
-#  input from Damisch, though with English-speaking participants
+# input from Damisch, though with English-speaking participants.
 #
-# Here we compare the effect sizes, in original units,for the two studies
-# Use the replicate.mean2 function because the design is 2-group between-subs
+# Here we compare the effect sizes, in original units, for the two studies.
+# Use the replicate.mean2 function because the design is a 2-group design.
 
 library(ggplot2)
 damisch_v_calinjageman_raw <- replicate.mean2(
@@ -100,7 +102,7 @@ replicate.plot(damisch_v_calinjageman_raw,
 )
 
 
-# Kind of busy, but plot the comparison with both difference and average
+# Plot the comparison with both difference and average.
 # In this case, store the plot for manipulation
 myplot <- replicate.plot(
   damisch_v_calinjageman_raw,

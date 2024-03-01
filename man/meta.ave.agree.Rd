@@ -9,22 +9,21 @@ meta.ave.agree(alpha, f11, f12, f21, f22, bystudy = TRUE)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{f11}{vector of frequencies in cell 1,1}
+\item{f11}{vector of frequency counts in cell 1,1}
 
-\item{f12}{vector of frequencies in cell 1,2}
+\item{f12}{vector of frequency counts in cell 1,2}
 
-\item{f21}{vector of frequencies in cell 2,1}
+\item{f21}{vector of frequency counts in cell 2,1}
 
-\item{f22}{vector of frequencies in cell 2,2}
+\item{f22}{vector of frequency counts in cell 2,2}
 
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
 \value{
-Returns a matrix.  The first row is the average estimate
-across all studies.  If bystudy is true, there is 1 additional row for
-each study.  The matrix has the following columns:
+Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
-\item Estimate - the estimated effect size
+\item Estimate - estimated effect size
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -32,23 +31,24 @@ each study.  The matrix has the following columns:
 }
 \description{
 Computes the estimate, standard error, and confidence interval for an
-G-index of agreement from two or more studies. This function assumes
-that two raters each provide a dichotomous rating to a sample of objects.
-The G-index of agreement is usually preferred to Cohen's kappa.
+average G-index of agreement from two or more studies. This function
+assumes that two raters each provide a dichotomous rating to a sample
+of objects. As a measure of agreement, the G-index is usually preferred
+to Cohen's kappa.
 }
 \examples{
-f11 <- c(17, 28, 19)
-f12 <- c(43, 56, 49)
+f11 <- c(43, 56, 49)
+f12 <- c(7, 2, 9)
 f21 <- c(3, 5, 5)
 f22 <- c(37, 54, 39)
 meta.ave.agree(.05, f11, f12, f21, f22, bystudy = TRUE)
 
 # Should return:
-#           Estimate         SE          LL        UL
-# Average 0.08657934 0.05312584 -0.01754538 0.1907041
-# Study 1 0.07692308 0.09776752 -0.11469775 0.2685439
-# Study 2 0.14285714 0.08163265 -0.01713992 0.3028542
-# Study 3 0.03448276 0.09279245 -0.14738711 0.2163526
+#          Estimate         SE        LL        UL
+# Average 0.7843250 0.03540254 0.7149373 0.8537127
+# Study 1 0.7446809 0.06883919 0.6097585 0.8796032
+# Study 2 0.8512397 0.04770701 0.7577356 0.9447437
+# Study 3 0.6981132 0.06954284 0.5618117 0.8344147
 
 
 }

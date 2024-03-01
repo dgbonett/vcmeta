@@ -10,30 +10,29 @@ meta.lc.prop.ps(alpha, f11, f12, f21, f22, v)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{f11}{vector of frequencies in cell 1,1}
+\item{f11}{vector of frequency counts in cell 1,1}
 
-\item{f12}{vector of frequencies in cell 1,2}
+\item{f12}{vector of frequency counts in cell 1,2}
 
-\item{f21}{vector of frequencies in cell 2,1}
+\item{f21}{vector of frequency counts in cell 2,1}
 
-\item{f22}{vector of frequencies in cell 2,2}
+\item{f22}{vector of frequency counts in cell 2,2}
 
 \item{v}{vector of contrast coefficients}
 }
 \value{
-Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:
+Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
-\item LL - lower limit of the confidence interval
-\item UL - upper limit of the confidence interval
+\item LL - lower limit of the adjusted Wald confidence interval
+\item UL - upper limit of the adjusted Wald confidence interval
 }
 }
 \description{
-Computes the estimate, standard error, and confidence interval for a
-linear contrast of paired-samples group proportion differences from two
-or more studies.
+Computes the estimate, standard error, and adjusted Wald confidence interval
+for a linear contrast of paired-samples proportion differences from two or
+more studies.
 }
 \examples{
 f11 <- c(17, 28, 19)

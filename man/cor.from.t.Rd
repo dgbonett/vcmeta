@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_misc.R
 \name{cor.from.t}
 \alias{cor.from.t}
-\title{Compute Pearson correlation between paired measurements from t statistic}
+\title{Computes Pearson correlation between paired measurements from t statistic}
 \usage{
 cor.from.t(m1, m2, sd1, sd2, t, n)
 }
@@ -33,6 +33,8 @@ standardized mean differences in paired-samples studies.
 cor.from.t(9.4, 9.8, 1.26, 1.40, 2.27, 30)
 
 # Should return:
-# [1] 0.7415209
+#                Estimate
+# Correlation:  0.7415209
+
 
 }

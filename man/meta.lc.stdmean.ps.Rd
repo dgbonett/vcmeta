@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_comp.R
 \name{meta.lc.stdmean.ps}
 \alias{meta.lc.stdmean.ps}
-\title{Confidence interval for a  linear contrast of standardized
+\title{Confidence interval for a linear contrast of standardized
 mean differences from paired-samples studies}
 \usage{
 meta.lc.stdmean.ps(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr)
@@ -31,10 +31,9 @@ meta.lc.stdmean.ps(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr)
 }}
 }
 \value{
-Returns 1-row matrix with the estimate for the contrast. The matrix
-has the following columns:
+Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -43,7 +42,7 @@ has the following columns:
 \description{
 Computes the estimate, standard error, and confidence interval for a
 linear contrast of paired-samples standardized mean differences from two or
-more studies. Equal variances within or across studies is not assumed.
+more studies. Equality of variances within or across studies is not assumed.
 }
 \examples{
 m1 <- c(53, 60, 53, 57)
