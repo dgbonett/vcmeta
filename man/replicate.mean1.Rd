@@ -26,8 +26,8 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average mean for the two studies
+\item Row 3 estimates the difference in means
+\item Row 4 estimates the average mean
 }
 
 The columns are:
@@ -42,12 +42,14 @@ The columns are:
 \description{
 This function computes confidence intervals for a single mean from an
 original study and a follow-up study. Confidence intervals for the
-difference between the two means and average of the two means also are
-computed. A Satterthwaite adjustment to the degrees of freedom is used to
-improve the accuracy of the confidence intervals for the difference and
-average. The same results can be obtained using the \link[vcmeta]{meta.lc.mean1}
-function with appropriate contrast coefficients. The confidence level for the
-difference is 1 – 2alpha.
+difference between the two means and average of the two means are also
+computed. Equality of variances across studies is not assumed. A
+Satterthwaite adjustment to the degrees of freedom is used to improve
+the accuracy of the confidence intervals for the difference and average.
+The same results can be obtained using the \link[vcmeta]{meta.lc.mean1}
+function with appropriate contrast coefficients. The confidence level
+for the difference is 1 – 2*alpha, which is recommended for equivalence
+testing.
 }
 \examples{
 replicate.mean1(.05, 21.9, 3.82, 40, 25.2, 3.98, 75)

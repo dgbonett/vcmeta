@@ -183,3 +183,28 @@ test_that("replicate.prop1 returns valid matrix", {
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
 })
+
+
+test_that("replicate.ratio.prop2 returns valid matrix", {
+  colnames_expected <- c("Estimate", "LL", "UL")  
+  
+  res <- replicate.ratio.prop2(.05, 21, 16, 40, 40, 19, 13, 60, 60)
+  
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+
+test_that("replicate.prop.ps returns valid matrix", {
+  colnames_expected <- c("Estimate", "SE", "z", "p", "LL", "UL")  
+  
+  f1 <- c(42, 2, 15, 61)
+  f2 <- c(69, 5, 31, 145)
+  res <- replicate.prop.ps(.05, f1, f2)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})

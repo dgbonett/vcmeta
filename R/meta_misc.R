@@ -236,7 +236,7 @@ table.from.odds <- function(p1row, p1col, or, n){
  out1 <- t(c(p11, p12, p21, p22))
  out2 <- t(c(f11, f12, f21, f22))
  out <- rbind(out1, out2)
- colnames(out) <- c("cell 11", "cell 12", " cell 21", "cell 22")
+ colnames(out) <- c("cell 11", "cell 12", "cell 21", "cell 22")
  rownames(out) <- c("Proportion:", "Frequency:")
  return(out)
 }
@@ -305,8 +305,12 @@ table.from.phi <- function(p1row, p1col, phi, n){
  out1 <- t(c(p11, p12, p21, p22))
  out2 <- t(c(f11, f12, f21, f22))
  out <- rbind(out1, out2)
- colnames(out) <- c("cell 11", "cell 12", " cell 21", "cell 22")
+ colnames(out) <- c("cell 11", "cell 12", "cell 21", "cell 22")
  rownames(out) <- c("Proportion:", "Frequency")
  return(out)
 }
 
+
+userefs <- function() {
+  Rdpack::c_Rd
+}

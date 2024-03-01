@@ -52,8 +52,8 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size for the two studies
+\item Row 3 estimates the difference in mean differences
+\item Row 4 estimates the average mean difference
 }
 
 The columns are:
@@ -68,13 +68,15 @@ The columns are:
 }
 }
 \description{
-This function computes confidence intervals for a 2-group mean difference
-from an original study and a follow-up study. Confidence intervals for the
-difference and average effect size also are computed. A Satterthwaite
-adjustment to the degrees of freedom is used to improve the accuracy of the
-confidence intervals. The same results can be obtained using the \link[vcmeta]{meta.lc.mean2}
-function with appropriate contrast coefficients. The confidence level for the
-difference is 1 – 2alpha.
+This function computes confidence intervals from an original study and a
+follow-up study where the effect size is a 2-group mean difference. Confidence
+intervals for the difference and average effect size are also computed.
+Equality of variances within or across studies is not assumed. A
+Satterthwaite adjustment to the degrees of freedom is used to improve the
+accuracy of the confidence intervals. The same results can be obtained using
+the \link[vcmeta]{meta.lc.mean2} function with appropriate contrast coefficients.
+The confidence level for the difference is 1 – 2*alpha, which is recommended for
+equivalence testing.
 }
 \examples{
 replicate.mean2(.05, 21.9, 16.1, 3.82, 3.21, 40, 40, 

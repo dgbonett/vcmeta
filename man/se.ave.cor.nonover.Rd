@@ -36,9 +36,9 @@ transformation. The columns are:
 }
 \description{
 In a study that reports the sample size and six correlations (cor12, cor34,
-(cor13, cor14, cor23, and cor24) where variables 1 and 3 are different
-measurements of the same attribute and variables 2 and 4 are different
-measurements of the same attribute, this function can be used to compute the
+cor13, cor14, cor23, and cor24) where variables 1 and 3 are different
+measurements of one attribute and variables 2 and 4 are different
+measurements of a second attribute, this function can be used to compute the
 average of cor12 and cor34 and its standard error. Note that cor12 and cor34
 have no variable in common (i.e., no "overlapping" variable). The average
 correlation and the standard error from this function can be used as
@@ -49,9 +49,9 @@ some studies have reported cor12 and other studies have reported cor34.
 se.ave.cor.nonover(.357, .398, .755, .331, .347, .821, 100)
 
 # Should return:
-#             Estimate         SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
-# Correlation 0.377500 0.07768887 0.00784892 0.007301895      0.004495714
-# Fisher      0.397141 0.09059993 0.01030928 0.010309278      0.006122153
+#               Estimate         SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
+# Correlation:  0.377500 0.07768887 0.00784892 0.007301895      0.004495714
+# Fisher:       0.397141 0.09059993 0.01030928 0.010309278      0.006122153
 
 
 }

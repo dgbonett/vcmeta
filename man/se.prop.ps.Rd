@@ -2,8 +2,8 @@
 % Please edit documentation in R/meta_se.R
 \name{se.prop.ps}
 \alias{se.prop.ps}
-\title{Computes the Bonett-Price estimate and standard error for a
-paired-samples proportion difference}
+\title{Computes the estimate and standard error for a paired-samples
+proportion difference}
 \usage{
 se.prop.ps(f00, f01, f10, f11)
 }
@@ -19,15 +19,15 @@ se.prop.ps(f00, f01, f10, f11)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of proportion difference
+\item Estimate - estimated proportion difference
 \item SE - standard error
 }
 }
 \description{
-This function can be used to compute the standard error of a
-paired-samples proportion difference using the frequency counts from a
-2 x 2 contingency table. The effect size estimate and standard error
-output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
+This function can be used to compute the Bonett-Price standard error
+of a paired-samples proportion difference using the frequency counts
+from a 2 x 2 contingency table. The effect size estimate and standard
+error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
 \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
 applications where compatible proportion differences from a combination of
 2-group and paired-samples studies are used in the meta-analysis.
@@ -36,8 +36,8 @@ applications where compatible proportion differences from a combination of
 se.prop.ps(16, 64, 5, 15)
 
 # Should return:
-#                         Estimate         SE
-# Proportion difference: 0.5784314 0.05953213
+#                          Estimate         SE
+# Proportion difference:  0.5784314 0.05953213
 
 
 }

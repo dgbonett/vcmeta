@@ -173,11 +173,23 @@ test_that("se.tetra returns valid matrix", {
   testthat::expect_equal(colnames(res), colnames_expected)
 })
 
+
 test_that("se.biphi returns valid matrix", {
   colnames_expected <- c("Estimate",        "SE")
   
   res <- se.biphi(34, 22, 50, 50)
   
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+
+test_that("se.cohen returns valid matrix", {
+  colnames_expected <- c("Estimate",        "SE")
+  
+  res <- se.cohen(.78, 35, 50)
+
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)

@@ -29,7 +29,7 @@ se.stdmean2(m1, m2, sd1, sd2, n1, n2, stdzr)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of standardized mean difference
+\item Estimate - estimated standardized mean difference
 \item SE - standard error
 }
 }
@@ -45,17 +45,21 @@ estimate and standard error output from this function can be used as
 input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
 and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
 standardized mean differences from a combination of 2-group and
-paired-samples experiments are used in the meta-analysis.
+paired-samples experiments are used in the meta-analysis. Equality
+of variances is not assumed.
 }
 \examples{
 se.stdmean2(21.9, 16.1, 3.82, 3.21, 40, 40, 0)
 
 # Should return: 
-#                               Estimate        SE
-# Standardized mean difference: 1.643894 0.2629049
+#                                Estimate        SE
+# Standardized mean difference:  1.643894 0.2629049
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+}
+\seealso{
+\link[vcmeta]{se.cohen}
 }

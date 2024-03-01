@@ -28,8 +28,8 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size for the two studies
+\item Row 3 estimates the difference in slopes
+\item Row 4 estimates the average slope
 }
 
 The columns are:
@@ -44,10 +44,11 @@ The columns are:
 }
 }
 \description{
-Computes confidence intervals for a slope in original and follow-up studies,
-the difference in slopes, and the average of the slopes. Equality of error
-variances between studies is not assumed. The confidence interval for the
-difference uses a 1 - 2alpha confidence level. Use the replicate.gen
+This function computes confidence intervals for a slope from the original and
+follow-up studies, the difference in slopes, and the average of the slopes.
+Equality of error variances across studies is not assumed. The confidence
+interval for the difference uses a 1 - 2*alpha confidence level, which is
+recommended for equivalence testing. Use the \link[vcmeta]{replicate.gen}
 function for slopes in other types of models (e.g., binary logistic, ordinal
 logistic, SEM).
 }

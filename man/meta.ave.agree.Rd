@@ -23,7 +23,7 @@ meta.ave.agree(alpha, f11, f12, f21, f22, bystudy = TRUE)
 Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
 is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
-\item Estimate - the estimated effect size
+\item Estimate - estimated effect size
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -31,9 +31,10 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 }
 \description{
 Computes the estimate, standard error, and confidence interval for an
-G-index of agreement from two or more studies. This function assumes
-that two raters each provide a dichotomous rating to a sample of objects.
-The G-index of agreement is usually preferred to Cohen's kappa.
+average G-index of agreement from two or more studies. This function
+assumes that two raters each provide a dichotomous rating to a sample
+of objects. As a measure of agreement, the G-index is usually preferred
+to Cohen's kappa.
 }
 \examples{
 f11 <- c(43, 56, 49)

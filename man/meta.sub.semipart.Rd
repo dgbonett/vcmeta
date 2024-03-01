@@ -34,7 +34,7 @@ Returns a matrix with three rows:
 
 The columns are:
 \itemize{
-\item Estimate - estimate of average correlation or difference
+\item Estimate - estimated average correlation or difference
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval

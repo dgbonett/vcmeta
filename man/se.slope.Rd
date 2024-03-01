@@ -18,24 +18,24 @@ se.slope(cor, sdy, sdx, n)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of slope
+\item Estimate - estimated slope
 \item SE - standard error
 }
 }
 \description{
 This function can be used to compute a slope and its standard error
 for a simple linear regression model (random-x model) using the estimated
-Pearson correlation and the estimated standard deviations of response and
-predictor variables. This function is useful in a meta-analysis of
-slopes of a simple linear regression model where some studies report
+Pearson correlation and the estimated standard deviations of the
+response and predictor variables. This function is useful in a meta-analysis
+of slopes of a simple linear regression model where some studies report
 the Pearson correlation but not the slope.
 }
 \examples{
 se.slope(.392, 4.54, 2.89, 60)
 
 # Should return: 
-#         Estimate        SE
-# Slope: 0.6158062 0.1897647
+#          Estimate        SE
+# Slope:  0.6158062 0.1897647
 
 
 }

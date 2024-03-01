@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_comp.R
 \name{meta.lc.mean1}
 \alias{meta.lc.mean1}
-\title{Confidence interval a for a linear contrast of means}
+\title{Confidence interval for a linear contrast of means}
 \usage{
 meta.lc.mean1(alpha, m, sd, n, v, eqvar = FALSE)
 }
@@ -25,7 +25,7 @@ meta.lc.mean1(alpha, m, sd, n, v, eqvar = FALSE)
 \value{
 Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval

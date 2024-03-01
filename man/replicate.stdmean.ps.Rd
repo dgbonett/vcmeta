@@ -53,8 +53,8 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size for the two studies
+\item Row 3 estimates the difference in standardized mean differences
+\item Row 4 estimates the average standardized mean difference
 }
 
 The columns are:
@@ -66,17 +66,18 @@ The columns are:
 }
 }
 \description{
-This function computes confidence intervals for a paired-samples standardized
-mean difference from an original study and a follow-up study. Confidence intervals
-for the difference and average effect size also are computed. The same results can
-be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with appropriate
-contrast coefficients. The confidence level for the difference is 1 – 2alpha.
+This function computes confidence intervals from an original study and a follow-up
+study where the effect size is a paired-samples standardized mean difference.
+Confidence intervals for the difference and average effect size are also computed.
+Equality of variances within or across studies is not assumed. The same results
+can be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with
+appropriate contrast coefficients. The confidence level for the difference is
+1 – 2*alpha, which is recommended for equivalence testing.
 }
 \examples{
 replicate.stdmean.ps(alpha = .05, 
   m11 = 86.22, m12 = 70.93, sd11 = 14.89, sd12 = 12.32, cor1 = .765, n1 = 20, 
-  m21 = 84.81, m22 = 77.24, sd21 = 15.68, sd22 = 16.95, cor2 = .702, n2 = 75
-)
+  m21 = 84.81, m22 = 77.24, sd21 = 15.68, sd22 = 16.95, cor2 = .702, n2 = 75)
 
 # Should return:
 #                         Estimate         SE        LL        UL

@@ -2,7 +2,8 @@
 % Please edit documentation in R/meta_se.R
 \name{se.stdmean.ps}
 \alias{se.stdmean.ps}
-\title{Computes the standard error for a paired-samples standardized mean difference}
+\title{Computes the standard error for a paired-samples standardized mean
+difference}
 \usage{
 se.stdmean.ps(m1, m2, sd1, sd2, cor, n, stdzr)
 }
@@ -28,7 +29,7 @@ se.stdmean.ps(m1, m2, sd1, sd2, cor, n, stdzr)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of standardized mean difference
+\item Estimate - estimated standardized mean difference
 \item SE - standard error
 }
 }
@@ -40,13 +41,14 @@ output from this function can be used as input in the \link[vcmeta]{meta.ave.gen
 \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
 applications where compatible standardized mean differences from a combination
 of 2-group and paired-samples experiments are used in the meta-analysis.
+Equality of variances is not assumed.
 }
 \examples{
 se.stdmean.ps(23.9, 25.1, 1.76, 2.01, .78, 25, 0)
 
 # Should return: 
-#                                  Estimate        SE
-# Standardizedd mean difference: -0.6352097 0.1602852
+#                                   Estimate        SE
+# Standardizedd mean difference:  -0.6352097 0.1602852
 
 
 }

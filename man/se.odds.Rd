@@ -7,18 +7,18 @@
 se.odds(f1, n1, f2, n2)
 }
 \arguments{
-\item{f1}{number of participants who have the outcome of interest in group 1}
+\item{f1}{number of participants who have the outcome in group 1}
 
 \item{n1}{sample size for group 1}
 
-\item{f2}{number of participants who have the outcome of interest in group 2}
+\item{f2}{number of participants who have the outcome in group 2}
 
 \item{n2}{sample size for group 2}
 }
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of log odds ratio
+\item Estimate - estimated log odds ratio
 \item SE - standard error
 }
 }
@@ -37,8 +37,8 @@ output from this function can be used as input in the \link[vcmeta]{meta.ave.gen
 se.odds(36, 50, 21, 50)
 
 # Should return: 
-#                 Estimate        SE
-# Log odds ratio: 1.239501 0.4204435
+#                  Estimate        SE
+# Log odds ratio:  1.239501 0.4204435
 
 
 }

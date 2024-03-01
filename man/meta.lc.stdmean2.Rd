@@ -34,7 +34,7 @@ meta.lc.stdmean2(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr)
 \value{
 Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -47,7 +47,7 @@ more studies. Equality of variances within or across studies is not assumed.
 Use the square root average variance standardizer (stdzr = 0) for 2-group
 experimental designs.  Use the square root weighted variance standardizer
 (stdzr = 3) for 2-group nonexperimental designs with simple random sampling.
-The stdzr = 1 and stdzr = 2 options can be used with either 2-group experimental
+The stdzr = 1 and stdzr = 2 options can be used with either experimental
 or nonexperimental designs.
 }
 \examples{

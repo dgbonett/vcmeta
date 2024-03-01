@@ -31,6 +31,9 @@
     <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.cronbach.html</loc>
   </url>
   <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.fisher.html</loc>
+  </url>
+  <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.cc.html</loc>
   </url>
   <url>
@@ -199,6 +202,9 @@
     <loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.cronbach.html</loc>
   </url>
   <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.gen.html</loc>
+  </url>
+  <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.pbcor.html</loc>
   </url>
   <url>
@@ -229,10 +235,16 @@
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.plot.html</loc>
   </url>
   <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop.ps.html</loc>
+  </url>
+  <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop1.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop2.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.ratio.prop2.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/replicate.slope.html</loc>
@@ -257,6 +269,9 @@
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/se.biphi.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/se.cohen.html</loc>
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/se.cor.html</loc>
@@ -305,5 +320,11 @@
   </url>
   <url>
     <loc>https://dgbonett.github.io/vcmeta/reference/stdmean2.from.t.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/table.from.odds.html</loc>
+  </url>
+  <url>
+    <loc>https://dgbonett.github.io/vcmeta/reference/table.from.phi.html</loc>
   </url>
 </urlset>

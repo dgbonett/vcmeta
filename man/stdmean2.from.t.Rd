@@ -27,7 +27,7 @@ estimate and standard error assume equality of population variances.
 stdmean2.from.t(3.27, 25, 25)
 
 # Should return:
-#       Estimate       SE
-# [1,] 0.9439677 0.298801
+#             Estimate       SE
+# Cohen's d  0.9439677 0.298801
 
 }

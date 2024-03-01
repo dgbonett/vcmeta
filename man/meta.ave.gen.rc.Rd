@@ -20,7 +20,7 @@ meta.ave.gen.rc(alpha, est, se, bystudy = TRUE)
 Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
 is true, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
-\item Estimate - the estimated effect size
+\item Estimate - estimated effect size
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -28,22 +28,34 @@ is true, there is 1 additional row for each study.  The matrix has the following
 }
 \description{
 Computes the estimate, standard error, and confidence interval for a
-a weighted average effect from multiple studies using the random
+weighted average effect from multiple studies using the random
 coefficient (random-effects) meta-analysis model. An estimate of
-effect-sze heterogeneity (tau-squared) is also computed. The random
-coefficient model assumes that the studies in the meta-analysis are
-a random sample from some definable superpopulation of studies. This
-assumption is very difficult to justify. The weighted average
-estimate will be biased regardless of number of studies or sample size
-per study and the actual confidence interval coverage probability can
+effect-size heterogeneity (tau-squared) is also computed.
+}
+\details{
+The random coefficient model assumes that the studies in the meta-analysis
+are a random sample from some definable superpopulation of studies. This
+assumption is very difficult to justify. The weighted average estimate
+will be biased regardless of the number of studies or the sample size
+in each study. The actual confidence interval coverage probability can
 much smaller than the specified confidence level if the effect sizes are
-correlated with the weights. This method also assume that the true effects
-sizes in the superpopulation of studies have a normal distribution. A large
-number of studies, each with a large sample size, is required to assess the
-superpopulation normality assumption and to accurately estimate tau-squared.
-The traditional confidence interval for the population tau-squared is
-hypersensitive to very minor and difficult to detect violations of the
+correlated with the weights (which occurs frequently). The confidence
+interval for tau-squared assumes that the true effect sizes in the
+superpopulation of studies have a normal distribution. A large number
+of studies, each with a large sample size, is required to assess the
+superpopulation normality assumption and to accurately estimate
+tau-squared. The confidence interval for the population tau-squared is
+hypersensitive to very minor and difficult-to-detect violations of the
 superpopulation normality assumption.
+
+The random coefficient model should be used with caution, and the varying
+coefficient methods in this package are the recommended alternative. The
+varying coefficient methods allows the effect sizes to differ across studies
+but do not require the studies to be a random sample from a definable
+superpopoulation of studies. This random coefficient function is included
+in the vcmeta package primarily for classroom demonstrations to illustrate
+the problimatic characteristics of the random coefficient meta-analysis
+model.
 }
 \examples{
 est <- c(.022, .751, .421, .287, .052, .146, .562, .904)
@@ -69,4 +81,7 @@ meta.ave.gen.rc(.05, est, se, bystudy = TRUE)
 \item \insertRef{Hedges1985}{vcmeta}
 \item \insertRef{Borenstein2009}{vcmeta}
 }
+}
+\seealso{
+\link[vcmeta]{meta.ave.gen}
 }

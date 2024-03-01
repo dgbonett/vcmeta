@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_comp.R
 \name{meta.lc.prop1}
 \alias{meta.lc.prop1}
-\title{Confidence interval for a linear contrast of proportions.}
+\title{Confidence interval for a linear contrast of proportions}
 \usage{
 meta.lc.prop1(alpha, f, n, v)
 }
@@ -18,7 +18,7 @@ meta.lc.prop1(alpha, f, n, v)
 \value{
 Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate -estimate of linear contrast
+\item Estimate -estimated linear contrast
 \item SE - standard error
 \item LL - lower limit of the adjusted Wald confidence interval
 \item UL - upper limit of the adjusted Wald confidence interval

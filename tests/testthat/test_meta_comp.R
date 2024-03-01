@@ -307,3 +307,19 @@ test_that("meta.lc.gen returns valid matrix", {
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
 })
+
+
+test_that("meta.sub.gen returns valid matrix", {
+  colnames_expected <- c(
+    "Estimate", "SE", "LL", "UL"
+  )
+  
+  est <- c(.920, .896, .760, .745)
+  se <- c(.098, .075, .069, .055) 
+  group <- c(1, 1, 2, 2)
+  res <- meta.sub.gen(.05, est, se, group)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})

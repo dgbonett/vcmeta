@@ -18,7 +18,7 @@ se.biphi(f1, f2, n1, n2)
 \value{
 Returns a 1-row matrix. The columns are:
 \itemize{
-\item Estimate - estimate of biserial-phi correlation
+\item Estimate - estimated biserial-phi correlation
 \item SE - standard error
 }
 }
@@ -37,8 +37,8 @@ a biserial-phi correlation has been obtained in other studies.
 se.biphi(34, 22, 50, 50)
 
 # Should return:
-#       Estimate        SE 
-# [1,]   0.27539 0.1074594
+#               Estimate        SE 
+# Biserial-phi:  0.27539 0.1074594
 
 
 }

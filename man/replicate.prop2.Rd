@@ -2,7 +2,8 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.prop2}
 \alias{replicate.prop2}
-\title{Compares and combines 2-group proportion differences in original and follow-up studies}
+\title{Compares and combines 2-group proportion differences in original and
+follow-up studies}
 \usage{
 replicate.prop2(alpha, f11, f12, n11, n12, f21, f22, n21, n22)
 }
@@ -30,8 +31,8 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size for the two studies
+\item Row 3 estimates the difference in proportion differences
+\item Row 4 estimates the average proportion difference
 }
 
 The columns are:
@@ -45,11 +46,12 @@ The columns are:
 }
 }
 \description{
-This function computes confidence intervals for a 2-group proportion difference
-from an original study and a follow-up study. Confidence intervals for the
-difference and average effect size also are computed. The same results can be
-obtained using the \link[vcmeta]{meta.lc.prop2} function with appropriate
-contrast coefficients. The confidence level for the difference is 1 – 2alpha.
+This function computes confidence intervals from an original study and a
+follow-up study where the effect size is a 2-group proportion difference.
+Confidence intervals for the difference and average effect size are also
+computed. The same results can be obtained using the \link[vcmeta]{meta.lc.prop2}
+function with appropriate contrast coefficients. The confidence level for
+the difference is 1 – 2*alpha, which is recommended for equivalence testing.
 }
 \examples{
 replicate.prop2(.05, 21, 16, 40, 40, 19, 13, 60, 60)

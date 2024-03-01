@@ -22,8 +22,8 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average mean for the two studies
+\item Row 3 estimates the difference in proportions
+\item Row 4 estimates the average proportion
 }
 
 The columns are:
@@ -38,9 +38,9 @@ The columns are:
 This function computes confidence intervals for a single proportion from an
 original study and a follow-up study. Confidence intervals for the
 difference between the two proportions and average of the two proportions
-also are computed. The same results can be obtained using the \link[vcmeta]{meta.lc.prop1}
+are also computed. The same results can be obtained using the \link[vcmeta]{meta.lc.prop1}
 function with appropriate contrast coefficients. The confidence level for the
-difference is 1 – 2alpha.
+difference is 1 – 2*alpha, which is recommended for equivalence testing.
 }
 \examples{
 replicate.prop1(.05, 21, 300, 35, 400)

@@ -27,7 +27,7 @@ se.pbcor(m1, m2, sd1, sd2, n1, n2, type)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of point-biserial correlation
+\item Estimate - estimated point-biserial correlation
 \item SE - standard error
 }
 }
@@ -35,23 +35,24 @@ Returns a one-row matrix:
 This function computes a point-biserial correlation and its standard
 error for two types of point-biserial correlations in 2-group designs
 using the estimated means, estimated standard deviations, and samples
-sizes. One type of point-biserial correlation uses an unweighted average
-of variances and is appropriate for 2-group experimental designs. The
-other type of point-biserial correlation uses a weighted average of
-variances and is appropriate for 2-group nonexperimental designs with
-simple random sampling. This function is useful in a meta-analysis of
-compatible point-biserial correlations where some studies used a 2-group
-experimental design and other studies used a 2-group nonexperimental
-design. The effect size estimate and standard error output from this
-function can  be used as input in the \link[vcmeta]{meta.ave.gen},
-\link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions.
+sizes. Equality of variances is not assumed. One type of point-biserial
+correlation uses an unweighted average of variances and is recommended
+for 2-group experimental designs. The other type of point-biserial
+correlation uses a weighted average of variances and is recommended for
+2-group nonexperimental designs with simple random sampling (but not
+stratified random sampling). This function is useful in a meta-analysis
+of compatible point-biserial correlations where some studies used a
+2-group experimental design and other studies used a 2-group
+nonexperimental design. The effect size estimate and standard error
+output from this function can  be used as input in the
+\link[vcmeta]{meta.ave.gen} function.
 }
 \examples{
 se.pbcor(21.9, 16.1, 3.82, 3.21, 40, 40, 1)
 
 #  Should return: 
-#                               Estimate         SE
-#  Point-biserial correlation: 0.6349786 0.05981325
+#                                Estimate         SE
+#  Point-biserial correlation:  0.6349786 0.05981325
 
 
 }

@@ -16,7 +16,7 @@ se.semipartial(cor, r2, n)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of semipartial correlation
+\item Estimate - semipartial correlation (from input)
 \item SE - standard error
 }
 }
@@ -25,17 +25,16 @@ This function can be used to compute the standard error of a
 semipartial correlation using the estimated correlation, sample
 size, and squared multiple correlation for the full model.
 The effect size estimate and standard error output from this
-function can be used as input in the \link[vcmeta]{meta.ave.gen},
-\link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions
-in applications where a combination of different types of correlations
-are used in the meta-analysis.
+function can be used as input in the \link[vcmeta]{meta.ave.gen}
+function in applications where a combination of different types
+of correlations are used in the meta-analysis.
 }
 \examples{
 se.semipartial(.40, .25, 60)
 
 # Should return: 
-#                          Estimate        SE
-# Semipartial correlation:      0.4 0.1063262
+#                           Estimate        SE
+# Semipartial correlation:       0.4 0.1063262
 
 
 }

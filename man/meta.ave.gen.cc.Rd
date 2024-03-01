@@ -20,7 +20,7 @@ meta.ave.gen.cc(alpha, est, se, bystudy = TRUE)
 Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
 is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
-\item Estimate - the estimated effect size
+\item Estimate - estimated effect size
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -29,11 +29,21 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 \description{
 Computes the estimate, standard error, and confidence interval for a
 weighted average effect from two or more studies using the constant
-coefficient (fixed-effect) meta-analysis model. The weighted average
-estimate will be biased regardless of number of studies or sample size
-per study and the actual confidence interval coverage probability can
-be much smaller than the specified confidence level when the true effect
-sizes are not identical across studies.
+coefficient (fixed-effect) meta-analysis model.
+}
+\details{
+The weighted average estimate will be biased regardless of the number of
+studies or the sample size in each study. The actual confidence interval
+coverage probability can be much smaller than the specified confidence
+level when the population effect sizes are not identical across studies.
+
+The constant coefficient model should be used with caution, and the varying
+coefficient methods in this package are the recommended alternatives. The
+varying coefficient methods do not require effect-size homogeneity across
+the selected studies. This constant coefficient meta-analysis function is
+included in the vcmeta package primarily for classroom  demonstrations to
+illustrate the problematic characteristics of the constant coefficient
+meta-analysis model.
 }
 \examples{
 est <- c(.022, .751, .421, .287, .052, .146, .562, .904)
@@ -59,4 +69,7 @@ meta.ave.gen.cc(.05, est, se, bystudy = TRUE)
 \item \insertRef{Hedges1985}{vcmeta}
 \item \insertRef{Borenstein2009}{vcmeta}
 }
+}
+\seealso{
+\link[vcmeta]{meta.ave.gen}
 }

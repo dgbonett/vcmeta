@@ -41,7 +41,8 @@ ratio. The estimates are OLS estimates with robust standard errors
 that accommodate residual heteroscedasticity. The exponentiated
 slope estimate for a predictor variable describes a multiplicative
 change in the odds ratio associated with a 1-unit increase in that
-predictor variable.
+predictor variable, controlling for all other predictor variables
+in the model.
 }
 \examples{
 n1 <- c(204, 201, 932, 130, 77)

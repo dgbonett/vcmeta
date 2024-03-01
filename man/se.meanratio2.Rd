@@ -22,7 +22,7 @@ se.meanratio2(m1, m2, sd1, sd2, n1, n2)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of log mean ratio
+\item Estimate - estimated log mean ratio
 \item SE - standard error
 }
 }
@@ -32,16 +32,16 @@ This function can be used to compute the standard error of a
 deviations, and sample sizes. The log mean estimate and standard
 error output from this function can be used as input in the
 \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
-link[vcmeta]{meta.lm.gen} functions in application where compatible
+\link[vcmeta]{meta.lm.gen} functions in application where compatible
 mean ratios from a combination of 2-group and paired-samples experiments
-are used in the meta-analysis.
+are used in the meta-analysis. Equality of variances is not assumed.
 }
 \examples{
 se.meanratio2(21.9, 16.1, 3.82, 3.21, 40, 40)
 
 # Should return:
-#                  Estimate       SE
-# Log mean ratio: 0.3076674 0.041886
+#                   Estimate       SE
+# Log mean ratio:  0.3076674 0.041886
 
 
 }

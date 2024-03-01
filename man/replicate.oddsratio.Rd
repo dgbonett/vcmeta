@@ -22,13 +22,13 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the ratio of odds ratios between studies
-\item Row 4 estimates the average effect size for the two studies
+\item Row 3 estimates the ratio of odds ratios
+\item Row 4 estimates the geometric average odds ratio
 }
 
 The columns are:
 \itemize{
-\item Estimate - odds ratio estimate (single study, difference, average)
+\item Estimate - odds ratio estimate (single study, ratio, average)
 \item SE - standard error
 \item z - z-value
 \item p - p-value
@@ -39,8 +39,9 @@ The columns are:
 \description{
 This function computes confidence intervals for an odds ratio from an
 original study and a follow-up study. Confidence intervals for the
-ratio of odds ratios and average odds ratio size also are computed.
-The confidence level for the difference is 1 – 2alpha.
+ratio of odds ratios and geometric average odds ratio are also
+computed. The confidence level for the ratio of ratios is 1 – 2*alpha, which
+is recommended for equivalence testing.
 }
 \examples{
 replicate.oddsratio(.05, 1.39, .302, 1.48, .206)
@@ -49,7 +50,7 @@ replicate.oddsratio(.05, 1.39, .302, 1.48, .206)
 #                          Estimate        SE          z            p
 # Original:              1.39000000 0.3020000  4.6026490 4.171509e-06
 # Follow-up:             1.48000000 0.2060000  7.1844660 6.747936e-13
-# Original - Follow-up: -0.06273834 0.3655681 -0.1716188 8.637372e-01
+# Original/Follow-up:   -0.06273834 0.3655681 -0.1716188 8.637372e-01
 # Average:               0.36067292 0.1827840  1.9732190 4.847061e-02
 #                         exp(LL)  exp(UL)
 # Original:             2.2212961 7.256583

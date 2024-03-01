@@ -23,16 +23,16 @@ meta.lc.prop.ps(alpha, f11, f12, f21, f22, v)
 \value{
 Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
-\item LL - lower limit of the confidence interval
-\item UL - upper limit of the confidence interval
+\item LL - lower limit of the adjusted Wald confidence interval
+\item UL - upper limit of the adjusted Wald confidence interval
 }
 }
 \description{
-Computes the estimate, standard error, and confidence interval for a
-linear contrast of paired-samples group proportion differences from two
-or more studies.
+Computes the estimate, standard error, and adjusted Wald confidence interval
+for a linear contrast of paired-samples proportion differences from two or
+more studies.
 }
 \examples{
 f11 <- c(17, 28, 19)

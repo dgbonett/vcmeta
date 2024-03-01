@@ -2,7 +2,8 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.cor}
 \alias{replicate.cor}
-\title{Compares and combines Pearson or partial correlations in original and follow-up studies}
+\title{Compares and combines Pearson or partial correlations in original and
+follow-up studies}
 \usage{
 replicate.cor(alpha, cor1, n1, cor2, n2, s)
 }
@@ -24,8 +25,8 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size for the two studies
+\item Row 3 estimates the difference in correlations
+\item Row 4 estimates the average correlation
 }
 
 The columns are:
@@ -40,14 +41,15 @@ The columns are:
 }
 \description{
 This function can be used to compare and combine Pearson or partial
-correlations from the original study and the follow-up study. The
-confidence level for the difference is 1 – 2alpha.
+correlations from an original study and a follow-up study. The
+confidence level for the difference is 1 – 2*alpha, which is recommended
+for equivalence testing.
 }
 \examples{
 replicate.cor(.05, .598, 80, .324, 200, 0)
 
 # Should return:
-#                      Estimate         SE        z            p        LL        UL
+#                       Estimate         SE        z            p        LL        UL
 # Original:                0.598 0.07320782 6.589418 4.708045e-09 0.4355043 0.7227538
 # Follow-up:               0.324 0.06376782 4.819037 2.865955e-06 0.1939787 0.4428347
 # Original - Follow-up:    0.274 0.09708614 2.633335 8.455096e-03 0.1065496 0.4265016

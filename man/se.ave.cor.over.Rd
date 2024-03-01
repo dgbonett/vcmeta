@@ -42,9 +42,9 @@ have reported cor13.
 se.ave.cor.over(.462, .518, .755, 100)
 
 # Should return:
-#               Estimate         SE  VAR(cor12) VAR(cor13) COV(cor12,cor13)
-# Correlation  0.4900000 0.07087351 0.006378045 0.00551907      0.004097553
-# Fisher       0.5360603 0.09326690 0.010309278 0.01030928      0.007119936
+#                Estimate         SE  VAR(cor12) VAR(cor13) COV(cor12,cor13)
+# Correlation:  0.4900000 0.07087351 0.006378045 0.00551907      0.004097553
+# Fisher:       0.5360603 0.09326690 0.010309278 0.01030928      0.007119936
 
 
 }

@@ -22,7 +22,7 @@ se.mean2(m1, m2, sd1, sd2, n1, n2)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of mean difference
+\item Estimate - estimated mean difference
 \item SE - standard error
 }
 }
@@ -35,12 +35,13 @@ in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
 and \link[vcmeta]{meta.lm.gen} functions in applications where
 compatible mean differences from a combination of 2-group
 and paired-samples experiments are used in the meta-analysis.
+Equality of variances is not asumed.
 }
 \examples{
 se.mean2(21.9, 16.1, 3.82, 3.21, 40, 40)
 
-#                  Estimate        SE
-# Mean difference:      5.8 0.7889312
+#                   Estimate        SE
+# Mean difference:       5.8 0.7889312
 
 
 }

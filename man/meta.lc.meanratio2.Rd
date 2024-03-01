@@ -27,11 +27,11 @@ meta.lc.meanratio2(alpha, m1, m2, sd1, sd2, n1, n2, v)
 \value{
 Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of log-linear contrast
+\item Estimate - estimated log-linear contrast
 \item SE - standard error of log-linear contrast
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
-\item exp(Estimate) - the exponentiated estimate
+\item exp(Estimate) - exponentiated log-linear contrast
 \item exp(LL) - lower limit of the exponentiated confidence interval
 \item exp(UL) - upper limit of the exponentiated confidence interval
 \item df - degrees of freedom

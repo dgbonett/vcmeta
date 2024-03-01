@@ -22,8 +22,8 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size for the two studies
+\item Row 3 estimates the difference in effect sizes
+\item Row 4 estimates the average effect size
 }
 
 Columns are:
@@ -37,12 +37,12 @@ Columns are:
 }
 }
 \description{
-This function can be used to compare and combine any effect size (e.g.,odds
-ratio, proportion ratio, proportion difference, slope coefficient, etc.)
-using the effect size estimate and its standard error from the original study
-and the follow-up study. The same results can be obtained using the
+This function can be used to compare and combine any effect size using the
+effect size estimate and its standard error from the original study and
+the follow-up study. The same results can be obtained using the
 \link[vcmeta]{meta.lc.gen} function with appropriate contrast coefficients.
-The confidence level for the difference is 1 – 2alpha.
+The confidence level for the difference is 1 – 2*alpha, which is
+recommended for equivalence testing.
 }
 \examples{
 replicate.gen(.05, .782, .210, .650, .154)

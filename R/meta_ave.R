@@ -1847,7 +1847,7 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' effect-size heterogeneity (tau-squared) is also computed. 
 #'
 #'
-#' @ details
+#' @details
 #' The random coefficient model assumes that the studies in the meta-analysis
 #' are a random sample from some definable superpopulation of studies. This
 #' assumption is very difficult to justify. The weighted average estimate

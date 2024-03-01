@@ -18,7 +18,7 @@ se.tetra(f00, f01, f10, f11)
 \value{
 Returns a 1-row matrix. The columns are:
 \itemize{
-\item Estimate - estimate of tetrachoric approximation
+\item Estimate - estimated tetrachoric approximation
 \item SE - standard error
 }
 }
@@ -38,8 +38,8 @@ x and y.
 se.tetra(46, 15, 54, 85)
 
 # Should return:
-#       Estimate         SE 
-# [1,] 0.5135167 0.09358336
+#                Estimate         SE 
+# Tetrachoric:  0.5135167 0.09358336
 
 
 }

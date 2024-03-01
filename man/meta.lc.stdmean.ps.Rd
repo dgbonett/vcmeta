@@ -33,7 +33,7 @@ meta.lc.stdmean.ps(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr)
 \value{
 Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval

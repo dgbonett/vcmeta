@@ -22,8 +22,8 @@ A 4-row matrix. The rows are:
 \itemize{
 \item Row 1 summarizes the original study
 \item Row 2 summarizes the follow-up study
-\item Row 3 estimates the difference between studies
-\item Row 4 estimates the average effect size for the two studies
+\item Row 3 estimates the difference in correlations
+\item Row 4 estimates the average correlation
 }
 
 The columns are:
@@ -38,14 +38,14 @@ The columns are:
 }
 \description{
 This function can be used to compare and combine Spearman correlations from
-the original study and the follow-up study. The confidence level for the
-difference is 1 – 2alpha.
+an original study and a follow-up study. The confidence level for the
+difference is 1 – 2*alpha, which is recommended for equivalence testing.
 }
 \examples{
 replicate.spear(.05, .598, 80, .324, 200)
 
 # Should return:
-#                      Estimate         SE        z            p         LL        UL
+#                       Estimate         SE        z            p         LL        UL
 # Original:                0.598 0.07948367 5.315140 1.065752e-07 0.41985966 0.7317733
 # Follow-up:               0.324 0.06541994 4.570582 4.863705e-06 0.19049455 0.4457384
 # Original - Follow-up:    0.274 0.10294378 3.437975 5.860809e-04 0.09481418 0.4342171

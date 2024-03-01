@@ -24,7 +24,7 @@ meta.ave.prop.ps(alpha, f11, f12, f21, f22, bystudy = TRUE)
 Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
 is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
-\item Estimate - the estimated effect size
+\item Estimate - estimated effect size
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval

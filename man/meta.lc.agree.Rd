@@ -22,17 +22,17 @@ meta.lc.agree(alpha, f11, f12, f21, f22, v)
 \value{
 Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimate of linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
-\item LL - lower limit of the confidence interval
-\item UL - upper limit of the confidence interval
+\item LL - lower limit of the adjusted Wald confidence interval
+\item UL - upper limit of the adjusted Wald confidence interval
 }
 }
 \description{
-Computes the estimate, standard error, and confidence interval for a
-linear contrast of G-index of agreement coefficients from two or more
-studies. This function assumes that two raters each provide a dichotomous
-rating for a sample of objects.
+Computes the estimate, standard error, and adjusted Wald confidence
+interval for a linear contrast of G-index of agreement coefficients
+from two or more studies. This function assumes that two raters each
+provide a dichotomous rating for a sample of objects.
 }
 \examples{
 f11 <- c(43, 56, 49)

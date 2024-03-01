@@ -5,7 +5,8 @@ Changes:
 
 * New functions: se.cohen, replicate.ratio.prop2, replicate.prop.ps, table.from.odds, table.from.phi, meta.sub.gen
 * The ci.fisher function has been renamed meta.ave.fisher
-* corrected output error in meta.ave.gen.rc function when bystudy = FALSE 
+* Corrected output error in meta.ave.gen.rc function when bystudy = FALSE 
+* cor.from.t now returns a 1x1 matrix with column 'Estimate'
 
 
 

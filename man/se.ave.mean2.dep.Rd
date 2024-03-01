@@ -33,7 +33,7 @@ se.ave.mean2.dep(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1, n2)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimate of average mean difference
+\item Estimate - estimated average mean difference
 \item SE - standard error
 \item VAR(A) - variance of mean difference for variable A
 \item VAR(B) - variance of mean difference for variable B
@@ -51,14 +51,15 @@ from this function can then be used as input in the
 \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
 \link[vcmeta]{meta.lm.gen} functions in a meta-analysis where some studies
 have used one of the two parallel response variables and other studies have
-used the other parallel response variable.
+used the other parallel response variable. Equality of variances is not
+assumed.
 }
 \examples{
 se.ave.mean2.dep(21.9, 16.1, 3.82, 3.21, 24.8, 17.1, 3.57, 3.64, .785, 40, 40)
 
 # Should return:
-#      Estimate        SE    VAR(A)    VAR(B)  COV(A,B)
-# [1,]     6.75 0.7526878 0.6224125 0.6498625 0.4969403
+#                          Estimate        SE    VAR(A)    VAR(B)  COV(A,B)
+# Average mean difference:     6.75 0.7526878 0.6224125 0.6498625 0.4969403
 
 
 }

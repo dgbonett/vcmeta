@@ -26,7 +26,7 @@ x and y."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/ma
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vcmeta</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
       </span>
     </div>
 
@@ -96,7 +96,7 @@ x and y.</p>
     <h2>Value</h2>
     
 
-<p>Returns a 1-row matrix. The columns are:</p><ul><li><p>Estimate - estimate of tetrachoric approximation</p></li>
+<p>Returns a 1-row matrix. The columns are:</p><ul><li><p>Estimate - estimated tetrachoric approximation</p></li>
 <li><p>SE - standard error</p></li>
 </ul></div>
     <div id="references">
@@ -111,12 +111,12 @@ ISSN 1076-9986, <a href="https://doi.org/10.3102/10769986030002213" class="exter
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">se.tetra</span><span class="op">(</span><span class="fl">46</span>, <span class="fl">15</span>, <span class="fl">54</span>, <span class="fl">85</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       Estimate         SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> [1,] 0.5135167 0.09358336</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                Estimate         SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Tetrachoric:  0.5135167 0.09358336</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return:</span></span></span>
-<span class="r-in"><span><span class="co">#       Estimate         SE </span></span></span>
-<span class="r-in"><span><span class="co"># [1,] 0.5135167 0.09358336</span></span></span>
+<span class="r-in"><span><span class="co">#                Estimate         SE </span></span></span>
+<span class="r-in"><span><span class="co"># Tetrachoric:  0.5135167 0.09358336</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>

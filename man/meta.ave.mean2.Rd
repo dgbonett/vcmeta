@@ -27,7 +27,7 @@ meta.ave.mean2(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
 is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
-\item Estimate - the estimated effect size
+\item Estimate - estimated effect size
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -38,7 +38,8 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 Computes the estimate, standard error, and confidence interval for an
 average mean difference from two or more 2-group studies. A Satterthwaite
 adjustment to the degrees of freedom is used to improve the accuracy of the
-confidence intervals. Equality of variances within or across studies is not assumed.
+confidence intervals. Equality of variances within or across studies is not
+assumed.
 }
 \examples{
 m1 <- c(7.4, 6.9)

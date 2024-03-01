@@ -13,8 +13,7 @@ meta.ave.cronbach(alpha, n, rel, r, bystudy = TRUE)
 
 \item{rel}{vector of sample reliabilities}
 
-\item{r}{number of measurements (e.g., items) used to compute
-each reliability}
+\item{r}{number of measurements (e.g., items) used to compute each reliability}
 
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }
@@ -22,7 +21,7 @@ each reliability}
 Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
 is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 \itemize{
-\item Estimate - the estimated effect size
+\item Estimate - estimated effect size
 \item SE - standard error
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
