@@ -24,7 +24,7 @@ Returns a 1-row matrix. The columns are:
 \description{
 This function should be used with the \link[vcmeta]{meta.ave.gen}
 function when the effect size is a correlation. Use the estimated average
-correlation and it standard error from meta.ave.gen in this function to
+correlation and its standard error from meta.ave.gen in this function to
 obtain a more accurate confidence interval for the population average
 correlation.
 }

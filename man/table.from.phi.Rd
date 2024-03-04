@@ -2,8 +2,7 @@
 % Please edit documentation in R/meta_misc.R
 \name{table.from.phi}
 \alias{table.from.phi}
-\title{table.from.phi ============================================================
-Computes the cell frequencies in a 2x2 table using the marginal proportions
+\title{Computes the cell frequencies in a 2x2 table using the marginal proportions
 and phi correlation}
 \usage{
 table.from.phi(p1row, p1col, phi, n)
