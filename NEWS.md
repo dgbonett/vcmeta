@@ -1,4 +1,4 @@
-vcmeta v1.3.0 (Release date: 2024/02/27)
+vcmeta v1.3.0 (Release date: 2024/03/04)
 ==============
 
 Changes:

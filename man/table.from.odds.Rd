@@ -2,8 +2,7 @@
 % Please edit documentation in R/meta_misc.R
 \name{table.from.odds}
 \alias{table.from.odds}
-\title{table.from.odds ============================================================
-Computes the cell frequencies in a 2x2 table using the marginal proportions
+\title{Computes the cell frequencies in a 2x2 table using the marginal proportions
 and odds ratio}
 \usage{
 table.from.odds(p1row, p1col, or, n)
