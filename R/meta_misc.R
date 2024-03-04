@@ -5,7 +5,7 @@
 #' @description 
 #' This function should be used with the \link[vcmeta]{meta.ave.gen}
 #' function when the effect size is a correlation. Use the estimated average
-#' correlation and it standard error from meta.ave.gen in this function to 
+#' correlation and its standard error from meta.ave.gen in this function to 
 #' obtain a more accurate confidence interval for the population average 
 #' correlation. 
 #'
@@ -171,7 +171,7 @@ stdmean2.from.t <- function(t, n1, n2) {
 }
 
 
-#' table.from.odds ============================================================
+#  table.from.odds ============================================================
 #' Computes the cell frequencies in a 2x2 table using the marginal proportions
 #' and odds ratio 
 #'                   
@@ -242,7 +242,7 @@ table.from.odds <- function(p1row, p1col, or, n){
 }
 
 
-#' table.from.phi ============================================================
+#  table.from.phi ============================================================
 #' Computes the cell frequencies in a 2x2 table using the marginal proportions
 #' and phi correlation 
 #'                   
