@@ -163,7 +163,6 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
     du <- (1 - 3/(4*n1 - 5))*d
     var <- d^2/(2*df1) + 1/df1 + v2/(df2*v1)
   } else if (stdzr == 2) {
-    cat ("Standardizer = sd2", fill = TRUE) 
     d <- (m1 - m2)/sd2
     du <- (1 - 3/(4*n2 - 5))*d
     var <- d^2/(2*df2) + 1/df2 + v1/(df1*v2)
