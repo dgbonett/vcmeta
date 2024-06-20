@@ -179,9 +179,9 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
     se <- sqrt(d^2/(2*df2) + 1/df2 + sd1^2/(df1*sd2^2))
   }
   else {
-    s <- sqrt((sd1^2 + sd2^2)/2)
+    s <- sqrt((df1*sd1^2 + df2*sd2^2)/(n1 + n2 - 2))
     d <- (m1 - m2)/s
-    se <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
+    se <- sqrt(d^2*(1/df1 + 1/df2)/8 + (sd1^2/n1 + sd2^2/n2)/s^2)
   }
   out <- t(c(d, se))
   colnames(out) <- c("Estimate", "SE")
