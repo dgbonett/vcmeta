@@ -732,11 +732,11 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
     var <- d^2/(2*df2) + 1/df2 + var1/(df1*var2)
     se <- sqrt(t(v)%*%(diag(var))%*%v)
   } else {
-    s2 <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
+    s2 <- sqrt((df1*var1 + df2*var2)/(df1 + df2))
     d <- (m1 - m2)/s2
     du <- (1 - 3/(4*(n1 + n2) - 9))*d
     con <- t(v)%*%du
-    var <- d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2
+    var <- d^2*(1/df1 + 1/df2)/8 + (var1/n1 + var2/n2)/s2^2
     se <- sqrt(t(v)%*%(diag(var))%*%v)
   }
   ll <- con - z*se
