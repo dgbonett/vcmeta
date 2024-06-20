@@ -1863,7 +1863,7 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' superpopulation normality assumption. 
 #'
 #' The random coefficient model should be used with caution, and the varying 
-#' coefficient methods in this package are the recommended alternative. The 
+#' coefficient methods in this package are the recommended alternatives. The 
 #' varying coefficient methods allows the effect sizes to differ across studies
 #' but do not require the studies to be a random sample from a definable 
 #' superpopoulation of studies. This random coefficient function is included 
