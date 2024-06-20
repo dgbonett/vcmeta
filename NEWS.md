@@ -1,3 +1,14 @@
+vcmeta v1.4.0 (Release date: 2024/07/xx)
+==============
+
+Changes:
+
+* New function: se.bicor
+* The standard error for a standardized mean difference with a weighted variance standardizer in the meta.ave.stdmean2, meta.lc.stdmean2,
+  meta.lm.stdmean2, and se.stdmean2 functions no longer assume equal variances
+
+
+
 vcmeta v1.3.0 (Release date: 2024/03/04)
 ==============
 
