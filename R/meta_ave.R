@@ -176,11 +176,11 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
     var <- d^2/(2*df2) + 1/df2 + v1/(df1*v2)
     se <- sqrt(sum(var)/m^2)
   } else {
-    s2 <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
+    s2 <- sqrt((df1*v1 + df2*v2)/(df1 + df2))
     d <- (m1 - m2)/s2
     du <- (1 - 3/(4*(n1 + n2) - 9))*d
     ave <- sum(du)/m
-    var <- d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2
+    var <- d^2*(1/df1 + 1/df2)/8 + (v1/n1 + v2/n2)/s2^2
     se <- sqrt(sum(var)/m^2)
   }
   ll <- ave - z*se
