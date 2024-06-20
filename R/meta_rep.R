@@ -239,10 +239,10 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' @description 
 #' This function computes confidence intervals from an original study and a 
 #' follow-up study where the effect size is a 2-group standardized mean 
-#' difference. Confidence intervals for the difference and average effect 
-#' size are also computed. Equality of variances within or across studies
-#' is not assumed. The same results can be obtained using the
-#' \link[vcmeta]{meta.lc.stdmean2} function with appropriate contrast coefficients. 
+#' difference with a unweighted variance standardizer. Confidence intervals for
+#' the difference and average effect size are also computed. Equality of variances
+#' within or across studies is not assumed. The same results can be obtained using
+#' the \link[vcmeta]{meta.lc.stdmean2} function with appropriate contrast coefficients. 
 #' The confidence level for the difference is 1 – 2*alpha, which is recommended 
 #' for equivalence testing.
 #' 
