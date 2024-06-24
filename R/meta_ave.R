@@ -1960,6 +1960,83 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
 }
 
 
+#  meta.ave.cor.gen ==========================================================
+#' Confidence interval for an average correlation of any type
+#' 
+#' 
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average correlation. Any type of correlation can be used (e.g., Pearson,
+#' Spearman, semipartial, factor correlation, Gamma coefficient, Somers d
+#' coefficient, tetrachoric, point-biserial, biserial, etc.).
+#' 
+#' 
+#' @param alpha	   alpha level for 1-alpha confidence
+#' @param cor      vector of estimated correlations 
+#' @param se   	   vector of standard errors 
+#' @param bystudy  logical to also return each study estimate (TRUE) or not
+#' 
+#' 
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated effect size
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' cor <- c(.396, .454, .409, .502, .350)
+#' se <- c(.104, .064, .058, .107, .086)
+#' meta.ave.cor.gen(.05, cor, se, bystudy = TRUE)
+#' 
+#' # Should return:
+#' #         Estimate         SE        LL        UL
+#' # Average   0.4222 0.03853362 0.3438560 0.4947070
+#' # Study 1   0.3960 0.10400000 0.1753200 0.5787904
+#' # Study 2   0.4540 0.06400000 0.3200675 0.5701415
+#' # Study 3   0.4090 0.05800000 0.2893856 0.5160375
+#' # Study 4   0.5020 0.10700000 0.2651183 0.6817343
+#' # Study 5   0.3500 0.08600000 0.1716402 0.5061435
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2008a}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
+  m <- length(cor)
+  z <- qnorm(1 - alpha/2)
+  ave.cor <- sum(cor)/m
+  se.ave <- sqrt(sum(se^2)/m^2)
+  z.ave <- log((1 + ave.cor)/(1 - ave.cor))/2
+  ll0 <- z.ave - z*se.ave/(1 - ave.cor^2)
+  ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
+  ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+  ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+  out <- cbind(ave.cor, se.ave, ll, ul)
+  row <- "Average"
+  if (bystudy) {
+    se.z <- se/(1 - cor^2)
+    z.cor <- log((1 + cor)/(1 - cor))/2
+    ll0 <- z.cor - z*se.z
+    ul0 <- z.cor + z*se.z
+    ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+    ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(cor, se, ll, ul)
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- row
+  return (out)
+}
+
+
 use_imports <- function() {
   mathjaxr::preview_rd()
 }
