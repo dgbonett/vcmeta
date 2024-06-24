@@ -762,10 +762,10 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
-#' @param    m1    	vector of estimated means for group 1 
-#' @param    m2    	vector of estimated means for group 2 
-#' @param    sd1   	vector of estimated SDs for group 1
-#' @param    sd2   	vector of estimated SDs for group 2
+#' @param    m1    	vector of estimated means for measurement 1 
+#' @param    m2    	vector of estimated means for measurement 2 
+#' @param    sd1   	vector of estimated SDs for measurement 1
+#' @param    sd2   	vector of estimated SDs for measurement 2
 #' @param    cor   	vector of estimated correlations for paired measurements
 #' @param    n     	vector of sample sizes
 #' @param    v     	vector of contrast coefficients
@@ -835,17 +835,17 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
-#' @param    m1    	vector of estimated means for group 1 
-#' @param    m2    	vector of estimated means for group 2 
-#' @param    sd1   	vector of estimated SDs for group 1
-#' @param    sd2   	vector of estimated SDs for group 2
+#' @param    m1    	vector of estimated means for measurement 1 
+#' @param    m2    	vector of estimated means for measurement 2 
+#' @param    sd1   	vector of estimated SDs for measurement 1
+#' @param    sd2   	vector of estimated SDs for measurement 2
 #' @param    cor	  vector of estimated correlations for paired measurements
 #' @param    n     	vector of sample sizes
 #' @param    v     	vector of contrast coefficients
 #' @param stdzr
 #' * set to 0 for square root unweighted average variance standardizer 
-#' * set to 1 for group 1 SD standardizer 
-#' * set to 2 for group 2 SD standardizer 
+#' * set to 1 for measurement 1 SD standardizer 
+#' * set to 2 for measurement 2 SD standardizer 
 #' 
 #' 
 #' @return 
@@ -921,7 +921,7 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
-#' log-linear contrast of 2-group mean ratio from two or more studies. A
+#' log-linear contrast of 2-group mean ratios from two or more studies. A
 #' Satterthwaite adjustment to the degrees of freedom is used to improve
 #' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
@@ -1013,10 +1013,10 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #'
 #'
 #' @param    alpha	alpha level for 1-alpha confidence
-#' @param    m1    	vector of estimated means for group 1 
-#' @param    m2    	vector of estimated means for group 2 
-#' @param    sd1   	vector of estimated SDs for group 1
-#' @param    sd2   	vector of estimated SDs for group 2
+#' @param    m1    	vector of estimated means for measurement 1 
+#' @param    m2    	vector of estimated means for measurement 2 
+#' @param    sd1   	vector of estimated SDs for measurement 1
+#' @param    sd2   	vector of estimated SDs for measurement 2
 #' @param    cor   	vector of estimated correlations for paired measurements
 #' @param    n     	vector of sample sizes
 #' @param    v     	vector of contrast coefficients
