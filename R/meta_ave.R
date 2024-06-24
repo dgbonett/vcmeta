@@ -180,7 +180,7 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
     d <- (m1 - m2)/s2
     du <- (1 - 3/(4*(n1 + n2) - 9))*d
     ave <- sum(du)/m
-    var <- d^2*(1/df1 + 1/df2)/8 + (v1/n1 + v2/n2)/s2^2
+    var <- d^2*(1/df1 + 1/df2)/8 + (v1/df1 + v2/df2)/s2^2
     se <- sqrt(sum(var)/m^2)
   }
   ll <- ave - z*se
@@ -195,7 +195,7 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
     } else if (stdzr == 2) {
       se <- sqrt(d^2/(2*df2) + 1/df2 + v1/(df1*v2))
     } else {
-      se <- sqrt(d^2*(1/df1 + 1/df2)/8 + (v1/n1 + v2/n2)/s2^2)
+      se <- sqrt(d^2*(1/df1 + 1/df2)/8 + (v1/df1 + v2/df2)/s2^2)
     }
     ll <- d - z*se
     ul <- d + z*se
