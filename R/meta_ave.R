@@ -195,7 +195,7 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
     } else if (stdzr == 2) {
       se <- sqrt(d^2/(2*df2) + 1/df2 + v1/(df1*v2))
     } else {
-      se <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
+      se <- sqrt(d^2*(1/df1 + 1/df2)/8 + (v1/df1 + v2/df2)/s2^2)
     }
     ll <- d - z*se
     ul <- d + z*se
