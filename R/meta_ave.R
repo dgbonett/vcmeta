@@ -109,7 +109,7 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 #' @param n1		  vector of group 1 sample sizes
 #' @param n2		  vector of group 2 sample sizes
 #' @param stdzr
-#' * set to 0 for square root unweighted  average variance standardizer 
+#' * set to 0 for square root unweighted average variance standardizer 
 #' * set to 1 for group 1 SD standardizer 
 #' * set to 2 for group 2 SD standardizer 
 #' * set to 3 for square root weighted average variance standardizer
@@ -308,7 +308,7 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average standardized mean difference from two or more paired-samples
-#' studies. Unweighted variances and single group variance are options 
+#' studies. Unweighted variances and single condition variance are options 
 #' for the standardizer. Equality of variances within or across studies is not
 #' assumed.
 #'
