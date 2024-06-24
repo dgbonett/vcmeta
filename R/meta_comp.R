@@ -1,20 +1,20 @@
 # ================= Sub-group Comparison of Effect Sizes ============
 #  meta.sub.cor =====================================================
-#' Confidence interval for a difference in average Pearson or partial 
-#' correlations for two sets of studies 
+#' Confidence interval for a subgroup difference in average Pearson 
+#' or partial correlations
 #' 
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
 #' difference in average Pearson or partial correlations for two mutually
-#' exclusive sets of studies. Each set can have one or more studies. All
-#' of the correlations must be either Pearson correlations or partial
-#'  correlations.
+#' exclusive subgroups of studies. Each subgroup can have one or more 
+#' studies. All of the correlations must be either Pearson correlations
+#' or partial correlations.
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     n      	vector of sample sizes 
-#' @param     cor    	vector of estimated Pearson correlations 
+#' @param     cor    	vector of estimated correlations 
 #' @param     s      	number of control variables (set to 0 for Pearson)
 #' @param     group  	vector of group indicators:
 #' * 1 for set A
@@ -92,14 +92,15 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 
 
 #  meta.sub.spear =============================================
-#' Confidence interval for a difference in average Spearman 
-#' correlations for two sets of studies
+#' Confidence interval for a subgroup difference in average
+#' Spearman correlations
 #' 
 #' 
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
-#' difference in average Spearman correlations for two mutually
-#' exclusive sets of studies. Each set can have one or more studies. 
+#' Computes the estimate, standard error, and confidence interval 
+#' for a  difference in average Spearman correlations for two 
+#' mutually exclusive subgroups of studies. Each subgroup can have
+#' one or more studies. 
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -181,20 +182,20 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 
 
 #  meta.sub.pbcor ===============================================
-#' Confidence interval for a difference in average point-biserial
-#' correlations for two sets of studies 
+#' Confidence interval for a subgroup difference in average 
+#' point-biserial correlations
 #' 
 #'
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
-#' difference in average point-biserial correlations for two mutually
-#' exclusive sets of studies. Each set can have one or more studies. Two 
-#' types of point-biserial correlations can be analyzed. One type uses
-#' an unweighted variance and is recommended for 2-group experimental
-#' designs. The other type uses a weighted variance and is recommended
-#' for 2-group nonexperimental designs with simple random sampling (but
-#' not stratified random sampling) within each study. Equality of 
-#' variances within or across studies is not assumed.
+#' Computes the estimate, standard error, and confidence interval for  
+#' a difference in average point-biserial correlations for two mutually
+#' exclusive subgroups of studies. Each subgroup can have one or more 
+#' studies. Two types of point-biserial correlations can be analyzed. 
+#' One type uses an unweighted variance and is recommended for 2-group
+#' experimental designs. The other type uses a weighted variance and 
+#' is recommended for 2-group nonexperimental designs with simple random
+#' sampling (but not stratified random sampling) within each study. 
+#' Equality of variances within or across studies is not assumed.
 #'    
 #'    
 #' @param     alpha   	alpha level for 1-alpha confidence
@@ -307,14 +308,15 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 
 
 #  meta.sub.semipart =========================================
-#' Confidence interval for a difference in average semipartial 
-#' correlations for two sets of studies 
+#' Confidence interval for a subgroup difference in average 
+#' semipartial correlations
 #' 
 #' 
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
-#' difference in average semipartial correlations for two sets of 
-#' mutually exclusive studies. Each set can have one or more studies. 
+#' Computes the estimate, standard error, and confidence interval
+#' for a difference in average semipartial correlations for two 
+#' subgroups of mutually exclusive studies. Each subgroup can
+#' have one or more studies. 
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -396,16 +398,16 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 
 
 #  meta.sub.cronbach ==============================================
-#' Confidence interval for a difference in average Cronbach 
-#' reliabilities for two sets of studies 
+#' Confidence interval for a subgroup difference in average Cronbach 
+#' reliabilities 
 #' 
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
-#' difference in average Cronbach reliability coefficients for two mutually
-#' exclusive sets of studies. Each set can have one or more studies. The 
-#' number of measurements used to compute the sample reliablity coefficient
-#' is assumed to be the same for all studies.
+#' difference in average Cronbach reliability coefficients for two 
+#' mutually exclusive subgroups of studies. Each set can have one or
+#' more studies. The number of measurements used to compute the sample
+#' reliablity coefficient is assumed to be the same for all studies.
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -490,15 +492,14 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 
 
 #  meta.sub.gen ===============================================================
-#' Confidence interval for a difference in average effect size for two sets 
-#' of studies 
+#' Confidence interval for a subgroup difference in average effect size
 #' 
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
 #' difference in the average effect size (any type of effect size) for
-#' two mutually exclusive sets of studies. Each set can have one or more 
-#' studies. All of the effects sizes should be compatible. 
+#' two mutually exclusive subgroups of studies. Each subgroup can have one
+#' or more studies. All of the effects sizes should be compatible. 
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
