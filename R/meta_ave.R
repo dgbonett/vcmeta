@@ -322,8 +322,8 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' @param   n		    vector of sample sizes
 #' @param   stdzr		
 #' * set to 0 for square root unweighted average variance standardizer 
-#' * set to 1 for group 1 SD standardizer 
-#' * set to 2 for group 2 SD standardizer 
+#' * set to 1 for measurement 1 SD standardizer 
+#' * set to 2 for measurement 2 SD standardizer 
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
@@ -926,7 +926,7 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #' an unweighted variance and is appropriate in 2-group experimental
 #' designs. The other type uses a weighted variance and is appropriate in
 #' 2-group nonexperimental designs with simple random sampling (but not
-#' stratified random sample) within each study. This function requires 
+#' stratified random sampling) within each study. This function requires 
 #' all point-biserial correlations to be of the same type.  Use the
 #' meta.ave.gen function to meta-analyze any combination of biserial
 #' correlation types. 
@@ -1611,8 +1611,8 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #'
 #' @description
 #' Computes the estimate and confidence interval for an average variance 
-#' from two or more studies. The estimated average variance or the
-#' upper limit could be used as a variance planning value in sample
+#' from two or more studies. The estimated average variance or the upper
+#' confidence limit could be used as a variance planning value in sample
 #' size planning.
 #'
 #'  
