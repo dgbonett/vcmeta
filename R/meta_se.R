@@ -272,7 +272,7 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #' Pearson or partial correlation using the estimated correlation, 
 #' sample size, and number of control variables. The correlation, 
 #' along with the standard error output from this function, can be used 
-#' as input in the \link[vcmeta]{meta.ave.gen} function in applications
+#' as input in the \link[vcmeta]{meta.ave.cor.gen} function in applications
 #' where a combination of different types of correlations are used in
 #' the meta-analysis. 
 #' 
@@ -318,7 +318,7 @@ se.cor <- function(cor, s, n) {
 #' This function computes the Bonett-Wright standard
 #' error of a Spearman correlation using the estimated correlation
 #' and sample size. The standard error from this function can be used
-#' as input in the \link[vcmeta]{meta.ave.gen} function in applications 
+#' as input in the \link[vcmeta]{meta.ave.cor.gen} function in applications 
 #' where a combination of different types of correlations are used in 
 #' the meta-analysis. 
 #' 
@@ -365,7 +365,7 @@ se.spear <- function(cor, n) {
 #' size, and squared multiple correlation for the full model. The full
 #' model includes the independent variable of interest and all control
 #' variables. The effect size estimate and standard error output from this 
-#' function can be used as input in the \link[vcmeta]{meta.ave.gen} 
+#' function can be used as input in the \link[vcmeta]{meta.ave.cor.gen} 
 #' function in applications where a combination of different types
 #' of correlations are used in the meta-analysis. 
 #' 
@@ -420,7 +420,7 @@ se.semipartial <- function(cor, r2, n) {
 #' 2-group experimental design and other studies used a 2-group 
 #' nonexperimental design. The effect size estimate and standard error 
 #' output from this function can  be used as input in the
-#' \link[vcmeta]{meta.ave.gen} function.
+#' \link[vcmeta]{meta.ave.cor.gen} function.
 #'
 #' 
 #' @param    m1		estimated mean for group 1 
@@ -866,7 +866,7 @@ se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1
 #' variables 2 and 3 are different measurements of the same attribute, this 
 #' function can be used to compute the average of cor12 and cor13 and its 
 #' standard error. The average correlation and the standard error from this 
-#' function can be used as input in the \link[vcmeta]{meta.ave.gen} function
+#' function can be used as input in the \link[vcmeta]{meta.ave.cor.gen} function
 #' in a meta-analysis where some studies have reported cor12 and other studies
 #' have reported cor13. 
 #' 
@@ -931,7 +931,7 @@ se.ave.cor.over <- function(cor12, cor13, cor23, n) {
 #' average of cor12 and cor34 and its standard error. Note that cor12 and cor34
 #' have no variable in common (i.e., no "overlapping" variable). The average 
 #' correlation and the standard error from this function can be used as 
-#' input in the \link[vcmeta]{meta.ave.gen} function in a meta-analysis where
+#' input in the \link[vcmeta]{meta.ave.cor.gen} function in a meta-analysis where
 #' some studies have reported cor12 and other studies have reported cor34. 
 #' 
 #' 
@@ -997,7 +997,7 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
 #' from a 2 x 2 contingency table for two artifically dichotomous variables.
 #' A tetrachoric approximation could be compatible with a Pearson correlation
 #' in a meta-analysis. The tetrachoric approximation and the standard error 
-#' from this function can be used as input in the \link[vcmeta]{meta.ave.gen} 
+#' from this function can be used as input in the \link[vcmeta]{meta.ave.cor.gen} 
 #' function in a meta-analysis where some studies have reported Pearson 
 #' correlations between quantitative variables x and y and other studies have
 #' reported a 2 x 2 contingency table for dichotomous measurements of variables
@@ -1061,7 +1061,7 @@ se.tetra <- function(f00, f01, f10, f11) {
 #' variable is artifically dichotomous. A biserial-phi correlation could be 
 #' compatible with a point-biserial correlation in a meta-analysis. The 
 #' biserial-phi estimate and the standard error from this function can be used 
-#' as input in the \link[vcmeta]{meta.ave.gen} function in a meta-analysis 
+#' as input in the \link[vcmeta]{meta.ave.cor.gen} function in a meta-analysis 
 #' where a point-biserial correlation has been obtained in some studies and
 #' a biserial-phi correlation has been obtained in other studies.  
 #'
@@ -1173,7 +1173,7 @@ se.cohen <- function(d, n1, n2) {
 #' some studies report a Pearson correlation and other studies report the
 #' information needed to compute a biserial correlation. The biserial 
 #' correlation and standard error output from this function can be used as 
-#' input in the \link[vcmeta]{meta.ave.gen} function.
+#' input in the \link[vcmeta]{meta.ave.cor.gen} function.
 #'
 #'
 #' @details
