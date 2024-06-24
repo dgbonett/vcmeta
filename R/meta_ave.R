@@ -1046,7 +1046,8 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    n     	vector of sample sizes 
 #' @param    cor   	vector of estimated semipartial correlations 
-#' @param    r2  	  vector of squared multiple correlations for full model
+#' @param     r2   	  vector of squared multiple correlations for a model that
+#' includes the IV and all control variables
 #' @param bystudy   logical to also return each study estimate (TRUE) or not
 #' 
 #' 
