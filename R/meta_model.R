@@ -203,11 +203,11 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m1    	vector of estimated means for group 1 
-#' @param     m2    	vector of estimated means for group 2
-#' @param     sd1   	vector of estimated SDs for group 1
-#' @param     sd2   	vector of estimated SDs for group 2
-#' @param     cor   	vector of estimated correlations
+#' @param     m1    	vector of estimated means for measurement 1 
+#' @param     m2    	vector of estimated means for measurement 2
+#' @param     sd1   	vector of estimated SDs for measurement 1
+#' @param     sd2   	vector of estimated SDs for measurement 2
+#' @param     cor   	vector of estimated correlations for paired measurements
 #' @param     n     	vector of sample sizes
 #' @param     X     	matrix of predictor values
 #' 
@@ -285,11 +285,11 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m1    	vector of estimated means for group 1 
-#' @param     m2    	vector of estimated means for group 2
-#' @param     sd1   	vector of estimated SDs for group 1
-#' @param     sd2   	vector of estimated SDs for group 2
-#' @param     cor   	vector of estimated correlations
+#' @param     m1    	vector of estimated means for measurement 1 
+#' @param     m2    	vector of estimated means for measurement 2
+#' @param     sd1   	vector of estimated SDs for measurement 1
+#' @param     sd2   	vector of estimated SDs for measurement 2
+#' @param     cor   	vector of estimated correlations for paired measurements
 #' @param     n     	vector of sample sizes
 #' @param     X     	matrix of predictor values
 #' @param stdzr
@@ -481,11 +481,11 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' 
 #' 
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m1    	vector of estimated means for group 1 
-#' @param     m2    	vector of estimated means for group 2
-#' @param     sd1   	vector of estimated SDs for group 1
-#' @param     sd2   	vector of estimated SDs for group 2
-#' @param     cor   	vector of estimated correlations
+#' @param     m1    	vector of estimated means for measurement 1 
+#' @param     m2    	vector of estimated means for measurement 2
+#' @param     sd1   	vector of estimated SDs for measurement 1
+#' @param     sd2   	vector of estimated SDs for measurement 2
+#' @param     cor   	vector of estimated correlations for paired measurements
 #' @param     n     	vector of sample sizes
 #' @param     X     	matrix of predictor values
 #' 
