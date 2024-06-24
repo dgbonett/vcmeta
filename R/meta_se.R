@@ -214,8 +214,8 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 #' @param    n		sample size
 #' @param stdzr
 #' * set to 0 for square root average variance standardizer 
-#' * set to 1 for group 1 SD standardizer 
-#' * set to 2 for group 2 SD standardizer 
+#' * set to 1 for measurement 1 SD standardizer 
+#' * set to 2 for measurement 2 SD standardizer 
 #'  
 #' @return
 #' Returns a one-row matrix:
