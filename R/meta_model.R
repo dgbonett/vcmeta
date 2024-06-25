@@ -794,7 +794,7 @@ meta.lm.spear <- function(alpha, n, cor, X) {
 #' @param     alpha	 alpha level for 1-alpha confidence
 #' @param     n      vector of sample sizes
 #' @param     cor		 vector of estimated semipartial correlations
-#' @param     r2   	  vector of squared multiple correlations for a model that
+#' @param     r2   	 vector of squared multiple correlations for a model that
 #' includes the IV and all control variables
 #' @param     X		   matrix of predictor values
 #' 
