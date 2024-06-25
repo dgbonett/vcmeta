@@ -232,6 +232,7 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 }
 
 
+
 #  replicate.stdmean2 ============================================================
 #' Compares and combines 2-group standardized mean differences in original and 
 #' follow-up studies
@@ -240,10 +241,13 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' @description 
 #' This function computes confidence intervals from an original study and a 
 #' follow-up study where the effect size is a 2-group standardized mean 
-#' difference with an unweighted variance standardizer. Confidence intervals for
-#' the difference and average effect size are also computed. Equality of variances
-#' within or across studies is not assumed. The confidence level for the 
-#' difference is 1 – 2*alpha, which is recommended for equivalence testing.
+#' difference. Confidence intervals for the difference and average effect 
+#' size are also computed. Equality of variances within or across studies
+#' is not assumed. The same results can be obtained using the
+#' \link[vcmeta]{meta.lc.stdmean2} function with appropriate contrast coefficients. 
+#' The confidence level for the difference is 1 – 2*alpha, which is recommended 
+#' for equivalence testing. Square root unweighted variances, square root weighted
+#' variances, and single-group standard deviation are options for the standardizer.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -259,6 +263,11 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' @param    sd22   	 estimated SD for group 2 in follow-up study
 #' @param    n21    	 sample size for group 1 in follow-up study
 #' @param    n22    	 sample size for group 2 in follow-up study
+#' @param    stdzr
+#' * set to 0 for square root unweighted average variance standardizer 
+#' * set to 1 for group 1 SD standardizer 
+#' * set to 2 for group 2 SD standardizer 
+#' * set to 3 for square root weighted average variance standardizer 
 #' 
 #' 
 #' @return
@@ -278,14 +287,14 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' 
 #' @examples
 #' replicate.stdmean2(.05, 21.9, 16.1, 3.82, 3.21, 40, 40, 
-#'                         25.2, 19.1, 3.98, 3.79, 75, 75)
+#'                         25.2, 19.1, 3.98, 3.79, 75, 75, 0)
 #'
 #' # Should return: 
-#' #                         Estimate        SE         LL        UL
-#' # Original:             1.62803662 0.2629049  1.1286100 2.1591783
-#' # Follow-up:            1.56170447 0.1880713  1.2010594 1.9382853
-#' # Original - Follow-up: 0.07422178 0.3232488 -0.4574752 0.6059188
-#' # Average:              1.59487055 0.1616244  1.2780925 1.9116486
+#' #                           Estimate        SE         LL        UL
+#' #  Original:              1.62803662 0.2594668  1.1353486 2.1524396
+#' #  Follow-up:             1.56170447 0.1870576  1.2030461 1.9362986
+#' #  Original - Follow-up:  0.07422178 0.3198649 -0.4519092 0.6003527
+#' #  Average:               1.59487055 0.1599325  1.2814087 1.9083324
 #' 
 #' 
 #' @references
@@ -294,7 +303,7 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' 
 #' @importFrom stats qnorm
 #' @export
-replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd21, sd22, n21, n22) {
+replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd21, sd22, n21, n22, stdzr) {
   zcrit1 <- qnorm(1 - alpha/2)
   zcrit2 <- qnorm(1 - alpha)
   v11 <- sd11^2
@@ -305,22 +314,51 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
   df12 <- n12 - 1
   df21 <- n21 - 1
   df22 <- n22 - 1
-  s1 <- sqrt((v11 + v12)/2)
-  s2 <- sqrt((v21 + v22)/2)
-  a1 <- 1 - 3/(4*(n11 + n12) - 9)
-  a2 <- 1 - 3/(4*(n21 + n22) - 9)
-  est1 <- (m11 - m12)/s1
-  est2 <- (m21 - m22)/s2
+  if (stdzr == 0) {
+    s1 <- sqrt((v11 + v12)/2)
+    s2 <- sqrt((v21 + v22)/2)
+    a1 <- 1 - 3/(4*(n11 + n12) - 9)
+    a2 <- 1 - 3/(4*(n21 + n22) - 9)
+    est1 <- (m11 - m12)/s1
+    est2 <- (m21 - m22)/s2
+    se1 <- sqrt(est1^2*(v11^2/df11 + v12^2/df12)/(8*s1^4) + (v11/df11 + v12/df12)/s1^2)
+    se2 <- sqrt(est2^2*(v21^2/df21 + v22^2/df22)/(8*s2^4) + (v21/df21 + v22/df22)/s2^2)
+  } else if (stdzr == 1) { 
+    a1 <- (1 - 3/(4*n11 - 5))
+	a2 <- (1 - 3/(4*n21 - 5))
+    est1 <- (m11 - m12)/sd11
+    est2 <- (m21 - m22)/sd21
+	se1 <- sqrt(est1^2/(2*df11) + 1/df11 + v12/(df12*v11))
+	se2 <- sqrt(est2^2/(2*df21) + 1/df21 + v22/(df22*v21))
+  } else if (stdzr == 2) {
+    a1 <- (1 - 3/(4*n12 - 5))
+	a2 <- (1 - 3/(4*n22 - 5))
+    est1 <- (m11 - m12)/sd12
+    est2 <- (m21 - m22)/sd22
+	se1 <- sqrt(est1^2/(2*df12) + 1/df12 + v11/(df11*v11))
+	se2 <- sqrt(est2^2/(2*df22) + 1/df22 + v21/(df21*v22))
+  } else {
+    s1 <- sqrt((df11*v11 + df12*v12)/(df11 + df12))
+    s2 <- sqrt((df21*v21 + df22*v22)/(df21 + df22))
+    a1 <- 1 - 3/(4*(n11 + n12) - 9)
+    a2 <- 1 - 3/(4*(n21 + n22) - 9)
+    est1 <- (m11 - m12)/s1
+    est2 <- (m21 - m22)/s2
+    se1 <- sqrt(est1^2*(1/df11 + 1/df12)/8 + (v11/n11 + v12/n12)/s1^2)
+    se2 <- sqrt(est2^2*(1/df12 + 1/df22)/8 + (v12/n12 + v22/n22)/s2^2)
+  }
   est3 <- est1 - est2
   est4 <- (a1*est1 + a2*est2)/2
-  se1 <- sqrt(est1^2*(v11^2/df11 + v12^2/df12)/(8*s1^4) + (v11/df11 + v12/df12)/s1^2)
-  se2 <- sqrt(est2^2*(v21^2/df21 + v22^2/df22)/(8*s2^4) + (v21/df21 + v22/df22)/s2^2)
   se3 <- sqrt(se1^2 + se2^2)
   se4 <- se3/2
-  ll1 <- est1 - zcrit1*se1;  ul1 <- est1 + zcrit1*se1
-  ll2 <- est2 - zcrit1*se2;  ul2 <- est2 + zcrit1*se2
-  ll3 <- est3 - zcrit2*se3;  ul3 <- est3 + zcrit2*se3
-  ll4 <- est4 - zcrit1*se4;  ul4 <- est4 + zcrit1*se4
+  ll1 <- est1 - zcrit1*se1
+  ul1 <- est1 + zcrit1*se1
+  ll2 <- est2 - zcrit1*se2
+  ul2 <- est2 + zcrit1*se2
+  ll3 <- est3 - zcrit2*se3
+  ul3 <- est3 + zcrit2*se3
+  ll4 <- est4 - zcrit1*se4
+  ul4 <- est4 + zcrit1*se4
   out1 <- t(c(a1*est1, se1, ll1, ul1))
   out2 <- t(c(a2*est2, se2, ll2, ul2))
   out3 <- t(c(est3, se3, ll3, ul3))
@@ -333,31 +371,38 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
 
 
 #  replicate.stdmean.ps ============================================================
-#' Compares and combines paired-samples standardized mean differences in original 
-#' and follow-up studies
+#' Compares and combines paired-samples standardized mean differences in original and 
+#' follow-up studies
 #' 
 #' 
 #' @description 
 #' This function computes confidence intervals from an original study and a follow-up
 #' study where the effect size is a paired-samples standardized mean difference. 
 #' Confidence intervals for the difference and average effect size are also computed.
-#' Equality of variances within or across studies is not assumed. The confidence level
-#' for the difference is 1 – 2*alpha, which is recommended for equivalence testing.
+#' Equality of variances within or across studies is not assumed. The same results
+#' can be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with 
+#' appropriate contrast coefficients. The confidence level for the difference is
+#' 1 – 2*alpha, which is recommended for equivalence testing. Square root unweighted 
+#' variances and single-condition standard deviation are options for the standardizer.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    m11		   estimated mean for measurement 1 in original study 
-#' @param    m12		   estimated mean for measurement 2 in original study
-#' @param    sd11   	 estimated SD for measurement 1 in original study
-#' @param    sd12   	 estimated SD for measurement 2 in original study
-#' @param    cor1    	 estimated correlation of paired measurements in orginal study
+#' @param    m11		   estimated mean for group 1 in original study 
+#' @param    m12		   estimated mean for group 2 in original study
+#' @param    sd11   	 estimated SD for group 1 in original study
+#' @param    sd12   	 estimated SD for group 2 in original study
+#' @param    cor1    	 estimated correlation of paired observations in orginal study
 #' @param    n1        sample size in original study
-#' @param    m21    	 estimated mean for measurement 1 in follow-up study 
-#' @param    m22    	 estimated mean for measurement 2 in follow-up study
-#' @param    sd21   	 estimated SD for measurement 1 in follow-up study
-#' @param    sd22   	 estimated SD for measurement 2 in follow-up study
-#' @param    cor2    	 estimated correlation of paired measurements in follow-up study
+#' @param    m21    	 estimated mean for group 1 in follow-up study 
+#' @param    m22    	 estimated mean for group 2 in follow-up study
+#' @param    sd21   	 estimated SD for group 1 in follow-up study
+#' @param    sd22   	 estimated SD for group 2 in follow-up study
+#' @param    cor2    	 estimated correlation of paired observations in follow-up study
 #' @param    n2        sample size in follow-up study
+#' @param    stdzr
+#' * set to 0 for square root unweighted average variance standardizer 
+#' * set to 1 for measurement 1 SD standardizer 
+#' * set to 2 for measurement 2 SD standardizer 
 #' 
 #' 
 #' @return
@@ -376,9 +421,8 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
 #' 
 #' 
 #' @examples
-#' replicate.stdmean.ps(alpha = .05, 
-#'   m11 = 86.22, m12 = 70.93, sd11 = 14.89, sd12 = 12.32, cor1 = .765, n1 = 20, 
-#'   m21 = 84.81, m22 = 77.24, sd21 = 15.68, sd22 = 16.95, cor2 = .702, n2 = 75)
+#' replicate.stdmean.ps(alpha = .05, 86.22, 70.93, 14.89, 12.32, .765, 20, 
+#'                                   84.81, 77.24, 15.68, 16.95, .702, 75, 0)
 #'
 #' # Should return:
 #' #                         Estimate         SE        LL        UL
@@ -394,7 +438,7 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
 #' 
 #' @importFrom stats qnorm
 #' @export
-replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, sd21, sd22, cor2, n2) {
+replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, sd21, sd22, cor2, n2, stdzr) {
   zcrit1 <- qnorm(1 - alpha/2)
   zcrit2 <- qnorm(1 - alpha)
   v11 <- sd11^2
@@ -403,24 +447,48 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
   v22 <- sd22^2
   df1 <- n1 - 1
   df2 <- n2 - 1
-  s1 <- sqrt((v11 + v12)/2)
-  s2 <- sqrt((v21 + v22)/2)
   vd1 <- v11 + v12 - 2*cor1*sd11*sd12
   vd2 <- v21 + v22 - 2*cor2*sd21*sd22
-  a1 <- sqrt((n1 - 2)/df1)
-  a2 <- sqrt((n2 - 2)/df2)
-  est1 <- (m11 - m12)/s1
-  est2 <- (m21 - m22)/s2
-  est3 <- est1 - est2
-  est4 <- (a1*est1 + a2*est2)/2
-  se1 <- sqrt(est1^2*(v11^2 + v12^2 + 2*cor1^2*v11*v12)/(8*df1*s1^4) + vd1/(df1*s1^2))
-  se2 <- sqrt(est2^2*(v21^2 + v22^2 + 2*cor2^2*v21*v22)/(8*df2*s2^4) + vd2/(df2*s2^2))
+  if (stdzr == 0) {
+    s1 <- sqrt((v11 + v12)/2)
+    s2 <- sqrt((v21 + v22)/2)
+    a1 <- sqrt((n1 - 2)/df1)
+    a2 <- sqrt((n2 - 2)/df2)
+    est1 <- (m11 - m12)/s1
+    est2 <- (m21 - m22)/s2
+    est3 <- est1 - est2
+    est4 <- (a1*est1 + a2*est2)/2
+    se1 <- sqrt(est1^2*(v11^2 + v12^2 + 2*cor1^2*v11*v12)/(8*df1*s1^4) + vd1/(df1*s1^2))
+    se2 <- sqrt(est2^2*(v21^2 + v22^2 + 2*cor2^2*v21*v22)/(8*df2*s2^4) + vd2/(df2*s2^2))
+  } else if (stdzr == 1){
+    a1 <- 1 - 3/(4*df1 - 1)
+    a2 <- 1 - 3/(4*df2 - 1)
+    est1 <- (m11 - m12)/sd11
+    est2 <- (m21 - m22)/sd21
+    est3 <- est1 - est2
+    est4 <- (a1*est1 + a2*est2)/2
+	se1 <- sqrt(est1^2/(2*df1) + vd1/(df1*v11))
+	se2 <- sqrt(est2^2/(2*df2) + vd2/(df2*v12))
+  } else {
+    a1 <- 1 - 3/(4*df1 - 1)
+	a2 <- 1 - 3/(4*df2 - 1)
+    est1 <- (m11 - m12)/sd12
+    est2 <- (m21 - m22)/sd22
+    est3 <- est1 - est2
+    est4 <- (a1*est1 + a2*est2)/2
+    se1 <- sqrt(est1^2/(2*df1) + vd1/(df1*v12))
+	se2 <- sqrt(est2^2/(2*df2) + vd2/(df2*v22))
+  }
   se3 <- sqrt(se1^2 + se2^2)
   se4 <- se3/2
-  ll1 <- est1 - zcrit1*se1;  ul1 <- est1 + zcrit1*se1
-  ll2 <- est2 - zcrit1*se2;  ul2 <- est2 + zcrit1*se2
-  ll3 <- est3 - zcrit2*se3;  ul3 <- est3 + zcrit2*se3
-  ll4 <- est4 - zcrit1*se4;  ul4 <- est4 + zcrit1*se4
+  ll1 <- est1 - zcrit1*se1
+  ul1 <- est1 + zcrit1*se1
+  ll2 <- est2 - zcrit1*se2
+  ul2 <- est2 + zcrit1*se2
+  ll3 <- est3 - zcrit2*se3
+  ul3 <- est3 + zcrit2*se3
+  ll4 <- est4 - zcrit1*se4
+  ul4 <- est4 + zcrit1*se4
   out1 <- t(c(a1*est1, se1, ll1, ul1))
   out2 <- t(c(a2*est2, se2, ll2, ul2))
   out3 <- t(c(est3, se3, ll3, ul3))
