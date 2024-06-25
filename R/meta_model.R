@@ -92,6 +92,10 @@ meta.lm.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' meta-regression model where the dependent variable is a 2-group
 #' standardized mean difference. The estimates are OLS estimates with
 #' robust standard errors that accommodate residual heteroscedasticity. 
+#' Use the unweighted variance standardizer for 2-group experimental
+#' designs, and use the weighted variance standardizer for 2-group
+#' nonexperimental designs. A single-group standardizer can be used
+#' in either experimental or nonexperimental designs.
 #'  
 #
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -294,8 +298,8 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' @param     X     	matrix of predictor values
 #' @param stdzr
 #' * set to 0 for square root unweighted average variance standardizer 
-#' * set to 1 for group 1 SD standardizer 
-#' * set to 2 for group 2 SD standardizer 
+#' * set to 1 for measurement 1 SD standardizer 
+#' * set to 2 for measurement 2 SD standardizer 
 #' 
 #' 
 #' @return
