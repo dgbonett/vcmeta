@@ -1457,3 +1457,110 @@ replicate.prop.ps <- function(alpha, f1, f2){
   return(out)
 }
 
+
+#  replicate.cor.gen ==========================================================
+#' Compares and combines any type of correlation in original and 
+#' follow-up studies
+#' 
+#'
+#' @description 
+#' This function can be used to compare and combine any type of correlation 
+#' from an original study and a follow-up study. The confidence level for the 
+#' difference is 1 – 2*alpha, which is recommended for equivalence testing.
+#' 
+#' 
+#' @param    alpha	 alpha level for 1-alpha confidence
+#' @param    cor1  	 estimated correlation in original study
+#' @param    se1   	 standard error of correlation in original study
+#' @param    cor2  	 estimated correlation in follow-up study
+#' @param    se2   	 standard error of correlation in follow-up study
+#' 
+#' 
+#' @return
+#' A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in correlations
+#' * Row 4 estimates the average correlation
+#' 
+#' 
+#' The columns are:
+#' * Estimate - correlation estimate (single study, difference, average)
+#' * SE - standard error
+#' * z - z-value 
+#' * p - p-value
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' replicate.cor.gen(.05, .454, .170, .318, .098)
+#'
+#' # Should return:
+#' #                       Estimate         SE         z            p          LL        UL
+#' # Original:                0.454 0.17000000 2.2869806 0.0221969560  0.06991214 0.7208577
+#' # Follow-up:               0.318 0.09800000 3.0215123 0.0025151541  0.11522137 0.4953353
+#' # Original - Follow-up:    0.136 0.19622436 0.6671281 0.5046902807 -0.21543667 0.4237240
+#' # Average:                 0.386 0.09811218 3.4089419 0.0006521538  0.19606750 0.5480170
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats pnorm
+#' @importFrom stats qnorm
+#' @export
+replicate.cor.gen <- function(alpha, cor1, se1, cor2, se2) {
+  zcrit1 <- qnorm(1 - alpha/2)
+  zcrit2 <- qnorm(1 - alpha)
+  zr1 <- log((1 + cor1)/(1 - cor1))/2
+  zr2 <- log((1 + cor2)/(1 - cor2))/2
+  dif <- cor1 - cor2
+  ave <- (cor1 + cor2)/2
+  ave.z <- log((1 + ave)/(1 - ave))/2
+  se1.z <- se1/(1 - cor1^2)
+  se2.z <- se2/(1 - cor2^2)
+  se3 <- sqrt(se1^2 + se2^2)
+  se4 <- sqrt(se1^2 + se2^2)/2
+  se4.z <- sqrt(((se1^2 + se2^2)/4)/(1 - ave^2))
+  t1 <- zr1/se1.z 
+  t2 <- zr2/se2.z 
+  t3 <- (zr1 - zr2)/sqrt(se1.z^2 + se2.z^2)
+  t4 <- (zr1 + zr2)/sqrt(se1.z^2 + se2.z^2)
+  pval1 <- 2*(1 - pnorm(abs(t1)))
+  pval2 <- 2*(1 - pnorm(abs(t2)))
+  pval3 <- 2*(1 - pnorm(abs(t3)))
+  pval4 <- 2*(1 - pnorm(abs(t4)))
+  ll0a <- zr1 - zcrit1*se1.z
+  ul0a <- zr1 + zcrit1*se1.z
+  ll1a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
+  ul1a <- (exp(2*ul0a) - 1)/(exp(2*ul0a) + 1)
+  ll0b <- zr1 - zcrit2*se1.z
+  ul0b <- zr1 + zcrit2*se1.z
+  ll1b <- (exp(2*ll0b) - 1)/(exp(2*ll0b) + 1)
+  ul1b <- (exp(2*ul0b) - 1)/(exp(2*ul0b) + 1)
+  ll0a <- zr2 - zcrit1*se2.z
+  ul0a <- zr2 + zcrit1*se2.z
+  ll2a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
+  ul2a <- (exp(2*ul0a) - 1)/(exp(2*ul0a) + 1)
+  ll0b <- zr2 - zcrit2*se2.z
+  ul0b <- zr2 + zcrit2*se2.z
+  ll2b <- (exp(2*ll0b) - 1)/(exp(2*ll0b) + 1)
+  ul2b <- (exp(2*ul0b) - 1)/(exp(2*ul0b) + 1)
+  ll3 <- dif - sqrt((cor1 - ll1b)^2 + (ul2b - cor2)^2)
+  ul3 <- dif + sqrt((ul1b - cor1)^2 + (cor2 - ll2b)^2)
+  ll0 <- ave.z - zcrit1*se4.z
+  ul0 <- ave.z + zcrit1*se4.z
+  ll4 <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+  ul4 <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+  out1 <- t(c(cor1, se1, t1, pval1, ll1a, ul1a))
+  out2 <- t(c(cor2, se2, t2, pval2, ll2a, ul2a))
+  out3 <- t(c(dif, se3, t3, pval3, ll3, ul3))
+  out4 <- t(c(ave, se4, t4, pval4, ll4, ul4))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
+  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  return(out)
+}
+
