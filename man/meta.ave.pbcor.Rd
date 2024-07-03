@@ -45,7 +45,7 @@ of point-biserial correlations can be meta-analyzed. One type uses
 an unweighted variance and is appropriate in 2-group experimental
 designs. The other type uses a weighted variance and is appropriate in
 2-group nonexperimental designs with simple random sampling (but not
-stratified random sample) within each study. This function requires
+stratified random sampling) within each study. This function requires
 all point-biserial correlations to be of the same type.  Use the
 meta.ave.gen function to meta-analyze any combination of biserial
 correlation types.

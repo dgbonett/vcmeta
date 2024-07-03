@@ -45,7 +45,7 @@ of compatible point-biserial correlations where some studies used a
 2-group experimental design and other studies used a 2-group
 nonexperimental design. The effect size estimate and standard error
 output from this function can  be used as input in the
-\link[vcmeta]{meta.ave.gen} function.
+\link[vcmeta]{meta.ave.cor.gen} function.
 }
 \examples{
 se.pbcor(21.9, 16.1, 3.82, 3.21, 40, 40, 1)

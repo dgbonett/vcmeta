@@ -13,7 +13,8 @@ meta.ave.semipart(alpha, n, cor, r2, bystudy = TRUE)
 
 \item{cor}{vector of estimated semipartial correlations}
 
-\item{r2}{vector of squared multiple correlations for full model}
+\item{r2}{vector of squared multiple correlations for a model that
+includes the IV and all control variables}
 
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
 }

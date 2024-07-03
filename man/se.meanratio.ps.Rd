@@ -27,7 +27,7 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function can be used to compute the standard error of a
+This function computes the standard error of a
 paired-samples log mean ratio using the estimated means, estimated
 standard deviations, estimated Pearson correlation, and sample
 size. The log-mean estimate and standard error output from

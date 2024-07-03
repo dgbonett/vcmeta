@@ -2,7 +2,8 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.mean.ps}
 \alias{replicate.mean.ps}
-\title{Compares and combines paired-samples mean differences in original and follow-up studies}
+\title{Compares and combines paired-samples mean differences in original and
+follow-up studies}
 \usage{
 replicate.mean.ps(
   alpha,
@@ -23,27 +24,27 @@ replicate.mean.ps(
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{m11}{estimated mean for group 1 in original study}
+\item{m11}{estimated mean for measurement 1 in original study}
 
-\item{m12}{estimated mean for group 2 in original study}
+\item{m12}{estimated mean for measurement 2 in original study}
 
-\item{sd11}{estimated SD for group 1 in original study}
+\item{sd11}{estimated SD for measurement 1 in original study}
 
-\item{sd12}{estimated SD for group 2 in original study}
+\item{sd12}{estimated SD for measurement 2 in original study}
 
-\item{cor1}{estimated correlation of paired observations in orginal study}
+\item{cor1}{estimated correlation of paired measurements in orginal study}
 
 \item{n1}{sample size in original study}
 
-\item{m21}{estimated mean for group 1 in follow-up study}
+\item{m21}{estimated mean for measurement 1 in follow-up study}
 
-\item{m22}{estimated mean for group 2 in follow-up study}
+\item{m22}{estimated mean for measurement 2 in follow-up study}
 
-\item{sd21}{estimated SD for group 1 in follow-up study}
+\item{sd21}{estimated SD for measurement 1 in follow-up study}
 
-\item{sd22}{estimated SD for group 2 in follow-up study}
+\item{sd22}{estimated SD for measurement 2 in follow-up study}
 
-\item{cor2}{estimated correlation of paired observations in follow-up study}
+\item{cor2}{estimated correlation of paired measurements in follow-up study}
 
 \item{n2}{sample size in follow-up study}
 }
@@ -74,9 +75,8 @@ Confidence intervals for the difference and average effect size are also
 computed. Equality of variances within or across studies is not assumed.
 A Satterthwaite adjustment to the degrees of freedom is used to
 improve the accuracy of the confidence intervals for the difference and
-average. The same results can be obtained using the \link[vcmeta]{meta.lc.mean.ps}
-function with appropriate contrast coefficients. The confidence level for
-the difference is 1 – 2*alpha, which is recommended for equivalence testing.
+average. The confidence level for the difference is 1 – 2*alpha, which is
+recommended for equivalence testing.
 }
 \examples{
 replicate.mean.ps(.05, 86.22, 70.93, 14.89, 12.32, .765, 20, 

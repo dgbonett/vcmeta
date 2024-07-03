@@ -2,8 +2,8 @@
 % Please edit documentation in R/meta_comp.R
 \name{meta.sub.cronbach}
 \alias{meta.sub.cronbach}
-\title{Confidence interval for a difference in average Cronbach
-reliabilities for two sets of studies}
+\title{Confidence interval for a subgroup difference in average Cronbach
+reliabilities}
 \usage{
 meta.sub.cronbach(alpha, n, rel, r, group)
 }
@@ -41,10 +41,10 @@ The columns are:
 }
 \description{
 Computes the estimate, standard error, and confidence interval for a
-difference in average Cronbach reliability coefficients for two mutually
-exclusive sets of studies. Each set can have one or more studies. The
-number of measurements used to compute the sample reliablity coefficient
-is assumed to be the same for all studies.
+difference in average Cronbach reliability coefficients for two
+mutually exclusive subgroups of studies. Each set can have one or
+more studies. The number of measurements used to compute the sample
+reliablity coefficient is assumed to be the same for all studies.
 }
 \examples{
 n <- c(120, 170, 150, 135)

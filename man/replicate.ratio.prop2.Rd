@@ -8,7 +8,7 @@ studies}
 replicate.ratio.prop2(alpha, f11, f12, n11, n12, f21, f22, n21, n22)
 }
 \arguments{
-\item{alpha}{alpha level for 1-alpha confidence                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    21q```````````````````````                                                                                                                                                                                `````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````````lpha         alpha level for 1-alpha confidence}
+\item{alpha}{alpha level for 1-alpha confidence}
 
 \item{f11}{frequency count for group 1 in original study}
 

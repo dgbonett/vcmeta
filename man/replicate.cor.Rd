@@ -10,11 +10,11 @@ replicate.cor(alpha, cor1, n1, cor2, n2, s)
 \arguments{
 \item{alpha}{alpha level for 1-alpha confidence}
 
-\item{cor1}{estimated Pearson correlation in original study}
+\item{cor1}{estimated correlation in original study}
 
 \item{n1}{sample size in original study}
 
-\item{cor2}{estimated Pearson correlation in follow-up study}
+\item{cor2}{estimated correlation in follow-up study}
 
 \item{n2}{sample size in follow-up study}
 
@@ -31,7 +31,7 @@ A 4-row matrix. The rows are:
 
 The columns are:
 \itemize{
-\item Estimate - Pearson or partial correlation estimate (single study, difference, average)
+\item Estimate -correlation estimate (single study, difference, average)
 \item SE - standard error
 \item z - t-value for rows 1 and 2; z-value for rows 3 and 4
 \item p - p-value

@@ -23,7 +23,7 @@ meta.ave.stdmean2(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = TRUE)
 \item{n2}{vector of group 2 sample sizes}
 
 \item{stdzr}{\itemize{
-\item set to 0 for square root unweighted  average variance standardizer
+\item set to 0 for square root unweighted average variance standardizer
 \item set to 1 for group 1 SD standardizer
 \item set to 2 for group 2 SD standardizer
 \item set to 3 for square root weighted average variance standardizer
@@ -44,9 +44,9 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 \description{
 Computes the estimate, standard error, and confidence interval for an
 average standardized mean difference from two or more 2-group studies.
-Unweighted variances, weighted variances, and single group variance are
-options for the standardizer. Equality of variances within or across studies
-is not assumed.
+Square root unweighted variances, square root weighted variances, and
+single group standard deviation are options for the standardizer.
+Equality of variances within or across studies is not assumed.
 }
 \examples{
 m1 <- c(21.9, 23.1, 19.8)

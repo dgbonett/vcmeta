@@ -24,7 +24,7 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function can be used to compute the Agresti-Caffo standard
+This function computes the Agresti-Caffo standard
 error of a 2-group proportion difference using the frequency
 counts and sample sizes. The effect size estimate and standard
 error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},

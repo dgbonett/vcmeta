@@ -18,7 +18,8 @@ replicate.stdmean2(
   sd21,
   sd22,
   n21,
-  n22
+  n22,
+  stdzr
 )
 }
 \arguments{
@@ -47,6 +48,13 @@ replicate.stdmean2(
 \item{n21}{sample size for group 1 in follow-up study}
 
 \item{n22}{sample size for group 2 in follow-up study}
+
+\item{stdzr}{\itemize{
+\item set to 0 for square root unweighted average variance standardizer
+\item set to 1 for group 1 SD standardizer
+\item set to 2 for group 2 SD standardizer
+\item set to 3 for square root weighted average variance standardizer
+}}
 }
 \value{
 A 4-row matrix. The rows are:
@@ -73,11 +81,12 @@ size are also computed. Equality of variances within or across studies
 is not assumed. The same results can be obtained using the
 \link[vcmeta]{meta.lc.stdmean2} function with appropriate contrast coefficients.
 The confidence level for the difference is 1 – 2*alpha, which is recommended
-for equivalence testing.
+for equivalence testing. Square root unweighted variances, square root weighted
+variances, and single-group standard deviation are options for the standardizer.
 }
 \examples{
 replicate.stdmean2(.05, 21.9, 16.1, 3.82, 3.21, 40, 40, 
-                        25.2, 19.1, 3.98, 3.79, 75, 75)
+                        25.2, 19.1, 3.98, 3.79, 75, 75, 0)
 
 # Should return: 
 #                           Estimate        SE         LL        UL

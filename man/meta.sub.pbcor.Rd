@@ -2,8 +2,8 @@
 % Please edit documentation in R/meta_comp.R
 \name{meta.sub.pbcor}
 \alias{meta.sub.pbcor}
-\title{Confidence interval for a difference in average point-biserial
-correlations for two sets of studies}
+\title{Confidence interval for a subgroup difference in average
+point-biserial correlations}
 \usage{
 meta.sub.pbcor(alpha, m1, m2, sd1, sd2, n1, n2, type, group)
 }
@@ -51,15 +51,15 @@ The columns are:
 }
 }
 \description{
-Computes the estimate, standard error, and confidence interval for a
-difference in average point-biserial correlations for two mutually
-exclusive sets of studies. Each set can have one or more studies. Two
-types of point-biserial correlations can be analyzed. One type uses
-an unweighted variance and is recommended for 2-group experimental
-designs. The other type uses a weighted variance and is recommended
-for 2-group nonexperimental designs with simple random sampling (but
-not stratified random sampling) within each study. Equality of
-variances within or across studies is not assumed.
+Computes the estimate, standard error, and confidence interval for
+a difference in average point-biserial correlations for two mutually
+exclusive subgroups of studies. Each subgroup can have one or more
+studies. Two types of point-biserial correlations can be analyzed.
+One type uses an unweighted variance and is recommended for 2-group
+experimental designs. The other type uses a weighted variance and
+is recommended for 2-group nonexperimental designs with simple random
+sampling (but not stratified random sampling) within each study.
+Equality of variances within or across studies is not assumed.
 }
 \examples{
 m1 <- c(45.1, 39.2, 36.3, 34.5)

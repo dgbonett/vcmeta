@@ -24,7 +24,7 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function can be used to compute the Bonett-Price standard error
+This function computes the Bonett-Price standard error
 of a paired-samples proportion difference using the frequency counts
 from a 2 x 2 contingency table. The effect size estimate and standard
 error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},

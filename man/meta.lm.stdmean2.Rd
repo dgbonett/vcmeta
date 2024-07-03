@@ -47,6 +47,10 @@ This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a 2-group
 standardized mean difference. The estimates are OLS estimates with
 robust standard errors that accommodate residual heteroscedasticity.
+Use the unweighted variance standardizer for 2-group experimental
+designs, and use the weighted variance standardizer for 2-group
+nonexperimental designs. A single-group standardizer can be used
+in either experimental or nonexperimental designs.
 }
 \examples{
 n1 <- c(65, 30, 29, 45, 50)

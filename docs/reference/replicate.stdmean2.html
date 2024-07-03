@@ -8,7 +8,8 @@ size are also computed. Equality of variances within or across studies
 is not assumed. The same results can be obtained using the
 meta.lc.stdmean2 function with appropriate contrast coefficients.
 The confidence level for the difference is 1 – 2*alpha, which is recommended
-for equivalence testing."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
+for equivalence testing. Square root unweighted variances, square root weighted
+variances, and single-group standard deviation are options for the standardizer."><!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
 <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]--></head><body data-spy="scroll" data-target="#toc">
@@ -26,7 +27,7 @@ for equivalence testing."><!-- mathjax --><script src="https://cdnjs.cloudflare.
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">vcmeta</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.3.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="">1.4.0</span>
       </span>
     </div>
 
@@ -66,7 +67,8 @@ size are also computed. Equality of variances within or across studies
 is not assumed. The same results can be obtained using the
 <a href="meta.lc.stdmean2.html">meta.lc.stdmean2</a> function with appropriate contrast coefficients.
 The confidence level for the difference is 1 – 2*alpha, which is recommended
-for equivalence testing.</p>
+for equivalence testing. Square root unweighted variances, square root weighted
+variances, and single-group standard deviation are options for the standardizer.</p>
     </div>
 
     <div id="ref-usage">
@@ -83,7 +85,8 @@ for equivalence testing.</p>
 <span>  <span class="va">sd21</span>,</span>
 <span>  <span class="va">sd22</span>,</span>
 <span>  <span class="va">n21</span>,</span>
-<span>  <span class="va">n22</span></span>
+<span>  <span class="va">n22</span>,</span>
+<span>  <span class="va">stdzr</span></span>
 <span><span class="op">)</span></span></code></pre></div>
     </div>
 
@@ -140,6 +143,14 @@ for equivalence testing.</p>
 <dt>n22</dt>
 <dd><p>sample size for group 2 in follow-up study</p></dd>
 
+
+<dt>stdzr</dt>
+<dd><ul><li><p>set to 0 for square root unweighted average variance standardizer</p></li>
+<li><p>set to 1 for group 1 SD standardizer</p></li>
+<li><p>set to 2 for group 2 SD standardizer</p></li>
+<li><p>set to 3 for square root weighted average variance standardizer</p></li>
+</ul></dd>
+
 </dl></div>
     <div id="value">
     <h2>Value</h2>
@@ -166,7 +177,7 @@ ISSN 1094-4281, <a href="https://doi.org/10.1177/1094428120911088" class="extern
     <div id="ref-examples">
     <h2>Examples</h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">replicate.stdmean2</span><span class="op">(</span><span class="fl">.05</span>, <span class="fl">21.9</span>, <span class="fl">16.1</span>, <span class="fl">3.82</span>, <span class="fl">3.21</span>, <span class="fl">40</span>, <span class="fl">40</span>, </span></span>
-<span class="r-in"><span>                        <span class="fl">25.2</span>, <span class="fl">19.1</span>, <span class="fl">3.98</span>, <span class="fl">3.79</span>, <span class="fl">75</span>, <span class="fl">75</span><span class="op">)</span></span></span>
+<span class="r-in"><span>                        <span class="fl">25.2</span>, <span class="fl">19.1</span>, <span class="fl">3.98</span>, <span class="fl">3.79</span>, <span class="fl">75</span>, <span class="fl">75</span>, <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                         Estimate        SE         LL        UL</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Original:             1.62803662 0.2629049  1.1286100 2.1591783</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:            1.56170447 0.1880713  1.2010594 1.9382853</span>

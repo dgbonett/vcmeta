@@ -27,7 +27,7 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function can be used to compute the standard error of a
+This function computes the standard error of a
 2-group mean difference using the estimated means, estimated
 standard deviations, and sample sizes. The effect size estimate
 and standard error output from this function can be used as input

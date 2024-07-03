@@ -19,10 +19,10 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function can be used to compute the Bonett-Wright standard
+This function computes the Bonett-Wright standard
 error of a Spearman correlation using the estimated correlation
 and sample size. The standard error from this function can be used
-as input in the \link[vcmeta]{meta.ave.gen} function in applications
+as input in the \link[vcmeta]{meta.ave.cor.gen} function in applications
 where a combination of different types of correlations are used in
 the meta-analysis.
 }

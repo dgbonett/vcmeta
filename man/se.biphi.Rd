@@ -23,13 +23,13 @@ Returns a 1-row matrix. The columns are:
 }
 }
 \description{
-This function can be used to compute an estimate of a biserial-phi
+This function computes an estimate of a biserial-phi
 correlation and its standard error using the frequency counts from a 2 x 2
 contingency table where one variable is naturally dichotomous and the other
 variable is artifically dichotomous. A biserial-phi correlation could be
 compatible with a point-biserial correlation in a meta-analysis. The
 biserial-phi estimate and the standard error from this function can be used
-as input in the \link[vcmeta]{meta.ave.gen} function in a meta-analysis
+as input in the \link[vcmeta]{meta.ave.cor.gen} function in a meta-analysis
 where a point-biserial correlation has been obtained in some studies and
 a biserial-phi correlation has been obtained in other studies.
 }

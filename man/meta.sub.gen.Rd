@@ -2,8 +2,7 @@
 % Please edit documentation in R/meta_comp.R
 \name{meta.sub.gen}
 \alias{meta.sub.gen}
-\title{Confidence interval for a difference in average effect size for two sets
-of studies}
+\title{Confidence interval for a subgroup difference in average effect size}
 \usage{
 meta.sub.gen(alpha, est, se, group)
 }
@@ -40,8 +39,8 @@ The columns are:
 \description{
 Computes the estimate, standard error, and confidence interval for a
 difference in the average effect size (any type of effect size) for
-two mutually exclusive sets of studies. Each set can have one or more
-studies. All of the effects sizes should be compatible.
+two mutually exclusive subgroups of studies. Each subgroup can have one
+or more studies. All of the effects sizes should be compatible.
 }
 \examples{
 est <- c(.920, .896, .760, .745)
