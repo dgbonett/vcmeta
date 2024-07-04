@@ -232,7 +232,6 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 }
 
 
-
 #  replicate.stdmean2 ============================================================
 #' Compares and combines 2-group standardized mean differences in original and 
 #' follow-up studies
@@ -243,16 +242,15 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' follow-up study where the effect size is a 2-group standardized mean 
 #' difference. Confidence intervals for the difference and average effect 
 #' size are also computed. Equality of variances within or across studies
-#' is not assumed. The same results can be obtained using the
-#' \link[vcmeta]{meta.lc.stdmean2} function with appropriate contrast coefficients. 
-#' The confidence level for the difference is 1 – 2*alpha, which is recommended 
-#' for equivalence testing. Square root unweighted variances, square root weighted
-#' variances, and single-group standard deviation are options for the standardizer.
+#' is not assumed. The confidence level for the difference is 1 – 2*alpha, 
+#' which is recommended for equivalence testing. Square root unweighted 
+#' variances, square root weighted variances, and single-group standard 
+#' deviation are options for the standardizer.
 #' 
 #' 
-#' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    m11		   estimated mean for group 1 in original study 
-#' @param    m12		   estimated mean for group 2 in original study
+#' @param    alpha	 alpha level for 1-alpha confidence
+#' @param    m11	 estimated mean for group 1 in original study 
+#' @param    m12	 estimated mean for group 2 in original study
 #' @param    sd11   	 estimated SD for group 1 in original study
 #' @param    sd12   	 estimated SD for group 2 in original study
 #' @param    n11    	 sample size for group 1 in original study
@@ -379,26 +377,25 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
 #' This function computes confidence intervals from an original study and a follow-up
 #' study where the effect size is a paired-samples standardized mean difference. 
 #' Confidence intervals for the difference and average effect size are also computed.
-#' Equality of variances within or across studies is not assumed. The same results
-#' can be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with 
-#' appropriate contrast coefficients. The confidence level for the difference is
-#' 1 – 2*alpha, which is recommended for equivalence testing. Square root unweighted 
-#' variances and single-condition standard deviation are options for the standardizer.
+#' Equality of variances within or across studies is not assumed. The confidence level
+#' for the difference is 1 – 2*alpha, which is recommended for equivalence testing. 
+#' Square root unweighted variances and single-condition standard deviation are options
+#' for the standardizer.
 #' 
 #' 
-#' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    m11		   estimated mean for group 1 in original study 
-#' @param    m12		   estimated mean for group 2 in original study
+#' @param    alpha	 alpha level for 1-alpha confidence
+#' @param    m11	 estimated mean for group 1 in original study 
+#' @param    m12	 estimated mean for group 2 in original study
 #' @param    sd11   	 estimated SD for group 1 in original study
 #' @param    sd12   	 estimated SD for group 2 in original study
 #' @param    cor1    	 estimated correlation of paired observations in orginal study
-#' @param    n1        sample size in original study
+#' @param    n1          sample size in original study
 #' @param    m21    	 estimated mean for group 1 in follow-up study 
 #' @param    m22    	 estimated mean for group 2 in follow-up study
 #' @param    sd21   	 estimated SD for group 1 in follow-up study
 #' @param    sd22   	 estimated SD for group 2 in follow-up study
 #' @param    cor2    	 estimated correlation of paired observations in follow-up study
-#' @param    n2        sample size in follow-up study
+#' @param    n2          sample size in follow-up study
 #' @param    stdzr
 #' * set to 0 for square root unweighted average variance standardizer 
 #' * set to 1 for measurement 1 SD standardizer 
