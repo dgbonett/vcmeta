@@ -76,11 +76,10 @@ The columns are:
 This function computes confidence intervals from an original study and a follow-up
 study where the effect size is a paired-samples standardized mean difference.
 Confidence intervals for the difference and average effect size are also computed.
-Equality of variances within or across studies is not assumed. The same results
-can be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with
-appropriate contrast coefficients. The confidence level for the difference is
-1 – 2*alpha, which is recommended for equivalence testing. Square root unweighted
-variances and single-condition standard deviation are options for the standardizer.
+Equality of variances within or across studies is not assumed. The confidence level
+for the difference is 1 – 2*alpha, which is recommended for equivalence testing.
+Square root unweighted variances and single-condition standard deviation are options
+for the standardizer.
 }
 \examples{
 replicate.stdmean.ps(alpha = .05, 86.22, 70.93, 14.89, 12.32, .765, 20, 

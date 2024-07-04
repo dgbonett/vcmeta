@@ -78,11 +78,10 @@ This function computes confidence intervals from an original study and a
 follow-up study where the effect size is a 2-group standardized mean
 difference. Confidence intervals for the difference and average effect
 size are also computed. Equality of variances within or across studies
-is not assumed. The same results can be obtained using the
-\link[vcmeta]{meta.lc.stdmean2} function with appropriate contrast coefficients.
-The confidence level for the difference is 1 – 2*alpha, which is recommended
-for equivalence testing. Square root unweighted variances, square root weighted
-variances, and single-group standard deviation are options for the standardizer.
+is not assumed. The confidence level for the difference is 1 – 2*alpha,
+which is recommended for equivalence testing. Square root unweighted
+variances, square root weighted variances, and single-group standard
+deviation are options for the standardizer.
 }
 \examples{
 replicate.stdmean2(.05, 21.9, 16.1, 3.82, 3.21, 40, 40, 

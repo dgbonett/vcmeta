@@ -1219,6 +1219,8 @@ se.cohen <- function(d, n1, n2) {
 #' \insertRef{Bonett2020b}{vcmeta}
 #' 
 #' 
+#' @importFrom stats dnorm
+#' @export
 se.bscor <- function(m1, m2, sd1, sd2, n1, n2) {
  df1 <- n1 - 1
  df2 <- n2 - 1
