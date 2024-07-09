@@ -96,9 +96,9 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average standardized mean difference from two or more 2-group studies.
-#' Unweighted variances, weighted variances, and single group variance are
-#' options for the standardizer. Equality of variances within or across studies 
-#' is not assumed.
+#' Square root unweighted variances, square root weighted variances, and 
+#' single group standard deviation are options for the standardizer. 
+#' Equality of variances within or across studies is not assumed.
 #'
 #'
 #' @param alpha	  alpha level for 1-alpha confidence
@@ -109,7 +109,7 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 #' @param n1		  vector of group 1 sample sizes
 #' @param n2		  vector of group 2 sample sizes
 #' @param stdzr
-#' * set to 0 for square root unweighted  average variance standardizer 
+#' * set to 0 for square root unweighted average variance standardizer 
 #' * set to 1 for group 1 SD standardizer 
 #' * set to 2 for group 2 SD standardizer 
 #' * set to 3 for square root weighted average variance standardizer
@@ -170,18 +170,17 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
     var <- d^2/(2*df1) + 1/df1 + v2/(df2*v1)
     se <- sqrt(sum(var)/m^2)
   } else if (stdzr == 2) {
-    cat ("Standardizer = sd2", fill = TRUE) 
     d <- (m1 - m2)/sd2
     du <- (1 - 3/(4*n2 - 5))*d
     ave <- sum(du)/m
     var <- d^2/(2*df2) + 1/df2 + v1/(df1*v2)
     se <- sqrt(sum(var)/m^2)
   } else {
-    s2 <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
+    s2 <- sqrt((df1*v1 + df2*v2)/(df1 + df2))
     d <- (m1 - m2)/s2
     du <- (1 - 3/(4*(n1 + n2) - 9))*d
     ave <- sum(du)/m
-    var <- d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2
+    var <- d^2*(1/df1 + 1/df2)/8 + (v1/n1 + v2/n2)/s2^2
     se <- sqrt(sum(var)/m^2)
   }
   ll <- ave - z*se
@@ -196,7 +195,7 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
     } else if (stdzr == 2) {
       se <- sqrt(d^2/(2*df2) + 1/df2 + v1/(df1*v2))
     } else {
-      se <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
+      se <- sqrt(d^2*(1/df1 + 1/df2)/8 + (v1/n1 + v2/n2)/s2^2)
     }
     ll <- d - z*se
     ul <- d + z*se
@@ -309,9 +308,9 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average standardized mean difference from two or more paired-samples
-#' studies. Unweighted variances and single group variance are options 
-#' for the standardizer. Equality of variances within or across studies is not
-#' assumed.
+#' studies. Squrare root Unweighted variances and a single condition standard
+#' deviation are options for the standardizer. Equality of variances within
+#' or across studies is not assumed.
 #'
 #'
 #' @param   alpha		alpha level for 1-alpha confidence
@@ -323,8 +322,8 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' @param   n		    vector of sample sizes
 #' @param   stdzr		
 #' * set to 0 for square root unweighted average variance standardizer 
-#' * set to 1 for group 1 SD standardizer 
-#' * set to 2 for group 2 SD standardizer 
+#' * set to 1 for measurement 1 SD standardizer 
+#' * set to 2 for measurement 2 SD standardizer 
 #' @param   bystudy  logical to also return each study estimate (TRUE) or not
 #' 
 #' 
@@ -927,7 +926,7 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #' an unweighted variance and is appropriate in 2-group experimental
 #' designs. The other type uses a weighted variance and is appropriate in
 #' 2-group nonexperimental designs with simple random sampling (but not
-#' stratified random sample) within each study. This function requires 
+#' stratified random sampling) within each study. This function requires 
 #' all point-biserial correlations to be of the same type.  Use the
 #' meta.ave.gen function to meta-analyze any combination of biserial
 #' correlation types. 
@@ -1047,7 +1046,8 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    n     	vector of sample sizes 
 #' @param    cor   	vector of estimated semipartial correlations 
-#' @param    r2  	  vector of squared multiple correlations for full model
+#' @param     r2   	  vector of squared multiple correlations for a model that
+#' includes the IV and all control variables
 #' @param bystudy   logical to also return each study estimate (TRUE) or not
 #' 
 #' 
@@ -1612,8 +1612,8 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #'
 #' @description
 #' Computes the estimate and confidence interval for an average variance 
-#' from two or more studies. The estimated average variance or the
-#' upper limit could be used as a variance planning value in sample
+#' from two or more studies. The estimated average variance or the upper
+#' confidence limit could be used as a variance planning value in sample
 #' size planning.
 #'
 #'  
@@ -1864,7 +1864,7 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' superpopulation normality assumption. 
 #'
 #' The random coefficient model should be used with caution, and the varying 
-#' coefficient methods in this package are the recommended alternative. The 
+#' coefficient methods in this package are the recommended alternatives. The 
 #' varying coefficient methods allows the effect sizes to differ across studies
 #' but do not require the studies to be a random sample from a definable 
 #' superpopoulation of studies. This random coefficient function is included 
@@ -1957,6 +1957,83 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
  colnames(out) <- c("Estimate", "SE", "LL", "UL")
  rownames(out) <- row 
  return (out)
+}
+
+
+#  meta.ave.cor.gen ==========================================================
+#' Confidence interval for an average correlation of any type
+#' 
+#' 
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average correlation. Any type of correlation can be used (e.g., Pearson,
+#' Spearman, semipartial, factor correlation, Gamma coefficient, Somers d
+#' coefficient, tetrachoric, point-biserial, biserial, etc.).
+#' 
+#' 
+#' @param alpha	   alpha level for 1-alpha confidence
+#' @param cor      vector of estimated correlations 
+#' @param se   	   vector of standard errors 
+#' @param bystudy  logical to also return each study estimate (TRUE) or not
+#' 
+#' 
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated effect size
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' cor <- c(.396, .454, .409, .502, .350)
+#' se <- c(.104, .064, .058, .107, .086)
+#' meta.ave.cor.gen(.05, cor, se, bystudy = TRUE)
+#' 
+#' # Should return:
+#' #         Estimate         SE        LL        UL
+#' # Average   0.4222 0.03853362 0.3438560 0.4947070
+#' # Study 1   0.3960 0.10400000 0.1753200 0.5787904
+#' # Study 2   0.4540 0.06400000 0.3200675 0.5701415
+#' # Study 3   0.4090 0.05800000 0.2893856 0.5160375
+#' # Study 4   0.5020 0.10700000 0.2651183 0.6817343
+#' # Study 5   0.3500 0.08600000 0.1716402 0.5061435
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2008a}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
+  m <- length(cor)
+  z <- qnorm(1 - alpha/2)
+  ave.cor <- sum(cor)/m
+  se.ave <- sqrt(sum(se^2)/m^2)
+  z.ave <- log((1 + ave.cor)/(1 - ave.cor))/2
+  ll0 <- z.ave - z*se.ave/(1 - ave.cor^2)
+  ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
+  ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+  ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+  out <- cbind(ave.cor, se.ave, ll, ul)
+  row <- "Average"
+  if (bystudy) {
+    se.z <- se/(1 - cor^2)
+    z.cor <- log((1 + cor)/(1 - cor))/2
+    ll0 <- z.cor - z*se.z
+    ul0 <- z.cor + z*se.z
+    ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+    ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(cor, se, ll, ul)
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- row
+  return (out)
 }
 
 

@@ -42,7 +42,7 @@ measurements of a second attribute, this function can be used to compute the
 average of cor12 and cor34 and its standard error. Note that cor12 and cor34
 have no variable in common (i.e., no "overlapping" variable). The average
 correlation and the standard error from this function can be used as
-input in the \link[vcmeta]{meta.ave.gen} function in a meta-analysis where
+input in the \link[vcmeta]{meta.ave.cor.gen} function in a meta-analysis where
 some studies have reported cor12 and other studies have reported cor34.
 }
 \examples{

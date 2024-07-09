@@ -2,8 +2,8 @@
 % Please edit documentation in R/meta_comp.R
 \name{meta.sub.cor}
 \alias{meta.sub.cor}
-\title{Confidence interval for a difference in average Pearson or partial
-correlations for two sets of studies}
+\title{Confidence interval for a subgroup difference in average Pearson
+or partial correlations}
 \usage{
 meta.sub.cor(alpha, n, cor, s, group)
 }
@@ -12,7 +12,7 @@ meta.sub.cor(alpha, n, cor, s, group)
 
 \item{n}{vector of sample sizes}
 
-\item{cor}{vector of estimated Pearson correlations}
+\item{cor}{vector of estimated correlations}
 
 \item{s}{number of control variables (set to 0 for Pearson)}
 
@@ -42,9 +42,9 @@ The columns are:
 \description{
 Computes the estimate, standard error, and confidence interval for a
 difference in average Pearson or partial correlations for two mutually
-exclusive sets of studies. Each set can have one or more studies. All
-of the correlations must be either Pearson correlations or partial
-correlations.
+exclusive subgroups of studies. Each subgroup can have one or more
+studies. All of the correlations must be either Pearson correlations
+or partial correlations.
 }
 \examples{
 n <- c(55, 190, 65, 35)

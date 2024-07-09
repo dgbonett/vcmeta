@@ -2,7 +2,8 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.mean2}
 \alias{replicate.mean2}
-\title{Compares and combines 2-group mean differences in original and follow-up studies}
+\title{Compares and combines 2-group mean differences in original and
+follow-up studies}
 \usage{
 replicate.mean2(
   alpha,

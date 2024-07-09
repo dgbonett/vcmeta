@@ -21,11 +21,11 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function can be used to compute the standard error of a
+This function computes the standard error of a
 Pearson or partial correlation using the estimated correlation,
 sample size, and number of control variables. The correlation,
 along with the standard error output from this function, can be used
-as input in the \link[vcmeta]{meta.ave.gen} function in applications
+as input in the \link[vcmeta]{meta.ave.cor.gen} function in applications
 where a combination of different types of correlations are used in
 the meta-analysis.
 }

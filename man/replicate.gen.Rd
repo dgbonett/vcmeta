@@ -39,10 +39,8 @@ Columns are:
 \description{
 This function can be used to compare and combine any effect size using the
 effect size estimate and its standard error from the original study and
-the follow-up study. The same results can be obtained using the
-\link[vcmeta]{meta.lc.gen} function with appropriate contrast coefficients.
-The confidence level for the difference is 1 – 2*alpha, which is
-recommended for equivalence testing.
+the follow-up study. The confidence level for the difference is 1 – 2*alpha,
+which is recommended for equivalence testing.
 }
 \examples{
 replicate.gen(.05, .782, .210, .650, .154)

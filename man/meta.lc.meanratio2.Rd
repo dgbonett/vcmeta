@@ -39,7 +39,7 @@ Returns 1-row matrix with the following columns:
 }
 \description{
 Computes the estimate, standard error, and confidence interval for a
-log-linear contrast of 2-group mean ratio from two or more studies. A
+log-linear contrast of 2-group mean ratios from two or more studies. A
 Satterthwaite adjustment to the degrees of freedom is used to improve
 the accuracy of the confidence interval. Equality of variances within or across
 studies is not assumed.

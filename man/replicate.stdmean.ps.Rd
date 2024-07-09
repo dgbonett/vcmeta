@@ -18,7 +18,8 @@ replicate.stdmean.ps(
   sd21,
   sd22,
   cor2,
-  n2
+  n2,
+  stdzr
 )
 }
 \arguments{
@@ -47,6 +48,12 @@ replicate.stdmean.ps(
 \item{cor2}{estimated correlation of paired observations in follow-up study}
 
 \item{n2}{sample size in follow-up study}
+
+\item{stdzr}{\itemize{
+\item set to 0 for square root unweighted average variance standardizer
+\item set to 1 for measurement 1 SD standardizer
+\item set to 2 for measurement 2 SD standardizer
+}}
 }
 \value{
 A 4-row matrix. The rows are:
@@ -69,15 +76,14 @@ The columns are:
 This function computes confidence intervals from an original study and a follow-up
 study where the effect size is a paired-samples standardized mean difference.
 Confidence intervals for the difference and average effect size are also computed.
-Equality of variances within or across studies is not assumed. The same results
-can be obtained using the \link[vcmeta]{meta.lc.stdmean.ps} function with
-appropriate contrast coefficients. The confidence level for the difference is
-1 – 2*alpha, which is recommended for equivalence testing.
+Equality of variances within or across studies is not assumed. The confidence level
+for the difference is 1 – 2*alpha, which is recommended for equivalence testing.
+Square root unweighted variances and single-condition standard deviation are options
+for the standardizer.
 }
 \examples{
-replicate.stdmean.ps(alpha = .05, 
-  m11 = 86.22, m12 = 70.93, sd11 = 14.89, sd12 = 12.32, cor1 = .765, n1 = 20, 
-  m21 = 84.81, m22 = 77.24, sd21 = 15.68, sd22 = 16.95, cor2 = .702, n2 = 75)
+replicate.stdmean.ps(alpha = .05, 86.22, 70.93, 14.89, 12.32, .765, 20, 
+                                  84.81, 77.24, 15.68, 16.95, .702, 75, 0)
 
 # Should return:
 #                         Estimate         SE        LL        UL

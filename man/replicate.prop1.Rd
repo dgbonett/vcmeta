@@ -38,9 +38,8 @@ The columns are:
 This function computes confidence intervals for a single proportion from an
 original study and a follow-up study. Confidence intervals for the
 difference between the two proportions and average of the two proportions
-are also computed. The same results can be obtained using the \link[vcmeta]{meta.lc.prop1}
-function with appropriate contrast coefficients. The confidence level for the
-difference is 1 – 2*alpha, which is recommended for equivalence testing.
+are also computed. The confidence level for the difference is 1 – 2*alpha,
+which is recommended for equivalence testing.
 }
 \examples{
 replicate.prop1(.05, 21, 300, 35, 400)

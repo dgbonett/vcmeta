@@ -2,8 +2,8 @@
 % Please edit documentation in R/meta_comp.R
 \name{meta.sub.spear}
 \alias{meta.sub.spear}
-\title{Confidence interval for a difference in average Spearman
-correlations for two sets of studies}
+\title{Confidence interval for a subgroup difference in average
+Spearman correlations}
 \usage{
 meta.sub.spear(alpha, n, cor, group)
 }
@@ -38,9 +38,10 @@ The columns are:
 }
 }
 \description{
-Computes the estimate, standard error, and confidence interval for a
-difference in average Spearman correlations for two mutually
-exclusive sets of studies. Each set can have one or more studies.
+Computes the estimate, standard error, and confidence interval
+for a  difference in average Spearman correlations for two
+mutually exclusive subgroups of studies. Each subgroup can have
+one or more studies.
 }
 \examples{
 n <- c(55, 190, 65, 35)

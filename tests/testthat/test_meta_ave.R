@@ -129,6 +129,22 @@ test_that("meta.ave.cor returns valid matrix", {
 })
 
 
+test_that("meta.ave.cor.gen returns valid matrix", {
+  colnames_expected <- c(
+    "Estimate", "SE", "LL", "UL"
+  )
+  
+  cor <- c(.396, .454, .409, .502, .350)
+  se <- c(.104, .064, .058, .107, .086)
+  res <- meta.ave.cor.gen(.05, cor, se, bystudy = TRUE)
+  
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(6, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+
 test_that("meta.ave.slope returns valid matrix", {
   colnames_expected <- c(
     "Estimate", "SE", "LL", "UL", "df"

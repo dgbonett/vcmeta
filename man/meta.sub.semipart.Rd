@@ -2,8 +2,8 @@
 % Please edit documentation in R/meta_comp.R
 \name{meta.sub.semipart}
 \alias{meta.sub.semipart}
-\title{Confidence interval for a difference in average semipartial
-correlations for two sets of studies}
+\title{Confidence interval for a subgroup difference in average
+semipartial correlations}
 \usage{
 meta.sub.semipart(alpha, n, cor, r2, group)
 }
@@ -41,9 +41,10 @@ The columns are:
 }
 }
 \description{
-Computes the estimate, standard error, and confidence interval for a
-difference in average semipartial correlations for two sets of
-mutually exclusive studies. Each set can have one or more studies.
+Computes the estimate, standard error, and confidence interval
+for a difference in average semipartial correlations for two
+subgroups of mutually exclusive studies. Each subgroup can
+have one or more studies.
 }
 \examples{
 n <- c(55, 190, 65, 35)

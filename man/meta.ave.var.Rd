@@ -26,8 +26,8 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 }
 \description{
 Computes the estimate and confidence interval for an average variance
-from two or more studies. The estimated average variance or the
-upper limit could be used as a variance planning value in sample
+from two or more studies. The estimated average variance or the upper
+confidence limit could be used as a variance planning value in sample
 size planning.
 }
 \examples{

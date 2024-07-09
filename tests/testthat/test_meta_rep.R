@@ -42,7 +42,7 @@ test_that("replicate.stdmean2 returns valid matrix", {
   colnames_expected <- c("Estimate", "SE", "LL", "UL")
   
   res <- replicate.stdmean2(
-    .05, 21.9, 16.1, 3.82, 3.21, 40, 40, 25.2, 19.1, 3.98, 3.79, 75, 75
+    .05, 21.9, 16.1, 3.82, 3.21, 40, 40, 25.2, 19.1, 3.98, 3.79, 75, 75, 9
   )
 
   
@@ -68,7 +68,8 @@ test_that("replicate.stdmean.ps returns valid matrix", {
     sd21 = 15.68, 
     sd22 = 16.95, 
     cor2 = .702, 
-    n2 = 75
+    n2 = 75,
+    stdzr = 0
   )
   
   
@@ -82,6 +83,18 @@ test_that("replicate.cor returns valid matrix", {
   colnames_expected <- c("Estimate", "SE", "z", "p", "LL", "UL")
   
   res <- replicate.cor(.05, .598, 80, .324, 200, 0)
+  
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})
+
+
+test_that("replicate.cor.gen returns valid matrix", {
+  colnames_expected <- c("Estimate", "SE", "z", "p", "LL", "UL")
+
+  res <- replicate.cor.gen(.05, .454, .170, .318, .098)
   
   
   testthat::expect_equal(class(res), c("matrix", "array"))

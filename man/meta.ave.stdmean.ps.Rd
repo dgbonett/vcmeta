@@ -24,8 +24,8 @@ meta.ave.stdmean.ps(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy = TRUE)
 
 \item{stdzr}{\itemize{
 \item set to 0 for square root unweighted average variance standardizer
-\item set to 1 for group 1 SD standardizer
-\item set to 2 for group 2 SD standardizer
+\item set to 1 for measurement 1 SD standardizer
+\item set to 2 for measurement 2 SD standardizer
 }}
 
 \item{bystudy}{logical to also return each study estimate (TRUE) or not}
@@ -43,9 +43,9 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 \description{
 Computes the estimate, standard error, and confidence interval for an
 average standardized mean difference from two or more paired-samples
-studies. Unweighted variances and single group variance are options
-for the standardizer. Equality of variances within or across studies is not
-assumed.
+studies. Squrare root Unweighted variances and a single condition standard
+deviation are options for the standardizer. Equality of variances within
+or across studies is not assumed.
 }
 \examples{
 m1 <- c(23.9, 24.1)

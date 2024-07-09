@@ -194,3 +194,15 @@ test_that("se.cohen returns valid matrix", {
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
 })
+
+
+
+test_that("se.bscor returns valid matrix", {
+  colnames_expected <- c("Estimate",        "SE")
+  
+  res <- se.bscor(21.9, 16.1, 3.82, 3.21, 40, 40)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+})

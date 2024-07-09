@@ -92,6 +92,10 @@ meta.lm.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' meta-regression model where the dependent variable is a 2-group
 #' standardized mean difference. The estimates are OLS estimates with
 #' robust standard errors that accommodate residual heteroscedasticity. 
+#' Use the unweighted variance standardizer for 2-group experimental
+#' designs, and use the weighted variance standardizer for 2-group
+#' nonexperimental designs. A single-group standardizer can be used
+#' in either experimental or nonexperimental designs.
 #'  
 #
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -163,15 +167,14 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
     du <- (1 - 3/(4*n1 - 5))*d
     var <- d^2/(2*df1) + 1/df1 + v2/(df2*v1)
   } else if (stdzr == 2) {
-    cat ("Standardizer = sd2", fill = TRUE) 
     d <- (m1 - m2)/sd2
     du <- (1 - 3/(4*n2 - 5))*d
     var <- d^2/(2*df2) + 1/df2 + v1/(df1*v2)
   } else {
-    s2 <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
+    s2 <- sqrt((df1*v1 + df2*v2)/(df1 + df2))
     d <- (m1 - m2)/sd2
     du <- (1 - 3/(4*n - 9))*d
-    var <- d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2
+    var <- d^2*(1/df1 + 1/df2)/8 + (v1/n1 + v2/n2)/s2^2
   }
   x0 <- matrix(c(1), m, 1)
   X <- cbind(x0, X)
@@ -204,11 +207,11 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m1    	vector of estimated means for group 1 
-#' @param     m2    	vector of estimated means for group 2
-#' @param     sd1   	vector of estimated SDs for group 1
-#' @param     sd2   	vector of estimated SDs for group 2
-#' @param     cor   	vector of estimated correlations
+#' @param     m1    	vector of estimated means for measurement 1 
+#' @param     m2    	vector of estimated means for measurement 2
+#' @param     sd1   	vector of estimated SDs for measurement 1
+#' @param     sd2   	vector of estimated SDs for measurement 2
+#' @param     cor   	vector of estimated correlations for paired measurements
 #' @param     n     	vector of sample sizes
 #' @param     X     	matrix of predictor values
 #' 
@@ -286,17 +289,17 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m1    	vector of estimated means for group 1 
-#' @param     m2    	vector of estimated means for group 2
-#' @param     sd1   	vector of estimated SDs for group 1
-#' @param     sd2   	vector of estimated SDs for group 2
-#' @param     cor   	vector of estimated correlations
+#' @param     m1    	vector of estimated means for measurement 1 
+#' @param     m2    	vector of estimated means for measurement 2
+#' @param     sd1   	vector of estimated SDs for measurement 1
+#' @param     sd2   	vector of estimated SDs for measurement 2
+#' @param     cor   	vector of estimated correlations for paired measurements
 #' @param     n     	vector of sample sizes
 #' @param     X     	matrix of predictor values
 #' @param stdzr
 #' * set to 0 for square root unweighted average variance standardizer 
-#' * set to 1 for group 1 SD standardizer 
-#' * set to 2 for group 2 SD standardizer 
+#' * set to 1 for measurement 1 SD standardizer 
+#' * set to 2 for measurement 2 SD standardizer 
 #' 
 #' 
 #' @return
@@ -482,11 +485,11 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' 
 #' 
 #' @param     alpha 	alpha level for 1-alpha confidence
-#' @param     m1    	vector of estimated means for group 1 
-#' @param     m2    	vector of estimated means for group 2
-#' @param     sd1   	vector of estimated SDs for group 1
-#' @param     sd2   	vector of estimated SDs for group 2
-#' @param     cor   	vector of estimated correlations
+#' @param     m1    	vector of estimated means for measurement 1 
+#' @param     m2    	vector of estimated means for measurement 2
+#' @param     sd1   	vector of estimated SDs for measurement 1
+#' @param     sd2   	vector of estimated SDs for measurement 2
+#' @param     cor   	vector of estimated correlations for paired measurements
 #' @param     n     	vector of sample sizes
 #' @param     X     	matrix of predictor values
 #' 
@@ -791,7 +794,8 @@ meta.lm.spear <- function(alpha, n, cor, X) {
 #' @param     alpha	 alpha level for 1-alpha confidence
 #' @param     n      vector of sample sizes
 #' @param     cor		 vector of estimated semipartial correlations
-#' @param     r2     vector of estimated squared multiple correlations for full model
+#' @param     r2   	 vector of squared multiple correlations for a model that
+#' includes the IV and all control variables
 #' @param     X		   matrix of predictor values
 #' 
 #' 

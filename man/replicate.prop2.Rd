@@ -49,9 +49,8 @@ The columns are:
 This function computes confidence intervals from an original study and a
 follow-up study where the effect size is a 2-group proportion difference.
 Confidence intervals for the difference and average effect size are also
-computed. The same results can be obtained using the \link[vcmeta]{meta.lc.prop2}
-function with appropriate contrast coefficients. The confidence level for
-the difference is 1 – 2*alpha, which is recommended for equivalence testing.
+computed. The confidence level for the difference is 1 – 2*alpha, which
+is recommended for equivalence testing.
 }
 \examples{
 replicate.prop2(.05, 21, 16, 40, 40, 19, 13, 60, 60)

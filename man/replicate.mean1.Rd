@@ -46,10 +46,8 @@ difference between the two means and average of the two means are also
 computed. Equality of variances across studies is not assumed. A
 Satterthwaite adjustment to the degrees of freedom is used to improve
 the accuracy of the confidence intervals for the difference and average.
-The same results can be obtained using the \link[vcmeta]{meta.lc.mean1}
-function with appropriate contrast coefficients. The confidence level
-for the difference is 1 – 2*alpha, which is recommended for equivalence
-testing.
+The confidence level for the difference is 1 – 2*alpha, which is
+recommended for equivalence testing.
 }
 \examples{
 replicate.mean1(.05, 21.9, 3.82, 40, 25.2, 3.98, 75)

@@ -34,7 +34,7 @@ and cor23 where variable 1 is called the "overlapping" variable), and
 variables 2 and 3 are different measurements of the same attribute, this
 function can be used to compute the average of cor12 and cor13 and its
 standard error. The average correlation and the standard error from this
-function can be used as input in the \link[vcmeta]{meta.ave.gen} function
+function can be used as input in the \link[vcmeta]{meta.ave.cor.gen} function
 in a meta-analysis where some studies have reported cor12 and other studies
 have reported cor13.
 }

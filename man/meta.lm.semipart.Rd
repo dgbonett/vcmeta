@@ -13,7 +13,8 @@ meta.lm.semipart(alpha, n, cor, r2, X)
 
 \item{cor}{vector of estimated semipartial correlations}
 
-\item{r2}{vector of estimated squared multiple correlations for full model}
+\item{r2}{vector of squared multiple correlations for a model that
+includes the IV and all control variables}
 
 \item{X}{matrix of predictor values}
 }

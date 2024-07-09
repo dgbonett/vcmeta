@@ -1,20 +1,20 @@
 # ================= Sub-group Comparison of Effect Sizes ============
 #  meta.sub.cor =====================================================
-#' Confidence interval for a difference in average Pearson or partial 
-#' correlations for two sets of studies 
+#' Confidence interval for a subgroup difference in average Pearson 
+#' or partial correlations
 #' 
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
 #' difference in average Pearson or partial correlations for two mutually
-#' exclusive sets of studies. Each set can have one or more studies. All
-#' of the correlations must be either Pearson correlations or partial
-#'  correlations.
+#' exclusive subgroups of studies. Each subgroup can have one or more 
+#' studies. All of the correlations must be either Pearson correlations
+#' or partial correlations.
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     n      	vector of sample sizes 
-#' @param     cor    	vector of estimated Pearson correlations 
+#' @param     cor    	vector of estimated correlations 
 #' @param     s      	number of control variables (set to 0 for Pearson)
 #' @param     group  	vector of group indicators:
 #' * 1 for set A
@@ -92,14 +92,15 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 
 
 #  meta.sub.spear =============================================
-#' Confidence interval for a difference in average Spearman 
-#' correlations for two sets of studies
+#' Confidence interval for a subgroup difference in average
+#' Spearman correlations
 #' 
 #' 
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
-#' difference in average Spearman correlations for two mutually
-#' exclusive sets of studies. Each set can have one or more studies. 
+#' Computes the estimate, standard error, and confidence interval 
+#' for a  difference in average Spearman correlations for two 
+#' mutually exclusive subgroups of studies. Each subgroup can have
+#' one or more studies. 
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -181,20 +182,20 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 
 
 #  meta.sub.pbcor ===============================================
-#' Confidence interval for a difference in average point-biserial
-#' correlations for two sets of studies 
+#' Confidence interval for a subgroup difference in average 
+#' point-biserial correlations
 #' 
 #'
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
-#' difference in average point-biserial correlations for two mutually
-#' exclusive sets of studies. Each set can have one or more studies. Two 
-#' types of point-biserial correlations can be analyzed. One type uses
-#' an unweighted variance and is recommended for 2-group experimental
-#' designs. The other type uses a weighted variance and is recommended
-#' for 2-group nonexperimental designs with simple random sampling (but
-#' not stratified random sampling) within each study. Equality of 
-#' variances within or across studies is not assumed.
+#' Computes the estimate, standard error, and confidence interval for  
+#' a difference in average point-biserial correlations for two mutually
+#' exclusive subgroups of studies. Each subgroup can have one or more 
+#' studies. Two types of point-biserial correlations can be analyzed. 
+#' One type uses an unweighted variance and is recommended for 2-group
+#' experimental designs. The other type uses a weighted variance and 
+#' is recommended for 2-group nonexperimental designs with simple random
+#' sampling (but not stratified random sampling) within each study. 
+#' Equality of variances within or across studies is not assumed.
 #'    
 #'    
 #' @param     alpha   	alpha level for 1-alpha confidence
@@ -307,14 +308,15 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 
 
 #  meta.sub.semipart =========================================
-#' Confidence interval for a difference in average semipartial 
-#' correlations for two sets of studies 
+#' Confidence interval for a subgroup difference in average 
+#' semipartial correlations
 #' 
 #' 
 #' @description
-#' Computes the estimate, standard error, and confidence interval for a 
-#' difference in average semipartial correlations for two sets of 
-#' mutually exclusive studies. Each set can have one or more studies. 
+#' Computes the estimate, standard error, and confidence interval
+#' for a difference in average semipartial correlations for two 
+#' subgroups of mutually exclusive studies. Each subgroup can
+#' have one or more studies. 
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -396,16 +398,16 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 
 
 #  meta.sub.cronbach ==============================================
-#' Confidence interval for a difference in average Cronbach 
-#' reliabilities for two sets of studies 
+#' Confidence interval for a subgroup difference in average Cronbach 
+#' reliabilities 
 #' 
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
-#' difference in average Cronbach reliability coefficients for two mutually
-#' exclusive sets of studies. Each set can have one or more studies. The 
-#' number of measurements used to compute the sample reliablity coefficient
-#' is assumed to be the same for all studies.
+#' difference in average Cronbach reliability coefficients for two 
+#' mutually exclusive subgroups of studies. Each set can have one or
+#' more studies. The number of measurements used to compute the sample
+#' reliablity coefficient is assumed to be the same for all studies.
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -490,15 +492,14 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 
 
 #  meta.sub.gen ===============================================================
-#' Confidence interval for a difference in average effect size for two sets 
-#' of studies 
+#' Confidence interval for a subgroup difference in average effect size
 #' 
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
 #' difference in the average effect size (any type of effect size) for
-#' two mutually exclusive sets of studies. Each set can have one or more 
-#' studies. All of the effects sizes should be compatible. 
+#' two mutually exclusive subgroups of studies. Each subgroup can have one
+#' or more studies. All of the effects sizes should be compatible. 
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -732,11 +733,11 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
     var <- d^2/(2*df2) + 1/df2 + var1/(df1*var2)
     se <- sqrt(t(v)%*%(diag(var))%*%v)
   } else {
-    s2 <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
+    s2 <- sqrt((df1*var1 + df2*var2)/(df1 + df2))
     d <- (m1 - m2)/s2
     du <- (1 - 3/(4*(n1 + n2) - 9))*d
     con <- t(v)%*%du
-    var <- d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2
+    var <- d^2*(1/df1 + 1/df2)/8 + (var1/n1 + var2/n2)/s2^2
     se <- sqrt(t(v)%*%(diag(var))%*%v)
   }
   ll <- con - z*se
@@ -762,10 +763,10 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
-#' @param    m1    	vector of estimated means for group 1 
-#' @param    m2    	vector of estimated means for group 2 
-#' @param    sd1   	vector of estimated SDs for group 1
-#' @param    sd2   	vector of estimated SDs for group 2
+#' @param    m1    	vector of estimated means for measurement 1 
+#' @param    m2    	vector of estimated means for measurement 2 
+#' @param    sd1   	vector of estimated SDs for measurement 1
+#' @param    sd2   	vector of estimated SDs for measurement 2
 #' @param    cor   	vector of estimated correlations for paired measurements
 #' @param    n     	vector of sample sizes
 #' @param    v     	vector of contrast coefficients
@@ -835,17 +836,17 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
-#' @param    m1    	vector of estimated means for group 1 
-#' @param    m2    	vector of estimated means for group 2 
-#' @param    sd1   	vector of estimated SDs for group 1
-#' @param    sd2   	vector of estimated SDs for group 2
+#' @param    m1    	vector of estimated means for measurement 1 
+#' @param    m2    	vector of estimated means for measurement 2 
+#' @param    sd1   	vector of estimated SDs for measurement 1
+#' @param    sd2   	vector of estimated SDs for measurement 2
 #' @param    cor	  vector of estimated correlations for paired measurements
 #' @param    n     	vector of sample sizes
 #' @param    v     	vector of contrast coefficients
 #' @param stdzr
 #' * set to 0 for square root unweighted average variance standardizer 
-#' * set to 1 for group 1 SD standardizer 
-#' * set to 2 for group 2 SD standardizer 
+#' * set to 1 for measurement 1 SD standardizer 
+#' * set to 2 for measurement 2 SD standardizer 
 #' 
 #' 
 #' @return 
@@ -921,7 +922,7 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
-#' log-linear contrast of 2-group mean ratio from two or more studies. A
+#' log-linear contrast of 2-group mean ratios from two or more studies. A
 #' Satterthwaite adjustment to the degrees of freedom is used to improve
 #' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
@@ -1013,10 +1014,10 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #'
 #'
 #' @param    alpha	alpha level for 1-alpha confidence
-#' @param    m1    	vector of estimated means for group 1 
-#' @param    m2    	vector of estimated means for group 2 
-#' @param    sd1   	vector of estimated SDs for group 1
-#' @param    sd2   	vector of estimated SDs for group 2
+#' @param    m1    	vector of estimated means for measurement 1 
+#' @param    m2    	vector of estimated means for measurement 2 
+#' @param    sd1   	vector of estimated SDs for measurement 1
+#' @param    sd2   	vector of estimated SDs for measurement 2
 #' @param    cor   	vector of estimated correlations for paired measurements
 #' @param    n     	vector of sample sizes
 #' @param    v     	vector of contrast coefficients
