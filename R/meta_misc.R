@@ -1,4 +1,4 @@
-# meta.ave.fisher ============================================================
+#  meta.ave.fisher ============================================================
 #' Fisher confidence interval for an average correlation.
 #' 
 #'
@@ -83,7 +83,7 @@ cor.from.t <- function(m1, m2, sd1, sd2, t, n) {
 }
 
 
-# meta.chitest ========================================================
+#  meta.chitest ========================================================
 #' Computes a chi-square test of effect-size homogeneity
 #' 
 #'
