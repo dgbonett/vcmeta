@@ -486,12 +486,14 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
 #' This function computes a log odds ratio and its standard error using
 #' the frequency counts and sample sizes in a 2-group design. These
 #' frequency counts and sample sizes can be obtained from a 2x2 
-#' contingency table. This function is useful in a meta-analysis of
-#' odds ratios where some studies report the sample odds ratio and its
-#' standard error and other studies only report the frequency counts
-#' or a 2x2 contingency table. The log odds ratio and standard error 
-#' output from this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
-#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions.
+#' contingency table. The log odd ratio and its standard error are computed
+#' using a .5 addition to each frequency count of the 2x2 contingency table.  
+#' This function is useful in a meta-analysis of odds ratios where some studies
+#' report the sample odds ratio and its standard error and other studies 
+#' only report the frequency counts for a 2x2 contingency table. The log odds
+#' ratio and standard error output from this function can be used as input in
+#' the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and 
+#' \link[vcmeta]{meta.lm.gen} functions.
 #' 
 #' 
 #' @param    f1		number of participants who have the outcome in group 1 
