@@ -1025,7 +1025,7 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' 
 #' @return
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimatedf log-linear contrast
+#' * Estimate - estimated log-linear contrast
 #' * SE - standard error of log-linear contrast
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -1489,7 +1489,7 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
 #'
 #' @return
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate -estimated linear contrast
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the adjusted Wald confidence interval
 #' * UL - upper limit of the adjusted Wald confidence interval
