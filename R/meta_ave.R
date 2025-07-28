@@ -1614,7 +1614,9 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' Computes the estimate and confidence interval for an average variance 
 #' from two or more studies. The estimated average variance or the upper
 #' confidence limit could be used as a variance planning value in sample
-#' size planning.
+#' size planning. The confidence intervals assume normality, and this
+#' function is not recommended if the variances have been estimated
+#' from leptokurtic data.
 #'
 #'  
 #' @param alpha  	 alpha level for 1-alpha confidence
