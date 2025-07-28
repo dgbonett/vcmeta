@@ -318,8 +318,8 @@ replicate.plot <- function(
 #'  
 #'  
 #' @param result - a result matrix from any of the replicate functions in vcmeta
-#' @param reference_line Optional x-value for a reference line.  Only applies
-#'   if focuse is 'Difference' or 'Both'.  Defaults to NULL, in which case a 
+#' @param reference_line - Optional x-value for a reference line.  Only applies
+#'   if focus is 'Difference' or 'Both'.  Defaults to NULL, in which case a 
 #'   reference line is not drawn.
 #' @param diamond_height - Optional height of the diamond representing average
 #'  effect size. Only applies if focus is 'Average' or 'Both'.
