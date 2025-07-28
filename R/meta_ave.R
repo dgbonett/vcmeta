@@ -607,7 +607,7 @@ meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRU
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average Pearson or partial correlation from two or more studies. The 
 #' sample correlations must be all Pearson correlations or all partial
-#' correlations. Use the meta.ave.gen function to meta-analyze any 
+#' correlations. Use the meta.ave.cor.gen function to meta-analyze any 
 #' combination of Pearson, partial, or Spearman correlations.
 #' 
 #' 
@@ -928,7 +928,7 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #' 2-group nonexperimental designs with simple random sampling (but not
 #' stratified random sampling) within each study. This function requires 
 #' all point-biserial correlations to be of the same type.  Use the
-#' meta.ave.gen function to meta-analyze any combination of biserial
+#' meta.ave.cor.gen function to meta-analyze any combination of biserial
 #' correlation types. 
 #'
 #' 
@@ -1754,7 +1754,8 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #'
 #'
 #' @details
-#' The weighted average estimate will be biased regardless of the number of 
+#' When the population effect sizes are not identical across studies, the
+#' weighted average estimate will be biased regardless of the number of 
 #' studies or the sample size in each study. The actual confidence interval 
 #' coverage probability can be much smaller than the specified confidence
 #' level when the population effect sizes are not identical across studies. 
@@ -1850,13 +1851,15 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' @details
 #' The random coefficient model assumes that the studies in the meta-analysis
 #' are a random sample from some definable superpopulation of studies. This
-#' assumption is very difficult to justify. The weighted average estimate
-#' will be biased regardless of the number of studies or the sample size
-#' in each study. The actual confidence interval coverage probability can 
-#' much smaller than the specified confidence level if the effect sizes are 
-#' correlated with the weights (which occurs frequently). The confidence 
-#' interval for tau-squared assumes that the true effect sizes in the
-#' superpopulation of studies have a normal distribution. A large number 
+#' assumption is very difficult to justify. When the effect sizes are 
+#' correlated with the weights (a common occurance), the weighted average 
+#' estimate will be biased regardless of the number of studies or the sample
+#' size in each study. The actual confidence interval coverage probability  
+#' can much smaller than the specified confidence level if the effect sizes 
+#' are correlated with the weights. 
+#'
+#' The confidence interval for tau-squared assumes that the true effect sizes
+#' in the superpopulation of studies have a normal distribution. A large number 
 #' of studies, each with a large sample size, is required to assess the 
 #' superpopulation normality assumption and to accurately estimate 
 #' tau-squared. The confidence interval for the population tau-squared is
@@ -1865,7 +1868,7 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #'
 #' The random coefficient model should be used with caution, and the varying 
 #' coefficient methods in this package are the recommended alternatives. The 
-#' varying coefficient methods allows the effect sizes to differ across studies
+#' varying coefficient methods allows the effect sizes to differ across studies,
 #' but do not require the studies to be a random sample from a definable 
 #' superpopoulation of studies. This random coefficient function is included 
 #' in the vcmeta package primarily for classroom demonstrations to illustrate
@@ -1967,8 +1970,9 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average correlation. Any type of correlation can be used (e.g., Pearson,
-#' Spearman, semipartial, factor correlation, Gamma coefficient, Somers d
-#' coefficient, tetrachoric, point-biserial, biserial, etc.).
+#' Spearman, semipartial, factor correlation, gamma coefficient, Somers d
+#' coefficient, tetrachoric, point-biserial, biserial, correlation between
+#' latent factors, etc.).
 #' 
 #' 
 #' @param alpha	   alpha level for 1-alpha confidence
