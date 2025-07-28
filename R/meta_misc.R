@@ -46,12 +46,13 @@ meta.ave.fisher <- function(alpha, cor, se) {
 
 
 #  cor.from.t =============================================================
-#' Computes Pearson correlation between paired measurements from t statistic
+#' Computes a Pearson correlation between paired measurements from a
+#' paired-samples t statistic
 #' 
 #' @description 
-#' This function computes the Pearson correlation between paired 
-#' measurements using a reported paired-samples t statistic and 
-#' other sample information. This correlation estimate is needed 
+#' Computes the Pearson correlation between paired measurements
+#' using a reported paired-samples t statistic and other
+#' sample information. This correlation estimate is needed 
 #' in several functions that analyze mean differences and 
 #' standardized mean differences in paired-samples studies.
 #' 
@@ -60,7 +61,7 @@ meta.ave.fisher <- function(alpha, cor, se) {
 #' @param m2 estimated mean for measurement 2 
 #' @param sd1 estimated standard deviation for measurement 1 
 #' @param sd2 estimated standard deviation for measurement 2 
-#' @param t value for paired-samples t-test
+#' @param t value of paired-samples t-test
 #' @param n sample size
 #'  
 #' @return
