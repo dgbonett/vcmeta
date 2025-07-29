@@ -307,7 +307,7 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' row per predictor.  The matrix has the following columns:
 #' * Estimate - OLS estimate
 #' * SE - standard error
-#' * t - t-value
+#' * z - z-value
 #' * p - p-value
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -1028,12 +1028,12 @@ meta.lm.odds <- function(alpha, f1, f2, n1, n2, X) {
 
 
 #  meta.lm.propratio2 =======================================================
-#' Meta-regression analysis for proportion ratios 
+#' Meta-regression analysis for 2-group proportion ratios 
 #' 
 #'
 #' @description
 #' This function estimates the intercept and slope coefficients in a
-#' meta-regression model where the dependent variable is a log
+#' meta-regression model where the dependent variable is a 2-group log
 #' proportion ratio. The estimates are OLS estimates with robust standard 
 #' errors that accommodate residual heteroscedasticity. The exponentiated 
 #' slope estimate for a predictor variable describes a multiplicative 
