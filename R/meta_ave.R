@@ -2043,6 +2043,80 @@ meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
 }
 
 
+#  meta.ave.gen.log ==========================================================
+#' Exponentiated confidence interval for an average of log-transformed
+#' parameters 
+#'                        
+#'
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average of any type of log-transformed parameter from two or more studies. 
+#'
+#' 
+#' @param    alpha  	alpha level for 1-alpha confidence
+#' @param    est     	vector of log-transformed parameter estimates 
+#' @param    se      	vector of standard errors for log-transformed estimates
+#' @param    bystudy    logical to also return each study estimate (TRUE) or not
+#' 
+#' 
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated log effect size (from input)
+#' * SE - standard error of log effect size (from input)
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' * exp(Estimate) - exponentiated estimate
+#' * LL - lower limit of the exponentiated confidence interval
+#' * UL - upper limit of the exponentiated confidence interval
+#' 
+#' 
+#' @examples
+#' 
+#' est <- c(.161, .191)
+#' se <- c(.068, .092)
+#' meta.ave.gen.log(.05, est, se, bystudy = TRUE)
+#' 
+#' # Should return:
+#' #         Estimate        SE         LL        UL exp(Estimate)
+#' # Average    0.176 0.0572014 0.06388732 0.2881127      1.192438
+#' # Study 1    0.161 0.0680000 0.02772245 0.2942776      1.174685
+#' # Study 2    0.191 0.0920000 0.01068331 0.3713167      1.210459
+#' #          exp(LL)  exp(UL)
+#' # Average 1.065972 1.333908
+#' # Study 1 1.028110 1.342156
+#' # Study 2 1.010741 1.449642
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.ave.gen.log <- function(alpha, est, se, bystudy = TRUE) {
+  m <- length(est)
+  z <- qnorm(1 - alpha/2)
+  ave.est <- sum(est)/m
+  se.ave <- sqrt(sum(se^2)/m^2)
+  ll1 <- ave.est - z*se.ave
+  ul1 <- ave.est + z*se.ave
+  ll2 <- exp(ave.est - z*se.ave)
+  ul2 <- exp(ave.est + z*se.ave)
+  out <- cbind(ave.est, se.ave, ll1, ul1, exp(ave.est), ll2, ul2)
+  row <- "Average"
+  if (bystudy) {
+    ll1 <- est - z*se
+    ul1 <- est + z*se
+    ll2 <- exp(est - z*se)
+    ul2 <- exp(est + z*se)
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(est, se, ll1, ul1, exp(est), ll2, ul2)
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "exp(Estimate)", "exp(LL)", "exp(UL)")
+  rownames(out) <- row 
+  return (out)
+}
+
+
 use_imports <- function() {
   mathjaxr::preview_rd()
 }
