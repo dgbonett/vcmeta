@@ -4,7 +4,7 @@
 #'
 #' @description 
 #' Generates a basic plot using ggplot2 to visualize the estimates from
-#' and original and follow-up studies.
+#' the original and follow-up studies.
 #'  
 #'  
 #' @param result - a result matrix from any of the replicate functions in vcmeta
