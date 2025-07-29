@@ -9,10 +9,8 @@
 #' intervals for the difference and average effect size are also computed. 
 #' Equality of variances within or across studies is not assumed. A
 #' Satterthwaite adjustment to the degrees of freedom is used to improve the 
-#' accuracy of the confidence intervals. The same results can be obtained using
-#' the \link[vcmeta]{meta.lc.mean2} function with appropriate contrast coefficients. 
-#' The confidence level for the difference is 1 – 2*alpha, which is recommended for 
-#' equivalence testing.
+#' accuracy of the confidence intervals. The confidence level for the difference
+#' is 1 – 2*alpha, which is recommended for equivalence testing.
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -815,7 +813,9 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 #' interval for the difference uses a 1 - 2*alpha confidence level, which is 
 #' recommended for equivalence testing. Use the \link[vcmeta]{replicate.gen} 
 #' function for slopes in other types of models (e.g., binary logistic, ordinal 
-#' logistic, SEM). 
+#' logistic, SEM). A Satterthwaite adjustment to the degrees of freedom is used
+#' to improve the accuracy of the confidence intervals for the average and the
+#' difference.
 #'
 #'
 #' @param    alpha	alpha level for 1-alpha or 1 - 2alpha confidence
@@ -1093,7 +1093,7 @@ replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
 
 
 #  replicate.prop1 ============================================================
-#' Compares and combines single proportion in original and follow-up studies
+#' Compares and combines single proportions in original and follow-up studies
 #' 
 #'
 #' @description 
@@ -1104,11 +1104,11 @@ replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
 #' which is recommended for equivalence testing.
 #' 
 #' 
-#' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    f1	  	   frequency count in original study 
+#' @param    alpha	 alpha level for 1-alpha confidence
+#' @param    f1	  	 frequency count in original study 
 #' @param    n1     	 sample size in original study
-#' @param    f2 	   	 frequency count in follow-up study 
-#' @param    n2    	 	 sample size for in follow-up study
+#' @param    f2 	 frequency count in follow-up study 
+#' @param    n2    	 sample size for in follow-up study
 #' 
 #' 
 #' @return A 4-row matrix. The rows are:
