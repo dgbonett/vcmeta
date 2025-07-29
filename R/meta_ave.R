@@ -1186,7 +1186,7 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 }
 
 
-#  meta.ave.odds ==========================================================
+#  meta.ave.oddsratio =====================================================
 #' Confidence interval for average odds ratio from 2-group studies
 #'  
 #'  
@@ -1220,7 +1220,7 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 #' n2 <- c(106, 103, 415, 132, 83)
 #' f1 <- c(24, 40, 93, 14, 5)
 #' f2 <- c(12, 9, 28, 3, 1)
-#' meta.ave.odds(.05, f1, f2, n1, n2, bystudy = TRUE)
+#' meta.ave.oddsratio(.05, f1, f2, n1, n2, bystudy = TRUE)
 #' 
 #' # Should return:
 #' #           Estimate        SE          LL        UL 
@@ -1245,7 +1245,7 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.ave.odds <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
+meta.ave.oddsratio <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
   m <- length(n1)
   z <- qnorm(1 - alpha/2)
   nt <- sum(n1 + n2)
