@@ -3,7 +3,7 @@
 #' 
 #' 
 #' @description
-#' This function computes the standard error of a 
+#' Computes the standard error of a 
 #' 2-group mean difference using the estimated means, estimated 
 #' standard deviations, and sample sizes. The effect size estimate 
 #' and standard error output from this function can be used as input
@@ -56,7 +56,7 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' 
 #' 
 #' @description
-#' This function computes the standard error of a 
+#' Computes the standard error of a 
 #' paired-samples mean difference using the estimated means, 
 #' estimated standard deviations, estimated Pearson correlation, 
 #' and sample size. The effect size estimate and standard error 
@@ -109,7 +109,7 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' 
 #' 
 #' @description
-#' This function computes the standard error of a 2-group standardized
+#' Computes the standard error of a 2-group standardized
 #' mean difference using the sample sizes and the estimated means
 #  and standard deviations. Use the square root average variance
 #' standardizer (stdzr = 0) for 2-group experimental designs. Use the 
@@ -196,7 +196,7 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 #' 
 #'
 #' @description
-#' This function computes the standard error of a paired-samples standardized
+#' Computes the standard error of a paired-samples standardized
 #' mean difference using the sample size and estimated means, standard 
 #' deviations, and estimated correlation. The effect size estimate and standard error
 #' output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
@@ -268,7 +268,7 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #' 
 #'
 #' @description
-#' This function computes the standard error of a 
+#' Computes the standard error of a 
 #' Pearson or partial correlation using the estimated correlation, 
 #' sample size, and number of control variables. The correlation, 
 #' along with the standard error output from this function, can be used 
@@ -315,7 +315,7 @@ se.cor <- function(cor, s, n) {
 #' 
 #' 
 #' @description
-#' This function computes the Bonett-Wright standard
+#' Computes the Bonett-Wright standard
 #' error of a Spearman correlation using the estimated correlation
 #' and sample size. The standard error from this function can be used
 #' as input in the \link[vcmeta]{meta.ave.cor.gen} function in applications 
@@ -360,7 +360,7 @@ se.spear <- function(cor, n) {
 #' 
 #'
 #' @description
-#' This function computes the standard error of a 
+#' Computes the standard error of a 
 #' semipartial correlation using the estimated correlation, sample 
 #' size, and squared multiple correlation for the full model. The full
 #' model includes the independent variable of interest and all control
@@ -407,7 +407,7 @@ se.semipartial <- function(cor, r2, n) {
 #' 
 #'
 #' @description
-#' This function computes a point-biserial correlation and its standard 
+#' Computes a point-biserial correlation and its standard 
 #' error for two types of point-biserial correlations in 2-group designs
 #' using the estimated means, estimated standard deviations, and samples
 #' sizes. Equality of variances is not assumed. One type of point-biserial
@@ -483,7 +483,7 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
 #' 
 #'
 #' @description 
-#' This function computes a log odds ratio and its standard error using
+#' Computes a log odds ratio and its standard error using
 #' the frequency counts and sample sizes in a 2-group design. These
 #' frequency counts and sample sizes can be obtained from a 2x2 
 #' contingency table. The log odd ratio and its standard error are computed
@@ -536,7 +536,7 @@ se.odds <- function(f1, n1, f2, n2) {
 #' 
 #' 
 #' @description
-#' This function computes the standard error of a 
+#' Computes the standard error of a 
 #' 2-group log mean ratio using the estimated means, estimated standard
 #' deviations, and sample sizes. The log mean estimate and standard 
 #' error output from this function can be used as input in the
@@ -589,7 +589,7 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' 
 #' 
 #' @description
-#' This function computes the standard error of a 
+#' Computes the standard error of a 
 #' paired-samples log mean ratio using the estimated means, estimated
 #'  standard deviations, estimated Pearson correlation, and sample 
 #' size. The log-mean estimate and standard error output from
@@ -644,7 +644,7 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' 
 #'
 #' @description 
-#' This function computes a slope and its standard error
+#' Computes a slope and its standard error
 #' for a simple linear regression model (random-x model) using the estimated 
 #' Pearson correlation and the estimated standard deviations of the response
 #' variable and predictor variable. This function is useful in a meta-analysis
@@ -692,7 +692,7 @@ se.slope <- function(cor, sdy, sdx, n) {
 #' 
 #' 
 #' @description
-#' This function computes the Agresti-Caffo standard 
+#' Computes the Agresti-Caffo standard 
 #' error of a 2-group proportion difference using the frequency 
 #' counts and sample sizes. The effect size estimate and standard 
 #' error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
@@ -744,7 +744,7 @@ se.prop2 <- function(f1, f2, n1, n2) {
 #' 
 #' 
 #' @description
-#' This function computes the Bonett-Price standard error 
+#' Computes the Bonett-Price standard error 
 #' of a paired-samples proportion difference using the frequency counts 
 #' from a 2 x 2 contingency table. The effect size estimate and standard 
 #' error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
@@ -994,7 +994,7 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
 #'
 #'
 #' @description
-#' This function computes an estimate of a tetrachoric correlation
+#' Computes an estimate of a tetrachoric correlation
 #' approximation and its standard error using the frequency counts
 #' from a 2 x 2 contingency table for two artifically dichotomous variables.
 #' A tetrachoric approximation could be compatible with a Pearson correlation
@@ -1057,7 +1057,7 @@ se.tetra <- function(f00, f01, f10, f11) {
 #'
 #'
 #' @description
-#' This function computes an estimate of a biserial-phi  
+#' Computes an estimate of a biserial-phi  
 #' correlation and its standard error using the frequency counts from a 2 x 2
 #' contingency table where one variable is naturally dichotomous and the other
 #' variable is artifically dichotomous. A biserial-phi correlation could be 
@@ -1116,7 +1116,7 @@ se.biphi <- function(f1, f2, n1, n2) {
 #' 
 #' 
 #' @description
-#' This function computes the standard error of Cohen's d using only the two 
+#' Computes the standard error of Cohen's d using only the two 
 #' sample sizes and an estimate of Cohen's d. Cohen's d and its standard error 
 #' assume equal variances. The estimate of Cohen's d, with the standard error
 #' output from this function, can be used as input in the \link[vcmeta]{meta.ave.gen},
@@ -1164,7 +1164,7 @@ se.cohen <- function(d, n1, n2) {
 #' 
 #'
 #' @description
-#' This function computes a biserial correlation and its standard error. A
+#' Computes a biserial correlation and its standard error. A
 #' biserial correlation can be used when one variable is quantitative and the 
 #' other variable has been artifically dichotmized. The biserial correlation
 #' estimates the correlation between an observable quantitative variable and
@@ -1243,5 +1243,108 @@ se.bscor <- function(m1, m2, sd1, sd2, n1, n2) {
  rownames(out) <- "Biserial correlation: "
  return(out)
 }
+
+
+# se.propratio2 =============================================================== 
+#' Computes the estimate and standard error for a 2-group log proportion ratio 
+#' 
+#' 
+#' @description
+#' Computes the Price-Bonett standard error of a 2-group proportion ratio using
+#' the frequency count and sample size for each group. The log proportion ratio
+#' and standard error output from this function can be used as input in the
+#' \link[vcmeta]{meta.ave.gen.log} function in applications where compatible 
+#' proportion ratios from a combination of 2-group and paired-samples studies 
+#' are used in the meta-analysis. If the proportions in each group are small
+#' (less than .1), proportion ratios may be compatible with odds ratios and
+#' then the \link[vcmeta]{meta.ave.gen.log} function could be used to 
+#' meta-analyze any combination of log proportion ratios and log odds ratios.
+#' 
+#' 
+#' @param    f1   number of participants in group 1 who have the outcome
+#' @param    f2	  number of participants in group 2 who have the outcome
+#' @param    n1	  sample size for group 1
+#' @param    n2	  sample size for group 2
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated log proportion ratio
+#' * SE - standard error
+#' 
+#'  
+#' @examples
+#' se.propratio2(31, 16, 40, 40)
+#'
+#' # Should return:
+#' #                         Estimate        SE
+#' # Log proportion ratio:  0.6539265 0.2136218
+#' 
+#' 
+#' @references
+#' \insertRef{Price2008}{vcmeta}
+#'
+#'
+#' @export
+se.propratio2 <- function(f1, f2, n1, n2) {
+ p1 <- (f1 + 1/4)/(n1 + 7/4)
+ p2 <- (f2 + 1/4)/(n2 + 7/4)
+ v1 <- 1/(f1 + 1/4 + (f1 + 1/4)^2/(n1 - f1 + 3/2))
+ v2 <- 1/(f2 + 1/4 + (f2 + 1/4)^2/(n2 - f2 + 3/2))
+ est <- log(p1/p2)
+ se <- sqrt(v1 + v2)
+ out <- t(c(est, se))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Log proportion ratio: "
+ return(out)
+}
+
+
+# se.propratio.ps =============================================================
+#' Computes the estimate and standard error for a paired-samples log
+#' proportion ratio
+#' 
+#' 
+#' @description
+#' Computes a large-sample standard error of a paired-samples log proportion 
+#' ratio using the frequency counts from a 2 x 2 contingency table. The log 
+#' proportion ratio and standard error output from this function can be used
+#' as input in the \link[vcmeta]{meta.ave.gen.log} function in applications 
+#' where compatible proportion ratios from a combination of 2-group and 
+#' paired-samples studies are used in the meta-analysis. 
+#' 
+#' 
+#' @param   f00    number of participants with y = 0 and x = 0
+#' @param   f01    number of participants with y = 0 and x = 1
+#' @param   f10    number of participants with y = 1 and x = 0
+#' @param   f11    number of participants with y = 1 and x = 1
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated log proportion ratio
+#' * SE - standard error
+#' 
+#'  
+#' @examples
+#' se.propratio.ps(16, 64, 5, 15)
+#'
+#' # Should return:
+#' #                         Estimate         SE
+#' # Log proportion ratio:  -1.373716  0.2089758
+#' 
+#' 
+#' @export
+se.propratio.ps <- function(f00, f01, f10, f11) {
+ f1 <- f10 + f11
+ f2 <- f01 + f11
+ est <- log(f1/f2)
+ se <- sqrt((f01 + f10)/(f1*f2))
+ out <- t(c(est, se))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Log proportion ratio: "
+ return(out)
+}
+
 
 
