@@ -786,14 +786,14 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' m2 <- c(55, 62, 58, 61)
 #' sd1 <- c(4.1, 4.2, 4.5, 4.0)
 #' sd2 <- c(4.2, 4.7, 4.9, 4.8)
-#' cor <- c(.7, .7, .8, .85)
+#' cor <- c(.72, .78, .81, .85)
 #' n <- c(30, 50, 30, 70)
 #' v <- c(.5, .5, -.5, -.5)
 #' meta.lc.mean.ps(.05, m1, m2, sd1, sd2, cor, n, v)
 #' 
 #' # Should return:
-#' #          Estimate        SE       LL       UL      df
-#' # Contrast      2.5 0.4943114 1.520618 3.479382 112.347
+#' #          Estimate        SE      LL      UL      df
+#' # Contrast      2.5 0.4681205 1.57207 3.42793 107.657
 #' 
 #' 
 #' @references
@@ -862,14 +862,14 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' m2 <- c(55, 62, 58, 61)
 #' sd1 <- c(4.1, 4.2, 4.5, 4.0)
 #' sd2 <- c(4.2, 4.7, 4.9, 4.8)
-#' cor <- c(.7, .7, .8, .85)
+#' cor <- c(.72, .78, .81, .85)
 #' n <- c(30, 50, 30, 70)
 #' v <- c(.5, .5, -.5, -.5)
 #' meta.lc.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, v, 0)
 #' 
 #' # Should return:
 #' #            Estimate        SE        LL        UL
-#' # Contrast  0.5127577 0.1392232 0.2398851 0.7856302
+#' # Contrast  0.5127577 0.1346794 0.2487908 0.7767245
 #' 
 #' 
 #' @references
@@ -1040,16 +1040,16 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' m2 <- c(55, 62, 58, 61)
 #' sd1 <- c(4.1, 4.2, 4.5, 4.0)
 #' sd2 <- c(4.2, 4.7, 4.9, 4.8)
-#' cor <- c(.7, .7, .8, .85)
+#' cor <- c(.72, .78, .81, .85)
 #' n <- c(30, 50, 30, 70)
 #' v <- c(.5, .5, -.5, -.5)
 #' meta.lc.meanratio.ps(.05, m1, m2, sd1, sd2, cor, n, v)
 #' 
 #' # Should return:
-#' #           Estimate          SE         LL         UL exp(Estimate)
-#' # Contrast 0.0440713 0.008701725 0.02681353 0.06132907      1.045057
+#' #           Estimate       SE         LL         UL exp(Estimate)
+#' # Contrast 0.0440713 0.008265 0.02767047 0.06047213      1.045057
 #' #           exp(LL)  exp(UL)       df
-#' # Contrast 1.027176 1.063249 103.0256
+#' # Contrast 1.028057 1.062338 98.38086
 #'
 #' 
 #' @references
