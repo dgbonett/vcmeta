@@ -251,17 +251,17 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
 #' m2 <- c(55, 62, 58, 61)
 #' sd1 <- c(4.1, 4.2, 4.5, 4.0)
 #' sd2 <- c(4.2, 4.7, 4.9, 4.8)
-#' cor <- c(.7, .7, .8, .85)
+#' cor <- c(.72, .78, .81, .85)
 #' n <- c(30, 50, 30, 70)
 #' meta.ave.mean.ps(.05, m1, m2, sd1, sd2, cor, n, bystudy = TRUE)
 #' 
 #' # Should return:
-#' #        Estimate        SE        LL         UL      df
-#' # Average   -3.25 0.2471557 -3.739691 -2.7603091 112.347
-#' # Study 1   -2.00 0.5871400 -3.200836 -0.7991639  29.000
-#' # Study 2   -2.00 0.4918130 -2.988335 -1.0116648  49.000
-#' # Study 3   -5.00 0.5471136 -6.118973 -3.8810270  29.000
-#' # Study 4   -4.00 0.3023716 -4.603215 -3.3967852  69.000
+#' #         Estimate        SE        LL         UL      df
+#' # Average    -3.25 0.2340603 -3.713965 -2.7860352 107.657
+#' # Study 1    -2.00 0.5672507 -3.160158 -0.8398421  29.000
+#' # Study 2    -2.00 0.4227434 -2.849535 -1.1504653  49.000
+#' # Study 3    -5.00 0.5335104 -6.091151 -3.9088487  29.000
+#' # Study 4    -4.00 0.3023716 -4.603215 -3.3967852  69.000
 #' 
 #' 
 #' @importFrom stats qt
@@ -2050,7 +2050,8 @@ meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
 #'
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
-#' average of any type of log-transformed parameter from two or more studies. 
+#' average of any type of log-transformed parameter (e.g., log mean ratio,
+#' log proportion ratio, log odds ratio) from two or more studies. 
 #'
 #' 
 #' @param    alpha  	alpha level for 1-alpha confidence
@@ -2073,19 +2074,21 @@ meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
 #' 
 #' @examples
 #' 
-#' est <- c(.161, .191)
-#' se <- c(.068, .092)
+#' est <- c(.165, .193, .218)
+#' se <- c(.0684, .0921, .0882)
 #' meta.ave.gen.log(.05, est, se, bystudy = TRUE)
 #' 
 #' # Should return:
-#' #         Estimate        SE         LL        UL exp(Estimate)
-#' # Average    0.176 0.0572014 0.06388732 0.2881127      1.192438
-#' # Study 1    0.161 0.0680000 0.02772245 0.2942776      1.174685
-#' # Study 2    0.191 0.0920000 0.01068331 0.3713167      1.210459
+#' #         Estimate         SE         LL        UL exp(Estimate)
+#' # Average    0.192 0.04823578 0.09745962 0.2865404      1.211671
+#' # Study 1    0.165 0.06840000 0.03093846 0.2990615      1.179393
+#' # Study 2    0.193 0.09210000 0.01248732 0.3735127      1.212883
+#' # Study 3    0.218 0.08820000 0.04513118 0.3908688      1.243587
 #' #          exp(LL)  exp(UL)
-#' # Average 1.065972 1.333908
-#' # Study 1 1.028110 1.342156
-#' # Study 2 1.010741 1.449642
+#' # Average 1.102367 1.331812
+#' # Study 1 1.031422 1.348593
+#' # Study 2 1.012566 1.452829
+#' # Study 3 1.046165 1.478265
 #' 
 #' 
 #' @importFrom stats qnorm
