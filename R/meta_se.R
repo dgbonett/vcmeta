@@ -1344,4 +1344,59 @@ se.propratio.ps <- function(f00, f01, f10, f11) {
 }
 
 
+# se.agree ====================================================================
+#' Computes the estimate and standard error for a G-index of agreement 
+#'
+#' @description 
+#' Computes an adjusted G-index of agreement for two raters using the number
+#' of objects rated in agreement, the sample size (number of objects), and 
+#' the number of rating categories. The adjustment for the G-index and its 
+#' standard error is optimized for the the number of planned studies in the 
+#' meta-analysis. The G-index and standard error output from this function 
+#' can be used as input in the \link[vcmeta]{meta.ave.gen}, 
+#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions. 
+#' The G-index is usually preferred to Cohen's kappa.
+#' 
+#' 
+#' @param    f		number of objects rated in agreement 
+#' @param    n		sample size (number of objects)
+#' @param    k		number of rating categories 
+#' @param    m		number of studies in planned meta-analysis
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * MLE - maximum likelihood estimate of G-index
+#' * Estimate - adjusted estimate of G-index
+#' * SE - standard error of adjusted estimate
+#' 
+#' 
+#' @examples
+#' se.agree(42, 50, 3, 4)
+#'
+#' # Should return: 
+#' #             MLE  Estimate         SE
+#' # G-index:   0.76      0.75 0.06391375 
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2022}{vcmeta}
+#' 
+#' 
+#' @export
+se.agree <- function(f, n, k, m) {
+  p.ml <- f/n
+  p.adj <- (f + 2/m)/(n + 4/m)
+  a <- k/(k - 1)
+  G.ml <- a*p.ml - 1/(k - 1)
+  G.adj <- a*p.adj - 1/(k - 1)
+  se <- sqrt(a*p.adj*(1 - p.adj)/(n + 4/m))
+  out <- t(c(G.ml, G.adj, se))
+  colnames(out) <- c("MLE", "Estimate", "SE")
+  rownames(out) <- "G-index: "
+  return(out)
+}
+
+
+
 
