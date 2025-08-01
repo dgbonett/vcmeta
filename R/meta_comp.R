@@ -1355,6 +1355,10 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' # Contrast 0.1022939 0.07972357 -0.05396142 0.2585492
 #' 
 #' 
+#' @references 
+#' \insertRef{Bonett2022}{vcmeta}
+#' 
+#' 
 #' @importFrom stats qnorm
 #' @export
 meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
