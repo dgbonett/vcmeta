@@ -1556,6 +1556,10 @@ meta.ave.prop.ps <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' # Study 3 0.6981132 0.06954284 0.5618117 0.8344147
 #' 
 #' 
+#' @references 
+#' \insertRef{Bonett2022}{vcmeta}
+#'
+#'
 #' @importFrom stats qnorm
 #' @export
 meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
