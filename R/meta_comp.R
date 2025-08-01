@@ -57,7 +57,6 @@
 meta.sub.cor <- function(alpha, n, cor, s, group) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   var <- (1 - cor^2)^2/(n - 3 - s)
   g1 <- (group == rep(1, m))*1
   g2 <- (group == rep(2, m))*1
@@ -147,7 +146,6 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 meta.sub.spear <- function(alpha, n, cor, group) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   var <- (1 + cor^2/2)*(1 - cor^2)^2/(n - 3)
   g1 <- (group == rep(1, m))*1
   g2 <- (group == rep(2, m))*1
@@ -254,7 +252,6 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
   n <- n1 + n2
-  nt <- sum(n)
   df1 <- n1 - 1
   df2 <- n2 - 1
   if (type == 1) {
@@ -362,7 +359,6 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 meta.sub.semipart <- function(alpha, n, cor, r2, group) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   r0 <- r2 - cor^2
   var = (r2^2 - 2*r2 + r0 - r0^2 + 1)/(n - 3)
   g1 <- (group == rep(1, m))*1
@@ -456,7 +452,6 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 meta.sub.cronbach <- function(alpha, n, rel, r, group) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   g1 <- (group == rep(1, m))*1
   g2 <- (group == rep(2, m))*1
   m1 <- sum(g1)
@@ -624,7 +619,6 @@ meta.sub.gen <- function(alpha, est, se, group) {
 #' @export
 meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   m <- length(m1)
-  nt <- sum(n1 + n2)
   var1 <- sd1^2
   var2 <- sd2^2
   var <- var1/n1 + var2/n2
@@ -710,7 +704,6 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
   df2 <- n2 - 1
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
-  nt = sum(n1 + n2)
   var1 <- sd1^2
   var2 <- sd2^2
   if (stdzr == 0) {
@@ -804,7 +797,6 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' @export
 meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
   m <- length(m1)
-  nt <- sum(n)
   var1 <- sd1^2
   var2 <- sd2^2
   var <- (var1 + var2 - 2*cor*sd1*sd2)/n
@@ -882,12 +874,11 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
   df <- n - 1
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   var1 <- sd1^2
   var2 <- sd2^2
   vd <- var1 + var2 - 2*cor*sd1*sd2
   if (stdzr == 0) {
-     s <- sqrt((var1 + var2)/2)
+    s <- sqrt((var1 + var2)/2)
     d <- (m1 - m2)/s
     du <- sqrt((n - 2)/df)*d
     var <- d^2*(var1^2 + var2^2 + 2*cor^2*var1*var2)/(8*df*s^4) + vd/(df*s^2)
@@ -974,7 +965,6 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' @importFrom stats qt
 #' @export
 meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
-  nt <- sum(n1 + n2)
   logratio <- log(m1/m2)
   var1 <- sd1^2/(n1*m1^2) 
   var2 <- sd2^2/(n2*m2^2)
@@ -985,16 +975,8 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   ll <- est - t*se
   ul <- est + t*se
   out <- cbind(est, se, ll, ul, exp(est), exp(ll), exp(ul), df)
-  colnames(out) <- c(
-    "Estimate", 
-    "SE", 
-    "LL", 
-    "UL", 
-    "exp(Estimate)", 
-    "exp(LL)", 
-    "exp(UL)",
-    "df"
-  )
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "exp(Estimate)", 
+                     "exp(LL)", "exp(UL)", "df")
   rownames(out) <- "Contrast"
   return(out)
 }
@@ -1059,7 +1041,6 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' @importFrom stats qt
 #' @export
 meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
-  nt <- sum(n)
   logratio <- log(m1/m2)
   var <- (sd1^2/m1^2 + sd2^2/m2^2 - 2*cor*sd1*sd2/(m1*m2))/n
   est <- t(v)%*%logratio
@@ -1123,7 +1104,6 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' @export
 meta.lc.odds <- function(alpha, f1, f2, n1, n2, v) {
   m <- length(n1)
-  nt <- sum(n1 + n2)
   z <- qnorm(1 - alpha/2)
   lor <- log((f1 + .5)*(n2 - f2 + .5)/((f2 + .5)*(n1 - f1 + .5)))
   var.lor <- 1/(f1 + .5) + 1/(f2 + .5) + 1/(n1 - f1 + .5) + 1/(n2 - f2 + .5)
@@ -1187,7 +1167,6 @@ meta.lc.odds <- function(alpha, f1, f2, n1, n2, v) {
 #' @export
 meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
   m <- length(n1)
-  nt <- sum(n1 + n2)
   z <- qnorm(1 - alpha/2)
   p1 <- (f1 + 1/4)/(n1 + 7/4) 
   p2 <- (f2 + 1/4)/(n2 + 7/4)
@@ -1255,7 +1234,6 @@ meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
 meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
   m <- length(n1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n1 + n2)
   p1 <- (f1 + 1/m)/(n1 + 2/m) 
   p2 <- (f2 + 1/m)/(n2 + 2/m)
   rd <- p1 - p2
@@ -1323,7 +1301,6 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
   m <- length(f11)
   z <- qnorm(1 - alpha/2)
   n <- f11 + f12 + f21 + f22
-  nt <- sum(n)
   p12 <- (f12 + 1/m)/(n + 2/m) 
   p21 <- (f21 + 1/m)/(n + 2/m)
   rd <- p12 - p21
@@ -1384,7 +1361,6 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
   m <- length(f11)
   z <- qnorm(1 - alpha/2)
   n <- f11 + f12 + f21 + f22
-  nt <- sum(n)
   p0 <- (f11 + f22 + 2/m)/(n + 4/m)
   g <- 2*p0 - 1 
   con <- t(v)%*%g
@@ -1449,7 +1425,6 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
   est <- t(v)%*%m 
   k <- length(m)
-  nt <- sum(n)
   if (eqvar){
     df <- sum(n) - k
     v1 <- sum((n - 1)*sd^2)/df
@@ -1513,7 +1488,6 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
 meta.lc.prop1 <- function(alpha, f, n, v) {
   z <- qnorm(1 - alpha/2)
   m <- length(v) - length(which(v==0))
-  nt <- sum(n)
   p <- (f + 2/m)/(n + 4/m)
   est <- t(v)%*%p
   se <- sqrt(t(v)%*%diag(p*(1 - p))%*%solve(diag(n + 4/m))%*%v)
