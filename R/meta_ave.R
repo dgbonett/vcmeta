@@ -54,7 +54,6 @@
 #' @export
 meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
   m <- length(m1)
-  nt <- sum(n1 + n2)
   v1 <- sd1^2
   v2 <- sd2^2
   var <- v1/n1 + v2/n2
@@ -153,7 +152,6 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
   df2 <- n2 - 1
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n1 + n2)
   v1 <- sd1^2
   v2 <- sd2^2
   if (stdzr == 0) {
@@ -268,7 +266,6 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
 #' @export
 meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
   m <- length(m1)
-  nt <- sum(n)
   v1 <- sd1^2
   v2 <- sd2^2
   v <- (v1 + v2 - 2*cor*sd1*sd2)/n
@@ -362,7 +359,6 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
   df <- n - 1
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   v1 <- sd1^2
   v2 <- sd2^2
   vd <- v1 + v2 - 2*cor*sd1*sd2
@@ -475,7 +471,6 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
 #' @export
 meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
   m <- length(m1)
-  nt <- sum(n1 + n2)
   v <- rep(1, m)*(1/m)
   logratio <- log(m1/m2)
   var1 <- sd1^2/(n1*m1^2) 
@@ -570,7 +565,6 @@ meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 #'@export
 meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
   m <- length(m1)
-  nt <- sum(n)
   v <- rep(1, m)*(1/m)
   logratio <- log(m1/m2)
   var <- (sd1^2/m1^2 + sd2^2/m2^2 - 2*cor*sd1*sd2/(m1*m2))/n
@@ -650,7 +644,6 @@ meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRU
 meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   var.cor <- (1 - cor^2)^2/ (n - 3 - s)
   ave.cor <- sum(cor)/m
   se.ave <- sqrt(sum(var.cor)/m^2)
@@ -729,7 +722,6 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
 #' @export
 meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
   m <- length(n)
-  nt <- sum(n)
   b <- cor*(sdy/sdx)
   var.b <- (sdy^2*(1 - cor^2)^2*(n - 1))/(sdx^2*(n - 1)*(n - 2))
   ave.b <- sum(b)/m
@@ -806,7 +798,6 @@ meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
 #' @export
 meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
   m <- length(n)
-  nt <- sum(n)
   var.b <- se^2
   ave.b <- sum(slope)/m
   se.ave <- sqrt(sum(var.b)/m^2)
@@ -885,7 +876,6 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
 meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   var.cor <- (1 + cor^2/2)*(1 - cor^2)^2/(n - 3)
   ave.cor <- sum(cor)/m
   se.ave <- sqrt(sum(var.cor)/m^2)
@@ -981,7 +971,6 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
   n <- n1 + n2
-  nt <- sum(n)
   df1 <- n1 - 1
   df2 <- n2 - 1
   if (type == 1) {
@@ -1080,7 +1069,6 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
 meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   r0 <- r2 - cor^2
   var.cor <- (r2^2 - 2*r2 + r0 - r0^2 + 1)/(n - 3)
   ave.cor <- sum(cor)/m
@@ -1159,7 +1147,6 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
 meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   hn <- m/sum(1/n)
   a <- ((r - 2)*(m - 1))^.25
   var.rel <- 2*r*(1 - rel)^2/((r - 1)*(n - 2 - a))
@@ -1248,7 +1235,6 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 meta.ave.oddsratio <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
   m <- length(n1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n1 + n2)
   lor <- log((f1 + .5)*(n2 - f2 + .5)/((f2 + .5)*(n1 - f1 + .5)))
   var.lor <- 1/(f1 + .5) + 1/(f2 + .5) + 1/(n1 - f1 + .5) + 1/(n2 - f2 + .5)
   ave.lor <- sum(lor)/m
@@ -1334,7 +1320,6 @@ meta.ave.oddsratio <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 meta.ave.propratio2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
   m <- length(n1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n1 + n2)
   p1 <- (f1 + 1/4)/(n1 + 7/4) 
   p2 <- (f2 + 1/4)/(n2 + 7/4)
   lrr <- log(p1/p2)
@@ -1415,7 +1400,6 @@ meta.ave.propratio2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 meta.ave.prop2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
   m <- length(n1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n1 + n2)
   p1 <- (f1 + 1/m)/(n1 + 2/m) 
   p2 <- (f2 + 1/m)/(n2 + 2/m)
   rd <- p1 - p2
@@ -1500,7 +1484,6 @@ meta.ave.prop.ps <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
   m <- length(f11)
   z <- qnorm(1 - alpha/2)
   n <- f11 + f12 + f21 + f22
-  nt <- sum(n)
   p12 <- (f12 + 1/m)/(n + 2/m) 
   p21 <- (f21 + 1/m)/(n + 2/m)
   rd <- p12 - p21
@@ -1579,7 +1562,6 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
   m <- length(f11)
   z <- qnorm(1 - alpha/2)
   n <- f11 + f12 + f21 + f22
-  nt <- sum(n)
   p0 <- (f11 + f22 + 2/m)/(n + 4/m)
   g <- 2*p0 - 1 
   ave.g <- sum(g)/m
