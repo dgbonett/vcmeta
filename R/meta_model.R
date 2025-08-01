@@ -924,7 +924,7 @@ meta.lm.cronbach <- function(alpha, n, rel, r, X) {
 }
 
 
-#  meta.lm.odds =============================================================
+#  meta.lm.oddsratio ========================================================
 #' Meta-regression analysis for odds ratios 
 #' 
 #' 
@@ -969,7 +969,7 @@ meta.lm.cronbach <- function(alpha, n, rel, r, X) {
 #' x1 <- c(4, 4, 5, 3, 26)
 #' x2 <- c(1, 1, 1, 0, 0)
 #' X <- matrix(cbind(x1, x2), 5, 2)
-#' meta.lm.odds(.05, f1, f2, n1, n2, X)
+#' meta.lm.oddsratio(.05, f1, f2, n1, n2, X)
 #' 
 #' # Should return:
 #' #        Estimate         SE           z     p         LL         UL
@@ -989,7 +989,7 @@ meta.lm.cronbach <- function(alpha, n, rel, r, X) {
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
 #' @export
-meta.lm.odds <- function(alpha, f1, f2, n1, n2, X) {
+meta.lm.oddsratio <- function(alpha, f1, f2, n1, n2, X) {
   m <- length(n1)
   z <- qnorm(1 - alpha/2)
   lor <- log((f1 + .5)*(n2 - f2 + .5)/((f2 + .5)*(n1 - f1 + .5)))
@@ -1321,6 +1321,10 @@ meta.lm.prop.ps <- function(alpha, f11, f12, f21, f22, X) {
 #' # b2 0.4205147 0.32383556 1.2985438 0.194 -0.21419136 1.0552207
 #' 
 #' 
+#' @references 
+#' \insertRef{Bonett2022}{vcmeta}
+#' 
+#' 
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
 #' @export
@@ -1348,6 +1352,7 @@ meta.lm.agree <- function(alpha, f11, f12, f21, f22, X) {
   rownames(out) <- row
   return (out)
 }
+
 
 #  meta.lm.mean1 ============================================================
 #' Meta-regression analysis for 1-group means
