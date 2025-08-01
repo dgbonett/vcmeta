@@ -1561,3 +1561,95 @@ replicate.cor.gen <- function(alpha, cor1, se1, cor2, se2) {
   return(out)
 }
 
+
+# replicate.agree =============================================================
+#' Compares and combines G-index of agreement in original and follow-up studies
+#' 
+#'
+#' @description 
+#' This function computes adjusted Wald confidence intervals from an original 
+#' study and a follow-up study where the effect size is a G-index of agreement. 
+#' Adjusted Wald confidence intervals for the difference and average effect 
+#' size are also computed. The confidence level for the difference is 
+#' 1 – 2*alpha, which is recommended for equivalence testing. As a measurement
+#' of agreement, the G-index is usually preferred to Cohen's kappa.
+#' 
+#' 
+#' @param    alpha	     alpha level for 1-alpha confidence
+#' @param    f1		     number of objects rated in agreement in original study 
+#' @param    n1		     sample size (number of objects) in original study
+#' @param    f2		     number of objects rated in agreement in follow-up study 
+#' @param    n2		     sample size (number of objects) in follow-up study
+#' @param    k		     number of rating categories
+
+#' 
+#' 
+#' @return A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in G-indicies
+#' * Row 4 estimates the average G-index
+#'
+#'
+#' The columns are:
+#' * Estimate - MLE of G-index (single study, difference, average)
+#' * SE - standard error of adjusted estimate
+#' * LL - lower limit of the adjusted confidence interval
+#' * UL - upper limit of the adjusted confidence interval
+#'    
+#' 
+#' @examples
+#' replicate.agree(.05, 85, 100, 160, 200, 2)
+#'
+#' # Should return:
+#' #                       Estimate         SE         LL        UL
+#' # Original:                 0.70 0.07252105  0.53093828 0.8152156
+#' # Follow-up:                0.60 0.05661961  0.47726289 0.6992077
+#' # Original - Follow-up:     0.10 0.09159681 -0.05844824 0.2428784
+#' # Average:                  0.65 0.04579840  0.55040374 0.7299302
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2022}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @importFrom stats pnorm
+#' @export
+replicate.agree <- function(alpha, f1, n1, f2, n2, k){
+  zcrit1 <- qnorm(1 - alpha/2)
+  zcrit2 <- qnorm(1 - alpha)
+  a <- k/(k - 1)
+  p1 <- f1/n1
+  p2 <- f2/n2
+  p1.adj1 <- (f1 + 2)/(n1 + 4)
+  p2.adj1 <- (f2 + 2)/(n2 + 4)
+  p1.adj2 <- (f1 + 1)/(n1 + 2)
+  p2.adj2 <- (f2 + 1)/(n2 + 2)
+  est1 <- a*p1 - 1/(k - 1)
+  est2 <- a*p2 - 1/(k - 1)
+  est3 <- est1 - est2
+  est4 <- (est1 + est2)/2
+  est1.adj <- a*p1.adj1 - 1/(k - 1)
+  est2.adj <- a*p2.adj1 - 1/(k - 1)
+  est3.adj <- a*p1.adj2 - a*p2.adj2
+  est4.adj <- (a*p1.adj2 + a*p2.adj2 - 2/(k - 1))/2
+  se1 <- a*sqrt(p1.adj1*(1 - p1.adj1)/(n1 + 4))
+  se2 <- a*sqrt(p2.adj1*(1 - p2.adj1)/(n2 + 4))
+  se3 <- a*sqrt(p1.adj2*(1 - p1.adj2)/(n1 + 2) + p2.adj2*(1 - p2.adj2)/(n2 + 2))
+  se4 <- se3/2
+  ll1 <- est1.adj - zcrit1*se1;  ul1 <- est1.adj + zcrit1*se1
+  ll2 <- est2.adj - zcrit1*se2;  ul2 <- est2.adj + zcrit1*se2
+  ll3 <- est3.adj - zcrit2*se3;  ul3 <- est3.adj + zcrit2*se3
+  ll4 <- est4.adj - zcrit1*se4;  ul4 <- est4.adj + zcrit1*se4
+  out1 <- t(c(est1, se1, ll1, ul1))
+  out2 <- t(c(est2, se2, ll2, ul2))
+  out3 <- t(c(est3, se3, ll3, ul3))
+  out4 <- t(c(est4, se4, ll4, ul4))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  return(out)
+}
+
+
