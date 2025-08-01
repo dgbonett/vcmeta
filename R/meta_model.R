@@ -154,7 +154,6 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
   m <- length(m1)
   nt <- sum(n1 + n2)
   z <- qnorm(1 - alpha/2)
-  n <- n1 + n2
   v1 <- sd1^2
   v2 <- sd2^2
   if (stdzr == 0) {
@@ -340,7 +339,6 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' @export
 meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
   m <- length(m1)
-  nt <- sum(n)
   df <- n - 1
   z <- qnorm(1 - alpha/2)
   v1 <- sd1^2
@@ -443,7 +441,6 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
 #' @export
 meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
   m <- length(m1)
-  nt <- sum(n1 + n2)
   var1 <- sd1^2/(n1*m1^2) 
   var2 <- sd2^2/(n2*m2^2)
   var <- var1 + var2
@@ -533,7 +530,6 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' @export
 meta.lm.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
   m <- length(m1)
-  nt <- sum(n)
   var <- (sd1^2/m1^2 + sd2^2/m2^2 - 2*cor*sd1*sd2/(m1*m2))/n
   y <- log(m1/m2)
   x0 <- matrix(c(1), m, 1)
@@ -543,7 +539,6 @@ meta.lm.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
   b <- M%*%t(X)%*%y
   V <- diag(var)
   se <- sqrt(diag(M%*%t(X)%*%V%*%X%*%M))
-  df <- nt - q
   crit <- qnorm(1 - alpha/2)
   ll <- b - crit*se
   ul <- b + crit*se
@@ -681,7 +676,6 @@ meta.lm.cor.gen <- function(alpha, cor, se, X) {
 #' @export
 meta.lm.cor <- function(alpha, n, cor, s, X) {
   m <- length(n)
-  nt <- sum(n)
   z <- qnorm(1 - alpha/2)
   zcor <- log((1 + cor)/(1 - cor))/2
   zvar <- 1/(n - 3 - s)
@@ -755,7 +749,6 @@ meta.lm.cor <- function(alpha, n, cor, s, X) {
 #' @export
 meta.lm.spear <- function(alpha, n, cor, X) {
   m <- length(n)
-  nt <- sum(n)
   z <- qnorm(1 - alpha/2)
   zcor <- log((1 + cor)/(1 - cor))/2
   zvar <- (1 + cor^2/2)/(n - 3)
@@ -830,7 +823,6 @@ meta.lm.spear <- function(alpha, n, cor, X) {
 #' @export
 meta.lm.semipart <- function(alpha, n, cor, r2, X) {
   m <- length(n)
-  nt <- sum(n)
   z <- qnorm(1 - alpha/2)
   r0 <- r2 - cor^2
   zcor <- log((1 + cor)/(1 - cor))/2
@@ -907,7 +899,6 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
 #' @export
 meta.lm.cronbach <- function(alpha, n, rel, r, X) {
   m <- length(n)
-  nt <- sum(n)
   z <- qnorm(1 - alpha/2)
   hn <- m/sum(1/n)
   a <- ((r - 2)*(m - 1))^.25
@@ -1000,7 +991,6 @@ meta.lm.cronbach <- function(alpha, n, rel, r, X) {
 #' @export
 meta.lm.odds <- function(alpha, f1, f2, n1, n2, X) {
   m <- length(n1)
-  nt <- sum(n1 + n2)
   z <- qnorm(1 - alpha/2)
   lor <- log((f1 + .5)*(n2 - f2 + .5)/((f2 + .5)*(n1 - f1 + .5)))
   var <- 1/(f1 + .5) + 1/(f2 + .5) + 1/(n1 - f1 + .5) + 1/(n2 - f2 + .5)
@@ -1094,7 +1084,6 @@ meta.lm.odds <- function(alpha, f1, f2, n1, n2, X) {
 #' @export
 meta.lm.propratio2 <- function(alpha, f1, f2, n1, n2, X) {
   m <- length(n1)
-  nt <- sum(n1 + n2)
   z <- qnorm(1 - alpha/2)
   p1 <- (f1 + 1/4)/(n1 + 7/4) 
   p2 <- (f2 + 1/4)/(n2 + 7/4)
@@ -1179,7 +1168,6 @@ meta.lm.propratio2 <- function(alpha, f1, f2, n1, n2, X) {
 #' @export
 meta.lm.prop2 <- function(alpha, f1, f2, n1, n2, X) {
   m <- length(n1)
-  nt <- sum(n1 + n2)
   z <- qnorm(1 - alpha/2)
   p1 <- (f1 + 1/m)/(n1 + 2/m) 
   p2 <- (f2 + 1/m)/(n2 + 2/m)
@@ -1264,7 +1252,6 @@ meta.lm.prop.ps <- function(alpha, f11, f12, f21, f22, X) {
   m <- length(f11)
   z <- qnorm(1 - alpha/2)
   n <- f11 + f12 + f21 + f22
-  nt <- sum(n)
   p12 <- (f12 + 1/m)/(n + 2/m) 
   p21 <- (f21 + 1/m)/(n + 2/m)
   rd <- p12 - p21
@@ -1341,7 +1328,6 @@ meta.lm.agree <- function(alpha, f11, f12, f21, f22, X) {
   m <- length(f11)
   z <- qnorm(1 - alpha/2)
   n <- f11 + f12 + f21 + f22
-  nt <- sum(n)
   p0 <- (f11 + f22 + 2/m)/(n + 4/m)
   g <- 2*p0 - 1 
   var <- 4*p0*(1 - p0)/(n + 4/m)
@@ -1414,7 +1400,6 @@ meta.lm.agree <- function(alpha, f11, f12, f21, f22, X) {
 #' @export
 meta.lm.mean1 <- function(alpha, m, sd, n, X) {
   k <- length(m)
-  nt <- sum(n)
   var <- sd^2/n
   x0 <- matrix(c(1), k, 1)
   X <- cbind(x0, X)
@@ -1483,7 +1468,6 @@ meta.lm.mean1 <- function(alpha, m, sd, n, X) {
 meta.lm.prop1 <- function(alpha, f, n, X) {
   z <- qnorm(1 - alpha/2)
   k <- length(f)
-  nt <- sum(n)
   p <- (f + 2/k)/(n + 4/k)
   var <- p*(1 - p)/(n + 4/k)
   x0 <- matrix(c(1), k, 1)
