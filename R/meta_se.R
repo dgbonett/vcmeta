@@ -687,45 +687,48 @@ se.slope <- function(cor, sdy, sdx, n) {
 #' 
 #' 
 #' @description
-#' Computes the Agresti-Caffo standard error of a 2-group proportion 
-#' difference using the frequency counts and sample sizes. The effect size 
+#' This function computes the Price-Bonett standard error of a 2-group
+#' proportion difference using the frequency counts, sample sizes, and
+#' planned number of studies in the meta-analysis. The effect size 
 #' estimate and standard error output from this function can be used as 
 #' input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, 
-#' and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
-#' proportion differences from a combination of 2-group and paired-samples 
-#' studies are used in the meta-analysis. 
+#' and \link[vcmeta]{meta.lm.gen} functions in applications where 
+#' compatible proportion differences from a combination of 2-group and
+#' paired-samples studies are used in the meta-analysis. 
 #' 
 #' 
 #' @param    f1   number of participants in group 1 who have the outcome
 #' @param    f2	  number of participants in group 2 who have the outcome
 #' @param    n1	  sample size for group 1
 #' @param    n2	  sample size for group 2
+#' @param    m	  number of studies in planned meta-analysis
 #' 
 #' 
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimated proportion difference
-#' * SE - standard error
+#' * Estimate - adjusted estimate of proportion difference
+#' * SE - standard error of adjusted estimate
 #' 
 #'  
 #' @examples
-#' se.prop2(31, 16, 40, 40)
+#' se.prop2(31, 16, 40, 40, 5)
 #'
 #' # Should return:
 #' #                          Estimate        SE
-#' # Proportion difference:  0.3571429 0.1002777
+#' # Proportion difference:  0.3676471 0.1011817
 #' 
 #' 
 #' @references
-#' \insertRef{Agresti2000}{vcmeta}
+#' \insertRef{Price2004}{vcmeta}
+#' \insertRef{Bonett2014}{vcmeta}
 #'
 #'
 #' @export
-se.prop2 <- function(f1, f2, n1, n2) {
- p1 <- (f1 + 1)/(n1 + 2)
- p2 <- (f2 + 1)/(n2 + 2)
+se.prop2 <- function(f1, f2, n1, n2, m) {
+ p1 <- (f1 + 1/m)/(n1 + 2/m)
+ p2 <- (f2 + 1/m)/(n2 + 2/m)
  est <- p1 - p2
- se <- sqrt(p1*(1 - p1)/(n1 + 2) + p2*(1 - p2)/(n2 + 2))
+ se <- sqrt(p1*(1 - p1)/(n1 + 2/m) + p2*(1 - p2)/(n2 + 2/m))
  out <- t(c(est, se))
  colnames(out) <- c("Estimate", "SE")
  rownames(out) <- "Proportion difference: "
@@ -739,19 +742,21 @@ se.prop2 <- function(f1, f2, n1, n2) {
 #' 
 #' 
 #' @description
-#' Computes the Bonett-Price standard error 
-#' of a paired-samples proportion difference using the frequency counts 
-#' from a 2 x 2 contingency table. The effect size estimate and standard 
-#' error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
-#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
-#' applications where compatible proportion differences from a combination of
-#' 2-group and paired-samples studies are used in the meta-analysis. 
+#' This function computes a standard error of a paired-samples proportion 
+#' difference using the frequency counts from a 2 x 2 contingency table and
+#' the number of studies in the planned meta-analysis. The effect size 
+#' estimate and standard error output from this function can be used as 
+#' input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, 
+#' and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
+#' proportion differences from a combination of 2-group and paired-samples
+#' studies are used in the meta-analysis. 
 #' 
 #' 
 #' @param   f00    number of participants with y = 0 and x = 0
 #' @param   f01    number of participants with y = 0 and x = 1
 #' @param   f10    number of participants with y = 1 and x = 0
 #' @param   f11    number of participants with y = 1 and x = 1
+#' @param   m	   number of studies in planned meta-analysis
 #' 
 #' 
 #' @return
@@ -761,11 +766,11 @@ se.prop2 <- function(f1, f2, n1, n2) {
 #' 
 #'  
 #' @examples
-#' se.prop.ps(16, 64, 5, 15)
+#' se.prop.ps(16, 64, 5, 15, 4)
 #'
 #' # Should return:
-#' #                          Estimate         SE
-#' # Proportion difference:  0.5784314 0.05953213
+#' #                          Estimate        SE
+#' # Proportion difference:  0.5870647 0.0587513
 #' 
 #' 
 #' @references
@@ -773,12 +778,12 @@ se.prop2 <- function(f1, f2, n1, n2) {
 #'
 #'
 #' @export
-se.prop.ps <- function(f00, f01, f10, f11) {
+se.prop.ps <- function(f00, f01, f10, f11, m) {
  n <- f00 + f01 + f10 + f11
- p01 <- (f01 + 1)/(n + 2)
- p10 <- (f10 + 1)/(n + 2)
+ p01 <- (f01 + 1/m)/(n + 2/m)
+ p10 <- (f10 + 1/m)/(n + 2/m)
  est <- p01 - p10
- se <- sqrt(((p01 + p10) - (p01 - p10)^2)/(n + 2))
+ se <- sqrt(((p01 + p10) - (p01 - p10)^2)/(n + 2/m))
  out <- t(c(est, se))
  colnames(out) <- c("Estimate", "SE")
  rownames(out) <- "Proportion difference: "
