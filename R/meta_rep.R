@@ -1261,7 +1261,7 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
 }
 
 
-# replicate.ratio.prop2 =======================================================
+# replicate.propratio2 =======================================================
 #' Compares and combines 2-group proportion ratios in original and follow-up 
 #' studies
 #' 
@@ -1299,7 +1299,7 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
 #'    
 #' 
 #' @examples
-#' replicate.ratio.prop2(.05, 21, 16, 40, 40, 19, 13, 60, 60)
+#' replicate.propratio2(.05, 21, 16, 40, 40, 19, 13, 60, 60)
 #'
 #' # Should return:
 #' #                      Estimate        LL       UL
@@ -1316,7 +1316,7 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
 #' @importFrom stats qnorm
 #' @importFrom stats pnorm
 #' @export
-replicate.ratio.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
+replicate.propratio2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
   zcrit1 <- qnorm(1 - alpha/2)
   zcrit2 <- qnorm(1 - alpha)
   p11 <- (f11 + 1/4)/(n11 + 7/4)
@@ -1404,6 +1404,7 @@ replicate.ratio.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22)
 #' 
 #' @references
 #' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2012}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
