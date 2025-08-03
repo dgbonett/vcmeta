@@ -537,6 +537,10 @@ meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 #'  * df - degrees of freedom
 #'
 #'
+#' @references 
+#' \insertRef{Bonett2020}{vcmeta}
+#'
+#'
 #' @examples
 #' m1 <- c(53, 60, 53, 57)
 #' m2 <- c(55, 62, 58, 61)
