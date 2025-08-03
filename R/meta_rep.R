@@ -1653,3 +1653,99 @@ replicate.agree <- function(alpha, f1, n1, f2, n2, k){
 }
 
 
+#  replicate.cronbach =========================================================
+#' Compares and combines Cronbach reliablity in original and follow-up studies
+#' 
+#'
+#' @description 
+#' This function can be used to compare and combine a Cronbach reliablity 
+#' coefficient from an original study and a follow-up study. The confidence 
+#' level for the difference is 1 – 2*alpha, which is recommended for 
+#' equivalence testing.
+#' 
+#' 
+#' @param    alpha	 alpha level for 1-alpha confidence
+#' @param    rel1  	 estimated reliability in original study
+#' @param    n1   	 sample size in original study
+#' @param    rel2  	 estimated reliability in follow-up study
+#' @param    n2   	 sample size in follow-up study
+#' @param    r   	 number of measurements (e.g., items) 
+#' 
+#' 
+#' @return
+#' A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in correlations
+#' * Row 4 estimates the average correlation
+#' 
+#' 
+#' The columns are:
+#' * Estimate - correlation estimate (single study, difference, average)
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' replicate.cronbach(.05, .883, 100, .869, 200, 6)
+#'
+#' # Should return:
+#' #                       Estimate         SE          LL         UL
+#' # Original:                0.883 0.01830958  0.84356871 0.91522517
+#' # Follow-up:               0.869 0.01442263  0.83874629 0.89523760
+#' # Original - Follow-up:    0.014 0.02330779 -0.03336284 0.05820123
+#' # Average:                 0.876 0.01172239  0.85187755 0.89774525
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2010}{vcmeta}
+#' \insertRef{Bonett2015}{vcmeta}
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @importFrom stats qf
+#' @export
+replicate.cronbach <- function(alpha, rel1, n1, rel2, n2, r) {
+  zcrit1 <- qnorm(1 - alpha/2)
+  zcrit2 <- qnorm(1 - alpha)
+  se1 <- sqrt((2*r*(1 - rel1)^2)/((r - 1)*(n1 - 2)))
+  df11 <- n1 - 1
+  df12 <- n1*(r - 1)
+  f1 <- qf(1 - alpha/2, df11, df12)
+  f2 <- qf(1 - alpha/2, df12, df11)
+  f0 <- 1/(1 - rel1)
+  ll1 <- 1 - f1/f0
+  ul1 <- 1 - 1/(f0*f2)
+  se2 <- sqrt((2*r*(1 - rel2)^2)/((r - 1)*(n2 - 2)))
+  df21 <- n2 - 1
+  df22 <- n2*(r - 1)
+  f1 <- qf(1 - alpha/2, df21, df22)
+  f2 <- qf(1 - alpha/2, df22, df21)
+  f0 <- 1/(1 - rel2)
+  ll2 <- 1 - f1/f0
+  ul2 <- 1 - 1/(f0*f2)
+  se3 <- sqrt(se1^2 + se2^2)
+  dif <- rel1 - rel2
+  ll3 <- dif - sqrt((rel1 - ll1)^2 + (ul2 - rel2)^2)
+  ul3 <- dif + sqrt((ul1 - rel1)^2 + (rel2 - ll2)^2)
+  hn <- 2/(1/n1 + 1/n2)
+  a <- ((r - 2)*(2 - 1))^.25
+  se10 <- sqrt((2*r*(1 - rel1)^2)/((r - 1)*(n1 - 2 - a)))
+  se20 <- sqrt((2*r*(1 - rel2)^2)/((r - 1)*(n2 - 2 - a)))
+  se4 <- sqrt(se10^2 + se20^2)/2
+  ave <- (rel1 + rel2)/2
+  log.ave <- log(1 - ave) - log(hn/(hn - 1))
+  ul4 <- 1 - exp(log.ave - zcrit1*se4/(1 - ave))
+  ll4 <- 1 - exp(log.ave + zcrit1*se4/(1 - ave))
+  out1 <- t(c(rel1, se1, ll1, ul1))
+  out2 <- t(c(rel2, se2, ll2, ul2))
+  out3 <- t(c(dif, se3, ll3, ul3))
+  out4 <- t(c(ave, se4, ll4, ul4))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  return(out)
+}
+
