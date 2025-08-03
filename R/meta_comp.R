@@ -1292,7 +1292,7 @@ meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2014}{vcmeta}
+#' \insertRef{Bonett2012}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
