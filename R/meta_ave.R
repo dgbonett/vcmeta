@@ -1475,7 +1475,7 @@ meta.ave.prop2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' 
 #' 
 #' @references 
-#' \insertRef{Bonett2014}{vcmeta}
+#' \insertRef{Bonett2012}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
