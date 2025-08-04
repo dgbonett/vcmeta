@@ -1,3 +1,14 @@
+vcmeta v1.5.0 (Release date: 2025/08/xx)
+==============
+
+Changes:
+
+* New functions: se.propratio2, se.propratio.ps, se.agree, meta.ave.gen.log, replicate.agree, and replicate.cronbach
+* The meta.ave.fisher function has now been deleted -- use meta.ave.cor.gen
+* se.semipartial has been renamed se.semipart, se.odds has been renamed se.oddsratio, meta.ave.odds has been renamed meta.ave.oddsratio, meta.lc.odds has been renamed meta.lc.oddsratio, and meta.lm.odds has been renamed meta.lm.oddsratio
+* The se.prop2 and se.prop.ps now use an adjustment that is optimized for the number of studies in the meta-analysis -- note this is a breaking change, where a parameter for the number of studies  must now be passed.
+
+
 vcmeta v1.4.0 (Release date: 2024/07/04)
 ==============
 
@@ -5,8 +16,7 @@ Changes:
 
 * New functions: se.bscor, meta.ave.cor.gen, and replicate.cor.gen
 * The standard error for a standardized mean difference with a weighted variance standardizer in the meta.ave.stdmean2, meta.lc.stdmean2, meta.lm.stdmean2, and se.stdmean2 functions no longer assumes equal variances
-* The replicate.stdmean2 and replicate.stdmean.ps functions now have options for additional standardizers -- note this is a breaking change, where a parameter
-for the standardizer must now be passed.
+* The replicate.stdmean2 and replicate.stdmean.ps functions now have options for additional standardizers -- note this is a breaking change, where a parameter for the standardizer must now be passed.
 
 
 
@@ -55,3 +65,4 @@ vcmeta 1.0.0 (Release date: 2021/08/21)
 Changes:
 
 * Added a `NEWS.md` file to track changes to the package.
+
