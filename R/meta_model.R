@@ -416,6 +416,10 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
 #' * exp(UL) - upper limit of the exponentiated confidence interval
 #' 
 #' 
+#' @references
+#' \insertRef{Bonett2020}{vcmeta}
+#'
+#'
 #' @examples
 #' n1 <- c(65, 30, 29, 45, 50)
 #' n2 <- c(67, 32, 31, 20, 52)
@@ -503,6 +507,10 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #'  * exp(Estimate) - the exponentiated estimate 
 #'  * exp(LL) - lower limit of the exponentiated confidence interval
 #'  * exp(UL) - upper limit of the exponentiated confidence interval
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2020}{vcmeta}
 #' 
 #' 
 #' @examples
