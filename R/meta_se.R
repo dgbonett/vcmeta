@@ -756,12 +756,12 @@ se.prop2 <- function(f1, f2, n1, n2, m) {
 #' @param   f01    number of participants with y = 0 and x = 1
 #' @param   f10    number of participants with y = 1 and x = 0
 #' @param   f11    number of participants with y = 1 and x = 1
-#' @param   m	   number of studies in planned meta-analysis
+#' @param   m	     number of studies in planned meta-analysis
 #' 
 #' 
 #' @return
 #' Returns a one-row matrix:
-#' * Estimate - estimated proportion difference
+#' * Estimate - adjusted estimate of proportion difference
 #' * SE - standard error
 #' 
 #'  
