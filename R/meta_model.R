@@ -900,6 +900,7 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
 #' 
 #' @references
 #' \insertRef{Bonett2010}{vcmeta}
+#' \insertRef{Bonett2015b}{vcmeta]
 #' 
 #' 
 #' @importFrom stats pnorm
