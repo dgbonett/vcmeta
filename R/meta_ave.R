@@ -1144,6 +1144,7 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
 #' 
 #' @references
 #' \insertRef{Bonett2010}{vcmeta}
+#' \insertRef{Bonett2015b}{vcmeta]
 #' 
 #' 
 #' @importFrom stats qnorm
