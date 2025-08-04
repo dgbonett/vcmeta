@@ -1057,7 +1057,7 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 }
 
 
-#  meta.lc.odds =====================================================
+#  meta.lc.oddsratio ==================================================
 #' Confidence interval for a log-linear contrast of odds ratios 
 #' 
 #' 
@@ -1089,7 +1089,7 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' n2 <- c(50, 150, 150)
 #' f2 <- c(7, 15, 20)
 #' v <- c(1, -1, 0)
-#' meta.lc.odds(.05, f1, f2, n1, n2, v)
+#' meta.lc.oddsratio(.05, f1, f2, n1, n2, v)
 #' 
 #' # Should return:
 #' #            Estimate        SE  exp(Estimate)   exp(LL)  exp(UL)
@@ -1102,7 +1102,7 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.lc.odds <- function(alpha, f1, f2, n1, n2, v) {
+meta.lc.oddsratio <- function(alpha, f1, f2, n1, n2, v) {
   m <- length(n1)
   z <- qnorm(1 - alpha/2)
   lor <- log((f1 + .5)*(n2 - f2 + .5)/((f2 + .5)*(n1 - f1 + .5)))
@@ -1161,6 +1161,7 @@ meta.lc.odds <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' @references
 #' \insertRef{Price2008}{vcmeta}
+#' \insertRef{Bonett2015}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
