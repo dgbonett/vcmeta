@@ -445,6 +445,7 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #' 
 #' @references
 #' \insertRef{Bonett2010}{vcmeta}
+#' \insertRef{Bonett2015b}{vcmeta]
 #'
 #'
 #' @importFrom stats qnorm
