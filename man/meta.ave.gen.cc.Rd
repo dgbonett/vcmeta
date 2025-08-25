@@ -32,7 +32,8 @@ weighted average effect from two or more studies using the constant
 coefficient (fixed-effect) meta-analysis model.
 }
 \details{
-The weighted average estimate will be biased regardless of the number of
+When the population effect sizes are not identical across studies, the
+weighted average estimate will be biased regardless of the number of
 studies or the sample size in each study. The actual confidence interval
 coverage probability can be much smaller than the specified confidence
 level when the population effect sizes are not identical across studies.

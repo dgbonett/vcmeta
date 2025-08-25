@@ -18,7 +18,7 @@ meta.lc.prop1(alpha, f, n, v)
 \value{
 Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate -estimated linear contrast
+\item Estimate - estimated linear contrast
 \item SE - standard error
 \item LL - lower limit of the adjusted Wald confidence interval
 \item UL - upper limit of the adjusted Wald confidence interval

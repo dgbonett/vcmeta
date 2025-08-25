@@ -21,18 +21,17 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function computes the standard error of a
-Pearson or partial correlation using the estimated correlation,
-sample size, and number of control variables. The correlation,
-along with the standard error output from this function, can be used
-as input in the \link[vcmeta]{meta.ave.cor.gen} function in applications
-where a combination of different types of correlations are used in
-the meta-analysis.
+Computes the standard error of a  Pearson or partial correlation
+using the estimated correlation, sample size, and number of
+control variables. The correlation, along with the standard error
+output from this function, can be used as input in the
+\link[vcmeta]{meta.ave.cor.gen} function in applications where a
+combination of different types of compatible correlations are
+used in the meta-analysis.
 }
 \examples{
 se.cor(.40, 0, 55)
-
-# Should return: 
+#' # Should return: 
 #               Estimate       SE
 # Correlation:       0.4 0.116487
 

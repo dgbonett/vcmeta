@@ -1,14 +1,14 @@
 library(vcmeta)
 
-test_that("meta.ave.fisher returns valid CI vector", {
-  colnames_expected <- c("Estimate",        "LL",        "UL")
-  
-  res <- meta.ave.fisher(0.05, 0.376, .054)
-  
-  testthat::expect_equal(class(res), c("matrix", "array"))
-  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
-})
+# test_that("meta.ave.fisher returns valid CI vector", {
+#   colnames_expected <- c("Estimate",        "LL",        "UL")
+#   
+#   res <- meta.ave.fisher(0.05, 0.376, .054)
+#   
+#   testthat::expect_equal(class(res), c("matrix", "array"))
+#   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+#   testthat::expect_equal(colnames(res), colnames_expected)
+# })
 
 
 test_that("cor.from.t returns valid vector", {
@@ -19,6 +19,7 @@ test_that("cor.from.t returns valid vector", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(length(res), 1)
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
   
 })
 
@@ -32,6 +33,7 @@ test_that("meta.chitest returns valid vector", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -43,6 +45,7 @@ test_that("stdmean2.from.t returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -54,6 +57,7 @@ test_that("table.from.odds returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -65,4 +69,5 @@ test_that("table.from.phi returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })

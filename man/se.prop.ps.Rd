@@ -5,7 +5,7 @@
 \title{Computes the estimate and standard error for a paired-samples
 proportion difference}
 \usage{
-se.prop.ps(f00, f01, f10, f11)
+se.prop.ps(f00, f01, f10, f11, m)
 }
 \arguments{
 \item{f00}{number of participants with y = 0 and x = 0}
@@ -15,29 +15,32 @@ se.prop.ps(f00, f01, f10, f11)
 \item{f10}{number of participants with y = 1 and x = 0}
 
 \item{f11}{number of participants with y = 1 and x = 1}
+
+\item{m}{number of studies in planned meta-analysis}
 }
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimated proportion difference
+\item Estimate - adjusted estimate of proportion difference
 \item SE - standard error
 }
 }
 \description{
-This function computes the Bonett-Price standard error
-of a paired-samples proportion difference using the frequency counts
-from a 2 x 2 contingency table. The effect size estimate and standard
-error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
-\link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
-applications where compatible proportion differences from a combination of
-2-group and paired-samples studies are used in the meta-analysis.
+This function computes a standard error of a paired-samples proportion
+difference using the frequency counts from a 2 x 2 contingency table and
+the number of studies in the planned meta-analysis. The effect size
+estimate and standard error output from this function can be used as
+input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
+and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
+proportion differences from a combination of 2-group and paired-samples
+studies are used in the meta-analysis.
 }
 \examples{
-se.prop.ps(16, 64, 5, 15)
+se.prop.ps(16, 64, 5, 15, 4)
 
 # Should return:
-#                          Estimate         SE
-# Proportion difference:  0.5784314 0.05953213
+#                          Estimate        SE
+# Proportion difference:  0.5870647 0.0587513
 
 
 }

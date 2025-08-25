@@ -34,7 +34,7 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function computes the standard error of a paired-samples standardized
+Computes the standard error of a paired-samples standardized
 mean difference using the sample size and estimated means, standard
 deviations, and estimated correlation. The effect size estimate and standard error
 output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},

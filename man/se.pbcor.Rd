@@ -32,7 +32,7 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function computes a point-biserial correlation and its standard
+Computes a point-biserial correlation and its standard
 error for two types of point-biserial correlations in 2-group designs
 using the estimated means, estimated standard deviations, and samples
 sizes. Equality of variances is not assumed. One type of point-biserial

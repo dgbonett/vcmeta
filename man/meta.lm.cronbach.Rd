@@ -54,4 +54,5 @@ meta.lm.cronbach(.05, n, rel, 10, X)
 }
 \references{
 \insertRef{Bonett2010}{vcmeta}
+\insertRef{Bonett2015b}{vcmeta}
 }

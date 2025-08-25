@@ -23,12 +23,12 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function computes a slope and its standard error
-for a simple linear regression model (random-x model) using the estimated
-Pearson correlation and the estimated standard deviations of the response
-variable and predictor variable. This function is useful in a meta-analysis
-of slopes of a simple linear regression model where some studies report
-the Pearson correlation but not the slope.
+Computes a slope and its standard error for a simple linear regression
+model (random-x model) using the estimated Pearson correlation and the
+estimated standard deviations of the response variable and predictor
+variable. This function is useful in a meta-analysis of slopes of a
+simple linear regression model where some studies report the Pearson
+correlation but not the slope.
 }
 \examples{
 se.slope(.392, 4.54, 2.89, 60)

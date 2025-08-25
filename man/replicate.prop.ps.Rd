@@ -61,4 +61,5 @@ replicate.prop.ps(.05, f1, f2)
 }
 \references{
 \insertRef{Bonett2021}{vcmeta}
+\insertRef{Bonett2012}{vcmeta}
 }

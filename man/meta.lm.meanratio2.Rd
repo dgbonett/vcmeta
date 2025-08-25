@@ -69,3 +69,6 @@ meta.lm.meanratio2(.05, m1, m2, sd1, sd2, n1, n2, X)
 
 
 }
+\references{
+\insertRef{Bonett2020}{vcmeta}
+}

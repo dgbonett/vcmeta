@@ -21,7 +21,7 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function computes the standard error of Cohen's d using only the two
+Computes the standard error of Cohen's d using only the two
 sample sizes and an estimate of Cohen's d. Cohen's d and its standard error
 assume equal variances. The estimate of Cohen's d, with the standard error
 output from this function, can be used as input in the \link[vcmeta]{meta.ave.gen},

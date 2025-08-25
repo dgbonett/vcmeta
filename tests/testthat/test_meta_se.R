@@ -8,6 +8,8 @@ test_that("se.mean2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -19,6 +21,8 @@ test_that("se.mean.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -30,6 +34,8 @@ test_that("se.stdmean2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -41,6 +47,8 @@ test_that("se.stdmean.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -52,6 +60,8 @@ test_that("se.cor returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -63,6 +73,8 @@ test_that("se.spearman returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -74,17 +86,21 @@ test_that("se.pbcor returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
 test_that("se.odds returns valid matrix", {
   colnames_expected <- c("Estimate", "SE")
   
-  res <- se.odds(36, 50, 21, 50)
+  res <- se.oddsratio(36, 50, 21, 50)
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -96,6 +112,8 @@ test_that("se.meanratio2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -107,26 +125,32 @@ test_that("se.slope returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 test_that("se.prop2 returns valid matrix", {
   colnames_expected <- c("Estimate", "SE")
   
-  res <- se.prop2(31, 16, 40, 40)
+  res <- se.prop2(31, 16, 40, 40, 5)
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 test_that("se.prop.ps returns valid matrix", {
   colnames_expected <- c("Estimate", "SE")
 
-  res <- se.prop.ps(16, 64, 5, 15)
+  res <- se.prop.ps(16, 64, 5, 15, 4)
 
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -138,6 +162,8 @@ test_that("se.ave.mean2.dep returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -149,6 +175,8 @@ test_that("se.ave.cor.over returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -160,6 +188,8 @@ test_that("se.ave.cor.nonover returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -171,6 +201,8 @@ test_that("se.tetra returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -182,6 +214,8 @@ test_that("se.biphi returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -193,6 +227,8 @@ test_that("se.cohen returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -205,4 +241,45 @@ test_that("se.bscor returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
+})
+
+
+test_that("se.propratio2 example", {
+  colnames_expected <- c("Estimate",        "SE")
+  
+  res <- se.propratio2(31, 16, 40, 40)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
+})
+
+
+test_that("se.propratio.ps example", {
+  colnames_expected <- c("Estimate",        "SE")
+  
+  res <- se.propratio.ps(16, 64, 5, 15)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
+})
+
+
+test_that("se.agree example", {
+  colnames_expected <- c("MLE", "Estimate",        "SE")
+  
+  res <- se.agree(42, 50, 3, 4)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })

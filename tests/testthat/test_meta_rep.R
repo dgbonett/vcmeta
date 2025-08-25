@@ -10,6 +10,8 @@ test_that("replicate.mean2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -35,6 +37,8 @@ test_that("replicate.mean.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -49,6 +53,8 @@ test_that("replicate.stdmean2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -75,7 +81,8 @@ test_that("replicate.stdmean.ps returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -87,7 +94,8 @@ test_that("replicate.cor returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -99,7 +107,8 @@ test_that("replicate.cor.gen returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -111,7 +120,8 @@ test_that("replicate.gen returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -123,7 +133,8 @@ test_that("replicate.gen returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -135,7 +146,8 @@ test_that("replicate.oddsratio returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 test_that("replicate.prop2 returns valid matrix", {
@@ -146,7 +158,8 @@ test_that("replicate.prop2 returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 test_that("replicate.slope returns valid matrix", {
@@ -157,7 +170,8 @@ test_that("replicate.slope returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -170,7 +184,8 @@ test_that("replicate.spear returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -182,7 +197,8 @@ test_that("replicate.mean1 returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -194,7 +210,8 @@ test_that("replicate.prop1 returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -206,7 +223,8 @@ test_that("replicate.ratio.prop2 returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
-  testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -219,5 +237,32 @@ test_that("replicate.prop.ps returns valid matrix", {
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)  
+  testthat::expect_snapshot(res)
+})
+
+
+test_that("replicate.agree example", {
+  colnames_expected <- c("Estimate", "SE", "LL", "UL")  
+  
+  res <- replicate.agree(.05, 85, 100, 160, 200, 2)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
+})
+
+
+test_that("replicate.cronbach example", {
+  colnames_expected <- c("Estimate", "SE", "LL", "UL")  
+  
+  res <- replicate.cronbach(.05, .883, 100, .869, 200, 6)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })

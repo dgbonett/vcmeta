@@ -48,4 +48,5 @@ meta.ave.cronbach(.05, n, rel, 10, bystudy = TRUE)
 }
 \references{
 \insertRef{Bonett2010}{vcmeta}
+\insertRef{Bonett2015b}{vcmeta}
 }

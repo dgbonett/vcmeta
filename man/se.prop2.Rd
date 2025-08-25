@@ -5,7 +5,7 @@
 \title{Computes the estimate and standard error for a 2-group proportion
 difference}
 \usage{
-se.prop2(f1, f2, n1, n2)
+se.prop2(f1, f2, n1, n2, m)
 }
 \arguments{
 \item{f1}{number of participants in group 1 who have the outcome}
@@ -15,32 +15,36 @@ se.prop2(f1, f2, n1, n2)
 \item{n1}{sample size for group 1}
 
 \item{n2}{sample size for group 2}
+
+\item{m}{number of studies in planned meta-analysis}
 }
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - estimated proportion difference
-\item SE - standard error
+\item Estimate - adjusted estimate of proportion difference
+\item SE - standard error of adjusted estimate
 }
 }
 \description{
-This function computes the Agresti-Caffo standard
-error of a 2-group proportion difference using the frequency
-counts and sample sizes. The effect size estimate and standard
-error output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
-\link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
-applications where compatible proportion differences from a combination of
-2-group and paired-samples studies are used in the meta-analysis.
+This function computes the Price-Bonett standard error of a 2-group
+proportion difference using the frequency counts, sample sizes, and
+planned number of studies in the meta-analysis. The effect size
+estimate and standard error output from this function can be used as
+input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
+and \link[vcmeta]{meta.lm.gen} functions in applications where
+compatible proportion differences from a combination of 2-group and
+paired-samples studies are used in the meta-analysis.
 }
 \examples{
-se.prop2(31, 16, 40, 40)
+se.prop2(31, 16, 40, 40, 5)
 
 # Should return:
 #                          Estimate        SE
-# Proportion difference:  0.3571429 0.1002777
+# Proportion difference:  0.3676471 0.1011817
 
 
 }
 \references{
-\insertRef{Agresti2000}{vcmeta}
+\insertRef{Price2004}{vcmeta}
+\insertRef{Bonett2014}{vcmeta}
 }

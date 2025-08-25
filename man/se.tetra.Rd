@@ -23,15 +23,15 @@ Returns a 1-row matrix. The columns are:
 }
 }
 \description{
-This function computes an estimate of a tetrachoric correlation
-approximation and its standard error using the frequency counts
-from a 2 x 2 contingency table for two artifically dichotomous variables.
-A tetrachoric approximation could be compatible with a Pearson correlation
-in a meta-analysis. The tetrachoric approximation and the standard error
-from this function can be used as input in the \link[vcmeta]{meta.ave.cor.gen}
-function in a meta-analysis where some studies have reported Pearson
-correlations between quantitative variables x and y and other studies have
-reported a 2 x 2 contingency table for dichotomous measurements of variables
+Computes an estimate of a tetrachoric correlation approximation and its
+standard error using the frequency counts from a 2 x 2 contingency table
+for two artifically dichotomous variables. A tetrachoric approximation
+could be compatible with a Pearson correlation in a meta-analysis. The
+tetrachoric approximation and the standard error from this function can
+be used as input in the \link[vcmeta]{meta.ave.cor.gen} function in a
+meta-analysis where some studies have reported Pearson correlations
+between quantitative variables x and y and other studies have reported
+a 2 x 2 contingency table for dichotomous measurements of variables
 x and y.
 }
 \examples{

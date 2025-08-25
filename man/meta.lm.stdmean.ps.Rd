@@ -35,7 +35,7 @@ row per predictor.  The matrix has the following columns:
 \itemize{
 \item Estimate - OLS estimate
 \item SE - standard error
-\item t - t-value
+\item z - z-value
 \item p - p-value
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval

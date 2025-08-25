@@ -28,7 +28,9 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 Computes the estimate and confidence interval for an average variance
 from two or more studies. The estimated average variance or the upper
 confidence limit could be used as a variance planning value in sample
-size planning.
+size planning. The confidence intervals assume normality, and this
+function is not recommended if the variances have been estimated
+from leptokurtic data.
 }
 \examples{
 var <- c(26.63, 22.45, 34.12)

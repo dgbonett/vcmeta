@@ -55,3 +55,6 @@ meta.lm.agree(.05, f11, f12, f21, f22, X)
 
 
 }
+\references{
+\insertRef{Bonett2022}{vcmeta}
+}

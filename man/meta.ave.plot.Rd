@@ -16,9 +16,11 @@ meta.ave.plot(
 \item a result matrix from any of the replicate functions in vcmeta
 }}
 
-\item{reference_line}{Optional x-value for a reference line.  Only applies
-if focuse is 'Difference' or 'Both'.  Defaults to NULL, in which case a
-reference line is not drawn.}
+\item{reference_line}{\itemize{
+\item Optional x-value for a reference line.  Only applies
+if focus is 'Difference' or 'Both'.  Defaults to NULL, in which case a
+reference line is not drawn.
+}}
 
 \item{diamond_height}{\itemize{
 \item Optional height of the diamond representing average

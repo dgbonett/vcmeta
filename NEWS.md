@@ -1,4 +1,4 @@
-vcmeta v1.5.0 (Release date: 2025/08/xx)
+vcmeta v1.5.0 (Release date: 2025/09/01)
 ==============
 
 Changes:

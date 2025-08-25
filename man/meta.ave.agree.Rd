@@ -52,3 +52,6 @@ meta.ave.agree(.05, f11, f12, f21, f22, bystudy = TRUE)
 
 
 }
+\references{
+\insertRef{Bonett2022}{vcmeta}
+}
