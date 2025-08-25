@@ -152,7 +152,7 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
   df1 <- n1 - 1
   df2 <- n2 - 1
   m <- length(m1)
-  nt <- sum(n1 + n2)
+  n <- sum(n1 + n2)
   z <- qnorm(1 - alpha/2)
   v1 <- sd1^2
   v2 <- sd2^2
