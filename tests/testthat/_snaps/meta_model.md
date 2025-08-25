@@ -8,6 +8,15 @@
       b1     2.35 0.4821523  4.873979 0.000   1.402255  3.297745 418
       b2     2.85 1.5358109  1.855697 0.064  -0.168875  5.868875 418
 
+# meta.lm.stdmean2 returns valid matrix
+
+    Code
+      res
+    Output
+           Estimate        SE         z p         LL         UL
+      b0 -1.6988257 0.4108035 -4.135373 0 -2.5039857 -0.8936657
+      b1  0.2871641 0.0649815  4.419167 0  0.1598027  0.4145255
+
 # meta.lm.mean.ps returns valid matrix
 
     Code

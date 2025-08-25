@@ -37,7 +37,7 @@ A 4-row matrix. The rows are:
 
 The columns are:
 \itemize{
-\item Estimate - proportion difference estimate (single study, ratio, average)
+\item Estimate - proportion ratio estimate (single study, ratio, average)
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
 }

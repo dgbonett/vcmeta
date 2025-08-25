@@ -21,7 +21,7 @@ in either experimental or nonexperimental designs."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.4.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -137,7 +137,9 @@ ISSN 1939-1463, <a href="https://doi.org/10.1037/a0016619" class="external-link"
 <span class="r-in"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4</span>, <span class="fl">6</span>, <span class="fl">7</span>, <span class="fl">7</span>, <span class="fl">8</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="va">x1</span>, <span class="fl">5</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">meta.lm.stdmean2</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">m1</span>, <span class="va">m2</span>, <span class="va">sd1</span>, <span class="va">sd2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="va">X</span>, <span class="fl">0</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in meta.lm.stdmean2(0.05, m1, m2, sd1, sd2, n1, n2, X, 0):</span> object 'n' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      Estimate        SE         z p         LL         UL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b0 -1.6988257 0.4108035 -4.135373 0 -2.5039857 -0.8936657</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b1  0.2871641 0.0649815  4.419167 0  0.1598027  0.4145255</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return:</span></span></span>
 <span class="r-in"><span><span class="co">#      Estimate        SE         z p         LL         UL</span></span></span>

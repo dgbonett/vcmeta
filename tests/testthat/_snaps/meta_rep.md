@@ -202,6 +202,17 @@
       Original - Follow-up: -0.01670456 0.02065098 -0.05067239 0.01726328
       Average:               0.08119996 0.01032549  0.06096237 0.10143755
 
+# replicate.propratio2 returns valid matrix
+
+    Code
+      res
+    Output
+                           Estimate        LL       UL
+      Original:           1.3076923 0.8068705 2.119373
+      Follow-up:          1.4528302 0.7939881 2.658372
+      Original/Follow-up: 0.9000999 0.4703209 1.722611
+      Average:            1.3783522 0.9362893 2.029132
+
 # replicate.prop.ps returns valid matrix
 
     Code
