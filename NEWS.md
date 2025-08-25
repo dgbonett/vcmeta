@@ -5,7 +5,8 @@ Changes:
 
 * New functions: se.propratio2, se.propratio.ps, se.agree, meta.ave.gen.log, replicate.agree, and replicate.cronbach
 * The meta.ave.fisher function has now been deleted -- use meta.ave.cor.gen
-* se.semipartial has been renamed se.semipart, se.odds has been renamed se.oddsratio, meta.ave.odds has been renamed meta.ave.oddsratio, meta.lc.odds has been renamed meta.lc.oddsratio, and meta.lm.odds has been renamed meta.lm.oddsratio
+* se.semipartial has been renamed se.semipart, se.odds has been renamed se.oddsratio, meta.ave.odds has been renamed meta.ave.oddsratio, meta.lc.odds has been renamed meta.lc.oddsratio, meta.lm.odds has been renamed meta.lm.oddsratio, and
+  replicate.ratio.prop2 has been renamed replicate.propratio2
 * The se.prop2 and se.prop.ps now use an adjustment that is optimized for the number of studies in the meta-analysis -- note this is a breaking change, where a parameter for the number of studies  must now be passed.
 
 
@@ -65,4 +66,5 @@ vcmeta 1.0.0 (Release date: 2021/08/21)
 Changes:
 
 * Added a `NEWS.md` file to track changes to the package.
+
 
