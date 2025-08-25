@@ -1293,7 +1293,7 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
 #'
 #'
 #' The columns are:
-#' * Estimate - proportion difference estimate (single study, ratio, average)
+#' * Estimate - proportion ratio estimate (single study, ratio, average)
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
 #'    
