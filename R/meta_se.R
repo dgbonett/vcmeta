@@ -719,8 +719,8 @@ se.slope <- function(cor, sdy, sdx, n) {
 #' 
 #' 
 #' @references
-#' \insertRef{Price2004}{vcmeta}
-#' \insertRef{Bonett2014}{vcmeta}
+#' * \insertRef{Price2004}{vcmeta}
+#' * \insertRef{Bonett2014}{vcmeta}
 #'
 #'
 #' @export
