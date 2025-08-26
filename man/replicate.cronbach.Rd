@@ -55,7 +55,9 @@ replicate.cronbach(.05, .883, 100, .869, 200, 6)
 
 }
 \references{
-\insertRef{Bonett2010}{vcmeta}
-\insertRef{Bonett2015}{vcmeta}
-\insertRef{Bonett2021}{vcmeta}
+\itemize{
+\item \insertRef{Bonett2010}{vcmeta}
+\item \insertRef{Bonett2015}{vcmeta}
+\item \insertRef{Bonett2021}{vcmeta}
+}
 }

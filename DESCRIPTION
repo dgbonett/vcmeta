@@ -13,7 +13,7 @@ Description: Implements functions for varying coefficient meta-analysis methods.
   require the unrealistic assumptions of the traditional fixed-effect and 
   random-effects meta-analysis methods. For details see: 
   Statistical Methods for Psychologists, Volume 5, <https://dgbonett.sites.ucsc.edu/>.
-URL: https://github.com/dgbonett/vcmeta, https://dgbonett.github.io/vcmeta
+URL: https://github.com/dgbonett/vcmeta/, https://dgbonett.github.io/vcmeta/
 BugReports: https://github.com/dgbonett/vcmeta/issues
 License: GPL-3
 Encoding: UTF-8

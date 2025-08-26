@@ -45,6 +45,8 @@ se.prop2(31, 16, 40, 40, 5)
 
 }
 \references{
-\insertRef{Price2004}{vcmeta}
-\insertRef{Bonett2014}{vcmeta}
+\itemize{
+\item \insertRef{Price2004}{vcmeta}
+\item \insertRef{Bonett2014}{vcmeta}
+}
 }
