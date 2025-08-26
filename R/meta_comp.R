@@ -1161,8 +1161,8 @@ meta.lc.oddsratio <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' 
 #' @references
-#' \insertRef{Price2008}{vcmeta}
-#' \insertRef{Bonett2015}{vcmeta}
+#' * \insertRef{Price2008}{vcmeta}
+#' * \insertRef{Bonett2015}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
