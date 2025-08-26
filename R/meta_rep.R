@@ -1403,8 +1403,8 @@ replicate.propratio2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
-#' \insertRef{Bonett2012}{vcmeta}
+#' * \insertRef{Bonett2021}{vcmeta}
+#' * \insertRef{Bonett2012}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
