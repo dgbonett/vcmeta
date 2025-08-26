@@ -1700,9 +1700,9 @@ replicate.agree <- function(alpha, f1, n1, f2, n2, k){
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2010}{vcmeta}
-#' \insertRef{Bonett2015}{vcmeta}
-#' \insertRef{Bonett2021}{vcmeta}
+#' * \insertRef{Bonett2010}{vcmeta}
+#' * \insertRef{Bonett2015}{vcmeta}
+#' * \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
