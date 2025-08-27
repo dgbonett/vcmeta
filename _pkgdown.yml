@@ -3,6 +3,7 @@ url: https://dgbonett.github.io/vcmeta
 template:
   params:
   bootswatch: cosmo
+  bootstrap: 5
 
 authors:
   Douglas G. Bonett:
@@ -42,7 +43,6 @@ reference:
   - title: Miscellaneous
     desc:  Additional functions
     contents:
-    - meta.ave.fisher
     - cor.from.t
     - meta.chitest
     - stdmean2.from.t

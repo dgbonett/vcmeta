@@ -27,7 +27,7 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function computes a biserial correlation and its standard error. A
+Computes a biserial correlation and its standard error. A
 biserial correlation can be used when one variable is quantitative and the
 other variable has been artifically dichotmized. The biserial correlation
 estimates the correlation between an observable quantitative variable and

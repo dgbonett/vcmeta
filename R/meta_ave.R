@@ -54,7 +54,6 @@
 #' @export
 meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
   m <- length(m1)
-  nt <- sum(n1 + n2)
   v1 <- sd1^2
   v2 <- sd2^2
   var <- v1/n1 + v2/n2
@@ -153,7 +152,6 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
   df2 <- n2 - 1
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n1 + n2)
   v1 <- sd1^2
   v2 <- sd2^2
   if (stdzr == 0) {
@@ -251,24 +249,23 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
 #' m2 <- c(55, 62, 58, 61)
 #' sd1 <- c(4.1, 4.2, 4.5, 4.0)
 #' sd2 <- c(4.2, 4.7, 4.9, 4.8)
-#' cor <- c(.7, .7, .8, .85)
+#' cor <- c(.72, .78, .81, .85)
 #' n <- c(30, 50, 30, 70)
 #' meta.ave.mean.ps(.05, m1, m2, sd1, sd2, cor, n, bystudy = TRUE)
 #' 
 #' # Should return:
-#' #        Estimate        SE        LL         UL      df
-#' # Average   -3.25 0.2471557 -3.739691 -2.7603091 112.347
-#' # Study 1   -2.00 0.5871400 -3.200836 -0.7991639  29.000
-#' # Study 2   -2.00 0.4918130 -2.988335 -1.0116648  49.000
-#' # Study 3   -5.00 0.5471136 -6.118973 -3.8810270  29.000
-#' # Study 4   -4.00 0.3023716 -4.603215 -3.3967852  69.000
+#' #         Estimate        SE        LL         UL      df
+#' # Average    -3.25 0.2340603 -3.713965 -2.7860352 107.657
+#' # Study 1    -2.00 0.5672507 -3.160158 -0.8398421  29.000
+#' # Study 2    -2.00 0.4227434 -2.849535 -1.1504653  49.000
+#' # Study 3    -5.00 0.5335104 -6.091151 -3.9088487  29.000
+#' # Study 4    -4.00 0.3023716 -4.603215 -3.3967852  69.000
 #' 
 #' 
 #' @importFrom stats qt
 #' @export
 meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
   m <- length(m1)
-  nt <- sum(n)
   v1 <- sd1^2
   v2 <- sd2^2
   v <- (v1 + v2 - 2*cor*sd1*sd2)/n
@@ -362,7 +359,6 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
   df <- n - 1
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   v1 <- sd1^2
   v2 <- sd2^2
   vd <- v1 + v2 - 2*cor*sd1*sd2
@@ -475,7 +471,6 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
 #' @export
 meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
   m <- length(m1)
-  nt <- sum(n1 + n2)
   v <- rep(1, m)*(1/m)
   logratio <- log(m1/m2)
   var1 <- sd1^2/(n1*m1^2) 
@@ -542,6 +537,10 @@ meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 #'  * df - degrees of freedom
 #'
 #'
+#' @references 
+#' \insertRef{Bonett2020}{vcmeta}
+#'
+#'
 #' @examples
 #' m1 <- c(53, 60, 53, 57)
 #' m2 <- c(55, 62, 58, 61)
@@ -570,7 +569,6 @@ meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 #'@export
 meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
   m <- length(m1)
-  nt <- sum(n)
   v <- rep(1, m)*(1/m)
   logratio <- log(m1/m2)
   var <- (sd1^2/m1^2 + sd2^2/m2^2 - 2*cor*sd1*sd2/(m1*m2))/n
@@ -607,7 +605,7 @@ meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRU
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average Pearson or partial correlation from two or more studies. The 
 #' sample correlations must be all Pearson correlations or all partial
-#' correlations. Use the meta.ave.gen function to meta-analyze any 
+#' correlations. Use the meta.ave.cor.gen function to meta-analyze any 
 #' combination of Pearson, partial, or Spearman correlations.
 #' 
 #' 
@@ -650,7 +648,6 @@ meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRU
 meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   var.cor <- (1 - cor^2)^2/ (n - 3 - s)
   ave.cor <- sum(cor)/m
   se.ave <- sqrt(sum(var.cor)/m^2)
@@ -729,7 +726,6 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
 #' @export
 meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
   m <- length(n)
-  nt <- sum(n)
   b <- cor*(sdy/sdx)
   var.b <- (sdy^2*(1 - cor^2)^2*(n - 1))/(sdx^2*(n - 1)*(n - 2))
   ave.b <- sum(b)/m
@@ -806,7 +802,6 @@ meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
 #' @export
 meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
   m <- length(n)
-  nt <- sum(n)
   var.b <- se^2
   ave.b <- sum(slope)/m
   se.ave <- sqrt(sum(var.b)/m^2)
@@ -885,7 +880,6 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
 meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   var.cor <- (1 + cor^2/2)*(1 - cor^2)^2/(n - 3)
   ave.cor <- sum(cor)/m
   se.ave <- sqrt(sum(var.cor)/m^2)
@@ -928,7 +922,7 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #' 2-group nonexperimental designs with simple random sampling (but not
 #' stratified random sampling) within each study. This function requires 
 #' all point-biserial correlations to be of the same type.  Use the
-#' meta.ave.gen function to meta-analyze any combination of biserial
+#' meta.ave.cor.gen function to meta-analyze any combination of biserial
 #' correlation types. 
 #'
 #' 
@@ -981,7 +975,6 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
   n <- n1 + n2
-  nt <- sum(n)
   df1 <- n1 - 1
   df2 <- n2 - 1
   if (type == 1) {
@@ -1080,7 +1073,6 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
 meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   r0 <- r2 - cor^2
   var.cor <- (r2^2 - 2*r2 + r0 - r0^2 + 1)/(n - 3)
   ave.cor <- sum(cor)/m
@@ -1151,15 +1143,14 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2010}{vcmeta}
-#' 
+#' * \insertRef{Bonett2010}{vcmeta}
+#' * \insertRef{Bonett2015b}{vcmeta}
 #' 
 #' @importFrom stats qnorm
 #' @export
 meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   hn <- m/sum(1/n)
   a <- ((r - 2)*(m - 1))^.25
   var.rel <- 2*r*(1 - rel)^2/((r - 1)*(n - 2 - a))
@@ -1186,7 +1177,7 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 }
 
 
-#  meta.ave.odds ==========================================================
+#  meta.ave.oddsratio =====================================================
 #' Confidence interval for average odds ratio from 2-group studies
 #'  
 #'  
@@ -1220,7 +1211,7 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 #' n2 <- c(106, 103, 415, 132, 83)
 #' f1 <- c(24, 40, 93, 14, 5)
 #' f2 <- c(12, 9, 28, 3, 1)
-#' meta.ave.odds(.05, f1, f2, n1, n2, bystudy = TRUE)
+#' meta.ave.oddsratio(.05, f1, f2, n1, n2, bystudy = TRUE)
 #' 
 #' # Should return:
 #' #           Estimate        SE          LL        UL 
@@ -1245,10 +1236,9 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.ave.odds <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
+meta.ave.oddsratio <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
   m <- length(n1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n1 + n2)
   lor <- log((f1 + .5)*(n2 - f2 + .5)/((f2 + .5)*(n1 - f1 + .5)))
   var.lor <- 1/(f1 + .5) + 1/(f2 + .5) + 1/(n1 - f1 + .5) + 1/(n2 - f2 + .5)
   ave.lor <- sum(lor)/m
@@ -1334,7 +1324,6 @@ meta.ave.odds <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 meta.ave.propratio2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
   m <- length(n1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n1 + n2)
   p1 <- (f1 + 1/4)/(n1 + 7/4) 
   p2 <- (f2 + 1/4)/(n2 + 7/4)
   lrr <- log(p1/p2)
@@ -1415,7 +1404,6 @@ meta.ave.propratio2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 meta.ave.prop2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
   m <- length(n1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n1 + n2)
   p1 <- (f1 + 1/m)/(n1 + 2/m) 
   p2 <- (f2 + 1/m)/(n2 + 2/m)
   rd <- p1 - p2
@@ -1491,7 +1479,7 @@ meta.ave.prop2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' 
 #' 
 #' @references 
-#' \insertRef{Bonett2014}{vcmeta}
+#' \insertRef{Bonett2012}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1500,7 +1488,6 @@ meta.ave.prop.ps <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
   m <- length(f11)
   z <- qnorm(1 - alpha/2)
   n <- f11 + f12 + f21 + f22
-  nt <- sum(n)
   p12 <- (f12 + 1/m)/(n + 2/m) 
   p21 <- (f21 + 1/m)/(n + 2/m)
   rd <- p12 - p21
@@ -1573,13 +1560,16 @@ meta.ave.prop.ps <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' # Study 3 0.6981132 0.06954284 0.5618117 0.8344147
 #' 
 #' 
+#' @references 
+#' \insertRef{Bonett2022}{vcmeta}
+#'
+#'
 #' @importFrom stats qnorm
 #' @export
 meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
   m <- length(f11)
   z <- qnorm(1 - alpha/2)
   n <- f11 + f12 + f21 + f22
-  nt <- sum(n)
   p0 <- (f11 + f22 + 2/m)/(n + 4/m)
   g <- 2*p0 - 1 
   ave.g <- sum(g)/m
@@ -1614,7 +1604,9 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' Computes the estimate and confidence interval for an average variance 
 #' from two or more studies. The estimated average variance or the upper
 #' confidence limit could be used as a variance planning value in sample
-#' size planning.
+#' size planning. The confidence intervals assume normality, and this
+#' function is not recommended if the variances have been estimated
+#' from leptokurtic data.
 #'
 #'  
 #' @param alpha  	 alpha level for 1-alpha confidence
@@ -1754,7 +1746,8 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #'
 #'
 #' @details
-#' The weighted average estimate will be biased regardless of the number of 
+#' When the population effect sizes are not identical across studies, the
+#' weighted average estimate will be biased regardless of the number of 
 #' studies or the sample size in each study. The actual confidence interval 
 #' coverage probability can be much smaller than the specified confidence
 #' level when the population effect sizes are not identical across studies. 
@@ -1850,13 +1843,15 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' @details
 #' The random coefficient model assumes that the studies in the meta-analysis
 #' are a random sample from some definable superpopulation of studies. This
-#' assumption is very difficult to justify. The weighted average estimate
-#' will be biased regardless of the number of studies or the sample size
-#' in each study. The actual confidence interval coverage probability can 
-#' much smaller than the specified confidence level if the effect sizes are 
-#' correlated with the weights (which occurs frequently). The confidence 
-#' interval for tau-squared assumes that the true effect sizes in the
-#' superpopulation of studies have a normal distribution. A large number 
+#' assumption is very difficult to justify. When the effect sizes are 
+#' correlated with the weights (a common occurance), the weighted average 
+#' estimate will be biased regardless of the number of studies or the sample
+#' size in each study. The actual confidence interval coverage probability  
+#' can much smaller than the specified confidence level if the effect sizes 
+#' are correlated with the weights. 
+#'
+#' The confidence interval for tau-squared assumes that the true effect sizes
+#' in the superpopulation of studies have a normal distribution. A large number 
 #' of studies, each with a large sample size, is required to assess the 
 #' superpopulation normality assumption and to accurately estimate 
 #' tau-squared. The confidence interval for the population tau-squared is
@@ -1865,7 +1860,7 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #'
 #' The random coefficient model should be used with caution, and the varying 
 #' coefficient methods in this package are the recommended alternatives. The 
-#' varying coefficient methods allows the effect sizes to differ across studies
+#' varying coefficient methods allows the effect sizes to differ across studies,
 #' but do not require the studies to be a random sample from a definable 
 #' superpopoulation of studies. This random coefficient function is included 
 #' in the vcmeta package primarily for classroom demonstrations to illustrate
@@ -1967,8 +1962,9 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average correlation. Any type of correlation can be used (e.g., Pearson,
-#' Spearman, semipartial, factor correlation, Gamma coefficient, Somers d
-#' coefficient, tetrachoric, point-biserial, biserial, etc.).
+#' Spearman, semipartial, factor correlation, gamma coefficient, Somers d
+#' coefficient, tetrachoric, point-biserial, biserial, correlation between
+#' latent factors, etc.).
 #' 
 #' 
 #' @param alpha	   alpha level for 1-alpha confidence
@@ -2033,6 +2029,83 @@ meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- row
+  return (out)
+}
+
+
+#  meta.ave.gen.log ==========================================================
+#' Exponentiated confidence interval for an average of log-transformed
+#' parameters 
+#'                        
+#'
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average of any type of log-transformed parameter (e.g., log mean ratio,
+#' log proportion ratio, log odds ratio) from two or more studies. 
+#'
+#' 
+#' @param    alpha  	alpha level for 1-alpha confidence
+#' @param    est     	vector of log-transformed parameter estimates 
+#' @param    se      	vector of standard errors for log-transformed estimates
+#' @param    bystudy    logical to also return each study estimate (TRUE) or not
+#' 
+#' 
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated log effect size (from input)
+#' * SE - standard error of log effect size (from input)
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' * exp(Estimate) - exponentiated estimate
+#' * LL - lower limit of the exponentiated confidence interval
+#' * UL - upper limit of the exponentiated confidence interval
+#' 
+#' 
+#' @examples
+#' 
+#' est <- c(.165, .193, .218)
+#' se <- c(.0684, .0921, .0882)
+#' meta.ave.gen.log(.05, est, se, bystudy = TRUE)
+#' 
+#' # Should return:
+#' #         Estimate         SE         LL        UL exp(Estimate)
+#' # Average    0.192 0.04823578 0.09745962 0.2865404      1.211671
+#' # Study 1    0.165 0.06840000 0.03093846 0.2990615      1.179393
+#' # Study 2    0.193 0.09210000 0.01248732 0.3735127      1.212883
+#' # Study 3    0.218 0.08820000 0.04513118 0.3908688      1.243587
+#' #          exp(LL)  exp(UL)
+#' # Average 1.102367 1.331812
+#' # Study 1 1.031422 1.348593
+#' # Study 2 1.012566 1.452829
+#' # Study 3 1.046165 1.478265
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.ave.gen.log <- function(alpha, est, se, bystudy = TRUE) {
+  m <- length(est)
+  z <- qnorm(1 - alpha/2)
+  ave.est <- sum(est)/m
+  se.ave <- sqrt(sum(se^2)/m^2)
+  ll1 <- ave.est - z*se.ave
+  ul1 <- ave.est + z*se.ave
+  ll2 <- exp(ave.est - z*se.ave)
+  ul2 <- exp(ave.est + z*se.ave)
+  out <- cbind(ave.est, se.ave, ll1, ul1, exp(ave.est), ll2, ul2)
+  row <- "Average"
+  if (bystudy) {
+    ll1 <- est - z*se
+    ul1 <- est + z*se
+    ll2 <- exp(est - z*se)
+    ul2 <- exp(est + z*se)
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(est, se, ll1, ul1, exp(est), ll2, ul2)
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "exp(Estimate)", "exp(LL)", "exp(UL)")
+  rownames(out) <- row 
   return (out)
 }
 

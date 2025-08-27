@@ -17,6 +17,7 @@ test_that("meta.lm.mean2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -33,9 +34,21 @@ test_that("meta.lm.stdmean2 returns valid matrix", {
   X <- matrix(x1, 5, 1)
   res <- meta.lm.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, X, 0)
   
+  
+  n1 <- c(65, 30, 29, 45, 50)
+  n2 <- c(67, 32, 31, 20, 52)
+  m1 <- c(31.1, 32.3, 31.9, 29.7, 33.0)
+  m2 <- c(34.1, 33.2, 30.6, 28.7, 26.5)
+  sd1 <- c(7.1, 8.1, 7.8, 6.8, 7.6)
+  sd2 <- c(7.8, 7.3, 7.5, 7.2, 6.8)
+  x1 <- c(4, 6, 7, 7, 8)
+  X <- matrix(x1, 5, 1)
+  meta.lm.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, X, 0)
+  
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -56,6 +69,7 @@ test_that("meta.lm.mean.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -75,6 +89,7 @@ test_that("meta.lm.stdmean.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -104,6 +119,7 @@ test_that("meta.lm.meanratio2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -133,6 +149,7 @@ test_that("meta.lm.meanratio.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -151,6 +168,7 @@ test_that("meta.lm.cor.gen returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -170,6 +188,7 @@ test_that("meta.lm.cor returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -187,6 +206,7 @@ test_that("meta.lm.spear returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -204,6 +224,7 @@ test_that("meta.lm.spear returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -222,6 +243,7 @@ test_that("meta.lm.semipart returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -239,6 +261,7 @@ test_that("meta.lm.cronbach returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -262,11 +285,13 @@ test_that("meta.lm.odds returns valid matrix", {
   x1 <- c(4, 4, 5, 3, 26)
   x2 <- c(1, 1, 1, 0, 0)
   X <- matrix(cbind(x1, x2), 5, 2)
-  res <- meta.lm.odds(.05, f1, f2, n1, n2, X)
+  res <- meta.lm.oddsratio(.05, f1, f2, n1, n2, X)
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -295,6 +320,7 @@ test_that("meta.lm.propratio2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -315,6 +341,7 @@ test_that("meta.lm.prop2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -335,6 +362,7 @@ test_that("meta.lm.prop.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -355,6 +383,7 @@ test_that("meta.lm.agree returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -374,6 +403,7 @@ test_that("meta.lm.mean1 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -391,6 +421,7 @@ test_that("meta.lm.prop1 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(2, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -409,4 +440,5 @@ test_that("meta.lm.gen returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })

@@ -27,7 +27,7 @@ meta.lc.meanratio.ps(alpha, m1, m2, sd1, sd2, cor, n, v)
 \value{
 Returns 1-row matrix with the following columns:
 \itemize{
-\item Estimate - estimatedf log-linear contrast
+\item Estimate - estimated log-linear contrast
 \item SE - standard error of log-linear contrast
 \item LL - lower limit of the confidence interval
 \item UL - upper limit of the confidence interval
@@ -49,16 +49,16 @@ m1 <- c(53, 60, 53, 57)
 m2 <- c(55, 62, 58, 61)
 sd1 <- c(4.1, 4.2, 4.5, 4.0)
 sd2 <- c(4.2, 4.7, 4.9, 4.8)
-cor <- c(.7, .7, .8, .85)
+cor <- c(.72, .78, .81, .85)
 n <- c(30, 50, 30, 70)
 v <- c(.5, .5, -.5, -.5)
 meta.lc.meanratio.ps(.05, m1, m2, sd1, sd2, cor, n, v)
 
 # Should return:
-#           Estimate          SE         LL         UL exp(Estimate)
-# Contrast 0.0440713 0.008701725 0.02681353 0.06132907      1.045057
+#           Estimate       SE         LL         UL exp(Estimate)
+# Contrast 0.0440713 0.008265 0.02767047 0.06047213      1.045057
 #           exp(LL)  exp(UL)       df
-# Contrast 1.027176 1.063249 103.0256
+# Contrast 1.028057 1.062338 98.38086
 
 
 }

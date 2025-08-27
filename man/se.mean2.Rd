@@ -27,14 +27,13 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function computes the standard error of a
-2-group mean difference using the estimated means, estimated
-standard deviations, and sample sizes. The effect size estimate
-and standard error output from this function can be used as input
-in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
-and \link[vcmeta]{meta.lm.gen} functions in applications where
-compatible mean differences from a combination of 2-group
-and paired-samples experiments are used in the meta-analysis.
+Computes the standard error of a 2-group mean difference using the
+estimated means, estimated standard deviations, and sample sizes.
+The effect size estimate and standard error output from this function
+can be used as input in the \link[vcmeta]{meta.ave.gen},
+\link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions
+in applications where compatible mean differences from a combination
+of 2-group and paired-samples experiments are used in the meta-analysis.
 Equality of variances is not asumed.
 }
 \examples{

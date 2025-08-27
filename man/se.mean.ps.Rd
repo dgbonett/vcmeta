@@ -27,7 +27,7 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function computes the standard error of a
+Computes the standard error of a
 paired-samples mean difference using the estimated means,
 estimated standard deviations, estimated Pearson correlation,
 and sample size. The effect size estimate and standard error

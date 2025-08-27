@@ -1,339 +1,127 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/404.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/authors.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/index.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/news/index.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/ci.fisher.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/cor.from.t.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/index.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.agree.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.cor.gen.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.cor.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.cronbach.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.fisher.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.cc.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.rc.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.mean.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.mean2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.meanratio.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.meanratio2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.odds.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.path.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.pbcor.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.plot.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.prop.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.prop2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.propratio2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.semipart.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.slope.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.spear.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.stdmean.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.stdmean2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.var.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.chitest.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.agree.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.gen.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.mean.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.mean1.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.mean2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.meanratio.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.meanratio2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.odds.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.prop.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.prop1.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.prop2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.propratio2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.stdmean.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.stdmean2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.agree.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.cor.gen.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.cor.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.cronbach.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.gen.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.mean.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.mean1.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.mean2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.meanratio.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.meanratio2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.odds.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.prop.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.prop1.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.prop2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.propratio2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.semipart.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.spear.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.stdmean.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.stdmean2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.cor.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.cronbach.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.gen.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.pbcor.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.semipart.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.spear.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.cor.gen.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.cor.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.gen.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean1.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.oddsratio.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.plot.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop1.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.ratio.prop2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.slope.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.spear.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.stdmean.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/replicate.stdmean2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.ave.cor.nonover.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.ave.cor.over.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.ave.mean2.dep.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.biphi.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.bscor.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.cohen.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.cor.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.mean.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.mean2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.meanratio.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.meanratio2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.odds.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.pbcor.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.prop.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.prop2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.semipartial.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.slope.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.spear.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.stdmean.ps.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.stdmean2.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/se.tetra.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/stdmean2.from.t.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/table.from.odds.html</loc>
-  </url>
-  <url>
-    <loc>https://dgbonett.github.io/vcmeta/reference/table.from.phi.html</loc>
-  </url>
+<urlset xmlns = 'http://www.sitemaps.org/schemas/sitemap/0.9'>
+<url><loc>https://dgbonett.github.io/vcmeta/404.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/authors.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/index.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/news/index.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/ci.fisher.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/cor.from.t.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/index.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.agree.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.cor.gen.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.cor.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.cronbach.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.fisher.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.cc.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.log.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.gen.rc.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.mean.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.mean2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.meanratio.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.meanratio2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.odds.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.oddsratio.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.path.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.pbcor.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.plot.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.prop.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.prop2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.propratio2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.semipart.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.slope.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.spear.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.stdmean.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.stdmean2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.ave.var.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.chitest.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.agree.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.gen.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.mean.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.mean1.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.mean2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.meanratio.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.meanratio2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.odds.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.oddsratio.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.prop.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.prop1.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.prop2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.propratio2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.stdmean.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lc.stdmean2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.agree.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.cor.gen.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.cor.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.cronbach.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.gen.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.mean.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.mean1.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.mean2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.meanratio.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.meanratio2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.odds.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.oddsratio.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.prop.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.prop1.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.prop2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.propratio2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.semipart.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.spear.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.stdmean.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.lm.stdmean2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.cor.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.cronbach.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.gen.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.pbcor.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.semipart.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/meta.sub.spear.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.agree.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.cor.gen.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.cor.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.cronbach.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.gen.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean1.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.oddsratio.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.plot.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop1.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.propratio2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.ratio.prop2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.slope.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.spear.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.stdmean.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.stdmean2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.agree.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.ave.cor.nonover.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.ave.cor.over.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.ave.mean2.dep.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.biphi.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.bscor.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.cohen.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.cor.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.mean.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.mean2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.meanratio.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.meanratio2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.odds.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.oddsratio.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.pbcor.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.prop.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.prop2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.propratio.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.propratio2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.semipart.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.semipartial.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.slope.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.spear.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.stdmean.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.stdmean2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.tetra.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/stdmean2.from.t.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/table.from.odds.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/table.from.phi.html</loc></url>
 </urlset>
+

@@ -49,5 +49,8 @@ meta.lc.propratio2(.05, f1, f2, n1, n2, v)
 
 }
 \references{
-\insertRef{Price2008}{vcmeta}
+\itemize{
+\item \insertRef{Price2008}{vcmeta}
+\item \insertRef{Bonett2015}{vcmeta}
+}
 }

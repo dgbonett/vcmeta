@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_rep.R
 \name{replicate.prop1}
 \alias{replicate.prop1}
-\title{Compares and combines single proportion in original and follow-up studies}
+\title{Compares and combines single proportions in original and follow-up studies}
 \usage{
 replicate.prop1(alpha, f1, n1, f2, n2)
 }

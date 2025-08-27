@@ -57,7 +57,6 @@
 meta.sub.cor <- function(alpha, n, cor, s, group) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   var <- (1 - cor^2)^2/(n - 3 - s)
   g1 <- (group == rep(1, m))*1
   g2 <- (group == rep(2, m))*1
@@ -147,7 +146,6 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 meta.sub.spear <- function(alpha, n, cor, group) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   var <- (1 + cor^2/2)*(1 - cor^2)^2/(n - 3)
   g1 <- (group == rep(1, m))*1
   g2 <- (group == rep(2, m))*1
@@ -254,7 +252,6 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
   n <- n1 + n2
-  nt <- sum(n)
   df1 <- n1 - 1
   df2 <- n2 - 1
   if (type == 1) {
@@ -362,7 +359,6 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 meta.sub.semipart <- function(alpha, n, cor, r2, group) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   r0 <- r2 - cor^2
   var = (r2^2 - 2*r2 + r0 - r0^2 + 1)/(n - 3)
   g1 <- (group == rep(1, m))*1
@@ -448,7 +444,8 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2010}{vcmeta}
+#' * \insertRef{Bonett2010}{vcmeta}
+#' * \insertRef{Bonett2015b}{vcmeta}
 #'
 #'
 #' @importFrom stats qnorm
@@ -456,7 +453,6 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 meta.sub.cronbach <- function(alpha, n, rel, r, group) {
   m <- length(n)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   g1 <- (group == rep(1, m))*1
   g2 <- (group == rep(2, m))*1
   m1 <- sum(g1)
@@ -624,7 +620,6 @@ meta.sub.gen <- function(alpha, est, se, group) {
 #' @export
 meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   m <- length(m1)
-  nt <- sum(n1 + n2)
   var1 <- sd1^2
   var2 <- sd2^2
   var <- var1/n1 + var2/n2
@@ -710,7 +705,6 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
   df2 <- n2 - 1
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
-  nt = sum(n1 + n2)
   var1 <- sd1^2
   var2 <- sd2^2
   if (stdzr == 0) {
@@ -786,14 +780,14 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' m2 <- c(55, 62, 58, 61)
 #' sd1 <- c(4.1, 4.2, 4.5, 4.0)
 #' sd2 <- c(4.2, 4.7, 4.9, 4.8)
-#' cor <- c(.7, .7, .8, .85)
+#' cor <- c(.72, .78, .81, .85)
 #' n <- c(30, 50, 30, 70)
 #' v <- c(.5, .5, -.5, -.5)
 #' meta.lc.mean.ps(.05, m1, m2, sd1, sd2, cor, n, v)
 #' 
 #' # Should return:
-#' #          Estimate        SE       LL       UL      df
-#' # Contrast      2.5 0.4943114 1.520618 3.479382 112.347
+#' #          Estimate        SE      LL      UL      df
+#' # Contrast      2.5 0.4681205 1.57207 3.42793 107.657
 #' 
 #' 
 #' @references
@@ -804,7 +798,6 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' @export
 meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
   m <- length(m1)
-  nt <- sum(n)
   var1 <- sd1^2
   var2 <- sd2^2
   var <- (var1 + var2 - 2*cor*sd1*sd2)/n
@@ -862,14 +855,14 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' m2 <- c(55, 62, 58, 61)
 #' sd1 <- c(4.1, 4.2, 4.5, 4.0)
 #' sd2 <- c(4.2, 4.7, 4.9, 4.8)
-#' cor <- c(.7, .7, .8, .85)
+#' cor <- c(.72, .78, .81, .85)
 #' n <- c(30, 50, 30, 70)
 #' v <- c(.5, .5, -.5, -.5)
 #' meta.lc.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, v, 0)
 #' 
 #' # Should return:
 #' #            Estimate        SE        LL        UL
-#' # Contrast  0.5127577 0.1392232 0.2398851 0.7856302
+#' # Contrast  0.5127577 0.1346794 0.2487908 0.7767245
 #' 
 #' 
 #' @references
@@ -882,12 +875,11 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
   df <- n - 1
   m <- length(m1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n)
   var1 <- sd1^2
   var2 <- sd2^2
   vd <- var1 + var2 - 2*cor*sd1*sd2
   if (stdzr == 0) {
-     s <- sqrt((var1 + var2)/2)
+    s <- sqrt((var1 + var2)/2)
     d <- (m1 - m2)/s
     du <- sqrt((n - 2)/df)*d
     var <- d^2*(var1^2 + var2^2 + 2*cor^2*var1*var2)/(8*df*s^4) + vd/(df*s^2)
@@ -974,7 +966,6 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' @importFrom stats qt
 #' @export
 meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
-  nt <- sum(n1 + n2)
   logratio <- log(m1/m2)
   var1 <- sd1^2/(n1*m1^2) 
   var2 <- sd2^2/(n2*m2^2)
@@ -985,16 +976,8 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   ll <- est - t*se
   ul <- est + t*se
   out <- cbind(est, se, ll, ul, exp(est), exp(ll), exp(ul), df)
-  colnames(out) <- c(
-    "Estimate", 
-    "SE", 
-    "LL", 
-    "UL", 
-    "exp(Estimate)", 
-    "exp(LL)", 
-    "exp(UL)",
-    "df"
-  )
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "exp(Estimate)", 
+                     "exp(LL)", "exp(UL)", "df")
   rownames(out) <- "Contrast"
   return(out)
 }
@@ -1025,7 +1008,7 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' 
 #' @return
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate - estimatedf log-linear contrast
+#' * Estimate - estimated log-linear contrast
 #' * SE - standard error of log-linear contrast
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
@@ -1040,16 +1023,16 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' m2 <- c(55, 62, 58, 61)
 #' sd1 <- c(4.1, 4.2, 4.5, 4.0)
 #' sd2 <- c(4.2, 4.7, 4.9, 4.8)
-#' cor <- c(.7, .7, .8, .85)
+#' cor <- c(.72, .78, .81, .85)
 #' n <- c(30, 50, 30, 70)
 #' v <- c(.5, .5, -.5, -.5)
 #' meta.lc.meanratio.ps(.05, m1, m2, sd1, sd2, cor, n, v)
 #' 
 #' # Should return:
-#' #           Estimate          SE         LL         UL exp(Estimate)
-#' # Contrast 0.0440713 0.008701725 0.02681353 0.06132907      1.045057
+#' #           Estimate       SE         LL         UL exp(Estimate)
+#' # Contrast 0.0440713 0.008265 0.02767047 0.06047213      1.045057
 #' #           exp(LL)  exp(UL)       df
-#' # Contrast 1.027176 1.063249 103.0256
+#' # Contrast 1.028057 1.062338 98.38086
 #'
 #' 
 #' @references
@@ -1059,7 +1042,6 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' @importFrom stats qt
 #' @export
 meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
-  nt <- sum(n)
   logratio <- log(m1/m2)
   var <- (sd1^2/m1^2 + sd2^2/m2^2 - 2*cor*sd1*sd2/(m1*m2))/n
   est <- t(v)%*%logratio
@@ -1076,7 +1058,7 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 }
 
 
-#  meta.lc.odds =====================================================
+#  meta.lc.oddsratio ==================================================
 #' Confidence interval for a log-linear contrast of odds ratios 
 #' 
 #' 
@@ -1108,7 +1090,7 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' n2 <- c(50, 150, 150)
 #' f2 <- c(7, 15, 20)
 #' v <- c(1, -1, 0)
-#' meta.lc.odds(.05, f1, f2, n1, n2, v)
+#' meta.lc.oddsratio(.05, f1, f2, n1, n2, v)
 #' 
 #' # Should return:
 #' #            Estimate        SE  exp(Estimate)   exp(LL)  exp(UL)
@@ -1121,9 +1103,8 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.lc.odds <- function(alpha, f1, f2, n1, n2, v) {
+meta.lc.oddsratio <- function(alpha, f1, f2, n1, n2, v) {
   m <- length(n1)
-  nt <- sum(n1 + n2)
   z <- qnorm(1 - alpha/2)
   lor <- log((f1 + .5)*(n2 - f2 + .5)/((f2 + .5)*(n1 - f1 + .5)))
   var.lor <- 1/(f1 + .5) + 1/(f2 + .5) + 1/(n1 - f1 + .5) + 1/(n2 - f2 + .5)
@@ -1180,14 +1161,14 @@ meta.lc.odds <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' 
 #' @references
-#' \insertRef{Price2008}{vcmeta}
+#' * \insertRef{Price2008}{vcmeta}
+#' * \insertRef{Bonett2015}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
 #' @export
 meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
   m <- length(n1)
-  nt <- sum(n1 + n2)
   z <- qnorm(1 - alpha/2)
   p1 <- (f1 + 1/4)/(n1 + 7/4) 
   p2 <- (f2 + 1/4)/(n2 + 7/4)
@@ -1255,7 +1236,6 @@ meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
 meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
   m <- length(n1)
   z <- qnorm(1 - alpha/2)
-  nt <- sum(n1 + n2)
   p1 <- (f1 + 1/m)/(n1 + 2/m) 
   p2 <- (f2 + 1/m)/(n2 + 2/m)
   rd <- p1 - p2
@@ -1314,7 +1294,7 @@ meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2014}{vcmeta}
+#' \insertRef{Bonett2012}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1323,7 +1303,6 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
   m <- length(f11)
   z <- qnorm(1 - alpha/2)
   n <- f11 + f12 + f21 + f22
-  nt <- sum(n)
   p12 <- (f12 + 1/m)/(n + 2/m) 
   p21 <- (f21 + 1/m)/(n + 2/m)
   rd <- p12 - p21
@@ -1378,13 +1357,16 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' # Contrast 0.1022939 0.07972357 -0.05396142 0.2585492
 #' 
 #' 
+#' @references 
+#' \insertRef{Bonett2022}{vcmeta}
+#' 
+#' 
 #' @importFrom stats qnorm
 #' @export
 meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
   m <- length(f11)
   z <- qnorm(1 - alpha/2)
   n <- f11 + f12 + f21 + f22
-  nt <- sum(n)
   p0 <- (f11 + f22 + 2/m)/(n + 4/m)
   g <- 2*p0 - 1 
   con <- t(v)%*%g
@@ -1449,7 +1431,6 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
   est <- t(v)%*%m 
   k <- length(m)
-  nt <- sum(n)
   if (eqvar){
     df <- sum(n) - k
     v1 <- sum((n - 1)*sd^2)/df
@@ -1489,7 +1470,7 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
 #'
 #' @return
 #' Returns 1-row matrix with the following columns: 
-#' * Estimate -estimated linear contrast
+#' * Estimate - estimated linear contrast
 #' * SE - standard error
 #' * LL - lower limit of the adjusted Wald confidence interval
 #' * UL - upper limit of the adjusted Wald confidence interval
@@ -1513,7 +1494,6 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
 meta.lc.prop1 <- function(alpha, f, n, v) {
   z <- qnorm(1 - alpha/2)
   m <- length(v) - length(which(v==0))
-  nt <- sum(n)
   p <- (f + 2/m)/(n + 4/m)
   est <- t(v)%*%p
   se <- sqrt(t(v)%*%diag(p*(1 - p))%*%solve(diag(n + 4/m))%*%v)

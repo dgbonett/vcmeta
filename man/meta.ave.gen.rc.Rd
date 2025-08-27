@@ -35,13 +35,15 @@ effect-size heterogeneity (tau-squared) is also computed.
 \details{
 The random coefficient model assumes that the studies in the meta-analysis
 are a random sample from some definable superpopulation of studies. This
-assumption is very difficult to justify. The weighted average estimate
-will be biased regardless of the number of studies or the sample size
-in each study. The actual confidence interval coverage probability can
-much smaller than the specified confidence level if the effect sizes are
-correlated with the weights (which occurs frequently). The confidence
-interval for tau-squared assumes that the true effect sizes in the
-superpopulation of studies have a normal distribution. A large number
+assumption is very difficult to justify. When the effect sizes are
+correlated with the weights (a common occurance), the weighted average
+estimate will be biased regardless of the number of studies or the sample
+size in each study. The actual confidence interval coverage probability
+can much smaller than the specified confidence level if the effect sizes
+are correlated with the weights.
+
+The confidence interval for tau-squared assumes that the true effect sizes
+in the superpopulation of studies have a normal distribution. A large number
 of studies, each with a large sample size, is required to assess the
 superpopulation normality assumption and to accurately estimate
 tau-squared. The confidence interval for the population tau-squared is
@@ -50,7 +52,7 @@ superpopulation normality assumption.
 
 The random coefficient model should be used with caution, and the varying
 coefficient methods in this package are the recommended alternatives. The
-varying coefficient methods allows the effect sizes to differ across studies
+varying coefficient methods allows the effect sizes to differ across studies,
 but do not require the studies to be a random sample from a definable
 superpopoulation of studies. This random coefficient function is included
 in the vcmeta package primarily for classroom demonstrations to illustrate

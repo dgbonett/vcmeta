@@ -74,10 +74,8 @@ follow-up study where the effect size is a 2-group mean difference. Confidence
 intervals for the difference and average effect size are also computed.
 Equality of variances within or across studies is not assumed. A
 Satterthwaite adjustment to the degrees of freedom is used to improve the
-accuracy of the confidence intervals. The same results can be obtained using
-the \link[vcmeta]{meta.lc.mean2} function with appropriate contrast coefficients.
-The confidence level for the difference is 1 – 2*alpha, which is recommended for
-equivalence testing.
+accuracy of the confidence intervals. The confidence level for the difference
+is 1 – 2*alpha, which is recommended for equivalence testing.
 }
 \examples{
 replicate.mean2(.05, 21.9, 16.1, 3.82, 3.21, 40, 40, 

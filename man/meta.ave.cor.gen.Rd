@@ -28,8 +28,9 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 \description{
 Computes the estimate, standard error, and confidence interval for an
 average correlation. Any type of correlation can be used (e.g., Pearson,
-Spearman, semipartial, factor correlation, Gamma coefficient, Somers d
-coefficient, tetrachoric, point-biserial, biserial, etc.).
+Spearman, semipartial, factor correlation, gamma coefficient, Somers d
+coefficient, tetrachoric, point-biserial, biserial, correlation between
+latent factors, etc.).
 }
 \examples{
 cor <- c(.396, .454, .409, .502, .350)

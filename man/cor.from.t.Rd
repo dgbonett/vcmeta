@@ -2,7 +2,8 @@
 % Please edit documentation in R/meta_misc.R
 \name{cor.from.t}
 \alias{cor.from.t}
-\title{Computes Pearson correlation between paired measurements from t statistic}
+\title{Computes a Pearson correlation between paired measurements from a
+paired-samples t statistic}
 \usage{
 cor.from.t(m1, m2, sd1, sd2, t, n)
 }
@@ -15,7 +16,7 @@ cor.from.t(m1, m2, sd1, sd2, t, n)
 
 \item{sd2}{estimated standard deviation for measurement 2}
 
-\item{t}{value for paired-samples t-test}
+\item{t}{value of paired-samples t-test}
 
 \item{n}{sample size}
 }
@@ -23,9 +24,9 @@ cor.from.t(m1, m2, sd1, sd2, t, n)
 Returns the sample Pearson correlation between the two paired measurements
 }
 \description{
-This function computes the Pearson correlation between paired
-measurements using a reported paired-samples t statistic and
-other sample information. This correlation estimate is needed
+Computes the Pearson correlation between paired measurements
+using a reported paired-samples t statistic and other
+sample information. This correlation estimate is needed
 in several functions that analyze mean differences and
 standardized mean differences in paired-samples studies.
 }

@@ -51,5 +51,5 @@ meta.ave.prop.ps(.05, f11, f12, f21, f22, bystudy = TRUE)
 
 }
 \references{
-\insertRef{Bonett2014}{vcmeta}
+\insertRef{Bonett2012}{vcmeta}
 }

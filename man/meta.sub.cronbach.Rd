@@ -62,5 +62,8 @@ meta.sub.cronbach(.05, n, rel, r, group)
 
 }
 \references{
-\insertRef{Bonett2010}{vcmeta}
+\itemize{
+\item \insertRef{Bonett2010}{vcmeta}
+\item \insertRef{Bonett2015b}{vcmeta}
+}
 }

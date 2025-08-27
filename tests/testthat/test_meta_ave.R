@@ -15,6 +15,7 @@ test_that("meta_ave_mean2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -33,6 +34,7 @@ test_that("meta.ave.stdmean2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -51,6 +53,7 @@ test_that("meta.ave.mean.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(5, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -69,6 +72,7 @@ test_that("meta.ave.stdmean.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -90,6 +94,7 @@ test_that("meta.ave.meanratio2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -110,6 +115,7 @@ test_that("meta.ave.meanratio.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(5, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -126,6 +132,7 @@ test_that("meta.ave.cor returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(5, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -142,6 +149,7 @@ test_that("meta.ave.cor.gen returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(6, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -159,6 +167,7 @@ test_that("meta.ave.slope returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(5, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -175,6 +184,7 @@ test_that("meta.ave.path returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(5, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -190,6 +200,7 @@ test_that("meta.ave.spear returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(6, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -209,6 +220,7 @@ test_that("meta.ave.pbcor returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -225,6 +237,7 @@ test_that("meta.ave.semipart returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(5, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -240,6 +253,7 @@ test_that("meta.ave.cronbach returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(5, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -252,11 +266,12 @@ test_that("meta.ave.odds returns valid matrix", {
   n2 <- c(106, 103, 415, 132, 83)
   f1 <- c(24, 40, 93, 14, 5)
   f2 <- c(12, 9, 28, 3, 1)
-  res <- meta.ave.odds(.05, f1, f2, n1, n2, bystudy = TRUE)
+  res <- meta.ave.oddsratio(.05, f1, f2, n1, n2, bystudy = TRUE)
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(6, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -274,6 +289,8 @@ test_that("meta.ave.propratio2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(6, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -291,6 +308,7 @@ test_that("meta.ave.prop2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(6, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -308,6 +326,7 @@ test_that("meta.ave.prop.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -325,6 +344,7 @@ test_that("meta.ave.agree returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -340,6 +360,7 @@ test_that("meta.ave.gen returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(9, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -355,6 +376,7 @@ test_that("meta.ave.gen.cc returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(9, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -370,6 +392,7 @@ test_that("meta.ave.gen.rc returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(10, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -385,4 +408,26 @@ test_that("meta.ave.var returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
+})
+
+
+
+
+
+test_that("meta.ave.gen.log example", {
+  colnames_expected <- c(
+    "Estimate",         "SE",         "LL",        "UL", "exp(Estimate)", "exp(LL)",  "exp(UL)"
+  )
+  
+  est <- c(.165, .193, .218)
+  se <- c(.0684, .0921, .0882)
+  res <- meta.ave.gen.log(.05, est, se, bystudy = TRUE)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })

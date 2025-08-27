@@ -50,7 +50,9 @@ Equality of error variances across studies is not assumed. The confidence
 interval for the difference uses a 1 - 2*alpha confidence level, which is
 recommended for equivalence testing. Use the \link[vcmeta]{replicate.gen}
 function for slopes in other types of models (e.g., binary logistic, ordinal
-logistic, SEM).
+logistic, SEM). A Satterthwaite adjustment to the degrees of freedom is used
+to improve the accuracy of the confidence intervals for the average and the
+difference.
 }
 \examples{
 replicate.slope(.05, 23.4, 5.16, 50, 18.5, 4.48, 90, 4)

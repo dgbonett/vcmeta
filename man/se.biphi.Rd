@@ -23,11 +23,12 @@ Returns a 1-row matrix. The columns are:
 }
 }
 \description{
-This function computes an estimate of a biserial-phi
-correlation and its standard error using the frequency counts from a 2 x 2
-contingency table where one variable is naturally dichotomous and the other
-variable is artifically dichotomous. A biserial-phi correlation could be
-compatible with a point-biserial correlation in a meta-analysis. The
+Computes an estimate of a biserial-phi correlation and its standard error
+using the frequency counts from a 2 x 2 contingency table where one variable
+is naturally dichotomous and the other variable is artifically dichotomous.
+The biserial-phi correlation approximates a point-biserial correlation
+between the naturally dichotomous variable and the unobserved quantitative
+variable that was measured on a dichotomous scale. A biserial-phi correlation
 biserial-phi estimate and the standard error from this function can be used
 as input in the \link[vcmeta]{meta.ave.cor.gen} function in a meta-analysis
 where a point-biserial correlation has been obtained in some studies and

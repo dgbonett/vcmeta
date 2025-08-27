@@ -31,7 +31,7 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 Computes the estimate, standard error, and confidence interval for an
 average Pearson or partial correlation from two or more studies. The
 sample correlations must be all Pearson correlations or all partial
-correlations. Use the meta.ave.gen function to meta-analyze any
+correlations. Use the meta.ave.cor.gen function to meta-analyze any
 combination of Pearson, partial, or Spearman correlations.
 }
 \examples{

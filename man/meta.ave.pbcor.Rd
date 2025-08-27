@@ -47,7 +47,7 @@ designs. The other type uses a weighted variance and is appropriate in
 2-group nonexperimental designs with simple random sampling (but not
 stratified random sampling) within each study. This function requires
 all point-biserial correlations to be of the same type.  Use the
-meta.ave.gen function to meta-analyze any combination of biserial
+meta.ave.cor.gen function to meta-analyze any combination of biserial
 correlation types.
 }
 \examples{

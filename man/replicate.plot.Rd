@@ -56,7 +56,7 @@ the ggplot API
 }
 \description{
 Generates a basic plot using ggplot2 to visualize the estimates from
-and original and follow-up studies.
+the original and follow-up studies.
 }
 \examples{
    

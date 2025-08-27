@@ -11,6 +11,7 @@ test_that("meta.sub.cor returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -25,6 +26,7 @@ test_that("meta.sub.spear returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -43,6 +45,7 @@ test_that("meta.sub.pbcor returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -58,6 +61,7 @@ test_that("meta.sub.semipart returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -73,6 +77,7 @@ test_that("meta.sub.cronbach returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -91,6 +96,7 @@ test_that("meta.lc.mean2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -109,6 +115,7 @@ test_that("meta.lc.stdmean2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -127,6 +134,7 @@ test_that("meta.lc.mean.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -147,6 +155,7 @@ test_that("meta.lc.meanratio2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -167,6 +176,7 @@ test_that("meta.lc.meanratio.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -180,11 +190,13 @@ test_that("meta.lc.odds returns valid matrix", {
   n2 <- c(50, 150, 150)
   f2 <- c(7, 15, 20)
   v <- c(1, -1, 0)
-  res <- meta.lc.odds(.05, f1, f2, n1, n2, v)
+  res <- meta.lc.oddsratio(.05, f1, f2, n1, n2, v)
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
 })
 
 
@@ -203,6 +215,7 @@ test_that("meta.lc.propratio2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -221,6 +234,7 @@ test_that("meta.lc.prop2 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -239,6 +253,7 @@ test_that("meta.lc.prop.ps returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -257,6 +272,7 @@ test_that("meta.lc.agree returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -274,6 +290,7 @@ test_that("meta.lc.mean1 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -290,6 +307,7 @@ test_that("meta.lc.prop1 returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -306,6 +324,7 @@ test_that("meta.lc.gen returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })
 
 
@@ -322,4 +341,5 @@ test_that("meta.sub.gen returns valid matrix", {
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(3, length(colnames_expected)))
   testthat::expect_equal(colnames(res), colnames_expected)
+  testthat::expect_snapshot(res)
 })

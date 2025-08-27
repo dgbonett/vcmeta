@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_model.R
 \name{meta.lm.propratio2}
 \alias{meta.lm.propratio2}
-\title{Meta-regression analysis for proportion ratios}
+\title{Meta-regression analysis for 2-group proportion ratios}
 \usage{
 meta.lm.propratio2(alpha, f1, f2, n1, n2, X)
 }
@@ -36,7 +36,7 @@ row per predictor.  The matrix has the following columns:
 }
 \description{
 This function estimates the intercept and slope coefficients in a
-meta-regression model where the dependent variable is a log
+meta-regression model where the dependent variable is a 2-group log
 proportion ratio. The estimates are OLS estimates with robust standard
 errors that accommodate residual heteroscedasticity. The exponentiated
 slope estimate for a predictor variable describes a multiplicative

@@ -69,3 +69,6 @@ meta.ave.meanratio.ps(.05, m1, m2, sd1, sd2, cor, n, bystudy = TRUE)
 
 
 }
+\references{
+\insertRef{Bonett2020}{vcmeta}
+}

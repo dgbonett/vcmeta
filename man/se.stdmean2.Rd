@@ -34,7 +34,7 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function computes the standard error of a 2-group standardized
+Computes the standard error of a 2-group standardized
 mean difference using the sample sizes and the estimated means
 standardizer (stdzr = 0) for 2-group experimental designs. Use the
 square root weighted variance standardizer (stdzr = 3) for 2-group

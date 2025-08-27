@@ -1,57 +1,11 @@
-# meta.ave.fisher ============================================================
-#' Fisher confidence interval for an average correlation.
-#' 
-#'
-#' @description 
-#' This function should be used with the \link[vcmeta]{meta.ave.gen}
-#' function when the effect size is a correlation. Use the estimated average
-#' correlation and its standard error from meta.ave.gen in this function to 
-#' obtain a more accurate confidence interval for the population average 
-#' correlation. 
-#'
-#'
-#' @param alpha alpha value for 1-alpha confidence
-#' @param cor   estimate of average correlation 
-#' @param se    standard error of average correlation
-#' 
-#' 
-#' @return
-#' Returns a 1-row matrix. The columns are:
-#' * Estimate - estimate of average correlation (from input) 
-#' * LL - lower limit of the confidence interval
-#' * UL - lower limit of the confidence interval
-#' 
-#' @examples 
-#' meta.ave.fisher(0.05, 0.376, .054)
-#'
-#' # Should return:
-#' # Estimate        LL        UL
-#' #    0.376 0.2656039 0.4766632
-#' 
-#' 
-#' @importFrom stats qnorm
-#' @export
-meta.ave.fisher <- function(alpha, cor, se) {
-  z <- qnorm(1 - alpha/2)
-  zr <- log((1 + cor)/(1 - cor))/2
-  ll0 <- zr - z*se/(1 - cor^2)
-  ul0 <- zr + z*se/(1 - cor^2)
-  ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
-  ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out <- t(c(cor, ll, ul))
-  colnames(out) <- c("Estimate", "LL", "UL")
-  rownames(out) <- ""
-  return(out)
-}
-
-
 #  cor.from.t =============================================================
-#' Computes Pearson correlation between paired measurements from t statistic
+#' Computes a Pearson correlation between paired measurements from a
+#' paired-samples t statistic
 #' 
 #' @description 
-#' This function computes the Pearson correlation between paired 
-#' measurements using a reported paired-samples t statistic and 
-#' other sample information. This correlation estimate is needed 
+#' Computes the Pearson correlation between paired measurements
+#' using a reported paired-samples t statistic and other
+#' sample information. This correlation estimate is needed 
 #' in several functions that analyze mean differences and 
 #' standardized mean differences in paired-samples studies.
 #' 
@@ -60,7 +14,7 @@ meta.ave.fisher <- function(alpha, cor, se) {
 #' @param m2 estimated mean for measurement 2 
 #' @param sd1 estimated standard deviation for measurement 1 
 #' @param sd2 estimated standard deviation for measurement 2 
-#' @param t value for paired-samples t-test
+#' @param t value of paired-samples t-test
 #' @param n sample size
 #'  
 #' @return
@@ -83,7 +37,7 @@ cor.from.t <- function(m1, m2, sd1, sd2, t, n) {
 }
 
 
-# meta.chitest ========================================================
+#  meta.chitest ========================================================
 #' Computes a chi-square test of effect-size homogeneity
 #' 
 #'

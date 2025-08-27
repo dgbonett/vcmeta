@@ -27,14 +27,14 @@ Returns a one-row matrix:
 }
 }
 \description{
-This function computes the standard error of a
-2-group log mean ratio using the estimated means, estimated standard
-deviations, and sample sizes. The log mean estimate and standard
-error output from this function can be used as input in the
-\link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, and
-\link[vcmeta]{meta.lm.gen} functions in application where compatible
-mean ratios from a combination of 2-group and paired-samples experiments
-are used in the meta-analysis. Equality of variances is not assumed.
+Computes the standard error of a 2-group log mean ratio using the
+estimated means, estimated standard deviations, and sample sizes.
+The log mean estimate and standard error output from this function
+can be used as input in the \link[vcmeta]{meta.ave.gen},
+\link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions
+in application where compatible mean ratios from a combination of
+2-group and paired-samples experiments are used in the meta-analysis.
+Equality of variances is not assumed.
 }
 \examples{
 se.meanratio2(21.9, 16.1, 3.82, 3.21, 40, 40)
