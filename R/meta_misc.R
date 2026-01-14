@@ -65,8 +65,8 @@ cor.from.t <- function(m1, m2, sd1, sd2, t, n) {
 #' meta.chitest(est, se)
 #'
 #' # Should return:
-#' #       Q df       p
-#' #  2.7065  3 0.43912
+#' #      Q df     p
+#' #  2.707  3 0.439
 #' 
 #' 
 #' @references
@@ -81,7 +81,7 @@ meta.chitest <- function(est, se) {
  ave <- sum(w*est)/sum(w)
  Q <- sum(w*(est - ave)*(est - ave))
  p <- 1 - pchisq(Q, df)
- out <- t(c(round(Q, 4), df, round(p, 5)))
+ out <- t(c(round(Q, 3), df, round(p, 3)))
  colnames(out) <- c("Q", "df", "p")
  rownames(out) <- ""
  return(out)
