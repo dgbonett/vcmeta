@@ -55,11 +55,11 @@
 #' # Follow-up:              6.10 0.6346075  9.6122408 0.000000e+00  
 #' # Original - Follow-up:  -0.30 1.0124916 -0.2962988 7.673654e-01 
 #' # Average:                5.95 0.5062458 11.7531843 0.000000e+00 
-#' #                               LL       UL        df
-#' # Original:               4.228624 7.371376  75.75255
-#' # Follow-up:              4.845913 7.354087 147.64728
-#' # Original - Follow-up:  -1.974571 1.374571 169.16137
-#' # Average:                4.950627 6.949373 169.16137
+#' #                               LL       UL     df
+#' # Original:               4.228624 7.371376  75.75
+#' # Follow-up:              4.845913 7.354087 147.65
+#' # Original - Follow-up:  -1.974571 1.374571 169.16
+#' # Average:                4.950627 6.949373 169.16
 #' 
 #' 
 #' @references
@@ -103,10 +103,10 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd2
   ll2 <- est2 - tcrit2*se2;  ul2 <- est2 + tcrit2*se2
   ll3 <- est3 - tcrit3*se3;  ul3 <- est3 + tcrit3*se3
   ll4 <- est4 - tcrit4*se4;  ul4 <- est4 + tcrit4*se4
-  out1 <- t(c(est1, se1, t1, pval1, ll1, ul1, df1))
-  out2 <- t(c(est2, se2, t2, pval2, ll2, ul2, df2))
-  out3 <- t(c(est3, se3, t3, pval3, ll3, ul3, df3))
-  out4 <- t(c(est4, se4, t4, pval4, ll4, ul4, df3))
+  out1 <- t(c(est1, se1, t1, pval1, ll1, ul1, round(df1, 2)))
+  out2 <- t(c(est2, se2, t2, pval2, ll2, ul2, round(df2, 2)))
+  out3 <- t(c(est3, se3, t3, pval3, ll3, ul3, round(df3, 2)))
+  out4 <- t(c(est4, se4, t4, pval4, ll4, ul4, round(df3, 2)))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "t", "p", "LL", "UL", "df")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -173,11 +173,11 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd2
 #' # Follow-up:              7.57 1.460664 5.182575 1.831197e-06 
 #' # Original - Follow-up:   7.72 2.602832 2.966000 5.166213e-03 
 #' # Average:               11.43 1.301416 8.782740 1.010232e-10 
-#' #                              LL       UL       df
-#' # Original:             10.780906 19.79909 19.00000
-#' # Follow-up:             4.659564 10.48044 74.00000
-#' # Original - Follow-up:  3.332885 12.10712 38.40002
-#' # Average:               8.796322 14.06368 38.40002
+#' #                              LL       UL     df
+#' # Original:             10.780906 19.79909 19.00
+#' # Follow-up:             4.659564 10.48044 74.00
+#' # Original - Follow-up:  3.332885 12.10712 38.40
+#' # Average:               8.796322 14.06368 38.40
 #' 
 #' 
 #' @references
@@ -219,10 +219,10 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
   ll2 <- est2 - tcrit2*se2; ul2 <- est2 + tcrit2*se2
   ll3 <- est3 - tcrit3*se3; ul3 <- est3 + tcrit3*se3
   ll4 <- est4 - tcrit4*se4; ul4 <- est4 + tcrit4*se4
-  out1 <- t(c(est1, se1, t1, pval1, ll1, ul1, df1))
-  out2 <- t(c(est2, se2, t2, pval2, ll2, ul2, df2))
-  out3 <- t(c(est3, se3, t3, pval3, ll3, ul3, df3))
-  out4 <- t(c(est4, se4, t4, pval4, ll4, ul4, df3))
+  out1 <- t(c(est1, se1, t1, pval1, ll1, ul1, round(df1, 2)))
+  out2 <- t(c(est2, se2, t2, pval2, ll2, ul2, round(df2, 2)))
+  out3 <- t(c(est3, se3, t3, pval3, ll3, ul3, round(df3, 2)))
+  out4 <- t(c(est4, se4, t4, pval4, ll4, ul4, round(df3, 2)))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "t", "p", "LL", "UL", "df")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -854,11 +854,11 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 #' # Follow-up:               18.50 4.480000 4.1294643 8.465891e-05
 #' # Original - Follow-up:     4.90 6.833447 0.7170612 4.749075e-01
 #' # Average:                 20.95 3.416724 6.1316052 1.504129e-08
-#' #                              LL       UL       df
-#' # Original:             13.007227 33.79277  45.0000
-#' # Follow-up:             9.592560 27.40744  85.0000
-#' # Original - Follow-up: -6.438743 16.23874 106.4035
-#' # Average:              14.176310 27.72369 106.4035
+#' #                              LL       UL     df
+#' # Original:             13.007227 33.79277  45.00
+#' # Follow-up:             9.592560 27.40744  85.00
+#' # Original - Follow-up: -6.438743 16.23874 106.40
+#' # Average:              14.176310 27.72369 106.40
 #'
 #'
 #' @references
@@ -896,10 +896,10 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
  ll2 <- est2 - tcrit2*se2;  ul2 <- est2 + tcrit2*se2
  ll3 <- est3 - tcrit3*se3;  ul3 <- est3 + tcrit3*se3
  ll4 <- est4 - tcrit4*se4;  ul4 <- est4 + tcrit4*se4
- out1 <- t(c(est1, se1, t1, pval1, ll1, ul1, df1))
- out2 <- t(c(est2, se2, t2, pval2, ll2, ul2, df2))
- out3 <- t(c(est3, se3, t3, pval3, ll3, ul3, df3))
- out4 <- t(c(est4, se4, t4, pval4, ll4, ul4, df3))
+ out1 <- t(c(est1, se1, t1, pval1, ll1, ul1, round(df1, 2)))
+ out2 <- t(c(est2, se2, t2, pval2, ll2, ul2, round(df2, 2)))
+ out3 <- t(c(est3, se3, t3, pval3, ll3, ul3, round(df3, 2)))
+ out4 <- t(c(est4, se4, t4, pval4, ll4, ul4, round(df3, 2)))
  out <- rbind(out1, out2, out3, out4)
  colnames(out) <- c("Estimate", "SE", "t", "p", "LL", "UL", "df")
  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -1186,8 +1186,8 @@ replicate.prop1 <- function(alpha, f1, n1, f2, n2){
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    m1	  	   estimated mean in original study 
-#' @param    sd1   	   estimated SD in original study
+#' @param    m1	  	     estimated mean in original study 
+#' @param    sd1   	     estimated SD in original study
 #' @param    n1     	 sample size in original study
 #' @param    m2 	   	 estimated mean in follow-up study 
 #' @param    sd2   		 estimated SD in follow-up study
@@ -1213,11 +1213,11 @@ replicate.prop1 <- function(alpha, f1, n1, f2, n2){
 #' replicate.mean1(.05, 21.9, 3.82, 40, 25.2, 3.98, 75)
 #'
 #' # Should return:
-#' #                       Estimate        SE        LL        UL       df
-#' # Original:                21.90 0.6039950 20.678305 23.121695 39.00000
-#' # Follow-up:               25.20 0.4595708 24.284285 26.115715 74.00000
-#' # Original - Follow-up:    -3.30 0.7589567 -4.562527 -2.037473 82.63282
-#' # Average:                 23.55 0.3794784 22.795183 24.304817 82.63282
+#' #                       Estimate        SE        LL        UL    df
+#' # Original:                21.90 0.6039950 20.678305 23.121695 39.00
+#' # Follow-up:               25.20 0.4595708 24.284285 26.115715 74.00
+#' # Original - Follow-up:    -3.30 0.7589567 -4.562527 -2.037473 82.63
+#' # Average:                 23.55 0.3794784 22.795183 24.304817 82.63
 #' 
 #' 
 #' @references
@@ -1250,10 +1250,10 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
   ll2 <- est2 - tcrit2*se2;  ul2 <- est2 + tcrit2*se2
   ll3 <- est3 - tcrit3*se3;  ul3 <- est3 + tcrit3*se3
   ll4 <- est4 - tcrit4*se4;  ul4 <- est4 + tcrit4*se4
-  out1 <- t(c(est1, se1, ll1, ul1, df1))
-  out2 <- t(c(est2, se2, ll2, ul2, df2))
-  out3 <- t(c(est3, se3, ll3, ul3, df3))
-  out4 <- t(c(est4, se4, ll4, ul4, df3))
+  out1 <- t(c(est1, se1, ll1, ul1, round(df1, 2)))
+  out2 <- t(c(est2, se2, ll2, ul2, round(df2, 2)))
+  out3 <- t(c(est3, se3, ll3, ul3, round(df3, 2)))
+  out4 <- t(c(est4, se4, ll4, ul4, round(df3, 3)))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "LL", "UL", "df")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
