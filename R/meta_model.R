@@ -44,10 +44,10 @@
 #' meta.lm.mean2(.05, m1, m2, sd1, sd2, n1, n2, X)
 #' 
 #' # Should return:
-#' #    Estimate        SE         t     p         LL        UL  df
-#' # b0   -15.20 3.4097610 -4.457791 0.000 -21.902415 -8.497585 418
-#' # b1     2.35 0.4821523  4.873979 0.000   1.402255  3.297745 418
-#' # b2     2.85 1.5358109  1.855697 0.064  -0.168875  5.868875 418
+#' #    Estimate        SE       t       p         LL        UL  df
+#' # b0   -15.20 3.4097610 -4.4578 0.00001 -21.902415 -8.497585 418
+#' # b1     2.35 0.4821523  4.8740 0.00000   1.402255  3.297745 418
+#' # b2     2.85 1.5358109  1.8557 0.06420  -0.168875  5.868875 418
 #' 
 #' 
 #' @references
@@ -73,8 +73,8 @@ meta.lm.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
   crit <- qt(1 - alpha/2, df)
   ll <- b - crit*se
   ul <- b + crit*se
-  t <- b/se
-  p <- round(2*(1 - pt(abs(t), df)), digits = 3)
+  t <- round(b/se, 4)
+  p <- round(2*(1 - pt(abs(t), df)), 5)
   out <- cbind(b, se, t, p, ll, ul, df)
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "t", "p", "LL", "UL", "df")
@@ -136,9 +136,9 @@ meta.lm.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' meta.lm.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, X, 0)
 #' 
 #' # Should return:
-#' #      Estimate        SE         z p         LL         UL
-#' # b0 -1.6988257 0.4108035 -4.135373 0 -2.5039857 -0.8936657
-#' # b1  0.2871641 0.0649815  4.419167 0  0.1598027  0.4145255
+#' #      Estimate        SE       z p         LL         UL
+#' # b0 -1.6988257 0.4108035 -4.1354 0 -2.5039857 -0.8936657
+#' # b1  0.2871641 0.0649815  4.4192 0  0.1598027  0.4145255
 #' 
 #' 
 #' @references
@@ -186,7 +186,7 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
   ul <- b + z*se
   z <- b/se
   p <- round(2*(1 - pnorm(abs(z))), digits = 3)
-  out <- cbind(b, se, z, p, ll, ul)
+  out <- cbind(b, se, round(z, 4), round(p, 5), ll, ul)
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- row
@@ -238,9 +238,9 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
 #' meta.lm.mean.ps(.05, m1, m2, sd1, sd2, cor, n, X)
 #' 
 #' # Should return:
-#' #    Estimate        SE        t     p        LL        UL  df
-#' # b0     8.00 1.2491990 6.404104 0.000 5.5378833 10.462117 217
-#' # b1     0.85 0.3796019 2.239188 0.026 0.1018213  1.598179 217
+#' #    Estimate        SE      t       p        LL        UL  df
+#' # b0     8.00 1.2491990 6.4041 0.00000 5.5378833 10.462117 217
+#' # b1     0.85 0.3796019 2.2392 0.02616 0.1018213  1.598179 217
 #' 
 #' 
 #' @references
@@ -266,8 +266,8 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
   t <- qt(1 - alpha/2, df)
   ll <- b - t*se
   ul <- b + t*se
-  t <- b/se
-  p <- round(2*(1 - pt(abs(t), df)), digits = 3)
+  t <- round(b/se, 4)
+  p <- round(2*(1 - pt(abs(t), df)), 5)
   out <- cbind(b, se, t, p, ll, ul, df)
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "t", "p", "LL", "UL", "df")
@@ -325,9 +325,9 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' meta.lm.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, X, 0)
 #' 
 #' # Should return:
-#' #      Estimate         SE         z     p         LL        UL
-#' # b0 1.01740253 0.25361725 4.0115667 0.000  0.5203218 1.5144832
-#' # b1 0.04977943 0.07755455 0.6418635 0.521 -0.1022247 0.2017836
+#' #      Estimate         SE      z       p         LL        UL
+#' # b0 1.01740253 0.25361725 4.0116 0.00006  0.5203218 1.5144832
+#' # b1 0.04977943 0.07755455 0.6419 0.52096 -0.1022247 0.2017836
 #' 
 #' 
 #' @references
@@ -368,8 +368,8 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
   ll <- b - z*se
   ul <- b + z*se
   z <- b/se
-  p <- round(2*(1 - pnorm(abs(z))), digits = 3)
-  out <- cbind(b, se, z, p, ll, ul)
+  p <- round(2*(1 - pnorm(abs(z))), 5)
+  out <- cbind(b, se, round(z, 4), p, ll, ul)
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- row
@@ -432,9 +432,9 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
 #' meta.lm.meanratio2(.05, m1, m2, sd1, sd2, n1, n2, X)
 #' 
 #' # Should return:
-#' #       Estimate         SE          LL          UL         z p
-#' # b0 -0.40208954 0.09321976 -0.58479692 -0.21938216 -4.313351 0
-#' # b1  0.06831545 0.01484125  0.03922712  0.09740377  4.603078 0
+#' #       Estimate         SE          LL          UL       z p
+#' # b0 -0.40208954 0.09321976 -0.58479692 -0.21938216 -4.3134 0
+#' # b1  0.06831545 0.01484125  0.03922712  0.09740377  4.6031 0
 #' #    exp(Estimate)  exp(LL)   exp(UL)
 #' # b0     0.6689208 0.557219 0.8030148
 #' # b1     1.0707030 1.040007 1.1023054
@@ -459,8 +459,8 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
   crit <- qnorm(1 - alpha/2)
   ll <- b - crit*se
   ul <- b + crit*se
-  z <- b/se
-  p <- round(2*(1 - pnorm(abs(z))), digits = 3)
+  z <- round(b/se, 4)
+  p <- round(2*(1 - pnorm(abs(z))), 5)
   out <- cbind(b, se, z, p, ll, ul, exp(b), exp(ll), exp(ul))
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL", 
@@ -525,9 +525,9 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' meta.lm.meanratio.ps(.05, m1, m2, sd1, sd2, cor, n, X)
 #' 
 #' # Should return: 
-#' #      Estimate         SE           LL        UL        z     p
-#' # b0 0.50957008 0.13000068  0.254773424 0.7643667 3.919749 0.000
-#' # b1 0.07976238 0.04133414 -0.001251047 0.1607758 1.929697 0.054
+#' #      Estimate         SE           LL        UL      z       p
+#' # b0 0.50957008 0.13000068  0.254773424 0.7643667 3.9197 0.00009
+#' # b1 0.07976238 0.04133414 -0.001251047 0.1607758 1.9297 0.05364
 #' #     exp(Estimate)   exp(LL)  exp(UL)
 #' # b0       1.664575 1.2901693 2.147634
 #' # b1       1.083030 0.9987497 1.174422
@@ -550,8 +550,8 @@ meta.lm.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
   crit <- qnorm(1 - alpha/2)
   ll <- b - crit*se
   ul <- b + crit*se
-  z <- b/se
-  p <- round(2*(1 - pnorm(abs(z))), digits = 3)
+  z <- round(b/se, 4)
+  p <- round(2*(1 - pnorm(abs(z))), 5)
   out <- cbind(b, se, z, p, ll, ul, exp(b), exp(ll), exp(ul))
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL", 
@@ -603,9 +603,9 @@ meta.lm.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' meta.lm.cor.gen(.05, cor, se, X)
 #' 
 #' # Should return: 
-#' #       Estimate         SE          z     p
-#' # b0 -0.47832153 0.63427931 -0.7541181 0.451
-#' # b1  0.05047154 0.02879859  1.7525699 0.080
+#' #       Estimate         SE       z     p
+#' # b0 -0.47832153 0.63427931 -0.7541 0.45079
+#' # b1  0.05047154 0.02879859  1.7526 0.07967
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -623,8 +623,8 @@ meta.lm.cor.gen <- function(alpha, cor, se, X) {
   b <- M%*%t(X)%*%zcor
   V <- diag(zvar)
   se <- sqrt(diag(M%*%t(X)%*%V%*%X%*%M))
-  z <- b/se
-  p <- round(2*(1 - pnorm(abs(z))), digits = 3)
+  z <- round(b/se, 4)
+  p <- round(2*(1 - pnorm(abs(z))), 5)
   out <- cbind(b, se, z, p)
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "z", "p")
