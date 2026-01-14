@@ -184,9 +184,9 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
   se <- sqrt(diag(M%*%t(X)%*%V%*%X%*%M))
   ll <- b - z*se
   ul <- b + z*se
-  z <- b/se
-  p <- round(2*(1 - pnorm(abs(z))), digits = 3)
-  out <- cbind(b, se, round(z, 4), round(p, 5), ll, ul)
+  z <- round(b/se, 4)
+  p <- round(2*(1 - pnorm(abs(z))), 5)
+  out <- cbind(b, se, z, p, ll, ul)
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- row
@@ -367,9 +367,9 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
   se <- sqrt(diag(M%*%t(X)%*%V%*%X%*%M))
   ll <- b - z*se
   ul <- b + z*se
-  z <- b/se
+  z <- round(b/se, 4)
   p <- round(2*(1 - pnorm(abs(z))), 5)
-  out <- cbind(b, se, round(z, 4), p, ll, ul)
+  out <- cbind(b, se, z, p, ll, ul)
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- row
