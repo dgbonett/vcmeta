@@ -14,8 +14,8 @@
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    m11		   estimated mean for group 1 in original study 
-#' @param    m12		   estimated mean for group 2 in original study
+#' @param    m11		 estimated mean for group 1 in original study 
+#' @param    m12		 estimated mean for group 2 in original study
 #' @param    sd11   	 estimated SD for group 1 in original study
 #' @param    sd12   	 estimated SD for group 2 in original study
 #' @param    n11    	 sample size for group 1 in original study
@@ -50,16 +50,11 @@
 #'                      25.2, 19.1, 3.98, 3.79, 75, 75)
 #'
 #' # Should return:
-#' #                     Estimate        SE          t            p 
-#' # Original:               5.80 0.7889312  7.3517180 1.927969e-10  
-#' # Follow-up:              6.10 0.6346075  9.6122408 0.000000e+00  
-#' # Original - Follow-up:  -0.30 1.0124916 -0.2962988 7.673654e-01 
-#' # Average:                5.95 0.5062458 11.7531843 0.000000e+00 
-#' #                               LL       UL     df
-#' # Original:               4.228624 7.371376  75.75
-#' # Follow-up:              4.845913 7.354087 147.65
-#' # Original - Follow-up:  -1.974571 1.374571 169.16
-#' # Average:                4.950627 6.949373 169.16
+#' #                       Estimate        SE      t     p        LL       UL     df
+#' # Original:                 5.80 0.7889312  7.352 0.000  4.228624 7.371376  75.75
+#' # Follow-up:                6.10 0.6346075  9.612 0.000  4.845913 7.354087 147.65
+#' # Original - Follow-up:    -0.30 1.0124916 -0.296 0.767 -1.974571 1.374571 169.16
+#' # Average:                  5.95 0.5062458 11.753 0.000  4.950627 6.949373 169.16
 #' 
 #' 
 #' @references
@@ -103,10 +98,10 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd2
   ll2 <- est2 - tcrit2*se2;  ul2 <- est2 + tcrit2*se2
   ll3 <- est3 - tcrit3*se3;  ul3 <- est3 + tcrit3*se3
   ll4 <- est4 - tcrit4*se4;  ul4 <- est4 + tcrit4*se4
-  out1 <- t(c(est1, se1, t1, pval1, ll1, ul1, round(df1, 2)))
-  out2 <- t(c(est2, se2, t2, pval2, ll2, ul2, round(df2, 2)))
-  out3 <- t(c(est3, se3, t3, pval3, ll3, ul3, round(df3, 2)))
-  out4 <- t(c(est4, se4, t4, pval4, ll4, ul4, round(df3, 2)))
+  out1 <- t(c(est1, se1, round(t1, 3), round(pval1, 3), ll1, ul1, round(df1, 2)))
+  out2 <- t(c(est2, se2, round(t2, 3), round(pval2, 3), ll2, ul2, round(df2, 2)))
+  out3 <- t(c(est3, se3, round(t3, 3), round(pval3, 3), ll3, ul3, round(df3, 2)))
+  out4 <- t(c(est4, se4, round(t4, 3), round(pval4, 3), ll4, ul4, round(df3, 2)))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "t", "p", "LL", "UL", "df")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -131,17 +126,17 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd2
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    m11		   estimated mean for measurement 1 in original study 
-#' @param    m12		   estimated mean for measurement 2 in original study
+#' @param    m11		 estimated mean for measurement 1 in original study 
+#' @param    m12		 estimated mean for measurement 2 in original study
 #' @param    sd11   	 estimated SD for measurement 1 in original study
 #' @param    sd12   	 estimated SD for measurement 2 in original study
-#' @param    n1    	   sample size in original study
+#' @param    n1    	     sample size in original study
 #' @param    cor1    	 estimated correlation of paired measurements in orginal study
 #' @param    m21    	 estimated mean for measurement 1 in follow-up study 
 #' @param    m22    	 estimated mean for measurement 2 in follow-up study
 #' @param    sd21   	 estimated SD for measurement 1 in follow-up study
 #' @param    sd22   	 estimated SD for measurement 2 in follow-up study
-#' @param    n2    	   sample size in follow-up study
+#' @param    n2    	     sample size in follow-up study
 #' @param    cor2    	 estimated correlation of paired measurements in follow-up study
 #' 
 #' 
@@ -168,16 +163,11 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd2
 #'                        84.81, 77.24, 15.68, 16.95, .702, 75)
 #'
 #' #  Should return:
-#' #                     Estimate       SE        t            p  
-#' # Original:              15.29 2.154344 7.097288 9.457592e-07 
-#' # Follow-up:              7.57 1.460664 5.182575 1.831197e-06 
-#' # Original - Follow-up:   7.72 2.602832 2.966000 5.166213e-03 
-#' # Average:               11.43 1.301416 8.782740 1.010232e-10 
-#' #                              LL       UL     df
-#' # Original:             10.780906 19.79909 19.00
-#' # Follow-up:             4.659564 10.48044 74.00
-#' # Original - Follow-up:  3.332885 12.10712 38.40
-#' # Average:               8.796322 14.06368 38.40
+#' #                        Estimate       SE     t     p        LL       UL   df
+#' #  Original:                15.29 2.154344 7.097 0.000 10.780906 19.79909 19.0
+#' #  Follow-up:                7.57 1.460664 5.183 0.000  4.659564 10.48044 74.0
+#' #  Original - Follow-up:     7.72 2.602832 2.966 0.005  3.332885 12.10712 38.4
+#' #  Average:                 11.43 1.301416 8.783 0.000  8.796322 14.06368 38.4
 #' 
 #' 
 #' @references
@@ -219,10 +209,10 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
   ll2 <- est2 - tcrit2*se2; ul2 <- est2 + tcrit2*se2
   ll3 <- est3 - tcrit3*se3; ul3 <- est3 + tcrit3*se3
   ll4 <- est4 - tcrit4*se4; ul4 <- est4 + tcrit4*se4
-  out1 <- t(c(est1, se1, t1, pval1, ll1, ul1, round(df1, 2)))
-  out2 <- t(c(est2, se2, t2, pval2, ll2, ul2, round(df2, 2)))
-  out3 <- t(c(est3, se3, t3, pval3, ll3, ul3, round(df3, 2)))
-  out4 <- t(c(est4, se4, t4, pval4, ll4, ul4, round(df3, 2)))
+  out1 <- t(c(est1, se1, round(t1, 3), round(pval1, 3), ll1, ul1, round(df1, 2)))
+  out2 <- t(c(est2, se2, round(t2, 3), round(pval2, 3), ll2, ul2, round(df2, 2)))
+  out3 <- t(c(est3, se3, round(t3, 3), round(pval3, 3), ll3, ul3, round(df3, 2)))
+  out4 <- t(c(est4, se4, round(t4, 3), round(pval4, 3), ll4, ul4, round(df3, 2)))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "t", "p", "LL", "UL", "df")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -246,9 +236,9 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' deviation are options for the standardizer.
 #' 
 #' 
-#' @param    alpha	 alpha level for 1-alpha confidence
-#' @param    m11	 estimated mean for group 1 in original study 
-#' @param    m12	 estimated mean for group 2 in original study
+#' @param    alpha	     alpha level for 1-alpha confidence
+#' @param    m11	     estimated mean for group 1 in original study 
+#' @param    m12	     estimated mean for group 2 in original study
 #' @param    sd11   	 estimated SD for group 1 in original study
 #' @param    sd12   	 estimated SD for group 2 in original study
 #' @param    n11    	 sample size for group 1 in original study
