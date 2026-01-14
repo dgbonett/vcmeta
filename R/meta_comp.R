@@ -608,8 +608,8 @@ meta.sub.gen <- function(alpha, est, se, group) {
 #' meta.lc.mean2(.05, m1, m2, sd1, sd2, n1, n2, v)
 #'
 #' # Should return:
-#' #          Estimate       SE       LL       UL       df
-#' # Contrast     9.95 2.837787 4.343938 15.55606 153.8362
+#' #          Estimate       SE       LL       UL     df
+#' # Contrast     9.95 2.837787 4.343938 15.55606 153.84
 #'
 #'
 #' @references
@@ -629,7 +629,7 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   se <- sqrt(var)
   u1 <- var^2*sum(v^2)^2
   u2 <- sum(v^4*var1^2/(n1^3 - n1^2) + v^4*var2^2/(n2^3 - n2^2))
-  df <- u1/u2
+  df <- round(u1/u2, 2)
   t <- qt(1 - alpha/2, df)
   ll <- con - t*se
   ul <- con + t*se
@@ -786,8 +786,8 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' meta.lc.mean.ps(.05, m1, m2, sd1, sd2, cor, n, v)
 #' 
 #' # Should return:
-#' #          Estimate        SE      LL      UL      df
-#' # Contrast      2.5 0.4681205 1.57207 3.42793 107.657
+#' #          Estimate        SE      LL      UL     df
+#' # Contrast      2.5 0.4681205 1.57207 3.42793 107.66
 #' 
 #' 
 #' @references
@@ -806,7 +806,7 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
   se <- sqrt(t(v)%*%(diag(var))%*%v)
   u1 <- sum(var*v^2)^2
   u2 <- sum((var*v^2)^2/(n - 1))
-  df <- u1/u2
+  df <- round(u1/u2, 2)
   t <- qt(1 - alpha/2, df)
   ll <- con - t*se
   ul <- con + t*se
@@ -955,8 +955,8 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' # Should return:
 #' #           Estimate         SE        LL        UL  exp(Estimate)
 #' # Contrast 0.2691627 0.07959269 0.1119191 0.4264064      1.308868
-#' #           exp(LL)  exp(UL)       df
-#' # Contrast 1.118422 1.531743 152.8665
+#' #           exp(LL)  exp(UL)     df
+#' # Contrast 1.118422 1.531743 152.87
 #' 
 #' 
 #' @references
@@ -972,6 +972,7 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   est <- t(v)%*%logratio
   se <- sqrt(t(v)%*%(diag(var1 + var2))%*%v)
   df <- se^4/sum(v^4*var1^2/(n1 - 1) + v^4*var2^2/(n2 - 1))
+  df <- round(df, 2)
   t <- qt(1 - alpha/2, df)
   ll <- est - t*se
   ul <- est + t*se
@@ -1031,8 +1032,8 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' # Should return:
 #' #           Estimate       SE         LL         UL exp(Estimate)
 #' # Contrast 0.0440713 0.008265 0.02767047 0.06047213      1.045057
-#' #           exp(LL)  exp(UL)       df
-#' # Contrast 1.028057 1.062338 98.38086
+#' #           exp(LL)  exp(UL)    df
+#' # Contrast 1.028057 1.062338 98.38
 #'
 #' 
 #' @references
@@ -1047,6 +1048,7 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
   est <- t(v)%*%logratio
   se <- sqrt(t(v)%*%(diag(var))%*%v)
   df <- se^4/sum(v^4*var^2/(n - 1))
+  df <- round(df, 2)
   t <- qt(1 - alpha/2, df)
   ll <- est - t*se
   ul <- est + t*se
@@ -1353,7 +1355,7 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' meta.lc.agree(.05, f11, f12, f21, f22, v)
 #' 
 #' # Should return:
-#' #            Estimate        SE         LL        UL
+#' #           Estimate         SE          LL        UL
 #' # Contrast 0.1022939 0.07972357 -0.05396142 0.2585492
 #' 
 #' 
@@ -1419,8 +1421,8 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 #' meta.lc.mean1(.05, m, sd, n, v, eqvar = FALSE)
 #'
 #' # Should return:
-#' #          Estimate       SE        LL        UL       df
-#' # Contrast    -5.35 1.300136 -7.993583 -2.706417 33.52169
+#' #          Estimate       SE        LL        UL    df
+#' # Contrast    -5.35 1.300136 -7.993583 -2.706417 33.52
 #' 
 #' @references
 #' \insertRef{Snedecor1980}{vcmeta}
@@ -1441,7 +1443,8 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
   } else {
     v2 <- diag(sd^2)%*%(solve(diag(n)))
     se <- sqrt(t(v)%*%v2%*%v)
-    df = (se^4)/sum(((v^4)*(sd^4)/(n^2*(n-1))))
+    df <- (se^4)/sum(((v^4)*(sd^4)/(n^2*(n-1))))
+    df <- round(df, 2)
     t2 <- qt(1 - alpha/2, df)
     ll <- est - t2*se
     ul <- est + t2*se
