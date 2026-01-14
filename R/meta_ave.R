@@ -44,10 +44,10 @@
 #' meta.ave.mean2(.05, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 #'
 #' # Should return:
-#' #         Estimate        SE        LL       UL        df
-#' # Average     1.15 0.2830183 0.5904369 1.709563 139.41053
-#' # Study 1     1.10 0.4604590 0.1819748 2.018025  71.46729
-#' # Study 2     1.20 0.3292036 0.5475574 1.852443 109.42136
+#' #         Estimate        SE        LL       UL     df
+#' # Average     1.15 0.2830183 0.5904369 1.709563 139.41
+#' # Study 1     1.10 0.4604590 0.1819748 2.018025  71.47
+#' # Study 2     1.20 0.3292036 0.5475574 1.852443 109.42
 #' 
 #' 
 #' @importFrom stats qt
@@ -62,7 +62,7 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
   se <- sqrt(sum(var)/m^2)
   u1 <- sum(var)^2
   u2 <- sum(v1^2/(n1^3 - n1^2) + v2^2/(n2^3 - n2^2))
-  df <- u1/u2
+  df <- round(u1/u2, 2)
   t <- qt(1 - alpha/2, df)
   ll <- ave - t*se
   ul <- ave + t*se
@@ -254,12 +254,12 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
 #' meta.ave.mean.ps(.05, m1, m2, sd1, sd2, cor, n, bystudy = TRUE)
 #' 
 #' # Should return:
-#' #         Estimate        SE        LL         UL      df
-#' # Average    -3.25 0.2340603 -3.713965 -2.7860352 107.657
-#' # Study 1    -2.00 0.5672507 -3.160158 -0.8398421  29.000
-#' # Study 2    -2.00 0.4227434 -2.849535 -1.1504653  49.000
-#' # Study 3    -5.00 0.5335104 -6.091151 -3.9088487  29.000
-#' # Study 4    -4.00 0.3023716 -4.603215 -3.3967852  69.000
+#' #         Estimate        SE        LL         UL     df
+#' # Average    -3.25 0.2340603 -3.713965 -2.7860352 107.66
+#' # Study 1    -2.00 0.5672507 -3.160158 -0.8398421  29.00
+#' # Study 2    -2.00 0.4227434 -2.849535 -1.1504653  49.00
+#' # Study 3    -5.00 0.5335104 -6.091151 -3.9088487  29.00
+#' # Study 4    -4.00 0.3023716 -4.603215 -3.3967852  69.00
 #' 
 #' 
 #' @importFrom stats qt
@@ -274,7 +274,7 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
   se <- sqrt(sum(v)/m^2)
   u1 <- sum(v)^2
   u2 <- sum(v^2/(n - 1))
-  df <- u1/u2
+  df <- round(u1/u2, 2)
   t <- qt(1 - alpha/2, df)
   ll <- ave - t*se
   ul <- ave + t*se
@@ -461,10 +461,10 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
 #' # Average 0.1759928 0.05738065 0.061437186 0.2905484       1.192429
 #' # Study 1 0.1609304 0.06820167 0.024749712 0.2971110       1.174603
 #' # Study 2 0.1910552 0.09229675 0.002986265 0.3791242       1.210526
-#' #          exp(LL)  exp(UL)       df
-#' # Average 1.063364 1.337161 66.26499
-#' # Study 1 1.025059 1.345965 65.69929
-#' # Study 2 1.002991 1.461004 31.71341
+#' #          exp(LL)  exp(UL)    df
+#' # Average 1.063364 1.337161 66.27
+#' # Study 1 1.025059 1.345965 65.70
+#' # Study 2 1.002991 1.461004 31.71
 #'
 #'
 #' @importFrom stats qt
@@ -478,6 +478,7 @@ meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
   est <- t(v)%*%logratio
   se <- sqrt(t(v)%*%(diag(var1 + var2))%*%v)
   df <- se^4/sum(v^4*var1^2/(n1 - 1) + v^4*var2^2/(n2 - 1))
+  df <- round(df, 2)
   t <- qt(1 - alpha/2, df)
   ll <- est - t*se
   ul <- est + t*se
@@ -557,12 +558,12 @@ meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 #' # Study 2 -0.03278982 0.008021952 -0.04891054 -0.01666911
 #' # Study 3 -0.09015110 0.009779919 -0.11015328 -0.07014892
 #' # Study 4 -0.06782260 0.004970015 -0.07773750 -0.05790769
-#' #         exp(Estimate)   exp(LL)   exp(UL)       df
-#' # Average     0.9446402 0.9365240 0.9528266 103.0256
-#' # Study 1     0.9636364 0.9424474 0.9853017  29.0000
-#' # Study 2     0.9677419 0.9522663 0.9834691  49.0000
-#' # Study 3     0.9137931 0.8956968 0.9322550  29.0000
-#' # Study 4     0.9344262 0.9252073 0.9437371  69.0000
+#' #         exp(Estimate)   exp(LL)   exp(UL)     df
+#' # Average     0.9446402 0.9365240 0.9528266 103.03
+#' # Study 1     0.9636364 0.9424474 0.9853017  29.00
+#' # Study 2     0.9677419 0.9522663 0.9834691  49.00
+#' # Study 3     0.9137931 0.8956968 0.9322550  29.00
+#' # Study 4     0.9344262 0.9252073 0.9437371  69.00
 #' 
 #'
 #' @importFrom stats qt
@@ -575,6 +576,7 @@ meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRU
   est <- t(v)%*%logratio
   se <- sqrt(t(v)%*%(diag(var))%*%v)
   df <- se^4/sum(v^4*var^2/(n - 1))
+  df <- round(df, 2)
   t <- qt(1 - alpha/2, df)
   ll <- est - t*se
   ul <- est + t*se
@@ -714,12 +716,12 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
 #' meta.ave.slope(.05, n, cor, sdy, sdx, bystudy = TRUE)
 #'
 #' # Should return:
-#' #          Estimate        SE         LL       UL       df
-#' # Average 1.7731542 0.4755417  0.8335021 2.712806 149.4777
-#' # Study 1 2.1850746 1.3084468 -0.4536599 4.823809  43.0000
-#' # Study 2 2.6390374 0.7262491  1.1945573 4.083518  83.0000
-#' # Study 3 0.9267327 0.8146126 -0.7111558 2.564621  48.0000
-#' # Study 4 1.3417722 0.8456799 -0.3510401 3.034584  58.0000
+#' #          Estimate        SE         LL       UL     df
+#' # Average 1.7731542 0.4755417  0.8335021 2.712806 149.48
+#' # Study 1 2.1850746 1.3084468 -0.4536599 4.823809  43.00
+#' # Study 2 2.6390374 0.7262491  1.1945573 4.083518  83.00
+#' # Study 3 0.9267327 0.8146126 -0.7111558 2.564621  48.00
+#' # Study 4 1.3417722 0.8456799 -0.3510401 3.034584  58.00
 #' 
 #' 
 #' @importFrom stats qt
@@ -732,7 +734,7 @@ meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
   se.ave <- sqrt(sum(var.b)/m^2)
   u1 <- sum(var.b)^2
   u2 <- sum(var.b^2/(n - 1))
-  df <- u1/u2
+  df <- round(u1/u2, 2)
   t <- qt(1 - alpha/2, df)
   ll <- ave.b - t*se.ave
   ul <- ave.b + t*se.ave
@@ -790,12 +792,12 @@ meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
 #' meta.ave.path(.05, n, slope, se, 2, bystudy = TRUE)
 #'
 #' #  Should return:
-#' #         Estimate         SE          LL       UL       df
-#' #  Average     1.32 0.2844334  0.75994528 1.880055 263.1837
-#' #  Study 1     1.57 0.6580000  0.25830097 2.881699  72.0000
-#' #  Study 2     1.38 0.7240000 -0.06026664 2.820267  82.0000
-#' #  Study 3     1.08 0.3070000  0.47532827 1.684672 247.0000
-#' #  Study 4     1.25 0.4930000  0.27623174 2.223768 157.0000
+#' #         Estimate         SE          LL       UL     df
+#' #  Average     1.32 0.2844334  0.75994528 1.880055 263.18
+#' #  Study 1     1.57 0.6580000  0.25830097 2.881699  72.00
+#' #  Study 2     1.38 0.7240000 -0.06026664 2.820267  82.00
+#' #  Study 3     1.08 0.3070000  0.47532827 1.684672 247.00
+#' #  Study 4     1.25 0.4930000  0.27623174 2.223768 157.00
 #'
 #'
 #' @importFrom stats qt
@@ -807,7 +809,7 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
   se.ave <- sqrt(sum(var.b)/m^2)
   u1 <- sum(var.b)^2
   u2 <- sum(var.b^2/(n - s - 1))
-  df <- u1/u2
+  df <- round(u1/u2, 2)
   t <- qt(1 - alpha/2, df)
   ll <- ave.b - t*se.ave
   ul <- ave.b + t*se.ave
