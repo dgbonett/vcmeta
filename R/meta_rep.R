@@ -276,11 +276,11 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #'                         25.2, 19.1, 3.98, 3.79, 75, 75, 0)
 #'
 #' # Should return: 
-#' #                           Estimate        SE         LL        UL
-#' #  Original:              1.62803662 0.2594668  1.1353486 2.1524396
-#' #  Follow-up:             1.56170447 0.1870576  1.2030461 1.9362986
-#' #  Original - Follow-up:  0.07422178 0.3198649 -0.4519092 0.6003527
-#' #  Average:               1.59487055 0.1599325  1.2814087 1.9083324
+#' #                        Estimate     SE      LL     UL
+#' #  Original:               1.6280 0.2595  1.1353 2.1524
+#' #  Follow-up:              1.5617 0.1871  1.2030 1.9363
+#' #  Original - Follow-up:   0.0742 0.3199 -0.4519 0.6004
+#' #  Average:                1.5949 0.1599  1.2814 1.9083
 #' 
 #' 
 #' @references
@@ -349,7 +349,7 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
   out2 <- t(c(a2*est2, se2, ll2, ul2))
   out3 <- t(c(est3, se3, ll3, ul3))
   out4 <- t(c(est4, se4, ll4, ul4))
-  out <- rbind(out1, out2, out3, out4)
+  out <- rbind(round(out1, 4), round(out2, 4), round(out3, 4), round(out4, 4))
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
   return(out)
@@ -410,11 +410,11 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
 #'                                   84.81, 77.24, 15.68, 16.95, .702, 75, 0)
 #'
 #' # Should return:
-#' #                         Estimate         SE        LL        UL
-#' #  Orginal:              1.0890300 0.22915553 0.6697353 1.5680085
-#' #  Follow-up:            0.4604958 0.09590506 0.2756687 0.6516096
-#' #  Original - Follow-up: 0.6552328 0.24841505 0.2466264 1.0638392
-#' #  Average:              0.7747629 0.12420752 0.5313206 1.0182052
+#' #                       Estimate     SE     LL     UL
+#' # Orginal:                1.0890 0.2292 0.6697 1.5680
+#' # Follow-up:              0.4605 0.0959 0.2757 0.6516
+#' # Original - Follow-up:   0.6552 0.2484 0.2466 1.0638
+#' # Average:                0.7748 0.1242 0.5313 1.0182
 #' 
 #' 
 #' @references
@@ -478,7 +478,7 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
   out2 <- t(c(a2*est2, se2, ll2, ul2))
   out3 <- t(c(est3, se3, ll3, ul3))
   out4 <- t(c(est4, se4, ll4, ul4))
-  out <- rbind(out1, out2, out3, out4)
+  out <- rbind(round(out1, 4), round(out2, 4), round(out3, 4), round(out4, 4))
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Orginal:", "Follow-up:", "Original - Follow-up:", "Average:")
   return(out)
