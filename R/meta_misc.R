@@ -111,14 +111,14 @@ meta.chitest <- function(est, se) {
 #' stdmean2.from.t(3.27, 25, 25)
 #'
 #' # Should return:
-#' #             Estimate       SE
-#' # Cohen's d  0.9439677 0.298801
+#' #           Estimate     SE
+#' # Cohen's d    0.925 0.2982
 #' 
 #' @export
 stdmean2.from.t <- function(t, n1, n2) {
   d <- t*sqrt(1/n1 + 1/n2)
   se <- sqrt(d^2*(1/(n1 - 1) + 1/(n2 - 1))/8 + 1/n1 + 1/n2)
-  out <- t(c(d, se))
+  out <- t(c(round(d, 3), round(se, 4)))
   colnames(out) <- c("Estimate", "SE")
   rownames(out) <- c("Cohen's d: ")
   return (out)
