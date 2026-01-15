@@ -787,11 +787,11 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 #' Compares and combines slope coefficients in original and follow-up studies
 #'
 #' @description 
-#' This function computes confidence intervals for a slope from the original and
-#' follow-up studies, the difference in slopes, and the average of the slopes. 
-#' Equality of error variances across studies is not assumed. The confidence 
-#' interval for the difference uses a 1 - 2*alpha confidence level, which is 
-#' recommended for equivalence testing. Use the \link[vcmeta]{replicate.gen} 
+#' This function computes confidence intervals for an OLS slope in a GLM from 
+#' the original and follow-up studies, the difference in slopes, and the average
+#' of the slopes. Equality of error variances across studies is not assumed. The 
+#' confidence interval for the difference uses a 1 - 2*alpha confidence level, 
+#' which is recommended for equivalence testing. Use the \link[vcmeta]{replicate.gen} 
 #' function for slopes in other types of models (e.g., binary logistic, ordinal 
 #' logistic, SEM). A Satterthwaite adjustment to the degrees of freedom is used
 #' to improve the accuracy of the confidence intervals for the average and the
@@ -829,16 +829,11 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 #' replicate.slope(.05, 23.4, 5.16, 50, 18.5, 4.48, 90, 4)
 #'
 #' # Should return: 
-#' #                       Estimate       SE         t            p
-#' # Original:                23.40 5.160000 4.5348837 4.250869e-05
-#' # Follow-up:               18.50 4.480000 4.1294643 8.465891e-05
-#' # Original - Follow-up:     4.90 6.833447 0.7170612 4.749075e-01
-#' # Average:                 20.95 3.416724 6.1316052 1.504129e-08
-#' #                              LL       UL     df
-#' # Original:             13.007227 33.79277  45.00
-#' # Follow-up:             9.592560 27.40744  85.00
-#' # Original - Follow-up: -6.438743 16.23874 106.40
-#' # Average:              14.176310 27.72369 106.40
+#' #                       Estimate       SE     t     p        LL       UL    df
+#' # Original:                23.40 5.160000 4.535 0.000 13.007227 33.79277  45.0
+#' # Follow-up:               18.50 4.480000 4.129 0.000  9.592560 27.40744  85.0
+#' # Original - Follow-up:     4.90 6.833447 0.717 0.475 -6.438743 16.23874 106.4
+#' # Average:                 20.95 3.416724 6.132 0.000 14.176310 27.72369 106.4
 #'
 #'
 #' @references
@@ -876,10 +871,10 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
  ll2 <- est2 - tcrit2*se2;  ul2 <- est2 + tcrit2*se2
  ll3 <- est3 - tcrit3*se3;  ul3 <- est3 + tcrit3*se3
  ll4 <- est4 - tcrit4*se4;  ul4 <- est4 + tcrit4*se4
- out1 <- t(c(est1, se1, t1, pval1, ll1, ul1, round(df1, 2)))
- out2 <- t(c(est2, se2, t2, pval2, ll2, ul2, round(df2, 2)))
- out3 <- t(c(est3, se3, t3, pval3, ll3, ul3, round(df3, 2)))
- out4 <- t(c(est4, se4, t4, pval4, ll4, ul4, round(df3, 2)))
+ out1 <- t(c(est1, se1, round(t1, 3), round(pval1, 3), ll1, ul1, round(df1, 2)))
+ out2 <- t(c(est2, se2, round(t2, 3), round(pval2, 3), ll2, ul2, round(df2, 2)))
+ out3 <- t(c(est3, se3, round(t3, 3), round(pval3, 3), ll3, ul3, round(df3, 2)))
+ out4 <- t(c(est4, se4, round(t4, 3), round(pval4, 3), ll4, ul4, round(df3, 2)))
  out <- rbind(out1, out2, out3, out4)
  colnames(out) <- c("Estimate", "SE", "t", "p", "LL", "UL", "df")
  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -925,12 +920,13 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
 #' replicate.gen(.05, .782, .210, .650, .154)
 #'
 #' # Should return: 
-#' #                      Estimate        SE         z            p         LL        UL
-#' #  Original:              0.782 0.2100000 3.7238095 1.962390e-04  0.3704076 1.1935924
-#' #  Follow-up:             0.650 0.1540000 4.2207792 2.434593e-05  0.3481655 0.9518345
-#' #  Original - Follow-up:  0.132 0.2604151 0.5068831 6.122368e-01 -0.2963446 0.5603446
-#' #  Average:               0.716 0.1302075 5.4989141 3.821373e-08  0.4607979 0.9712021
+#' #                       Estimate        SE     z     p         LL        UL
+#' # Original:                0.782 0.2100000 3.724 0.000  0.3704076 1.1935924
+#' # Follow-up:               0.650 0.1540000 4.221 0.000  0.3481655 0.9518345
+#' # Original - Follow-up:    0.132 0.2604151 0.507 0.612 -0.2963446 0.5603446
+#' # Average:                 0.716 0.1302075 5.499 0.000  0.4607979 0.9712021
 #' 
+#'
 #' @references
 #' \insertRef{Bonett2021}{vcmeta}
 #' 
@@ -957,10 +953,10 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
   ll2 <- est2 - zcrit1*se2;  ul2 <- est2 + zcrit1*se2
   ll3 <- est3 - zcrit2*se3;  ul3 <- est3 + zcrit2*se3
   ll4 <- est4 - zcrit1*se4;  ul4 <- est4 + zcrit1*se4
-  out1 <- t(c(est1, se1, z1, pval1, ll1, ul1))
-  out2 <- t(c(est2, se2, z2, pval2, ll2, ul2))
-  out3 <- t(c(est3, se3, z3, pval3, ll3, ul3))
-  out4 <- t(c(est4, se4, z4, pval4, ll4, ul4))
+  out1 <- t(c(est1, se1, round(z1, 3), round(pval1, 3), ll1, ul1))
+  out2 <- t(c(est2, se2, round(z2, 3), round(pval2, 3), ll2, ul2))
+  out3 <- t(c(est3, se3, round(z3, 3), round(pval3, 3), ll3, ul3))
+  out4 <- t(c(est4, se4, round(z4, 3), round(pval4, 3), ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -1006,11 +1002,11 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
 #' replicate.spear(.05, .598, 80, .324, 200)
 #'
 #' # Should return:
-#' #                       Estimate         SE        z            p         LL        UL
-#' # Original:                0.598 0.07948367 5.315140 1.065752e-07 0.41985966 0.7317733
-#' # Follow-up:               0.324 0.06541994 4.570582 4.863705e-06 0.19049455 0.4457384
-#' # Original - Follow-up:    0.274 0.10294378 3.437975 5.860809e-04 0.09481418 0.4342171
-#' # Average:                 0.461 0.05147189 9.967944 0.000000e+00 0.36695230 0.5457190
+#' #                       Estimate         SE     z     p         LL        UL
+#' # Original:                0.598 0.07948367 5.315 0.000 0.41985966 0.7317733
+#' # Follow-up:               0.324 0.06541994 4.571 0.000 0.19049455 0.4457384
+#' # Original - Follow-up:    0.274 0.10294378 3.438 0.001 0.09481418 0.4342171
+#' # Average:                 0.461 0.05147189 9.968 0.000 0.36695230 0.5457190
 #' 
 #' 
 #' @references
@@ -1035,14 +1031,14 @@ replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
   se3 <- sqrt(se1^2 + se2^2)
   se4 <- sqrt(se1^2 + se2^2)/2
   se4.z <- sqrt(((se1^2 + se2^2)/4)/(1 - ave^2))
-  t1 <- cor1*sqrt(n1 - 1) 
-  t2 <- cor2*sqrt(n2 - 1)
-  t3 <- (zr1 - zr2)/sqrt(se1^2 + se2^2)
-  t4 <- (zr1 + zr2)/sqrt(se1^2 + se2^2)
-  pval1 <- 2*(1 - pnorm(abs(t1)))
-  pval2 <- 2*(1 - pnorm(abs(t2)))
-  pval3 <- 2*(1 - pnorm(abs(t3)))
-  pval4 <- 2*(1 - pnorm(abs(t4)))
+  z1 <- cor1*sqrt(n1 - 1) 
+  z2 <- cor2*sqrt(n2 - 1)
+  z3 <- (zr1 - zr2)/sqrt(se1^2 + se2^2)
+  z4 <- (zr1 + zr2)/sqrt(se1^2 + se2^2)
+  pval1 <- 2*(1 - pnorm(abs(z1)))
+  pval2 <- 2*(1 - pnorm(abs(z2)))
+  pval3 <- 2*(1 - pnorm(abs(z3)))
+  pval4 <- 2*(1 - pnorm(abs(z4)))
   ll0a <- zr1 - zcrit1*se1.z;  ul0a <- zr1 + zcrit1*se1.z
   ll1a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
   ul1a <- (exp(2*ul0a) - 1)/(exp(2*ul0a) + 1)
@@ -1061,10 +1057,10 @@ replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
   ul0 <- ave.z + zcrit1*se4.z
   ll4 <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul4 <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out1 <- t(c(cor1, se1, t1, pval1, ll1a, ul1a))
-  out2 <- t(c(cor2, se2, t2, pval2, ll2a, ul2a))
-  out3 <- t(c(dif, se3, t3, pval3, ll3, ul3))
-  out4 <- t(c(ave, se4, t4, pval4, ll4, ul4))
+  out1 <- t(c(cor1, se1, round(z1, 3), round(pval1, 3), ll1a, ul1a))
+  out2 <- t(c(cor2, se2, round(z2, 3), round(pval2, 3), ll2a, ul2a))
+  out3 <- t(c(dif, se3, round(z3, 3), round(pval3, 3), ll3, ul3))
+  out4 <- t(c(ave, se4, round(z4, 3), round(pval4, 3), ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -1254,9 +1250,9 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
 #' which is recommended for equivalence testing.
 #' 
 #' 
-#' @param    alpha	   alpha level for 1-alpha confidence																																												
-#' @param    f11		   frequency count for group 1 in original study 
-#' @param    f12		   frequency count for group 2 in original study
+#' @param    alpha	     alpha level for 1-alpha confidence																																												
+#' @param    f11		 frequency count for group 1 in original study 
+#' @param    f12		 frequency count for group 2 in original study
 #' @param    n11    	 sample size for group 1 in original study
 #' @param    n12    	 sample size for group 2 in original study
 #' @param    f21    	 frequency count for group 1 in follow-up study 
