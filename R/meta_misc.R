@@ -24,13 +24,14 @@
 #' cor.from.t(9.4, 9.8, 1.26, 1.40, 2.27, 30)
 #'
 #' # Should return:
-#' #                Estimate
-#' # Correlation:  0.7415209
+#' #              Estimate
+#' # Correlation:   0.7415
 #' 
 #'
 #' @export
 cor.from.t <- function(m1, m2, sd1, sd2, t, n) {
-  out <- t(((sd1^2 + sd2^2) - n*(m1 - m2)^2/t^2)/(2*sd1*sd2))
+  cor <- t(((sd1^2 + sd2^2) - n*(m1 - m2)^2/t^2)/(2*sd1*sd2))
+  out <- round(cor, 4)
   colnames(out) <- c("Estimate")
   rownames(out) <- c("Correlation: ")
   return (out)
@@ -260,7 +261,7 @@ table.from.phi <- function(p1row, p1col, phi, n){
  out2 <- t(c(f11, f12, f21, f22))
  out <- rbind(out1, out2)
  colnames(out) <- c("cell 11", "cell 12", "cell 21", "cell 22")
- rownames(out) <- c("Proportion:", "Frequency")
+ rownames(out) <- c("Proportion:", "Frequency:")
  return(out)
 }
 
