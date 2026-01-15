@@ -147,8 +147,8 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' se.stdmean2(21.9, 16.1, 3.82, 3.21, 40, 40, 0)
 #'
 #' # Should return: 
-#' #                                Estimate        SE
-#' # Standardized mean difference:  1.643894 0.2629049
+#' #                               Estimate      SE
+#' # Standardized mean difference:   1.6439 0.26290
 #' 
 #' 
 #' @references
@@ -182,7 +182,7 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
     d <- (m1 - m2)/s
     se <- sqrt(d^2*(1/df1 + 1/df2)/8 + (sd1^2/n1 + sd2^2/n2)/s^2)
   }
-  out <- t(c(d, se))
+  out <- t(c(round(d, 4), round(se, 5)))
   colnames(out) <- c("Estimate", "SE")
   rownames(out) <- "Standardized mean difference: "
   return(out)
@@ -226,8 +226,8 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 #' se.stdmean.ps(23.9, 25.1, 1.76, 2.01, .78, 25, 0)
 #'
 #' # Should return: 
-#' #                                   Estimate        SE
-#' # Standardizedd mean difference:  -0.6352097 0.1602852
+#' #                                 Estimate      SE
+#' # Standardizedd mean difference:   -0.6352 0.16029
 #' 
 #' 
 #' @references
@@ -255,7 +255,7 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
     d <- (m1 - m2)/s
     se <- sqrt(d^2/(2*df) + vd/(df*v2))
   }
-  out <- t(c(d, se))
+  out <- t(c(round(d, 4), round(se, 5)))
   colnames(out) <- c("Estimate", "SE")
   rownames(out) <- "Standardized mean difference: "
   return(out)
@@ -290,8 +290,8 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #' @examples
 #' se.cor(.40, 0, 55)
 #'#' # Should return: 
-#' #               Estimate       SE
-#' # Correlation:       0.4 0.116487
+#' #               Estimate      SE
+#' # Correlation:       0.4 0.11649
 #' 
 #' 
 #' @references
@@ -300,8 +300,8 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #' 
 #' @export
 se.cor <- function(cor, s, n) {
-  se.cor <- sqrt((1 - cor^2)^2/(n - 3 - s))
-  out <- t(c(cor, se.cor))
+  se <- sqrt((1 - cor^2)^2/(n - 3 - s))
+  out <- t(c(round(cor, 4), round(se, 5)))
   colnames(out) <- c("Estimate", "SE")
   rownames(out) <- "Correlation: "
   return(out)
@@ -334,8 +334,8 @@ se.cor <- function(cor, s, n) {
 #' se.spear(.40, 55)
 #'
 #' # Should return: 
-#' #                       Estimate        SE
-#' # Spearman correlation:      0.4 0.1210569
+#' #                       Estimate      SE
+#' # Spearman correlation:      0.4 0.12106
 #' 
 #' 
 #' @references
@@ -344,8 +344,8 @@ se.cor <- function(cor, s, n) {
 #'
 #' @export
 se.spear <- function(cor, n) {
-  se.cor <- sqrt((1 - cor^2)^2*(1 + cor^2/2)/(n - 3))
-  out <- t(c(cor, se.cor))
+  se <- sqrt((1 - cor^2)^2*(1 + cor^2/2)/(n - 3))
+  out <- t(c(round(cor, 4), round(se, 5)))
   colnames(out) <- c("Estimate", "SE")
   rownames(out) <- "Spearman correlation: "
   return(out)
@@ -383,16 +383,16 @@ se.spear <- function(cor, n) {
 #' se.semipart(.40, .25, 60)
 #'
 #' # Should return: 
-#' #                           Estimate        SE
-#' # Semipartial correlation:       0.4 0.1063262
+#' #                           Estimate      SE
+#' # Semipartial correlation:       0.4 0.10633
 #' 
 #' 
 #' @export
 se.semipart <- function(cor, r2, n) {
  r0 <- r2 - cor^2
  a <- r2^2 - 2*r2 + r0 - r0^2 + 1
- se.cor <- sqrt(a/(n - 3))
- out <- t(c(cor, se.cor))
+ se <- sqrt(a/(n - 3))
+ out <- t(c(round(cor, 4), round(se, 5)))
  colnames(out) <- c("Estimate", "SE")
  rownames(out) <- "Semipartial correlation: "
  return(out)
@@ -441,8 +441,8 @@ se.semipart <- function(cor, r2, n) {
 #' se.pbcor(21.9, 16.1, 3.82, 3.21, 40, 40, 1)
 #'
 #' #  Should return: 
-#' #                                Estimate         SE
-#' #  Point-biserial correlation:  0.6349786 0.05981325
+#' #                              Estimate      SE
+#' #  Point-biserial correlation:    0.635 0.05981
 #' 
 #' 
 #' @references
@@ -468,7 +468,7 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
     se.d <- sqrt(d^2*(sd1^4/df1 + sd2^4/df2)/(8*s^4) + (sd1^2/df1 + sd2^2/df2)/s^2) 
     se.cor <- (4/(d^2 + 4)^(3/2))*se.d                                                
   }
-  out <- t(c(cor, se.cor))
+  out <- t(c(round(cor, 4), round(se.cor, 5)))
   colnames(out) <- c("Estimate", "SE")
   rownames(out) <- "Point-biserial correlation: "
   return(out)
@@ -1026,8 +1026,8 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
 #' se.tetra(46, 15, 54, 85)
 #'
 #' # Should return:
-#' #                Estimate         SE 
-#' # Tetrachoric:  0.5135167 0.09358336
+#' #               Estimate     SE 
+#' # Tetrachoric:     0.514 0.0936
 #'
 #'
 #' @export
@@ -1045,7 +1045,7 @@ se.tetra <- function(f00, f01, f10, f11) {
  tetra <- cos(3.14159/(1 + or^c))
  k <- (3.14159*c*or^c)*sin(3.14159/(1 + or^c))/(1 + or^c)^2
  se <- k*se.lor
- out <- t(c(tetra, se))
+ out <- t(c(round(tetra, 3), round(se, 4)))
  colnames(out) <- c("Estimate", "SE")
  rownames(out) <- "Tetrachoric: "
  return(out)
@@ -1086,8 +1086,8 @@ se.tetra <- function(f00, f01, f10, f11) {
 #' se.biphi(34, 22, 50, 50)
 #'
 #' # Should return:
-#' #               Estimate        SE 
-#' # Biserial-phi:  0.27539 0.1074594
+#' #               Estimate      SE 
+#' # Biserial-phi:   0.2754 0.10746
 #'
 #'
 #' @export
@@ -1106,7 +1106,7 @@ se.biphi <- function(f1, f2, n1, n2) {
  c <- 2.89/(p1*p2)
  biphi <- lor/sqrt(lor^2 + c)
  se.biphi <- sqrt(c^2/(lor^2 + c)^3)*se.lor
- out <- t(c(biphi, se.biphi))
+ out <- t(c(round(biphi, 4), round(se.biphi, 5)))
  colnames(out) <- c("Estimate", "SE")
  rownames(out) <- "Biserial-phi: "
  return(out)
@@ -1142,8 +1142,8 @@ se.biphi <- function(f1, f2, n1, n2) {
 #' se.cohen(.78, 35, 50)
 #'
 #' # Should return: 
-#' #            Estimate        SE
-#' # Cohen's d:     0.78 0.2288236
+#' #            Estimate      SE
+#' # Cohen's d:     0.78 0.22882
 #'
 #'
 #' @seealso \link[vcmeta]{se.stdmean2}
@@ -1154,7 +1154,7 @@ se.cohen <- function(d, n1, n2) {
   df1 <- n1 - 1
   df2 <- n2 - 1
   se <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
-  out <- t(c(d, se))
+  out <- t(c(round(d, 4), round(se, 5)))
   colnames(out) <- c("Estimate", "SE")
   rownames(out) <- "Cohen's d: "
   return(out)
@@ -1215,8 +1215,8 @@ se.cohen <- function(d, n1, n2) {
 #' se.bscor(21.9, 16.1, 3.82, 3.21, 40, 40)
 #'
 #' #  Should return: 
-#' #                          Estimate         SE
-#' #  Biserial correlation:  0.8018318 0.07451665
+#' #                        Estimate      SE
+#' #  Biserial correlation:   0.8018 0.07452
 #' 
 #' 
 #' @references
@@ -1240,7 +1240,7 @@ se.bscor <- function(m1, m2, sd1, sd2, n1, n2) {
  se.d <- sqrt(d^2*(1/n1 + 1/n2)/8 + 1/n1 + 1/n2)
  se.pbcor <- (c/(d^2 + c)^(3/2))*se.d  
  se.bscor <- se.pbcor*a  
- out <- t(c(bscor, se.bscor))
+ out <- t(c(round(bscor, 4), round(se.bscor, 5)))
  colnames(out) <- c("Estimate", "SE")
  rownames(out) <- "Biserial correlation: "
  return(out)
@@ -1380,8 +1380,8 @@ se.propratio.ps <- function(f00, f01, f10, f11) {
 #' se.agree(42, 50, 3, 4)
 #'
 #' # Should return: 
-#' #             MLE  Estimate         SE
-#' # G-index:   0.76      0.75 0.06391375 
+#' #             MLE  Estimate      SE
+#' # G-index:   0.76      0.75 0.06391 
 #' 
 #' 
 #' @references
@@ -1396,7 +1396,7 @@ se.agree <- function(f, n, k, m) {
   G.ml <- a*p.ml - 1/(k - 1)
   G.adj <- a*p.adj - 1/(k - 1)
   se <- sqrt(a*p.adj*(1 - p.adj)/(n + 4/m))
-  out <- t(c(G.ml, G.adj, se))
+  out <- t(c(round(G.ml, 4), round(G.adj, 4), round(se, 5)))
   colnames(out) <- c("MLE", "Estimate", "SE")
   rownames(out) <- "G-index: "
   return(out)
