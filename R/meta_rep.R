@@ -1339,7 +1339,7 @@ replicate.propratio2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' 1 – 2*alpha, which is recommended for equivalence testing.
 #' 
 #' 
-#' @param    alpha	 alpha level for 1-alpha confidence
+#' @param    alpha	   alpha level for 1-alpha confidence
 #' @param    f1		   vector of frequency counts for 2x2 table in original study 
 #' @param    f2		   vector of frequency counts for 2x2 table in follow-up study
 #' 
@@ -1366,16 +1366,11 @@ replicate.propratio2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' replicate.prop.ps(.05, f1, f2)
 #'
 #' # Should return:
-#' #                           Estimate         SE           z            p
-#' # Original:              0.106557377 0.03440159  3.09745539 1.951898e-03
-#' # Follow-up:             0.103174603 0.02358274  4.37500562 1.214294e-05
-#' # Original - Follow-up:  0.003852359 0.04097037  0.09402793 9.250870e-01
-#' # Average:               0.105511837 0.02048519  5.15064083 2.595979e-07
-#' #                                LL         UL
-#' # Original:              0.03913151 0.17398325
-#' # Follow-up:             0.05695329 0.14939592
-#' # Original - Follow-up: -0.06353791 0.07124263
-#' # Average:               0.06536161 0.14566206
+#' #                          Estimate         SE     z     p          LL         UL
+#' # Original:             0.106557377 0.03440159 3.097 0.002  0.03913151 0.17398325
+#' # Follow-up:            0.103174603 0.02358274 4.375 0.000  0.05695329 0.14939592
+#' # Original - Follow-up: 0.003852359 0.04097037 0.094 0.925 -0.06353791 0.07124263
+#' # Average:              0.105511837 0.02048519 5.151 0.000  0.06536161 0.14566206
 #' 
 #' 
 #' @references
@@ -1413,18 +1408,18 @@ replicate.prop.ps <- function(alpha, f1, f2){
   z2 <- est2/se2
   z3 <- est3/se3
   z4 <- est4/se4
-  p1 <- 2*(1 - pnorm(abs(z1)))
-  p2 <- 2*(1 - pnorm(abs(z2)))
-  p3 <- 2*(1 - pnorm(abs(z3))) 
-  p4 <- 2*(1 - pnorm(abs(z4)))
+  pval1 <- 2*(1 - pnorm(abs(z1)))
+  pval2 <- 2*(1 - pnorm(abs(z2)))
+  pval3 <- 2*(1 - pnorm(abs(z3))) 
+  pval4 <- 2*(1 - pnorm(abs(z4)))
   ll1 <- est1 - zcrit1*se1;  ul1 <- est1 + zcrit1*se1
   ll2 <- est2 - zcrit1*se2;  ul2 <- est2 + zcrit1*se2
   ll3 <- est3 - zcrit2*se3;  ul3 <- est3 + zcrit2*se3
   ll4 <- est4 - zcrit1*se4;  ul4 <- est4 + zcrit1*se4
-  out1 <- t(c(est1, se1, z1, p1, ll1, ul1))
-  out2 <- t(c(est2, se2, z2, p2, ll2, ul2))
-  out3 <- t(c(est3, se3, z3, p3, ll3, ul3))
-  out4 <- t(c(est4, se4, z4, p4, ll4, ul4))
+  out1 <- t(c(est1, se1, round(z1, 3), round(pval1, 3), ll1, ul1))
+  out2 <- t(c(est2, se2, round(z2, 3), round(pval2, 3), ll2, ul2))
+  out3 <- t(c(est3, se3, round(z3, 3), round(pval3, 3), ll3, ul3))
+  out4 <- t(c(est4, se4, round(z4, 3), round(pval4, 3), ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -1471,11 +1466,11 @@ replicate.prop.ps <- function(alpha, f1, f2){
 #' replicate.cor.gen(.05, .454, .170, .318, .098)
 #'
 #' # Should return:
-#' #                       Estimate         SE         z            p          LL        UL
-#' # Original:                0.454 0.17000000 2.2869806 0.0221969560  0.06991214 0.7208577
-#' # Follow-up:               0.318 0.09800000 3.0215123 0.0025151541  0.11522137 0.4953353
-#' # Original - Follow-up:    0.136 0.19622436 0.6671281 0.5046902807 -0.21543667 0.4237240
-#' # Average:                 0.386 0.09811218 3.4089419 0.0006521538  0.19606750 0.5480170
+#' #                       Estimate         SE     z     p          LL        UL
+#' # Original:                0.454 0.17000000 2.287 0.022  0.06991214 0.7208577
+#' # Follow-up:               0.318 0.09800000 3.022 0.003  0.11522137 0.4953353
+#' # Original - Follow-up:    0.136 0.19622436 0.667 0.505 -0.21543667 0.4237240
+#' # Average:                 0.386 0.09811218 3.409 0.001  0.19606750 0.5480170
 #' 
 #' 
 #' @references
@@ -1498,14 +1493,14 @@ replicate.cor.gen <- function(alpha, cor1, se1, cor2, se2) {
   se3 <- sqrt(se1^2 + se2^2)
   se4 <- sqrt(se1^2 + se2^2)/2
   se4.z <- sqrt(((se1^2 + se2^2)/4)/(1 - ave^2))
-  t1 <- zr1/se1.z 
-  t2 <- zr2/se2.z 
-  t3 <- (zr1 - zr2)/sqrt(se1.z^2 + se2.z^2)
-  t4 <- (zr1 + zr2)/sqrt(se1.z^2 + se2.z^2)
-  pval1 <- 2*(1 - pnorm(abs(t1)))
-  pval2 <- 2*(1 - pnorm(abs(t2)))
-  pval3 <- 2*(1 - pnorm(abs(t3)))
-  pval4 <- 2*(1 - pnorm(abs(t4)))
+  z1 <- zr1/se1.z 
+  z2 <- zr2/se2.z 
+  z3 <- (zr1 - zr2)/sqrt(se1.z^2 + se2.z^2)
+  z4 <- (zr1 + zr2)/sqrt(se1.z^2 + se2.z^2)
+  pval1 <- 2*(1 - pnorm(abs(z1)))
+  pval2 <- 2*(1 - pnorm(abs(z2)))
+  pval3 <- 2*(1 - pnorm(abs(z3)))
+  pval4 <- 2*(1 - pnorm(abs(z4)))
   ll0a <- zr1 - zcrit1*se1.z
   ul0a <- zr1 + zcrit1*se1.z
   ll1a <- (exp(2*ll0a) - 1)/(exp(2*ll0a) + 1)
@@ -1528,10 +1523,10 @@ replicate.cor.gen <- function(alpha, cor1, se1, cor2, se2) {
   ul0 <- ave.z + zcrit1*se4.z
   ll4 <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul4 <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out1 <- t(c(cor1, se1, t1, pval1, ll1a, ul1a))
-  out2 <- t(c(cor2, se2, t2, pval2, ll2a, ul2a))
-  out3 <- t(c(dif, se3, t3, pval3, ll3, ul3))
-  out4 <- t(c(ave, se4, t4, pval4, ll4, ul4))
+  out1 <- t(c(cor1, se1, round(z1, 3), round(pval1, 3), ll1a, ul1a))
+  out2 <- t(c(cor2, se2, round(z2, 3), round(pval2, 3), ll2a, ul2a))
+  out3 <- t(c(dif, se3, round(z3, 3), round(pval3, 3), ll3, ul3))
+  out4 <- t(c(ave, se4, round(z4, 3), round(pval4, 3), ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
