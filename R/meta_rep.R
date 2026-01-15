@@ -526,11 +526,11 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
 #' replicate.cor(.05, .598, 80, .324, 200, 0)
 #'
 #' # Should return:
-#' #                       Estimate         SE        z            p        LL        UL
-#' # Original:                0.598 0.07320782 6.589418 4.708045e-09 0.4355043 0.7227538
-#' # Follow-up:               0.324 0.06376782 4.819037 2.865955e-06 0.1939787 0.4428347
-#' # Original - Follow-up:    0.274 0.09708614 2.633335 8.455096e-03 0.1065496 0.4265016
-#' # Average:                 0.461 0.04854307 7.634998 2.264855e-14 0.3725367 0.5411607
+#' #                       Estimate         SE     z     p        LL        UL
+#' # Original:                0.598 0.07320782 6.589 0.000 0.4355043 0.7227538
+#' # Follow-up:               0.324 0.06376782 4.819 0.000 0.1939787 0.4428347
+#' # Original - Follow-up:    0.274 0.09708614 2.633 0.008 0.1065496 0.4265016
+#' # Average:                 0.461 0.04854307 7.635 0.000 0.3725367 0.5411607
 #' 
 #' 
 #' @references
@@ -582,10 +582,10 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
   ul0 <- ave.z + zcrit1*se4.z
   ll4 <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul4 <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out1 <- t(c(cor1, se1, t1, pval1, ll1a, ul1a))
-  out2 <- t(c(cor2, se2, t2, pval2, ll2a, ul2a))
-  out3 <- t(c(dif, se3, t3, pval3, ll3, ul3))
-  out4 <- t(c(ave, se4, t4, pval4, ll4, ul4))
+  out1 <- t(c(cor1, se1, round(t1, 3), round(pval1, 3), ll1a, ul1a))
+  out2 <- t(c(cor2, se2, round(t2, 3), round(pval2, 3), ll2a, ul2a))
+  out3 <- t(c(dif, se3, round(t3, 3), round(pval3, 3), ll3, ul3))
+  out4 <- t(c(ave, se4, round(t4, 3), round(pval4, 3), ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -607,8 +607,8 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    f11		   frequency count for group 1 in original study 
-#' @param    f12		   frequency count for group 2 in original study
+#' @param    f11		 frequency count for group 1 in original study 
+#' @param    f12		 frequency count for group 2 in original study
 #' @param    n11    	 sample size for group 1 in original study
 #' @param    n12    	 sample size for group 2 in original study
 #' @param    f21    	 frequency count for group 1 in follow-up study 
@@ -637,16 +637,11 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 #' replicate.prop2(.05, 21, 16, 40, 40, 19, 13, 60, 60)
 #'
 #' # Should return:
-#' #                         Estimate         SE         z         p
-#' # Original:             0.11904762 0.10805233 1.1017590 0.2705665
-#' # Follow-up:            0.09677419 0.07965047 1.2149858 0.2243715
-#' # Original - Follow-up: 0.02359056 0.13542107 0.1742016 0.8617070
-#' # Average:              0.11015594 0.06771053 1.6268656 0.1037656
-#' #                                LL        UL
-#' # Original:             -0.09273105 0.3308263
-#' # Follow-up:            -0.05933787 0.2528863
-#' # Original - Follow-up: -0.19915727 0.2463384
-#' # Average:              -0.02255427 0.2428661
+#' #                         Estimate         SE     z     p          LL        UL
+#' # Original:             0.11904762 0.10805233 1.102 0.271 -0.09273105 0.3308263
+#' # Follow-up:            0.09677419 0.07965047 1.215 0.224 -0.05933787 0.2528863
+#' # Original - Follow-up: 0.02359056 0.13542107 0.174 0.862 -0.19915727 0.2463384
+#' # Average:              0.11015594 0.06771053 1.627 0.104 -0.02255427 0.2428661
 #' 
 #' 
 #' @references
@@ -687,18 +682,18 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
   z2 <- est2/se2
   z3 <- est3/se3
   z4 <- est4/se4
-  p1 <- 2*(1 - pnorm(abs(z1)))
-  p2 <- 2*(1 - pnorm(abs(z2)))
-  p3 <- 2*(1 - pnorm(abs(z3))) 
-  p4 <- 2*(1 - pnorm(abs(z4)))
+  pval1 <- 2*(1 - pnorm(abs(z1)))
+  pval2 <- 2*(1 - pnorm(abs(z2)))
+  pval3 <- 2*(1 - pnorm(abs(z3))) 
+  pval4 <- 2*(1 - pnorm(abs(z4)))
   ll1 <- est1 - zcrit1*se1;  ul1 <- est1 + zcrit1*se1
   ll2 <- est2 - zcrit1*se2;  ul2 <- est2 + zcrit1*se2
   ll3 <- est3 - zcrit2*se3;  ul3 <- est3 + zcrit2*se3
   ll4 <- est4 - zcrit1*se4;  ul4 <- est4 + zcrit1*se4
-  out1 <- t(c(est1, se1, z1, p1, ll1, ul1))
-  out2 <- t(c(est2, se2, z2, p2, ll2, ul2))
-  out3 <- t(c(est3, se3, z3, p3, ll3, ul3))
-  out4 <- t(c(est4, se4, z4, p4, ll4, ul4))
+  out1 <- t(c(est1, se1, round(z1, 3), round(pval1, 3), ll1, ul1))
+  out2 <- t(c(est2, se2, round(z2, 3), round(pval2, 3), ll2, ul2))
+  out3 <- t(c(est3, se3, round(z3, 3), round(pval3, 3), ll3, ul3))
+  out4 <- t(c(est4, se4, round(z4, 3), round(pval4, 3), ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -744,16 +739,11 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' replicate.oddsratio(.05, 1.39, .302, 1.48, .206)
 #'
 #' # Should return:
-#' #                          Estimate        SE          z            p
-#' # Original:              1.39000000 0.3020000  4.6026490 4.171509e-06
-#' # Follow-up:             1.48000000 0.2060000  7.1844660 6.747936e-13
-#' # Original/Follow-up:   -0.06273834 0.3655681 -0.1716188 8.637372e-01
-#' # Average:               0.36067292 0.1827840  1.9732190 4.847061e-02
-#' #                         exp(LL)  exp(UL)
-#' # Original:             2.2212961 7.256583
-#' # Follow-up:            2.9336501 6.578144
-#' # Original/Fllow-up:    0.5147653 1.713551
-#' # Average:              1.0024257 2.052222
+#' #                        Estimate        SE      z     p   exp(LL)  exp(UL)
+#' # Original:            1.39000000 0.3020000  4.603 0.000 2.2212961 7.256583
+#' # Follow-up:           1.48000000 0.2060000  7.184 0.000 2.9336501 6.578144
+#' # Original/Follow-up: -0.06273834 0.3655681 -0.172 0.864 0.5147653 1.713551
+#' # Average:             0.36067292 0.1827840  1.973 0.048 1.0024257 2.052222
 #' 
 #' 
 #' @references
@@ -774,18 +764,18 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
   z2 <- est2/se2
   z3 <- est3/se3
   z4 <- est4/se4
-  p1 <- 2*(1 - pnorm(abs(z1)))
-  p2 <- 2*(1 - pnorm(abs(z2)))
-  p3 <- 2*(1 - pnorm(abs(z3))) 
-  p4 <- 2*(1 - pnorm(abs(z4)))
+  pval1 <- 2*(1 - pnorm(abs(z1)))
+  pval2 <- 2*(1 - pnorm(abs(z2)))
+  pval3 <- 2*(1 - pnorm(abs(z3))) 
+  pval4 <- 2*(1 - pnorm(abs(z4)))
   ll1 <- exp(est1 - zcrit1*se1);  ul1 <- exp(est1 + zcrit1*se1)
   ll2 <- exp(est2 - zcrit1*se2);  ul2 <- exp(est2 + zcrit1*se2)
   ll3 <- exp(est3 - zcrit2*se3);  ul3 <- exp(est3 + zcrit2*se3)
   ll4 <- exp(est4 - zcrit1*se4);  ul4 <- exp(est4 + zcrit1*se4)
-  out1 <- t(c(est1, se1, z1, p1, ll1, ul1))
-  out2 <- t(c(est2, se2, z2, p2, ll2, ul2))
-  out3 <- t(c(est3, se3, z3, p3, ll3, ul3))
-  out4 <- t(c(est4, se4, z4, p4, ll4, ul4))
+  out1 <- t(c(est1, se1, round(z1, 3), round(pval1, 3), ll1, ul1))
+  out2 <- t(c(est2, se2, round(z2, 3), round(pval2, 3), ll2, ul2))
+  out3 <- t(c(est3, se3, round(z3, 3), round(pval3, 3), ll3, ul3))
+  out4 <- t(c(est4, se4, round(z4, 3), round(pval4, 3), ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "exp(LL)", "exp(UL)")
   rownames(out) <- c("Original:", "Follow-up:", "Original/Follow-up:", "Average:")
@@ -909,9 +899,9 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
 #' 
 #'
 #' @param    alpha		 alpha level for 1-alpha confidence 
-#' @param    est1  	   estimated effect size in original study
+#' @param    est1  	     estimated effect size in original study
 #' @param    se1    	 effect size standard error in original study
-#' @param    est2  	   estimated effect size in follow-up study
+#' @param    est2  	     estimated effect size in follow-up study
 #' @param    se2    	 effect size standard error in follow-up study
 #'   
 #' @return
@@ -1096,7 +1086,7 @@ replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
 #' @param    f1	  	 frequency count in original study 
-#' @param    n1     	 sample size in original study
+#' @param    n1      sample size in original study
 #' @param    f2 	 frequency count in follow-up study 
 #' @param    n2    	 sample size for in follow-up study
 #' 
