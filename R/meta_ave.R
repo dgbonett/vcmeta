@@ -138,11 +138,11 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 #' meta.ave.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, 0, bystudy = TRUE)
 #'
 #' # Should return: 
-#' #         Estimate        SE        LL       UL
-#' # Average 1.526146 0.1734341 1.1862217 1.866071
-#' # Study 1 1.643894 0.2629049 1.1286100 2.159178
-#' # Study 2 1.566132 0.3056278 0.9671126 2.165152
-#' # Study 3 1.428252 0.3289179 0.7835848 2.072919
+#' #         Estimate      SE     LL     UL
+#' # Average   1.5261 0.17343 1.1862 1.8661
+#' # Study 1   1.6439 0.26290 1.1286 2.1592
+#' # Study 2   1.5661 0.30563 0.9671 2.1652
+#' # Study 3   1.4283 0.32892 0.7836 2.0729
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -183,7 +183,7 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
   }
   ll <- ave - z*se
   ul <- ave + z*se
-  out <- cbind(ave, se, ll, ul)
+  out <- cbind(round(ave, 4), round(se, 5), round(ll, 4), round(ul, 4))
   row <- "Average"
   if (bystudy) {
     if (stdzr == 0) {
@@ -199,7 +199,7 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
     ul <- d + z*se
     row2 <- t(t(paste(rep("Study", m), seq(1,m))))
     row <- rbind(row, row2)
-    out2 <- cbind(d, se, ll, ul)
+    out2 <- cbind(round(d, 4), round(se, 5), round(ll, 4), round(ul, 4))
     out <- rbind(out, out2)
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
@@ -347,10 +347,10 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' meta.ave.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, 1, bystudy = TRUE)
 #' 
 #' # Should return: 
-#' #           Estimate        SE        LL         UL
-#' # Average -1.1931045 0.1568034 -1.500433 -0.8857755
-#' # Study 1 -0.6818182 0.1773785 -1.029474 -0.3341628
-#' # Study 2 -1.7721519 0.2586234 -2.279044 -1.2652594
+#' #         Estimate      SE      LL      UL
+#' # Average  -1.1931 0.15680 -1.5004 -0.8858
+#' # Study 1  -0.6818 0.17738 -1.0295 -0.3342
+#' # Study 2  -1.7722 0.25862 -2.2790 -1.2653
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -386,7 +386,7 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
   }  
   ll <- ave - z*se
   ul <- ave + z*se
-  out <- cbind(ave, se, ll, ul)
+  out <- cbind(round(ave, 4), round(se, 5), round(ll, 4), round(ul, 4))
   row <- "Average"
   if (bystudy) {
     if (stdzr == 0) {
@@ -400,7 +400,7 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
     ul <- d + z*se
     row2 <- t(t(paste(rep("Study", m), seq(1,m))))
     row <- rbind(row, row2)
-    out2 <- cbind(d, se, ll, ul)
+    out2 <- cbind(round(d, 4), round(se, 5), round(ll, 4), round(ul, 4))
     out <- rbind(out, out2)
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
