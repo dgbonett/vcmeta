@@ -894,9 +894,9 @@ se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1
 #' se.ave.cor.over(.462, .518, .755, 100)
 #'
 #' # Should return:
-#' #                Estimate         SE  VAR(cor12) VAR(cor13) COV(cor12,cor13)
-#' # Correlation:  0.4900000 0.07087351 0.006378045 0.00551907      0.004097553
-#' # Fisher:       0.5360603 0.09326690 0.010309278 0.01030928      0.007119936
+#' #              Estimate      SE  VAR(cor12) VAR(cor13) COV(cor12,cor13)
+#' # Correlation:   0.4900 0.07087 0.006378045 0.00551907      0.004097553
+#' # Fisher:        0.5361 0.09327 0.010309278 0.01030928      0.007119936
 #'
 #'
 #' @export
@@ -911,8 +911,8 @@ se.ave.cor.over <- function(cor12, cor13, cor23, n) {
   cov2 <- cov1/((1 - cor12^2)*(1 - cor13^2))
   v1.z <- 1/(n - 3)
   v2.z <- 1/(n - 3)
-  out1 <- t(c(est1, se1, v1, v2, cov1))
-  out2 <- t(c(est2, se2, v1.z, v2.z, cov2))
+  out1 <- t(c(round(est1, 4), round(se1, 5), v1, v2, cov1))
+  out2 <- t(c(round(est2, 4), round(se2, 5), v1.z, v2.z, cov2))
   out <- rbind(out1, out2)
   colnames(out) <- c("Estimate", "SE", "VAR(cor12)", "VAR(cor13)", "COV(cor12,cor13)")
   rownames(out) <- c("Correlation: ", "Fisher: ")
@@ -961,9 +961,9 @@ se.ave.cor.over <- function(cor12, cor13, cor23, n) {
 #' se.ave.cor.nonover(.357, .398, .755, .331, .347, .821, 100)
 #'
 #' # Should return:
-#' #               Estimate         SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
-#' # Correlation:  0.377500 0.07768887 0.00784892 0.007301895      0.004495714
-#' # Fisher:       0.397141 0.09059993 0.01030928 0.010309278      0.006122153
+#' #              Estimate      SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
+#' # Correlation:   0.3775 0.07769 0.00784892 0.007301895      0.004495714
+#' # Fisher:        0.3971 0.09060 0.01030928 0.010309278      0.006122153
 #'
 #'
 #' @export
@@ -980,8 +980,8 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
   cov2 <- cov1/((1 - cor12^2)*(1 - cor34^2))
   v1.z <- 1/(n - 3)
   v2.z <- 1/(n - 3)
-  out1 <- t(c(est1, se1, v1, v2, cov1))
-  out2 <- t(c(est2, se2, v1.z, v2.z, cov2))
+  out1 <- t(c(round(est1, 4), round(se1, 5), v1, v2, cov1))
+  out2 <- t(c(round(est2, 4), round(se2, 5), v1.z, v2.z, cov2))
   out <- rbind(out1, out2)
   colnames(out) <- c("Estimate", "SE", "VAR(cor12)", "VAR(cor34)", "COV(cor12,cor34)")
   rownames(out) <- c("Correlation: ", "Fisher: ")
