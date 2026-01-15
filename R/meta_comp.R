@@ -690,8 +690,8 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' meta.lc.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, v, 0)
 #' 
 #' # Should return: 
-#' #           Estimate        SE        LL       UL
-#' # Contrast 0.8557914 0.2709192 0.3247995 1.386783
+#' #          Estimate      SE     LL     UL
+#' # Contrast   0.8558 0.27092 0.3248 1.3868
 #' 
 #' 
 #' @references
@@ -736,7 +736,7 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
   }
   ll <- con - z*se
   ul <- con + z*se
-  out <- cbind(con, se, ll, ul)
+  out <- cbind(round(con, 4), round(se, 5), round(ll, 4), round(ul, 4))
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- "Contrast"
   return(out)
@@ -861,8 +861,8 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' meta.lc.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, v, 0)
 #' 
 #' # Should return:
-#' #            Estimate        SE        LL        UL
-#' # Contrast  0.5127577 0.1346794 0.2487908 0.7767245
+#' #          Estimate      SE     LL     UL
+#' # Contrast   0.5128 0.13468 0.2488 0.7767
 #' 
 #' 
 #' @references
@@ -900,7 +900,7 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
   }
   ll <- con - z*se
   ul <- con + z*se
-  out <- cbind(con, se, ll, ul)
+  out <- cbind(round(con, 4), round(se, 5), round(ll, 4), round(ul, 4))
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- "Contrast"
   return(out)
@@ -1355,8 +1355,8 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' meta.lc.agree(.05, f11, f12, f21, f22, v)
 #' 
 #' # Should return:
-#' #           Estimate         SE          LL        UL
-#' # Contrast 0.1022939 0.07972357 -0.05396142 0.2585492
+#' #          Estimate      SE      L     UL
+#' # Contrast   0.1023 0.07972 -0.054 0.2585
 #' 
 #' 
 #' @references 
@@ -1376,7 +1376,7 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
   se <- sqrt(t(v)%*%(diag(var))%*%v)
   ll <- con - z*se
   ul <- con + z*se
-  out <- cbind(con, se, ll, ul)
+  out <- cbind(round(con, 4), round(se, 5), round(ll, 4), round(ul, 4))
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- "Contrast"
   return (out)
