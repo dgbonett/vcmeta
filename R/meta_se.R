@@ -606,6 +606,325 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 }
 
 
+# se.meanratio2 =========================================================
+#' Computes the standard error for a 2-group log mean ratio
+#' 
+#' 
+#' @description
+#' Computes the standard error of a 2-group log mean ratio using the 
+#' estimated means, estimated standard deviations, and sample sizes. 
+#' The log mean estimate and standard error output from this function
+#' can be used as input in the \link[vcmeta]{meta.ave.gen}, 
+#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions
+#' in application where compatible mean ratios from a combination of 
+#' 2-group and paired-samples experiments are used in the meta-analysis. 
+#' Equality of variances is not assumed.
+#' 
+#' 
+#' @param    m1		estimated mean for group 1 
+#' @param    m2		estimated mean for group 2 
+#' @param    sd1	estimated standard deviation for group 1
+#' @param    sd2	estimated standard deviation for group 2
+#' @param    n1		sample size for group 1
+#' @param    n2		sample size for group 2
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated log mean ratio
+#' * SE - standard error
+#'  
+#' @examples
+#' se.meanratio2(21.9, 16.1, 3.82, 3.21, 40, 40)
+#'
+#' # Should return:
+#' #                   Estimate       SE
+#' # Log mean ratio:  0.3076674 0.041886
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2020}{vcmeta}
+#' 
+#' 
+#' @export
+se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
+  logratio <- log(m1/m2)
+  var1 <- sd1^2/(n1*m1^2) 
+  var2 <- sd2^2/(n2*m2^2)
+  se <- sqrt(var1 + var2)
+  out <- t(c(logratio, se))
+  colnames(out) <- c("Estimate", "SE")
+  rownames(out) <- "Log mean ratio: "
+  return(out)
+}
+
+
+# se.meanratio.ps =============================================================
+#' Computes the standard error for a paired-samples log mean ratio
+#' 
+#' 
+#' @description
+#' Computes the standard error of a paired-samples log mean ratio using the
+#' estimated means, estimated standard deviations, estimated Pearson 
+#' correlation, and sample size. The log-mean estimate and standard error 
+#' output from this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
+#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
+#' applications where compatible mean ratios from a combination of 2-group
+#' and paired-samples experiments are used in the meta-analysis. 
+#' Equality of variances is not assumed.
+#' 
+#' 
+#' @param    m1		estimated mean for measurement 1 
+#' @param    m2		estimated mean for measurement 2 
+#' @param    sd1	estimated standard deviation for measurement 1
+#' @param    sd2	estimated standard deviation for measurement 2
+#' @param    cor	estimated correlation for measurements 1 and 2 
+#' @param    n		sample size
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated log mean ratio
+#' * SE - standard error
+#'  
+#' @examples
+#' se.meanratio.ps(21.9, 16.1, 3.82, 3.21, .748, 40)
+#'
+#' # Should return:
+#' #                   Estimate         SE
+#' # Log mean ratio:  0.3076674 0.02130161
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2020}{vcmeta}
+#' 
+#' 
+#' @export
+se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
+ logratio <- log(m1/m2)
+ var1 <- sd1^2/(n*m1^2) 
+ var2 <- sd2^2/(n*m2^2)
+ cov <- cor*sd1*sd2/(n*m1*m2)
+ se <- sqrt(var1 + var2 - 2*cov)
+ out <- t(c(logratio, se))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Log mean ratio: "
+ return(out)
+}
+
+
+# se.prop2 =================================================================== 
+#' Computes the estimate and standard error for a 2-group proportion 
+#' difference
+#' 
+#' 
+#' @description
+#' This function computes the Price-Bonett standard error of a 2-group
+#' proportion difference using the frequency counts, sample sizes, and
+#' planned number of studies in the meta-analysis. The effect size 
+#' estimate and standard error output from this function can be used as 
+#' input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, 
+#' and \link[vcmeta]{meta.lm.gen} functions in applications where 
+#' compatible proportion differences from a combination of 2-group and
+#' paired-samples studies are used in the meta-analysis. 
+#' 
+#' 
+#' @param    f1   number of participants in group 1 who have the outcome
+#' @param    f2	  number of participants in group 2 who have the outcome
+#' @param    n1	  sample size for group 1
+#' @param    n2	  sample size for group 2
+#' @param    m	  number of studies in planned meta-analysis
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - adjusted estimate of proportion difference for meta-analysis
+#' * SE - standard error of adjusted estimate for meta-analysis
+#' 
+#'  
+#' @examples
+#' se.prop2(31, 16, 40, 40, 5)
+#'
+#' # Should return:
+#' #                          Estimate        SE
+#' # Proportion difference:  0.3676471 0.1011817
+#' 
+#' 
+#' @references
+#' * \insertRef{Price2004}{vcmeta}
+#' * \insertRef{Bonett2014}{vcmeta}
+#'
+#'
+#' @export
+se.prop2 <- function(f1, f2, n1, n2, m) {
+ p1 <- (f1 + 1/m)/(n1 + 2/m)
+ p2 <- (f2 + 1/m)/(n2 + 2/m)
+ est <- p1 - p2
+ se <- sqrt(p1*(1 - p1)/(n1 + 2/m) + p2*(1 - p2)/(n2 + 2/m))
+ out <- t(c(est, se))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Proportion difference: "
+ return(out)
+}
+
+
+# se.prop.ps ==============================================================
+#' Computes the estimate and standard error for a paired-samples
+#' proportion difference
+#' 
+#' 
+#' @description
+#' This function computes a standard error of a paired-samples proportion 
+#' difference using the frequency counts from a 2 x 2 contingency table and
+#' the number of studies in the planned meta-analysis. The effect size 
+#' estimate and standard error output from this function can be used as 
+#' input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, 
+#' and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
+#' proportion differences from a combination of 2-group and paired-samples
+#' studies are used in the meta-analysis. 
+#' 
+#' 
+#' @param   f00    number of participants with y = 0 and x = 0
+#' @param   f01    number of participants with y = 0 and x = 1
+#' @param   f10    number of participants with y = 1 and x = 0
+#' @param   f11    number of participants with y = 1 and x = 1
+#' @param   m	     number of studies in planned meta-analysis
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - adjusted estimate of proportion difference
+#' * SE - standard error
+#' 
+#'  
+#' @examples
+#' se.prop.ps(16, 64, 5, 15, 4)
+#'
+#' # Should return:
+#' #                          Estimate        SE
+#' # Proportion difference:  0.5870647 0.0587513
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2012}{vcmeta}
+#'
+#'
+#' @export
+se.prop.ps <- function(f00, f01, f10, f11, m) {
+ n <- f00 + f01 + f10 + f11
+ p01 <- (f01 + 1/m)/(n + 2/m)
+ p10 <- (f10 + 1/m)/(n + 2/m)
+ est <- p01 - p10
+ se <- sqrt(((p01 + p10) - (p01 - p10)^2)/(n + 2/m))
+ out <- t(c(est, se))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Proportion difference: "
+ return(out)
+}
+
+
+# se.propratio2 =============================================================== 
+#' Computes the estimate and standard error for a 2-group log proportion ratio 
+#' 
+#' 
+#' @description
+#' Computes the Price-Bonett standard error of a 2-group proportion ratio using
+#' the frequency count and sample size for each group. The log proportion ratio
+#' and standard error output from this function can be used as input in the
+#' \link[vcmeta]{meta.ave.gen.log} function in applications where compatible 
+#' proportion ratios from a combination of 2-group and paired-samples studies 
+#' are used in the meta-analysis. If the proportions in each group are small
+#' (less than .1), proportion ratios may be compatible with odds ratios and
+#' then the \link[vcmeta]{meta.ave.gen.log} function could be used to 
+#' meta-analyze any combination of log proportion ratios and log odds ratios.
+#' 
+#' 
+#' @param    f1   number of participants in group 1 who have the outcome
+#' @param    f2	  number of participants in group 2 who have the outcome
+#' @param    n1	  sample size for group 1
+#' @param    n2	  sample size for group 2
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated log proportion ratio
+#' * SE - standard error
+#' 
+#'  
+#' @examples
+#' se.propratio2(31, 16, 40, 40)
+#'
+#' # Should return:
+#' #                         Estimate        SE
+#' # Log proportion ratio:  0.6539265 0.2136218
+#' 
+#' 
+#' @references
+#' \insertRef{Price2008}{vcmeta}
+#'
+#'
+#' @export
+se.propratio2 <- function(f1, f2, n1, n2) {
+ p1 <- (f1 + 1/4)/(n1 + 7/4)
+ p2 <- (f2 + 1/4)/(n2 + 7/4)
+ v1 <- 1/(f1 + 1/4 + (f1 + 1/4)^2/(n1 - f1 + 3/2))
+ v2 <- 1/(f2 + 1/4 + (f2 + 1/4)^2/(n2 - f2 + 3/2))
+ est <- log(p1/p2)
+ se <- sqrt(v1 + v2)
+ out <- t(c(est, se))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Log proportion ratio: "
+ return(out)
+}
+
+
+# se.propratio.ps =============================================================
+#' Computes the estimate and standard error for a paired-samples log
+#' proportion ratio
+#' 
+#' 
+#' @description
+#' Computes a large-sample standard error of a paired-samples log proportion 
+#' ratio using the frequency counts from a 2 x 2 contingency table. The log 
+#' proportion ratio and standard error output from this function can be used
+#' as input in the \link[vcmeta]{meta.ave.gen.log} function in applications 
+#' where compatible proportion ratios from a combination of 2-group and 
+#' paired-samples studies are used in the meta-analysis. 
+#' 
+#' 
+#' @param   f00    number of participants with y = 0 and x = 0
+#' @param   f01    number of participants with y = 0 and x = 1
+#' @param   f10    number of participants with y = 1 and x = 0
+#' @param   f11    number of participants with y = 1 and x = 1
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated log proportion ratio
+#' * SE - standard error
+#' 
+#'  
+#' @examples
+#' se.propratio.ps(16, 64, 5, 15)
+#'
+#' # Should return:
+#' #                         Estimate         SE
+#' # Log proportion ratio:  -1.373716  0.2089758
+#' 
+#' 
+#' @export
+se.propratio.ps <- function(f00, f01, f10, f11) {
+ f1 <- f10 + f11
+ f2 <- f01 + f11
+ est <- log(f1/f2)
+ se <- sqrt((f01 + f10)/(f1*f2))
+ out <- t(c(est, se))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Log proportion ratio: "
+ return(out)
+}
+
+
 # se.stdmean2 ================================================================		
 #' Computes the standard error for a 2-group standardized mean difference
 #' 
@@ -996,113 +1315,6 @@ se.oddsratio <- function(f1, n1, f2, n2) {
 }
 
 
-# se.meanratio2 =========================================================
-#' Computes the standard error for a 2-group log mean ratio
-#' 
-#' 
-#' @description
-#' Computes the standard error of a 2-group log mean ratio using the 
-#' estimated means, estimated standard deviations, and sample sizes. 
-#' The log mean estimate and standard error output from this function
-#' can be used as input in the \link[vcmeta]{meta.ave.gen}, 
-#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions
-#' in application where compatible mean ratios from a combination of 
-#' 2-group and paired-samples experiments are used in the meta-analysis. 
-#' Equality of variances is not assumed.
-#' 
-#' 
-#' @param    m1		estimated mean for group 1 
-#' @param    m2		estimated mean for group 2 
-#' @param    sd1	estimated standard deviation for group 1
-#' @param    sd2	estimated standard deviation for group 2
-#' @param    n1		sample size for group 1
-#' @param    n2		sample size for group 2
-#' 
-#' 
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - estimated log mean ratio
-#' * SE - standard error
-#'  
-#' @examples
-#' se.meanratio2(21.9, 16.1, 3.82, 3.21, 40, 40)
-#'
-#' # Should return:
-#' #                   Estimate       SE
-#' # Log mean ratio:  0.3076674 0.041886
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2020}{vcmeta}
-#' 
-#' 
-#' @export
-se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
-  logratio <- log(m1/m2)
-  var1 <- sd1^2/(n1*m1^2) 
-  var2 <- sd2^2/(n2*m2^2)
-  se <- sqrt(var1 + var2)
-  out <- t(c(logratio, se))
-  colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- "Log mean ratio: "
-  return(out)
-}
-
-
-# se.meanratio.ps =============================================================
-#' Computes the standard error for a paired-samples log mean ratio
-#' 
-#' 
-#' @description
-#' Computes the standard error of a paired-samples log mean ratio using the
-#' estimated means, estimated standard deviations, estimated Pearson 
-#' correlation, and sample size. The log-mean estimate and standard error 
-#' output from this function can be used as input in the \link[vcmeta]{meta.ave.gen}, 
-#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
-#' applications where compatible mean ratios from a combination of 2-group
-#' and paired-samples experiments are used in the meta-analysis. 
-#' Equality of variances is not assumed.
-#' 
-#' 
-#' @param    m1		estimated mean for measurement 1 
-#' @param    m2		estimated mean for measurement 2 
-#' @param    sd1	estimated standard deviation for measurement 1
-#' @param    sd2	estimated standard deviation for measurement 2
-#' @param    cor	estimated correlation for measurements 1 and 2 
-#' @param    n		sample size
-#' 
-#' 
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - estimated log mean ratio
-#' * SE - standard error
-#'  
-#' @examples
-#' se.meanratio.ps(21.9, 16.1, 3.82, 3.21, .748, 40)
-#'
-#' # Should return:
-#' #                   Estimate         SE
-#' # Log mean ratio:  0.3076674 0.02130161
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2020}{vcmeta}
-#' 
-#' 
-#' @export
-se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
- logratio <- log(m1/m2)
- var1 <- sd1^2/(n*m1^2) 
- var2 <- sd2^2/(n*m2^2)
- cov <- cor*sd1*sd2/(n*m1*m2)
- se <- sqrt(var1 + var2 - 2*cov)
- out <- t(c(logratio, se))
- colnames(out) <- c("Estimate", "SE")
- rownames(out) <- "Log mean ratio: "
- return(out)
-}
-
-
 # se.slope =================================================================
 #' Computes a slope and standard error
 #' 
@@ -1149,219 +1361,6 @@ se.slope <- function(cor, sdy, sdx, n) {
   return(out)
 }
 
-
-# se.prop2 =================================================================== 
-#' Computes the estimate and standard error for a 2-group proportion 
-#' difference
-#' 
-#' 
-#' @description
-#' This function computes the Price-Bonett standard error of a 2-group
-#' proportion difference using the frequency counts, sample sizes, and
-#' planned number of studies in the meta-analysis. The effect size 
-#' estimate and standard error output from this function can be used as 
-#' input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, 
-#' and \link[vcmeta]{meta.lm.gen} functions in applications where 
-#' compatible proportion differences from a combination of 2-group and
-#' paired-samples studies are used in the meta-analysis. 
-#' 
-#' 
-#' @param    f1   number of participants in group 1 who have the outcome
-#' @param    f2	  number of participants in group 2 who have the outcome
-#' @param    n1	  sample size for group 1
-#' @param    n2	  sample size for group 2
-#' @param    m	  number of studies in planned meta-analysis
-#' 
-#' 
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - adjusted estimate of proportion difference for meta-analysis
-#' * SE - standard error of adjusted estimate for meta-analysis
-#' 
-#'  
-#' @examples
-#' se.prop2(31, 16, 40, 40, 5)
-#'
-#' # Should return:
-#' #                          Estimate        SE
-#' # Proportion difference:  0.3676471 0.1011817
-#' 
-#' 
-#' @references
-#' * \insertRef{Price2004}{vcmeta}
-#' * \insertRef{Bonett2014}{vcmeta}
-#'
-#'
-#' @export
-se.prop2 <- function(f1, f2, n1, n2, m) {
- p1 <- (f1 + 1/m)/(n1 + 2/m)
- p2 <- (f2 + 1/m)/(n2 + 2/m)
- est <- p1 - p2
- se <- sqrt(p1*(1 - p1)/(n1 + 2/m) + p2*(1 - p2)/(n2 + 2/m))
- out <- t(c(est, se))
- colnames(out) <- c("Estimate", "SE")
- rownames(out) <- "Proportion difference: "
- return(out)
-}
-
-
-# se.prop.ps ==============================================================
-#' Computes the estimate and standard error for a paired-samples
-#' proportion difference
-#' 
-#' 
-#' @description
-#' This function computes a standard error of a paired-samples proportion 
-#' difference using the frequency counts from a 2 x 2 contingency table and
-#' the number of studies in the planned meta-analysis. The effect size 
-#' estimate and standard error output from this function can be used as 
-#' input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen}, 
-#' and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
-#' proportion differences from a combination of 2-group and paired-samples
-#' studies are used in the meta-analysis. 
-#' 
-#' 
-#' @param   f00    number of participants with y = 0 and x = 0
-#' @param   f01    number of participants with y = 0 and x = 1
-#' @param   f10    number of participants with y = 1 and x = 0
-#' @param   f11    number of participants with y = 1 and x = 1
-#' @param   m	     number of studies in planned meta-analysis
-#' 
-#' 
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - adjusted estimate of proportion difference
-#' * SE - standard error
-#' 
-#'  
-#' @examples
-#' se.prop.ps(16, 64, 5, 15, 4)
-#'
-#' # Should return:
-#' #                          Estimate        SE
-#' # Proportion difference:  0.5870647 0.0587513
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2012}{vcmeta}
-#'
-#'
-#' @export
-se.prop.ps <- function(f00, f01, f10, f11, m) {
- n <- f00 + f01 + f10 + f11
- p01 <- (f01 + 1/m)/(n + 2/m)
- p10 <- (f10 + 1/m)/(n + 2/m)
- est <- p01 - p10
- se <- sqrt(((p01 + p10) - (p01 - p10)^2)/(n + 2/m))
- out <- t(c(est, se))
- colnames(out) <- c("Estimate", "SE")
- rownames(out) <- "Proportion difference: "
- return(out)
-}
-
-
-
-
-# se.propratio2 =============================================================== 
-#' Computes the estimate and standard error for a 2-group log proportion ratio 
-#' 
-#' 
-#' @description
-#' Computes the Price-Bonett standard error of a 2-group proportion ratio using
-#' the frequency count and sample size for each group. The log proportion ratio
-#' and standard error output from this function can be used as input in the
-#' \link[vcmeta]{meta.ave.gen.log} function in applications where compatible 
-#' proportion ratios from a combination of 2-group and paired-samples studies 
-#' are used in the meta-analysis. If the proportions in each group are small
-#' (less than .1), proportion ratios may be compatible with odds ratios and
-#' then the \link[vcmeta]{meta.ave.gen.log} function could be used to 
-#' meta-analyze any combination of log proportion ratios and log odds ratios.
-#' 
-#' 
-#' @param    f1   number of participants in group 1 who have the outcome
-#' @param    f2	  number of participants in group 2 who have the outcome
-#' @param    n1	  sample size for group 1
-#' @param    n2	  sample size for group 2
-#' 
-#' 
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - estimated log proportion ratio
-#' * SE - standard error
-#' 
-#'  
-#' @examples
-#' se.propratio2(31, 16, 40, 40)
-#'
-#' # Should return:
-#' #                         Estimate        SE
-#' # Log proportion ratio:  0.6539265 0.2136218
-#' 
-#' 
-#' @references
-#' \insertRef{Price2008}{vcmeta}
-#'
-#'
-#' @export
-se.propratio2 <- function(f1, f2, n1, n2) {
- p1 <- (f1 + 1/4)/(n1 + 7/4)
- p2 <- (f2 + 1/4)/(n2 + 7/4)
- v1 <- 1/(f1 + 1/4 + (f1 + 1/4)^2/(n1 - f1 + 3/2))
- v2 <- 1/(f2 + 1/4 + (f2 + 1/4)^2/(n2 - f2 + 3/2))
- est <- log(p1/p2)
- se <- sqrt(v1 + v2)
- out <- t(c(est, se))
- colnames(out) <- c("Estimate", "SE")
- rownames(out) <- "Log proportion ratio: "
- return(out)
-}
-
-
-# se.propratio.ps =============================================================
-#' Computes the estimate and standard error for a paired-samples log
-#' proportion ratio
-#' 
-#' 
-#' @description
-#' Computes a large-sample standard error of a paired-samples log proportion 
-#' ratio using the frequency counts from a 2 x 2 contingency table. The log 
-#' proportion ratio and standard error output from this function can be used
-#' as input in the \link[vcmeta]{meta.ave.gen.log} function in applications 
-#' where compatible proportion ratios from a combination of 2-group and 
-#' paired-samples studies are used in the meta-analysis. 
-#' 
-#' 
-#' @param   f00    number of participants with y = 0 and x = 0
-#' @param   f01    number of participants with y = 0 and x = 1
-#' @param   f10    number of participants with y = 1 and x = 0
-#' @param   f11    number of participants with y = 1 and x = 1
-#' 
-#' 
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - estimated log proportion ratio
-#' * SE - standard error
-#' 
-#'  
-#' @examples
-#' se.propratio.ps(16, 64, 5, 15)
-#'
-#' # Should return:
-#' #                         Estimate         SE
-#' # Log proportion ratio:  -1.373716  0.2089758
-#' 
-#' 
-#' @export
-se.propratio.ps <- function(f00, f01, f10, f11) {
- f1 <- f10 + f11
- f2 <- f01 + f11
- est <- log(f1/f2)
- se <- sqrt((f01 + f10)/(f1*f2))
- out <- t(c(est, se))
- colnames(out) <- c("Estimate", "SE")
- rownames(out) <- "Log proportion ratio: "
- return(out)
-}
 
 
 #  se.tetra ==================================================================
