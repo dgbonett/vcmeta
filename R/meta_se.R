@@ -10,6 +10,8 @@
 #' can be used as input in the \link[vcmeta]{meta.ave.gen}, 
 #' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions. 
 #' The G-index is usually preferred to Cohen's kappa (see Bonett, 2022).
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    f		number of objects rated in agreement 
@@ -66,6 +68,8 @@ se.agree <- function(f, n, k, m) {
 #' function can be used as input in the \link[vcmeta]{meta.ave.cor.gen} function
 #' in a meta-analysis where some studies have reported cor12 and other studies
 #' have reported cor13. 
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    cor12	estimated correlation between variables 1 and 2 
@@ -130,6 +134,8 @@ se.ave.cor.over <- function(cor12, cor13, cor23, n) {
 #' correlation and the standard error from this function can be used as 
 #' input in the \link[vcmeta]{meta.ave.cor.gen} function in a meta-analysis where
 #' some studies have reported cor12 and other studies have reported cor34. 
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    cor12	  estimated correlation between variables 1 and 2 
@@ -202,6 +208,8 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
 #' have used one of the two parallel response variables and other studies have
 #' used the other parallel response variable. Equality of variances is not
 #' assumed.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    m1A	   estimated mean for variable A in group 1 
@@ -267,6 +275,8 @@ se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1
 #' where a point-biserial correlation has been obtained in some studies and
 #' a biserial-phi correlation has been obtained in other studies.  
 #'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
+#'
 #'
 #' @param   f1     number of participants in group 1 who have the attribute
 #' @param   f2     number of participants in group 2 who have the attribute
@@ -328,6 +338,8 @@ se.biphi <- function(f1, f2, n1, n2) {
 #' information needed to compute a biserial correlation. The biserial 
 #' correlation and standard error output from this function can be used as 
 #' input in the \link[vcmeta]{meta.ave.cor.gen} function.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #'
 #'
 #' @details
@@ -414,6 +426,8 @@ se.bscor <- function(m1, m2, sd1, sd2, n1, n2) {
 #' standard error for Cohen's d can be very inaccurate if the variances are
 #' unequal and the sample sizes are unequal.
 #'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
+#'
 #' 
 #' @param    d		  estimated Cohen's d
 #' @param    n1		  sample size for group 1
@@ -461,6 +475,8 @@ se.cohen <- function(d, n1, n2) {
 #' \link[vcmeta]{meta.ave.cor.gen} function in applications where a 
 #' combination of different types of compatible correlations are
 #' used in the meta-analysis. 
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    cor	estimated Pearson or partial correlation  
@@ -514,6 +530,8 @@ se.cor <- function(cor, s, n) {
 #' in applications where compatible mean differences from a combination
 #' of 2-group and paired-samples experiments are used in the meta-analysis. 
 #' Equality of variances is not asumed.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    m1		estimated mean for group 1 
@@ -568,6 +586,8 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' compatible mean differences from a combination of 2-group
 #' and paired-samples experiments are used in the meta-analysis. 
 #' Equality of variances is not assumed.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    m1		estimated mean for measurement 1 
@@ -619,6 +639,8 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' in application where compatible mean ratios from a combination of 
 #' 2-group and paired-samples experiments are used in the meta-analysis. 
 #' Equality of variances is not assumed.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    m1		estimated mean for group 1 
@@ -672,6 +694,8 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' applications where compatible mean ratios from a combination of 2-group
 #' and paired-samples experiments are used in the meta-analysis. 
 #' Equality of variances is not assumed.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    m1		estimated mean for measurement 1 
@@ -728,6 +752,8 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' only report the frequency counts for a 2 x 2 contingency table. The log odds
 #' ratio and standard error output from this function can be used as input in
 #' the \link[vcmeta]{meta.ave.gen.log} function.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    f1		number of participants who have the outcome in group 1 
@@ -784,6 +810,8 @@ se.oddsratio <- function(f1, n1, f2, n2) {
 #' nonexperimental design. The effect size estimate and standard error 
 #' output from this function can  be used as input in the
 #' \link[vcmeta]{meta.ave.cor.gen} function.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #'
 #' 
 #' @param    m1		estimated mean for group 1 
@@ -855,6 +883,8 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
 #' and \link[vcmeta]{meta.lm.gen} functions in applications where 
 #' compatible proportion differences from a combination of 2-group and
 #' paired-samples studies are used in the meta-analysis. 
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    f1   number of participants in group 1 who have the outcome
@@ -910,6 +940,8 @@ se.prop2 <- function(f1, f2, n1, n2, m) {
 #' and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
 #' proportion differences from a combination of 2-group and paired-samples
 #' studies are used in the meta-analysis. 
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param   f00    number of participants with y = 0 and x = 0
@@ -965,6 +997,8 @@ se.prop.ps <- function(f00, f01, f10, f11, m) {
 #' (less than .1), proportion ratios may be compatible with odds ratios and
 #' then the \link[vcmeta]{meta.ave.gen.log} function could be used to 
 #' meta-analyze any combination of log proportion ratios and log odds ratios.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    f1   number of participants in group 1 who have the outcome
@@ -1018,6 +1052,8 @@ se.propratio2 <- function(f1, f2, n1, n2) {
 #' as input in the \link[vcmeta]{meta.ave.gen.log} function in applications 
 #' where compatible proportion ratios from a combination of 2-group and 
 #' paired-samples studies are used in the meta-analysis. 
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param   f00    number of participants with y = 0 and x = 0
@@ -1066,6 +1102,8 @@ se.propratio.ps <- function(f00, f01, f10, f11) {
 #' \link[vcmeta]{meta.ave.cor.gen} function in applications where a 
 #' combination of different types of compatible correlations are used 
 #' in the meta-analysis. 
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    cor	estimated semipartial correlation  
@@ -1111,6 +1149,8 @@ se.semipart <- function(cor, r2, n) {
 #' variable. This function is useful in a meta-analysis of slopes of a 
 #' simple linear regression model where some studies report the Pearson
 #' correlation but not the slope.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #'
 #' @param    cor		estimated Pearson correlation  
@@ -1166,6 +1206,8 @@ se.slope <- function(cor, sdy, sdx, n) {
 #' standardized mean differences from a combination of 2-group and 
 #' paired-samples experiments are used in the meta-analysis. Equality 
 #' of variances is not assumed.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #'
 #' 
 #' @param    m1		  estimated mean for group 1 
@@ -1253,6 +1295,8 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 #' applications where compatible standardized mean differences from a combination
 #' of 2-group and paired-samples experiments are used in the meta-analysis. 
 #' Equality of variances is not assumed.
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    m1		estimated mean for measurement 1 
@@ -1328,6 +1372,8 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #' this function can be used as input in the \link[vcmeta]{meta.ave.cor.gen} 
 #' function in applications where a combination of different types of 
 #' compatible correlations are used in the meta-analysis. 
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #' 
 #' 
 #' @param    cor		estimated Spearman correlation  
@@ -1377,6 +1423,8 @@ se.spear <- function(cor, n) {
 #' between quantitative variables x and y and other studies have reported 
 #' a 2 x 2 contingency table for dichotomous measurements of variables
 #' x and y. 
+#'
+#' For more details, see Chapter 1 of Bonett (2021, Volume 5)
 #'
 #'
 #' @param   f00    number of participants with y = 0 and x = 0
