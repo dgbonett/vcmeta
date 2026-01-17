@@ -633,12 +633,12 @@ meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRU
 #' meta.ave.cor(.05, n, cor, 0, bystudy = TRUE)
 #' 
 #' # Should return:
-#' #         Estimate         SE        LL        UL
-#' # Average    0.525 0.05113361 0.4176678 0.6178816
-#' # Study 1    0.400 0.11430952 0.1506943 0.6014699
-#' # Study 2    0.650 0.04200694 0.5594086 0.7252465
-#' # Study 3    0.600 0.08000000 0.4171458 0.7361686
-#' # Study 4    0.450 0.13677012 0.1373507 0.6811071
+#' #         Estimate      SE     LL     UL
+#' # Average    0.525 0.05113 0.4177 0.6179
+#' # Study 1    0.400 0.11431 0.1507 0.6015
+#' # Study 2    0.650 0.04201 0.5594 0.7252
+#' # Study 3    0.600 0.08000 0.4171 0.7362
+#' # Study 4    0.450 0.13677 0.1374 0.6811
 #' 
 #' 
 #' @references
@@ -658,7 +658,7 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
   ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
   ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out <- cbind(ave.cor, se.ave, ll, ul)
+  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
   row <- "Average"
   if (bystudy) {
     se.cor <- sqrt((1 - cor^2)^2/ (n - 1 - s))
@@ -670,7 +670,7 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
     ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
     row2 <- t(t(paste(rep("Study", m), seq(1,m))))
     row <- rbind(row, row2)
-    out2 <- cbind(cor, se.cor, ll, ul)
+    out2 <- cbind(round(cor, 4), round(se.cor, 5), round(ll, 4), round(ul, 4))
     out <- rbind(out, out2)
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
@@ -792,7 +792,7 @@ meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
 #' meta.ave.path(.05, n, slope, se, 2, bystudy = TRUE)
 #'
 #' #  Should return:
-#' #         Estimate         SE          LL       UL     df
+#' #          Estimate        SE          LL       UL     df
 #' #  Average     1.32 0.2844334  0.75994528 1.880055 263.18
 #' #  Study 1     1.57 0.6580000  0.25830097 2.881699  72.00
 #' #  Study 2     1.38 0.7240000 -0.06026664 2.820267  82.00
@@ -864,13 +864,13 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
 #' meta.ave.spear(.05, n, cor, bystudy = TRUE)
 #'
 #' # Should return:
-#' #         Estimate         SE          LL        UL
-#' # Average    0.206 0.02944265  0.14763960 0.2629309
-#' # Study 1    0.140 0.08031750 -0.02151639 0.2943944
-#' # Study 2    0.290 0.06492643  0.15476515 0.4145671
-#' # Study 3    0.160 0.05635101  0.04689807 0.2690514
-#' # Study 4    0.210 0.06776195  0.07187439 0.3402225
-#' # Study 5    0.230 0.05069710  0.12690280 0.3281809
+#' #         Estimate      SE      LL     UL
+#' # Average    0.206 0.02944  0.1476 0.2629
+#' # Study 1    0.140 0.08071 -0.0215 0.2944
+#' # Study 2    0.290 0.06628  0.1548 0.4146
+#' # Study 3    0.160 0.05671  0.0469 0.2691
+#' # Study 4    0.210 0.06850  0.0719 0.3402
+#' # Study 5    0.230 0.05136  0.1269 0.3282
 #' 
 #' 
 #' @references
@@ -890,7 +890,7 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
   ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
   ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out <- cbind(ave.cor, se.ave, ll, ul)
+  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
   row <- "Average"
   if (bystudy) {
     se.cor <- sqrt((1 + cor^2/2)*(1 - cor^2)^2/(n - 1))
@@ -902,7 +902,7 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
     ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
     row2 <- t(t(paste(rep("Study", m), seq(1,m))))
     row <- rbind(row, row2)
-    out2 <- cbind(cor, se.cor, ll, ul)
+    out2 <- cbind(round(cor, 4), round(se.cor, 5), round(ll, 4), round(ul, 4))
     out <- rbind(out, out2)
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
@@ -960,11 +960,11 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #' meta.ave.pbcor(.05, m1, m2, sd1, sd2, n1, n2, 2, bystudy = TRUE)
 #'
 #' # Should return:
-#' #          Estimate         SE        LL        UL
-#' # Average 0.6159094 0.04363432 0.5230976 0.6942842
-#' # Study 1 0.6349786 0.06316796 0.4842098 0.7370220
-#' # Study 2 0.6160553 0.07776700 0.4255342 0.7380898
-#' # Study 3 0.5966942 0.08424778 0.3903883 0.7283966
+#' #         Estimate      SE     LL     UL
+#' # Average   0.6109 0.04532 0.5144 0.6921
+#' # Study 1   0.6350 0.06317 0.4842 0.7370
+#' # Study 2   0.6165 0.07774 0.4260 0.7385
+#' # Study 3   0.5812 0.09192 0.3551 0.7236
 #' 
 #' 
 #' @references
@@ -1007,7 +1007,7 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
   ul0 <- cor.f + z*se.ave/(1 - ave^2)
   ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out <- cbind(ave, se.ave, ll, ul)
+  out <- cbind(round(ave, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
   row <- "Average"
   if (bystudy) {
     if (type == 1) {
@@ -1020,7 +1020,7 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
     }
     row2 <- t(t(paste(rep("Study", m), seq(1,m))))
     row <- rbind(row, row2)
-    out2 <- cbind(cor, se, ll, ul)
+    out2 <- cbind(round(cor, 4), round(se, 5), round(ll, 4), round(ul, 4))
     out <- rbind(out, out2)
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
@@ -1041,7 +1041,7 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    n     	vector of sample sizes 
 #' @param    cor   	vector of estimated semipartial correlations 
-#' @param     r2   	  vector of squared multiple correlations for a model that
+#' @param    r2  	  vector of squared multiple correlations for a model that
 #' includes the IV and all control variables
 #' @param bystudy   logical to also return each study estimate (TRUE) or not
 #' 
@@ -1062,12 +1062,12 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
 #' meta.ave.semipart(.05, n, cor, r2, bystudy = TRUE)
 #'
 #' # Should return:
-#' #         Estimate         SE        LL        UL
-#' # Average   0.3975 0.03221240 0.3325507 0.4586965
-#' # Study 1   0.3500 0.07175200 0.2023485 0.4820930
-#' # Study 2   0.4100 0.07886080 0.2447442 0.5521076
-#' # Study 3   0.4400 0.05146694 0.3338366 0.5351410
-#' # Study 4   0.3900 0.05085271 0.2860431 0.4848830
+#' #         Estimate      SE     LL     UL
+#' # Average   0.3975 0.03221 0.3326 0.4587
+#' # Study 1   0.3500 0.07175 0.2023 0.4821
+#' # Study 2   0.4100 0.07886 0.2447 0.5521
+#' # Study 3   0.4400 0.05147 0.3338 0.5351
+#' # Study 4   0.3900 0.05085 0.2860 0.4849
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1084,7 +1084,7 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
   ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
   ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out <- cbind(ave.cor, se.ave, ll, ul)
+  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
   row <- "Average"
   if (bystudy) {
     se.cor = sqrt(var.cor)
@@ -1096,7 +1096,7 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
     ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
     row2 <- t(t(paste(rep("Study", m), seq(1,m))))
     row <- rbind(row, row2)
-    out2 <- cbind(cor, se.cor, ll, ul)
+    out2 <- cbind(round(cor, 4), round(se.cor, 5), round(ll, 4), round(ul, 4))
     out <- rbind(out, out2)
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
@@ -1797,8 +1797,9 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #' 
 #' 
 #' @references
-#' * \insertRef{Hedges1985}{vcmeta}
-#' * \insertRef{Borenstein2009}{vcmeta}
+#' \insertRef{Hedges1985}{vcmeta}
+#'
+#' \insertRef{Borenstein2009}{vcmeta}
 #'
 #'
 #' @seealso \link[vcmeta]{meta.ave.gen}
@@ -1904,8 +1905,9 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' # Study 8     0.90400000 0.3180000  0.28073145 1.5272685
 #' 
 #' @references
-#' * \insertRef{Hedges1985}{vcmeta}
-#' * \insertRef{Borenstein2009}{vcmeta}
+#' \insertRef{Hedges1985}{vcmeta}
+#'
+#' \insertRef{Borenstein2009}{vcmeta}
 #'
 #'
 #' @seealso \link[vcmeta]{meta.ave.gen}
