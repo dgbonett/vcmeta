@@ -37,6 +37,8 @@
 #' 
 #' @references
 #' \insertRef{Bonett2022}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @export
@@ -96,6 +98,10 @@ se.agree <- function(f, n, k, m) {
 #' #              Estimate      SE  VAR(cor12) VAR(cor13) COV(cor12,cor13)
 #' # Correlation:   0.4900 0.07087 0.006378045 0.00551907      0.004097553
 #' # Fisher:        0.5361 0.09327 0.010309278 0.01030928      0.007119936
+#'
+#'
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @export
@@ -165,6 +171,10 @@ se.ave.cor.over <- function(cor12, cor13, cor23, n) {
 #' #              Estimate      SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
 #' # Correlation:   0.3775 0.07769 0.00784892 0.007301895      0.004495714
 #' # Fisher:        0.3971 0.09060 0.01030928 0.010309278      0.006122153
+#'
+#'
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @export
@@ -240,6 +250,10 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
 #' # Should return:
 #' #                          Estimate        SE    VAR(A)    VAR(B)  COV(A,B)
 #' # Average mean difference:     6.75 0.7526878 0.6224125 0.6498625 0.4969403
+#'
+#'
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @export
@@ -296,6 +310,10 @@ se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1
 #' # Should return:
 #' #               Estimate      SE 
 #' # Biserial-phi:   0.2754 0.10746
+#'
+#'
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @export
@@ -383,6 +401,8 @@ se.biphi <- function(f1, f2, n1, n2) {
 #' 
 #' @references
 #' \insertRef{Bonett2020b}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats dnorm
@@ -448,7 +468,8 @@ se.bscor <- function(m1, m2, sd1, sd2, n1, n2) {
 #' # Cohen's d:    0.782 0.22887
 #'
 #'
-#' @seealso \link[vcmeta]{se.stdmean2}
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @export
@@ -505,6 +526,8 @@ se.cohen <- function(d, n1, n2) {
 #' 
 #' @references
 #' \insertRef{Bonett2008a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @export
@@ -557,7 +580,7 @@ se.cor <- function(cor, s, n) {
 #' 
 #' 
 #' @references
-#' \insertRef{Snedecor1980}{vcmeta}
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @export
@@ -611,8 +634,9 @@ se.mean2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' #                   Estimate        SE
 #' # Mean difference:     -1.18 0.2544833
 #' 
+#'
 #' @references
-#' \insertRef{Snedecor1980}{vcmeta}
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @export
@@ -666,6 +690,8 @@ se.mean.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' 
 #' @references
 #' \insertRef{Bonett2020}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @export
@@ -721,6 +747,8 @@ se.meanratio2 <- function(m1, m2, sd1, sd2, n1, n2) {
 #' 
 #' @references
 #' \insertRef{Bonett2020}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @export
@@ -778,6 +806,8 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
 #' 
 #' @references
 #' \insertRef{Bonett2015}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @export
@@ -841,6 +871,8 @@ se.oddsratio <- function(f1, n1, f2, n2) {
 #' 
 #' @references
 #' \insertRef{Bonett2020b}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @export
@@ -909,8 +941,11 @@ se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
 #' 
 #' 
 #' @references
-#' * \insertRef{Price2004}{vcmeta}
-#' * \insertRef{Bonett2014}{vcmeta}
+#' \insertRef{Price2004}{vcmeta}
+#'
+#' \insertRef{Bonett2014}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @export
@@ -968,6 +1003,8 @@ se.prop2 <- function(f1, f2, n1, n2, m) {
 #' @references
 #' \insertRef{Bonett2012}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @export
 se.prop.ps <- function(f00, f01, f10, f11, m) {
@@ -1024,6 +1061,8 @@ se.prop.ps <- function(f00, f01, f10, f11, m) {
 #' @references
 #' \insertRef{Price2008}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @export
 se.propratio2 <- function(f1, f2, n1, n2) {
@@ -1074,6 +1113,10 @@ se.propratio2 <- function(f1, f2, n1, n2) {
 #' # Should return:
 #' #                         Estimate         SE
 #' # Log proportion ratio:  -1.373716  0.2089758
+#'
+#'
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @export
@@ -1124,6 +1167,10 @@ se.propratio.ps <- function(f00, f01, f10, f11) {
 #' # Should return: 
 #' #                           Estimate      SE
 #' # Semipartial correlation:     0.454 0.10298
+#'
+#'
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @export
@@ -1170,12 +1217,12 @@ se.semipart <- function(cor, r2, n) {
 #' # Should return: 
 #' #          Estimate        SE
 #' # Slope:  0.6158062 0.1897647
-#' 
-#' 
+#'
+#'
 #' @references
-#' \insertRef{Snedecor1980}{vcmeta}
-#'
-#'
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
 #' @export
 se.slope <- function(cor, sdy, sdx, n) {
   slope <- cor*sdy/sdx
@@ -1245,6 +1292,8 @@ se.slope <- function(cor, sdy, sdx, n) {
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @seealso \link[vcmeta]{se.cohen}
@@ -1332,6 +1381,8 @@ se.stdmean2 <- function(m1, m2, sd1, sd2, n1, n2, stdzr) {
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @export
@@ -1397,6 +1448,8 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
 #' @references
 #' \insertRef{Bonett2000}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @export
 se.spear <- function(cor, n) {
@@ -1449,6 +1502,10 @@ se.spear <- function(cor, n) {
 #' # Should return:
 #' #               Estimate     SE 
 #' # Tetrachoric:     0.514 0.0936
+#'
+#'
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @export
