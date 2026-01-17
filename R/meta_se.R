@@ -183,6 +183,7 @@ se.ave.cor.nonover <- function(cor12, cor34, cor13, cor14, cor23, cor24, n) {
   return(out)
 }
 
+
 # se.ave.mean2.dep ============================================================
 #' Computes the standard error for the average of 2-group mean differences from 
 #' two parallel measurement response variables in the same sample 
@@ -245,6 +246,257 @@ se.ave.mean2.dep <- function(m1A, m2A, sd1A, sd2A, m1B, m2B, sd1B, sd2B, rAB, n1
   out <- t(c(est, se, v1, v2, cov))
   colnames(out) <- c("Estimate", "SE", "VAR(A)", "VAR(B)", "COV(A,B)")
   rownames(out) <- "Average mean difference: "
+  return(out)
+}
+
+
+#  se.biphi ==================================================================
+#' Computes the standard error for a biserial-phi correlation  
+#'
+#'
+#' @description
+#' Computes an estimate of a biserial-phi correlation and its standard error 
+#' using the frequency counts from a 2 x 2 contingency table where one variable
+#' is naturally dichotomous and the other variable is artifically dichotomous. 
+#' The biserial-phi correlation approximates a point-biserial correlation 
+#' between the naturally dichotomous variable and the unobserved quantitative
+#' variable that was measured on a dichotomous scale. A biserial-phi correlation
+#' could be compatible with a point-biserial correlation in a meta-analysis. The 
+#' biserial-phi estimate and the standard error from this function can be used 
+#' as input in the \link[vcmeta]{meta.ave.cor.gen} function in a meta-analysis 
+#' where a point-biserial correlation has been obtained in some studies and
+#' a biserial-phi correlation has been obtained in other studies.  
+#'
+#'
+#' @param   f1     number of participants in group 1 who have the attribute
+#' @param   f2     number of participants in group 2 who have the attribute
+#' @param   n1     sample size for group 1
+#' @param   n2     sample size for group 2
+#'
+#'
+#' @return
+#' Returns a 1-row matrix. The columns are:
+#' * Estimate - estimated biserial-phi correlation 
+#' * SE - standard error
+#'
+#'
+#' @examples
+#' se.biphi(34, 22, 50, 50)
+#'
+#' # Should return:
+#' #               Estimate      SE 
+#' # Biserial-phi:   0.2754 0.10746
+#'
+#'
+#' @export
+se.biphi <- function(f1, f2, n1, n2) {
+ if (f1 > n1) {stop("f cannot be greater than n")}
+ if (f2 > n2) {stop("f cannot be greater than n")}
+ f00 <- f1
+ f10 <- n1 - f1
+ f01 <- f2
+ f11 <- n2 - f2
+ p1 <- n1/(n1 + n2)
+ p2 <- n2/(n1 + n2)
+ or <- (f11 + .5)*(f00 + .5)/((f01 + .5)*(f10 + .5))
+ lor <- log(or)
+ se.lor <- sqrt(1/(f00 + .5) + 1/(f01 + .5) + 1/(f10 + .5) + 1/(f11 + .5))
+ c <- 2.89/(p1*p2)
+ biphi <- lor/sqrt(lor^2 + c)
+ se.biphi <- sqrt(c^2/(lor^2 + c)^3)*se.lor
+ out <- t(c(round(biphi, 4), round(se.biphi, 5)))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Biserial-phi: "
+ return(out)
+}
+
+
+#  se.bscor ===================================================================
+#' Computes the standard error for a biserial correlation 
+#' 
+#'
+#' @description
+#' Computes a biserial correlation and its standard error. A
+#' biserial correlation can be used when one variable is quantitative and the 
+#' other variable has been artifically dichotmized. The biserial correlation
+#' estimates the correlation between an observable quantitative variable and
+#' an unobserved quantitative variable that is measured on a dichotomous
+#' scale. This function requires the estimated mean, estimated standard 
+#' deviation, and samples size from each level of the dichotomized variable. 
+#' This function is useful in a meta-analysis of Pearson correlations where
+#' some studies report a Pearson correlation and other studies report the
+#' information needed to compute a biserial correlation. The biserial 
+#' correlation and standard error output from this function can be used as 
+#' input in the \link[vcmeta]{meta.ave.cor.gen} function.
+#'
+#'
+#' @details
+#' This function computes a point-biserial correlation and its standard error
+#' as a function of a standardized mean difference with a weighted variance
+#' standardizer. Then the point-biserial estimate is transformed into a 
+#' biserial correlation using the traditional adjustment. The adjustment is 
+#' also applied to the point-biserial standard error to obtain the standard 
+#' error for the biserial correlation. 
+#' 
+#' The biserial correlation assumes that the observed quantitative variable 
+#' and the unobserved quantitative variable have a bivariate normal 
+#' distribution. Bivariate normality is a crucial assumption underlying the
+#' transformation of a point-biserial correlation to a biserial correlation.
+#' Bivariate normality also implies equal variances of the observed 
+#' quantitative variable at each level of the dichotomized variable, and this
+#' assumption is made in the computation of the standard error.
+#'
+#' 
+#' @param    m1		estimated mean for level 1 
+#' @param    m2		estimated mean for level 2
+#' @param    sd1	estimated standard deviation for level 1
+#' @param    sd2	estimated standard deviation for level 2
+#' @param    n1		sample size for level 1
+#' @param    n2		sample size for level 2
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated biserial correlation
+#' * SE - standard error
+#' 
+#' 
+#' @examples
+#' se.bscor(21.9, 16.1, 3.82, 3.21, 40, 40)
+#'
+#' #  Should return: 
+#' #                        Estimate      SE
+#' #  Biserial correlation:   0.8018 0.07452
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2020b}{vcmeta}
+#' 
+#' 
+#' @importFrom stats dnorm
+#' @export
+se.bscor <- function(m1, m2, sd1, sd2, n1, n2) {
+ df1 <- n1 - 1
+ df2 <- n2 - 1
+ u <- n1/(n1 + n2)
+ a <- sqrt(u*(1 - u))/dnorm(qnorm(u))
+ s <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
+ d <- (m1 - m2)/s
+ c <- (df1 + df2)/((n1 + n2)*(u*(1 - u)))
+ pbcor <- d/sqrt(d^2 + c)
+ bscor <- pbcor*a
+ if (bscor > 1) {bscor = .99999}
+ if (bscor < -1) {bscor = -.99999}
+ se.d <- sqrt(d^2*(1/n1 + 1/n2)/8 + 1/n1 + 1/n2)
+ se.pbcor <- (c/(d^2 + c)^(3/2))*se.d  
+ se.bscor <- se.pbcor*a  
+ out <- t(c(round(bscor, 4), round(se.bscor, 5)))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Biserial correlation: "
+ return(out)
+}
+
+
+# se.cohen ====================================================================		
+#' Computes the standard error for Cohen's d
+#' 
+#' 
+#' @description
+#' Computes the standard error of Cohen's d using only the two 
+#' sample sizes and an estimate of Cohen's d. Cohen's d and its standard error 
+#' assume equal variances. The estimate of Cohen's d, with the standard error
+#' output from this function, can be used as input in the \link[vcmeta]{meta.ave.gen},
+#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
+#' applications where different types of compatible standardized mean 
+#' differences are used in the meta-analysis. If the means, standard deviations, 
+#' and sample sizes for the two groups are available, use the 
+#' \link[vcmeta]{se.stdmean2} function which does not assume equal variances. The
+#' standard error for Cohen's d can be very inaccurate if the variances are
+#' unequal and the sample sizes are unequal.
+#'
+#' 
+#' @param    d		  estimated Cohen's d
+#' @param    n1		  sample size for group 1
+#' @param    n2		  sample size for group 2
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - Cohen's d (from input)
+#' * SE - standard error
+#' 
+#' 
+#' @examples
+#' se.cohen(.782, 35, 50)
+#'
+#' # Should return: 
+#' #            Estimate      SE
+#' # Cohen's d:    0.782 0.22887
+#'
+#'
+#' @seealso \link[vcmeta]{se.stdmean2}
+#'
+#'
+#' @export
+se.cohen <- function(d, n1, n2) {
+  df1 <- n1 - 1
+  df2 <- n2 - 1
+  se <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
+  out <- t(c(round(d, 4), round(se, 5)))
+  colnames(out) <- c("Estimate", "SE")
+  rownames(out) <- "Cohen's d: "
+  return(out)
+}
+
+
+# se.cor ==========================================================
+#' Computes the standard error for a Pearson or partial correlation 
+#' 
+#'
+#' @description
+#' Computes the standard error of a  Pearson or partial correlation
+#' using the estimated correlation, sample size, and number of 
+#' control variables. The correlation, along with the standard error
+#' output from this function, can be used as input in the 
+#' \link[vcmeta]{meta.ave.cor.gen} function in applications where a 
+#' combination of different types of compatible correlations are
+#' used in the meta-analysis. 
+#' 
+#' 
+#' @param    cor	estimated Pearson or partial correlation  
+#' @param    s		number of control variables (set to 0 for Pearson)  
+#' @param    n		sample size
+#'   
+#'   
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - Pearson or partial correlation (from input)
+#' * SE - standard error
+#' 
+#' 
+#' @examples
+#' se.cor(.427, 0, 55)
+#'
+#' Should return: 
+#' #               Estimate      SE
+#' # Correlation:     0.427 0.11339
+#'
+#' se.cor(.283, 4, 80)
+#' Should return: 
+#' #               Estimate      SE
+#' # Correlation:     0.283 0.10767
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2008a}{vcmeta}
+#' 
+#' 
+#' @export
+se.cor <- function(cor, s, n) {
+  se <- sqrt((1 - cor^2)^2/(n - 3 - s))
+  out <- t(c(round(cor, 4), round(se, 5)))
+  colnames(out) <- c("Estimate", "SE")
+  rownames(out) <- "Correlation: "
   return(out)
 }
 
@@ -521,58 +773,6 @@ se.stdmean.ps <- function(m1, m2, sd1, sd2, cor, n, stdzr) {
   out <- t(c(round(d, 4), round(se, 5)))
   colnames(out) <- c("Estimate", "SE")
   rownames(out) <- "Standardized mean difference: "
-  return(out)
-}
-
-
-# se.cor ==========================================================
-#' Computes the standard error for a Pearson or partial correlation 
-#' 
-#'
-#' @description
-#' Computes the standard error of a  Pearson or partial correlation
-#' using the estimated correlation, sample size, and number of 
-#' control variables. The correlation, along with the standard error
-#' output from this function, can be used as input in the 
-#' \link[vcmeta]{meta.ave.cor.gen} function in applications where a 
-#' combination of different types of compatible correlations are
-#' used in the meta-analysis. 
-#' 
-#' 
-#' @param    cor	estimated Pearson or partial correlation  
-#' @param    s		number of control variables (set to 0 for Pearson)  
-#' @param    n		sample size
-#'   
-#'   
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - Pearson or partial correlation (from input)
-#' * SE - standard error
-#' 
-#' 
-#' @examples
-#' se.cor(.427, 0, 55)
-#'
-#' Should return: 
-#' #               Estimate      SE
-#' # Correlation:     0.427 0.11339
-#'
-#' se.cor(.283, 4, 80)
-#' Should return: 
-#' #               Estimate      SE
-#' # Correlation:     0.283 0.10767
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2008a}{vcmeta}
-#' 
-#' 
-#' @export
-se.cor <- function(cor, s, n) {
-  se <- sqrt((1 - cor^2)^2/(n - 3 - s))
-  out <- t(c(round(cor, 4), round(se, 5)))
-  colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- "Correlation: "
   return(out)
 }
 
@@ -1060,203 +1260,6 @@ se.prop.ps <- function(f00, f01, f10, f11, m) {
 }
 
 
-#  se.biphi ==================================================================
-#' Computes the standard error for a biserial-phi correlation  
-#'
-#'
-#' @description
-#' Computes an estimate of a biserial-phi correlation and its standard error 
-#' using the frequency counts from a 2 x 2 contingency table where one variable
-#' is naturally dichotomous and the other variable is artifically dichotomous. 
-#' The biserial-phi correlation approximates a point-biserial correlation 
-#' between the naturally dichotomous variable and the unobserved quantitative
-#' variable that was measured on a dichotomous scale. A biserial-phi correlation
-#' could be compatible with a point-biserial correlation in a meta-analysis. The 
-#' biserial-phi estimate and the standard error from this function can be used 
-#' as input in the \link[vcmeta]{meta.ave.cor.gen} function in a meta-analysis 
-#' where a point-biserial correlation has been obtained in some studies and
-#' a biserial-phi correlation has been obtained in other studies.  
-#'
-#'
-#' @param   f1     number of participants in group 1 who have the attribute
-#' @param   f2     number of participants in group 2 who have the attribute
-#' @param   n1     sample size for group 1
-#' @param   n2     sample size for group 2
-#'
-#'
-#' @return
-#' Returns a 1-row matrix. The columns are:
-#' * Estimate - estimated biserial-phi correlation 
-#' * SE - standard error
-#'
-#'
-#' @examples
-#' se.biphi(34, 22, 50, 50)
-#'
-#' # Should return:
-#' #               Estimate      SE 
-#' # Biserial-phi:   0.2754 0.10746
-#'
-#'
-#' @export
-se.biphi <- function(f1, f2, n1, n2) {
- if (f1 > n1) {stop("f cannot be greater than n")}
- if (f2 > n2) {stop("f cannot be greater than n")}
- f00 <- f1
- f10 <- n1 - f1
- f01 <- f2
- f11 <- n2 - f2
- p1 <- n1/(n1 + n2)
- p2 <- n2/(n1 + n2)
- or <- (f11 + .5)*(f00 + .5)/((f01 + .5)*(f10 + .5))
- lor <- log(or)
- se.lor <- sqrt(1/(f00 + .5) + 1/(f01 + .5) + 1/(f10 + .5) + 1/(f11 + .5))
- c <- 2.89/(p1*p2)
- biphi <- lor/sqrt(lor^2 + c)
- se.biphi <- sqrt(c^2/(lor^2 + c)^3)*se.lor
- out <- t(c(round(biphi, 4), round(se.biphi, 5)))
- colnames(out) <- c("Estimate", "SE")
- rownames(out) <- "Biserial-phi: "
- return(out)
-}
-
-
-# se.cohen ====================================================================		
-#' Computes the standard error for Cohen's d
-#' 
-#' 
-#' @description
-#' Computes the standard error of Cohen's d using only the two 
-#' sample sizes and an estimate of Cohen's d. Cohen's d and its standard error 
-#' assume equal variances. The estimate of Cohen's d, with the standard error
-#' output from this function, can be used as input in the \link[vcmeta]{meta.ave.gen},
-#' \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in 
-#' applications where different types of compatible standardized mean 
-#' differences are used in the meta-analysis. If the means, standard deviations, 
-#' and sample sizes for the two groups are available, use the 
-#' \link[vcmeta]{se.stdmean2} function which does not assume equal variances. The
-#' standard error for Cohen's d can be very inaccurate if the variances are
-#' unequal and the sample sizes are unequal.
-#'
-#' 
-#' @param    d		  estimated Cohen's d
-#' @param    n1		  sample size for group 1
-#' @param    n2		  sample size for group 2
-#' 
-#' 
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - Cohen's d (from input)
-#' * SE - standard error
-#' 
-#' 
-#' @examples
-#' se.cohen(.782, 35, 50)
-#'
-#' # Should return: 
-#' #            Estimate      SE
-#' # Cohen's d:    0.782 0.22887
-#'
-#'
-#' @seealso \link[vcmeta]{se.stdmean2}
-#'
-#'
-#' @export
-se.cohen <- function(d, n1, n2) {
-  df1 <- n1 - 1
-  df2 <- n2 - 1
-  se <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
-  out <- t(c(round(d, 4), round(se, 5)))
-  colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- "Cohen's d: "
-  return(out)
-}
-
-
-#  se.bscor ===================================================================
-#' Computes the standard error for a biserial correlation 
-#' 
-#'
-#' @description
-#' Computes a biserial correlation and its standard error. A
-#' biserial correlation can be used when one variable is quantitative and the 
-#' other variable has been artifically dichotmized. The biserial correlation
-#' estimates the correlation between an observable quantitative variable and
-#' an unobserved quantitative variable that is measured on a dichotomous
-#' scale. This function requires the estimated mean, estimated standard 
-#' deviation, and samples size from each level of the dichotomized variable. 
-#' This function is useful in a meta-analysis of Pearson correlations where
-#' some studies report a Pearson correlation and other studies report the
-#' information needed to compute a biserial correlation. The biserial 
-#' correlation and standard error output from this function can be used as 
-#' input in the \link[vcmeta]{meta.ave.cor.gen} function.
-#'
-#'
-#' @details
-#' This function computes a point-biserial correlation and its standard error
-#' as a function of a standardized mean difference with a weighted variance
-#' standardizer. Then the point-biserial estimate is transformed into a 
-#' biserial correlation using the traditional adjustment. The adjustment is 
-#' also applied to the point-biserial standard error to obtain the standard 
-#' error for the biserial correlation. 
-#' 
-#' The biserial correlation assumes that the observed quantitative variable 
-#' and the unobserved quantitative variable have a bivariate normal 
-#' distribution. Bivariate normality is a crucial assumption underlying the
-#' transformation of a point-biserial correlation to a biserial correlation.
-#' Bivariate normality also implies equal variances of the observed 
-#' quantitative variable at each level of the dichotomized variable, and this
-#' assumption is made in the computation of the standard error.
-#'
-#' 
-#' @param    m1		estimated mean for level 1 
-#' @param    m2		estimated mean for level 2
-#' @param    sd1	estimated standard deviation for level 1
-#' @param    sd2	estimated standard deviation for level 2
-#' @param    n1		sample size for level 1
-#' @param    n2		sample size for level 2
-#' 
-#' 
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - estimated biserial correlation
-#' * SE - standard error
-#' 
-#' 
-#' @examples
-#' se.bscor(21.9, 16.1, 3.82, 3.21, 40, 40)
-#'
-#' #  Should return: 
-#' #                        Estimate      SE
-#' #  Biserial correlation:   0.8018 0.07452
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2020b}{vcmeta}
-#' 
-#' 
-#' @importFrom stats dnorm
-#' @export
-se.bscor <- function(m1, m2, sd1, sd2, n1, n2) {
- df1 <- n1 - 1
- df2 <- n2 - 1
- u <- n1/(n1 + n2)
- a <- sqrt(u*(1 - u))/dnorm(qnorm(u))
- s <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
- d <- (m1 - m2)/s
- c <- (df1 + df2)/((n1 + n2)*(u*(1 - u)))
- pbcor <- d/sqrt(d^2 + c)
- bscor <- pbcor*a
- if (bscor > 1) {bscor = .99999}
- if (bscor < -1) {bscor = -.99999}
- se.d <- sqrt(d^2*(1/n1 + 1/n2)/8 + 1/n1 + 1/n2)
- se.pbcor <- (c/(d^2 + c)^(3/2))*se.d  
- se.bscor <- se.pbcor*a  
- out <- t(c(round(bscor, 4), round(se.bscor, 5)))
- colnames(out) <- c("Estimate", "SE")
- rownames(out) <- "Biserial correlation: "
- return(out)
-}
 
 
 # se.propratio2 =============================================================== 
