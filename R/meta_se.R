@@ -713,6 +713,134 @@ se.meanratio.ps <- function(m1, m2, sd1, sd2, cor, n) {
 }
 
 
+# se.oddsratio ===============================================================
+#' Computes the standard error for a log odds ratio 
+#' 
+#'
+#' @description 
+#' Computes a log odds ratio and its standard error using
+#' the frequency counts and sample sizes in a 2-group design. These
+#' frequency counts and sample sizes can be obtained from a 2 x 2 
+#' contingency table. The log odd ratio and its standard error are computed
+#' using a .5 addition to each frequency count of the 2 x 2 contingency table.  
+#' This function is useful in a meta-analysis of odds ratios where some studies
+#' report the sample odds ratio and its standard error and other studies 
+#' only report the frequency counts for a 2 x 2 contingency table. The log odds
+#' ratio and standard error output from this function can be used as input in
+#' the \link[vcmeta]{meta.ave.gen.log} function.
+#' 
+#' 
+#' @param    f1		number of participants who have the outcome in group 1 
+#' @param    f2		number of participants who have the outcome in group 2   
+#' @param    n1		sample size for group 1
+#' @param    n2		sample size for group 2 
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated log odds ratio
+#' * SE - standard error
+#' 
+#' 
+#' @examples
+#' se.oddsratio(36, 50, 21, 50)
+#'
+#' # Should return: 
+#' #                  Estimate        SE
+#' # Log odds ratio:  1.239501 0.4204435
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2015}{vcmeta}
+#' 
+#' 
+#' @export
+se.oddsratio <- function(f1, n1, f2, n2) {
+  log.OR <- log((f1 + .5)*(n2 - f2 + .5)/((f2 + .5)*(n1 - f1 + .5)))
+  se.log.OR <- sqrt(1/(f1 + .5) + 1/(f2 + .5) + 1/(n1 - f1 + .5) + 1/(n2 - f2 + .5))
+  out <- t(c(log.OR, se.log.OR))
+  colnames(out) <- c("Estimate", "SE")
+  rownames(out) <- "Log odds ratio: "
+  return(out)
+}
+
+
+# se.pbcor ==============================================================
+#' Computes the standard error for a point-biserial correlation 
+#' 
+#'
+#' @description
+#' Computes a point-biserial correlation and its standard 
+#' error for two types of point-biserial correlations in 2-group designs
+#' using the estimated means, estimated standard deviations, and sample
+#' sizes. Equality of variances is not assumed. One type of point-biserial
+#' correlation uses an unweighted average of variances and is recommended
+#' for 2-group experimental designs. The other type of point-biserial 
+#' correlation uses a weighted average of variances and is recommended for
+#' 2-group nonexperimental designs with simple random sampling (but not 
+#' stratified random sampling). This function is useful in a meta-analysis
+#' of compatible point-biserial correlations where some studies used a 
+#' 2-group experimental design and other studies used a 2-group 
+#' nonexperimental design. The effect size estimate and standard error 
+#' output from this function can  be used as input in the
+#' \link[vcmeta]{meta.ave.cor.gen} function.
+#'
+#' 
+#' @param    m1		estimated mean for group 1 
+#' @param    m2		estimated mean for group 2 
+#' @param    sd1	estimated standard deviation for group 1
+#' @param    sd2	estimated standard deviation for group 2
+#' @param    n1		sample size for group 1
+#' @param    n2		sample size for group 2
+#' @param    type		
+#' * set to 1 for weighted variance average
+#' * set to 2 for unweighted variance average
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated point-biserial correlation
+#' * SE - standard error
+#' 
+#' 
+#' @examples
+#' se.pbcor(21.9, 16.1, 3.82, 3.21, 40, 40, 1)
+#'
+#' #  Should return: 
+#' #                              Estimate      SE
+#' #  Point-biserial correlation:    0.635 0.05981
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2020b}{vcmeta}
+#' 
+#' 
+#' @export
+se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
+  df1 <- n1 - 1
+  df2 <- n2 - 1
+  if (type == 1) {
+    u <- n1/(n1 + n2)
+    s <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
+    d <- (m1 - m2)/s
+    c <- 1/(u*(1 - u))
+    cor <- d/sqrt(d^2 + c)
+    se.d <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
+    se.cor <- (c/(d^2 + c)^(3/2))*se.d                                                
+  } else {
+    s <- sqrt((sd1^2 + sd2^2)/2)
+    d <- (m1 - m2)/s
+    cor <- d/sqrt(d^2 + 4)
+    se.d <- sqrt(d^2*(sd1^4/df1 + sd2^4/df2)/(8*s^4) + (sd1^2/df1 + sd2^2/df2)/s^2) 
+    se.cor <- (4/(d^2 + 4)^(3/2))*se.d                                                
+  }
+  out <- t(c(round(cor, 4), round(se.cor, 5)))
+  colnames(out) <- c("Estimate", "SE")
+  rownames(out) <- "Point-biserial correlation: "
+  return(out)
+}
+
+
 # se.prop2 =================================================================== 
 #' Computes the estimate and standard error for a 2-group proportion 
 #' difference
@@ -922,6 +1050,100 @@ se.propratio.ps <- function(f00, f01, f10, f11) {
  colnames(out) <- c("Estimate", "SE")
  rownames(out) <- "Log proportion ratio: "
  return(out)
+}
+
+
+# se.semipart ================================================================
+#' Computes the standard error for a semipartial correlation 
+#' 
+#'
+#' @description
+#' Computes the standard error of a semipartial correlation using the 
+#' estimated semipartial correlation, sample size, and squared multiple 
+#' correlation for the full model. The full model includes the independent 
+#' variable of interest and all control variables. The effect size estimate
+#' and standard error output from this function can be used as input in the
+#' \link[vcmeta]{meta.ave.cor.gen} function in applications where a 
+#' combination of different types of compatible correlations are used 
+#' in the meta-analysis. 
+#' 
+#' 
+#' @param    cor	estimated semipartial correlation  
+#' @param    r2  estimated squared multiple correlation for a model that
+#' includes the IV and all control variables
+#' @param    n		sample size
+#'   
+#'   
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - semipartial correlation (from input)
+#' * SE - standard error
+#' 
+#' 
+#' @examples
+#' se.semipart(.454, .25, 60)
+#'
+#' # Should return: 
+#' #                           Estimate      SE
+#' # Semipartial correlation:     0.454 0.10298
+#' 
+#' 
+#' @export
+se.semipart <- function(cor, r2, n) {
+ r0 <- r2 - cor^2
+ a <- r2^2 - 2*r2 + r0 - r0^2 + 1
+ se <- sqrt(a/(n - 3))
+ out <- t(c(round(cor, 4), round(se, 5)))
+ colnames(out) <- c("Estimate", "SE")
+ rownames(out) <- "Semipartial correlation: "
+ return(out)
+}
+
+
+# se.slope =================================================================
+#' Computes a slope and standard error
+#' 
+#'
+#' @description 
+#' Computes a slope and its standard error for a simple linear regression
+#' model (random-x model) using the estimated Pearson correlation and the
+#' estimated standard deviations of the response variable and predictor
+#' variable. This function is useful in a meta-analysis of slopes of a 
+#' simple linear regression model where some studies report the Pearson
+#' correlation but not the slope.
+#' 
+#'
+#' @param    cor		estimated Pearson correlation  
+#' @param    sdy		estimated standard deviation of the response variable
+#' @param    sdx		estimated standard deviation of the predictor variable
+#' @param    n		  sample size
+#'   
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated slope
+#' * SE - standard error
+#' 
+#' 
+#' @examples
+#' se.slope(.392, 4.54, 2.89, 60)
+#'
+#' # Should return: 
+#' #          Estimate        SE
+#' # Slope:  0.6158062 0.1897647
+#' 
+#' 
+#' @references
+#' \insertRef{Snedecor1980}{vcmeta}
+#'
+#'
+#' @export
+se.slope <- function(cor, sdy, sdx, n) {
+  slope <- cor*sdy/sdx
+  se.slope <- sqrt((sdy^2*(1 - cor^2)*(n - 1))/(sdx^2*(n - 1)*(n - 2)))
+  out <- t(c(slope, se.slope))
+  colnames(out) <- c("Estimate", "SE")
+  rownames(out) <- "Slope: "
+  return(out)
 }
 
 
@@ -1140,229 +1362,6 @@ se.spear <- function(cor, n) {
 }
 
 
-# se.semipart ================================================================
-#' Computes the standard error for a semipartial correlation 
-#' 
-#'
-#' @description
-#' Computes the standard error of a semipartial correlation using the 
-#' estimated semipartial correlation, sample size, and squared multiple 
-#' correlation for the full model. The full model includes the independent 
-#' variable of interest and all control variables. The effect size estimate
-#' and standard error output from this function can be used as input in the
-#' \link[vcmeta]{meta.ave.cor.gen} function in applications where a 
-#' combination of different types of compatible correlations are used 
-#' in the meta-analysis. 
-#' 
-#' 
-#' @param    cor	estimated semipartial correlation  
-#' @param    r2  estimated squared multiple correlation for a model that
-#' includes the IV and all control variables
-#' @param    n		sample size
-#'   
-#'   
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - semipartial correlation (from input)
-#' * SE - standard error
-#' 
-#' 
-#' @examples
-#' se.semipart(.454, .25, 60)
-#'
-#' # Should return: 
-#' #                           Estimate      SE
-#' # Semipartial correlation:     0.454 0.10298
-#' 
-#' 
-#' @export
-se.semipart <- function(cor, r2, n) {
- r0 <- r2 - cor^2
- a <- r2^2 - 2*r2 + r0 - r0^2 + 1
- se <- sqrt(a/(n - 3))
- out <- t(c(round(cor, 4), round(se, 5)))
- colnames(out) <- c("Estimate", "SE")
- rownames(out) <- "Semipartial correlation: "
- return(out)
-}
-
-
-# se.pbcor ==============================================================
-#' Computes the standard error for a point-biserial correlation 
-#' 
-#'
-#' @description
-#' Computes a point-biserial correlation and its standard 
-#' error for two types of point-biserial correlations in 2-group designs
-#' using the estimated means, estimated standard deviations, and sample
-#' sizes. Equality of variances is not assumed. One type of point-biserial
-#' correlation uses an unweighted average of variances and is recommended
-#' for 2-group experimental designs. The other type of point-biserial 
-#' correlation uses a weighted average of variances and is recommended for
-#' 2-group nonexperimental designs with simple random sampling (but not 
-#' stratified random sampling). This function is useful in a meta-analysis
-#' of compatible point-biserial correlations where some studies used a 
-#' 2-group experimental design and other studies used a 2-group 
-#' nonexperimental design. The effect size estimate and standard error 
-#' output from this function can  be used as input in the
-#' \link[vcmeta]{meta.ave.cor.gen} function.
-#'
-#' 
-#' @param    m1		estimated mean for group 1 
-#' @param    m2		estimated mean for group 2 
-#' @param    sd1	estimated standard deviation for group 1
-#' @param    sd2	estimated standard deviation for group 2
-#' @param    n1		sample size for group 1
-#' @param    n2		sample size for group 2
-#' @param    type		
-#' * set to 1 for weighted variance average
-#' * set to 2 for unweighted variance average
-#' 
-#' 
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - estimated point-biserial correlation
-#' * SE - standard error
-#' 
-#' 
-#' @examples
-#' se.pbcor(21.9, 16.1, 3.82, 3.21, 40, 40, 1)
-#'
-#' #  Should return: 
-#' #                              Estimate      SE
-#' #  Point-biserial correlation:    0.635 0.05981
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2020b}{vcmeta}
-#' 
-#' 
-#' @export
-se.pbcor <- function(m1, m2, sd1, sd2, n1, n2, type) {
-  df1 <- n1 - 1
-  df2 <- n2 - 1
-  if (type == 1) {
-    u <- n1/(n1 + n2)
-    s <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
-    d <- (m1 - m2)/s
-    c <- 1/(u*(1 - u))
-    cor <- d/sqrt(d^2 + c)
-    se.d <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
-    se.cor <- (c/(d^2 + c)^(3/2))*se.d                                                
-  } else {
-    s <- sqrt((sd1^2 + sd2^2)/2)
-    d <- (m1 - m2)/s
-    cor <- d/sqrt(d^2 + 4)
-    se.d <- sqrt(d^2*(sd1^4/df1 + sd2^4/df2)/(8*s^4) + (sd1^2/df1 + sd2^2/df2)/s^2) 
-    se.cor <- (4/(d^2 + 4)^(3/2))*se.d                                                
-  }
-  out <- t(c(round(cor, 4), round(se.cor, 5)))
-  colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- "Point-biserial correlation: "
-  return(out)
-}
-
-
-# se.oddsratio ===============================================================
-#' Computes the standard error for a log odds ratio 
-#' 
-#'
-#' @description 
-#' Computes a log odds ratio and its standard error using
-#' the frequency counts and sample sizes in a 2-group design. These
-#' frequency counts and sample sizes can be obtained from a 2 x 2 
-#' contingency table. The log odd ratio and its standard error are computed
-#' using a .5 addition to each frequency count of the 2 x 2 contingency table.  
-#' This function is useful in a meta-analysis of odds ratios where some studies
-#' report the sample odds ratio and its standard error and other studies 
-#' only report the frequency counts for a 2 x 2 contingency table. The log odds
-#' ratio and standard error output from this function can be used as input in
-#' the \link[vcmeta]{meta.ave.gen.log} function.
-#' 
-#' 
-#' @param    f1		number of participants who have the outcome in group 1 
-#' @param    f2		number of participants who have the outcome in group 2   
-#' @param    n1		sample size for group 1
-#' @param    n2		sample size for group 2 
-#' 
-#' 
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - estimated log odds ratio
-#' * SE - standard error
-#' 
-#' 
-#' @examples
-#' se.oddsratio(36, 50, 21, 50)
-#'
-#' # Should return: 
-#' #                  Estimate        SE
-#' # Log odds ratio:  1.239501 0.4204435
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2015}{vcmeta}
-#' 
-#' 
-#' @export
-se.oddsratio <- function(f1, n1, f2, n2) {
-  log.OR <- log((f1 + .5)*(n2 - f2 + .5)/((f2 + .5)*(n1 - f1 + .5)))
-  se.log.OR <- sqrt(1/(f1 + .5) + 1/(f2 + .5) + 1/(n1 - f1 + .5) + 1/(n2 - f2 + .5))
-  out <- t(c(log.OR, se.log.OR))
-  colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- "Log odds ratio: "
-  return(out)
-}
-
-
-# se.slope =================================================================
-#' Computes a slope and standard error
-#' 
-#'
-#' @description 
-#' Computes a slope and its standard error for a simple linear regression
-#' model (random-x model) using the estimated Pearson correlation and the
-#' estimated standard deviations of the response variable and predictor
-#' variable. This function is useful in a meta-analysis of slopes of a 
-#' simple linear regression model where some studies report the Pearson
-#' correlation but not the slope.
-#' 
-#'
-#' @param    cor		estimated Pearson correlation  
-#' @param    sdy		estimated standard deviation of the response variable
-#' @param    sdx		estimated standard deviation of the predictor variable
-#' @param    n		  sample size
-#'   
-#' @return
-#' Returns a one-row matrix:
-#' * Estimate - estimated slope
-#' * SE - standard error
-#' 
-#' 
-#' @examples
-#' se.slope(.392, 4.54, 2.89, 60)
-#'
-#' # Should return: 
-#' #          Estimate        SE
-#' # Slope:  0.6158062 0.1897647
-#' 
-#' 
-#' @references
-#' \insertRef{Snedecor1980}{vcmeta}
-#'
-#'
-#' @export
-se.slope <- function(cor, sdy, sdx, n) {
-  slope <- cor*sdy/sdx
-  se.slope <- sqrt((sdy^2*(1 - cor^2)*(n - 1))/(sdx^2*(n - 1)*(n - 2)))
-  out <- t(c(slope, se.slope))
-  colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- "Slope: "
-  return(out)
-}
-
-
-
 #  se.tetra ==================================================================
 #' Computes the standard error for a tetrachoric correlation approximation  
 #'
@@ -1424,9 +1423,4 @@ se.tetra <- function(f00, f01, f10, f11) {
  rownames(out) <- "Tetrachoric: "
  return(out)
 }
-
-
-
-
-
 
