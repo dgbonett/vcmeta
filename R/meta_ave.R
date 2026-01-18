@@ -1136,12 +1136,12 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
 #' meta.ave.cronbach(.05, n, rel, 10, bystudy = TRUE)
 #'
 #' # Should return:
-#' #         Estimate          SE        LL        UL
-#' # Average   0.8975 0.003256081 0.8911102 0.9038592
-#' # Study 1   0.9100 0.005566064 0.8985763 0.9204108
-#' # Study 2   0.8900 0.007579900 0.8743616 0.9041013
-#' # Study 3   0.9000 0.006391375 0.8868623 0.9119356
-#' # Study 4   0.8900 0.006297549 0.8771189 0.9018203
+#' #         Estimate      SE     LL     UL
+#' # Average   0.8975 0.00326 0.8911 0.9039
+#' # Study 1   0.9100 0.00557 0.8986 0.9204
+#' # Study 2   0.8900 0.00758 0.8744 0.9041
+#' # Study 3   0.9000 0.00639 0.8869 0.9119
+#' # Study 4   0.8900 0.00630 0.8771 0.9018
 #' 
 #' 
 #' @references
@@ -1161,7 +1161,7 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
   log.ave <- log(1 - ave.rel) - log(hn/(hn - 1))
   ul <- 1 - exp(log.ave - z*se.ave/(1 - ave.rel))
   ll <- 1 - exp(log.ave + z*se.ave/(1 - ave.rel))
-  out <- cbind(ave.rel, se.ave, ll, ul)
+  out <- cbind(round(ave.rel, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
   row <- "Average"
   if (bystudy) {
     se.rel <- sqrt(2*r*(1 - rel)^2/((r - 1)*(n - 2)))
@@ -1170,7 +1170,7 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
     ll <- 1 - exp(log.rel + z*se.rel/(1 - rel))
     row2 <- t(t(paste(rep("Study", m), seq(1,m))))
     row <- rbind(row, row2)
-    out2 <- cbind(rel, se.rel, ll, ul)
+    out2 <- cbind(round(rel, 4), round(se.rel, 5), round(ll, 4), round(ul, 4))
     out <- rbind(out, out2)
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
@@ -1555,11 +1555,11 @@ meta.ave.prop.ps <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' meta.ave.agree(.05, f11, f12, f21, f22, bystudy = TRUE)
 #' 
 #' # Should return:
-#' #          Estimate         SE        LL        UL
-#' # Average 0.7843250 0.03540254 0.7149373 0.8537127
-#' # Study 1 0.7446809 0.06883919 0.6097585 0.8796032
-#' # Study 2 0.8512397 0.04770701 0.7577356 0.9447437
-#' # Study 3 0.6981132 0.06954284 0.5618117 0.8344147
+#' #        Estimate      SE     LL     UL
+#' # Average  0.7843 0.03540 0.7149 0.8537
+#' # Study 1  0.7447 0.06884 0.6098 0.8796
+#' # Study 2  0.8512 0.04771 0.7577 0.9447
+#' # Study 3  0.6981 0.06954 0.5618 0.8344
 #' 
 #' 
 #' @references 
@@ -1579,7 +1579,7 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
   se.ave <- sqrt(sum(var.g)/m^2)
   ll <- ave.g - z*se.ave
   ul <- ave.g + z*se.ave
-  out <- cbind(ave.g, se.ave, ll, ul)
+  out <- cbind(round(ave.g, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
   row <- "Average"
   if (bystudy) {
     p0 <- (f11 + f22 + 2)/(n + 4)
@@ -1589,7 +1589,7 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
     ul <- g + z*se 
     row2 <- t(t(paste(rep("Study", m), seq(1,m))))
     row <- rbind(row, row2)
-    out2 <- cbind(g, se, ll, ul)
+    out2 <- cbind(round(g, 4), round(se, 5), round(ll, 4), round(ul, 4))
     out <- rbind(out, out2)
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
@@ -1992,13 +1992,13 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
 #' meta.ave.cor.gen(.05, cor, se, bystudy = TRUE)
 #' 
 #' # Should return:
-#' #         Estimate         SE        LL        UL
-#' # Average   0.4222 0.03853362 0.3438560 0.4947070
-#' # Study 1   0.3960 0.10400000 0.1753200 0.5787904
-#' # Study 2   0.4540 0.06400000 0.3200675 0.5701415
-#' # Study 3   0.4090 0.05800000 0.2893856 0.5160375
-#' # Study 4   0.5020 0.10700000 0.2651183 0.6817343
-#' # Study 5   0.3500 0.08600000 0.1716402 0.5061435
+#' #         Estimate      SE     LL     UL
+#' # Average   0.4222 0.03853 0.3439 0.4947
+#' # Study 1   0.3960 0.10400 0.1753 0.5788
+#' # Study 2   0.4540 0.06400 0.3201 0.5701
+#' # Study 3   0.4090 0.05800 0.2894 0.5160
+#' # Study 4   0.5020 0.10700 0.2651 0.6817
+#' # Study 5   0.3500 0.08600 0.1716 0.5061
 #' 
 #' 
 #' @references
@@ -2017,7 +2017,7 @@ meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
   ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
   ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out <- cbind(ave.cor, se.ave, ll, ul)
+  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
   row <- "Average"
   if (bystudy) {
     se.z <- se/(1 - cor^2)
@@ -2028,7 +2028,7 @@ meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
     ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
     row2 <- t(t(paste(rep("Study", m), seq(1,m))))
     row <- rbind(row, row2)
-    out2 <- cbind(cor, se, ll, ul)
+    out2 <- cbind(round(cor, 4), round(se, 5), round(ll, 4), round(ul, 4))
     out <- rbind(out, out2)
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
