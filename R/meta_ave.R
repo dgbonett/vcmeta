@@ -1,3 +1,86 @@
+#  =============================== Average =================================
+#  meta.ave.agree ==========================================================
+#' Confidence interval for an average G-index agreement coefficient 
+#' 
+#' 
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average G-index of agreement from two or more studies. This function 
+#' assumes that two raters each provide a dichotomous rating to a sample
+#' of objects. As a measure of agreement, the G-index is usually preferred
+#' to Cohen's kappa. 
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
+#'
+#' @param    alpha  	alpha level for 1-alpha confidence
+#' @param    f11    	vector of frequency counts in cell 1,1
+#' @param    f12    	vector of frequency counts in cell 1,2
+#' @param    f21    	vector of frequency counts in cell 2,1
+#' @param    f22    	vector of frequency counts in cell 2,2
+#' @param    bystudy  logical to also return each study estimate (TRUE) or not
+#' 
+#' 
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated effect size
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' f11 <- c(43, 56, 49)
+#' f12 <- c(7, 2, 9)
+#' f21 <- c(3, 5, 5)
+#' f22 <- c(37, 54, 39)
+#' meta.ave.agree(.05, f11, f12, f21, f22, bystudy = TRUE)
+#' 
+#' # Should return:
+#' #        Estimate      SE     LL     UL
+#' # Average  0.7843 0.03540 0.7149 0.8537
+#' # Study 1  0.7447 0.06884 0.6098 0.8796
+#' # Study 2  0.8512 0.04771 0.7577 0.9447
+#' # Study 3  0.6981 0.06954 0.5618 0.8344
+#' 
+#' 
+#' @references 
+#' \insertRef{Bonett2022}{vcmeta}
+#'
+#'
+#' @importFrom stats qnorm
+#' @export
+meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
+  m <- length(f11)
+  z <- qnorm(1 - alpha/2)
+  n <- f11 + f12 + f21 + f22
+  p0 <- (f11 + f22 + 2/m)/(n + 4/m)
+  g <- 2*p0 - 1 
+  ave.g <- sum(g)/m
+  var.g <- 4*p0*(1 - p0)/(n + 4/m)
+  se.ave <- sqrt(sum(var.g)/m^2)
+  ll <- ave.g - z*se.ave
+  ul <- ave.g + z*se.ave
+  out <- cbind(round(ave.g, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
+  row <- "Average"
+  if (bystudy) {
+    p0 <- (f11 + f22 + 2)/(n + 4)
+    g <- 2*p0 - 1 
+    se <- sqrt(4*p0*(1 - p0)/(n + 4))
+    ll <- g - z*se 
+    ul <- g + z*se 
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(round(g, 4), round(se, 5), round(ll, 4), round(ul, 4))
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- row
+  return (out)
+}
+
+
 #  meta.ave.mean2 ==========================================================
 #' Confidence interval for an average mean difference from 2-group studies 
 #'
@@ -8,6 +91,8 @@
 #' adjustment to the degrees of freedom is used to improve the accuracy of the
 #' confidence intervals. Equality of variances within or across studies is not
 #' assumed.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
 #'  
 #' @param alpha  	 alpha level for 1-alpha confidence
@@ -98,6 +183,8 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 #' Square root unweighted variances, square root weighted variances, and 
 #' single group standard deviation are options for the standardizer. 
 #' Equality of variances within or across studies is not assumed.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param alpha	  alpha level for 1-alpha confidence
@@ -219,6 +306,8 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
 #' the accuracy of the confidence interval for the average effect size. 
 #' Equality of variances within or across studies is not assumed.
 #'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param   alpha		 alpha level for 1-alpha confidence
 #' @param   m1		   vector of estimated means for measurement 1 
@@ -308,6 +397,8 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' studies. Squrare root Unweighted variances and a single condition standard
 #' deviation are options for the standardizer. Equality of variances within
 #' or across studies is not assumed.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param   alpha		alpha level for 1-alpha confidence
@@ -417,7 +508,10 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
 #' Computes the estimate, standard error, and confidence interval for a 
 #' geometric average mean ratio from two or more 2-group studies. A Satterthwaite 
 #' adjustment to the degrees of freedom is used to improve the accuracy of the
-#' confidence intervals. Equality of variances within or across studies is not assumed.
+#' confidence intervals. Equality of variances within or across studies is not
+#' assumed.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param   alpha  	 alpha level for 1-alpha confidence
@@ -514,6 +608,8 @@ meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 #' accuracy of the confidence interval for the average effect size. Equality 
 #' of variances within or across studies is not assumed.
 #'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param   alpha		 alpha level for 1-alpha confidence
 #' @param   m1		   vector of estimated means for measurement 1
@@ -609,6 +705,8 @@ meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRU
 #' sample correlations must be all Pearson correlations or all partial
 #' correlations. Use the meta.ave.cor.gen function to meta-analyze any 
 #' combination of Pearson, partial, or Spearman correlations.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param alpha	   alpha level for 1-alpha confidence
@@ -688,6 +786,8 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
 #' average slope coefficient in a simple linear regression model from two
 #' or more studies. A Satterthwaite adjustment to the degrees of freedom
 #' is used to improve the accuracy of the confidence interval.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha 	alpha level for 1-alpha confidence
@@ -767,6 +867,8 @@ meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
 #' average slope coefficient in a general linear model (ANOVA, ANCOVA,
 #' multiple regression) or a path model from two or more studies.
 #'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param alpha    alpha level for 1-alpha confidence
 #' @param n        vector of sample sizes 
@@ -841,6 +943,8 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
 #' correlation is preferred to the Pearson correlation if the relation 
 #' between the two quantitative variables is monotonic rather than linear
 #' or if the bivariate normality assumption is not plausible.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param    alpha	  alpha level for 1-alpha confidence
@@ -926,6 +1030,8 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #' all point-biserial correlations to be of the same type.  Use the
 #' meta.ave.cor.gen function to meta-analyze any combination of biserial
 #' correlation types. 
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
 #' 
 #' @param    alpha 	alpha level for 1-alpha confidence
@@ -1037,6 +1143,8 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average semipartial correlation from two or more studies. 
 #'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    n     	vector of sample sizes 
@@ -1113,6 +1221,8 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average Cronbach reliability coefficient from two or more studies. 
 #'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    n     	vector of sample sizes 
@@ -1186,6 +1296,8 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
 #' geometric average odds ratio from two or more studies. 
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
@@ -1271,6 +1383,8 @@ meta.ave.oddsratio <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
 #' geometric average proportion ratio from two or more studies. 
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
@@ -1362,6 +1476,8 @@ meta.ave.propratio2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average proportion difference from two or more studies. 
 #'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
 #' @param    f1     	vector of group 1 frequency counts
@@ -1447,6 +1563,8 @@ meta.ave.prop2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average proportion difference from two or more studies. 
 #'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param    alpha  	alpha level for 1-alpha confidence
 #' @param    f11    	vector of frequency counts in cell 1,1
@@ -1518,86 +1636,6 @@ meta.ave.prop.ps <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 }
 
 
-#  meta.ave.agree ==========================================================
-#' Confidence interval for an average G-index agreement coefficient 
-#' 
-#' 
-#' @description
-#' Computes the estimate, standard error, and confidence interval for an 
-#' average G-index of agreement from two or more studies. This function 
-#' assumes that two raters each provide a dichotomous rating to a sample
-#' of objects. As a measure of agreement, the G-index is usually preferred
-#' to Cohen's kappa.
-#'
-#'
-#' @param    alpha  	alpha level for 1-alpha confidence
-#' @param    f11    	vector of frequency counts in cell 1,1
-#' @param    f12    	vector of frequency counts in cell 1,2
-#' @param    f21    	vector of frequency counts in cell 2,1
-#' @param    f22    	vector of frequency counts in cell 2,2
-#' @param    bystudy  logical to also return each study estimate (TRUE) or not
-#' 
-#' 
-#' @return 
-#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
-#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
-#' * Estimate - estimated effect size
-#' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
-#' 
-#' 
-#' @examples
-#' f11 <- c(43, 56, 49)
-#' f12 <- c(7, 2, 9)
-#' f21 <- c(3, 5, 5)
-#' f22 <- c(37, 54, 39)
-#' meta.ave.agree(.05, f11, f12, f21, f22, bystudy = TRUE)
-#' 
-#' # Should return:
-#' #        Estimate      SE     LL     UL
-#' # Average  0.7843 0.03540 0.7149 0.8537
-#' # Study 1  0.7447 0.06884 0.6098 0.8796
-#' # Study 2  0.8512 0.04771 0.7577 0.9447
-#' # Study 3  0.6981 0.06954 0.5618 0.8344
-#' 
-#' 
-#' @references 
-#' \insertRef{Bonett2022}{vcmeta}
-#'
-#'
-#' @importFrom stats qnorm
-#' @export
-meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
-  m <- length(f11)
-  z <- qnorm(1 - alpha/2)
-  n <- f11 + f12 + f21 + f22
-  p0 <- (f11 + f22 + 2/m)/(n + 4/m)
-  g <- 2*p0 - 1 
-  ave.g <- sum(g)/m
-  var.g <- 4*p0*(1 - p0)/(n + 4/m)
-  se.ave <- sqrt(sum(var.g)/m^2)
-  ll <- ave.g - z*se.ave
-  ul <- ave.g + z*se.ave
-  out <- cbind(round(ave.g, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
-  row <- "Average"
-  if (bystudy) {
-    p0 <- (f11 + f22 + 2)/(n + 4)
-    g <- 2*p0 - 1 
-    se <- sqrt(4*p0*(1 - p0)/(n + 4))
-    ll <- g - z*se 
-    ul <- g + z*se 
-    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
-    row <- rbind(row, row2)
-    out2 <- cbind(round(g, 4), round(se, 5), round(ll, 4), round(ul, 4))
-    out <- rbind(out, out2)
-  }
-  colnames(out) <- c("Estimate", "SE", "LL", "UL")
-  rownames(out) <- row
-  return (out)
-}
-
-
 # meta.ave.var ==========================================================
 #' Confidence interval for an average variance
 #'
@@ -1609,6 +1647,8 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' size planning. The confidence intervals assume normality, and this
 #' function is not recommended if the variances have been estimated
 #' from leptokurtic data.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
 #'  
 #' @param alpha  	 alpha level for 1-alpha confidence
@@ -1675,6 +1715,8 @@ meta.ave.var <- function(alpha, var, n, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average of any type of parameter from two or more studies. 
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
 #' 
 #' @param    alpha  	alpha level for 1-alpha confidence
@@ -1761,6 +1803,8 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #' included in the vcmeta package primarily for classroom  demonstrations to 
 #' illustrate the problematic characteristics of the constant coefficient 
 #' meta-analysis model.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'    
 #' 
 #' @param    alpha   	  alpha level for 1-alpha confidence
@@ -1869,6 +1913,8 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #' in the vcmeta package primarily for classroom demonstrations to illustrate
 #' the problimatic characteristics of the random coefficient meta-analysis
 #' model.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha    alpha level for 1-alpha confidence
@@ -1969,6 +2015,8 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
 #' Spearman, semipartial, factor correlation, gamma coefficient, Somers d
 #' coefficient, tetrachoric, point-biserial, biserial, correlation between
 #' latent factors, etc.).
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param alpha	   alpha level for 1-alpha confidence
@@ -2046,6 +2094,8 @@ meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average of any type of log-transformed parameter (e.g., log mean ratio,
 #' log proportion ratio, log odds ratio) from two or more studies. 
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
 #' 
 #' @param    alpha  	alpha level for 1-alpha confidence
