@@ -394,7 +394,7 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average standardized mean difference from two or more paired-samples
-#' studies. Squrare root Unweighted variances and a single condition standard
+#' studies. Squrare root unweighted variances and a single condition standard
 #' deviation are options for the standardizer. Equality of variances within
 #' or across studies is not assumed.
 #'
@@ -785,7 +785,8 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average slope coefficient in a simple linear regression model from two
 #' or more studies. A Satterthwaite adjustment to the degrees of freedom
-#' is used to improve the accuracy of the confidence interval.
+#' is used to improve the accuracy of the confidence interval for the
+#' average slope.
 #'
 #' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #' 
@@ -865,7 +866,9 @@ meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average slope coefficient in a general linear model (ANOVA, ANCOVA,
-#' multiple regression) or a path model from two or more studies.
+#' multiple regression) or a path model from two or more studies.  A 
+#' Satterthwaite adjustment to the degrees of freedom is used to improve 
+#' the accuracy of the confidence interval for the average slope.
 #'
 #' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
