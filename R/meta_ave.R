@@ -125,6 +125,14 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' # Study 2    0.650 0.04201 0.5594 0.7252
 #' # Study 3    0.600 0.08000 0.4171 0.7362
 #' # Study 4    0.450 0.13677 0.1374 0.6811
+#'
+#' n <- c(150, 125, 80)
+#' cor <- c(.396, .454, .427)
+#' meta.ave.cor(.05, n, cor, 2, bystudy = TRUE)
+#' 
+#' # Should return:
+#' #         Estimate      SE     LL     UL
+#' # Average   0.4257 0.04603 0.3314 0.5115
 #' 
 #' 
 #' @references
@@ -176,7 +184,9 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
 #' average correlation. Any type of correlation can be used (e.g., Pearson,
 #' Spearman, semipartial, factor correlation, gamma coefficient, Somers d
 #' coefficient, tetrachoric, point-biserial, biserial, correlation between
-#' latent factors, etc.).
+#' latent factors, etc.). Each study should have the same type of correlation.
+#' If different types of correlations are used, they are assumed to be
+#' compatible.
 #'
 #' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #' 
@@ -940,6 +950,18 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
 #' # Study 1   0.6350 0.06317 0.4842 0.7370
 #' # Study 2   0.6165 0.07774 0.4260 0.7385
 #' # Study 3   0.5812 0.09192 0.3551 0.7236
+#'
+#' m1 <- c(41.2, 43.2, 49.1, 40.8)
+#' m2 <- c(36.4, 37.1, 35.9, 31.4)
+#' sd1 <- c(4.92, 4.75, 4.87, 5.01)
+#' sd2 <- c(4.35, 4.24, 4.12, 4.87)
+#' n1 <- c(42, 58, 62, 39)
+#' n2 <- c(67, 70, 84, 45)
+#' meta.ave.pbcor(.05, m1, m2, sd1, sd2, n1, n2, 1, bystudy = FALSE)
+#' # Should return:
+#' #         Estimate      SE     LL     UL
+#' #        Estimate      SE     LL    UL
+#' # Average   0.6358 0.02661 0.5807 0.685
 #' 
 #' 
 #' @references
@@ -1581,6 +1603,18 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #' # Average  -1.1931 0.15680 -1.5004 -0.8858
 #' # Study 1  -0.6818 0.17738 -1.0295 -0.3342
 #' # Study 2  -1.7722 0.25862 -2.2790 -1.2653
+#'
+#' m1 <- c(23.9, 24.1)
+#' m2 <- c(25.1, 26.9)
+#' sd1 <- c(1.76, 1.58)
+#' sd2 <- c(2.01, 1.76)
+#' cor <- c(.78, .84)
+#' n <- c(25, 30)
+#' meta.ave.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, 0, bystudy = FALSE)
+#' 
+#' # Should return: 
+#' #         Estimate      SE      LL      UL
+#' # Average  -1.1335 0.13996 -1.4078 -0.8591
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1699,6 +1733,18 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
 #' # Study 1   1.6439 0.26290 1.1286 2.1592
 #' # Study 2   1.5661 0.30563 0.9671 2.1652
 #' # Study 3   1.4283 0.32892 0.7836 2.0729
+#'
+#' m1 <- c(41.2, 43.2, 49.1, 40.8)
+#' m2 <- c(36.4, 37.1, 35.9, 31.4)
+#' sd1 <- c(4.92, 4.75, 4.87, 5.01)
+#' sd2 <- c(4.35, 4.24, 4.12, 4.87)
+#' n1 <- c(42, 58, 62, 39)
+#' n2 <- c(67, 70, 84, 45)
+#' meta.ave.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, 3, bystudy = FALSE)
+#'
+#' # Should return: 
+#' #         Estimate      SE     LL     UL
+#' # Average   1.8078 0.11648 1.5795 2.0361
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1846,7 +1892,8 @@ meta.ave.var <- function(alpha, var, n, bystudy = TRUE) {
 #'
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
-#' average of any type of parameter from two or more studies. 
+#' average of any type of parameter from two or more studies. Each study
+#' should have the same type of parameter.
 #'
 #' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
@@ -2153,7 +2200,8 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average of any type of log-transformed parameter (e.g., log mean ratio,
-#' log proportion ratio, log odds ratio) from two or more studies. 
+#' log proportion ratio, log odds ratio) from two or more studies, but
+#' each study must have the same type of parameter.
 #'
 #' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
