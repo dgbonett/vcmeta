@@ -48,6 +48,8 @@
 #' @references 
 #' \insertRef{Bonett2022}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @importFrom stats qnorm
 #' @export
@@ -117,6 +119,8 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' 
 #' @references 
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @examples
@@ -213,6 +217,8 @@ meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
 #'
 #' @references 
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @examples
@@ -331,6 +337,8 @@ meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = 
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @examples
@@ -426,6 +434,8 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @examples
@@ -540,6 +550,8 @@ meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy 
 #' @references 
 #' \insertRef{Bonett2020}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @examples
 #' m1 <- c(7.4, 6.9)
@@ -636,6 +648,8 @@ meta.ave.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 #'
 #' @references 
 #' \insertRef{Bonett2020}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @examples
@@ -741,6 +755,8 @@ meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRU
 #' 
 #' @references
 #' \insertRef{Bonett2008a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -825,6 +841,10 @@ meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
 #' # Study 4 1.3417722 0.8456799 -0.3510401 3.034584  58.00
 #' 
 #' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
 #' @importFrom stats qt
 #' @export
 meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
@@ -903,6 +923,10 @@ meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
 #' #  Study 2     1.38 0.7240000 -0.06026664 2.820267  82.00
 #' #  Study 3     1.08 0.3070000  0.47532827 1.684672 247.00
 #' #  Study 4     1.25 0.4930000  0.27623174 2.223768 157.00
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @importFrom stats qt
@@ -982,6 +1006,8 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
 #' 
 #' @references
 #' \insertRef{Bonett2008a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1078,6 +1104,8 @@ meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
 #' 
 #' @references
 #' \insertRef{Bonett2020b}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1181,6 +1209,10 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
 #' # Study 4   0.3900 0.05085 0.2860 0.4849
 #' 
 #' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
 #' @importFrom stats qnorm
 #' @export
 meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
@@ -1258,8 +1290,11 @@ meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
 #' 
 #' 
 #' @references
-#' * \insertRef{Bonett2010}{vcmeta}
-#' * \insertRef{Bonett2015b}{vcmeta}
+#' \insertRef{Bonett2010}{vcmeta}
+#'
+#' \insertRef{Bonett2015b}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' @importFrom stats qnorm
 #' @export
@@ -1349,6 +1384,8 @@ meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
 #'
 #' @references 
 #' \insertRef{Bonett2015}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1436,6 +1473,8 @@ meta.ave.oddsratio <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' 
 #' @references 
 #' \insertRef{Price2008}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1518,6 +1557,8 @@ meta.ave.propratio2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' 
 #' @references
 #' \insertRef{Bonett2014}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1603,6 +1644,8 @@ meta.ave.prop2 <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
 #' 
 #' @references 
 #' \insertRef{Bonett2012}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1681,6 +1724,10 @@ meta.ave.prop.ps <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' # Study 3 34.12000 23.80835 52.98319
 #' 
 #' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
 #' @importFrom stats qnorm
 #' @importFrom stats qchisq
 #' @export
@@ -1754,6 +1801,10 @@ meta.ave.var <- function(alpha, var, n, bystudy = TRUE) {
 #' # Study 6  0.146000 0.2410000 -0.32635132 0.6183513
 #' # Study 7  0.562000 0.2520000  0.06808908 1.0559109
 #' # Study 8  0.904000 0.3180000  0.28073145 1.5272685
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1847,6 +1898,8 @@ meta.ave.gen <- function(alpha, est, se, bystudy = TRUE) {
 #' \insertRef{Hedges1985}{vcmeta}
 #'
 #' \insertRef{Borenstein2009}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @seealso \link[vcmeta]{meta.ave.gen}
@@ -1958,6 +2011,8 @@ meta.ave.gen.cc <- function(alpha, est, se, bystudy = TRUE) {
 #'
 #' \insertRef{Borenstein2009}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @seealso \link[vcmeta]{meta.ave.gen}
 #' 
@@ -2054,6 +2109,8 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
 #' 
 #' @references
 #' \insertRef{Bonett2008a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -2138,6 +2195,10 @@ meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
 #' # Study 3 1.046165 1.478265
 #' 
 #' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#'
+#'
 #' @importFrom stats qnorm
 #' @export
 meta.ave.gen.log <- function(alpha, est, se, bystudy = TRUE) {
