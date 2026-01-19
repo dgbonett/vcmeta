@@ -83,221 +83,248 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 }
 
 
-#  meta.ave.mean2 ==========================================================
-#' Confidence interval for an average mean difference from 2-group studies 
-#'
-#'
+#  meta.ave.cor ==========================================================
+#' Confidence interval for an average Pearson or partial correlation
+#' 
+#' 
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
-#' average mean difference from two or more 2-group studies. A Satterthwaite 
-#' adjustment to the degrees of freedom is used to improve the accuracy of the
-#' confidence intervals. Equality of variances within or across studies is not
-#' assumed.
+#' average Pearson or partial correlation from two or more studies. The 
+#' sample correlations must be all Pearson correlations or all partial
+#' correlations. Use the meta.ave.cor.gen function to meta-analyze any 
+#' combination of Pearson, partial, or Spearman correlations.
 #'
 #' For more details, see Chapter 2 of Bonett (2021, Volume 5).
-#'
-#'  
-#' @param alpha  	 alpha level for 1-alpha confidence
-#' @param m1     	 vector of estimated means for group 1 
-#' @param m2     	 vector of estimated means for group 2 
-#' @param sd1    	 vector of estimated SDs for group 1
-#' @param sd2    	 vector of estimated SDs for group 2
-#' @param n1     	 vector of group 1 sample sizes
-#' @param n2     	 vector of group 2 sample sizes
+#' 
+#' 
+#' @param alpha	   alpha level for 1-alpha confidence
+#' @param n     	 vector of sample sizes 
+#' @param cor   	 vector of estimated correlations 
+#' @param s     	 number of control variables (set to 0 for Pearson)
 #' @param bystudy  logical to also return each study estimate (TRUE) or not
-#'
-#'
+#' 
+#' 
 #' @return 
-#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy 
-#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
-#' * Estimate - estimated effect size
-#' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
-#' * df - degrees of freedom
-#' 
-#' 
-#' @references 
-#' \insertRef{Bonett2009a}{vcmeta}
-#'
-#' \insertRef{Bonett2021}{vcmeta}
-#' 
-#' 
-#' @examples
-#' m1 <- c(7.4, 6.9)
-#' m2 <- c(6.3, 5.7)
-#' sd1 <- c(1.72, 1.53)
-#' sd2 <- c(2.35, 2.04)
-#' n1 <- c(40, 60)
-#' n2 <- c(40, 60)
-#' meta.ave.mean2(.05, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
-#'
-#' # Should return:
-#' #         Estimate        SE        LL       UL     df
-#' # Average     1.15 0.2830183 0.5904369 1.709563 139.41
-#' # Study 1     1.10 0.4604590 0.1819748 2.018025  71.47
-#' # Study 2     1.20 0.3292036 0.5475574 1.852443 109.42
-#' 
-#' 
-#' @importFrom stats qt
-#' @export
-meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
-  m <- length(m1)
-  v1 <- sd1^2
-  v2 <- sd2^2
-  var <- v1/n1 + v2/n2
-  d <- m1 - m2
-  ave <- sum(d)/m
-  se <- sqrt(sum(var)/m^2)
-  u1 <- sum(var)^2
-  u2 <- sum(v1^2/(n1^3 - n1^2) + v2^2/(n2^3 - n2^2))
-  df <- round(u1/u2, 2)
-  t <- qt(1 - alpha/2, df)
-  ll <- ave - t*se
-  ul <- ave + t*se
-  out <- cbind(ave, se, ll, ul, df)
-  row <- "Average"
-  if (bystudy) {
-    se <- sqrt(var)
-    u1 <- var^2
-    u2 <- v1^2/(n1^3 - n1^2) + v2^2/(n2^3 - n2^2)
-    df <- u1/u2
-    t <- qt(1 - alpha/2, df)
-    ll <- d - t*se
-    ul <- d + t*se
-    row2 <- t(t(paste(rep("Study", m), seq(1, m))))
-    row <- rbind(row, row2)
-    out2 <- cbind(d, se, ll, ul, df)
-    out <- rbind(out, out2)
-  }
-  colnames(out) <- c("Estimate", "SE", "LL", "UL", "df")
-  rownames(out) <- row 
-  return(out)
-}
-
-
-#  meta.ave.stdmean2 ==========================================================
-#' Confidence interval for an average standardized mean difference
-#' from 2-group studies
-#'
-#'
-#' @description
-#' Computes the estimate, standard error, and confidence interval for an 
-#' average standardized mean difference from two or more 2-group studies.
-#' Square root unweighted variances, square root weighted variances, and 
-#' single group standard deviation are options for the standardizer. 
-#' Equality of variances within or across studies is not assumed.
-#'
-#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
-#'
-#'
-#' @param alpha	  alpha level for 1-alpha confidence
-#' @param m1		  vector of estimated means for group 1
-#' @param m2		  vector of estimated means for group 2
-#' @param sd1		  vector of estimated SDs for group 1
-#' @param sd2		  vector of estimated SDs for group 2
-#' @param n1		  vector of group 1 sample sizes
-#' @param n2		  vector of group 2 sample sizes
-#' @param stdzr
-#' * set to 0 for square root unweighted average variance standardizer 
-#' * set to 1 for group 1 SD standardizer 
-#' * set to 2 for group 2 SD standardizer 
-#' * set to 3 for square root weighted average variance standardizer
-#' @param bystudy  logical to also return each study estimate (TRUE) or not
-#'
-#'
-#' @return
 #' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
 #' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
-#'
-#'
-#' @references 
-#' \insertRef{Bonett2009a}{vcmeta}
+#' 
+#' 
+#' @examples
+#' n <- c(55, 190, 65, 35)
+#' cor <- c(.40, .65, .60, .45)
+#' meta.ave.cor(.05, n, cor, 0, bystudy = TRUE)
+#' 
+#' # Should return:
+#' #         Estimate      SE     LL     UL
+#' # Average    0.525 0.05113 0.4177 0.6179
+#' # Study 1    0.400 0.11431 0.1507 0.6015
+#' # Study 2    0.650 0.04201 0.5594 0.7252
+#' # Study 3    0.600 0.08000 0.4171 0.7362
+#' # Study 4    0.450 0.13677 0.1374 0.6811
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2008a}{vcmeta}
 #'
 #' \insertRef{Bonett2021}{vcmeta}
-#'
-#'
-#' @examples
-#' m1 <- c(21.9, 23.1, 19.8)
-#' m2 <- c(16.1, 17.4, 15.0)
-#' sd1 <- c(3.82, 3.95, 3.67)
-#' sd2 <- c(3.21, 3.30, 3.02)
-#' n1 <- c(40, 30, 24)
-#' n2 <- c(40, 28, 25)
-#' meta.ave.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, 0, bystudy = TRUE)
-#'
-#' # Should return: 
-#' #         Estimate      SE     LL     UL
-#' # Average   1.5261 0.17343 1.1862 1.8661
-#' # Study 1   1.6439 0.26290 1.1286 2.1592
-#' # Study 2   1.5661 0.30563 0.9671 2.1652
-#' # Study 3   1.4283 0.32892 0.7836 2.0729
 #' 
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = TRUE) {
-  df1 <- n1 - 1
-  df2 <- n2 - 1
-  m <- length(m1)
+meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
+  m <- length(n)
   z <- qnorm(1 - alpha/2)
-  v1 <- sd1^2
-  v2 <- sd2^2
-  if (stdzr == 0) {
-    s1 <- sqrt((sd1^2 + sd2^2)/2)
-    d <- (m1 - m2)/s1
-    du <- (1 - 3/(4*(n1 + n2) - 9))*d
-    ave <- sum(du)/m
-    var <- d^2*(v1^2/df1 + v2^2/df2)/(8*s1^4) + (v1/df1 + v2/df2)/s1^2
-    se <- sqrt(sum(var)/m^2)
-  } else if (stdzr == 1) { 
-    d <- (m1 - m2)/sd1
-    du <- (1 - 3/(4*n1 - 5))*d
-    ave <- sum(du)/m
-    var <- d^2/(2*df1) + 1/df1 + v2/(df2*v1)
-    se <- sqrt(sum(var)/m^2)
-  } else if (stdzr == 2) {
-    d <- (m1 - m2)/sd2
-    du <- (1 - 3/(4*n2 - 5))*d
-    ave <- sum(du)/m
-    var <- d^2/(2*df2) + 1/df2 + v1/(df1*v2)
-    se <- sqrt(sum(var)/m^2)
-  } else {
-    s2 <- sqrt((df1*v1 + df2*v2)/(df1 + df2))
-    d <- (m1 - m2)/s2
-    du <- (1 - 3/(4*(n1 + n2) - 9))*d
-    ave <- sum(du)/m
-    var <- d^2*(1/df1 + 1/df2)/8 + (v1/n1 + v2/n2)/s2^2
-    se <- sqrt(sum(var)/m^2)
-  }
-  ll <- ave - z*se
-  ul <- ave + z*se
-  out <- cbind(round(ave, 4), round(se, 5), round(ll, 4), round(ul, 4))
+  var.cor <- (1 - cor^2)^2/ (n - 3 - s)
+  ave.cor <- sum(cor)/m
+  se.ave <- sqrt(sum(var.cor)/m^2)
+  z.ave <- log((1 + ave.cor)/(1 - ave.cor))/2
+  ll0 <- z.ave - z*se.ave/(1 - ave.cor^2)
+  ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
+  ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+  ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
   row <- "Average"
   if (bystudy) {
-    if (stdzr == 0) {
-      se <- sqrt(d^2*(v1^2/df1 + v2^2/df2)/(8*s1^4) + (v1/df1 + v2/df2)/s1^2)
-    } else if (stdzr == 1) { 
-      se <- sqrt(d^2/(2*df1) + 1/df1 + v2/(df2*v1))
-    } else if (stdzr == 2) {
-      se <- sqrt(d^2/(2*df2) + 1/df2 + v1/(df1*v2))
-    } else {
-      se <- sqrt(d^2*(1/df1 + 1/df2)/8 + (v1/n1 + v2/n2)/s2^2)
-    }
-    ll <- d - z*se
-    ul <- d + z*se
+    se.cor <- sqrt((1 - cor^2)^2/ (n - 1 - s))
+    se.z <- sqrt(1/(n - 3 - s))
+    z.cor <- log((1 + cor)/(1 - cor))/2
+    ll0 <- z.cor - z*se.z
+    ul0 <- z.cor + z*se.z
+    ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+    ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
     row2 <- t(t(paste(rep("Study", m), seq(1,m))))
     row <- rbind(row, row2)
-    out2 <- cbind(round(d, 4), round(se, 5), round(ll, 4), round(ul, 4))
+    out2 <- cbind(round(cor, 4), round(se.cor, 5), round(ll, 4), round(ul, 4))
     out <- rbind(out, out2)
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- row
-  return(out)
+  return (out)
+}
+
+
+#  meta.ave.cor.gen ==========================================================
+#' Confidence interval for an average correlation of any type
+#' 
+#' 
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average correlation. Any type of correlation can be used (e.g., Pearson,
+#' Spearman, semipartial, factor correlation, gamma coefficient, Somers d
+#' coefficient, tetrachoric, point-biserial, biserial, correlation between
+#' latent factors, etc.).
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#' 
+#' 
+#' @param alpha	   alpha level for 1-alpha confidence
+#' @param cor      vector of estimated correlations 
+#' @param se   	   vector of standard errors 
+#' @param bystudy  logical to also return each study estimate (TRUE) or not
+#' 
+#' 
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated effect size
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' cor <- c(.396, .454, .409, .502, .350)
+#' se <- c(.104, .064, .058, .107, .086)
+#' meta.ave.cor.gen(.05, cor, se, bystudy = TRUE)
+#' 
+#' # Should return:
+#' #         Estimate      SE     LL     UL
+#' # Average   0.4222 0.03853 0.3439 0.4947
+#' # Study 1   0.3960 0.10400 0.1753 0.5788
+#' # Study 2   0.4540 0.06400 0.3201 0.5701
+#' # Study 3   0.4090 0.05800 0.2894 0.5160
+#' # Study 4   0.5020 0.10700 0.2651 0.6817
+#' # Study 5   0.3500 0.08600 0.1716 0.5061
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2008a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
+  m <- length(cor)
+  z <- qnorm(1 - alpha/2)
+  ave.cor <- sum(cor)/m
+  se.ave <- sqrt(sum(se^2)/m^2)
+  z.ave <- log((1 + ave.cor)/(1 - ave.cor))/2
+  ll0 <- z.ave - z*se.ave/(1 - ave.cor^2)
+  ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
+  ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+  ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
+  row <- "Average"
+  if (bystudy) {
+    se.z <- se/(1 - cor^2)
+    z.cor <- log((1 + cor)/(1 - cor))/2
+    ll0 <- z.cor - z*se.z
+    ul0 <- z.cor + z*se.z
+    ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+    ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(round(cor, 4), round(se, 5), round(ll, 4), round(ul, 4))
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- row
+  return (out)
+}
+
+
+#  meta.ave.cronbach ==========================================================
+#' Confidence interval for an average Cronbach alpha reliability 
+#' 
+#' 
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average Cronbach reliability coefficient from two or more studies. 
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
+#'
+#' @param    alpha 	alpha level for 1-alpha confidence
+#' @param    n     	vector of sample sizes 
+#' @param    rel   	vector of sample reliabilities 
+#' @param    r     	number of measurements (e.g., items) used to compute each reliability
+#' @param bystudy   logical to also return each study estimate (TRUE) or not
+#' 
+#' 
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated effect size
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' n <- c(583, 470, 546, 680)
+#' rel <- c(.91, .89, .90, .89)
+#' meta.ave.cronbach(.05, n, rel, 10, bystudy = TRUE)
+#'
+#' # Should return:
+#' #         Estimate      SE     LL     UL
+#' # Average   0.8975 0.00326 0.8911 0.9039
+#' # Study 1   0.9100 0.00557 0.8986 0.9204
+#' # Study 2   0.8900 0.00758 0.8744 0.9041
+#' # Study 3   0.9000 0.00639 0.8869 0.9119
+#' # Study 4   0.8900 0.00630 0.8771 0.9018
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2010}{vcmeta}
+#'
+#' \insertRef{Bonett2015b}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
+  m <- length(n)
+  z <- qnorm(1 - alpha/2)
+  hn <- m/sum(1/n)
+  a <- ((r - 2)*(m - 1))^.25
+  var.rel <- 2*r*(1 - rel)^2/((r - 1)*(n - 2 - a))
+  ave.rel <- sum(rel)/m
+  se.ave <- sqrt(sum(var.rel)/m^2)
+  log.ave <- log(1 - ave.rel) - log(hn/(hn - 1))
+  ul <- 1 - exp(log.ave - z*se.ave/(1 - ave.rel))
+  ll <- 1 - exp(log.ave + z*se.ave/(1 - ave.rel))
+  out <- cbind(round(ave.rel, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
+  row <- "Average"
+  if (bystudy) {
+    se.rel <- sqrt(2*r*(1 - rel)^2/((r - 1)*(n - 2)))
+    log.rel <- log(1 - rel) - log(n/(n - 1))
+    ul <- 1 - exp(log.rel - z*se.rel/(1 - rel))
+    ll <- 1 - exp(log.rel + z*se.rel/(1 - rel))
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(round(rel, 4), round(se.rel, 5), round(ll, 4), round(ul, 4))
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- row
+  return (out)
 }
 
 
@@ -394,118 +421,95 @@ meta.ave.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRUE) {
 }
 
 
-#  meta.ave.stdmean.ps ==========================================================
-#' Confidence interval for an average standardized mean difference from 
-#' paired-samples studies  
-#' 
-#' 
+#  meta.ave.mean2 ==========================================================
+#' Confidence interval for an average mean difference from 2-group studies 
+#'
+#'
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
-#' average standardized mean difference from two or more paired-samples
-#' studies. Squrare root unweighted variances and a single condition standard
-#' deviation are options for the standardizer. Equality of variances within
-#' or across studies is not assumed.
+#' average mean difference from two or more 2-group studies. A Satterthwaite 
+#' adjustment to the degrees of freedom is used to improve the accuracy of the
+#' confidence intervals. Equality of variances within or across studies is not
+#' assumed.
 #'
 #' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #'
+#'  
+#' @param alpha  	 alpha level for 1-alpha confidence
+#' @param m1     	 vector of estimated means for group 1 
+#' @param m2     	 vector of estimated means for group 2 
+#' @param sd1    	 vector of estimated SDs for group 1
+#' @param sd2    	 vector of estimated SDs for group 2
+#' @param n1     	 vector of group 1 sample sizes
+#' @param n2     	 vector of group 2 sample sizes
+#' @param bystudy  logical to also return each study estimate (TRUE) or not
 #'
-#' @param   alpha		alpha level for 1-alpha confidence
-#' @param   m1		  vector of estimated means for measurement 1 
-#' @param   m2		  vector of estimated means for measurement 2 
-#' @param   sd1		  vector of estimated SDs for measurement 1
-#' @param   sd2		  vector of estimated SDs for measurement 2
-#' @param   cor		  vector of estimated correlations for paired measurements
-#' @param   n		    vector of sample sizes
-#' @param   stdzr		
-#' * set to 0 for square root unweighted average variance standardizer 
-#' * set to 1 for measurement 1 SD standardizer 
-#' * set to 2 for measurement 2 SD standardizer 
-#' @param   bystudy  logical to also return each study estimate (TRUE) or not
-#' 
-#' 
+#'
 #' @return 
-#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy 
 #' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
 #' * Estimate - estimated effect size
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
-#'
+#' * df - degrees of freedom
 #' 
-#' @references
+#' 
+#' @references 
 #' \insertRef{Bonett2009a}{vcmeta}
 #'
 #' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @examples
-#' m1 <- c(23.9, 24.1)
-#' m2 <- c(25.1, 26.9)
-#' sd1 <- c(1.76, 1.58)
-#' sd2 <- c(2.01, 1.76)
-#' cor <- c(.78, .84)
-#' n <- c(25, 30)
-#' meta.ave.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, 1, bystudy = TRUE)
+#' m1 <- c(7.4, 6.9)
+#' m2 <- c(6.3, 5.7)
+#' sd1 <- c(1.72, 1.53)
+#' sd2 <- c(2.35, 2.04)
+#' n1 <- c(40, 60)
+#' n2 <- c(40, 60)
+#' meta.ave.mean2(.05, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
+#'
+#' # Should return:
+#' #         Estimate        SE        LL       UL     df
+#' # Average     1.15 0.2830183 0.5904369 1.709563 139.41
+#' # Study 1     1.10 0.4604590 0.1819748 2.018025  71.47
+#' # Study 2     1.20 0.3292036 0.5475574 1.852443 109.42
 #' 
-#' # Should return: 
-#' #         Estimate      SE      LL      UL
-#' # Average  -1.1931 0.15680 -1.5004 -0.8858
-#' # Study 1  -0.6818 0.17738 -1.0295 -0.3342
-#' # Study 2  -1.7722 0.25862 -2.2790 -1.2653
 #' 
-#' 
-#' @importFrom stats qnorm
+#' @importFrom stats qt
 #' @export
-meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy = TRUE) {
-  df <- n - 1
+meta.ave.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE) {
   m <- length(m1)
-  z <- qnorm(1 - alpha/2)
   v1 <- sd1^2
   v2 <- sd2^2
-  vd <- v1 + v2 - 2*cor*sd1*sd2
-  if (stdzr == 0) {
-    s <- sqrt((sd1^2 + sd2^2)/2) 
-    d <- (m1 - m2)/s
-    du <- sqrt((n - 2)/df)*d
-    ave <- sum(du)/m
-    var <- d^2*(v1^2 + v2^2 + 2*cor^2*v1*v2)/(8*df*s^4) + vd/(df*s^2)
-    se <- sqrt(sum(var)/m^2)
-  } 
-  else if (stdzr == 1) { 
-    d <- (m1 - m2)/sd1
-    du <- (1 - 3/(4*df - 1))*d
-    ave <- sum(du)/m
-    var <- d^2/(2*df) + vd/(df*v1)
-    se <- sqrt(sum(var)/m^2)
-  } 
-  else {
-    d <- (m1 - m2)/sd2
-    du <- (1 - 3/(4*df - 1))*d
-    ave <- sum(du)/m
-    var <- d^2/(2*df) + vd/(df*v2)
-    se <- sqrt(sum(var)/m^2)
-  }  
-  ll <- ave - z*se
-  ul <- ave + z*se
-  out <- cbind(round(ave, 4), round(se, 5), round(ll, 4), round(ul, 4))
+  var <- v1/n1 + v2/n2
+  d <- m1 - m2
+  ave <- sum(d)/m
+  se <- sqrt(sum(var)/m^2)
+  u1 <- sum(var)^2
+  u2 <- sum(v1^2/(n1^3 - n1^2) + v2^2/(n2^3 - n2^2))
+  df <- round(u1/u2, 2)
+  t <- qt(1 - alpha/2, df)
+  ll <- ave - t*se
+  ul <- ave + t*se
+  out <- cbind(ave, se, ll, ul, df)
   row <- "Average"
   if (bystudy) {
-    if (stdzr == 0) {
-      se <- sqrt(d^2*(v1^2 + v2^2 + 2*cor^2*v1*v2)/(8*df*s^4) + vd/(df*s^2))
-    } else if (stdzr == 1) { 
-      se <- sqrt(d^2/(2*df) + vd/(df*v1))
-    } else {
-      se <- sqrt(d^2/(2*df) + vd/(df*v2))
-    }
-    ll <- d - z*se
-    ul <- d + z*se
-    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    se <- sqrt(var)
+    u1 <- var^2
+    u2 <- v1^2/(n1^3 - n1^2) + v2^2/(n2^3 - n2^2)
+    df <- u1/u2
+    t <- qt(1 - alpha/2, df)
+    ll <- d - t*se
+    ul <- d + t*se
+    row2 <- t(t(paste(rep("Study", m), seq(1, m))))
     row <- rbind(row, row2)
-    out2 <- cbind(round(d, 4), round(se, 5), round(ll, 4), round(ul, 4))
+    out2 <- cbind(d, se, ll, ul, df)
     out <- rbind(out, out2)
   }
-  colnames(out) <- c("Estimate", "SE", "LL", "UL")
-  rownames(out) <- row
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "df")
+  rownames(out) <- row 
   return(out)
 }
 
@@ -709,27 +713,25 @@ meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRU
 }
 
 
-#  meta.ave.cor ==========================================================
-#' Confidence interval for an average Pearson or partial correlation
-#' 
-#' 
+#  meta.ave.oddsratio =====================================================
+#' Confidence interval for average odds ratio from 2-group studies
+#'  
+#'  
 #' @description
-#' Computes the estimate, standard error, and confidence interval for an 
-#' average Pearson or partial correlation from two or more studies. The 
-#' sample correlations must be all Pearson correlations or all partial
-#' correlations. Use the meta.ave.cor.gen function to meta-analyze any 
-#' combination of Pearson, partial, or Spearman correlations.
+#' Computes the estimate, standard error, and confidence interval for a 
+#' geometric average odds ratio from two or more studies. 
 #'
 #' For more details, see Chapter 2 of Bonett (2021, Volume 5).
-#' 
-#' 
-#' @param alpha	   alpha level for 1-alpha confidence
-#' @param n     	 vector of sample sizes 
-#' @param cor   	 vector of estimated correlations 
-#' @param s     	 number of control variables (set to 0 for Pearson)
-#' @param bystudy  logical to also return each study estimate (TRUE) or not
-#' 
-#' 
+#'
+#'
+#' @param    alpha  	alpha level for 1-alpha confidence
+#' @param    f1     	vector of group 1 frequency counts 
+#' @param    f2     	vector of group 2 frequency counts
+#' @param    n1     	vector of group 1 sample sizes 
+#' @param    n2     	vector of group 2 sample sizes
+#' @param    bystudy  logical to also return each study estimate (TRUE) or not
+#'
+#'  
 #' @return 
 #' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
 #' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
@@ -737,142 +739,64 @@ meta.ave.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, bystudy = TRU
 #' * SE - standard error
 #' * LL - lower limit of the confidence interval
 #' * UL - upper limit of the confidence interval
+#' * exp(Estimate) - the exponentiated estimate
+#' * exp(LL) - lower limit of the exponentiated confidence interval
+#' * exp(UL) - upper limit of the exponentiated confidence interval
 #' 
 #' 
 #' @examples
-#' n <- c(55, 190, 65, 35)
-#' cor <- c(.40, .65, .60, .45)
-#' meta.ave.cor(.05, n, cor, 0, bystudy = TRUE)
+#' n1 <- c(204, 201, 932, 130, 77)
+#' n2 <- c(106, 103, 415, 132, 83)
+#' f1 <- c(24, 40, 93, 14, 5)
+#' f2 <- c(12, 9, 28, 3, 1)
+#' meta.ave.oddsratio(.05, f1, f2, n1, n2, bystudy = TRUE)
 #' 
 #' # Should return:
-#' #         Estimate      SE     LL     UL
-#' # Average    0.525 0.05113 0.4177 0.6179
-#' # Study 1    0.400 0.11431 0.1507 0.6015
-#' # Study 2    0.650 0.04201 0.5594 0.7252
-#' # Study 3    0.600 0.08000 0.4171 0.7362
-#' # Study 4    0.450 0.13677 0.1374 0.6811
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2008a}{vcmeta}
+#' #           Estimate        SE          LL        UL 
+#' # Average 0.86211102 0.2512852  0.36960107 1.3546210
+#' # Study 1 0.02581353 0.3700520 -0.69947512 0.7511022
+#' # Study 2 0.91410487 0.3830515  0.16333766 1.6648721
+#' # Study 3 0.41496672 0.2226089 -0.02133877 0.8512722
+#' # Study 4 1.52717529 0.6090858  0.33338907 2.7209615
+#' # Study 5 1.42849472 0.9350931 -0.40425414 3.2612436
+#' #         exp(Estimate)   exp(LL)   exp(UL)
+#' # Average      2.368155 1.4471572  3.875292
+#' # Study 1      1.026150 0.4968460  2.119335
+#' # Study 2      2.494541 1.1774342  5.284997
+#' # Study 3      1.514320 0.9788873  2.342625
+#' # Study 4      4.605150 1.3956902 15.194925
+#' # Study 5      4.172414 0.6674745 26.081952
+#'
+#'
+#' @references 
+#' \insertRef{Bonett2015}{vcmeta}
 #'
 #' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
 #' @export
-meta.ave.cor <- function(alpha, n, cor, s, bystudy = TRUE) {
-  m <- length(n)
+meta.ave.oddsratio <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
+  m <- length(n1)
   z <- qnorm(1 - alpha/2)
-  var.cor <- (1 - cor^2)^2/ (n - 3 - s)
-  ave.cor <- sum(cor)/m
-  se.ave <- sqrt(sum(var.cor)/m^2)
-  z.ave <- log((1 + ave.cor)/(1 - ave.cor))/2
-  ll0 <- z.ave - z*se.ave/(1 - ave.cor^2)
-  ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
-  ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
-  ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
+  lor <- log((f1 + .5)*(n2 - f2 + .5)/((f2 + .5)*(n1 - f1 + .5)))
+  var.lor <- 1/(f1 + .5) + 1/(f2 + .5) + 1/(n1 - f1 + .5) + 1/(n2 - f2 + .5)
+  ave.lor <- sum(lor)/m
+  se.ave <- sqrt(sum(var.lor)/m^2)
+  ll <- ave.lor - z*se.ave
+  ul <- ave.lor + z*se.ave
+  out <- cbind(ave.lor, se.ave, ll, ul, exp(ave.lor), exp(ll), exp(ul))
   row <- "Average"
   if (bystudy) {
-    se.cor <- sqrt((1 - cor^2)^2/ (n - 1 - s))
-    se.z <- sqrt(1/(n - 3 - s))
-    z.cor <- log((1 + cor)/(1 - cor))/2
-    ll0 <- z.cor - z*se.z
-    ul0 <- z.cor + z*se.z
-    ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
-    ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+    se <- sqrt(var.lor)
+    ll <- lor - z*se
+    ul <- lor + z*se
     row2 <- t(t(paste(rep("Study", m), seq(1,m))))
     row <- rbind(row, row2)
-    out2 <- cbind(round(cor, 4), round(se.cor, 5), round(ll, 4), round(ul, 4))
+    out2 <- cbind(lor, se, ll, ul, exp(lor), exp(ll), exp(ul))
     out <- rbind(out, out2)
   }
-  colnames(out) <- c("Estimate", "SE", "LL", "UL")
-  rownames(out) <- row
-  return (out)
-}
-
-
-#  meta.ave.slope ==========================================================
-#' Confidence interval for an average slope coefficient
-#' 
-#' 
-#' @description
-#' Computes the estimate, standard error, and confidence interval for an 
-#' average slope coefficient in a simple linear regression model from two
-#' or more studies. A Satterthwaite adjustment to the degrees of freedom
-#' is used to improve the accuracy of the confidence interval for the
-#' average slope.
-#'
-#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
-#' 
-#' 
-#' @param    alpha 	alpha level for 1-alpha confidence
-#' @param    n     	vector of sample sizes 
-#' @param    cor   	vector of estimated correlations 
-#' @param    sdy   	vector of estimated SDs of y
-#' @param    sdx   	vector of estimated SDs of x
-#' @param bystudy   logical to also return each study estimate (TRUE) or not
-#' 
-#' 
-#' @return 
-#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
-#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
-#' * Estimate - estimated effect size
-#' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
-#' * df - degrees of freedom
-#' 
-#' 
-#' @examples
-#' n <- c(45, 85, 50, 60)
-#' cor <- c(.24, .35, .16, .20)
-#' sdy <- c(12.2, 14.1, 11.7, 15.9)
-#' sdx <- c(1.34, 1.87, 2.02, 2.37)
-#' meta.ave.slope(.05, n, cor, sdy, sdx, bystudy = TRUE)
-#'
-#' # Should return:
-#' #          Estimate        SE         LL       UL     df
-#' # Average 1.7731542 0.4755417  0.8335021 2.712806 149.48
-#' # Study 1 2.1850746 1.3084468 -0.4536599 4.823809  43.00
-#' # Study 2 2.6390374 0.7262491  1.1945573 4.083518  83.00
-#' # Study 3 0.9267327 0.8146126 -0.7111558 2.564621  48.00
-#' # Study 4 1.3417722 0.8456799 -0.3510401 3.034584  58.00
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2021}{vcmeta}
-#' 
-#' 
-#' @importFrom stats qt
-#' @export
-meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
-  m <- length(n)
-  b <- cor*(sdy/sdx)
-  var.b <- (sdy^2*(1 - cor^2)^2*(n - 1))/(sdx^2*(n - 1)*(n - 2))
-  ave.b <- sum(b)/m
-  se.ave <- sqrt(sum(var.b)/m^2)
-  u1 <- sum(var.b)^2
-  u2 <- sum(var.b^2/(n - 1))
-  df <- round(u1/u2, 2)
-  t <- qt(1 - alpha/2, df)
-  ll <- ave.b - t*se.ave
-  ul <- ave.b + t*se.ave
-  out <- cbind(ave.b, se.ave, ll, ul, df)
-  row <- "Average"
-  if (bystudy) {
-    se.b <- sqrt(var.b)
-    df <- n - 2
-    t <- qt(1 - alpha/2, df)
-    ll <- b - t*se.b
-    ul <- b + t*se.b
-    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
-    row <- rbind(row, row2)
-    out2 <- cbind(b, se.b, ll, ul, df)
-    out <- rbind(out, out2)
-  }
-  colnames(out) <- c("Estimate", "SE", "LL", "UL", "df")
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "exp(Estimate)", "exp(LL)", "exp(UL)")
   rownames(out) <- row
   return (out)
 }
@@ -955,90 +879,6 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
     out <- rbind(out, out2)
   }
   colnames(out) <- c("Estimate", "SE", "LL", "UL", "df")
-  rownames(out) <- row
-  return (out)
-}
-
-
-#  meta.ave.spear ==========================================================
-#' Confidence interval for an average Spearman correlation 
-#' 
-#' 
-#' @description
-#' Computes the estimate, standard error, and confidence interval for an 
-#' average Spearman correlation from two or more studies. The Spearman 
-#' correlation is preferred to the Pearson correlation if the relation 
-#' between the two quantitative variables is monotonic rather than linear
-#' or if the bivariate normality assumption is not plausible.
-#'
-#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
-#'
-#'
-#' @param    alpha	  alpha level for 1-alpha confidence
-#' @param    n     	  vector of sample sizes 
-#' @param    cor   	  vector of estimated Spearman correlations 
-#' @param    bystudy  logical to also return each study estimate (TRUE) or not
-#' 
-#'   
-#' @return 
-#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
-#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
-#' * Estimate - estimated effect size
-#' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
-#' 
-#' 
-#' @examples
-#' n <- c(150, 200, 300, 200, 350)
-#' cor <- c(.14, .29, .16, .21, .23)
-#' meta.ave.spear(.05, n, cor, bystudy = TRUE)
-#'
-#' # Should return:
-#' #         Estimate      SE      LL     UL
-#' # Average    0.206 0.02944  0.1476 0.2629
-#' # Study 1    0.140 0.08071 -0.0215 0.2944
-#' # Study 2    0.290 0.06628  0.1548 0.4146
-#' # Study 3    0.160 0.05671  0.0469 0.2691
-#' # Study 4    0.210 0.06850  0.0719 0.3402
-#' # Study 5    0.230 0.05136  0.1269 0.3282
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2008a}{vcmeta}
-#'
-#' \insertRef{Bonett2021}{vcmeta}
-#' 
-#' 
-#' @importFrom stats qnorm
-#' @export
-meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
-  m <- length(n)
-  z <- qnorm(1 - alpha/2)
-  var.cor <- (1 + cor^2/2)*(1 - cor^2)^2/(n - 3)
-  ave.cor <- sum(cor)/m
-  se.ave <- sqrt(sum(var.cor)/m^2)
-  z.ave <- log((1 + ave.cor)/(1 - ave.cor))/2
-  ll0 <- z.ave - z*se.ave/(1 - ave.cor^2)
-  ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
-  ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
-  ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
-  row <- "Average"
-  if (bystudy) {
-    se.cor <- sqrt((1 + cor^2/2)*(1 - cor^2)^2/(n - 1))
-    se.z <- sqrt((1 + cor^2/2)/(n - 3))
-    z.cor <- log((1 + cor)/(1 - cor))/2
-    ll0 <- z.cor - z*se.z
-    ul0 <- z.cor + z*se.z
-    ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
-    ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
-    row <- rbind(row, row2)
-    out2 <- cbind(round(cor, 4), round(se.cor, 5), round(ll, 4), round(ul, 4))
-    out <- rbind(out, out2)
-  }
-  colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- row
   return (out)
 }
@@ -1163,256 +1003,6 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- row
   return(out)
-}
-
-
-#  meta.ave.semipart ==========================================================
-#' Confidence interval for an average semipartial correlation 
-#' 
-#' 
-#' @description
-#' Computes the estimate, standard error, and confidence interval for an 
-#' average semipartial correlation from two or more studies. 
-#'
-#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
-#'
-#'
-#' @param    alpha 	alpha level for 1-alpha confidence
-#' @param    n     	vector of sample sizes 
-#' @param    cor   	vector of estimated semipartial correlations 
-#' @param    r2  	  vector of squared multiple correlations for a model that
-#' includes the IV and all control variables
-#' @param bystudy   logical to also return each study estimate (TRUE) or not
-#' 
-#' 
-#' @return 
-#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
-#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
-#' * Estimate - estimated effect size
-#' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
-#' 
-#' 
-#' @examples
-#' n <- c(128, 97, 210, 217)
-#' cor <- c(.35, .41, .44, .39)
-#' r2 <- c(.29, .33, .36, .39)
-#' meta.ave.semipart(.05, n, cor, r2, bystudy = TRUE)
-#'
-#' # Should return:
-#' #         Estimate      SE     LL     UL
-#' # Average   0.3975 0.03221 0.3326 0.4587
-#' # Study 1   0.3500 0.07175 0.2023 0.4821
-#' # Study 2   0.4100 0.07886 0.2447 0.5521
-#' # Study 3   0.4400 0.05147 0.3338 0.5351
-#' # Study 4   0.3900 0.05085 0.2860 0.4849
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2021}{vcmeta}
-#' 
-#' 
-#' @importFrom stats qnorm
-#' @export
-meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
-  m <- length(n)
-  z <- qnorm(1 - alpha/2)
-  r0 <- r2 - cor^2
-  var.cor <- (r2^2 - 2*r2 + r0 - r0^2 + 1)/(n - 3)
-  ave.cor <- sum(cor)/m
-  se.ave <- sqrt(sum(var.cor)/m^2)
-  z.ave <- log((1 + ave.cor)/(1 - ave.cor))/2
-  ll0 <- z.ave - z*se.ave/(1 - ave.cor^2)
-  ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
-  ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
-  ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
-  row <- "Average"
-  if (bystudy) {
-    se.cor = sqrt(var.cor)
-    se.z <- se.cor/(1 - cor^2)
-    z.cor <- log((1 + cor)/(1 - cor))/2
-    ll0 <- z.cor - z*se.z
-    ul0 <- z.cor + z*se.z
-    ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
-    ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
-    row <- rbind(row, row2)
-    out2 <- cbind(round(cor, 4), round(se.cor, 5), round(ll, 4), round(ul, 4))
-    out <- rbind(out, out2)
-  }
-  colnames(out) <- c("Estimate", "SE", "LL", "UL")
-  rownames(out) <- row
-  return (out)
-}
-
-
-#  meta.ave.cronbach ==========================================================
-#' Confidence interval for an average Cronbach alpha reliability 
-#' 
-#' 
-#' @description
-#' Computes the estimate, standard error, and confidence interval for an 
-#' average Cronbach reliability coefficient from two or more studies. 
-#'
-#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
-#'
-#'
-#' @param    alpha 	alpha level for 1-alpha confidence
-#' @param    n     	vector of sample sizes 
-#' @param    rel   	vector of sample reliabilities 
-#' @param    r     	number of measurements (e.g., items) used to compute each reliability
-#' @param bystudy   logical to also return each study estimate (TRUE) or not
-#' 
-#' 
-#' @return 
-#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
-#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
-#' * Estimate - estimated effect size
-#' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
-#' 
-#' 
-#' @examples
-#' n <- c(583, 470, 546, 680)
-#' rel <- c(.91, .89, .90, .89)
-#' meta.ave.cronbach(.05, n, rel, 10, bystudy = TRUE)
-#'
-#' # Should return:
-#' #         Estimate      SE     LL     UL
-#' # Average   0.8975 0.00326 0.8911 0.9039
-#' # Study 1   0.9100 0.00557 0.8986 0.9204
-#' # Study 2   0.8900 0.00758 0.8744 0.9041
-#' # Study 3   0.9000 0.00639 0.8869 0.9119
-#' # Study 4   0.8900 0.00630 0.8771 0.9018
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2010}{vcmeta}
-#'
-#' \insertRef{Bonett2015b}{vcmeta}
-#'
-#' \insertRef{Bonett2021}{vcmeta}
-#' 
-#' @importFrom stats qnorm
-#' @export
-meta.ave.cronbach <- function(alpha, n, rel, r, bystudy = TRUE) {
-  m <- length(n)
-  z <- qnorm(1 - alpha/2)
-  hn <- m/sum(1/n)
-  a <- ((r - 2)*(m - 1))^.25
-  var.rel <- 2*r*(1 - rel)^2/((r - 1)*(n - 2 - a))
-  ave.rel <- sum(rel)/m
-  se.ave <- sqrt(sum(var.rel)/m^2)
-  log.ave <- log(1 - ave.rel) - log(hn/(hn - 1))
-  ul <- 1 - exp(log.ave - z*se.ave/(1 - ave.rel))
-  ll <- 1 - exp(log.ave + z*se.ave/(1 - ave.rel))
-  out <- cbind(round(ave.rel, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
-  row <- "Average"
-  if (bystudy) {
-    se.rel <- sqrt(2*r*(1 - rel)^2/((r - 1)*(n - 2)))
-    log.rel <- log(1 - rel) - log(n/(n - 1))
-    ul <- 1 - exp(log.rel - z*se.rel/(1 - rel))
-    ll <- 1 - exp(log.rel + z*se.rel/(1 - rel))
-    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
-    row <- rbind(row, row2)
-    out2 <- cbind(round(rel, 4), round(se.rel, 5), round(ll, 4), round(ul, 4))
-    out <- rbind(out, out2)
-  }
-  colnames(out) <- c("Estimate", "SE", "LL", "UL")
-  rownames(out) <- row
-  return (out)
-}
-
-
-#  meta.ave.oddsratio =====================================================
-#' Confidence interval for average odds ratio from 2-group studies
-#'  
-#'  
-#' @description
-#' Computes the estimate, standard error, and confidence interval for a 
-#' geometric average odds ratio from two or more studies. 
-#'
-#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
-#'
-#'
-#' @param    alpha  	alpha level for 1-alpha confidence
-#' @param    f1     	vector of group 1 frequency counts 
-#' @param    f2     	vector of group 2 frequency counts
-#' @param    n1     	vector of group 1 sample sizes 
-#' @param    n2     	vector of group 2 sample sizes
-#' @param    bystudy  logical to also return each study estimate (TRUE) or not
-#'
-#'  
-#' @return 
-#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
-#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
-#' * Estimate - estimated effect size
-#' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
-#' * exp(Estimate) - the exponentiated estimate
-#' * exp(LL) - lower limit of the exponentiated confidence interval
-#' * exp(UL) - upper limit of the exponentiated confidence interval
-#' 
-#' 
-#' @examples
-#' n1 <- c(204, 201, 932, 130, 77)
-#' n2 <- c(106, 103, 415, 132, 83)
-#' f1 <- c(24, 40, 93, 14, 5)
-#' f2 <- c(12, 9, 28, 3, 1)
-#' meta.ave.oddsratio(.05, f1, f2, n1, n2, bystudy = TRUE)
-#' 
-#' # Should return:
-#' #           Estimate        SE          LL        UL 
-#' # Average 0.86211102 0.2512852  0.36960107 1.3546210
-#' # Study 1 0.02581353 0.3700520 -0.69947512 0.7511022
-#' # Study 2 0.91410487 0.3830515  0.16333766 1.6648721
-#' # Study 3 0.41496672 0.2226089 -0.02133877 0.8512722
-#' # Study 4 1.52717529 0.6090858  0.33338907 2.7209615
-#' # Study 5 1.42849472 0.9350931 -0.40425414 3.2612436
-#' #         exp(Estimate)   exp(LL)   exp(UL)
-#' # Average      2.368155 1.4471572  3.875292
-#' # Study 1      1.026150 0.4968460  2.119335
-#' # Study 2      2.494541 1.1774342  5.284997
-#' # Study 3      1.514320 0.9788873  2.342625
-#' # Study 4      4.605150 1.3956902 15.194925
-#' # Study 5      4.172414 0.6674745 26.081952
-#'
-#'
-#' @references 
-#' \insertRef{Bonett2015}{vcmeta}
-#'
-#' \insertRef{Bonett2021}{vcmeta}
-#' 
-#' 
-#' @importFrom stats qnorm
-#' @export
-meta.ave.oddsratio <- function(alpha, f1, f2, n1, n2, bystudy = TRUE) {
-  m <- length(n1)
-  z <- qnorm(1 - alpha/2)
-  lor <- log((f1 + .5)*(n2 - f2 + .5)/((f2 + .5)*(n1 - f1 + .5)))
-  var.lor <- 1/(f1 + .5) + 1/(f2 + .5) + 1/(n1 - f1 + .5) + 1/(n2 - f2 + .5)
-  ave.lor <- sum(lor)/m
-  se.ave <- sqrt(sum(var.lor)/m^2)
-  ll <- ave.lor - z*se.ave
-  ul <- ave.lor + z*se.ave
-  out <- cbind(ave.lor, se.ave, ll, ul, exp(ave.lor), exp(ll), exp(ul))
-  row <- "Average"
-  if (bystudy) {
-    se <- sqrt(var.lor)
-    ll <- lor - z*se
-    ul <- lor + z*se
-    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
-    row <- rbind(row, row2)
-    out2 <- cbind(lor, se, ll, ul, exp(lor), exp(ll), exp(ul))
-    out <- rbind(out, out2)
-  }
-  colnames(out) <- c("Estimate", "SE", "LL", "UL", "exp(Estimate)", "exp(LL)", "exp(UL)")
-  rownames(out) <- row
-  return (out)
 }
 
 
@@ -1679,6 +1269,498 @@ meta.ave.prop.ps <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- row
   return (out)
+}
+
+
+#  meta.ave.semipart ==========================================================
+#' Confidence interval for an average semipartial correlation 
+#' 
+#' 
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average semipartial correlation from two or more studies. 
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
+#'
+#' @param    alpha 	alpha level for 1-alpha confidence
+#' @param    n     	vector of sample sizes 
+#' @param    cor   	vector of estimated semipartial correlations 
+#' @param    r2  	  vector of squared multiple correlations for a model that
+#' includes the IV and all control variables
+#' @param bystudy   logical to also return each study estimate (TRUE) or not
+#' 
+#' 
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated effect size
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' n <- c(128, 97, 210, 217)
+#' cor <- c(.35, .41, .44, .39)
+#' r2 <- c(.29, .33, .36, .39)
+#' meta.ave.semipart(.05, n, cor, r2, bystudy = TRUE)
+#'
+#' # Should return:
+#' #         Estimate      SE     LL     UL
+#' # Average   0.3975 0.03221 0.3326 0.4587
+#' # Study 1   0.3500 0.07175 0.2023 0.4821
+#' # Study 2   0.4100 0.07886 0.2447 0.5521
+#' # Study 3   0.4400 0.05147 0.3338 0.5351
+#' # Study 4   0.3900 0.05085 0.2860 0.4849
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.ave.semipart <- function(alpha, n, cor, r2, bystudy = TRUE) {
+  m <- length(n)
+  z <- qnorm(1 - alpha/2)
+  r0 <- r2 - cor^2
+  var.cor <- (r2^2 - 2*r2 + r0 - r0^2 + 1)/(n - 3)
+  ave.cor <- sum(cor)/m
+  se.ave <- sqrt(sum(var.cor)/m^2)
+  z.ave <- log((1 + ave.cor)/(1 - ave.cor))/2
+  ll0 <- z.ave - z*se.ave/(1 - ave.cor^2)
+  ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
+  ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+  ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
+  row <- "Average"
+  if (bystudy) {
+    se.cor = sqrt(var.cor)
+    se.z <- se.cor/(1 - cor^2)
+    z.cor <- log((1 + cor)/(1 - cor))/2
+    ll0 <- z.cor - z*se.z
+    ul0 <- z.cor + z*se.z
+    ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+    ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(round(cor, 4), round(se.cor, 5), round(ll, 4), round(ul, 4))
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- row
+  return (out)
+}
+
+
+#  meta.ave.slope ==========================================================
+#' Confidence interval for an average slope coefficient
+#' 
+#' 
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average slope coefficient in a simple linear regression model from two
+#' or more studies. A Satterthwaite adjustment to the degrees of freedom
+#' is used to improve the accuracy of the confidence interval for the
+#' average slope.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#' 
+#' 
+#' @param    alpha 	alpha level for 1-alpha confidence
+#' @param    n     	vector of sample sizes 
+#' @param    cor   	vector of estimated correlations 
+#' @param    sdy   	vector of estimated SDs of y
+#' @param    sdx   	vector of estimated SDs of x
+#' @param bystudy   logical to also return each study estimate (TRUE) or not
+#' 
+#' 
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated effect size
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' * df - degrees of freedom
+#' 
+#' 
+#' @examples
+#' n <- c(45, 85, 50, 60)
+#' cor <- c(.24, .35, .16, .20)
+#' sdy <- c(12.2, 14.1, 11.7, 15.9)
+#' sdx <- c(1.34, 1.87, 2.02, 2.37)
+#' meta.ave.slope(.05, n, cor, sdy, sdx, bystudy = TRUE)
+#'
+#' # Should return:
+#' #          Estimate        SE         LL       UL     df
+#' # Average 1.7731542 0.4755417  0.8335021 2.712806 149.48
+#' # Study 1 2.1850746 1.3084468 -0.4536599 4.823809  43.00
+#' # Study 2 2.6390374 0.7262491  1.1945573 4.083518  83.00
+#' # Study 3 0.9267327 0.8146126 -0.7111558 2.564621  48.00
+#' # Study 4 1.3417722 0.8456799 -0.3510401 3.034584  58.00
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qt
+#' @export
+meta.ave.slope <- function(alpha, n, cor, sdy, sdx, bystudy = TRUE) {
+  m <- length(n)
+  b <- cor*(sdy/sdx)
+  var.b <- (sdy^2*(1 - cor^2)^2*(n - 1))/(sdx^2*(n - 1)*(n - 2))
+  ave.b <- sum(b)/m
+  se.ave <- sqrt(sum(var.b)/m^2)
+  u1 <- sum(var.b)^2
+  u2 <- sum(var.b^2/(n - 1))
+  df <- round(u1/u2, 2)
+  t <- qt(1 - alpha/2, df)
+  ll <- ave.b - t*se.ave
+  ul <- ave.b + t*se.ave
+  out <- cbind(ave.b, se.ave, ll, ul, df)
+  row <- "Average"
+  if (bystudy) {
+    se.b <- sqrt(var.b)
+    df <- n - 2
+    t <- qt(1 - alpha/2, df)
+    ll <- b - t*se.b
+    ul <- b + t*se.b
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(b, se.b, ll, ul, df)
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL", "df")
+  rownames(out) <- row
+  return (out)
+}
+
+
+#  meta.ave.spear ==========================================================
+#' Confidence interval for an average Spearman correlation 
+#' 
+#' 
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average Spearman correlation from two or more studies. The Spearman 
+#' correlation is preferred to the Pearson correlation if the relation 
+#' between the two quantitative variables is monotonic rather than linear
+#' or if the bivariate normality assumption is not plausible.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
+#'
+#' @param    alpha	  alpha level for 1-alpha confidence
+#' @param    n     	  vector of sample sizes 
+#' @param    cor   	  vector of estimated Spearman correlations 
+#' @param    bystudy  logical to also return each study estimate (TRUE) or not
+#' 
+#'   
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated effect size
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' n <- c(150, 200, 300, 200, 350)
+#' cor <- c(.14, .29, .16, .21, .23)
+#' meta.ave.spear(.05, n, cor, bystudy = TRUE)
+#'
+#' # Should return:
+#' #         Estimate      SE      LL     UL
+#' # Average    0.206 0.02944  0.1476 0.2629
+#' # Study 1    0.140 0.08071 -0.0215 0.2944
+#' # Study 2    0.290 0.06628  0.1548 0.4146
+#' # Study 3    0.160 0.05671  0.0469 0.2691
+#' # Study 4    0.210 0.06850  0.0719 0.3402
+#' # Study 5    0.230 0.05136  0.1269 0.3282
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2008a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.ave.spear <- function(alpha, n, cor, bystudy = TRUE) {
+  m <- length(n)
+  z <- qnorm(1 - alpha/2)
+  var.cor <- (1 + cor^2/2)*(1 - cor^2)^2/(n - 3)
+  ave.cor <- sum(cor)/m
+  se.ave <- sqrt(sum(var.cor)/m^2)
+  z.ave <- log((1 + ave.cor)/(1 - ave.cor))/2
+  ll0 <- z.ave - z*se.ave/(1 - ave.cor^2)
+  ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
+  ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+  ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
+  row <- "Average"
+  if (bystudy) {
+    se.cor <- sqrt((1 + cor^2/2)*(1 - cor^2)^2/(n - 1))
+    se.z <- sqrt((1 + cor^2/2)/(n - 3))
+    z.cor <- log((1 + cor)/(1 - cor))/2
+    ll0 <- z.cor - z*se.z
+    ul0 <- z.cor + z*se.z
+    ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+    ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(round(cor, 4), round(se.cor, 5), round(ll, 4), round(ul, 4))
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- row
+  return (out)
+}
+
+
+#  meta.ave.stdmean.ps ==========================================================
+#' Confidence interval for an average standardized mean difference from 
+#' paired-samples studies  
+#' 
+#' 
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average standardized mean difference from two or more paired-samples
+#' studies. Squrare root unweighted variances and a single condition standard
+#' deviation are options for the standardizer. Equality of variances within
+#' or across studies is not assumed.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
+#'
+#' @param   alpha		alpha level for 1-alpha confidence
+#' @param   m1		  vector of estimated means for measurement 1 
+#' @param   m2		  vector of estimated means for measurement 2 
+#' @param   sd1		  vector of estimated SDs for measurement 1
+#' @param   sd2		  vector of estimated SDs for measurement 2
+#' @param   cor		  vector of estimated correlations for paired measurements
+#' @param   n		    vector of sample sizes
+#' @param   stdzr		
+#' * set to 0 for square root unweighted average variance standardizer 
+#' * set to 1 for measurement 1 SD standardizer 
+#' * set to 2 for measurement 2 SD standardizer 
+#' @param   bystudy  logical to also return each study estimate (TRUE) or not
+#' 
+#' 
+#' @return 
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated effect size
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#'
+#' 
+#' @references
+#' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @examples
+#' m1 <- c(23.9, 24.1)
+#' m2 <- c(25.1, 26.9)
+#' sd1 <- c(1.76, 1.58)
+#' sd2 <- c(2.01, 1.76)
+#' cor <- c(.78, .84)
+#' n <- c(25, 30)
+#' meta.ave.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, 1, bystudy = TRUE)
+#' 
+#' # Should return: 
+#' #         Estimate      SE      LL      UL
+#' # Average  -1.1931 0.15680 -1.5004 -0.8858
+#' # Study 1  -0.6818 0.17738 -1.0295 -0.3342
+#' # Study 2  -1.7722 0.25862 -2.2790 -1.2653
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.ave.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy = TRUE) {
+  df <- n - 1
+  m <- length(m1)
+  z <- qnorm(1 - alpha/2)
+  v1 <- sd1^2
+  v2 <- sd2^2
+  vd <- v1 + v2 - 2*cor*sd1*sd2
+  if (stdzr == 0) {
+    s <- sqrt((sd1^2 + sd2^2)/2) 
+    d <- (m1 - m2)/s
+    du <- sqrt((n - 2)/df)*d
+    ave <- sum(du)/m
+    var <- d^2*(v1^2 + v2^2 + 2*cor^2*v1*v2)/(8*df*s^4) + vd/(df*s^2)
+    se <- sqrt(sum(var)/m^2)
+  } 
+  else if (stdzr == 1) { 
+    d <- (m1 - m2)/sd1
+    du <- (1 - 3/(4*df - 1))*d
+    ave <- sum(du)/m
+    var <- d^2/(2*df) + vd/(df*v1)
+    se <- sqrt(sum(var)/m^2)
+  } 
+  else {
+    d <- (m1 - m2)/sd2
+    du <- (1 - 3/(4*df - 1))*d
+    ave <- sum(du)/m
+    var <- d^2/(2*df) + vd/(df*v2)
+    se <- sqrt(sum(var)/m^2)
+  }  
+  ll <- ave - z*se
+  ul <- ave + z*se
+  out <- cbind(round(ave, 4), round(se, 5), round(ll, 4), round(ul, 4))
+  row <- "Average"
+  if (bystudy) {
+    if (stdzr == 0) {
+      se <- sqrt(d^2*(v1^2 + v2^2 + 2*cor^2*v1*v2)/(8*df*s^4) + vd/(df*s^2))
+    } else if (stdzr == 1) { 
+      se <- sqrt(d^2/(2*df) + vd/(df*v1))
+    } else {
+      se <- sqrt(d^2/(2*df) + vd/(df*v2))
+    }
+    ll <- d - z*se
+    ul <- d + z*se
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(round(d, 4), round(se, 5), round(ll, 4), round(ul, 4))
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- row
+  return(out)
+}
+
+
+#  meta.ave.stdmean2 ==========================================================
+#' Confidence interval for an average standardized mean difference
+#' from 2-group studies
+#'
+#'
+#' @description
+#' Computes the estimate, standard error, and confidence interval for an 
+#' average standardized mean difference from two or more 2-group studies.
+#' Square root unweighted variances, square root weighted variances, and 
+#' single group standard deviation are options for the standardizer. 
+#' Equality of variances within or across studies is not assumed.
+#'
+#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
+#'
+#'
+#' @param alpha	  alpha level for 1-alpha confidence
+#' @param m1		  vector of estimated means for group 1
+#' @param m2		  vector of estimated means for group 2
+#' @param sd1		  vector of estimated SDs for group 1
+#' @param sd2		  vector of estimated SDs for group 2
+#' @param n1		  vector of group 1 sample sizes
+#' @param n2		  vector of group 2 sample sizes
+#' @param stdzr
+#' * set to 0 for square root unweighted average variance standardizer 
+#' * set to 1 for group 1 SD standardizer 
+#' * set to 2 for group 2 SD standardizer 
+#' * set to 3 for square root weighted average variance standardizer
+#' @param bystudy  logical to also return each study estimate (TRUE) or not
+#'
+#'
+#' @return
+#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
+#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
+#' * Estimate - estimated effect size
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#'
+#'
+#' @references 
+#' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
+#'
+#' @examples
+#' m1 <- c(21.9, 23.1, 19.8)
+#' m2 <- c(16.1, 17.4, 15.0)
+#' sd1 <- c(3.82, 3.95, 3.67)
+#' sd2 <- c(3.21, 3.30, 3.02)
+#' n1 <- c(40, 30, 24)
+#' n2 <- c(40, 28, 25)
+#' meta.ave.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, 0, bystudy = TRUE)
+#'
+#' # Should return: 
+#' #         Estimate      SE     LL     UL
+#' # Average   1.5261 0.17343 1.1862 1.8661
+#' # Study 1   1.6439 0.26290 1.1286 2.1592
+#' # Study 2   1.5661 0.30563 0.9671 2.1652
+#' # Study 3   1.4283 0.32892 0.7836 2.0729
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+meta.ave.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, stdzr, bystudy = TRUE) {
+  df1 <- n1 - 1
+  df2 <- n2 - 1
+  m <- length(m1)
+  z <- qnorm(1 - alpha/2)
+  v1 <- sd1^2
+  v2 <- sd2^2
+  if (stdzr == 0) {
+    s1 <- sqrt((sd1^2 + sd2^2)/2)
+    d <- (m1 - m2)/s1
+    du <- (1 - 3/(4*(n1 + n2) - 9))*d
+    ave <- sum(du)/m
+    var <- d^2*(v1^2/df1 + v2^2/df2)/(8*s1^4) + (v1/df1 + v2/df2)/s1^2
+    se <- sqrt(sum(var)/m^2)
+  } else if (stdzr == 1) { 
+    d <- (m1 - m2)/sd1
+    du <- (1 - 3/(4*n1 - 5))*d
+    ave <- sum(du)/m
+    var <- d^2/(2*df1) + 1/df1 + v2/(df2*v1)
+    se <- sqrt(sum(var)/m^2)
+  } else if (stdzr == 2) {
+    d <- (m1 - m2)/sd2
+    du <- (1 - 3/(4*n2 - 5))*d
+    ave <- sum(du)/m
+    var <- d^2/(2*df2) + 1/df2 + v1/(df1*v2)
+    se <- sqrt(sum(var)/m^2)
+  } else {
+    s2 <- sqrt((df1*v1 + df2*v2)/(df1 + df2))
+    d <- (m1 - m2)/s2
+    du <- (1 - 3/(4*(n1 + n2) - 9))*d
+    ave <- sum(du)/m
+    var <- d^2*(1/df1 + 1/df2)/8 + (v1/n1 + v2/n2)/s2^2
+    se <- sqrt(sum(var)/m^2)
+  }
+  ll <- ave - z*se
+  ul <- ave + z*se
+  out <- cbind(round(ave, 4), round(se, 5), round(ll, 4), round(ul, 4))
+  row <- "Average"
+  if (bystudy) {
+    if (stdzr == 0) {
+      se <- sqrt(d^2*(v1^2/df1 + v2^2/df2)/(8*s1^4) + (v1/df1 + v2/df2)/s1^2)
+    } else if (stdzr == 1) { 
+      se <- sqrt(d^2/(2*df1) + 1/df1 + v2/(df2*v1))
+    } else if (stdzr == 2) {
+      se <- sqrt(d^2/(2*df2) + 1/df2 + v1/(df1*v2))
+    } else {
+      se <- sqrt(d^2*(1/df1 + 1/df2)/8 + (v1/n1 + v2/n2)/s2^2)
+    }
+    ll <- d - z*se
+    ul <- d + z*se
+    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
+    row <- rbind(row, row2)
+    out2 <- cbind(round(d, 4), round(se, 5), round(ll, 4), round(ul, 4))
+    out <- rbind(out, out2)
+  }
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- row
+  return(out)
 }
 
 
@@ -2060,88 +2142,6 @@ meta.ave.gen.rc <- function(alpha, est, se, bystudy = TRUE) {
  colnames(out) <- c("Estimate", "SE", "LL", "UL")
  rownames(out) <- row 
  return (out)
-}
-
-
-#  meta.ave.cor.gen ==========================================================
-#' Confidence interval for an average correlation of any type
-#' 
-#' 
-#' @description
-#' Computes the estimate, standard error, and confidence interval for an 
-#' average correlation. Any type of correlation can be used (e.g., Pearson,
-#' Spearman, semipartial, factor correlation, gamma coefficient, Somers d
-#' coefficient, tetrachoric, point-biserial, biserial, correlation between
-#' latent factors, etc.).
-#'
-#' For more details, see Chapter 2 of Bonett (2021, Volume 5).
-#' 
-#' 
-#' @param alpha	   alpha level for 1-alpha confidence
-#' @param cor      vector of estimated correlations 
-#' @param se   	   vector of standard errors 
-#' @param bystudy  logical to also return each study estimate (TRUE) or not
-#' 
-#' 
-#' @return 
-#' Returns a matrix.  The first row is the average estimate across all studies.  If bystudy
-#' is TRUE, there is 1 additional row for each study.  The matrix has the following columns:
-#' * Estimate - estimated effect size
-#' * SE - standard error
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
-#' 
-#' 
-#' @examples
-#' cor <- c(.396, .454, .409, .502, .350)
-#' se <- c(.104, .064, .058, .107, .086)
-#' meta.ave.cor.gen(.05, cor, se, bystudy = TRUE)
-#' 
-#' # Should return:
-#' #         Estimate      SE     LL     UL
-#' # Average   0.4222 0.03853 0.3439 0.4947
-#' # Study 1   0.3960 0.10400 0.1753 0.5788
-#' # Study 2   0.4540 0.06400 0.3201 0.5701
-#' # Study 3   0.4090 0.05800 0.2894 0.5160
-#' # Study 4   0.5020 0.10700 0.2651 0.6817
-#' # Study 5   0.3500 0.08600 0.1716 0.5061
-#' 
-#' 
-#' @references
-#' \insertRef{Bonett2008a}{vcmeta}
-#'
-#' \insertRef{Bonett2021}{vcmeta}
-#' 
-#' 
-#' @importFrom stats qnorm
-#' @export
-meta.ave.cor.gen <- function(alpha, cor, se, bystudy = TRUE) {
-  m <- length(cor)
-  z <- qnorm(1 - alpha/2)
-  ave.cor <- sum(cor)/m
-  se.ave <- sqrt(sum(se^2)/m^2)
-  z.ave <- log((1 + ave.cor)/(1 - ave.cor))/2
-  ll0 <- z.ave - z*se.ave/(1 - ave.cor^2)
-  ul0 <- z.ave + z*se.ave/(1 - ave.cor^2)
-  ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
-  ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out <- cbind(round(ave.cor, 4), round(se.ave, 5), round(ll, 4), round(ul, 4))
-  row <- "Average"
-  if (bystudy) {
-    se.z <- se/(1 - cor^2)
-    z.cor <- log((1 + cor)/(1 - cor))/2
-    ll0 <- z.cor - z*se.z
-    ul0 <- z.cor + z*se.z
-    ll <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
-    ul <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-    row2 <- t(t(paste(rep("Study", m), seq(1,m))))
-    row <- rbind(row, row2)
-    out2 <- cbind(round(cor, 4), round(se, 5), round(ll, 4), round(ul, 4))
-    out <- rbind(out, out2)
-  }
-  colnames(out) <- c("Estimate", "SE", "LL", "UL")
-  rownames(out) <- row
-  return (out)
 }
 
 
