@@ -526,11 +526,11 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
 #' replicate.cor(.05, .598, 80, .324, 200, 0)
 #'
 #' # Should return:
-#' #                       Estimate         SE     z     p        LL        UL
-#' # Original:                0.598 0.07320782 6.589 0.000 0.4355043 0.7227538
-#' # Follow-up:               0.324 0.06376782 4.819 0.000 0.1939787 0.4428347
-#' # Original - Follow-up:    0.274 0.09708614 2.633 0.008 0.1065496 0.4265016
-#' # Average:                 0.461 0.04854307 7.635 0.000 0.3725367 0.5411607
+#' #                       Estimate      SE     z     p     LL     UL
+#' # Original:                0.598 0.07321 6.589 0.000 0.4355 0.7228
+#' # Follow-up:               0.324 0.06377 4.819 0.000 0.1940 0.4428
+#' # Original - Follow-up:    0.274 0.09709 2.633 0.008 0.1065 0.4265
+#' # Average:                 0.461 0.04854 7.635 0.000 0.3725 0.5412
 #' 
 #' 
 #' @references
@@ -582,10 +582,10 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
   ul0 <- ave.z + zcrit1*se4.z
   ll4 <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul4 <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out1 <- t(c(cor1, se1, round(t1, 3), round(pval1, 3), ll1a, ul1a))
-  out2 <- t(c(cor2, se2, round(t2, 3), round(pval2, 3), ll2a, ul2a))
-  out3 <- t(c(dif, se3, round(t3, 3), round(pval3, 3), ll3, ul3))
-  out4 <- t(c(ave, se4, round(t4, 3), round(pval4, 3), ll4, ul4))
+  out1 <- t(c(round(cor1, 4), round(se1, 5), round(t1, 3), round(pval1, 3), round(ll1a, 4), round(ul1a, 4)))
+  out2 <- t(c(round(cor2, 4), round(se2, 5), round(t2, 3), round(pval2, 3), round(ll2a, 4), round(ul2a, 4)))
+  out3 <- t(c(round(dif, 4), round(se3, 5), round(t3, 3), round(pval3, 3), round(ll3, 4), round(ul3, 4)))
+  out4 <- t(c(round(ave, 4), round(se4, 5), round(t4, 3), round(pval4, 3), round(ll4, 4), round(ul4, 4)))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -1002,11 +1002,11 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
 #' replicate.spear(.05, .598, 80, .324, 200)
 #'
 #' # Should return:
-#' #                       Estimate         SE     z     p         LL        UL
-#' # Original:                0.598 0.07948367 5.315 0.000 0.41985966 0.7317733
-#' # Follow-up:               0.324 0.06541994 4.571 0.000 0.19049455 0.4457384
-#' # Original - Follow-up:    0.274 0.10294378 3.438 0.001 0.09481418 0.4342171
-#' # Average:                 0.461 0.05147189 9.968 0.000 0.36695230 0.5457190
+#' #                       Estimate      SE     z     p     LL     UL
+#' # Original:                0.598 0.07948 5.315 0.000 0.4199 0.7318
+#' # Follow-up:               0.324 0.06542 4.571 0.000 0.1905 0.4457
+#' # Original - Follow-up:    0.274 0.10294 3.438 0.001 0.0948 0.4342
+#' # Average:                 0.461 0.05147 9.968 0.000 0.3670 0.5457
 #' 
 #' 
 #' @references
@@ -1057,10 +1057,10 @@ replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
   ul0 <- ave.z + zcrit1*se4.z
   ll4 <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul4 <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out1 <- t(c(cor1, se1, round(z1, 3), round(pval1, 3), ll1a, ul1a))
-  out2 <- t(c(cor2, se2, round(z2, 3), round(pval2, 3), ll2a, ul2a))
-  out3 <- t(c(dif, se3, round(z3, 3), round(pval3, 3), ll3, ul3))
-  out4 <- t(c(ave, se4, round(z4, 3), round(pval4, 3), ll4, ul4))
+  out1 <- t(c(round(cor1, 4), round(se1, 5), round(z1, 3), round(pval1, 3), round(ll1a, 4), round(ul1a, 4)))
+  out2 <- t(c(round(cor2, 4), round(se2, 5), round(z2, 3), round(pval2, 3), round(ll2a, 4), round(ul2a, 4)))
+  out3 <- t(c(round(dif, 4), round(se3, 5), round(z3, 3), round(pval3, 3), round(ll3, 4), round(ul3, 4)))
+  out4 <- t(c(round(ave, 4), round(se4, 5), round(z4, 3), round(pval4, 3), round(ll4, 4), round(ul4, 4)))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -1374,8 +1374,9 @@ replicate.propratio2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' 
 #' 
 #' @references
-#' * \insertRef{Bonett2021}{vcmeta}
-#' * \insertRef{Bonett2012}{vcmeta}
+#' \insertRef{Bonett2021}{vcmeta}
+#'
+#' \insertRef{Bonett2012}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1466,11 +1467,11 @@ replicate.prop.ps <- function(alpha, f1, f2){
 #' replicate.cor.gen(.05, .454, .170, .318, .098)
 #'
 #' # Should return:
-#' #                       Estimate         SE     z     p          LL        UL
-#' # Original:                0.454 0.17000000 2.287 0.022  0.06991214 0.7208577
-#' # Follow-up:               0.318 0.09800000 3.022 0.003  0.11522137 0.4953353
-#' # Original - Follow-up:    0.136 0.19622436 0.667 0.505 -0.21543667 0.4237240
-#' # Average:                 0.386 0.09811218 3.409 0.001  0.19606750 0.5480170
+#' #                       Estimate      SE     z     p      LL     UL
+#' # Original:                0.454 0.17000 2.287 0.022  0.0699 0.7209
+#' # Follow-up:               0.318 0.09800 3.022 0.003  0.1152 0.4953
+#' # Original - Follow-up:    0.136 0.19622 0.667 0.505 -0.2154 0.4237
+#' # Average:                 0.386 0.09811 3.409 0.001  0.1961 0.5480
 #' 
 #' 
 #' @references
@@ -1523,10 +1524,10 @@ replicate.cor.gen <- function(alpha, cor1, se1, cor2, se2) {
   ul0 <- ave.z + zcrit1*se4.z
   ll4 <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
   ul4 <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
-  out1 <- t(c(cor1, se1, round(z1, 3), round(pval1, 3), ll1a, ul1a))
-  out2 <- t(c(cor2, se2, round(z2, 3), round(pval2, 3), ll2a, ul2a))
-  out3 <- t(c(dif, se3, round(z3, 3), round(pval3, 3), ll3, ul3))
-  out4 <- t(c(ave, se4, round(z4, 3), round(pval4, 3), ll4, ul4))
+  out1 <- t(c(round(cor1, 4), round(se1, 5), round(z1, 3), round(pval1, 3), round(ll1a, 4), round(ul1a, 4)))
+  out2 <- t(c(round(cor2, 4), round(se2, 5), round(z2, 3), round(pval2, 3), round(ll2a, 4), round(ul2a, 4)))
+  out3 <- t(c(round(dif, 4), round(se3, 5), round(z3, 3), round(pval3, 3), round(ll3, 4), round(ul3, 4)))
+  out4 <- t(c(round(ave, 4), round(se4, 5), round(z4, 3), round(pval4, 3), round(ll4, 4), round(ul4, 4)))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -1574,11 +1575,11 @@ replicate.cor.gen <- function(alpha, cor1, se1, cor2, se2) {
 #' replicate.agree(.05, 85, 100, 160, 200, 2)
 #'
 #' # Should return:
-#' #                       Estimate         SE         LL        UL
-#' # Original:                 0.70 0.07252105  0.53093828 0.8152156
-#' # Follow-up:                0.60 0.05661961  0.47726289 0.6992077
-#' # Original - Follow-up:     0.10 0.09159681 -0.05844824 0.2428784
-#' # Average:                  0.65 0.04579840  0.55040374 0.7299302
+#' #                       Estimate      SE      LL     UL
+#' # Original:                 0.70 0.07252  0.5309 0.8152
+#' # Follow-up:                0.60 0.05662  0.4773 0.6992
+#' # Original - Follow-up:     0.10 0.09160 -0.0584 0.2429
+#' # Average:                  0.65 0.04580  0.5504 0.7299
 #' 
 #' 
 #' @references
@@ -1614,10 +1615,10 @@ replicate.agree <- function(alpha, f1, n1, f2, n2, k){
   ll2 <- est2.adj - zcrit1*se2;  ul2 <- est2.adj + zcrit1*se2
   ll3 <- est3.adj - zcrit2*se3;  ul3 <- est3.adj + zcrit2*se3
   ll4 <- est4.adj - zcrit1*se4;  ul4 <- est4.adj + zcrit1*se4
-  out1 <- t(c(est1, se1, ll1, ul1))
-  out2 <- t(c(est2, se2, ll2, ul2))
-  out3 <- t(c(est3, se3, ll3, ul3))
-  out4 <- t(c(est4, se4, ll4, ul4))
+  out1 <- t(c(round(est1, 4), round(se1, 5), round(ll1, 4), round(ul1, 4)))
+  out2 <- t(c(round(est2, 4), round(se2, 5), round(ll2, 4), round(ul2, 4)))
+  out3 <- t(c(round(est3, 4), round(se3, 5), round(ll3, 4), round(ul3, 4)))
+  out4 <- t(c(round(est4, 4), round(se4, 5), round(ll4, 4), round(ul4, 4)))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
@@ -1663,17 +1664,19 @@ replicate.agree <- function(alpha, f1, n1, f2, n2, k){
 #' replicate.cronbach(.05, .883, 100, .869, 200, 6)
 #'
 #' # Should return:
-#' #                       Estimate         SE          LL         UL
-#' # Original:                0.883 0.01830958  0.84356871 0.91522517
-#' # Follow-up:               0.869 0.01442263  0.83874629 0.89523760
-#' # Original - Follow-up:    0.014 0.02330779 -0.03336284 0.05820123
-#' # Average:                 0.876 0.01172239  0.85187755 0.89774525
+#' #                       Estimate      SE      LL     UL
+#' # Original:                0.883 0.01831  0.8436 0.9152
+#' # Follow-up:               0.869 0.01442  0.8387 0.8952
+#' # Original - Follow-up:    0.014 0.02331 -0.0334 0.0582
+#' # Average:                 0.876 0.01172  0.8519 0.8977
 #' 
 #' 
 #' @references
-#' * \insertRef{Bonett2010}{vcmeta}
-#' * \insertRef{Bonett2015}{vcmeta}
-#' * \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2010}{vcmeta}
+#'
+#' \insertRef{Bonett2015}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1711,10 +1714,10 @@ replicate.cronbach <- function(alpha, rel1, n1, rel2, n2, r) {
   log.ave <- log(1 - ave) - log(hn/(hn - 1))
   ul4 <- 1 - exp(log.ave - zcrit1*se4/(1 - ave))
   ll4 <- 1 - exp(log.ave + zcrit1*se4/(1 - ave))
-  out1 <- t(c(rel1, se1, ll1, ul1))
-  out2 <- t(c(rel2, se2, ll2, ul2))
-  out3 <- t(c(dif, se3, ll3, ul3))
-  out4 <- t(c(ave, se4, ll4, ul4))
+  out1 <- t(c(round(rel1, 4), round(se1, 5), round(ll1, 4), round(ul1, 4)))
+  out2 <- t(c(round(rel2, 4), round(se2, 5), round(ll2, 4), round(ul2, 4)))
+  out3 <- t(c(round(dif, 4), round(se3, 5), round(ll3, 4), round(ul3, 4)))
+  out4 <- t(c(round(ave, 4), round(se4, 5), round(ll4, 4), round(ul4, 4)))
   out <- rbind(out1, out2, out3, out4)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
