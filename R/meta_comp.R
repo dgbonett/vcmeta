@@ -42,10 +42,10 @@
 #' meta.sub.cor(.05, n, cor, 0, group)
 #' 
 #' # Should return:
-#' #                Estimate         SE         LL        UL
-#' # Set A:            0.525 0.06195298  0.3932082 0.6356531
-#' # Set B:            0.600 0.08128008  0.4171458 0.7361686
-#' # Set A - Set B:   -0.075 0.10219894 -0.2645019 0.1387283
+#' #                Estimate      SE      LL     UL
+#' # Set A:            0.525 0.06195  0.3932 0.6357
+#' # Set B:            0.600 0.08128  0.4171 0.7362
+#' # Set A - Set B:   -0.075 0.10220 -0.2645 0.1387
 #' 
 #' 
 #' @references
@@ -80,9 +80,9 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
   se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
   ll.diff <- diff - sqrt((ave.A - ll.A)^2 + (ul.B - ave.B)^2)
   ul.diff <- diff + sqrt((ul.A - ave.A)^2 + (ave.B - ll.B)^2)
-  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
-  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
-  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out1 <- t(c(round(ave.A, 4), round(se.ave.A, 5), round(ll.A, 4), round(ul.A, 4)))
+  out2 <- t(c(round(ave.B, 4), round(se.ave.B, 5), round(ll.B, 4), round(ul.B, 4)))
+  out3 <- t(c(round(diff, 4), round(se.diff, 5), round(ll.diff, 4), round(ul.diff, 4)))
   out <- rbind(out1, out2, out3)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
@@ -131,10 +131,10 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #' meta.sub.spear(.05, n, cor, group)
 #' 
 #' # Should return:
-#' #                Estimate         SE         LL        UL
-#' # Set A:            0.525 0.06483629  0.3865928 0.6402793
-#' # Set B:            0.600 0.08829277  0.3992493 0.7458512
-#' # Set A - Set B:   -0.075 0.10954158 -0.2760700 0.1564955
+#' #                Estimate      SE      LL     UL
+#' # Set A:            0.525 0.06484  0.3866 0.6403
+#' # Set B:            0.600 0.08829  0.3992 0.7459
+#' # Set A - Set B:   -0.075 0.10954 -0.2761 0.1565
 #' 
 #' 
 #' @references
@@ -169,9 +169,9 @@ meta.sub.spear <- function(alpha, n, cor, group) {
   se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
   ll.diff <- diff - sqrt((ave.A - ll.A)^2 + (ul.B - ave.B)^2)
   ul.diff <- diff + sqrt((ul.A - ave.A)^2 + (ave.B - ll.B)^2)
-  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
-  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
-  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out1 <- t(c(round(ave.A, 4), round(se.ave.A, 5), round(ll.A, 4), round(ul.A, 4)))
+  out2 <- t(c(round(ave.B, 4), round(se.ave.B, 5), round(ll.B, 4), round(ul.B, 4)))
+  out3 <- t(c(round(diff, 4), round(se.diff, 5), round(ll.diff, 4), round(ul.diff, 4)))
   out <- rbind(out1, out2, out3)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
@@ -236,10 +236,10 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' meta.sub.pbcor(.05,  m1, m2, sd1, sd2, n1, n2, 2, group)
 #' 
 #' # Should return:
-#' #                   Estimate         SE         LL        UL
-#' # Set A:          0.36338772 0.08552728  0.1854777 0.5182304
-#' # Set B:         -0.01480511 0.08741322 -0.1840491 0.1552914
-#' # Set A - Set B:  0.37819284 0.12229467  0.1320530 0.6075828
+#' #                Estimate      SE      LL     UL
+#' # Set A:           0.3634 0.08553  0.1855 0.5182
+#' # Set B:          -0.0148 0.08741 -0.1840 0.1553
+#' # Set A - Set B:   0.3782 0.12229  0.1321 0.6076
 #' 
 #' 
 #' @references
@@ -294,9 +294,9 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
   se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
   ll.diff <- diff - sqrt((ave.A - ll.A)^2 + (ul.B - ave.B)^2)
   ul.diff <- diff + sqrt((ul.A - ave.A)^2 + (ave.B - ll.B)^2)
-  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
-  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
-  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out1 <- t(c(round(ave.A, 4), round(se.ave.A, 5), round(ll.A, 4), round(ul.A, 4)))
+  out2 <- t(c(round(ave.B, 4), round(se.ave.B, 5), round(ll.B, 4), round(ul.B, 4)))
+  out3 <- t(c(round(diff, 4), round(se.diff, 5), round(ll.diff, 4), round(ul.diff, 4)))
   out <- rbind(out1, out2, out3)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
@@ -348,10 +348,10 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 #' meta.sub.semipart(.05, n, cor, r2, group)
 #' 
 #' # Should return:
-#' #                Estimate         SE         LL        UL
-#' # Set A:            0.525 0.05955276  0.3986844 0.6317669
-#' # Set B:            0.600 0.07931155  0.4221127 0.7333949
-#' # Set A - Set B:   -0.075 0.09918091 -0.2587113 0.1324682
+#' #                Estimate      SE      LL     UL
+#' # Set A:            0.525 0.05955  0.3987 0.6318
+#' # Set B:            0.600 0.07931  0.4221 0.7334
+#' # Set A - Set B:   -0.075 0.09918 -0.2587 0.1325
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -383,9 +383,9 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
   se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
   ll.diff <- diff - sqrt((ave.A - ll.A)^2 + (ul.B - ave.B)^2)
   ul.diff <- diff + sqrt((ul.A - ave.A)^2 + (ave.B - ll.B)^2)
-  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
-  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
-  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out1 <- t(c(round(ave.A, 4), round(se.ave.A, 5), round(ll.A, 4), round(ul.A, 4)))
+  out2 <- t(c(round(ave.B, 4), round(se.ave.B, 5), round(ll.B, 4), round(ul.B, 4)))
+  out3 <- t(c(round(diff, 4), round(se.diff, 5), round(ll.diff, 4), round(ul.diff, 4)))
   out <- rbind(out1, out2, out3)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
@@ -431,16 +431,15 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #'        
 #' @examples
 #' n <- c(120, 170, 150, 135)
-#' rel <- c(.89, .87, .73, .71)
+#' rel <- c(.891, .873, .734, .715)
 #' group <- c(1, 1, 2, 2)
-#' r <- 10
-#' meta.sub.cronbach(.05, n, rel, r, group)
+#' meta.sub.cronbach(.05, n, rel, 10, group)
 #' 
 #' # Should return: 
-#' #                Estimate         SE        LL        UL
-#' # Set A:             0.88 0.01068845 0.8581268 0.8999386
-#' # Set B:             0.72 0.02515130 0.6684484 0.7668524
-#' # Set A - Set B:     0.16 0.02732821 0.1082933 0.2152731
+#' #                Estimate      SE     LL     UL
+#' # Set A:           0.8820 0.01052 0.8605 0.9016
+#' # Set B:           0.7245 0.02474 0.6738 0.7706
+#' # Set A - Set B:   0.1575 0.02689 0.1066 0.2119
 #' 
 #' 
 #' @references
@@ -477,9 +476,9 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
   se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
   ll.diff <- diff - sqrt((ave.A - ll.A)^2 + (ul.B - ave.B)^2)
   ul.diff <- diff + sqrt((ul.A - ave.A)^2 + (ave.B - ll.B)^2)
-  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
-  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
-  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out1 <- t(c(round(ave.A, 4), round(se.ave.A, 5), round(ll.A, 4), round(ul.A, 4)))
+  out2 <- t(c(round(ave.B, 4), round(se.ave.B, 5), round(ll.B, 4), round(ul.B, 4)))
+  out3 <- t(c(round(diff, 4), round(se.diff, 5), round(ll.diff, 4), round(ul.diff, 4)))
   out <- rbind(out1, out2, out3)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
