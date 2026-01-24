@@ -747,9 +747,9 @@ meta.lm.cor <- function(alpha, n, cor, s, X) {
 #' meta.lm.spear(.05, n, cor, X)
 #' 
 #' # Should return: 
-#' #       Estimate         SE      z     p           LL         UL
-#' # b0 -0.08920088 0.26686388 -0.334 0.738 -0.612244475 0.43384271
-#' # b1  0.01370866 0.01190212  1.152 0.249 -0.009619077 0.03703639
+#' #    Estimate      SE      z     p      LL     UL
+#' # b0  -0.0892 0.26686 -0.334 0.738 -0.6122 0.4338
+#' # b1   0.0137 0.01190  1.152 0.249 -0.0096 0.0370
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -771,7 +771,7 @@ meta.lm.spear <- function(alpha, n, cor, X) {
   ul <- b + z*se
   z <- round(b/se, 3)
   p <- round(2*(1 - pnorm(abs(z))), 3)
-  out <- cbind(b, se, z, p, ll, ul)
+  out <- cbind(round(b, 4), round(se, 5), z, p, round(ll, 4), round(ul, 4))
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- row
@@ -821,9 +821,9 @@ meta.lm.spear <- function(alpha, n, cor, X) {
 #' meta.lm.semipart(.05, n, cor, r2, X)
 #' 
 #' # Should return: 
-#' #      Estimate        SE     z     p          LL         UL
-#' # b0 0.19695988 0.3061757 0.643 0.520 -0.40313339 0.79705315
-#' # b1 0.01055584 0.0145696 0.725 0.469 -0.01800004 0.03911172
+#' #    Estimate      SE     z     p      LL     UL
+#' # b0   0.1970 0.30618 0.643 0.520 -0.4031 0.7971
+#' # b1   0.0106 0.01457 0.725 0.468 -0.0180 0.0391
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -846,7 +846,7 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
   ul <- b + z*se
   z <- round(b/se, 3)
   p <- round(2*(1 - pnorm(abs(z))), 3)
-  out <- cbind(b, se, z, p, ll, ul)
+  out <- cbind(round(b, 4), round(se, 5), z, p, round(ll, 4), round(ul, 4))
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- row
@@ -893,14 +893,15 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
 #' meta.lm.cronbach(.05, n, rel, 10, X)
 #' 
 #' # Should return:
-#' #      Estimate         SE       z     p         LL          UL
-#' # b0 -2.2408328 0.03675883 -60.960 0.000 -2.3128788 -2.16878684
-#' # b1 -0.1689006 0.07204625  -2.344 0.019 -0.3101087 -0.02769259
+#' #    Estimate      SE       z     p      LL      UL
+#' # b0  -2.2408 0.03676 -60.960 0.000 -2.3129 -2.1688
+#' # b1  -0.1689 0.07205  -2.344 0.019 -0.3101 -0.0277
 #' 
 #' 
 #' @references
-#' * \insertRef{Bonett2010}{vcmeta}
-#' * \insertRef{Bonett2015b}{vcmeta}
+#' \insertRef{Bonett2010}{vcmeta}
+#'
+#' \insertRef{Bonett2015b}{vcmeta}
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -925,7 +926,7 @@ meta.lm.cronbach <- function(alpha, n, rel, r, X) {
   ul <- b + z*se
   z <- round(b/se, 3)
   p <- round(2*(1 - pnorm(abs(z))), 3)
-  out <- cbind(b, se, z, p, ll, ul)
+  out <- cbind(round(b, 4), round(se, 5), z, p, round(ll, 4), round(ul, 4))
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- row
@@ -1324,10 +1325,10 @@ meta.lm.prop.ps <- function(alpha, f11, f12, f21, f22, X) {
 #' meta.lm.agree(.05, f11, f12, f21, f22, X)
 #' 
 #' # Should return:
-#' #     Estimate         SE     z     p          LL        UL
-#' # b0 0.1904762 0.38772858 0.491 0.623 -0.56945786 0.9504102
-#' # b1 0.0952381 0.07141957 1.334 0.182 -0.04474169 0.2352179
-#' # b2 0.4205147 0.32383556 1.299 0.194 -0.21419136 1.0552207
+#' #    Estimate      SE     z     p      LL     UL
+#' # b0   0.1905 0.38773 0.491 0.623 -0.5695 0.9504
+#' # b1   0.0952 0.07142 1.334 0.182 -0.0447 0.2352
+#' # b2   0.4205 0.32384 1.299 0.194 -0.2142 1.0552
 #' 
 #' 
 #' @references 
@@ -1355,7 +1356,7 @@ meta.lm.agree <- function(alpha, f11, f12, f21, f22, X) {
   ul <- b + z*se
   z <- round(b/se, 3)
   p <- round(2*(1 - pnorm(abs(z))), 3)
-  out <- cbind(b, se, z, p, ll, ul)
+  out <- cbind(round(b, 4), round(se, 5), z, p, round(ll, 4), round(ul, 4))
   row <- t(t(paste0(rep("b", q), seq(1:q) - 1)))
   colnames(out) <- c("Estimate", "SE", "z", "p", "LL", "UL")
   rownames(out) <- row
