@@ -60,7 +60,7 @@
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qt
@@ -175,7 +175,7 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd2
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qt
@@ -290,7 +290,7 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -426,7 +426,7 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -544,7 +544,7 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats pt
@@ -657,7 +657,7 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -761,7 +761,7 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -853,7 +853,7 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 #'
 #'
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qt
@@ -946,7 +946,7 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
 #' 
 #'
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -1030,7 +1030,7 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -1135,7 +1135,7 @@ replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1221,7 +1221,7 @@ replicate.prop1 <- function(alpha, f1, n1, f2, n2){
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qt
@@ -1312,7 +1312,7 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1402,7 +1402,7 @@ replicate.propratio2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #'
 #' \insertRef{Bonett2012}{vcmeta}
 #' 
@@ -1505,7 +1505,7 @@ replicate.prop.ps <- function(alpha, f1, f2){
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -1616,6 +1616,8 @@ replicate.cor.gen <- function(alpha, cor1, se1, cor2, se2) {
 #' 
 #' @references
 #' \insertRef{Bonett2022}{vcmeta}
+#'
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1710,7 +1712,7 @@ replicate.agree <- function(alpha, f1, n1, f2, n2, k){
 #'
 #' \insertRef{Bonett2015}{vcmeta}
 #'
-#' \insertRef{Bonett2021}{vcmeta}
+#' \insertRef{Bonett2021a}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
