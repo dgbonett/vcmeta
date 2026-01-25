@@ -55,6 +55,8 @@
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @importFrom stats qt
 #' @importFrom stats pt
@@ -147,6 +149,8 @@ meta.lm.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -251,6 +255,8 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qt
@@ -340,6 +346,8 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -428,6 +436,8 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
 #' 
 #' @references
 #' \insertRef{Bonett2020}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @examples
@@ -521,10 +531,6 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #'  * exp(UL) - upper limit of the exponentiated confidence interval
 #' 
 #' 
-#' @references
-#' \insertRef{Bonett2020}{vcmeta}
-#' 
-#' 
 #' @examples
 #' n <- c(65, 30, 29, 45, 50)
 #' cor <- c(.87, .92, .85, .90, .88)
@@ -543,6 +549,12 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' #     exp(Estimate)   exp(LL)  exp(UL)
 #' # b0       1.664575 1.2901693 2.147634
 #' # b1       1.083030 0.9987497 1.174422
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2020}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -622,6 +634,10 @@ meta.lm.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' # b1   0.0505 0.02880  1.753 0.080
 #' 
 #' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#'
+#'
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
 #' @export
@@ -693,6 +709,10 @@ meta.lm.cor.gen <- function(alpha, cor, se, X) {
 #' #    Estimate      SE      z     p      LL     UL
 #' # b0  -0.4783 0.48632 -0.984 0.325 -1.4315 0.4748
 #' # b1   0.0505 0.02128  2.371 0.018  0.0088 0.0922
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -768,6 +788,10 @@ meta.lm.cor <- function(alpha, n, cor, s, X) {
 #' #    Estimate      SE      z     p      LL     UL
 #' # b0  -0.0892 0.26686 -0.334 0.738 -0.6122 0.4338
 #' # b1   0.0137 0.01190  1.152 0.249 -0.0096 0.0370
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -846,6 +870,10 @@ meta.lm.spear <- function(alpha, n, cor, X) {
 #' # b1   0.0106 0.01457 0.725 0.468 -0.0180 0.0391
 #' 
 #' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
 #' @export
@@ -872,6 +900,7 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
   rownames(out) <- row
   return (out)
 }
+
 
 #  meta.lm.cronbach =========================================================
 #' Meta-regression analysis for Cronbach reliabilities 
@@ -924,6 +953,8 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
 #' \insertRef{Bonett2010}{vcmeta}
 #'
 #' \insertRef{Bonett2015b}{vcmeta}
+#' 
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats pnorm
@@ -1019,6 +1050,8 @@ meta.lm.cronbach <- function(alpha, n, rel, r, X) {
 #' @references
 #' \insertRef{Bonett2015}{vcmeta}
 #' 
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
 #' 
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
@@ -1113,6 +1146,8 @@ meta.lm.oddsratio <- function(alpha, f1, f2, n1, n2, X) {
 #' 
 #' @references
 #' \insertRef{Price2008}{vcmeta}
+#' 
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @importFrom stats pnorm
@@ -1200,6 +1235,8 @@ meta.lm.propratio2 <- function(alpha, f1, f2, n1, n2, X) {
 #' @references
 #' \insertRef{Bonett2014}{vcmeta}
 #' 
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
 #' 
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
@@ -1284,6 +1321,8 @@ meta.lm.prop2 <- function(alpha, f1, f2, n1, n2, X) {
 #' @references
 #' \insertRef{Bonett2012}{vcmeta}
 #' 
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
 #' 
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
@@ -1366,6 +1405,8 @@ meta.lm.prop.ps <- function(alpha, f11, f12, f21, f22, X) {
 #' @references 
 #' \insertRef{Bonett2022}{vcmeta}
 #' 
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
 #' 
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
@@ -1442,6 +1483,10 @@ meta.lm.agree <- function(alpha, f11, f12, f21, f22, X) {
 #' # b0 19.45490196 6.7873381 2.866 0.005  6.0288763 32.880928 132
 #' # b1  0.25686275 1.9834765 0.130 0.897 -3.6666499  4.180375 132
 #' # b2  0.04705882 0.5064693 0.093 0.926 -0.9547876  1.048905 132
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @importFrom stats qt
@@ -1513,6 +1558,10 @@ meta.lm.mean1 <- function(alpha, m, sd, n, X) {
 #' # b1 -0.01510565 0.00290210 -5.205 0 -0.02079367 -0.009417641
 #' 
 #' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
 #' @importFrom stats pnorm
 #' @importFrom stats qnorm
 #' @export
@@ -1582,6 +1631,10 @@ meta.lm.prop1 <- function(alpha, f, n, X) {
 #' # b0  3.5333333 4.37468253  0.808 0.419 -5.0408869 12.1075535
 #' # b1  0.0600000 0.09058835  0.662 0.508 -0.1175499  0.2375499
 #' # b2 -0.1666667 2.81139793 -0.059 0.953 -5.6769054  5.3435720
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats pnorm
