@@ -11,6 +11,8 @@
 #' Satterthwaite adjustment to the degrees of freedom is used to improve the 
 #' accuracy of the confidence intervals. The confidence level for the difference
 #' is 1 – 2*alpha, which is recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -123,6 +125,8 @@ replicate.mean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd2
 #' improve the accuracy of the confidence intervals for the difference and 
 #' average. The confidence level for the difference is 1 – 2*alpha, which is
 #' recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -234,6 +238,8 @@ replicate.mean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, s
 #' which is recommended for equivalence testing. Square root unweighted 
 #' variances, square root weighted variances, and single-group standard 
 #' deviation are options for the standardizer.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha	     alpha level for 1-alpha confidence
@@ -369,6 +375,8 @@ replicate.stdmean2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, 
 #' for the difference is 1 – 2*alpha, which is recommended for equivalence testing. 
 #' Square root unweighted variances and single-condition standard deviation are options
 #' for the standardizer.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
@@ -495,6 +503,8 @@ replicate.stdmean.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22
 #' correlations from an original study and a follow-up study. The 
 #' confidence level for the difference is 1 – 2*alpha, which is recommended 
 #' for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
@@ -604,6 +614,8 @@ replicate.cor <- function(alpha, cor1, n1, cor2, n2, s) {
 #' Confidence intervals for the difference and average effect size are also 
 #' computed. The confidence level for the difference is 1 – 2*alpha, which 
 #' is recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -710,6 +722,8 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' ratio of odds ratios and geometric average odds ratio are also  
 #' computed. The confidence level for the ratio of ratios is 1 – 2*alpha, which
 #' is recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -796,6 +810,8 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
 #' logistic, SEM). A Satterthwaite adjustment to the degrees of freedom is used
 #' to improve the accuracy of the confidence intervals for the average and the
 #' difference.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param    alpha	alpha level for 1-alpha or 1 - 2alpha confidence
@@ -891,6 +907,8 @@ replicate.slope <- function(alpha, b1, se1, n1, b2, se2, n2, s) {
 #' effect size estimate and its standard error from the original study and 
 #' the follow-up study. The confidence level for the difference is 1 – 2*alpha,
 #' which is recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #'
 #' @param    alpha		 alpha level for 1-alpha confidence 
@@ -972,6 +990,8 @@ replicate.gen <- function(alpha, est1, se1, est2, se2) {
 #' This function can be used to compare and combine Spearman correlations from
 #' an original study and a follow-up study. The confidence level for the 
 #' difference is 1 – 2*alpha, which is recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
@@ -1078,6 +1098,8 @@ replicate.spear <- function(alpha, cor1, n1, cor2, n2) {
 #' difference between the two proportions and average of the two proportions 
 #' are also computed. The confidence level for the difference is 1 – 2*alpha, 
 #' which is recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
@@ -1159,6 +1181,8 @@ replicate.prop1 <- function(alpha, f1, n1, f2, n2){
 #' the accuracy of the confidence intervals for the difference and average. 
 #' The confidence level for the difference is 1 – 2*alpha, which is 
 #' recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
@@ -1248,6 +1272,8 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
 #' Confidence intervals for the ratio and geometric average of effect sizes
 #' are also computed. The confidence level for the ratio of ratios is 1 – 2*alpha, 
 #' which is recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha	     alpha level for 1-alpha confidence																																												
@@ -1337,6 +1363,8 @@ replicate.propratio2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' difference. Confidence intervals for the difference and average of effect
 #' sizes are also computed. The confidence level for the difference is
 #' 1 – 2*alpha, which is recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha	   alpha level for 1-alpha confidence
@@ -1437,6 +1465,8 @@ replicate.prop.ps <- function(alpha, f1, f2){
 #' This function can be used to compare and combine any type of correlation 
 #' from an original study and a follow-up study. The confidence level for the 
 #' difference is 1 – 2*alpha, which is recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
@@ -1546,6 +1576,8 @@ replicate.cor.gen <- function(alpha, cor1, se1, cor2, se2) {
 #' size are also computed. The confidence level for the difference is 
 #' 1 – 2*alpha, which is recommended for equivalence testing. As a measurement
 #' of agreement, the G-index is usually preferred to Cohen's kappa.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha	     alpha level for 1-alpha confidence
@@ -1635,6 +1667,8 @@ replicate.agree <- function(alpha, f1, n1, f2, n2, k){
 #' coefficient from an original study and a follow-up study. The confidence 
 #' level for the difference is 1 – 2*alpha, which is recommended for 
 #' equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param    alpha	 alpha level for 1-alpha confidence
