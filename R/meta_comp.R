@@ -11,6 +11,8 @@
 #' studies. All of the correlations must be either Pearson correlations
 #' or partial correlations.
 #'
+#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     n      	vector of sample sizes 
@@ -100,6 +102,8 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #' for a  difference in average Spearman correlations for two 
 #' mutually exclusive subgroups of studies. Each subgroup can have
 #' one or more studies. 
+#'
+#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -194,6 +198,8 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' is recommended for 2-group nonexperimental designs with simple random
 #' sampling (but not stratified random sampling) within each study. 
 #' Equality of variances within or across studies is not assumed.
+#'
+#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
 #'    
 #'    
 #' @param     alpha   	alpha level for 1-alpha confidence
@@ -315,6 +321,8 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 #' subgroups of mutually exclusive studies. Each subgroup can
 #' have one or more studies. 
 #'
+#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     n      	vector of sample sizes 
@@ -404,6 +412,8 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #' mutually exclusive subgroups of studies. Each set can have one or
 #' more studies. The number of measurements used to compute the sample
 #' reliablity coefficient is assumed to be the same for all studies.
+#'
+#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -496,6 +506,8 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 #' two mutually exclusive subgroups of studies. Each subgroup can have one
 #' or more studies. All of the effects sizes should be compatible. 
 #'
+#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     est    	vector of estimated effect sizes 
@@ -577,6 +589,8 @@ meta.sub.gen <- function(alpha, est, se, group) {
 #' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
 #'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    m1    	vector of estimated means for group 1
@@ -653,6 +667,8 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' (stdzr = 3) for 2-group nonexperimental designs with simple random sampling.
 #' The stdzr = 1 and stdzr = 2 options can be used with either experimental
 #' or nonexperimental designs.
+#'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param    alpha  alpha level for 1-alpha confidence
@@ -754,6 +770,8 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
 #'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    m1    	vector of estimated means for measurement 1 
@@ -825,6 +843,8 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' Computes the estimate, standard error, and confidence interval for a 
 #' linear contrast of paired-samples standardized mean differences from two or 
 #' more studies. Equality of variances within or across studies is not assumed. 
+#'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
@@ -918,6 +938,8 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
 #'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    m1    	vector of estimated means for group 1 
@@ -995,6 +1017,8 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
 #'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param    alpha	alpha level for 1-alpha confidence
 #' @param    m1    	vector of estimated means for measurement 1 
@@ -1067,6 +1091,8 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' exponentiated log-linear contrast of odds ratios from two or more studies.
 #'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     f1     	vector of group 1 frequency counts
@@ -1130,6 +1156,8 @@ meta.lc.oddsratio <- function(alpha, f1, f2, n1, n2, v) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' exponentiated log-linear contrast of 2-group proportion ratios from
 #' two or more studies.
+#'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1198,6 +1226,8 @@ meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
 #' Computes the estimate, standard error, and adjusted Wald confidence interval for a 
 #' linear contrast of 2-group proportion differences from two or more studies.
 #'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     f1     	vector of group 1 frequency counts
@@ -1264,6 +1294,8 @@ meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
 #' for a linear contrast of paired-samples proportion differences from two or
 #' more studies.
 #'
+#' For more details, see Setion 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     f11    	vector of frequency counts in cell 1,1
@@ -1329,6 +1361,8 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' from two or more studies. This function assumes that two raters each
 #' provide a dichotomous rating for a sample of objects.
 #'
+#' For more details, see Setion 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     f11    	vector of frequency counts in cell 1,1
@@ -1392,6 +1426,8 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 #' use either an unequal variance (recommended) or an equal variance method. 
 #' A Satterthwaite adjustment to the degrees of freedom is used with the
 #' unequal variance method. 
+#'
+#' For more details, see Setion 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1463,6 +1499,8 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
 #' Computes the estimate, standard error, and an adjusted Wald confidence 
 #' interval for a linear contrast of proportions from two or more studies.
 #'
+#' For more details, see Setion 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     f      	vector of frequency counts
@@ -1515,6 +1553,8 @@ meta.lc.prop1 <- function(alpha, f, n, v) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for a 
 #' linear contrast of any type of effect size from two or more studies.
+#'
+#' For more details, see Setion 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha 	alpha level for 1-alpha confidence
