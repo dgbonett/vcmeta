@@ -53,6 +53,8 @@
 #' @references
 #' \insertRef{Bonett2008a}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @importFrom stats qnorm
 #' @export
@@ -143,6 +145,8 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #' 
 #' @references
 #' \insertRef{Bonett2008a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -250,6 +254,8 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' 
 #' @references
 #' \insertRef{Bonett2020b}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -360,6 +366,11 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 #' # Set A:            0.525 0.05955  0.3987 0.6318
 #' # Set B:            0.600 0.07931  0.4221 0.7334
 #' # Set A - Set B:   -0.075 0.09918 -0.2587 0.1325
+#'
+#'
+#' @references
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -453,8 +464,11 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #' 
 #' 
 #' @references
-#' * \insertRef{Bonett2010}{vcmeta}
-#' * \insertRef{Bonett2015b}{vcmeta}
+#' \insertRef{Bonett2010}{vcmeta}
+#'
+#' \insertRef{Bonett2015b}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @importFrom stats qnorm
@@ -542,6 +556,10 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 #' # Set A:           0.9080 0.06170292 0.787064504 1.0289355
 #' # Set B:           0.7525 0.04411916 0.666028042 0.8389720
 #' # Set A - Set B:   0.1555 0.07585348 0.006829917 0.3041701
+#'
+#'
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -628,6 +646,8 @@ meta.sub.gen <- function(alpha, est, se, group) {
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @importFrom stats qt
 #' @export
@@ -711,6 +731,8 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -809,6 +831,8 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qt
@@ -886,6 +910,8 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -982,6 +1008,8 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' 
 #' @references
 #' \insertRef{Bonett2020}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qt
@@ -1062,6 +1090,8 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' @references
 #' \insertRef{Bonett2020}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @importFrom stats qt
 #' @export
@@ -1126,6 +1156,8 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' 
 #' @references
 #' \insertRef{Bonett2015}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1190,8 +1222,11 @@ meta.lc.oddsratio <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' 
 #' @references
-#' * \insertRef{Price2008}{vcmeta}
-#' * \insertRef{Bonett2015}{vcmeta}
+#' \insertRef{Price2008}{vcmeta}
+#'
+#' \insertRef{Bonett2015}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1261,6 +1296,8 @@ meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
 #' @references 
 #' \insertRef{Bonett2014}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @importFrom stats qnorm
 #' @export
@@ -1328,6 +1365,8 @@ meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' @references
 #' \insertRef{Bonett2012}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1394,6 +1433,8 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' 
 #' @references 
 #' \insertRef{Bonett2022}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1459,8 +1500,9 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 #' #          Estimate       SE        LL        UL    df
 #' # Contrast    -5.35 1.300136 -7.993583 -2.706417 33.52
 #' 
+#'
 #' @references
-#' \insertRef{Snedecor1980}{vcmeta}
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qt
@@ -1528,6 +1570,8 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
 #' @references
 #' \insertRef{Price2004}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @importFrom stats qnorm
 #' @export
@@ -1580,7 +1624,12 @@ meta.lc.prop1 <- function(alpha, f, n, v) {
 #' # Should return: 
 #' #          Estimate         SE        LL        UL
 #' # Contrast   0.2275 0.06755461 0.0950954 0.3599046
+#'
+#'
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
+#'
 #' @importFrom stats qnorm
 #' @export
 meta.lc.gen <- function(alpha, est, se, v) {
