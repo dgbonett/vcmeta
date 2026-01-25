@@ -11,7 +11,7 @@
 #' studies. All of the correlations must be either Pearson correlations
 #' or partial correlations.
 #'
-#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -105,7 +105,7 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #' mutually exclusive subgroups of studies. Each subgroup can have
 #' one or more studies. 
 #'
-#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -203,7 +203,7 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' sampling (but not stratified random sampling) within each study. 
 #' Equality of variances within or across studies is not assumed.
 #'
-#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
 #'    
 #'    
 #' @param     alpha   	alpha level for 1-alpha confidence
@@ -327,7 +327,7 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 #' subgroups of mutually exclusive studies. Each subgroup can
 #' have one or more studies. 
 #'
-#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -424,7 +424,7 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #' more studies. The number of measurements used to compute the sample
 #' reliablity coefficient is assumed to be the same for all studies.
 #'
-#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -520,7 +520,7 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 #' two mutually exclusive subgroups of studies. Each subgroup can have one
 #' or more studies. All of the effects sizes should be compatible. 
 #'
-#' For more details, see Section 3.1 of Bonett (2021, Volume 5).
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
