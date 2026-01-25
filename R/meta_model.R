@@ -7,6 +7,8 @@
 #' meta-regression model where the dependent variable is a 2-group
 #' mean difference. The estimates are OLS estimates with robust standard
 #' errors that accommodate residual heteroscedasticity.  
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #'  
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -96,6 +98,8 @@ meta.lm.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' designs, and use the weighted variance standardizer for 2-group
 #' nonexperimental designs. A single-group standardizer can be used
 #' in either experimental or nonexperimental designs.
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #'  
 #
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -203,6 +207,8 @@ meta.lm.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X, stdzr) {
 #' meta-regression model where the dependent variable is a paired-samples
 #' mean difference. The estimates are OLS estimates with robust standard
 #' errors that accommodate residual heteroscedasticity. 
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -285,6 +291,8 @@ meta.lm.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' meta-regression model where the dependent variable is a paired-samples
 #' standardized mean difference. The estimates are OLS estimates with  
 #' robust standard errors that accommodate residual heteroscedasticity. 
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -390,6 +398,8 @@ meta.lm.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X, stdzr) {
 #' change in the mean ratio associated with a 1-unit increase in that 
 #' predictor variable, controlling for all other predictor variables
 #' in the model.
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #'  
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -483,6 +493,8 @@ meta.lm.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, X) {
 #' change in the mean ratio associated with a 1-unit increase in that 
 #' predictor variable, controlling for all other predictor variables
 #' in the model.
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -576,6 +588,8 @@ meta.lm.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, X) {
 #' estimates do not have a simple interpretation. However, the hypothesis 
 #' test results can be used to decide if a population slope is either 
 #' positive or negative.
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param     alpha	 alpha level for 1-alpha confidence
@@ -644,6 +658,8 @@ meta.lm.cor.gen <- function(alpha, cor, se, X) {
 #' The correlations are Fisher-transformed and hence the parameter estimates
 #' do not have a simple interpretation. However, the hypothesis test results
 #' can be used to decide if a population slope is either positive or negative.
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param     alpha	alpha level for 1-alpha confidence
@@ -719,6 +735,8 @@ meta.lm.cor <- function(alpha, n, cor, s, X) {
 #' estimates do not have a simple interpretation. However, the hypothesis
 #' test results can be used to decide if a population slope is either 
 #' positive or negative.
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param     alpha	 alpha level for 1-alpha confidence
@@ -790,6 +808,8 @@ meta.lm.spear <- function(alpha, n, cor, X) {
 #' correlations are Fisher-transformed and hence the parameter estimates
 #' do not have a simple interpretation. However, the hypothesis test results
 #' can be used to decide if a population slope is either positive or negative.
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #'  
 #' 
 #' @param     alpha	 alpha level for 1-alpha confidence
@@ -865,6 +885,8 @@ meta.lm.semipart <- function(alpha, n, cor, r2, X) {
 #' estimate for a predictor variable describes a multiplicative change in 
 #' non-reliability associated with a 1-unit increase in that predictor 
 #' variable, controlling for all other predictor variables in the model.
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param     alpha	 alpha level for 1-alpha confidence
@@ -947,6 +969,8 @@ meta.lm.cronbach <- function(alpha, n, rel, r, X) {
 #' change in the odds ratio associated with a 1-unit increase in that 
 #' predictor variable, controlling for all other predictor variables
 #' in the model.
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1040,6 +1064,8 @@ meta.lm.oddsratio <- function(alpha, f1, f2, n1, n2, X) {
 #' change in the proportion ratio associated with a 1-unit increase in 
 #' that predictor variable, controlling for all other predictor variables
 #' in the model.
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1132,6 +1158,8 @@ meta.lm.propratio2 <- function(alpha, f1, f2, n1, n2, X) {
 #' meta-regression model where the dependent variable is a 2-group
 #' proportion difference. The estimates are OLS estimates with
 #' robust standard errors that accommodate residual heteroscedasticity. 
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1213,6 +1241,8 @@ meta.lm.prop2 <- function(alpha, f1, f2, n1, n2, X) {
 #' paired-samples proportion difference. The estimates are OLS 
 #' estimates with robust standard errors that accommodate residual 
 #' heteroscedasticity.  		
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 				
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1294,6 +1324,8 @@ meta.lm.prop.ps <- function(alpha, f11, f12, f21, f22, X) {
 #' meta-regression model where the dependent variable is a G-index of
 #' agreement. The estimates are OLS estimates with robust standard errors 
 #' that accomodate residual heteroscedasticity. 
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1373,6 +1405,8 @@ meta.lm.agree <- function(alpha, f11, f12, f21, f22, X) {
 #' meta-regression model where the dependent variable is a mean
 #' from one group. The estimates are OLS estimates with robust
 #' standard errors that accomodate residual heteroscedasticity. 
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #' 
 #' @param     alpha 	alpha level for 1-alpha confidence
@@ -1446,6 +1480,8 @@ meta.lm.mean1 <- function(alpha, m, sd, n, X) {
 #' meta-regression model where the dependent variable is a proportion
 #' from one group. The estimates are OLS estimates with robust
 #' standard errors that accomodate residual heteroscedasticity. 
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1513,6 +1549,8 @@ meta.lm.prop1 <- function(alpha, f, n, X) {
 #' meta-regression model where the dependent variable is any type of
 #' effect size. The estimates are OLS estimates with robust standard 
 #' errors that accomodate residual heteroscedasticity. 
+#'
+#' For more details, see Section 3.4 of Bonett (2021, Volume 5).
 #' 
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
