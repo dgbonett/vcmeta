@@ -1298,9 +1298,9 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
 #'
 #' @description 
 #' This function computes confidence intervals from an original study and a 
-#' follow-up study where the effect size is a 2-group proportion ratio. 
-#' Confidence intervals for the ratio and geometric average of effect sizes
-#' are also computed. The confidence level for the ratio of ratios is 1 – 2*alpha, 
+#' follow-up study where the effect size is a 2-group log proportion ratio. 
+#' Confidence intervals for exponentiated effect sizes are also computed. 
+#' The confidence level for the ratio of ratios is 1 – 2*alpha, 
 #' which is recommended for equivalence testing.
 #'
 #' For more details, see Chapter 4 of Bonett (2021, Volume 5).
@@ -1325,25 +1325,32 @@ replicate.mean1 <- function(alpha, m1, sd1, n1, m2, sd2, n2){
 #'
 #'
 #' The columns are:
-#' * Estimate - proportion ratio estimate (single study, ratio, average)
-#' * LL - lower limit of the confidence interval
-#' * UL - upper limit of the confidence interval
+#' * Estimate - log proportion ratio estimate (single study, ratio, average)
+#' * SE - standard error of log proportion estimate
+#' * z - z-value
+#' * p - p-value
+#' * exp(Estimate) - exponentiated estimate
+#' * exp(LL) - exponentiated lower limit of the confidence interval
+#' * exp(UL) - exponentiated upper limit of the confidence interval
 #'    
 #' 
 #' @examples
 #' replicate.propratio2(.05, 21, 16, 40, 40, 19, 13, 60, 60)
 #'
 #' # Should return:
-#' #                      Estimate        LL       UL
-#' # Original:           1.3076923 0.8068705 2.119373
-#' # Follow-up:          1.4528302 0.7939881 2.658372
-#' # Original/Follow-up: 0.9000999 0.4703209 1.722611
-#' # Average:            1.3783522 0.9362893 2.029132
+#' #                       Estimate        SE      z     p
+#' # Original:            0.2682640 0.2463597  1.089 0.276
+#' # Follow-up:           0.3735135 0.3082711  1.212 0.226
+#' # Original/Follow-up: -0.1052495 0.3946190 -0.267 0.789
+#' # Average:             0.3208887 0.1973095  1.626 0.104
+#' #                     exp(Estimate)   exp(LL)  exp(UL)
+#' # Original:               1.3076923 0.8068705 2.119373
+#' # Follow-up:              1.4528302 0.7939881 2.658372
+#' # Original/Follow-up:     0.9000999 0.4703209 1.722611
+#' # Average:                1.3783522 0.9362893 2.029132
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021a}{vcmeta}
-#' 
 #' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
@@ -1365,20 +1372,28 @@ replicate.propratio2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
   v22 <- 1/(f22 + 1/4 + (f22 + 1/4)^2/(n22 - f22 + 3/2))
   se2 <- sqrt(v21 + v22)
   est2 <- log(p21/p22)
-  est3 <- est1 - est2
-  est4 <- (est1 + est2)/2
   se3 <- sqrt(se1^2 + se2^2)
   se4 <- se3/2
+  est3 <- est1 - est2
+  est4 <- (est1 + est2)/2
+  z1 <- round(est1/se1, 3)
+  z2 <- round(est2/se2, 3)
+  z3 <- round(est3/se3, 3)
+  z4 <- round(est4/se4, 3)
+  pval1 <- 2*(1 - pnorm(abs(z1)))
+  pval2 <- 2*(1 - pnorm(abs(z2)))
+  pval3 <- 2*(1 - pnorm(abs(z3))) 
+  pval4 <- 2*(1 - pnorm(abs(z4)))
   ll1 <- exp(est1 - zcrit1*se1);  ul1 <- exp(est1 + zcrit1*se1)
   ll2 <- exp(est2 - zcrit1*se2);  ul2 <- exp(est2 + zcrit1*se2)
   ll3 <- exp(est3 - zcrit2*se3);  ul3 <- exp(est3 + zcrit2*se3)
   ll4 <- exp(est4 - zcrit1*se4);  ul4 <- exp(est4 + zcrit1*se4)
-  out1 <- t(c(exp(est1), ll1, ul1))
-  out2 <- t(c(exp(est2), ll2, ul2))
-  out3 <- t(c(exp(est3), ll3, ul3))
-  out4 <- t(c(exp(est4), ll4, ul4))
+  out1 <- t(c(est1, se1, z1, round(pval1, 3), exp(est1), ll1, ul1))
+  out2 <- t(c(est2, se2, z2, round(pval2, 3), exp(est2), ll2, ul2))
+  out3 <- t(c(est3, se3, z3, round(pval3, 3), exp(est3), ll3, ul3))
+  out4 <- t(c(est4, se4, z4, round(pval4, 3), exp(est4), ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
-  colnames(out) <- c("Estimate", "LL", "UL")
+  colnames(out) <- c("Estimate", "SE", "z", "p", "exp(Estimate)","exp(LL)", "exp(UL)")
   rownames(out) <- c("Original:", "Follow-up:", "Original/Follow-up:", "Average:")
   return(out)
 }
