@@ -739,8 +739,8 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #' 
 #' 
 #' @param    alpha		 alpha level for 1-alpha confidence
-#' @param    est1		   estimate of log odds ratio in original study 
-#' @param    se1		   standard error of log odds ratio in original study
+#' @param    est1		 estimate of log odds ratio in original study 
+#' @param    se1		 standard error of log odds ratio in original study
 #' @param    est2   	 estimate of log odds ratio in follow-up study 
 #' @param    se2    	 standard error of log odds ratio in follow-up study
 #' 
@@ -753,23 +753,29 @@ replicate.prop2 <- function(alpha, f11, f12, n11, n12, f21, f22, n21, n22){
 #'
 #'
 #' The columns are:
-#' * Estimate - odds ratio estimate (single study, ratio, average)
-#' * SE - standard error
+#' * Estimate - log odds ratio estimate (single study, ratio, average)
+#' * SE - standard error of log odds estimate
 #' * z - z-value
 #' * p - p-value
-#' * LL - exponentiated lower limit of the confidence interval
-#' * UL - exponentiated upper limit of the confidence interval
+#' * exp(Estimate) - exponentiated estimate
+#' * exp(LL) - exponentiated lower limit of the confidence interval
+#' * exp(UL) - exponentiated upper limit of the confidence interval
 #'    
 #' 
 #' @examples
 #' replicate.oddsratio(.05, 1.39, .302, 1.48, .206)
 #'
 #' # Should return:
-#' #                        Estimate        SE      z     p   exp(LL)  exp(UL)
-#' # Original:            1.39000000 0.3020000  4.603 0.000 2.2212961 7.256583
-#' # Follow-up:           1.48000000 0.2060000  7.184 0.000 2.9336501 6.578144
-#' # Original/Follow-up: -0.06273834 0.3655681 -0.172 0.864 0.5147653 1.713551
-#' # Average:             0.36067292 0.1827840  1.973 0.048 1.0024257 2.052222
+#' #                        Estimate        SE      z     p
+#' # Original:            1.39000000 0.3020000  4.603 0.000
+#' # Follow-up:           1.48000000 0.2060000  7.184 0.000
+#' # Original/Follow-up: -0.06273834 0.3655681 -0.172 0.864
+#' # Average:             0.36067292 0.1827840  1.973 0.048
+#' #                     exp(Estimate)   exp(LL)  exp(UL)
+#' # Original:               4.0148501 2.2212961 7.256583
+#' # Follow-up:              4.3929457 2.9336501 6.578144
+#' # Original/Follow-up:     0.9391892 0.5147653 1.713551
+#' # Average:                1.4342943 1.0024257 2.052222
 #' 
 #' 
 #' @references
@@ -800,12 +806,12 @@ replicate.oddsratio <- function(alpha, est1, se1, est2, se2){
   ll2 <- exp(est2 - zcrit1*se2);  ul2 <- exp(est2 + zcrit1*se2)
   ll3 <- exp(est3 - zcrit2*se3);  ul3 <- exp(est3 + zcrit2*se3)
   ll4 <- exp(est4 - zcrit1*se4);  ul4 <- exp(est4 + zcrit1*se4)
-  out1 <- t(c(est1, se1, round(z1, 3), round(pval1, 3), ll1, ul1))
-  out2 <- t(c(est2, se2, round(z2, 3), round(pval2, 3), ll2, ul2))
-  out3 <- t(c(est3, se3, round(z3, 3), round(pval3, 3), ll3, ul3))
-  out4 <- t(c(est4, se4, round(z4, 3), round(pval4, 3), ll4, ul4))
+  out1 <- t(c(est1, se1, round(z1, 3), round(pval1, 3), exp(est1), ll1, ul1))
+  out2 <- t(c(est2, se2, round(z2, 3), round(pval2, 3), exp(est2), ll2, ul2))
+  out3 <- t(c(est3, se3, round(z3, 3), round(pval3, 3), exp(est3), ll3, ul3))
+  out4 <- t(c(est4, se4, round(z4, 3), round(pval4, 3), exp(est4), ll4, ul4))
   out <- rbind(out1, out2, out3, out4)
-  colnames(out) <- c("Estimate", "SE", "z", "p", "exp(LL)", "exp(UL)")
+  colnames(out) <- c("Estimate", "SE", "z", "p", "exp(Estimate)", "exp(LL)", "exp(UL)")
   rownames(out) <- c("Original:", "Follow-up:", "Original/Follow-up:", "Average:")
   return(out)
 }
