@@ -91,8 +91,8 @@ meta.ave.agree <- function(alpha, f11, f12, f21, f22, bystudy = TRUE) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' average Pearson or partial correlation from two or more studies. The 
 #' sample correlations must be all Pearson correlations or all partial
-#' correlations. Use the meta.ave.cor.gen function to meta-analyze any 
-#' combination of Pearson, partial, or Spearman correlations.
+#' correlations. Use the \link[vcmeta]{meta.ave.cor.gen} function to 
+#' meta-analyze any combination of Pearson, partial, or Spearman correlations.
 #'
 #' For more details, see Chapter 2 of Bonett (2021, Volume 5).
 #' 
