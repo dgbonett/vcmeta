@@ -1,3 +1,13 @@
+vcmeta v1.6.0 (Release date: 2026/xx/xx)
+==============
+
+Changes:
+
+* New functions: replicate.meanratio2, xxx, xxx
+* Most function descriptions in the Reference Manual now refer to a specific section in the Bonett (2021) online text for additional details
+* More examples have been added to the Reference Manual
+
+
 vcmeta v1.5.0 (Release date: 2025/09/01)
 ==============
 
@@ -66,5 +76,6 @@ vcmeta 1.0.0 (Release date: 2021/08/21)
 Changes:
 
 * Added a `NEWS.md` file to track changes to the package.
+
 
 
