@@ -1943,3 +1943,138 @@ replicate.meanratio2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22
   return(out)
 }
 
+
+#  replicate.meanratio.ps =====================================================
+#' Compares and combines paired-samples mean ratios in original and follow-up
+#' studies
+#' 
+#'                                
+#' @description 
+#' This function computes confidence intervals from an original study and a 
+#' follow-up study where the effect size is a paired-samples mean ratio. 
+#' Confidence intervals for the log-difference and average log effect size are 
+#' also computed. Equality of variances within or across studies is not assumed.
+#' A Satterthwaite adjustment to the degrees of freedom is used to improve the
+#' accuracy of the confidence intervals. The confidence level for the difference
+#' is 1 – 2*alpha, which is recommended for equivalence testing.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
+#' 
+#' 
+#' @param    alpha		 alpha level for 1-alpha confidence
+#' @param    m11		 estimated mean for group 1 in original study 
+#' @param    m12		 estimated mean for group 2 in original study
+#' @param    sd11   	 estimated SD for group 1 in original study
+#' @param    sd12   	 estimated SD for group 2 in original study
+#' @param    cor1    	 estimated correlation of paired measurements in original study
+#' @param    n1    	     sample size in original study
+#' @param    m21    	 estimated mean for group 1 in follow-up study 
+#' @param    m22    	 estimated mean for group 2 in follow-up study
+#' @param    sd21   	 estimated SD for group 1 in follow-up study
+#' @param    sd22   	 estimated SD for group 2 in follow-up study
+#' @param    cor2    	 estimated correlation of paired measurements in follow-up study
+#' @param    n2 	   	 sample size in follow-up study
+#' 
+#' 
+#' @return A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in mean differences
+#' * Row 4 estimates the average mean difference
+#'
+#'
+#' The columns are:
+#' * Estimate - mean difference estimate (single study, difference, average)
+#' * SE - standard error
+#' * t - t-value
+#' * p - p-value
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' * df - degrees of freedom
+#'    
+#' 
+#' @examples
+#' replicate.meanratio.ps(.05, 86.22, 70.93, 14.89, 12.32, .765, 20, 
+#'                        84.81, 77.24, 15.68, 16.95, .702, 75)
+#'
+#' # Should return:
+#' #                         Estimate         SE       t       p    df
+#' # Original:             0.30766736 0.02420564 12.7106 0.00000 39.00
+#' # Follow-up:            0.27715566 0.01532870 18.0808 0.00000 74.00
+#' # Original - Follow-up: 0.03051171 0.02865104  1.0649 0.29055 70.57
+#' # Average:              0.29241151 0.01432552 20.4119 0.00000 70.57
+#' #                       exp(Estimate)   exp(LL)  exp(UL)
+#' # Original:                  1.360248 1.2952540 1.428504
+#' # Follow-up:                 1.319372 1.2796832 1.360291
+#' # Original - Follow-up:      1.030982 0.9829058 1.081410
+#' # Average:                   1.339654 1.3019254 1.378476
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qt
+#' @importFrom stats pt
+#' @export
+replicate.meanratio.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m22, sd21, sd22, cor2, n2){
+  h1 <- c(1, 0)
+  h2 <- c(0, 1)
+  h3 <- c(1, -1)
+  h4 <- c(.5, .5)
+  n <- c(n1, n2)
+  sd1 <- c(sd11, sd21)
+  sd2 <- c(sd12, sd22)
+  cor <- c(cor1, cor2)
+  m1 <- c(m11, m21)
+  m2 <- c(m12, m22)
+  logratio <- c(log(m11/m12), log(m21/m22))
+  var <- (sd1^2/m1^2 + sd2^2/m2^2 - 2*cor*sd1*sd2/(m1*m2))/n
+  est1 <- t(h1)%*%logratio
+  se1 <- sqrt(t(h1)%*%(diag(var))%*%h1)
+  df1 <- se1^4/sum(h1^4*var^2/(n - 1))
+  df1 <- round(df1, 2)
+  t1 <- round(est1/se1, 4)
+  pval1 <- 2*(1 - pt(abs(t1), df1))
+  pval1 <- round(pval1, 5)
+  est2 <- t(h2)%*%logratio
+  se2 <- sqrt(t(h2)%*%(diag(var))%*%h2)
+  df2 <- se2^4/sum(h2^4*var^2/(n - 1))
+  df2 <- round(df2, 2)
+  t2 <- round(est2/se2, 4)
+  pval2 <- 2*(1 - pt(abs(t2), df2))
+  pval2 <- round(pval2, 5)
+  est3 <- t(h3)%*%logratio
+  se3 <- sqrt(t(h3)%*%(diag(var))%*%h3)
+  df3 <- se3^4/sum(h3^4*var^2/(n - 1))
+  df3 <- round(df3, 2)
+  t3 <- round(est3/se3, 4)
+  pval3 <- 2*(1 - pt(abs(t3), df3))
+  pval3 <- round(pval3, 5)
+  est4 <- t(h4)%*%logratio
+  se4 <- sqrt(t(h4)%*%(diag(var))%*%h4)
+  df4 <- se4^4/sum(h4^4*var^2/(n - 1))
+  df4 <- round(df4, 2)
+  t4 <- round(est4/se4, 4)
+  pval4 <- 2*(1 - pt(abs(t4), df4))
+  pval4 <- round(pval4, 5)
+  tcrit1 <- qt(1 - alpha/2, df1)
+  tcrit2 <- qt(1 - alpha/2, df2)
+  tcrit3 <- qt(1 - alpha, df3)
+  tcrit4 <- qt(1 - alpha/2, df4)
+  ll1 <- est1 - tcrit1*se1;  ul1 <- est1 + tcrit1*se1
+  ll2 <- est2 - tcrit2*se2;  ul2 <- est2 + tcrit2*se2
+  ll3 <- est3 - tcrit3*se3;  ul3 <- est3 + tcrit3*se3
+  ll4 <- est4 - tcrit4*se4;  ul4 <- est4 + tcrit4*se4
+  out1 <- t(c(est1, se1, t1, pval1, df1, exp(est1), exp(ll1), exp(ul1)))
+  out2 <- t(c(est2, se2, t2, pval2, df2, exp(est2), exp(ll2), exp(ul2)))
+  out3 <- t(c(est3, se3, t3, pval3, df3, exp(est3), exp(ll3), exp(ul3)))
+  out4 <- t(c(est4, se4, t4, pval4, df3, exp(est4), exp(ll4), exp(ul4)))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "SE", "t", "p", "df", "exp(Estimate)", "exp(LL)", "exp(UL)")
+  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  return(out)
+}
+
+
+
