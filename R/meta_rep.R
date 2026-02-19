@@ -1881,6 +1881,8 @@ replicate.cronbach <- function(alpha, rel1, n1, rel2, n2, r) {
 #' 
 #' 
 #' @references
+#' \insertRef{Bonett2020}{vcmeta}
+#'
 #' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
@@ -2011,6 +2013,8 @@ replicate.meanratio2 <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22
 #' 
 #' 
 #' @references
+#' \insertRef{Bonett2020}{vcmeta}
+#'
 #' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
