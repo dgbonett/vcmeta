@@ -2157,7 +2157,7 @@ replicate.meanratio.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m
 #' 
 #' 
 #' @references
-#' \insertRef{Bonett2021a}{vcmeta}
+#' \insertRef{Bonett2020b}{vcmeta}
 #'
 #' \insertRef{Bonett2021}{vcmeta}
 #' 
