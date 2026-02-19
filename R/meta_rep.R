@@ -2077,4 +2077,165 @@ replicate.meanratio.ps <- function(alpha, m11, m12, sd11, sd12, cor1, n1, m21, m
 }
 
 
+#  replicate.pbcor ============================================================
+#' Compares and combines point-biserial correlations in original and follow-up
+#' studies
+#'                       
+#'
+#' @description 
+#' This function computes confidence intervals from an original study and a 
+#' follow-up study where the effect size is a point-biserial correlation. 
+#' Confidence intervals for the difference and average effect size are also 
+#' computed. The confidence level for the difference is 1 – 2*alpha, which is 
+#' recommended for equivalence testing. The point-biserial correlation in 
+#' each study is computed from a standardized mean difference. Two types of
+#' standardized mean differences can be requested. One type uses the square
+#' root of unweighted variances as a standardizer and is recommended for 
+#' 2-group experimental designs. The other type uses the square root of
+#' weighted variances as a standardizer and is recommended for 2-group 
+#' non-experimental designs with simple random sampling. Equality of variances
+#' across or within studies is not assumed.
+#'
+#' For more details, see Chapter 4 of Bonett (2021, Volume 5).
+#' 
+#' 
+#' @param    alpha	     alpha level for 1-alpha confidence
+#' @param    m11	     estimated mean for group 1 in original study 
+#' @param    m12	     estimated mean for group 2 in original study
+#' @param    sd11   	 estimated SD for group 1 in original study
+#' @param    sd12   	 estimated SD for group 2 in original study
+#' @param    n11    	 sample size for group 1 in original study
+#' @param    n12    	 sample size for group 2 in original study
+#' @param    m21    	 estimated mean for group 1 in follow-up study 
+#' @param    m22    	 estimated mean for group 2 in follow-up study
+#' @param    sd21   	 estimated SD for group 1 in follow-up study
+#' @param    sd22   	 estimated SD for group 2 in follow-up study
+#' @param    n21    	 sample size for group 1 in follow-up study
+#' @param    n22    	 sample size for group 2 in follow-up study
+#' @param    type
+#' * set to 1 for square root weighted average variance standardizer 
+#' * set to 2 for square root unweighted average variance standardizer 
+#' 
+#' 
+#' @return
+#' A 4-row matrix. The rows are:
+#' * Row 1 summarizes the original study
+#' * Row 2 summarizes the follow-up study
+#' * Row 3 estimates the difference in point-biserial correlations
+#' * Row 4 estimates the average point-biserial correlation 
+#' 
+#' 
+#' The columns are:
+#' * Estimate - point-biserial correlation (single study, difference, average)
+#' * SE - standard error
+#' * LL - lower limit of the confidence interval
+#' * UL - upper limit of the confidence interval
+#' 
+#' 
+#' @examples
+#' replicate.pbcor(.05, 21.9, 16.1, 3.82, 3.21, 40, 40, 25.2, 19.1, 3.98, 3.79, 75, 75, 2)
+#'
+#' # Should return: 
+#' #                       Estimate      SE      LL     UL
+#' # Original:               0.6350 0.06061  0.4915 0.7336
+#' # Follow-up:              0.6174 0.04578  0.5148 0.6959
+#' # Original - Follow-up:   0.0176 0.07595 -0.1460 0.1599
+#' # Average:                0.6262 0.03798  0.5460 0.6950
+#'
+#' replicate.pbcor(.05, 12.2, 10.4, 1.74, 1.59, 68, 94, 13.0, 10.9, 1.48, 1.29, 124, 189, 1)
+#'
+#' # Should return: 
+#' #                       Estimate      SE      LL      UL
+#' # Original:               0.4753 0.05847  0.3487  0.5781
+#' # Follow-up:              0.6016 0.03365  0.5292  0.6617
+#' # Original - Follow-up:  -0.1262 0.06746 -0.2664 -0.0005
+#' # Average:                0.5384 0.03373  0.4691  0.6012
+#' 
+#' 
+#' @references
+#' \insertRef{Bonett2021a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
+#' 
+#' 
+#' @importFrom stats qnorm
+#' @export
+replicate.pbcor <- function(alpha, m11, m12, sd11, sd12, n11, n12, m21, m22, sd21, sd22, n21, n22, type) {
+  zcrit1 <- qnorm(1 - alpha/2)
+  zcrit2 <- qnorm(1 - alpha)
+  n1 <- n11 + n12
+  p1 <- n11/n1
+  n2 <- n21 + n22
+  p2 <- n21/n2
+  v11 <- sd11^2
+  v12 <- sd12^2
+  v21 <- sd21^2
+  v22 <- sd22^2
+  df11 <- n11 - 1
+  df12 <- n12 - 1
+  df21 <- n21 - 1
+  df22 <- n22 - 1
+  if (type == 1) {
+    s1 <- sqrt((df11*v11 + df12*v12)/(df11 + df12))
+    s2 <- sqrt((df21*v21 + df22*v22)/(df21 + df22))
+    d1 <- (m11 - m12)/s1
+    d2 <- (m21 - m22)/s2
+    se.d1 <- sqrt(d1^2*(1/df11 + 1/df12)/8 + (v11/n11 + v12/n12)/s1^2)
+    se.d2 <- sqrt(d2^2*(1/df21 + 1/df22)/8 + (v21/n21 + v22/n22)/s2^2)
+	k1 <- (n1 - 2)/(n1*p1*(1 - p1))
+    cor1 <- d1/sqrt(d1^2 + k1)
+	k2 <- (n2 - 2)/(n2*p2*(1 - p2))
+    cor2 <- d2/sqrt(d2^2 + k2)
+	se1.cor <- (k1/(d1^2 + k1)^(3/2))*se.d1
+	se2.cor <- (k2/(d2^2 + k2)^(3/2))*se.d2
+	ll.d1 <- d1 - zcrit1*se.d1
+    ul.d1 <- d1 + zcrit1*se.d1
+	ll1 <- ll.d1/sqrt(ll.d1^2 + k1)
+    ul1 <- ul.d1/sqrt(ul.d1^2 + k1)
+	ll.d2 <- d2 - zcrit1*se.d2
+    ul.d2 <- d2 + zcrit1*se.d2
+	ll2 <- ll.d2/sqrt(ll.d2^2 + k2)
+    ul2 <- ul.d2/sqrt(ul.d2^2 + k2)
+  	} else {
+    s1 <- sqrt((v11 + v12)/2)
+    s2 <- sqrt((v21 + v22)/2)
+    d1 <- (m11 - m12)/s1
+    d2 <- (m21 - m22)/s2
+    se.d1 <- sqrt(d1^2*(v11^2/df11 + v12^2/df12)/(8*s1^4) + (v11/df11 + v12/df12)/s1^2)
+    se.d2 <- sqrt(d2^2*(v21^2/df21 + v22^2/df22)/(8*s2^4) + (v21/df21 + v22/df22)/s2^2)
+	cor1 <- d1/sqrt(d1^2 + 4)
+	cor2 <- d2/sqrt(d2^2 + 4)
+	se1.cor <- (4/(d1^2 + 4)^(3/2))*se.d1
+	se2.cor <- (4/(d2^2 + 4)^(3/2))*se.d2
+	ll.d1 <- d1 - zcrit1*se.d1
+    ul.d1 <- d1 + zcrit1*se.d1
+	ll1 <- ll.d1/sqrt(ll.d1^2 + 4)
+    ul1 <- ul.d1/sqrt(ul.d1^2 + 4)
+	ll.d2 <- d2 - zcrit1*se.d2
+    ul.d2 <- d2 + zcrit1*se.d2
+	ll2 <- ll.d2/sqrt(ll.d2^2 + 4)
+    ul2 <- ul.d2/sqrt(ul.d2^2 + 4)
+  }
+  dif <- cor1 - cor2
+  se.dif <- sqrt(se1.cor^2 + se2.cor^2)
+  ave <- (cor1 + cor2)/2
+  se.ave <- se.dif/2
+  ll3 <- dif - sqrt((cor1 - ll1)^2 + (ul2 - cor2)^2)
+  ul3 <- dif + sqrt((ul1 - cor1)^2 + (cor2 - ll2)^2)
+  cor.f <- log((1 + ave)/(1 - ave))/2
+  ll0 <- cor.f - zcrit1*se.ave/(1 - ave^2)
+  ul0 <- cor.f + zcrit1*se.ave/(1 - ave^2)
+  ll4 <- (exp(2*ll0) - 1)/(exp(2*ll0) + 1)
+  ul4 <- (exp(2*ul0) - 1)/(exp(2*ul0) + 1)
+  out1 <- t(c(round(cor1, 4), round(se1.cor, 5), round(ll1, 4), round(ul1, 4)))
+  out2 <- t(c(round(cor2, 4), round(se2.cor, 5), round(ll2, 4), round(ul2, 4)))
+  out3 <- t(c(round(dif, 4), round(se.dif, 5), round(ll3, 4), round(ul3, 4)))
+  out4 <- t(c(round(ave, 4), round(se.ave, 5), round(ll4, 4), round(ul4, 4)))
+  out <- rbind(out1, out2, out3, out4)
+  colnames(out) <- c("Estimate", "SE", "LL", "UL")
+  rownames(out) <- c("Original:", "Follow-up:", "Original - Follow-up:", "Average:")
+  return(out)
+}
+
+
 
