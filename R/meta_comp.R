@@ -271,7 +271,7 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
     b <- (n - 2)/(n*p*(1 - p))
     s <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
     d <- (m1 - m2)/s
-    se.d <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
+    se.d <- sqrt(d^2*(1/df1 + 1/df2)/8 + (sd1^2/n1 + sd2^2/n2)/s^2)
     var <- (b^2*se.d^2)/(d^2 + b)^3
     cor <- d/sqrt(d^2 + b)
   }
