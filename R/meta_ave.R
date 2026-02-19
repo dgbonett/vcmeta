@@ -946,10 +946,10 @@ meta.ave.path <- function(alpha, n, slope, se, s, bystudy = TRUE) {
 #'
 #' # Should return:
 #' #         Estimate      SE     LL     UL
-#' # Average   0.6109 0.04532 0.5144 0.6921
-#' # Study 1   0.6350 0.06317 0.4842 0.7370
-#' # Study 2   0.6165 0.07774 0.4260 0.7385
-#' # Study 3   0.5812 0.09192 0.3551 0.7236
+#' # Average   0.6109 0.04358 0.5183 0.6893
+#' # Study 1   0.6350 0.06061 0.4915 0.7336
+#' # Study 2   0.6165 0.07458 0.4353 0.7346
+#' # Study 3   0.5812 0.08863 0.3648 0.7197
 #'
 #' m1 <- c(41.2, 43.2, 49.1, 40.8)
 #' m2 <- c(36.4, 37.1, 35.9, 31.4)
@@ -982,7 +982,7 @@ meta.ave.pbcor <- function(alpha, m1, m2, sd1, sd2, n1, n2, type, bystudy = TRUE
     b <- (n - 2)/(n*p*(1 - p))
     s <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
     d <- (m1 - m2)/s
-    se.d <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
+    se.d <- sqrt(d^2*(1/df1 + 1/df2)/8 + (sd1^2/n1 + sd2^2/n2)/s^2)
     se <- sqrt((b^2*se.d^2)/(d^2 + b)^3)
     cor <- d/sqrt(d^2 + b)
   }
