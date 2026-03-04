@@ -1,4 +1,4 @@
-vcmeta v1.6.0 (Release date: 2026/04/xx)
+vcmeta v1.6.0 (Release date: 2026/03/xx)
 ==============
 
 Changes:
@@ -76,6 +76,7 @@ vcmeta 1.0.0 (Release date: 2021/08/21)
 Changes:
 
 * Added a `NEWS.md` file to track changes to the package.
+
 
 
 
