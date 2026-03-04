@@ -574,7 +574,7 @@ se.cor <- function(cor, s, n) {
 #' @examples
 #' se.mean2(21.93, 16.11, 3.82, 3.21, 40, 40)
 #'
-#  # Should return:
+#' # Should return:
 #' #                   Estimate        SE
 #' # Mean difference:      5.82 0.7889312
 #' 
@@ -1528,4 +1528,65 @@ se.tetra <- function(f00, f01, f10, f11) {
  rownames(out) <- "Tetrachoric: "
  return(out)
 }
+
+
+# se.median ===================================================================
+#' Computes the standard error for a median
+#' 
+#' 
+#' @description
+#' Computes the standard error of a median using the classical distribution-free
+#' confidence interval for the population median (see Snedecor & Cochran, 1989). 
+#' In a 2-group design, this function can be used to compute the standard error 
+#' of the median in each group. Then the difference in estimated medians in the
+#' two groups can be used as the effect size and the standard error of the 
+#' difference can be set to the square root of the sum of the squared standard 
+#' errors from each group. Single-group medians or median differences and their 
+#' standard errors can be used as input in the \link[vcmeta]{meta.ave.gen}, 
+#' \link[vcmeta]{meta.lc.gen}, and and \link[vcmeta]{meta.lm.gen} functions. 
+#'
+#' 
+#' 
+#' @param    alpha	alpha value for 1-alpha confidence interval
+#' $param    med    estimated median
+#' @param    LL		lower limit of confidence interval
+#' @param    UL	    upper limit of confidence interval
+#' @param    n      sample size
+#' 
+#' 
+#' @return
+#' Returns a one-row matrix:
+#' * Estimate - estimated median (from input)
+#' * SE - standard error
+#' 
+#'  
+#' @examples
+#' se.median(.05, 54.75, 47.21, 68.68, 35)
+#'
+#' # Should return:
+#' #          Estimate       SE
+#' # Median:     54.75 5.252114
+#' 
+#' 
+#' @references
+#' \insertRef{Price2001}{vcmeta}                
+#'
+#' \insertRef{Snedecor1989}{vcmeta}                
+#'
+#'
+#' @export
+se.median <- function(alpha, med, LL, UL, n) {
+  z <- qnorm(1 - alpha/2)
+  a <- round((n + 1)/2 - z*sqrt(n)/2)
+  if (a < 1) {a = 1}
+  p <- pbinom(a - 1, size = n, prob = .5)
+  z0 <- qnorm(1 - p)
+  se <- (UL - LL)/(2*z0)
+  out <- t(c(med, se))
+  colnames(out) <- c("Estimate", "SE")
+  rownames(out) <- "Median: "
+  return(out)
+}
+
+
 
