@@ -1536,7 +1536,7 @@ se.tetra <- function(f00, f01, f10, f11) {
 #' 
 #' @description
 #' Computes the standard error of a median using the classical distribution-free
-#' confidence interval for the population median (see Snedecor & Cochran, 1989). 
+#' confidence interval for the population median (see Snedecor & Cochran, 1980). 
 #' In a 2-group design, this function can be used to compute the standard error 
 #' of the median in each group. Then the difference in estimated medians in the
 #' two groups can be used as the effect size and the standard error of the 
@@ -1571,7 +1571,7 @@ se.tetra <- function(f00, f01, f10, f11) {
 #' @references
 #' \insertRef{Price2001}{vcmeta}                
 #'
-#' \insertRef{Snedecor1989}{vcmeta}                
+#' \insertRef{Snedecor1980}{vcmeta}                
 #'
 #'
 #' @export
