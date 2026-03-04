@@ -1186,7 +1186,7 @@ se.semipart <- function(cor, r2, n) {
 
 
 # se.slope =================================================================
-#' Computes a slope and standard error
+#' Computes a slope and its standard error
 #' 
 #'
 #' @description 
@@ -1548,8 +1548,8 @@ se.tetra <- function(f00, f01, f10, f11) {
 #' 
 #' 
 #' @param    alpha	alpha value for 1-alpha confidence interval
-#' $param    med    estimated median
-#' @param    LL		lower limit of confidence interval
+#' @param    med    estimated median
+#' @param    LL		  lower limit of confidence interval
 #' @param    UL	    upper limit of confidence interval
 #' @param    n      sample size
 #' 
