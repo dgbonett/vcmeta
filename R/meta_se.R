@@ -1535,8 +1535,13 @@ se.tetra <- function(f00, f01, f10, f11) {
 #' 
 #' 
 #' @description
-#' Computes the standard error of a median using the classical distribution-free
-#' confidence interval for the population median (see Snedecor & Cochran, 1980). 
+#' Computes the standard error of a median using a confidence interval for the
+#  population median. If the confidence interval is the classical 
+#' distribution-free interval (see Snedecor & Cochran, 1980), this function
+#' computes a Price-Bonett standard error which is known to be very accurate.
+#' If any other type of confidence interval is used, this function computes an
+#' approximate standard error. 
+#'
 #' In a 2-group design, this function can be used to compute the standard error 
 #' of the median in each group. Then the difference in estimated medians in the
 #' two groups can be used as the effect size and the standard error of the 
@@ -1546,26 +1551,25 @@ se.tetra <- function(f00, f01, f10, f11) {
 #' \link[vcmeta]{meta.lc.gen}, and and \link[vcmeta]{meta.lm.gen} functions. 
 #'
 #' 
-#' 
 #' @param    alpha	alpha value for 1-alpha confidence interval
-#' @param    med    estimated median
-#' @param    LL		  lower limit of confidence interval
+#' @param    LL		lower limit of confidence interval
 #' @param    UL	    upper limit of confidence interval
 #' @param    n      sample size
+#' @param    type
+#' * set to 1 for classical confidence interval 
+#' * set to 2 for any other type of confidence interval 
 #' 
 #' 
 #' @return
-#' Returns a one-row matrix:
-#' * Estimate - estimated median (from input)
-#' * SE - standard error
+#' Returns the estimated standard error of the sample median
 #' 
 #'  
 #' @examples
-#' se.median(.05, 54.75, 47.21, 68.68, 35)
+#' se.median(.05, 47.21, 68.68, 35, 1)
 #'
 #' # Should return:
-#' #          Estimate       SE
-#' # Median:     54.75 5.252114
+#' #        SE
+#' #  5.252114
 #' 
 #' 
 #' @references
@@ -1575,18 +1579,20 @@ se.tetra <- function(f00, f01, f10, f11) {
 #'
 #'
 #' @export
-se.median <- function(alpha, med, LL, UL, n) {
+se.median <- function(alpha, LL, UL, n, type) {
   z <- qnorm(1 - alpha/2)
-  a <- round((n + 1)/2 - z*sqrt(n)/2)
-  if (a < 1) {a = 1}
-  p <- pbinom(a - 1, size = n, prob = .5)
-  z0 <- qnorm(1 - p)
-  se <- (UL - LL)/(2*z0)
-  out <- t(c(med, se))
-  colnames(out) <- c("Estimate", "SE")
-  rownames(out) <- "Median: "
+  if (type == 1) {
+   a <- round((n + 1)/2 - z*sqrt(n)/2)
+   if (a < 1) {a = 1}
+   p <- pbinom(a - 1, size = n, prob = .5)
+   z0 <- qnorm(1 - p)
+   se <- (UL - LL)/(2*z0)
+   } else {
+   se <- (UL - LL)/(2*z)
+  }
+  out <- matrix(se, nrow = 1, ncol = 1)
+  colnames(out) <- "SE"
+  rownames(out) <- ""
   return(out)
 }
-
-
 
