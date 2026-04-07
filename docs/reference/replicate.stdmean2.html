@@ -6,14 +6,16 @@ size are also computed. Equality of variances within or across studies
 is not assumed. The confidence level for the difference is 1 – 2*alpha,
 which is recommended for equivalence testing. Square root unweighted
 variances, square root weighted variances, and single-group standard
-deviation are options for the standardizer."><meta property="og:description" content="This function computes confidence intervals from an original study and a
+deviation are options for the standardizer.
+For more details, see Chapter 4 of Bonett (2021, Volume 5)."><meta property="og:description" content="This function computes confidence intervals from an original study and a
 follow-up study where the effect size is a 2-group standardized mean
 difference. Confidence intervals for the difference and average effect
 size are also computed. Equality of variances within or across studies
 is not assumed. The confidence level for the difference is 1 – 2*alpha,
 which is recommended for equivalence testing. Square root unweighted
 variances, square root weighted variances, and single-group standard
-deviation are options for the standardizer."></head><body>
+deviation are options for the standardizer.
+For more details, see Chapter 4 of Bonett (2021, Volume 5)."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -21,7 +23,7 @@ deviation are options for the standardizer."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,6 +58,7 @@ is not assumed. The confidence level for the difference is 1 – 2*alpha,
 which is recommended for equivalence testing. Square root unweighted
 variances, square root weighted variances, and single-group standard
 deviation are options for the standardizer.</p>
+<p>For more details, see Chapter 4 of Bonett (2021, Volume 5).</p>
     </div>
 
     <div class="section level2">
@@ -160,24 +163,26 @@ deviation are options for the standardizer.</p>
 <em>Organizational Research Methods</em>, <b>24</b>(3), 513–529.
 ISSN 1094-4281, <a href="https://doi.org/10.1177/1094428120911088" class="external-link">doi:10.1177/1094428120911088</a>
 .</p>
+<p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">replicate.stdmean2</span><span class="op">(</span><span class="fl">.05</span>, <span class="fl">21.9</span>, <span class="fl">16.1</span>, <span class="fl">3.82</span>, <span class="fl">3.21</span>, <span class="fl">40</span>, <span class="fl">40</span>, </span></span>
 <span class="r-in"><span>                        <span class="fl">25.2</span>, <span class="fl">19.1</span>, <span class="fl">3.98</span>, <span class="fl">3.79</span>, <span class="fl">75</span>, <span class="fl">75</span>, <span class="fl">0</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                         Estimate        SE         LL        UL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original:             1.62803662 0.2629049  1.1286100 2.1591783</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:            1.56170447 0.1880713  1.2010594 1.9382853</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original - Follow-up: 0.07422178 0.3232488 -0.4574752 0.6059188</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Average:              1.59487055 0.1616244  1.2780925 1.9116486</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       Estimate     SE      LL     UL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original:               1.6280 0.2629  1.1286 2.1592</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:              1.5617 0.1881  1.2011 1.9383</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original - Follow-up:   0.0742 0.3232 -0.4575 0.6059</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average:                1.5949 0.1616  1.2781 1.9116</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return: </span></span></span>
-<span class="r-in"><span><span class="co">#                           Estimate        SE         LL        UL</span></span></span>
-<span class="r-in"><span><span class="co">#  Original:              1.62803662 0.2594668  1.1353486 2.1524396</span></span></span>
-<span class="r-in"><span><span class="co">#  Follow-up:             1.56170447 0.1870576  1.2030461 1.9362986</span></span></span>
-<span class="r-in"><span><span class="co">#  Original - Follow-up:  0.07422178 0.3198649 -0.4519092 0.6003527</span></span></span>
-<span class="r-in"><span><span class="co">#  Average:               1.59487055 0.1599325  1.2814087 1.9083324</span></span></span>
+<span class="r-in"><span><span class="co">#                        Estimate     SE      LL     UL</span></span></span>
+<span class="r-in"><span><span class="co">#  Original:               1.6280 0.2595  1.1353 2.1524</span></span></span>
+<span class="r-in"><span><span class="co">#  Follow-up:              1.5617 0.1871  1.2030 1.9363</span></span></span>
+<span class="r-in"><span><span class="co">#  Original - Follow-up:   0.0742 0.3199 -0.4519 0.6004</span></span></span>
+<span class="r-in"><span><span class="co">#  Average:                1.5949 0.1599  1.2814 1.9083</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -191,7 +196,7 @@ ISSN 1094-4281, <a href="https://doi.org/10.1177/1094428120911088" class="extern
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

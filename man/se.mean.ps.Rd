@@ -37,15 +37,18 @@ and \link[vcmeta]{meta.lm.gen} functions in applications where
 compatible mean differences from a combination of 2-group
 and paired-samples experiments are used in the meta-analysis.
 Equality of variances is not assumed.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
-se.mean.ps(23.9, 25.1, 1.76, 2.01, .78, 25)
+se.mean.ps(23.94, 25.12, 1.76, 2.01, .78, 25)
 
 # Should return:
 #                   Estimate        SE
-# Mean difference:      -1.2 0.2544833
+# Mean difference:     -1.18 0.2544833
+
 
 }
 \references{
-\insertRef{Snedecor1980}{vcmeta}
+\insertRef{Bonett2021}{vcmeta}
 }

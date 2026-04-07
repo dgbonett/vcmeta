@@ -43,6 +43,8 @@ slope estimate for a predictor variable describes a multiplicative
 change in the odds ratio associated with a 1-unit increase in that
 predictor variable, controlling for all other predictor variables
 in the model.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 n1 <- c(204, 201, 932, 130, 77)
@@ -55,10 +57,10 @@ X <- matrix(cbind(x1, x2), 5, 2)
 meta.lm.oddsratio(.05, f1, f2, n1, n2, X)
 
 # Should return:
-#        Estimate         SE           z     p         LL         UL
-# b0  1.541895013 0.69815801  2.20851868 0.027  0.1735305 2.91025958
-# b1 -0.004417932 0.04840623 -0.09126784 0.927 -0.0992924 0.09045653
-# b2 -1.071122269 0.60582695 -1.76803337 0.077 -2.2585213 0.11627674
+#        Estimate         SE      z     p         LL         UL
+# b0  1.541895013 0.69815801  2.209 0.027  0.1735305 2.91025958
+# b1 -0.004417932 0.04840623 -0.091 0.927 -0.0992924 0.09045653
+# b2 -1.071122269 0.60582695 -1.768 0.077 -2.2585213 0.11627674
 #    exp(Estimate)   exp(LL)   exp(UL)
 # b0     4.6734381 1.1894969 18.361564
 # b1     0.9955918 0.9054779  1.094674
@@ -68,4 +70,6 @@ meta.lm.oddsratio(.05, f1, f2, n1, n2, X)
 }
 \references{
 \insertRef{Bonett2015}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

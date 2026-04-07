@@ -41,6 +41,8 @@ Computes the estimate, standard error, and confidence interval for a
 difference in the average effect size (any type of effect size) for
 two mutually exclusive subgroups of studies. Each subgroup can have one
 or more studies. All of the effects sizes should be compatible.
+
+For more details, see Section 3.3 of Bonett (2021, Volume 5).
 }
 \examples{
 est <- c(.920, .896, .760, .745)
@@ -55,4 +57,7 @@ meta.sub.gen(.05, est, se, group)
 # Set A - Set B:   0.1555 0.07585348 0.006829917 0.3041701
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

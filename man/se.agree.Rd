@@ -19,8 +19,8 @@ se.agree(f, n, k, m)
 Returns a one-row matrix:
 \itemize{
 \item MLE - maximum likelihood estimate of G-index
-\item Estimate - adjusted estimate of G-index
-\item SE - standard error of adjusted estimate
+\item Estimate - adjusted estimate of G-index for meta-analysis
+\item SE - standard error of adjusted estimate for meta-analysis
 }
 }
 \description{
@@ -31,17 +31,21 @@ standard error is optimized for the the number of planned studies in the
 meta-analysis. The G-index and standard error output from this function
 can be used as input in the \link[vcmeta]{meta.ave.gen},
 \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions.
-The G-index is usually preferred to Cohen's kappa.
+The G-index is usually preferred to Cohen's kappa (see Bonett, 2022).
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.agree(42, 50, 3, 4)
 
 # Should return: 
-#             MLE  Estimate         SE
-# G-index:   0.76      0.75 0.06391375 
+#             MLE  Estimate      SE
+# G-index:   0.76      0.75 0.06391 
 
 
 }
 \references{
 \insertRef{Bonett2022}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

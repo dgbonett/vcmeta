@@ -19,40 +19,40 @@
     Code
       res
     Output
-                                     Estimate        SE
-      Standardized mean difference:  1.643894 0.2629049
+                                     Estimate     SE
+      Standardized mean difference:    1.6439 0.2629
 
 # se.stdmean.ps returns valid matrix
 
     Code
       res
     Output
-                                       Estimate        SE
-      Standardized mean difference:  -0.6352097 0.1602852
+                                     Estimate      SE
+      Standardized mean difference:   -0.6352 0.16029
 
 # se.cor returns valid matrix
 
     Code
       res
     Output
-                    Estimate       SE
-      Correlation:       0.4 0.116487
+                    Estimate      SE
+      Correlation:       0.4 0.11649
 
 # se.spearman returns valid matrix
 
     Code
       res
     Output
-                             Estimate        SE
-      Spearman correlation:       0.4 0.1210569
+                             Estimate      SE
+      Spearman correlation:       0.4 0.12106
 
 # se.pbcor returns valid matrix
 
     Code
       res
     Output
-                                    Estimate         SE
-      Point-biserial correlation:  0.6349786 0.05981325
+                                   Estimate      SE
+      Point-biserial correlation:     0.635 0.05981
 
 # se.odds returns valid matrix
 
@@ -107,50 +107,50 @@
     Code
       res
     Output
-                     Estimate         SE  VAR(cor12) VAR(cor13) COV(cor12,cor13)
-      Correlation:  0.4900000 0.07087351 0.006378045 0.00551907      0.004097553
-      Fisher:       0.5360603 0.09326690 0.010309278 0.01030928      0.007119936
+                    Estimate      SE  VAR(cor12) VAR(cor13) COV(cor12,cor13)
+      Correlation:    0.4900 0.07087 0.006378045 0.00551907      0.004097553
+      Fisher:         0.5361 0.09327 0.010309278 0.01030928      0.007119936
 
 # se.ave.cor.nonover returns valid matrix
 
     Code
       res
     Output
-                    Estimate         SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
-      Correlation:  0.377500 0.07768887 0.00784892 0.007301895      0.004495714
-      Fisher:       0.397141 0.09059993 0.01030928 0.010309278      0.006122153
+                    Estimate      SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
+      Correlation:    0.3775 0.07769 0.00784892 0.007301895      0.004495714
+      Fisher:         0.3971 0.09060 0.01030928 0.010309278      0.006122153
 
 # se.tetra returns valid matrix
 
     Code
       res
     Output
-                     Estimate         SE
-      Tetrachoric:  0.5135167 0.09358336
+                    Estimate     SE
+      Tetrachoric:     0.514 0.0936
 
 # se.biphi returns valid matrix
 
     Code
       res
     Output
-                     Estimate        SE
-      Biserial-phi:   0.27539 0.1074594
+                     Estimate      SE
+      Biserial-phi:    0.2754 0.10746
 
 # se.cohen returns valid matrix
 
     Code
       res
     Output
-                  Estimate        SE
-      Cohen's d:      0.78 0.2288236
+                  Estimate      SE
+      Cohen's d:      0.78 0.22882
 
 # se.bscor returns valid matrix
 
     Code
       res
     Output
-                              Estimate         SE
-      Biserial correlation:  0.8018318 0.07451665
+                             Estimate      SE
+      Biserial correlation:    0.8018 0.07452
 
 # se.propratio2 example
 
@@ -173,6 +173,14 @@
     Code
       res
     Output
-                 MLE Estimate         SE
-      G-index:  0.76     0.75 0.06391375
+                 MLE Estimate      SE
+      G-index:  0.76     0.75 0.06391
+
+# se.median example
+
+    Code
+      res
+    Output
+             SE
+       5.252114
 

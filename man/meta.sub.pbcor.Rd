@@ -60,6 +60,8 @@ experimental designs. The other type uses a weighted variance and
 is recommended for 2-group nonexperimental designs with simple random
 sampling (but not stratified random sampling) within each study.
 Equality of variances within or across studies is not assumed.
+
+For more details, see Section 3.3 of Bonett (2021, Volume 5).
 }
 \examples{
 m1 <- c(45.1, 39.2, 36.3, 34.5)
@@ -72,13 +74,15 @@ group <- c(1, 1, 2, 2)
 meta.sub.pbcor(.05,  m1, m2, sd1, sd2, n1, n2, 2, group)
 
 # Should return:
-#                   Estimate         SE         LL        UL
-# Set A:          0.36338772 0.08552728  0.1854777 0.5182304
-# Set B:         -0.01480511 0.08741322 -0.1840491 0.1552914
-# Set A - Set B:  0.37819284 0.12229467  0.1320530 0.6075828
+#                Estimate      SE      LL     UL
+# Set A:           0.3634 0.08553  0.1855 0.5182
+# Set B:          -0.0148 0.08741 -0.1840 0.1553
+# Set A - Set B:   0.3782 0.12229  0.1321 0.6076
 
 
 }
 \references{
 \insertRef{Bonett2020b}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

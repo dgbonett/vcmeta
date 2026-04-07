@@ -33,6 +33,8 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 \description{
 Computes the estimate, standard error, and confidence interval for an
 average proportion difference from two or more studies.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 f11 <- c(17, 28, 19)
@@ -52,4 +54,6 @@ meta.ave.prop.ps(.05, f11, f12, f21, f22, bystudy = TRUE)
 }
 \references{
 \insertRef{Bonett2012}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

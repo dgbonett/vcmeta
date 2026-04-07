@@ -31,6 +31,8 @@ confidence limit could be used as a variance planning value in sample
 size planning. The confidence intervals assume normality, and this
 function is not recommended if the variances have been estimated
 from leptokurtic data.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 var <- c(26.63, 22.45, 34.12)
@@ -45,4 +47,7 @@ meta.ave.var(.05, var, n, bystudy = TRUE)
 # Study 3 34.12000 23.80835 52.98319
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

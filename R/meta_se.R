@@ -514,12 +514,12 @@ se.cohen <- function(d, n1, n2) {
 #' @examples
 #' se.cor(.427, 0, 55)
 #'
-#' Should return: 
+#' # Should return: 
 #' #               Estimate      SE
 #' # Correlation:     0.427 0.11339
 #'
 #' se.cor(.283, 4, 80)
-#' Should return: 
+#' # Should return: 
 #' #               Estimate      SE
 #' # Correlation:     0.283 0.10767
 #' 
@@ -1579,6 +1579,7 @@ se.tetra <- function(f00, f01, f10, f11) {
 #'
 #'
 #' @export
+#' @importFrom stats pbinom
 se.median <- function(alpha, LL, UL, n, type) {
   z <- qnorm(1 - alpha/2)
   if (type == 1) {

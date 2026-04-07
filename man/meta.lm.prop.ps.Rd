@@ -37,6 +37,8 @@ in a meta-regression model where the dependent variable is a
 paired-samples proportion difference. The estimates are OLS
 estimates with robust standard errors that accommodate residual
 heteroscedasticity.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 f11 <- c(40, 20, 25, 30)
@@ -49,13 +51,15 @@ X <- matrix(cbind(x1, x2), 4, 2)
 meta.lm.prop.ps(.05, f11, f12, f21, f22, X)
 
 # Should return: 
-#       Estimate         SE          z     p          LL         UL
-# b0 -0.21113402 0.21119823 -0.9996960 0.317 -0.62507494 0.20280690
-# b1  0.02185567 0.03861947  0.5659236 0.571 -0.05383711 0.09754845
-# b2  0.12575138 0.17655623  0.7122455 0.476 -0.22029248 0.47179524
+#       Estimate         SE      z     p          LL         UL
+# b0 -0.21113402 0.21119823 -1.000 0.317 -0.62507494 0.20280690
+# b1  0.02185567 0.03861947  0.566 0.571 -0.05383711 0.09754845
+# b2  0.12575138 0.17655623  0.712 0.476 -0.22029248 0.47179524
 
 
 }
 \references{
 \insertRef{Bonett2012}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

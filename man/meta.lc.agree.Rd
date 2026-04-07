@@ -33,6 +33,8 @@ Computes the estimate, standard error, and adjusted Wald confidence
 interval for a linear contrast of G-index of agreement coefficients
 from two or more studies. This function assumes that two raters each
 provide a dichotomous rating for a sample of objects.
+
+For more details, see Setion 3.2 of Bonett (2021, Volume 5).
 }
 \examples{
 f11 <- c(43, 56, 49)
@@ -43,11 +45,13 @@ v <- c(.5, .5, -1)
 meta.lc.agree(.05, f11, f12, f21, f22, v)
 
 # Should return:
-#            Estimate        SE         LL        UL
-# Contrast 0.1022939 0.07972357 -0.05396142 0.2585492
+#          Estimate      SE      L     UL
+# Contrast   0.1023 0.07972 -0.054 0.2585
 
 
 }
 \references{
 \insertRef{Bonett2022}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

@@ -82,20 +82,24 @@ is not assumed. The confidence level for the difference is 1 – 2*alpha,
 which is recommended for equivalence testing. Square root unweighted
 variances, square root weighted variances, and single-group standard
 deviation are options for the standardizer.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.stdmean2(.05, 21.9, 16.1, 3.82, 3.21, 40, 40, 
                         25.2, 19.1, 3.98, 3.79, 75, 75, 0)
 
 # Should return: 
-#                           Estimate        SE         LL        UL
-#  Original:              1.62803662 0.2594668  1.1353486 2.1524396
-#  Follow-up:             1.56170447 0.1870576  1.2030461 1.9362986
-#  Original - Follow-up:  0.07422178 0.3198649 -0.4519092 0.6003527
-#  Average:               1.59487055 0.1599325  1.2814087 1.9083324
+#                        Estimate     SE      LL     UL
+#  Original:               1.6280 0.2595  1.1353 2.1524
+#  Follow-up:              1.5617 0.1871  1.2030 1.9363
+#  Original - Follow-up:   0.0742 0.3199 -0.4519 0.6004
+#  Average:                1.5949 0.1599  1.2814 1.9083
 
 
 }
 \references{
+\insertRef{Bonett2021a}{vcmeta}
+
 \insertRef{Bonett2021}{vcmeta}
 }

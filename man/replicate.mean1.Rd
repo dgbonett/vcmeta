@@ -48,19 +48,23 @@ Satterthwaite adjustment to the degrees of freedom is used to improve
 the accuracy of the confidence intervals for the difference and average.
 The confidence level for the difference is 1 – 2*alpha, which is
 recommended for equivalence testing.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.mean1(.05, 21.9, 3.82, 40, 25.2, 3.98, 75)
 
 # Should return:
-#                       Estimate        SE        LL        UL       df
-# Original:                21.90 0.6039950 20.678305 23.121695 39.00000
-# Follow-up:               25.20 0.4595708 24.284285 26.115715 74.00000
-# Original - Follow-up:    -3.30 0.7589567 -4.562527 -2.037473 82.63282
-# Average:                 23.55 0.3794784 22.795183 24.304817 82.63282
+#                       Estimate        SE        LL        UL    df
+# Original:                21.90 0.6039950 20.678305 23.121695 39.00
+# Follow-up:               25.20 0.4595708 24.284285 26.115715 74.00
+# Original - Follow-up:    -3.30 0.7589567 -4.562527 -2.037473 82.63
+# Average:                 23.55 0.3794784 22.795183 24.304817 82.63
 
 
 }
 \references{
+\insertRef{Bonett2021a}{vcmeta}
+
 \insertRef{Bonett2021}{vcmeta}
 }

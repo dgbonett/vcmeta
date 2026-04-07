@@ -34,7 +34,7 @@ Returns a one-row matrix:
 \description{
 Computes a point-biserial correlation and its standard
 error for two types of point-biserial correlations in 2-group designs
-using the estimated means, estimated standard deviations, and samples
+using the estimated means, estimated standard deviations, and sample
 sizes. Equality of variances is not assumed. One type of point-biserial
 correlation uses an unweighted average of variances and is recommended
 for 2-group experimental designs. The other type of point-biserial
@@ -46,16 +46,20 @@ of compatible point-biserial correlations where some studies used a
 nonexperimental design. The effect size estimate and standard error
 output from this function can  be used as input in the
 \link[vcmeta]{meta.ave.cor.gen} function.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.pbcor(21.9, 16.1, 3.82, 3.21, 40, 40, 1)
 
 #  Should return: 
-#                                Estimate         SE
-#  Point-biserial correlation:  0.6349786 0.05981325
+#                              Estimate      SE
+#  Point-biserial correlation:    0.635 0.05981
 
 
 }
 \references{
 \insertRef{Bonett2020b}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

@@ -23,7 +23,7 @@ replicate.plot(
 defaults to 'Both'
 }
 \itemize{
-\item Both - plots each estimate, differencence, and average
+\item Both - plots each estimate, difference, and average
 \item Difference - plot each estimate and difference between them
 \item Average - plot each estimate and the average effect size
 }}

@@ -40,6 +40,8 @@ linear contrast of 2-group mean differences from two or more studies.
 A Satterthwaite adjustment to the degrees of freedom is used to improve
 the accuracy of the confidence interval. Equality of variances within or across
 studies is not assumed.
+
+For more details, see Section 3.2 of Bonett (2021, Volume 5).
 }
 \examples{
 m1 <- c(45.1, 39.2, 36.3, 34.5)
@@ -52,11 +54,13 @@ v <- c(.5, .5, -.5, -.5)
 meta.lc.mean2(.05, m1, m2, sd1, sd2, n1, n2, v)
 
 # Should return:
-#          Estimate       SE       LL       UL       df
-# Contrast     9.95 2.837787 4.343938 15.55606 153.8362
+#          Estimate       SE       LL       UL     df
+# Contrast     9.95 2.837787 4.343938 15.55606 153.84
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

@@ -8,7 +8,8 @@ This function uses estimated correlations and their standard errors as
 input. The correlations are Fisher-transformed and hence the parameter
 estimates do not have a simple interpretation. However, the hypothesis
 test results can be used to decide if a population slope is either
-positive or negative."><meta property="og:description" content="This function estimates the intercept and slope coefficients in a
+positive or negative.
+For more details, see Section 3.4 of Bonett (2021, Volume 5)."><meta property="og:description" content="This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a
 Fisher-transformed correlation. The correlations can be of different types
 (e.g., Pearson, partial, Spearman). The estimates are OLS estimates
@@ -17,7 +18,8 @@ This function uses estimated correlations and their standard errors as
 input. The correlations are Fisher-transformed and hence the parameter
 estimates do not have a simple interpretation. However, the hypothesis
 test results can be used to decide if a population slope is either
-positive or negative."></head><body>
+positive or negative.
+For more details, see Section 3.4 of Bonett (2021, Volume 5)."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -25,7 +27,7 @@ positive or negative."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,6 +64,7 @@ input. The correlations are Fisher-transformed and hence the parameter
 estimates do not have a simple interpretation. However, the hypothesis
 test results can be used to decide if a population slope is either
 positive or negative.</p>
+<p>For more details, see Section 3.4 of Bonett (2021, Volume 5).</p>
     </div>
 
     <div class="section level2">
@@ -99,6 +102,11 @@ row per predictor.  The matrix has the following columns:</p><ul><li><p>Estimate
 <li><p>LL - lower limit of the confidence interval</p></li>
 <li><p>UL - upper limit of the confidence interval</p></li>
 </ul></div>
+    <div class="section level2">
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
@@ -108,14 +116,14 @@ row per predictor.  The matrix has the following columns:</p><ul><li><p>Estimate
 <span class="r-in"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">18</span>, <span class="fl">25</span>, <span class="fl">23</span>, <span class="fl">19</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="va">x1</span>, <span class="fl">4</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">meta.lm.cor.gen</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">cor</span>, <span class="va">se</span>, <span class="va">X</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>       Estimate         SE          z     p</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b0 -0.47832153 0.63427931 -0.7541181 0.451</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b1  0.05047154 0.02879859  1.7525699 0.080</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Estimate      SE      z     p</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b0  -0.4783 0.63428 -0.754 0.451</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b1   0.0505 0.02880  1.753 0.080</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return: </span></span></span>
-<span class="r-in"><span><span class="co">#       Estimate         SE          z     p</span></span></span>
-<span class="r-in"><span><span class="co"># b0 -0.47832153 0.63427931 -0.7541181 0.451</span></span></span>
-<span class="r-in"><span><span class="co"># b1  0.05047154 0.02879859  1.7525699 0.080</span></span></span>
+<span class="r-in"><span><span class="co">#    Estimate      SE      z     p</span></span></span>
+<span class="r-in"><span><span class="co"># b0  -0.4783 0.63428 -0.754 0.451</span></span></span>
+<span class="r-in"><span><span class="co"># b1   0.0505 0.02880  1.753 0.080</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -129,7 +137,7 @@ row per predictor.  The matrix has the following columns:</p><ul><li><p>Estimate
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

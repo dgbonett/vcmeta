@@ -47,6 +47,8 @@ average standardized mean difference from two or more 2-group studies.
 Square root unweighted variances, square root weighted variances, and
 single group standard deviation are options for the standardizer.
 Equality of variances within or across studies is not assumed.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 m1 <- c(21.9, 23.1, 19.8)
@@ -58,14 +60,28 @@ n2 <- c(40, 28, 25)
 meta.ave.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, 0, bystudy = TRUE)
 
 # Should return: 
-#         Estimate        SE        LL       UL
-# Average 1.526146 0.1734341 1.1862217 1.866071
-# Study 1 1.643894 0.2629049 1.1286100 2.159178
-# Study 2 1.566132 0.3056278 0.9671126 2.165152
-# Study 3 1.428252 0.3289179 0.7835848 2.072919
+#         Estimate      SE     LL     UL
+# Average   1.5261 0.17343 1.1862 1.8661
+# Study 1   1.6439 0.26290 1.1286 2.1592
+# Study 2   1.5661 0.30563 0.9671 2.1652
+# Study 3   1.4283 0.32892 0.7836 2.0729
+
+m1 <- c(41.2, 43.2, 49.1, 40.8)
+m2 <- c(36.4, 37.1, 35.9, 31.4)
+sd1 <- c(4.92, 4.75, 4.87, 5.01)
+sd2 <- c(4.35, 4.24, 4.12, 4.87)
+n1 <- c(42, 58, 62, 39)
+n2 <- c(67, 70, 84, 45)
+meta.ave.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, 3, bystudy = FALSE)
+
+# Should return: 
+#         Estimate      SE     LL     UL
+# Average   1.8078 0.11648 1.5795 2.0361
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

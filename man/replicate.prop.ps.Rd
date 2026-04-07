@@ -39,6 +39,8 @@ follow-up study where the effect size is a paired-samples proportion
 difference. Confidence intervals for the difference and average of effect
 sizes are also computed. The confidence level for the difference is
 1 – 2*alpha, which is recommended for equivalence testing.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 f1 <- c(42, 2, 15, 61)
@@ -46,22 +48,18 @@ f2 <- c(69, 5, 31, 145)
 replicate.prop.ps(.05, f1, f2)
 
 # Should return:
-#                           Estimate         SE           z            p
-# Original:              0.106557377 0.03440159  3.09745539 1.951898e-03
-# Follow-up:             0.103174603 0.02358274  4.37500562 1.214294e-05
-# Original - Follow-up:  0.003852359 0.04097037  0.09402793 9.250870e-01
-# Average:               0.105511837 0.02048519  5.15064083 2.595979e-07
-#                                LL         UL
-# Original:              0.03913151 0.17398325
-# Follow-up:             0.05695329 0.14939592
-# Original - Follow-up: -0.06353791 0.07124263
-# Average:               0.06536161 0.14566206
+#                          Estimate         SE     z     p          LL         UL
+# Original:             0.106557377 0.03440159 3.097 0.002  0.03913151 0.17398325
+# Follow-up:            0.103174603 0.02358274 4.375 0.000  0.05695329 0.14939592
+# Original - Follow-up: 0.003852359 0.04097037 0.094 0.925 -0.06353791 0.07124263
+# Average:              0.105511837 0.02048519 5.151 0.000  0.06536161 0.14566206
 
 
 }
 \references{
-\itemize{
-\item \insertRef{Bonett2021}{vcmeta}
-\item \insertRef{Bonett2012}{vcmeta}
-}
+\insertRef{Bonett2021a}{vcmeta}
+
+\insertRef{Bonett2012}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

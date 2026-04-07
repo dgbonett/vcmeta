@@ -31,6 +31,8 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 \description{
 Computes the estimate, standard error, and confidence interval for an
 average semipartial correlation from two or more studies.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 n <- c(128, 97, 210, 217)
@@ -39,12 +41,15 @@ r2 <- c(.29, .33, .36, .39)
 meta.ave.semipart(.05, n, cor, r2, bystudy = TRUE)
 
 # Should return:
-#         Estimate         SE        LL        UL
-# Average   0.3975 0.03221240 0.3325507 0.4586965
-# Study 1   0.3500 0.07175200 0.2023485 0.4820930
-# Study 2   0.4100 0.07886080 0.2447442 0.5521076
-# Study 3   0.4400 0.05146694 0.3338366 0.5351410
-# Study 4   0.3900 0.05085271 0.2860431 0.4848830
+#         Estimate      SE     LL     UL
+# Average   0.3975 0.03221 0.3326 0.4587
+# Study 1   0.3500 0.07175 0.2023 0.4821
+# Study 2   0.4100 0.07886 0.2447 0.5521
+# Study 3   0.4400 0.05147 0.3338 0.5351
+# Study 4   0.3900 0.05085 0.2860 0.4849
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

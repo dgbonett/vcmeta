@@ -30,6 +30,8 @@ proportion ratio and standard error output from this function can be used
 as input in the \link[vcmeta]{meta.ave.gen.log} function in applications
 where compatible proportion ratios from a combination of 2-group and
 paired-samples studies are used in the meta-analysis.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.propratio.ps(16, 64, 5, 15)
@@ -39,4 +41,7 @@ se.propratio.ps(16, 64, 5, 15)
 # Log proportion ratio:  -1.373716  0.2089758
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

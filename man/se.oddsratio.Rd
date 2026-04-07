@@ -25,14 +25,16 @@ Returns a one-row matrix:
 \description{
 Computes a log odds ratio and its standard error using
 the frequency counts and sample sizes in a 2-group design. These
-frequency counts and sample sizes can be obtained from a 2x2
+frequency counts and sample sizes can be obtained from a 2 x 2
 contingency table. The log odd ratio and its standard error are computed
-using a .5 addition to each frequency count of the 2x2 contingency table.
+using a .5 addition to each frequency count of the 2 x 2 contingency table.
 This function is useful in a meta-analysis of odds ratios where some studies
 report the sample odds ratio and its standard error and other studies
-only report the frequency counts for a 2x2 contingency table. The log odds
+only report the frequency counts for a 2 x 2 contingency table. The log odds
 ratio and standard error output from this function can be used as input in
 the \link[vcmeta]{meta.ave.gen.log} function.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.oddsratio(36, 50, 21, 50)
@@ -45,4 +47,6 @@ se.oddsratio(36, 50, 21, 50)
 }
 \references{
 \insertRef{Bonett2015}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

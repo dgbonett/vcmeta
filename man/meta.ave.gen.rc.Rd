@@ -58,6 +58,8 @@ superpopoulation of studies. This random coefficient function is included
 in the vcmeta package primarily for classroom demonstrations to illustrate
 the problimatic characteristics of the random coefficient meta-analysis
 model.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 est <- c(.022, .751, .421, .287, .052, .146, .562, .904)
@@ -79,10 +81,11 @@ meta.ave.gen.rc(.05, est, se, bystudy = TRUE)
 
 }
 \references{
-\itemize{
-\item \insertRef{Hedges1985}{vcmeta}
-\item \insertRef{Borenstein2009}{vcmeta}
-}
+\insertRef{Hedges1985}{vcmeta}
+
+\insertRef{Borenstein2009}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }
 \seealso{
 \link[vcmeta]{meta.ave.gen}

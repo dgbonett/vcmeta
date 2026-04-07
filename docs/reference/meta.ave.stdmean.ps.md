@@ -1,0 +1,118 @@
+# Confidence interval for an average standardized mean difference from paired-samples studies
+
+Computes the estimate, standard error, and confidence interval for an
+average standardized mean difference from two or more paired-samples
+studies. Squrare root unweighted variances and a single condition
+standard deviation are options for the standardizer. Equality of
+variances within or across studies is not assumed.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
+
+## Usage
+
+``` r
+meta.ave.stdmean.ps(alpha, m1, m2, sd1, sd2, cor, n, stdzr, bystudy = TRUE)
+```
+
+## Arguments
+
+- alpha:
+
+  alpha level for 1-alpha confidence
+
+- m1:
+
+  vector of estimated means for measurement 1
+
+- m2:
+
+  vector of estimated means for measurement 2
+
+- sd1:
+
+  vector of estimated SDs for measurement 1
+
+- sd2:
+
+  vector of estimated SDs for measurement 2
+
+- cor:
+
+  vector of estimated correlations for paired measurements
+
+- n:
+
+  vector of sample sizes
+
+- stdzr:
+
+  - set to 0 for square root unweighted average variance standardizer
+
+  - set to 1 for measurement 1 SD standardizer
+
+  - set to 2 for measurement 2 SD standardizer
+
+- bystudy:
+
+  logical to also return each study estimate (TRUE) or not
+
+## Value
+
+Returns a matrix. The first row is the average estimate across all
+studies. If bystudy is TRUE, there is 1 additional row for each study.
+The matrix has the following columns:
+
+- Estimate - estimated effect size
+
+- SE - standard error
+
+- LL - lower limit of the confidence interval
+
+- UL - upper limit of the confidence interval
+
+## References
+
+Bonett DG (2009). “Meta-analytic interval estimation for standardized
+and unstandardized mean differences.” *Psychological Methods*,
+**14**(3), 225–238. ISSN 1939-1463,
+[doi:10.1037/a0016619](https://doi.org/10.1037/a0016619) .
+
+Bonett DG (2021). *Statistical Methods for Psychologists, Vol 1-5,
+https://dgbonett.sites.ucsc.edu/*.
+
+## Examples
+
+``` r
+m1 <- c(23.9, 24.1)
+m2 <- c(25.1, 26.9)
+sd1 <- c(1.76, 1.58)
+sd2 <- c(2.01, 1.76)
+cor <- c(.78, .84)
+n <- c(25, 30)
+meta.ave.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, 1, bystudy = TRUE)
+#>         Estimate      SE      LL      UL
+#> Average  -1.1931 0.15680 -1.5004 -0.8858
+#> Study 1  -0.6818 0.17738 -1.0295 -0.3342
+#> Study 2  -1.7722 0.25862 -2.2790 -1.2653
+
+# Should return: 
+#         Estimate      SE      LL      UL
+# Average  -1.1931 0.15680 -1.5004 -0.8858
+# Study 1  -0.6818 0.17738 -1.0295 -0.3342
+# Study 2  -1.7722 0.25862 -2.2790 -1.2653
+
+m1 <- c(23.9, 24.1)
+m2 <- c(25.1, 26.9)
+sd1 <- c(1.76, 1.58)
+sd2 <- c(2.01, 1.76)
+cor <- c(.78, .84)
+n <- c(25, 30)
+meta.ave.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, 0, bystudy = FALSE)
+#>         Estimate      SE      LL      UL
+#> Average  -1.1335 0.13996 -1.4078 -0.8591
+
+# Should return: 
+#         Estimate      SE      LL      UL
+# Average  -1.1335 0.13996 -1.4078 -0.8591
+
+```

@@ -1,7 +1,7 @@
 Package: vcmeta
 Type: Package
 Title: Varying Coefficient Meta-Analysis
-Version: 1.5.0
+Version: 1.6.0
 Authors@R: c(
     person(given = "Douglas G.", family = "Bonett", email = "dgbonett@ucsc.edu", role = c("aut", "cre")),
     person(given = "Robert J.", family = "Calin-Jageman", email = "rcalinjageman@dom.edu", role = c("ctb")))
@@ -19,7 +19,7 @@ License: GPL-3
 Encoding: UTF-8
 Imports: 
   stats, mathjaxr, Rdpack, ggplot2
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
 RdMacros: Rdpack, mathjaxr
 Suggests: 

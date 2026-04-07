@@ -32,6 +32,8 @@ This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is any type of
 effect size. The estimates are OLS estimates with robust standard
 errors that accomodate residual heteroscedasticity.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 est <- c(4.1, 4.7, 4.9, 5.7, 6.6, 7.3)
@@ -42,10 +44,13 @@ X <- matrix(cbind(x1, x2), 6, 2)
 meta.lm.gen(.05, est, se, X)
 
 # Should return:
-#      Estimate         SE           z     p         LL         UL
-# b0  3.5333333 4.37468253  0.80767766 0.419 -5.0408869 12.1075535
-# b1  0.0600000 0.09058835  0.66233679 0.508 -0.1175499  0.2375499
-# b2 -0.1666667 2.81139793 -0.05928249 0.953 -5.6769054  5.3435720
+#      Estimate         SE      z     p         LL         UL
+# b0  3.5333333 4.37468253  0.808 0.419 -5.0408869 12.1075535
+# b1  0.0600000 0.09058835  0.662 0.508 -0.1175499  0.2375499
+# b2 -0.1666667 2.81139793 -0.059 0.953 -5.6769054  5.3435720
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

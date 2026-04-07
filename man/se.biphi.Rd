@@ -29,17 +29,23 @@ is naturally dichotomous and the other variable is artifically dichotomous.
 The biserial-phi correlation approximates a point-biserial correlation
 between the naturally dichotomous variable and the unobserved quantitative
 variable that was measured on a dichotomous scale. A biserial-phi correlation
+could be compatible with a point-biserial correlation in a meta-analysis. The
 biserial-phi estimate and the standard error from this function can be used
 as input in the \link[vcmeta]{meta.ave.cor.gen} function in a meta-analysis
 where a point-biserial correlation has been obtained in some studies and
 a biserial-phi correlation has been obtained in other studies.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.biphi(34, 22, 50, 50)
 
 # Should return:
-#               Estimate        SE 
-# Biserial-phi:  0.27539 0.1074594
+#               Estimate      SE 
+# Biserial-phi:   0.2754 0.10746
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

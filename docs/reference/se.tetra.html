@@ -8,7 +8,8 @@ be used as input in the meta.ave.cor.gen function in a
 meta-analysis where some studies have reported Pearson correlations
 between quantitative variables x and y and other studies have reported
 a 2 x 2 contingency table for dichotomous measurements of variables
-x and y."><meta property="og:description" content="Computes an estimate of a tetrachoric correlation approximation and its
+x and y.
+For more details, see Chapter 1 of Bonett (2021, Volume 5)"><meta property="og:description" content="Computes an estimate of a tetrachoric correlation approximation and its
 standard error using the frequency counts from a 2 x 2 contingency table
 for two artifically dichotomous variables. A tetrachoric approximation
 could be compatible with a Pearson correlation in a meta-analysis. The
@@ -17,7 +18,8 @@ be used as input in the meta.ave.cor.gen function in a
 meta-analysis where some studies have reported Pearson correlations
 between quantitative variables x and y and other studies have reported
 a 2 x 2 contingency table for dichotomous measurements of variables
-x and y."></head><body>
+x and y.
+For more details, see Chapter 1 of Bonett (2021, Volume 5)"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -25,7 +27,7 @@ x and y."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,6 +64,7 @@ meta-analysis where some studies have reported Pearson correlations
 between quantitative variables x and y and other studies have reported
 a 2 x 2 contingency table for dichotomous measurements of variables
 x and y.</p>
+<p>For more details, see Chapter 1 of Bonett (2021, Volume 5)</p>
     </div>
 
     <div class="section level2">
@@ -101,17 +104,19 @@ x and y.</p>
 <em>Journal of Educational and Behavioral Statistics</em>, <b>30</b>(2), 213–225.
 ISSN 1076-9986, <a href="https://doi.org/10.3102/10769986030002213" class="external-link">doi:10.3102/10769986030002213</a>
 .</p>
+<p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">se.tetra</span><span class="op">(</span><span class="fl">46</span>, <span class="fl">15</span>, <span class="fl">54</span>, <span class="fl">85</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                Estimate         SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Tetrachoric:  0.5135167 0.09358336</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               Estimate     SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Tetrachoric:     0.514 0.0936</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return:</span></span></span>
-<span class="r-in"><span><span class="co">#                Estimate         SE </span></span></span>
-<span class="r-in"><span><span class="co"># Tetrachoric:  0.5135167 0.09358336</span></span></span>
+<span class="r-in"><span><span class="co">#               Estimate     SE </span></span></span>
+<span class="r-in"><span><span class="co"># Tetrachoric:     0.514 0.0936</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -125,7 +130,7 @@ ISSN 1076-9986, <a href="https://doi.org/10.3102/10769986030002213" class="exter
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

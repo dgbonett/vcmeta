@@ -5,13 +5,15 @@ Cronbach reliablity. The estimates are OLS estimates with robust standard
 errors that accommodate residual heteroscedasticity. The exponentiated slope
 estimate for a predictor variable describes a multiplicative change in
 non-reliability associated with a 1-unit increase in that predictor
-variable, controlling for all other predictor variables in the model."><meta property="og:description" content="This function estimates the intercept and slope coefficients in a
+variable, controlling for all other predictor variables in the model.
+For more details, see Section 3.4 of Bonett (2021, Volume 5)."><meta property="og:description" content="This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a log-complement
 Cronbach reliablity. The estimates are OLS estimates with robust standard
 errors that accommodate residual heteroscedasticity. The exponentiated slope
 estimate for a predictor variable describes a multiplicative change in
 non-reliability associated with a 1-unit increase in that predictor
-variable, controlling for all other predictor variables in the model."></head><body>
+variable, controlling for all other predictor variables in the model.
+For more details, see Section 3.4 of Bonett (2021, Volume 5)."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -19,7 +21,7 @@ variable, controlling for all other predictor variables in the model."></head><b
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,6 +55,7 @@ errors that accommodate residual heteroscedasticity. The exponentiated slope
 estimate for a predictor variable describes a multiplicative change in
 non-reliability associated with a 1-unit increase in that predictor
 variable, controlling for all other predictor variables in the model.</p>
+<p>For more details, see Section 3.4 of Bonett (2021, Volume 5).</p>
     </div>
 
     <div class="section level2">
@@ -100,13 +103,14 @@ row per predictor.  The matrix has the following columns:</p><ul><li><p>Estimate
 “Varying coefficient meta-analytic methods for alpha reliability.”
 <em>Psychological Methods</em>, <b>15</b>(4), 368–385.
 ISSN 1939-1463, <a href="https://doi.org/10.1037/a0020142" class="external-link">doi:10.1037/a0020142</a>
-.
-
-Bonett DG, Wright TA (2015).
+.</p>
+<p>Bonett DG, Wright TA (2015).
 “Cronbach's alpha reliability: Interval estimation, hypothesis testing, and sample size planning.”
 <em>Journal of Organizational Behavior</em>, <b>36</b>(1), 3–15.
 ISSN 08943796, <a href="https://doi.org/10.1002/job.1960" class="external-link">doi:10.1002/job.1960</a>
 .</p>
+<p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
     </div>
 
     <div class="section level2">
@@ -116,14 +120,14 @@ ISSN 08943796, <a href="https://doi.org/10.1002/job.1960" class="external-link">
 <span class="r-in"><span><span class="va">x1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="va">x1</span>, <span class="fl">4</span>, <span class="fl">1</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">meta.lm.cronbach</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">n</span>, <span class="va">rel</span>, <span class="fl">10</span>, <span class="va">X</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>      Estimate         SE          z     p         LL          UL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b0 -2.2408328 0.03675883 -60.960391 0.000 -2.3128788 -2.16878684</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b1 -0.1689006 0.07204625  -2.344336 0.019 -0.3101087 -0.02769259</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>    Estimate      SE       z     p      LL      UL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b0  -2.2408 0.03676 -60.960 0.000 -2.3129 -2.1688</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b1  -0.1689 0.07205  -2.344 0.019 -0.3101 -0.0277</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return:</span></span></span>
-<span class="r-in"><span><span class="co">#      Estimate         SE          z     p         LL          UL</span></span></span>
-<span class="r-in"><span><span class="co"># b0 -2.2408328 0.03675883 -60.960391 0.000 -2.3128788 -2.16878684</span></span></span>
-<span class="r-in"><span><span class="co"># b1 -0.1689006 0.07204625  -2.344336 0.019 -0.3101087 -0.02769259</span></span></span>
+<span class="r-in"><span><span class="co">#    Estimate      SE       z     p      LL      UL</span></span></span>
+<span class="r-in"><span><span class="co"># b0  -2.2408 0.03676 -60.960 0.000 -2.3129 -2.1688</span></span></span>
+<span class="r-in"><span><span class="co"># b1  -0.1689 0.07205  -2.344 0.019 -0.3101 -0.0277</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -137,7 +141,7 @@ ISSN 08943796, <a href="https://doi.org/10.1002/job.1960" class="external-link">
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

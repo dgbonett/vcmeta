@@ -37,27 +37,38 @@ A 4-row matrix. The rows are:
 
 The columns are:
 \itemize{
-\item Estimate - proportion ratio estimate (single study, ratio, average)
-\item LL - lower limit of the confidence interval
-\item UL - upper limit of the confidence interval
+\item Estimate - log proportion ratio estimate (single study, ratio, average)
+\item SE - standard error of log proportion estimate
+\item z - z-value
+\item p - p-value
+\item exp(Estimate) - exponentiated estimate
+\item exp(LL) - exponentiated lower limit of the confidence interval
+\item exp(UL) - exponentiated upper limit of the confidence interval
 }
 }
 \description{
 This function computes confidence intervals from an original study and a
-follow-up study where the effect size is a 2-group proportion ratio.
-Confidence intervals for the ratio and geometric average of effect sizes
-are also computed. The confidence level for the ratio of ratios is 1 – 2*alpha,
+follow-up study where the effect size is a 2-group log proportion ratio.
+Confidence intervals for exponentiated effect sizes are also computed.
+The confidence level for the ratio of ratios is 1 – 2*alpha,
 which is recommended for equivalence testing.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.propratio2(.05, 21, 16, 40, 40, 19, 13, 60, 60)
 
 # Should return:
-#                      Estimate        LL       UL
-# Original:           1.3076923 0.8068705 2.119373
-# Follow-up:          1.4528302 0.7939881 2.658372
-# Original/Follow-up: 0.9000999 0.4703209 1.722611
-# Average:            1.3783522 0.9362893 2.029132
+#                       Estimate        SE      z     p
+# Original:            0.2682640 0.2463597  1.089 0.276
+# Follow-up:           0.3735135 0.3082711  1.212 0.226
+# Original/Follow-up: -0.1052495 0.3946190 -0.267 0.789
+# Average:             0.3208887 0.1973095  1.626 0.104
+#                     exp(Estimate)   exp(LL)  exp(UL)
+# Original:               1.3076923 0.8068705 2.119373
+# Follow-up:              1.4528302 0.7939881 2.658372
+# Original/Follow-up:     0.9000999 0.4703209 1.722611
+# Average:                1.3783522 0.9362893 2.029132
 
 
 }

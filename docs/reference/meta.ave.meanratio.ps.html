@@ -3,11 +3,13 @@
 geometric average mean ratio from two or more paired-samples studies. A
 Satterthwaite adjustment to the degrees of freedom is used to improve the
 accuracy of the confidence interval for the average effect size. Equality
-of variances within or across studies is not assumed."><meta property="og:description" content="Computes the estimate, standard error, and confidence interval for a
+of variances within or across studies is not assumed.
+For more details, see Chapter 2 of Bonett (2021, Volume 5)."><meta property="og:description" content="Computes the estimate, standard error, and confidence interval for a
 geometric average mean ratio from two or more paired-samples studies. A
 Satterthwaite adjustment to the degrees of freedom is used to improve the
 accuracy of the confidence interval for the average effect size. Equality
-of variances within or across studies is not assumed."></head><body>
+of variances within or across studies is not assumed.
+For more details, see Chapter 2 of Bonett (2021, Volume 5)."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -15,7 +17,7 @@ of variances within or across studies is not assumed."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,6 +49,7 @@ geometric average mean ratio from two or more paired-samples studies. A
 Satterthwaite adjustment to the degrees of freedom is used to improve the
 accuracy of the confidence interval for the average effect size. Equality
 of variances within or across studies is not assumed.</p>
+<p>For more details, see Chapter 2 of Bonett (2021, Volume 5).</p>
     </div>
 
     <div class="section level2">
@@ -109,6 +112,8 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 <em>Journal of Educational and Behavioral Statistics</em>, <b>45</b>(6), 750–770.
 ISSN 1076-9986, <a href="https://doi.org/10.3102/1076998620934125" class="external-link">doi:10.3102/1076998620934125</a>
 .</p>
+<p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
     </div>
 
     <div class="section level2">
@@ -121,17 +126,17 @@ ISSN 1076-9986, <a href="https://doi.org/10.3102/1076998620934125" class="extern
 <span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">30</span>, <span class="fl">50</span>, <span class="fl">30</span>, <span class="fl">70</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">meta.ave.meanratio.ps</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">m1</span>, <span class="va">m2</span>, <span class="va">sd1</span>, <span class="va">sd2</span>, <span class="va">cor</span>, <span class="va">n</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>            Estimate          SE          LL          UL exp(Estimate)   exp(LL)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Average -0.05695120 0.004350863 -0.06558008 -0.04832231     0.9446402 0.9365240</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average -0.05695120 0.004350863 -0.06558008 -0.04832232     0.9446402 0.9365240</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 1 -0.03704127 0.010871086 -0.05927514 -0.01480740     0.9636364 0.9424474</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 2 -0.03278982 0.008021952 -0.04891054 -0.01666911     0.9677419 0.9522663</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 3 -0.09015110 0.009779919 -0.11015328 -0.07014892     0.9137931 0.8956968</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Study 4 -0.06782260 0.004970015 -0.07773750 -0.05790769     0.9344262 0.9252073</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>           exp(UL)       df</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Average 0.9528266 103.0256</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Study 1 0.9853017  29.0000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Study 2 0.9834691  49.0000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Study 3 0.9322550  29.0000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Study 4 0.9437371  69.0000</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>           exp(UL)     df</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average 0.9528266 103.03</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study 1 0.9853017  29.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study 2 0.9834691  49.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study 3 0.9322550  29.00</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study 4 0.9437371  69.00</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return:</span></span></span>
 <span class="r-in"><span><span class="co">#            Estimate          SE          LL          UL</span></span></span>
@@ -140,12 +145,12 @@ ISSN 1076-9986, <a href="https://doi.org/10.3102/1076998620934125" class="extern
 <span class="r-in"><span><span class="co"># Study 2 -0.03278982 0.008021952 -0.04891054 -0.01666911</span></span></span>
 <span class="r-in"><span><span class="co"># Study 3 -0.09015110 0.009779919 -0.11015328 -0.07014892</span></span></span>
 <span class="r-in"><span><span class="co"># Study 4 -0.06782260 0.004970015 -0.07773750 -0.05790769</span></span></span>
-<span class="r-in"><span><span class="co">#         exp(Estimate)   exp(LL)   exp(UL)       df</span></span></span>
-<span class="r-in"><span><span class="co"># Average     0.9446402 0.9365240 0.9528266 103.0256</span></span></span>
-<span class="r-in"><span><span class="co"># Study 1     0.9636364 0.9424474 0.9853017  29.0000</span></span></span>
-<span class="r-in"><span><span class="co"># Study 2     0.9677419 0.9522663 0.9834691  49.0000</span></span></span>
-<span class="r-in"><span><span class="co"># Study 3     0.9137931 0.8956968 0.9322550  29.0000</span></span></span>
-<span class="r-in"><span><span class="co"># Study 4     0.9344262 0.9252073 0.9437371  69.0000</span></span></span>
+<span class="r-in"><span><span class="co">#         exp(Estimate)   exp(LL)   exp(UL)     df</span></span></span>
+<span class="r-in"><span><span class="co"># Average     0.9446402 0.9365240 0.9528266 103.03</span></span></span>
+<span class="r-in"><span><span class="co"># Study 1     0.9636364 0.9424474 0.9853017  29.00</span></span></span>
+<span class="r-in"><span><span class="co"># Study 2     0.9677419 0.9522663 0.9834691  49.00</span></span></span>
+<span class="r-in"><span><span class="co"># Study 3     0.9137931 0.8956968 0.9322550  29.00</span></span></span>
+<span class="r-in"><span><span class="co"># Study 4     0.9344262 0.9252073 0.9437371  69.00</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -159,7 +164,7 @@ ISSN 1076-9986, <a href="https://doi.org/10.3102/1076998620934125" class="extern
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

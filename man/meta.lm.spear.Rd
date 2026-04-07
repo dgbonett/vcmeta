@@ -36,6 +36,8 @@ The correlations are Fisher-transformed and hence the parameter
 estimates do not have a simple interpretation. However, the hypothesis
 test results can be used to decide if a population slope is either
 positive or negative.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 
@@ -46,9 +48,12 @@ X <- matrix(x1, 5, 1)
 meta.lm.spear(.05, n, cor, X)
 
 # Should return: 
-#       Estimate         SE          z     p           LL         UL
-# b0 -0.08920088 0.26686388 -0.3342561 0.738 -0.612244475 0.43384271
-# b1  0.01370866 0.01190212  1.1517825 0.249 -0.009619077 0.03703639
+#    Estimate      SE      z     p      LL     UL
+# b0  -0.0892 0.26686 -0.334 0.738 -0.6122 0.4338
+# b1   0.0137 0.01190  1.152 0.249 -0.0096 0.0370
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

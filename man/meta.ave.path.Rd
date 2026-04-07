@@ -33,7 +33,11 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 \description{
 Computes the estimate, standard error, and confidence interval for an
 average slope coefficient in a general linear model (ANOVA, ANCOVA,
-multiple regression) or a path model from two or more studies.
+multiple regression) or a path model from two or more studies.  A
+Satterthwaite adjustment to the degrees of freedom is used to improve
+the accuracy of the confidence interval for the average slope.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
  
@@ -43,12 +47,15 @@ se <- c(.658, .724, .307, .493)
 meta.ave.path(.05, n, slope, se, 2, bystudy = TRUE)
 
 #  Should return:
-#         Estimate         SE          LL       UL       df
-#  Average     1.32 0.2844334  0.75994528 1.880055 263.1837
-#  Study 1     1.57 0.6580000  0.25830097 2.881699  72.0000
-#  Study 2     1.38 0.7240000 -0.06026664 2.820267  82.0000
-#  Study 3     1.08 0.3070000  0.47532827 1.684672 247.0000
-#  Study 4     1.25 0.4930000  0.27623174 2.223768 157.0000
+#          Estimate        SE          LL       UL     df
+#  Average     1.32 0.2844334  0.75994528 1.880055 263.18
+#  Study 1     1.57 0.6580000  0.25830097 2.881699  72.00
+#  Study 2     1.38 0.7240000 -0.06026664 2.820267  82.00
+#  Study 3     1.08 0.3070000  0.47532827 1.684672 247.00
+#  Study 4     1.25 0.4930000  0.27623174 2.223768 157.00
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

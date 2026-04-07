@@ -40,19 +40,23 @@ The columns are:
 This function can be used to compare and combine Spearman correlations from
 an original study and a follow-up study. The confidence level for the
 difference is 1 – 2*alpha, which is recommended for equivalence testing.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.spear(.05, .598, 80, .324, 200)
 
 # Should return:
-#                       Estimate         SE        z            p         LL        UL
-# Original:                0.598 0.07948367 5.315140 1.065752e-07 0.41985966 0.7317733
-# Follow-up:               0.324 0.06541994 4.570582 4.863705e-06 0.19049455 0.4457384
-# Original - Follow-up:    0.274 0.10294378 3.437975 5.860809e-04 0.09481418 0.4342171
-# Average:                 0.461 0.05147189 9.967944 0.000000e+00 0.36695230 0.5457190
+#                       Estimate      SE     z     p     LL     UL
+# Original:                0.598 0.07948 5.315 0.000 0.4199 0.7318
+# Follow-up:               0.324 0.06542 4.571 0.000 0.1905 0.4457
+# Original - Follow-up:    0.274 0.10294 3.438 0.001 0.0948 0.4342
+# Average:                 0.461 0.05147 9.968 0.000 0.3670 0.5457
 
 
 }
 \references{
+\insertRef{Bonett2021a}{vcmeta}
+
 \insertRef{Bonett2021}{vcmeta}
 }

@@ -41,19 +41,23 @@ The columns are:
 This function can be used to compare and combine any type of correlation
 from an original study and a follow-up study. The confidence level for the
 difference is 1 – 2*alpha, which is recommended for equivalence testing.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.cor.gen(.05, .454, .170, .318, .098)
 
 # Should return:
-#                       Estimate         SE         z            p          LL        UL
-# Original:                0.454 0.17000000 2.2869806 0.0221969560  0.06991214 0.7208577
-# Follow-up:               0.318 0.09800000 3.0215123 0.0025151541  0.11522137 0.4953353
-# Original - Follow-up:    0.136 0.19622436 0.6671281 0.5046902807 -0.21543667 0.4237240
-# Average:                 0.386 0.09811218 3.4089419 0.0006521538  0.19606750 0.5480170
+#                       Estimate      SE     z     p      LL     UL
+# Original:                0.454 0.17000 2.287 0.022  0.0699 0.7209
+# Follow-up:               0.318 0.09800 3.022 0.003  0.1152 0.4953
+# Original - Follow-up:    0.136 0.19622 0.667 0.505 -0.2154 0.4237
+# Average:                 0.386 0.09811 3.409 0.001  0.1961 0.5480
 
 
 }
 \references{
+\insertRef{Bonett2021a}{vcmeta}
+
 \insertRef{Bonett2021}{vcmeta}
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/meta_se.R
 \name{se.slope}
 \alias{se.slope}
-\title{Computes a slope and standard error}
+\title{Computes a slope and its standard error}
 \usage{
 se.slope(cor, sdy, sdx, n)
 }
@@ -29,6 +29,8 @@ estimated standard deviations of the response variable and predictor
 variable. This function is useful in a meta-analysis of slopes of a
 simple linear regression model where some studies report the Pearson
 correlation but not the slope.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.slope(.392, 4.54, 2.89, 60)
@@ -40,5 +42,5 @@ se.slope(.392, 4.54, 2.89, 60)
 
 }
 \references{
-\insertRef{Snedecor1980}{vcmeta}
+\insertRef{Bonett2021}{vcmeta}
 }

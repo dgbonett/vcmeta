@@ -40,6 +40,8 @@ average mean difference from two or more paired-samples studies.
 A Satterthwaite adjustment to the degrees of freedom is used to improve
 the accuracy of the confidence interval for the average effect size.
 Equality of variances within or across studies is not assumed.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 m1 <- c(53, 60, 53, 57)
@@ -51,15 +53,17 @@ n <- c(30, 50, 30, 70)
 meta.ave.mean.ps(.05, m1, m2, sd1, sd2, cor, n, bystudy = TRUE)
 
 # Should return:
-#         Estimate        SE        LL         UL      df
-# Average    -3.25 0.2340603 -3.713965 -2.7860352 107.657
-# Study 1    -2.00 0.5672507 -3.160158 -0.8398421  29.000
-# Study 2    -2.00 0.4227434 -2.849535 -1.1504653  49.000
-# Study 3    -5.00 0.5335104 -6.091151 -3.9088487  29.000
-# Study 4    -4.00 0.3023716 -4.603215 -3.3967852  69.000
+#         Estimate        SE        LL         UL     df
+# Average    -3.25 0.2340603 -3.713965 -2.7860352 107.66
+# Study 1    -2.00 0.5672507 -3.160158 -0.8398421  29.00
+# Study 2    -2.00 0.4227434 -2.849535 -1.1504653  49.00
+# Study 3    -5.00 0.5335104 -6.091151 -3.9088487  29.00
+# Study 4    -4.00 0.3023716 -4.603215 -3.3967852  69.00
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

@@ -40,6 +40,8 @@ original study and a follow-up study. Confidence intervals for the
 difference between the two proportions and average of the two proportions
 are also computed. The confidence level for the difference is 1 – 2*alpha,
 which is recommended for equivalence testing.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.prop1(.05, 21, 300, 35, 400)
@@ -54,5 +56,7 @@ replicate.prop1(.05, 21, 300, 35, 400)
 
 }
 \references{
+\insertRef{Bonett2021a}{vcmeta}
+
 \insertRef{Bonett2021}{vcmeta}
 }

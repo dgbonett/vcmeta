@@ -45,6 +45,8 @@ Computes the estimate, standard error, and confidence interval
 for a difference in average semipartial correlations for two
 subgroups of mutually exclusive studies. Each subgroup can
 have one or more studies.
+
+For more details, see Section 3.3 of Bonett (2021, Volume 5).
 }
 \examples{
 n <- c(55, 190, 65, 35)
@@ -54,10 +56,13 @@ group <- c(1, 1, 2, 0)
 meta.sub.semipart(.05, n, cor, r2, group)
 
 # Should return:
-#                Estimate         SE         LL        UL
-# Set A:            0.525 0.05955276  0.3986844 0.6317669
-# Set B:            0.600 0.07931155  0.4221127 0.7333949
-# Set A - Set B:   -0.075 0.09918091 -0.2587113 0.1324682
+#                Estimate      SE      LL     UL
+# Set A:            0.525 0.05955  0.3987 0.6318
+# Set B:            0.600 0.07931  0.4221 0.7334
+# Set A - Set B:   -0.075 0.09918 -0.2587 0.1325
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

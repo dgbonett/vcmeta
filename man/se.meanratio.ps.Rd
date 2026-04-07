@@ -35,6 +35,8 @@ output from this function can be used as input in the \link[vcmeta]{meta.ave.gen
 applications where compatible mean ratios from a combination of 2-group
 and paired-samples experiments are used in the meta-analysis.
 Equality of variances is not assumed.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.meanratio.ps(21.9, 16.1, 3.82, 3.21, .748, 40)
@@ -47,4 +49,6 @@ se.meanratio.ps(21.9, 16.1, 3.82, 3.21, .748, 40)
 }
 \references{
 \insertRef{Bonett2020}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

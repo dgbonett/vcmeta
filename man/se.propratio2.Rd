@@ -32,6 +32,8 @@ are used in the meta-analysis. If the proportions in each group are small
 (less than .1), proportion ratios may be compatible with odds ratios and
 then the \link[vcmeta]{meta.ave.gen.log} function could be used to
 meta-analyze any combination of log proportion ratios and log odds ratios.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.propratio2(31, 16, 40, 40)
@@ -44,4 +46,6 @@ se.propratio2(31, 16, 40, 40)
 }
 \references{
 \insertRef{Price2008}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

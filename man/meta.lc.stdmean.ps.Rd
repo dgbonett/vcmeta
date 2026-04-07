@@ -43,6 +43,8 @@ Returns 1-row matrix with the following columns:
 Computes the estimate, standard error, and confidence interval for a
 linear contrast of paired-samples standardized mean differences from two or
 more studies. Equality of variances within or across studies is not assumed.
+
+For more details, see Section 3.2 of Bonett (2021, Volume 5).
 }
 \examples{
 m1 <- c(53, 60, 53, 57)
@@ -55,11 +57,13 @@ v <- c(.5, .5, -.5, -.5)
 meta.lc.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, v, 0)
 
 # Should return:
-#            Estimate        SE        LL        UL
-# Contrast  0.5127577 0.1346794 0.2487908 0.7767245
+#          Estimate      SE     LL     UL
+# Contrast   0.5128 0.13468 0.2488 0.7767
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

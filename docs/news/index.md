@@ -1,0 +1,103 @@
+# Changelog
+
+## vcmeta v1.6.0 (Release date: 2026/04/09)
+
+Changes:
+
+- New functions: replicate.meanratio2, replicate.meanratio.ps,
+  replicate.pbcor, and se.median
+- Most function descriptions in the Reference Manual now refer to a
+  specific section in the Bonett (2021) online text for additional
+  details
+- More examples have been added to the Reference Manual
+- replicate.oddsratio returns ‘exp(Estimate)’ column
+- replicate.propratio2 has revamped output
+
+## vcmeta v1.5.0 (Release date: 2025/09/01)
+
+CRAN release: 2025-08-26
+
+Changes:
+
+- New functions: se.propratio2, se.propratio.ps, se.agree,
+  meta.ave.gen.log, replicate.agree, and replicate.cronbach
+- The meta.ave.fisher function has now been deleted – use
+  meta.ave.cor.gen
+- se.semipartial has been renamed se.semipart, se.odds has been renamed
+  se.oddsratio, meta.ave.odds has been renamed meta.ave.oddsratio,
+  meta.lc.odds has been renamed meta.lc.oddsratio, meta.lm.odds has been
+  renamed meta.lm.oddsratio, and replicate.ratio.prop2 has been renamed
+  replicate.propratio2
+- The se.prop2 and se.prop.ps now use an adjustment that is optimized
+  for the number of studies in the meta-analysis – note this is a
+  breaking change, where a parameter for the number of studies must now
+  be passed.
+
+## vcmeta v1.4.0 (Release date: 2024/07/04)
+
+CRAN release: 2024-07-04
+
+Changes:
+
+- New functions: se.bscor, meta.ave.cor.gen, and replicate.cor.gen
+- The standard error for a standardized mean difference with a weighted
+  variance standardizer in the meta.ave.stdmean2, meta.lc.stdmean2,
+  meta.lm.stdmean2, and se.stdmean2 functions no longer assumes equal
+  variances
+- The replicate.stdmean2 and replicate.stdmean.ps functions now have
+  options for additional standardizers – note this is a breaking change,
+  where a parameter for the standardizer must now be passed.
+
+## vcmeta v1.3.0 (Release date: 2024/03/04)
+
+CRAN release: 2024-03-04
+
+Changes:
+
+- New functions: se.cohen, replicate.ratio.prop2, replicate.prop.ps,
+  table.from.odds, table.from.phi, meta.sub.gen
+- The ci.fisher function has been renamed meta.ave.fisher
+- Corrected output error in meta.ave.gen.rc function when bystudy =
+  FALSE
+- cor.from.t now returns a 1x1 matrix with column ‘Estimate’
+
+## vcmeta v1.2.0 (Release date: 2023/06/26)
+
+CRAN release: 2023-06-29
+
+Changes:
+
+- New functions: se.ave.mean2.dep, se.ave.cor.over, se.ave.cor.nonover,
+  se.tetra, se.biphi, replicate.spear, replicate.mean1, replicate.prop1,
+  stdmean2.from.t
+- Corrected the displayed standard errors in replicate.cor
+
+## vcmeta v1.1.0 (Release date: 2022/06/30)
+
+CRAN release: 2022-06-17
+
+Changes:
+
+- Updated documentation for several functions
+- New functions for standard errors: se.prop2, se.prop.ps
+- New function for chi-square test of homegeniety: meta.chitest
+- New function for confidence interval for an average variance:
+  meta.ave.var
+- New functions for replication studies: replicate.prop2,
+  replicate.oddsratio, replicate.slope
+- For consistency, updated parameter names in the following functions:
+  - meta.lm.cronbach now takes (alpha, n, rel, r, X) rather than (alpha,
+    n, rel, q, X)
+  - se.cor now takes (cor, s, n) rather than (cor, q, n)
+  - meta.sub.cronbach now takes (alpha, n, rel, r, group) rather than
+    (alpha, n, rel, q, group)
+  - meta.ave.cronbach now takes (alpha, n, rel, r, bystudy) rather than
+    (alpha, n, rel, q, bystudy)
+
+## vcmeta 1.0.0 (Release date: 2021/08/21)
+
+CRAN release: 2021-08-21
+
+Changes:
+
+- Added a `NEWS.md` file to track changes to the package.

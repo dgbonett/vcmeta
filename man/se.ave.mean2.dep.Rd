@@ -53,6 +53,8 @@ from this function can then be used as input in the
 have used one of the two parallel response variables and other studies have
 used the other parallel response variable. Equality of variances is not
 assumed.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.ave.mean2.dep(21.9, 16.1, 3.82, 3.21, 24.8, 17.1, 3.57, 3.64, .785, 40, 40)
@@ -62,4 +64,7 @@ se.ave.mean2.dep(21.9, 16.1, 3.82, 3.21, 24.8, 17.1, 3.57, 3.64, .785, 40, 40)
 # Average mean difference:     6.75 0.7526878 0.6224125 0.6498625 0.4969403
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

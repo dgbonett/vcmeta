@@ -283,3 +283,17 @@ test_that("se.agree example", {
   
   testthat::expect_snapshot(res)
 })
+
+
+
+test_that("se.median example", {
+  colnames_expected <- c("SE")
+  
+  res <- se.median(.05, 47.21, 68.68, 35, 1)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(1, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
+})

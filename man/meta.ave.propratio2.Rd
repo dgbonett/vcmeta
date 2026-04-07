@@ -35,6 +35,8 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 \description{
 Computes the estimate, standard error, and confidence interval for a
 geometric average proportion ratio from two or more studies.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 n1 <- c(204, 201, 932, 130, 77)
@@ -63,4 +65,6 @@ meta.ave.propratio2(.05, f1, f2, n1, n2, bystudy = TRUE)
 }
 \references{
 \insertRef{Price2008}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }
