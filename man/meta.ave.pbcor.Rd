@@ -49,6 +49,8 @@ stratified random sampling) within each study. This function requires
 all point-biserial correlations to be of the same type.  Use the
 meta.ave.cor.gen function to meta-analyze any combination of biserial
 correlation types.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 m1 <- c(21.9, 23.1, 19.8)
@@ -60,14 +62,27 @@ n2 <- c(40, 28, 25)
 meta.ave.pbcor(.05, m1, m2, sd1, sd2, n1, n2, 2, bystudy = TRUE)
 
 # Should return:
-#          Estimate         SE        LL        UL
-# Average 0.6159094 0.04363432 0.5230976 0.6942842
-# Study 1 0.6349786 0.06316796 0.4842098 0.7370220
-# Study 2 0.6160553 0.07776700 0.4255342 0.7380898
-# Study 3 0.5966942 0.08424778 0.3903883 0.7283966
+#         Estimate      SE     LL     UL
+# Average   0.6109 0.04358 0.5183 0.6893
+# Study 1   0.6350 0.06061 0.4915 0.7336
+# Study 2   0.6165 0.07458 0.4353 0.7346
+# Study 3   0.5812 0.08863 0.3648 0.7197
+
+m1 <- c(41.2, 43.2, 49.1, 40.8)
+m2 <- c(36.4, 37.1, 35.9, 31.4)
+sd1 <- c(4.92, 4.75, 4.87, 5.01)
+sd2 <- c(4.35, 4.24, 4.12, 4.87)
+n1 <- c(42, 58, 62, 39)
+n2 <- c(67, 70, 84, 45)
+meta.ave.pbcor(.05, m1, m2, sd1, sd2, n1, n2, 1, bystudy = FALSE)
+# Should return:
+#         Estimate      SE     LL    UL
+# Average   0.6358 0.02701 0.5798 0.6857
 
 
 }
 \references{
 \insertRef{Bonett2020b}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

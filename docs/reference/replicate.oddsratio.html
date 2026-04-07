@@ -3,11 +3,13 @@
 original study and a follow-up study. Confidence intervals for the
 ratio of odds ratios and geometric average odds ratio are also
 computed. The confidence level for the ratio of ratios is 1 – 2*alpha, which
-is recommended for equivalence testing."><meta property="og:description" content="This function computes confidence intervals for an odds ratio from an
+is recommended for equivalence testing.
+For more details, see Chapter 4 of Bonett (2021, Volume 5)."><meta property="og:description" content="This function computes confidence intervals for an odds ratio from an
 original study and a follow-up study. Confidence intervals for the
 ratio of odds ratios and geometric average odds ratio are also
 computed. The confidence level for the ratio of ratios is 1 – 2*alpha, which
-is recommended for equivalence testing."></head><body>
+is recommended for equivalence testing.
+For more details, see Chapter 4 of Bonett (2021, Volume 5)."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -15,7 +17,7 @@ is recommended for equivalence testing."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,6 +49,7 @@ original study and a follow-up study. Confidence intervals for the
 ratio of odds ratios and geometric average odds ratio are also
 computed. The confidence level for the ratio of ratios is 1 – 2*alpha, which
 is recommended for equivalence testing.</p>
+<p>For more details, see Chapter 4 of Bonett (2021, Volume 5).</p>
     </div>
 
     <div class="section level2">
@@ -84,12 +87,13 @@ is recommended for equivalence testing.</p>
 <li><p>Row 2 summarizes the follow-up study</p></li>
 <li><p>Row 3 estimates the ratio of odds ratios</p></li>
 <li><p>Row 4 estimates the geometric average odds ratio</p></li>
-</ul><p>The columns are:</p><ul><li><p>Estimate - odds ratio estimate (single study, ratio, average)</p></li>
-<li><p>SE - standard error</p></li>
+</ul><p>The columns are:</p><ul><li><p>Estimate - log odds ratio estimate (single study, ratio, average)</p></li>
+<li><p>SE - standard error of log odds estimate</p></li>
 <li><p>z - z-value</p></li>
 <li><p>p - p-value</p></li>
-<li><p>LL - exponentiated lower limit of the confidence interval</p></li>
-<li><p>UL - exponentiated upper limit of the confidence interval</p></li>
+<li><p>exp(Estimate) - exponentiated estimate</p></li>
+<li><p>exp(LL) - exponentiated lower limit of the confidence interval</p></li>
+<li><p>exp(UL) - exponentiated upper limit of the confidence interval</p></li>
 </ul></div>
     <div class="section level2">
     <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
@@ -98,16 +102,18 @@ is recommended for equivalence testing.</p>
 <em>Organizational Research Methods</em>, <b>24</b>(3), 513–529.
 ISSN 1094-4281, <a href="https://doi.org/10.1177/1094428120911088" class="external-link">doi:10.1177/1094428120911088</a>
 .</p>
+<p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">replicate.oddsratio</span><span class="op">(</span><span class="fl">.05</span>, <span class="fl">1.39</span>, <span class="fl">.302</span>, <span class="fl">1.48</span>, <span class="fl">.206</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                        Estimate        SE          z            p   exp(LL)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original:            1.39000000 0.3020000  4.6026490 4.171509e-06 2.2212961</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:           1.48000000 0.2060000  7.1844660 6.747936e-13 2.9336501</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original/Follow-up: -0.06273834 0.3655681 -0.1716188 8.637372e-01 0.5147653</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Average:             0.36067292 0.1827840  1.9732190 4.847061e-02 1.0024257</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                        Estimate        SE      z     p exp(Estimate)   exp(LL)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original:            1.39000000 0.3020000  4.603 0.000     4.0148501 2.2212961</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:           1.48000000 0.2060000  7.184 0.000     4.3929457 2.9336501</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original/Follow-up: -0.06273834 0.3655681 -0.172 0.864     0.9391892 0.5147653</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average:             0.36067292 0.1827840  1.973 0.048     1.4342943 1.0024257</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>                      exp(UL)</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Original:           7.256583</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:          6.578144</span>
@@ -115,16 +121,16 @@ ISSN 1094-4281, <a href="https://doi.org/10.1177/1094428120911088" class="extern
 <span class="r-out co"><span class="r-pr">#&gt;</span> Average:            2.052222</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return:</span></span></span>
-<span class="r-in"><span><span class="co">#                          Estimate        SE          z            p</span></span></span>
-<span class="r-in"><span><span class="co"># Original:              1.39000000 0.3020000  4.6026490 4.171509e-06</span></span></span>
-<span class="r-in"><span><span class="co"># Follow-up:             1.48000000 0.2060000  7.1844660 6.747936e-13</span></span></span>
-<span class="r-in"><span><span class="co"># Original/Follow-up:   -0.06273834 0.3655681 -0.1716188 8.637372e-01</span></span></span>
-<span class="r-in"><span><span class="co"># Average:               0.36067292 0.1827840  1.9732190 4.847061e-02</span></span></span>
-<span class="r-in"><span><span class="co">#                         exp(LL)  exp(UL)</span></span></span>
-<span class="r-in"><span><span class="co"># Original:             2.2212961 7.256583</span></span></span>
-<span class="r-in"><span><span class="co"># Follow-up:            2.9336501 6.578144</span></span></span>
-<span class="r-in"><span><span class="co"># Original/Fllow-up:    0.5147653 1.713551</span></span></span>
-<span class="r-in"><span><span class="co"># Average:              1.0024257 2.052222</span></span></span>
+<span class="r-in"><span><span class="co">#                        Estimate        SE      z     p</span></span></span>
+<span class="r-in"><span><span class="co"># Original:            1.39000000 0.3020000  4.603 0.000</span></span></span>
+<span class="r-in"><span><span class="co"># Follow-up:           1.48000000 0.2060000  7.184 0.000</span></span></span>
+<span class="r-in"><span><span class="co"># Original/Follow-up: -0.06273834 0.3655681 -0.172 0.864</span></span></span>
+<span class="r-in"><span><span class="co"># Average:             0.36067292 0.1827840  1.973 0.048</span></span></span>
+<span class="r-in"><span><span class="co">#                     exp(Estimate)   exp(LL)  exp(UL)</span></span></span>
+<span class="r-in"><span><span class="co"># Original:               4.0148501 2.2212961 7.256583</span></span></span>
+<span class="r-in"><span><span class="co"># Follow-up:              4.3929457 2.9336501 6.578144</span></span></span>
+<span class="r-in"><span><span class="co"># Original/Follow-up:     0.9391892 0.5147653 1.713551</span></span></span>
+<span class="r-in"><span><span class="co"># Average:                1.4342943 1.0024257 2.052222</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -138,7 +144,7 @@ ISSN 1094-4281, <a href="https://doi.org/10.1177/1094428120911088" class="extern
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

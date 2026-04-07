@@ -43,19 +43,25 @@ Adjusted Wald confidence intervals for the difference and average effect
 size are also computed. The confidence level for the difference is
 1 – 2*alpha, which is recommended for equivalence testing. As a measurement
 of agreement, the G-index is usually preferred to Cohen's kappa.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.agree(.05, 85, 100, 160, 200, 2)
 
 # Should return:
-#                       Estimate         SE         LL        UL
-# Original:                 0.70 0.07252105  0.53093828 0.8152156
-# Follow-up:                0.60 0.05661961  0.47726289 0.6992077
-# Original - Follow-up:     0.10 0.09159681 -0.05844824 0.2428784
-# Average:                  0.65 0.04579840  0.55040374 0.7299302
+#                       Estimate      SE      LL     UL
+# Original:                 0.70 0.07252  0.5309 0.8152
+# Follow-up:                0.60 0.05662  0.4773 0.6992
+# Original - Follow-up:     0.10 0.09160 -0.0584 0.2429
+# Average:                  0.65 0.04580  0.5504 0.7299
 
 
 }
 \references{
 \insertRef{Bonett2022}{vcmeta}
+
+\insertRef{Bonett2021a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

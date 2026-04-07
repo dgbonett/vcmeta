@@ -151,7 +151,7 @@ test_that("replicate.oddsratio returns valid matrix", {
 })
 
 test_that("replicate.prop2 returns valid matrix", {
-  colnames_expected <- c("Estimate", "SE", "z", "p", "exp(LL)", "exp(UL)")  
+  colnames_expected <- c("Estimate", "SE", "z", "p", "exp(Estimate)", "exp(LL)", "exp(UL)")  
   
   res <- replicate.oddsratio(.05, 1.39, .302, 1.48, .206)
   
@@ -216,7 +216,7 @@ test_that("replicate.prop1 returns valid matrix", {
 
 
 test_that("replicate.propratio2 returns valid matrix", {
-  colnames_expected <- c("Estimate", "LL", "UL")  
+  colnames_expected <- c("Estimate", "SE", "z","p", "exp(Estimate)", "exp(LL)", "exp(UL)")  
   
   res <- replicate.propratio2(.05, 21, 16, 40, 40, 19, 13, 60, 60)
   
@@ -259,6 +259,44 @@ test_that("replicate.cronbach example", {
   colnames_expected <- c("Estimate", "SE", "LL", "UL")  
   
   res <- replicate.cronbach(.05, .883, 100, .869, 200, 6)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
+})
+
+
+test_that("replicate.meanratio2 example", {
+  colnames_expected <- c("Estimate", "SE", "t", "p", "df", "exp(Estimate)", "exp(LL)", "exp(UL)")  
+  
+  res <- replicate.meanratio2(.05, 21.9, 16.1, 3.82, 3.21, 40, 40, 25.2, 19.1, 3.98, 3.79, 75, 75)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
+})
+
+
+test_that("replicate.meanratio.ps example", {
+  colnames_expected <- c("Estimate", "SE", "t", "p", "df", "exp(Estimate)", "exp(LL)", "exp(UL)")  
+  
+  res <- replicate.meanratio.ps(.05, 86.22, 70.93, 14.89, 12.32, .765, 20, 84.81, 77.24, 15.68, 16.95, .702, 75)
+  
+  testthat::expect_equal(class(res), c("matrix", "array"))
+  testthat::expect_equal(dim(res), c(4, length(colnames_expected)))
+  testthat::expect_equal(colnames(res), colnames_expected)
+  
+  testthat::expect_snapshot(res)
+})
+
+test_that("replicate.pbcor example", {
+  colnames_expected <- c("Estimate", "SE", "LL", "UL")  
+  
+  res <- replicate.pbcor(.05, 12.2, 10.4, 1.74, 1.59, 68, 94, 13.0, 10.9, 1.48, 1.29, 124, 189, 1)
   
   testthat::expect_equal(class(res), c("matrix", "array"))
   testthat::expect_equal(dim(res), c(4, length(colnames_expected)))

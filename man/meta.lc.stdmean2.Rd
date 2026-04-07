@@ -49,6 +49,8 @@ experimental designs.  Use the square root weighted variance standardizer
 (stdzr = 3) for 2-group nonexperimental designs with simple random sampling.
 The stdzr = 1 and stdzr = 2 options can be used with either experimental
 or nonexperimental designs.
+
+For more details, see Section 3.2 of Bonett (2021, Volume 5).
 }
 \examples{
 m1 <- c(45.1, 39.2, 36.3, 34.5)
@@ -61,11 +63,13 @@ v <- c(.5, .5, -.5, -.5)
 meta.lc.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, v, 0)
 
 # Should return: 
-#           Estimate        SE        LL       UL
-# Contrast 0.8557914 0.2709192 0.3247995 1.386783
+#          Estimate      SE     LL     UL
+# Contrast   0.8558 0.27092 0.3248 1.3868
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

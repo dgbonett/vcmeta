@@ -32,6 +32,8 @@ Returns 1-row matrix with the following columns:
 \description{
 Computes the estimate, standard error, and confidence interval for an
 exponentiated log-linear contrast of odds ratios from two or more studies.
+
+For more details, see Section 3.2 of Bonett (2021, Volume 5).
 }
 \examples{
 n1 <- c(50, 150, 150)
@@ -49,4 +51,6 @@ meta.lc.oddsratio(.05, f1, f2, n1, n2, v)
 }
 \references{
 \insertRef{Bonett2015}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

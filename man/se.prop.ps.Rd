@@ -34,6 +34,8 @@ input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
 and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
 proportion differences from a combination of 2-group and paired-samples
 studies are used in the meta-analysis.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.prop.ps(16, 64, 5, 15, 4)
@@ -46,4 +48,6 @@ se.prop.ps(16, 64, 5, 15, 4)
 }
 \references{
 \insertRef{Bonett2012}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

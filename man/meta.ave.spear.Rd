@@ -31,6 +31,8 @@ average Spearman correlation from two or more studies. The Spearman
 correlation is preferred to the Pearson correlation if the relation
 between the two quantitative variables is monotonic rather than linear
 or if the bivariate normality assumption is not plausible.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 n <- c(150, 200, 300, 200, 350)
@@ -38,16 +40,18 @@ cor <- c(.14, .29, .16, .21, .23)
 meta.ave.spear(.05, n, cor, bystudy = TRUE)
 
 # Should return:
-#         Estimate         SE          LL        UL
-# Average    0.206 0.02944265  0.14763960 0.2629309
-# Study 1    0.140 0.08031750 -0.02151639 0.2943944
-# Study 2    0.290 0.06492643  0.15476515 0.4145671
-# Study 3    0.160 0.05635101  0.04689807 0.2690514
-# Study 4    0.210 0.06776195  0.07187439 0.3402225
-# Study 5    0.230 0.05069710  0.12690280 0.3281809
+#         Estimate      SE      LL     UL
+# Average    0.206 0.02944  0.1476 0.2629
+# Study 1    0.140 0.08071 -0.0215 0.2944
+# Study 2    0.290 0.06628  0.1548 0.4146
+# Study 3    0.160 0.05671  0.0469 0.2691
+# Study 4    0.210 0.06850  0.0719 0.3402
+# Study 5    0.230 0.05136  0.1269 0.3282
 
 
 }
 \references{
 \insertRef{Bonett2008a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

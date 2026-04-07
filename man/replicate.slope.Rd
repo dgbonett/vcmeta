@@ -44,33 +44,32 @@ The columns are:
 }
 }
 \description{
-This function computes confidence intervals for a slope from the original and
-follow-up studies, the difference in slopes, and the average of the slopes.
-Equality of error variances across studies is not assumed. The confidence
-interval for the difference uses a 1 - 2*alpha confidence level, which is
-recommended for equivalence testing. Use the \link[vcmeta]{replicate.gen}
+This function computes confidence intervals for an OLS slope in a GLM from
+the original and follow-up studies, the difference in slopes, and the average
+of the slopes. Equality of error variances across studies is not assumed. The
+confidence interval for the difference uses a 1 - 2*alpha confidence level,
+which is recommended for equivalence testing. Use the \link[vcmeta]{replicate.gen}
 function for slopes in other types of models (e.g., binary logistic, ordinal
 logistic, SEM). A Satterthwaite adjustment to the degrees of freedom is used
 to improve the accuracy of the confidence intervals for the average and the
 difference.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.slope(.05, 23.4, 5.16, 50, 18.5, 4.48, 90, 4)
 
 # Should return: 
-#                       Estimate       SE         t            p
-# Original:                23.40 5.160000 4.5348837 4.250869e-05
-# Follow-up:               18.50 4.480000 4.1294643 8.465891e-05
-# Original - Follow-up:     4.90 6.833447 0.7170612 4.749075e-01
-# Average:                 20.95 3.416724 6.1316052 1.504129e-08
-#                              LL       UL       df
-# Original:             13.007227 33.79277  45.0000
-# Follow-up:             9.592560 27.40744  85.0000
-# Original - Follow-up: -6.438743 16.23874 106.4035
-# Average:              14.176310 27.72369 106.4035
+#                       Estimate       SE     t     p        LL       UL    df
+# Original:                23.40 5.160000 4.535 0.000 13.007227 33.79277  45.0
+# Follow-up:               18.50 4.480000 4.129 0.000  9.592560 27.40744  85.0
+# Original - Follow-up:     4.90 6.833447 0.717 0.475 -6.438743 16.23874 106.4
+# Average:                 20.95 3.416724 6.132 0.000 14.176310 27.72369 106.4
 
 
 }
 \references{
+\insertRef{Bonett2021a}{vcmeta}
+
 \insertRef{Bonett2021}{vcmeta}
 }

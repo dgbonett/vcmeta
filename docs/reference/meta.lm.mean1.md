@@ -1,0 +1,83 @@
+# Meta-regression analysis for 1-group means
+
+This function estimates the intercept and slope coefficients in a
+meta-regression model where the dependent variable is a mean from one
+group. The estimates are OLS estimates with robust standard errors that
+accomodate residual heteroscedasticity.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
+
+## Usage
+
+``` r
+meta.lm.mean1(alpha, m, sd, n, X)
+```
+
+## Arguments
+
+- alpha:
+
+  alpha level for 1-alpha confidence
+
+- m:
+
+  vector of estimated means
+
+- sd:
+
+  vector of estimated standard deviations
+
+- n:
+
+  vector of sample sizes
+
+- X:
+
+  matrix of predictor values
+
+## Value
+
+Returns a matrix. The first row is for the intercept with one additional
+row per predictor. The matrix has the following columns:
+
+- Estimate - OLS estimate
+
+- SE - standard error
+
+- t - t-value
+
+- p - p-value
+
+- LL - lower limit of the confidence interval
+
+- UL - upper limit of the confidence interval
+
+- df - degrees of freedom
+
+## References
+
+Bonett DG (2021). *Statistical Methods for Psychologists, Vol 1-5,
+https://dgbonett.sites.ucsc.edu/*.
+
+## Examples
+
+``` r
+n <- c(25, 15, 30, 25, 40)
+m <- c(20.1, 20.5, 19.3, 21.5, 19.4)
+sd <- c(10.4, 10.2, 8.5, 10.3, 7.8)
+x1 <- c(1, 1, 0, 0, 0)
+x2 <- c( 12, 13, 11, 13, 15)
+X <- matrix(cbind(x1, x2), 5, 2)
+meta.lm.mean1(.05, m, sd, n, X)
+#>       Estimate        SE     t     p         LL        UL  df
+#> b0 19.45490196 6.7873381 2.866 0.005  6.0288763 32.880928 132
+#> b1  0.25686275 1.9834765 0.130 0.897 -3.6666499  4.180375 132
+#> b2  0.04705882 0.5064693 0.093 0.926 -0.9547876  1.048905 132
+
+# Should return: 
+#       Estimate        SE     t     p         LL        UL  df
+# b0 19.45490196 6.7873381 2.866 0.005  6.0288763 32.880928 132
+# b1  0.25686275 1.9834765 0.130 0.897 -3.6666499  4.180375 132
+# b2  0.04705882 0.5064693 0.093 0.926 -0.9547876  1.048905 132
+
+```

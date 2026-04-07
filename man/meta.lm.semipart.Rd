@@ -38,6 +38,8 @@ standard errors that accommodate residual heteroscedasticity.  The
 correlations are Fisher-transformed and hence the parameter estimates
 do not have a simple interpretation. However, the hypothesis test results
 can be used to decide if a population slope is either positive or negative.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 
@@ -49,9 +51,12 @@ X <- matrix(x1, 4, 1)
 meta.lm.semipart(.05, n, cor, r2, X)
 
 # Should return: 
-#      Estimate        SE         z     p          LL         UL
-# b0 0.19695988 0.3061757 0.6432905 0.520 -0.40313339 0.79705315
-# b1 0.01055584 0.0145696 0.7245114 0.469 -0.01800004 0.03911172
+#    Estimate      SE     z     p      LL     UL
+# b0   0.1970 0.30618 0.643 0.520 -0.4031 0.7971
+# b1   0.0106 0.01457 0.725 0.468 -0.0180 0.0391
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

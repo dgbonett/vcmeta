@@ -37,6 +37,8 @@ errors that accommodate residual heteroscedasticity. The exponentiated slope
 estimate for a predictor variable describes a multiplicative change in
 non-reliability associated with a 1-unit increase in that predictor
 variable, controlling for all other predictor variables in the model.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 n <- c(583, 470, 546, 680)
@@ -46,15 +48,16 @@ X <- matrix(x1, 4, 1)
 meta.lm.cronbach(.05, n, rel, 10, X)
 
 # Should return:
-#      Estimate         SE          z     p         LL          UL
-# b0 -2.2408328 0.03675883 -60.960391 0.000 -2.3128788 -2.16878684
-# b1 -0.1689006 0.07204625  -2.344336 0.019 -0.3101087 -0.02769259
+#    Estimate      SE       z     p      LL      UL
+# b0  -2.2408 0.03676 -60.960 0.000 -2.3129 -2.1688
+# b1  -0.1689 0.07205  -2.344 0.019 -0.3101 -0.0277
 
 
 }
 \references{
-\itemize{
-\item \insertRef{Bonett2010}{vcmeta}
-\item \insertRef{Bonett2015b}{vcmeta}
-}
+\insertRef{Bonett2010}{vcmeta}
+
+\insertRef{Bonett2015b}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

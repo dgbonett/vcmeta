@@ -7,7 +7,8 @@ average of cor12 and cor34 and its standard error. Note that cor12 and cor34
 have no variable in common (i.e., no "overlapping" variable). The average
 correlation and the standard error from this function can be used as
 input in the meta.ave.cor.gen function in a meta-analysis where
-some studies have reported cor12 and other studies have reported cor34.'><meta property="og:description" content='In a study that reports the sample size and six correlations (cor12, cor34,
+some studies have reported cor12 and other studies have reported cor34.
+For more details, see Chapter 1 of Bonett (2021, Volume 5)'><meta property="og:description" content='In a study that reports the sample size and six correlations (cor12, cor34,
 cor13, cor14, cor23, and cor24) where variables 1 and 3 are different
 measurements of one attribute and variables 2 and 4 are different
 measurements of a second attribute, this function can be used to compute the
@@ -15,7 +16,8 @@ average of cor12 and cor34 and its standard error. Note that cor12 and cor34
 have no variable in common (i.e., no "overlapping" variable). The average
 correlation and the standard error from this function can be used as
 input in the meta.ave.cor.gen function in a meta-analysis where
-some studies have reported cor12 and other studies have reported cor34.'></head><body>
+some studies have reported cor12 and other studies have reported cor34.
+For more details, see Chapter 1 of Bonett (2021, Volume 5)'></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -23,7 +25,7 @@ some studies have reported cor12 and other studies have reported cor34.'></head>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -59,6 +61,7 @@ have no variable in common (i.e., no "overlapping" variable). The average
 correlation and the standard error from this function can be used as
 input in the <a href="meta.ave.cor.gen.html">meta.ave.cor.gen</a> function in a meta-analysis where
 some studies have reported cor12 and other studies have reported cor34.</p>
+<p>For more details, see Chapter 1 of Bonett (2021, Volume 5)</p>
     </div>
 
     <div class="section level2">
@@ -108,18 +111,23 @@ transformation. The columns are:</p><ul><li><p>Estimate - estimated average of c
 <li><p>VAR(cor34) - variance of cor34</p></li>
 <li><p>COV(cor12,cor34) - covariance of cor12 and cor34</p></li>
 </ul></div>
+    <div class="section level2">
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
+    </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">se.ave.cor.nonover</span><span class="op">(</span><span class="fl">.357</span>, <span class="fl">.398</span>, <span class="fl">.755</span>, <span class="fl">.331</span>, <span class="fl">.347</span>, <span class="fl">.821</span>, <span class="fl">100</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>               Estimate         SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Correlation:  0.377500 0.07768887 0.00784892 0.007301895      0.004495714</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Fisher:       0.397141 0.09059993 0.01030928 0.010309278      0.006122153</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>               Estimate      SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Correlation:    0.3775 0.07769 0.00784892 0.007301895      0.004495714</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Fisher:         0.3971 0.09060 0.01030928 0.010309278      0.006122153</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return:</span></span></span>
-<span class="r-in"><span><span class="co">#               Estimate         SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)</span></span></span>
-<span class="r-in"><span><span class="co"># Correlation:  0.377500 0.07768887 0.00784892 0.007301895      0.004495714</span></span></span>
-<span class="r-in"><span><span class="co"># Fisher:       0.397141 0.09059993 0.01030928 0.010309278      0.006122153</span></span></span>
+<span class="r-in"><span><span class="co">#              Estimate      SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)</span></span></span>
+<span class="r-in"><span><span class="co"># Correlation:   0.3775 0.07769 0.00784892 0.007301895      0.004495714</span></span></span>
+<span class="r-in"><span><span class="co"># Fisher:        0.3971 0.09060 0.01030928 0.010309278      0.006122153</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -133,7 +141,7 @@ transformation. The columns are:</p><ul><li><p>Estimate - estimated average of c
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

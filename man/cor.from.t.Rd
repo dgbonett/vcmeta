@@ -34,8 +34,8 @@ standardized mean differences in paired-samples studies.
 cor.from.t(9.4, 9.8, 1.26, 1.40, 2.27, 30)
 
 # Should return:
-#                Estimate
-# Correlation:  0.7415209
+#              Estimate
+# Correlation:   0.7415
 
 
 }

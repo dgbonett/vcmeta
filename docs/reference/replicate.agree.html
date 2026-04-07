@@ -4,12 +4,14 @@ study and a follow-up study where the effect size is a G-index of agreement.
 Adjusted Wald confidence intervals for the difference and average effect
 size are also computed. The confidence level for the difference is
 1 – 2*alpha, which is recommended for equivalence testing. As a measurement
-of agreement, the G-index is usually preferred to Cohen's kappa."><meta property="og:description" content="This function computes adjusted Wald confidence intervals from an original
+of agreement, the G-index is usually preferred to Cohen's kappa.
+For more details, see Chapter 4 of Bonett (2021, Volume 5)."><meta property="og:description" content="This function computes adjusted Wald confidence intervals from an original
 study and a follow-up study where the effect size is a G-index of agreement.
 Adjusted Wald confidence intervals for the difference and average effect
 size are also computed. The confidence level for the difference is
 1 – 2*alpha, which is recommended for equivalence testing. As a measurement
-of agreement, the G-index is usually preferred to Cohen's kappa."></head><body>
+of agreement, the G-index is usually preferred to Cohen's kappa.
+For more details, see Chapter 4 of Bonett (2021, Volume 5)."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -17,7 +19,7 @@ of agreement, the G-index is usually preferred to Cohen's kappa."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -50,6 +52,7 @@ Adjusted Wald confidence intervals for the difference and average effect
 size are also computed. The confidence level for the difference is
 1 – 2*alpha, which is recommended for equivalence testing. As a measurement
 of agreement, the G-index is usually preferred to Cohen's kappa.</p>
+<p>For more details, see Chapter 4 of Bonett (2021, Volume 5).</p>
     </div>
 
     <div class="section level2">
@@ -103,23 +106,30 @@ of agreement, the G-index is usually preferred to Cohen's kappa.</p>
 <em>Journal of Educational and Behavioral Statistics</em>, <b>47</b>(4), 438–458.
 <a href="https://doi.org/10.3102/10769986221088561" class="external-link">doi:10.3102/10769986221088561</a>
 .</p>
+<p>Bonett DG (2021).
+“Design and analysis of replication studies.”
+<em>Organizational Research Methods</em>, <b>24</b>(3), 513–529.
+ISSN 1094-4281, <a href="https://doi.org/10.1177/1094428120911088" class="external-link">doi:10.1177/1094428120911088</a>
+.</p>
+<p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">replicate.agree</span><span class="op">(</span><span class="fl">.05</span>, <span class="fl">85</span>, <span class="fl">100</span>, <span class="fl">160</span>, <span class="fl">200</span>, <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       Estimate         SE          LL        UL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original:                 0.70 0.07252105  0.53093828 0.8152156</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:                0.60 0.05661961  0.47726289 0.6992077</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original - Follow-up:     0.10 0.09159681 -0.05844824 0.2428784</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Average:                  0.65 0.04579840  0.55040374 0.7299302</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       Estimate      SE      LL     UL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original:                 0.70 0.07252  0.5309 0.8152</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:                0.60 0.05662  0.4773 0.6992</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original - Follow-up:     0.10 0.09160 -0.0584 0.2429</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average:                  0.65 0.04580  0.5504 0.7299</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return:</span></span></span>
-<span class="r-in"><span><span class="co">#                       Estimate         SE         LL        UL</span></span></span>
-<span class="r-in"><span><span class="co"># Original:                 0.70 0.07252105  0.53093828 0.8152156</span></span></span>
-<span class="r-in"><span><span class="co"># Follow-up:                0.60 0.05661961  0.47726289 0.6992077</span></span></span>
-<span class="r-in"><span><span class="co"># Original - Follow-up:     0.10 0.09159681 -0.05844824 0.2428784</span></span></span>
-<span class="r-in"><span><span class="co"># Average:                  0.65 0.04579840  0.55040374 0.7299302</span></span></span>
+<span class="r-in"><span><span class="co">#                       Estimate      SE      LL     UL</span></span></span>
+<span class="r-in"><span><span class="co"># Original:                 0.70 0.07252  0.5309 0.8152</span></span></span>
+<span class="r-in"><span><span class="co"># Follow-up:                0.60 0.05662  0.4773 0.6992</span></span></span>
+<span class="r-in"><span><span class="co"># Original - Follow-up:     0.10 0.09160 -0.0584 0.2429</span></span></span>
+<span class="r-in"><span><span class="co"># Average:                  0.65 0.04580  0.5504 0.7299</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -133,7 +143,7 @@ of agreement, the G-index is usually preferred to Cohen's kappa.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

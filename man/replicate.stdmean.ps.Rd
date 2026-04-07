@@ -80,20 +80,24 @@ Equality of variances within or across studies is not assumed. The confidence le
 for the difference is 1 – 2*alpha, which is recommended for equivalence testing.
 Square root unweighted variances and single-condition standard deviation are options
 for the standardizer.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.stdmean.ps(alpha = .05, 86.22, 70.93, 14.89, 12.32, .765, 20, 
                                   84.81, 77.24, 15.68, 16.95, .702, 75, 0)
 
 # Should return:
-#                         Estimate         SE        LL        UL
-#  Orginal:              1.0890300 0.22915553 0.6697353 1.5680085
-#  Follow-up:            0.4604958 0.09590506 0.2756687 0.6516096
-#  Original - Follow-up: 0.6552328 0.24841505 0.2466264 1.0638392
-#  Average:              0.7747629 0.12420752 0.5313206 1.0182052
+#                       Estimate     SE     LL     UL
+# Orginal:                1.0890 0.2292 0.6697 1.5680
+# Follow-up:              0.4605 0.0959 0.2757 0.6516
+# Original - Follow-up:   0.6552 0.2484 0.2466 1.0638
+# Average:                0.7748 0.1242 0.5313 1.0182
 
 
 }
 \references{
+\insertRef{Bonett2021a}{vcmeta}
+
 \insertRef{Bonett2021}{vcmeta}
 }

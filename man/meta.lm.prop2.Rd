@@ -36,6 +36,8 @@ This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a 2-group
 proportion difference. The estimates are OLS estimates with
 robust standard errors that accommodate residual heteroscedasticity.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 f1 <- c(24, 40, 93, 14, 5)
@@ -48,13 +50,15 @@ X <- matrix(cbind(x1, x2), 5, 2)
 meta.lm.prop2(.05, f1, f2, n1, n2, X)
 
 # Should return:
-#        Estimate          SE          z     p          LL          UL
-# b0  0.089756283 0.034538077  2.5987632 0.009  0.02206290 0.157449671
-# b1 -0.001447968 0.001893097 -0.7648672 0.444 -0.00515837 0.002262434
-# b2 -0.034670988 0.034125708 -1.0159786 0.310 -0.10155615 0.032214170
+#        Estimate          SE      z     p          LL          UL
+# b0  0.089756283 0.034538077  2.599 0.009  0.02206290 0.157449671
+# b1 -0.001447968 0.001893097 -0.765 0.444 -0.00515837 0.002262434
+# b2 -0.034670988 0.034125708 -1.016 0.310 -0.10155615 0.032214170
 
 
 }
 \references{
 \insertRef{Bonett2014}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

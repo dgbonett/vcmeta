@@ -46,6 +46,8 @@ This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a paired-samples
 standardized mean difference. The estimates are OLS estimates with
 robust standard errors that accommodate residual heteroscedasticity.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 
@@ -60,12 +62,14 @@ X <- matrix(x1, 5, 1)
 meta.lm.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, X, 0)
 
 # Should return:
-#      Estimate         SE         z     p         LL        UL
-# b0 1.01740253 0.25361725 4.0115667 0.000  0.5203218 1.5144832
-# b1 0.04977943 0.07755455 0.6418635 0.521 -0.1022247 0.2017836
+#    Estimate      SE     z     p      LL     UL
+# b0   1.0174 0.25362 4.012 0.000  0.5203 1.5145
+# b1   0.0498 0.07755 0.642 0.521 -0.1022 0.2018
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

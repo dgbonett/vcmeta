@@ -38,6 +38,8 @@ linear contrast of means from two or more studies. This function will
 use either an unequal variance (recommended) or an equal variance method.
 A Satterthwaite adjustment to the degrees of freedom is used with the
 unequal variance method.
+
+For more details, see Setion 3.2 of Bonett (2021, Volume 5).
 }
 \examples{
 m <- c(33.5, 37.9, 38.0, 44.1)
@@ -47,10 +49,11 @@ v <- c(.5, .5, -.5, -.5)
 meta.lc.mean1(.05, m, sd, n, v, eqvar = FALSE)
 
 # Should return:
-#          Estimate       SE        LL        UL       df
-# Contrast    -5.35 1.300136 -7.993583 -2.706417 33.52169
+#          Estimate       SE        LL        UL    df
+# Contrast    -5.35 1.300136 -7.993583 -2.706417 33.52
+
 
 }
 \references{
-\insertRef{Snedecor1980}{vcmeta}
+\insertRef{Bonett2021}{vcmeta}
 }

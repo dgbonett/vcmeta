@@ -5,13 +5,23 @@ assume equal variances. The estimate of Cohen's d, with the standard error
 output from this function, can be used as input in the meta.ave.gen,
 meta.lc.gen, and meta.lm.gen functions in
 applications where different types of compatible standardized mean
-differences are used in the meta-analysis."><meta property="og:description" content="Computes the standard error of Cohen's d using only the two
+differences are used in the meta-analysis. If the means, standard deviations,
+and sample sizes for the two groups are available, use the
+se.stdmean2 function which does not assume equal variances. The
+standard error for Cohen's d can be very inaccurate if the variances are
+unequal and the sample sizes are unequal.
+For more details, see Chapter 1 of Bonett (2021, Volume 5)"><meta property="og:description" content="Computes the standard error of Cohen's d using only the two
 sample sizes and an estimate of Cohen's d. Cohen's d and its standard error
 assume equal variances. The estimate of Cohen's d, with the standard error
 output from this function, can be used as input in the meta.ave.gen,
 meta.lc.gen, and meta.lm.gen functions in
 applications where different types of compatible standardized mean
-differences are used in the meta-analysis."></head><body>
+differences are used in the meta-analysis. If the means, standard deviations,
+and sample sizes for the two groups are available, use the
+se.stdmean2 function which does not assume equal variances. The
+standard error for Cohen's d can be very inaccurate if the variances are
+unequal and the sample sizes are unequal.
+For more details, see Chapter 1 of Bonett (2021, Volume 5)"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -19,7 +29,7 @@ differences are used in the meta-analysis."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -52,7 +62,12 @@ assume equal variances. The estimate of Cohen's d, with the standard error
 output from this function, can be used as input in the <a href="meta.ave.gen.html">meta.ave.gen</a>,
 <a href="meta.lc.gen.html">meta.lc.gen</a>, and <a href="meta.lm.gen.html">meta.lm.gen</a> functions in
 applications where different types of compatible standardized mean
-differences are used in the meta-analysis.</p>
+differences are used in the meta-analysis. If the means, standard deviations,
+and sample sizes for the two groups are available, use the
+<a href="se.stdmean2.html">se.stdmean2</a> function which does not assume equal variances. The
+standard error for Cohen's d can be very inaccurate if the variances are
+unequal and the sample sizes are unequal.</p>
+<p>For more details, see Chapter 1 of Bonett (2021, Volume 5)</p>
     </div>
 
     <div class="section level2">
@@ -82,19 +97,20 @@ differences are used in the meta-analysis.</p>
 <li><p>SE - standard error</p></li>
 </ul></div>
     <div class="section level2">
-    <h2 id="see-also">See also<a class="anchor" aria-label="anchor" href="#see-also"></a></h2>
-    <div class="dont-index"><p><a href="se.stdmean2.html">se.stdmean2</a></p></div>
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">se.cohen</span><span class="op">(</span><span class="fl">.78</span>, <span class="fl">35</span>, <span class="fl">50</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate        SE</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Cohen's d:      0.78 0.2288236</span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">se.cohen</span><span class="op">(</span><span class="fl">.782</span>, <span class="fl">35</span>, <span class="fl">50</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>             Estimate      SE</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Cohen's d:     0.782 0.22887</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return: </span></span></span>
-<span class="r-in"><span><span class="co">#            Estimate        SE</span></span></span>
-<span class="r-in"><span><span class="co"># Cohen's d:     0.78 0.2288236</span></span></span>
+<span class="r-in"><span><span class="co">#            Estimate      SE</span></span></span>
+<span class="r-in"><span><span class="co"># Cohen's d:    0.782 0.22887</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -108,7 +124,7 @@ differences are used in the meta-analysis.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

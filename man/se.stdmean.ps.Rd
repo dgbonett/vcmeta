@@ -34,24 +34,34 @@ Returns a one-row matrix:
 }
 }
 \description{
-Computes the standard error of a paired-samples standardized
-mean difference using the sample size and estimated means, standard
+Computes the standard error of a paired-samples standardized mean
+difference using the sample size, estimated means, estimated standard
 deviations, and estimated correlation. The effect size estimate and standard error
 output from this function can be used as input in the \link[vcmeta]{meta.ave.gen},
 \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
 applications where compatible standardized mean differences from a combination
 of 2-group and paired-samples experiments are used in the meta-analysis.
 Equality of variances is not assumed.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.stdmean.ps(23.9, 25.1, 1.76, 2.01, .78, 25, 0)
 
 # Should return: 
-#                                   Estimate        SE
-# Standardizedd mean difference:  -0.6352097 0.1602852
+#                                 Estimate      SE
+# Standardized mean difference:   -0.6352 0.16029
+
+se.stdmean.ps(23.9, 25.1, 1.76, 2.01, .78, 25, 1)
+
+# Should return:
+#                                Estimate      SE
+# Standardized mean difference:   -0.6818 0.17738
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

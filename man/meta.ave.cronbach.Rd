@@ -30,6 +30,8 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 \description{
 Computes the estimate, standard error, and confidence interval for an
 average Cronbach reliability coefficient from two or more studies.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 n <- c(583, 470, 546, 680)
@@ -37,18 +39,19 @@ rel <- c(.91, .89, .90, .89)
 meta.ave.cronbach(.05, n, rel, 10, bystudy = TRUE)
 
 # Should return:
-#         Estimate          SE        LL        UL
-# Average   0.8975 0.003256081 0.8911102 0.9038592
-# Study 1   0.9100 0.005566064 0.8985763 0.9204108
-# Study 2   0.8900 0.007579900 0.8743616 0.9041013
-# Study 3   0.9000 0.006391375 0.8868623 0.9119356
-# Study 4   0.8900 0.006297549 0.8771189 0.9018203
+#         Estimate      SE     LL     UL
+# Average   0.8975 0.00326 0.8911 0.9039
+# Study 1   0.9100 0.00557 0.8986 0.9204
+# Study 2   0.8900 0.00758 0.8744 0.9041
+# Study 3   0.9000 0.00639 0.8869 0.9119
+# Study 4   0.8900 0.00630 0.8771 0.9018
 
 
 }
 \references{
-\itemize{
-\item \insertRef{Bonett2010}{vcmeta}
-\item \insertRef{Bonett2015b}{vcmeta}
-}
+\insertRef{Bonett2010}{vcmeta}
+
+\insertRef{Bonett2015b}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

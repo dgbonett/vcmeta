@@ -3,11 +3,13 @@
 average standardized mean difference from two or more 2-group studies.
 Square root unweighted variances, square root weighted variances, and
 single group standard deviation are options for the standardizer.
-Equality of variances within or across studies is not assumed."><meta property="og:description" content="Computes the estimate, standard error, and confidence interval for an
+Equality of variances within or across studies is not assumed.
+For more details, see Chapter 2 of Bonett (2021, Volume 5)."><meta property="og:description" content="Computes the estimate, standard error, and confidence interval for an
 average standardized mean difference from two or more 2-group studies.
 Square root unweighted variances, square root weighted variances, and
 single group standard deviation are options for the standardizer.
-Equality of variances within or across studies is not assumed."></head><body>
+Equality of variances within or across studies is not assumed.
+For more details, see Chapter 2 of Bonett (2021, Volume 5)."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -15,7 +17,7 @@ Equality of variances within or across studies is not assumed."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,6 +49,7 @@ average standardized mean difference from two or more 2-group studies.
 Square root unweighted variances, square root weighted variances, and
 single group standard deviation are options for the standardizer.
 Equality of variances within or across studies is not assumed.</p>
+<p>For more details, see Chapter 2 of Bonett (2021, Volume 5).</p>
     </div>
 
     <div class="section level2">
@@ -113,6 +116,8 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 <em>Psychological Methods</em>, <b>14</b>(3), 225–238.
 ISSN 1939-1463, <a href="https://doi.org/10.1037/a0016619" class="external-link">doi:10.1037/a0016619</a>
 .</p>
+<p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
     </div>
 
     <div class="section level2">
@@ -124,18 +129,32 @@ ISSN 1939-1463, <a href="https://doi.org/10.1037/a0016619" class="external-link"
 <span class="r-in"><span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">30</span>, <span class="fl">24</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">40</span>, <span class="fl">28</span>, <span class="fl">25</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">meta.ave.stdmean2</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">m1</span>, <span class="va">m2</span>, <span class="va">sd1</span>, <span class="va">sd2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="fl">0</span>, bystudy <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>         Estimate        SE        LL       UL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Average 1.526146 0.1734341 1.1862217 1.866071</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Study 1 1.643894 0.2629049 1.1286100 2.159178</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Study 2 1.566132 0.3056278 0.9671126 2.165152</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Study 3 1.428252 0.3289179 0.7835848 2.072919</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         Estimate      SE     LL     UL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average   1.5261 0.17343 1.1862 1.8661</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study 1   1.6439 0.26290 1.1286 2.1592</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study 2   1.5661 0.30563 0.9671 2.1652</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Study 3   1.4283 0.32892 0.7836 2.0729</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return: </span></span></span>
-<span class="r-in"><span><span class="co">#         Estimate        SE        LL       UL</span></span></span>
-<span class="r-in"><span><span class="co"># Average 1.526146 0.1734341 1.1862217 1.866071</span></span></span>
-<span class="r-in"><span><span class="co"># Study 1 1.643894 0.2629049 1.1286100 2.159178</span></span></span>
-<span class="r-in"><span><span class="co"># Study 2 1.566132 0.3056278 0.9671126 2.165152</span></span></span>
-<span class="r-in"><span><span class="co"># Study 3 1.428252 0.3289179 0.7835848 2.072919</span></span></span>
+<span class="r-in"><span><span class="co">#         Estimate      SE     LL     UL</span></span></span>
+<span class="r-in"><span><span class="co"># Average   1.5261 0.17343 1.1862 1.8661</span></span></span>
+<span class="r-in"><span><span class="co"># Study 1   1.6439 0.26290 1.1286 2.1592</span></span></span>
+<span class="r-in"><span><span class="co"># Study 2   1.5661 0.30563 0.9671 2.1652</span></span></span>
+<span class="r-in"><span><span class="co"># Study 3   1.4283 0.32892 0.7836 2.0729</span></span></span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="va">m1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">41.2</span>, <span class="fl">43.2</span>, <span class="fl">49.1</span>, <span class="fl">40.8</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">m2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">36.4</span>, <span class="fl">37.1</span>, <span class="fl">35.9</span>, <span class="fl">31.4</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sd1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4.92</span>, <span class="fl">4.75</span>, <span class="fl">4.87</span>, <span class="fl">5.01</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">sd2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">4.35</span>, <span class="fl">4.24</span>, <span class="fl">4.12</span>, <span class="fl">4.87</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n1</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">42</span>, <span class="fl">58</span>, <span class="fl">62</span>, <span class="fl">39</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">n2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">67</span>, <span class="fl">70</span>, <span class="fl">84</span>, <span class="fl">45</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="fu">meta.ave.stdmean2</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">m1</span>, <span class="va">m2</span>, <span class="va">sd1</span>, <span class="va">sd2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="fl">3</span>, bystudy <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>         Estimate      SE     LL     UL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average   1.8078 0.11648 1.5795 2.0361</span>
+<span class="r-in"><span></span></span>
+<span class="r-in"><span><span class="co"># Should return: </span></span></span>
+<span class="r-in"><span><span class="co">#         Estimate      SE     LL     UL</span></span></span>
+<span class="r-in"><span><span class="co"># Average   1.8078 0.11648 1.5795 2.0361</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -149,7 +168,7 @@ ISSN 1939-1463, <a href="https://doi.org/10.1037/a0016619" class="external-link"
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

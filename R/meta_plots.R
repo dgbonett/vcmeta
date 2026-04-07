@@ -10,7 +10,7 @@
 #' @param result - a result matrix from any of the replicate functions in vcmeta
 #' @param focus - Optional specification of the focus of the plot; 
 #'   defaults to 'Both'
-#' * Both - plots each estimate, differencence, and average
+#' * Both - plots each estimate, difference, and average
 #' * Difference - plot each estimate and difference between them
 #' * Average - plot each estimate and the average effect size
 #' @param reference_line - Optional x-value for a reference line. Only applies

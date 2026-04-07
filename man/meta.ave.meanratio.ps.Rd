@@ -43,6 +43,8 @@ geometric average mean ratio from two or more paired-samples studies. A
 Satterthwaite adjustment to the degrees of freedom is used to improve the
 accuracy of the confidence interval for the average effect size. Equality
 of variances within or across studies is not assumed.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 m1 <- c(53, 60, 53, 57)
@@ -60,15 +62,17 @@ meta.ave.meanratio.ps(.05, m1, m2, sd1, sd2, cor, n, bystudy = TRUE)
 # Study 2 -0.03278982 0.008021952 -0.04891054 -0.01666911
 # Study 3 -0.09015110 0.009779919 -0.11015328 -0.07014892
 # Study 4 -0.06782260 0.004970015 -0.07773750 -0.05790769
-#         exp(Estimate)   exp(LL)   exp(UL)       df
-# Average     0.9446402 0.9365240 0.9528266 103.0256
-# Study 1     0.9636364 0.9424474 0.9853017  29.0000
-# Study 2     0.9677419 0.9522663 0.9834691  49.0000
-# Study 3     0.9137931 0.8956968 0.9322550  29.0000
-# Study 4     0.9344262 0.9252073 0.9437371  69.0000
+#         exp(Estimate)   exp(LL)   exp(UL)     df
+# Average     0.9446402 0.9365240 0.9528266 103.03
+# Study 1     0.9636364 0.9424474 0.9853017  29.00
+# Study 2     0.9677419 0.9522663 0.9834691  49.00
+# Study 3     0.9137931 0.8956968 0.9322550  29.00
+# Study 4     0.9344262 0.9252073 0.9437371  69.00
 
 
 }
 \references{
 \insertRef{Bonett2020}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

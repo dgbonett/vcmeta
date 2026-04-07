@@ -36,6 +36,7 @@ Returns a one-row matrix:
 \description{
 Computes the standard error of a 2-group standardized
 mean difference using the sample sizes and the estimated means
+and standard deviations. Use the square root average variance
 standardizer (stdzr = 0) for 2-group experimental designs. Use the
 square root weighted variance standardizer (stdzr = 3) for 2-group
 nonexperimental designs with simple random sampling. The single-group
@@ -47,18 +48,28 @@ and \link[vcmeta]{meta.lm.gen} functions in applications where compatible
 standardized mean differences from a combination of 2-group and
 paired-samples experiments are used in the meta-analysis. Equality
 of variances is not assumed.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.stdmean2(21.9, 16.1, 3.82, 3.21, 40, 40, 0)
 
 # Should return: 
-#                                Estimate        SE
-# Standardized mean difference:  1.643894 0.2629049
+#                               Estimate      SE
+# Standardized mean difference:   1.6439 0.26290
+
+se.stdmean2(21.9, 16.1, 3.82, 3.21, 31, 49, 3)
+
+# Should return: 
+#                               Estimate      SE
+# Standardized mean difference:   1.6776 0.27573
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }
 \seealso{
 \link[vcmeta]{se.cohen}

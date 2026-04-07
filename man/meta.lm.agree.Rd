@@ -36,6 +36,8 @@ This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a G-index of
 agreement. The estimates are OLS estimates with robust standard errors
 that accomodate residual heteroscedasticity.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 f11 <- c(40, 20, 25, 30)
@@ -48,13 +50,15 @@ X <- matrix(cbind(x1, x2), 4, 2)
 meta.lm.agree(.05, f11, f12, f21, f22, X)
 
 # Should return:
-#     Estimate         SE         z     p          LL        UL
-# b0 0.1904762 0.38772858 0.4912617 0.623 -0.56945786 0.9504102
-# b1 0.0952381 0.07141957 1.3335013 0.182 -0.04474169 0.2352179
-# b2 0.4205147 0.32383556 1.2985438 0.194 -0.21419136 1.0552207
+#    Estimate      SE     z     p      LL     UL
+# b0   0.1905 0.38773 0.491 0.623 -0.5695 0.9504
+# b1   0.0952 0.07142 1.334 0.182 -0.0447 0.2352
+# b2   0.4205 0.32384 1.299 0.194 -0.2142 1.0552
 
 
 }
 \references{
 \insertRef{Bonett2022}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

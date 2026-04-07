@@ -83,7 +83,10 @@
 <url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean.ps.html</loc></url>
 <url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean1.html</loc></url>
 <url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.mean2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.meanratio.ps.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.meanratio2.html</loc></url>
 <url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.oddsratio.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.pbcor.html</loc></url>
 <url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.plot.html</loc></url>
 <url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop.ps.html</loc></url>
 <url><loc>https://dgbonett.github.io/vcmeta/reference/replicate.prop1.html</loc></url>
@@ -106,6 +109,7 @@
 <url><loc>https://dgbonett.github.io/vcmeta/reference/se.mean2.html</loc></url>
 <url><loc>https://dgbonett.github.io/vcmeta/reference/se.meanratio.ps.html</loc></url>
 <url><loc>https://dgbonett.github.io/vcmeta/reference/se.meanratio2.html</loc></url>
+<url><loc>https://dgbonett.github.io/vcmeta/reference/se.median.html</loc></url>
 <url><loc>https://dgbonett.github.io/vcmeta/reference/se.odds.html</loc></url>
 <url><loc>https://dgbonett.github.io/vcmeta/reference/se.oddsratio.html</loc></url>
 <url><loc>https://dgbonett.github.io/vcmeta/reference/se.pbcor.html</loc></url>

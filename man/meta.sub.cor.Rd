@@ -45,6 +45,8 @@ difference in average Pearson or partial correlations for two mutually
 exclusive subgroups of studies. Each subgroup can have one or more
 studies. All of the correlations must be either Pearson correlations
 or partial correlations.
+
+For more details, see Section 3.3 of Bonett (2021, Volume 5).
 }
 \examples{
 n <- c(55, 190, 65, 35)
@@ -53,13 +55,15 @@ group <- c(1, 1, 2, 0)
 meta.sub.cor(.05, n, cor, 0, group)
 
 # Should return:
-#                Estimate         SE         LL        UL
-# Set A:            0.525 0.06195298  0.3932082 0.6356531
-# Set B:            0.600 0.08128008  0.4171458 0.7361686
-# Set A - Set B:   -0.075 0.10219894 -0.2645019 0.1387283
+#                Estimate      SE      LL     UL
+# Set A:            0.525 0.06195  0.3932 0.6357
+# Set B:            0.600 0.08128  0.4171 0.7362
+# Set A - Set B:   -0.075 0.10220 -0.2645 0.1387
 
 
 }
 \references{
 \insertRef{Bonett2008a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

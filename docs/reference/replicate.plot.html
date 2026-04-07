@@ -9,7 +9,7 @@ the original and follow-up studies."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@ the original and follow-up studies.</p>
 <dt id="arg-focus">focus<a class="anchor" aria-label="anchor" href="#arg-focus"></a></dt>
 <dd><ul><li><p>Optional specification of the focus of the plot;
 defaults to 'Both'</p></li>
-</ul><ul><li><p>Both - plots each estimate, differencence, and average</p></li>
+</ul><ul><li><p>Both - plots each estimate, difference, and average</p></li>
 <li><p>Difference - plot each estimate and difference between them</p></li>
 <li><p>Average - plot each estimate and the average effect size</p></li>
 </ul></dd>
@@ -134,16 +134,16 @@ the ggplot API</p>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># View the comparison:</span></span></span>
 <span class="r-in"><span><span class="va">damisch_v_calinjageman_raw</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       Estimate        SE         t          p          LL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original:                 1.67 0.7633058 2.1878519 0.03803154  0.09964253</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:                0.11 0.3682078 0.2987443 0.76566558 -0.61922358</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original - Follow-up:     1.56 0.8474743 1.8407638 0.07340024  0.13153488</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Average:                  0.89 0.4237372 2.1003587 0.04232406  0.03245567</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                              UL        df</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original:             3.2403575  25.54543</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:            0.8392236 116.88772</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original - Follow-up: 2.9884651  38.36331</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Average:              1.7475443  38.36331</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       Estimate        SE     t     p          LL        UL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original:                 1.67 0.7633058 2.188 0.038  0.09964253 3.2403575</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:                0.11 0.3682078 0.299 0.766 -0.61922358 0.8392236</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original - Follow-up:     1.56 0.8474743 1.841 0.073  0.13153488 2.9884651</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average:                  0.89 0.4237372 2.100 0.042  0.03245567 1.7475443</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                           df</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original:              25.55</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:            116.89</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original - Follow-up:  38.36</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average:               38.36</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Now plot the comparison, focusing on the difference</span></span></span>
@@ -197,7 +197,7 @@ the ggplot API</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

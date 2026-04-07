@@ -45,25 +45,27 @@ difference in average Cronbach reliability coefficients for two
 mutually exclusive subgroups of studies. Each set can have one or
 more studies. The number of measurements used to compute the sample
 reliablity coefficient is assumed to be the same for all studies.
+
+For more details, see Section 3.3 of Bonett (2021, Volume 5).
 }
 \examples{
 n <- c(120, 170, 150, 135)
-rel <- c(.89, .87, .73, .71)
+rel <- c(.891, .873, .734, .715)
 group <- c(1, 1, 2, 2)
-r <- 10
-meta.sub.cronbach(.05, n, rel, r, group)
+meta.sub.cronbach(.05, n, rel, 10, group)
 
 # Should return: 
-#                Estimate         SE        LL        UL
-# Set A:             0.88 0.01068845 0.8581268 0.8999386
-# Set B:             0.72 0.02515130 0.6684484 0.7668524
-# Set A - Set B:     0.16 0.02732821 0.1082933 0.2152731
+#                Estimate      SE     LL     UL
+# Set A:           0.8820 0.01052 0.8605 0.9016
+# Set B:           0.7245 0.02474 0.6738 0.7706
+# Set A - Set B:   0.1575 0.02689 0.1066 0.2119
 
 
 }
 \references{
-\itemize{
-\item \insertRef{Bonett2010}{vcmeta}
-\item \insertRef{Bonett2015b}{vcmeta}
-}
+\insertRef{Bonett2010}{vcmeta}
+
+\insertRef{Bonett2015b}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

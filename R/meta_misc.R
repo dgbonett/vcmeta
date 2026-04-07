@@ -24,13 +24,14 @@
 #' cor.from.t(9.4, 9.8, 1.26, 1.40, 2.27, 30)
 #'
 #' # Should return:
-#' #                Estimate
-#' # Correlation:  0.7415209
+#' #              Estimate
+#' # Correlation:   0.7415
 #' 
 #'
 #' @export
 cor.from.t <- function(m1, m2, sd1, sd2, t, n) {
-  out <- t(((sd1^2 + sd2^2) - n*(m1 - m2)^2/t^2)/(2*sd1*sd2))
+  cor <- t(((sd1^2 + sd2^2) - n*(m1 - m2)^2/t^2)/(2*sd1*sd2))
+  out <- round(cor, 4)
   colnames(out) <- c("Estimate")
   rownames(out) <- c("Correlation: ")
   return (out)
@@ -65,8 +66,8 @@ cor.from.t <- function(m1, m2, sd1, sd2, t, n) {
 #' meta.chitest(est, se)
 #'
 #' # Should return:
-#' #         Q df         p
-#' #  2.706526  3 0.4391195
+#' #      Q df     p
+#' #  2.707  3 0.439
 #' 
 #' 
 #' @references
@@ -81,7 +82,7 @@ meta.chitest <- function(est, se) {
  ave <- sum(w*est)/sum(w)
  Q <- sum(w*(est - ave)*(est - ave))
  p <- 1 - pchisq(Q, df)
- out <- t(c(Q, df, p))
+ out <- t(c(round(Q, 3), df, round(p, 3)))
  colnames(out) <- c("Q", "df", "p")
  rownames(out) <- ""
  return(out)
@@ -111,14 +112,14 @@ meta.chitest <- function(est, se) {
 #' stdmean2.from.t(3.27, 25, 25)
 #'
 #' # Should return:
-#' #             Estimate       SE
-#' # Cohen's d  0.9439677 0.298801
+#' #           Estimate     SE
+#' # Cohen's d    0.925 0.2982
 #' 
 #' @export
 stdmean2.from.t <- function(t, n1, n2) {
   d <- t*sqrt(1/n1 + 1/n2)
   se <- sqrt(d^2*(1/(n1 - 1) + 1/(n2 - 1))/8 + 1/n1 + 1/n2)
-  out <- t(c(d, se))
+  out <- t(c(round(d, 3), round(se, 4)))
   colnames(out) <- c("Estimate", "SE")
   rownames(out) <- c("Cohen's d: ")
   return (out)
@@ -260,7 +261,7 @@ table.from.phi <- function(p1row, p1col, phi, n){
  out2 <- t(c(f11, f12, f21, f22))
  out <- rbind(out1, out2)
  colnames(out) <- c("cell 11", "cell 12", "cell 21", "cell 22")
- rownames(out) <- c("Proportion:", "Frequency")
+ rownames(out) <- c("Proportion:", "Frequency:")
  return(out)
 }
 

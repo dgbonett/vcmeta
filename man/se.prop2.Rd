@@ -21,8 +21,8 @@ se.prop2(f1, f2, n1, n2, m)
 \value{
 Returns a one-row matrix:
 \itemize{
-\item Estimate - adjusted estimate of proportion difference
-\item SE - standard error of adjusted estimate
+\item Estimate - adjusted estimate of proportion difference for meta-analysis
+\item SE - standard error of adjusted estimate for meta-analysis
 }
 }
 \description{
@@ -34,6 +34,8 @@ input in the \link[vcmeta]{meta.ave.gen}, \link[vcmeta]{meta.lc.gen},
 and \link[vcmeta]{meta.lm.gen} functions in applications where
 compatible proportion differences from a combination of 2-group and
 paired-samples studies are used in the meta-analysis.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.prop2(31, 16, 40, 40, 5)
@@ -45,8 +47,9 @@ se.prop2(31, 16, 40, 40, 5)
 
 }
 \references{
-\itemize{
-\item \insertRef{Price2004}{vcmeta}
-\item \insertRef{Bonett2014}{vcmeta}
-}
+\insertRef{Price2004}{vcmeta}
+
+\insertRef{Bonett2014}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

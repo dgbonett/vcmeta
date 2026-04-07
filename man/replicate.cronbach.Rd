@@ -41,23 +41,27 @@ This function can be used to compare and combine a Cronbach reliablity
 coefficient from an original study and a follow-up study. The confidence
 level for the difference is 1 – 2*alpha, which is recommended for
 equivalence testing.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.cronbach(.05, .883, 100, .869, 200, 6)
 
 # Should return:
-#                       Estimate         SE          LL         UL
-# Original:                0.883 0.01830958  0.84356871 0.91522517
-# Follow-up:               0.869 0.01442263  0.83874629 0.89523760
-# Original - Follow-up:    0.014 0.02330779 -0.03336284 0.05820123
-# Average:                 0.876 0.01172239  0.85187755 0.89774525
+#                       Estimate      SE      LL     UL
+# Original:                0.883 0.01831  0.8436 0.9152
+# Follow-up:               0.869 0.01442  0.8387 0.8952
+# Original - Follow-up:    0.014 0.02331 -0.0334 0.0582
+# Average:                 0.876 0.01172  0.8519 0.8977
 
 
 }
 \references{
-\itemize{
-\item \insertRef{Bonett2010}{vcmeta}
-\item \insertRef{Bonett2015}{vcmeta}
-\item \insertRef{Bonett2021}{vcmeta}
-}
+\insertRef{Bonett2010}{vcmeta}
+
+\insertRef{Bonett2015}{vcmeta}
+
+\insertRef{Bonett2021a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

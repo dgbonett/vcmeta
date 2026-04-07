@@ -3,74 +3,74 @@
     Code
       res
     Output
-                     Estimate         SE         LL        UL
-      Set A:            0.525 0.06195298  0.3932082 0.6356531
-      Set B:            0.600 0.08128008  0.4171458 0.7361686
-      Set A - Set B:   -0.075 0.10219894 -0.2645019 0.1387283
+                     Estimate      SE      LL     UL
+      Set A:            0.525 0.06195  0.3932 0.6357
+      Set B:            0.600 0.08128  0.4171 0.7362
+      Set A - Set B:   -0.075 0.10220 -0.2645 0.1387
 
 # meta.sub.spear returns valid matrix
 
     Code
       res
     Output
-                     Estimate         SE         LL        UL
-      Set A:            0.525 0.06483629  0.3865928 0.6402793
-      Set B:            0.600 0.08829277  0.3992493 0.7458512
-      Set A - Set B:   -0.075 0.10954158 -0.2760700 0.1564955
+                     Estimate      SE      LL     UL
+      Set A:            0.525 0.06484  0.3866 0.6403
+      Set B:            0.600 0.08829  0.3992 0.7459
+      Set A - Set B:   -0.075 0.10954 -0.2761 0.1565
 
 # meta.sub.pbcor returns valid matrix
 
     Code
       res
     Output
-                        Estimate         SE         LL        UL
-      Set A:          0.36338772 0.08552728  0.1854777 0.5182304
-      Set B:         -0.01480511 0.08741322 -0.1840491 0.1552914
-      Set A - Set B:  0.37819284 0.12229467  0.1320530 0.6075828
+                     Estimate      SE      LL     UL
+      Set A:           0.3634 0.08553  0.1855 0.5182
+      Set B:          -0.0148 0.08741 -0.1840 0.1553
+      Set A - Set B:   0.3782 0.12229  0.1321 0.6076
 
 # meta.sub.semipart returns valid matrix
 
     Code
       res
     Output
-                     Estimate         SE         LL        UL
-      Set A:            0.525 0.05955276  0.3986844 0.6317669
-      Set B:            0.600 0.07931155  0.4221127 0.7333949
-      Set A - Set B:   -0.075 0.09918091 -0.2587113 0.1324682
+                     Estimate      SE      LL     UL
+      Set A:            0.525 0.05955  0.3987 0.6318
+      Set B:            0.600 0.07931  0.4221 0.7334
+      Set A - Set B:   -0.075 0.09918 -0.2587 0.1325
 
 # meta.sub.cronbach returns valid matrix
 
     Code
       res
     Output
-                     Estimate         SE        LL        UL
-      Set A:             0.88 0.01068845 0.8581268 0.8999386
-      Set B:             0.72 0.02515130 0.6684484 0.7668524
-      Set A - Set B:     0.16 0.02732821 0.1082933 0.2152731
+                     Estimate      SE     LL     UL
+      Set A:             0.88 0.01069 0.8581 0.8999
+      Set B:             0.72 0.02515 0.6684 0.7669
+      Set A - Set B:     0.16 0.02733 0.1083 0.2153
 
 # meta.lc.mean2 returns valid matrix
 
     Code
       res
     Output
-               Estimate       SE       LL       UL       df
-      Contrast     9.95 2.837787 4.343938 15.55606 153.8362
+               Estimate       SE       LL       UL     df
+      Contrast     9.95 2.837787 4.343939 15.55606 153.84
 
 # meta.lc.stdmean2 returns valid matrix
 
     Code
       res
     Output
-                Estimate        SE        LL       UL
-      Contrast 0.8557914 0.2709192 0.3247995 1.386783
+               Estimate      SE     LL     UL
+      Contrast   0.8558 0.27092 0.3248 1.3868
 
 # meta.lc.mean.ps returns valid matrix
 
     Code
       res
     Output
-               Estimate        SE       LL       UL      df
-      Contrast      2.5 0.4943114 1.520618 3.479382 112.347
+               Estimate        SE       LL       UL     df
+      Contrast      2.5 0.4943114 1.520619 3.479381 112.35
 
 # meta.lc.meanratio2 returns valid matrix
 
@@ -79,8 +79,8 @@
     Output
                 Estimate         SE        LL        UL exp(Estimate)  exp(LL)
       Contrast 0.2691627 0.07959269 0.1119191 0.4264064      1.308868 1.118422
-                exp(UL)       df
-      Contrast 1.531743 152.8665
+                exp(UL)     df
+      Contrast 1.531743 152.87
 
 # meta.lc.meanratio.ps returns valid matrix
 
@@ -88,9 +88,9 @@
       res
     Output
                 Estimate          SE         LL         UL exp(Estimate)  exp(LL)
-      Contrast 0.0440713 0.008701725 0.02681353 0.06132907      1.045057 1.027176
-                exp(UL)       df
-      Contrast 1.063249 103.0256
+      Contrast 0.0440713 0.008701725 0.02681354 0.06132906      1.045057 1.027176
+                exp(UL)     df
+      Contrast 1.063249 103.03
 
 # meta.lc.odds returns valid matrix
 
@@ -129,16 +129,16 @@
     Code
       res
     Output
-                 Estimate        SE         LL        UL
-      Contrast 0.07692783 0.1138407 -0.1461958 0.3000515
+               Estimate      SE      LL     UL
+      Contrast   0.0769 0.11384 -0.1462 0.3001
 
 # meta.lc.mean1 returns valid matrix
 
     Code
       res
     Output
-               Estimate       SE        LL        UL       df
-      Contrast    -5.35 1.300136 -7.993583 -2.706417 33.52169
+               Estimate       SE        LL        UL    df
+      Contrast    -5.35 1.300136 -7.993588 -2.706412 33.52
 
 # meta.lc.prop1 returns valid matrix
 

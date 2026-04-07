@@ -27,6 +27,8 @@ Returns 1-row matrix with the following columns:
 \description{
 Computes the estimate, standard error, and confidence interval for a
 linear contrast of any type of effect size from two or more studies.
+
+For more details, see Setion 3.2 of Bonett (2021, Volume 5).
 }
 \examples{
 est <- c(.55, .59, .44, .48, .26, .19)
@@ -38,4 +40,8 @@ meta.lc.gen(.05, est, se, v)
 #          Estimate         SE        LL        UL
 # Contrast   0.2275 0.06755461 0.0950954 0.3599046
 
+
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

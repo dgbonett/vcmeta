@@ -20,20 +20,24 @@ Returns a one-row matrix:
 }
 \description{
 Computes the Bonett-Wright standard error of a Spearman correlation using
-the estimated correlation and sample size. The standard error from this
-function can be used as input in the \link[vcmeta]{meta.ave.cor.gen}
+the estimated Spearman correlation and sample size. The standard error from
+this function can be used as input in the \link[vcmeta]{meta.ave.cor.gen}
 function in applications where a combination of different types of
 compatible correlations are used in the meta-analysis.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
-se.spear(.40, 55)
+se.spear(.427, 55)
 
 # Should return: 
-#                       Estimate        SE
-# Spearman correlation:      0.4 0.1210569
+#                       Estimate      SE
+# Spearman correlation:    0.427 0.11845
 
 
 }
 \references{
 \insertRef{Bonett2000}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

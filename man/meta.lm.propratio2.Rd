@@ -43,6 +43,8 @@ slope estimate for a predictor variable describes a multiplicative
 change in the proportion ratio associated with a 1-unit increase in
 that predictor variable, controlling for all other predictor variables
 in the model.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 n1 <- c(204, 201, 932, 130, 77)
@@ -55,10 +57,10 @@ X <- matrix(cbind(x1, x2), 5, 2)
 meta.lm.propratio2(.05, f1, f2, n1, n2, X)
 
 # Should return:
-#         Estimate         SE           z     p          LL         UL
-# b0  1.4924887636 0.69172794  2.15762393 0.031  0.13672691 2.84825062
-# b1  0.0005759509 0.04999884  0.01151928 0.991 -0.09741998 0.09857188
-# b2 -1.0837844594 0.59448206 -1.82307345 0.068 -2.24894789 0.08137897
+#         Estimate         SE      z     p          LL         UL
+# b0  1.4924887636 0.69172794  2.158 0.031  0.13672691 2.84825062
+# b1  0.0005759509 0.04999884  0.012 0.991 -0.09741998 0.09857188
+# b2 -1.0837844594 0.59448206 -1.823 0.068 -2.24894789 0.08137897
 #     exp(Estimate)   exp(LL)   exp(UL)
 # b0      4.4481522 1.1465150 17.257565
 # b1      1.0005761 0.9071749  1.103594
@@ -68,4 +70,6 @@ meta.lm.propratio2(.05, f1, f2, n1, n2, X)
 }
 \references{
 \insertRef{Price2008}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

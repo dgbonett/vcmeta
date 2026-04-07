@@ -33,6 +33,8 @@ Returns 1-row matrix with the following columns:
 Computes the estimate, standard error, and confidence interval for an
 exponentiated log-linear contrast of 2-group proportion ratios from
 two or more studies.
+
+For more details, see Section 3.2 of Bonett (2021, Volume 5).
 }
 \examples{
 n1 <- c(50, 150, 150)
@@ -49,8 +51,9 @@ meta.lc.propratio2(.05, f1, f2, n1, n2, v)
 
 }
 \references{
-\itemize{
-\item \insertRef{Price2008}{vcmeta}
-\item \insertRef{Bonett2015}{vcmeta}
-}
+\insertRef{Price2008}{vcmeta}
+
+\insertRef{Bonett2015}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

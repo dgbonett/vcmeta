@@ -47,6 +47,8 @@ slope estimate for a predictor variable describes a multiplicative
 change in the mean ratio associated with a 1-unit increase in that
 predictor variable, controlling for all other predictor variables
 in the model.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 n <- c(65, 30, 29, 45, 50)
@@ -60,9 +62,9 @@ X <- matrix(x1, 5, 1)
 meta.lm.meanratio.ps(.05, m1, m2, sd1, sd2, cor, n, X)
 
 # Should return: 
-#      Estimate         SE           LL        UL        z     p
-# b0 0.50957008 0.13000068  0.254773424 0.7643667 3.919749 0.000
-# b1 0.07976238 0.04133414 -0.001251047 0.1607758 1.929697 0.054
+#      Estimate         SE           LL        UL     z     p
+# b0 0.50957008 0.13000068  0.254773424 0.7643667 3.920 0.000
+# b1 0.07976238 0.04133414 -0.001251047 0.1607758 1.920 0.054
 #     exp(Estimate)   exp(LL)  exp(UL)
 # b0       1.664575 1.2901693 2.147634
 # b1       1.083030 0.9987497 1.174422
@@ -71,4 +73,6 @@ meta.lm.meanratio.ps(.05, m1, m2, sd1, sd2, cor, n, X)
 }
 \references{
 \insertRef{Bonett2020}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

@@ -1,3 +1,15 @@
+vcmeta v1.6.0 (Release date: 2026/04/09)
+==============
+
+Changes:
+
+* New functions: replicate.meanratio2, replicate.meanratio.ps, replicate.pbcor, and se.median
+* Most function descriptions in the Reference Manual now refer to a specific section in the Bonett (2021) online text for additional details
+* More examples have been added to the Reference Manual
+* replicate.oddsratio returns 'exp(Estimate)' column
+* replicate.propratio2 has revamped output
+
+
 vcmeta v1.5.0 (Release date: 2025/09/01)
 ==============
 
@@ -7,7 +19,7 @@ Changes:
 * The meta.ave.fisher function has now been deleted -- use meta.ave.cor.gen
 * se.semipartial has been renamed se.semipart, se.odds has been renamed se.oddsratio, meta.ave.odds has been renamed meta.ave.oddsratio, meta.lc.odds has been renamed meta.lc.oddsratio, meta.lm.odds has been renamed meta.lm.oddsratio, and
   replicate.ratio.prop2 has been renamed replicate.propratio2
-* The se.prop2 and se.prop.ps now use an adjustment that is optimized for the number of studies in the meta-analysis -- note this is a breaking change, where a parameter for the number of studies  must now be passed.
+* The se.prop2 and se.prop.ps now use an adjustment that is optimized for the number of studies in the meta-analysis -- note this is a breaking change, where a parameter for the number of studies must now be passed.
 
 
 vcmeta v1.4.0 (Release date: 2024/07/04)
@@ -66,5 +78,9 @@ vcmeta 1.0.0 (Release date: 2021/08/21)
 Changes:
 
 * Added a `NEWS.md` file to track changes to the package.
+
+
+
+
 
 

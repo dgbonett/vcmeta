@@ -41,18 +41,23 @@ This function can be used to compare and combine any effect size using the
 effect size estimate and its standard error from the original study and
 the follow-up study. The confidence level for the difference is 1 – 2*alpha,
 which is recommended for equivalence testing.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.gen(.05, .782, .210, .650, .154)
 
 # Should return: 
-#                      Estimate        SE         z            p         LL        UL
-#  Original:              0.782 0.2100000 3.7238095 1.962390e-04  0.3704076 1.1935924
-#  Follow-up:             0.650 0.1540000 4.2207792 2.434593e-05  0.3481655 0.9518345
-#  Original - Follow-up:  0.132 0.2604151 0.5068831 6.122368e-01 -0.2963446 0.5603446
-#  Average:               0.716 0.1302075 5.4989141 3.821373e-08  0.4607979 0.9712021
+#                       Estimate        SE     z     p         LL        UL
+# Original:                0.782 0.2100000 3.724 0.000  0.3704076 1.1935924
+# Follow-up:               0.650 0.1540000 4.221 0.000  0.3481655 0.9518345
+# Original - Follow-up:    0.132 0.2604151 0.507 0.612 -0.2963446 0.5603446
+# Average:                 0.716 0.1302075 5.499 0.000  0.4607979 0.9712021
+
 
 }
 \references{
+\insertRef{Bonett2021a}{vcmeta}
+
 \insertRef{Bonett2021}{vcmeta}
 }

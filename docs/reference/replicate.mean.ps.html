@@ -6,14 +6,16 @@ computed. Equality of variances within or across studies is not assumed.
 A Satterthwaite adjustment to the degrees of freedom is used to
 improve the accuracy of the confidence intervals for the difference and
 average. The confidence level for the difference is 1 – 2*alpha, which is
-recommended for equivalence testing."><meta property="og:description" content="This function computes confidence intervals from an original study and a
+recommended for equivalence testing.
+For more details, see Chapter 4 of Bonett (2021, Volume 5)."><meta property="og:description" content="This function computes confidence intervals from an original study and a
 follow-up study where the effect size is a paired-samples mean difference.
 Confidence intervals for the difference and average effect size are also
 computed. Equality of variances within or across studies is not assumed.
 A Satterthwaite adjustment to the degrees of freedom is used to
 improve the accuracy of the confidence intervals for the difference and
 average. The confidence level for the difference is 1 – 2*alpha, which is
-recommended for equivalence testing."></head><body>
+recommended for equivalence testing.
+For more details, see Chapter 4 of Bonett (2021, Volume 5)."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -21,7 +23,7 @@ recommended for equivalence testing."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,6 +58,7 @@ A Satterthwaite adjustment to the degrees of freedom is used to
 improve the accuracy of the confidence intervals for the difference and
 average. The confidence level for the difference is 1 – 2*alpha, which is
 recommended for equivalence testing.</p>
+<p>For more details, see Chapter 4 of Bonett (2021, Volume 5).</p>
     </div>
 
     <div class="section level2">
@@ -154,34 +157,26 @@ recommended for equivalence testing.</p>
 <em>Organizational Research Methods</em>, <b>24</b>(3), 513–529.
 ISSN 1094-4281, <a href="https://doi.org/10.1177/1094428120911088" class="external-link">doi:10.1177/1094428120911088</a>
 .</p>
+<p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="fu">replicate.mean.ps</span><span class="op">(</span><span class="fl">.05</span>, <span class="fl">86.22</span>, <span class="fl">70.93</span>, <span class="fl">14.89</span>, <span class="fl">12.32</span>, <span class="fl">.765</span>, <span class="fl">20</span>, </span></span>
 <span class="r-in"><span>                       <span class="fl">84.81</span>, <span class="fl">77.24</span>, <span class="fl">15.68</span>, <span class="fl">16.95</span>, <span class="fl">.702</span>, <span class="fl">75</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                       Estimate       SE        t            p        LL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original:                15.29 2.154344 7.097288 9.457592e-07 10.780906</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:                7.57 1.460664 5.182575 1.831197e-06  4.659564</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original - Follow-up:     7.72 2.602832 2.966000 5.166213e-03  3.332885</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Average:                 11.43 1.301416 8.782740 1.010232e-10  8.796322</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                             UL       df</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original:             19.79909 19.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:            10.48044 74.00000</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Original - Follow-up: 12.10712 38.40002</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Average:              14.06368 38.40002</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                       Estimate       SE     t     p        LL       UL   df</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original:                15.29 2.154344 7.097 0.000 10.780906 19.79909 19.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Follow-up:                7.57 1.460664 5.183 0.000  4.659564 10.48044 74.0</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Original - Follow-up:     7.72 2.602832 2.966 0.005  3.332885 12.10712 38.4</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Average:                 11.43 1.301416 8.783 0.000  8.796322 14.06368 38.4</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co">#  Should return:</span></span></span>
-<span class="r-in"><span><span class="co">#                     Estimate       SE        t            p  </span></span></span>
-<span class="r-in"><span><span class="co"># Original:              15.29 2.154344 7.097288 9.457592e-07 </span></span></span>
-<span class="r-in"><span><span class="co"># Follow-up:              7.57 1.460664 5.182575 1.831197e-06 </span></span></span>
-<span class="r-in"><span><span class="co"># Original - Follow-up:   7.72 2.602832 2.966000 5.166213e-03 </span></span></span>
-<span class="r-in"><span><span class="co"># Average:               11.43 1.301416 8.782740 1.010232e-10 </span></span></span>
-<span class="r-in"><span><span class="co">#                              LL       UL       df</span></span></span>
-<span class="r-in"><span><span class="co"># Original:             10.780906 19.79909 19.00000</span></span></span>
-<span class="r-in"><span><span class="co"># Follow-up:             4.659564 10.48044 74.00000</span></span></span>
-<span class="r-in"><span><span class="co"># Original - Follow-up:  3.332885 12.10712 38.40002</span></span></span>
-<span class="r-in"><span><span class="co"># Average:               8.796322 14.06368 38.40002</span></span></span>
+<span class="r-in"><span><span class="co">#                        Estimate       SE     t     p        LL       UL   df</span></span></span>
+<span class="r-in"><span><span class="co">#  Original:                15.29 2.154344 7.097 0.000 10.780906 19.79909 19.0</span></span></span>
+<span class="r-in"><span><span class="co">#  Follow-up:                7.57 1.460664 5.183 0.000  4.659564 10.48044 74.0</span></span></span>
+<span class="r-in"><span><span class="co">#  Original - Follow-up:     7.72 2.602832 2.966 0.005  3.332885 12.10712 38.4</span></span></span>
+<span class="r-in"><span><span class="co">#  Average:                 11.43 1.301416 8.783 0.000  8.796322 14.06368 38.4</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -195,7 +190,7 @@ ISSN 1094-4281, <a href="https://doi.org/10.1177/1094428120911088" class="extern
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

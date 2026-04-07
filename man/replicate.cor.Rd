@@ -44,19 +44,23 @@ This function can be used to compare and combine Pearson or partial
 correlations from an original study and a follow-up study. The
 confidence level for the difference is 1 – 2*alpha, which is recommended
 for equivalence testing.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.cor(.05, .598, 80, .324, 200, 0)
 
 # Should return:
-#                       Estimate         SE        z            p        LL        UL
-# Original:                0.598 0.07320782 6.589418 4.708045e-09 0.4355043 0.7227538
-# Follow-up:               0.324 0.06376782 4.819037 2.865955e-06 0.1939787 0.4428347
-# Original - Follow-up:    0.274 0.09708614 2.633335 8.455096e-03 0.1065496 0.4265016
-# Average:                 0.461 0.04854307 7.634998 2.264855e-14 0.3725367 0.5411607
+#                       Estimate      SE     z     p     LL     UL
+# Original:                0.598 0.07321 6.589 0.000 0.4355 0.7228
+# Follow-up:               0.324 0.06377 4.819 0.000 0.1940 0.4428
+# Original - Follow-up:    0.274 0.09709 2.633 0.008 0.1065 0.4265
+# Average:                 0.461 0.04854 7.635 0.000 0.3725 0.5412
 
 
 }
 \references{
+\insertRef{Bonett2021a}{vcmeta}
+
 \insertRef{Bonett2021}{vcmeta}
 }

@@ -44,14 +44,19 @@ have no variable in common (i.e., no "overlapping" variable). The average
 correlation and the standard error from this function can be used as
 input in the \link[vcmeta]{meta.ave.cor.gen} function in a meta-analysis where
 some studies have reported cor12 and other studies have reported cor34.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.ave.cor.nonover(.357, .398, .755, .331, .347, .821, 100)
 
 # Should return:
-#               Estimate         SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
-# Correlation:  0.377500 0.07768887 0.00784892 0.007301895      0.004495714
-# Fisher:       0.397141 0.09059993 0.01030928 0.010309278      0.006122153
+#              Estimate      SE VAR(cor12)  VAR(cor34) COV(cor12,cor34)
+# Correlation:   0.3775 0.07769 0.00784892 0.007301895      0.004495714
+# Fisher:        0.3971 0.09060 0.01030928 0.010309278      0.006122153
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

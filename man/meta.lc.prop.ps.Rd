@@ -33,6 +33,8 @@ Returns 1-row matrix with the following columns:
 Computes the estimate, standard error, and adjusted Wald confidence interval
 for a linear contrast of paired-samples proportion differences from two or
 more studies.
+
+For more details, see Setion 3.2 of Bonett (2021, Volume 5).
 }
 \examples{
 f11 <- c(17, 28, 19)
@@ -50,4 +52,6 @@ meta.lc.prop.ps(.05, f11, f12, f21, f22, v)
 }
 \references{
 \insertRef{Bonett2012}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

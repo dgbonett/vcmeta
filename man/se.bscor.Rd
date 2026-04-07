@@ -39,6 +39,8 @@ some studies report a Pearson correlation and other studies report the
 information needed to compute a biserial correlation. The biserial
 correlation and standard error output from this function can be used as
 input in the \link[vcmeta]{meta.ave.cor.gen} function.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \details{
 This function computes a point-biserial correlation and its standard error
@@ -60,11 +62,13 @@ assumption is made in the computation of the standard error.
 se.bscor(21.9, 16.1, 3.82, 3.21, 40, 40)
 
 #  Should return: 
-#                          Estimate         SE
-#  Biserial correlation:  0.8018318 0.07451665
+#                        Estimate      SE
+#  Biserial correlation:   0.8018 0.07452
 
 
 }
 \references{
 \insertRef{Bonett2020b}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

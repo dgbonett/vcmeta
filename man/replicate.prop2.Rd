@@ -51,24 +51,23 @@ follow-up study where the effect size is a 2-group proportion difference.
 Confidence intervals for the difference and average effect size are also
 computed. The confidence level for the difference is 1 – 2*alpha, which
 is recommended for equivalence testing.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.prop2(.05, 21, 16, 40, 40, 19, 13, 60, 60)
 
 # Should return:
-#                         Estimate         SE         z         p
-# Original:             0.11904762 0.10805233 1.1017590 0.2705665
-# Follow-up:            0.09677419 0.07965047 1.2149858 0.2243715
-# Original - Follow-up: 0.02359056 0.13542107 0.1742016 0.8617070
-# Average:              0.11015594 0.06771053 1.6268656 0.1037656
-#                                LL        UL
-# Original:             -0.09273105 0.3308263
-# Follow-up:            -0.05933787 0.2528863
-# Original - Follow-up: -0.19915727 0.2463384
-# Average:              -0.02255427 0.2428661
+#                         Estimate         SE     z     p          LL        UL
+# Original:             0.11904762 0.10805233 1.102 0.271 -0.09273105 0.3308263
+# Follow-up:            0.09677419 0.07965047 1.215 0.224 -0.05933787 0.2528863
+# Original - Follow-up: 0.02359056 0.13542107 0.174 0.862 -0.19915727 0.2463384
+# Average:              0.11015594 0.06771053 1.627 0.104 -0.02255427 0.2428661
 
 
 }
 \references{
+\insertRef{Bonett2021a}{vcmeta}
+
 \insertRef{Bonett2021}{vcmeta}
 }

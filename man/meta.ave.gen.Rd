@@ -27,7 +27,10 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 }
 \description{
 Computes the estimate, standard error, and confidence interval for an
-average of any type of parameter from two or more studies.
+average of any type of parameter from two or more studies. Each study
+should have the same type of parameter.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 
@@ -48,4 +51,7 @@ meta.ave.gen(.05, est, se, bystudy = TRUE)
 # Study 8  0.904000 0.3180000  0.28073145 1.5272685
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

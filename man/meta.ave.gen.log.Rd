@@ -32,7 +32,10 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 \description{
 Computes the estimate, standard error, and confidence interval for an
 average of any type of log-transformed parameter (e.g., log mean ratio,
-log proportion ratio, log odds ratio) from two or more studies.
+log proportion ratio, log odds ratio) from two or more studies, but
+each study must have the same type of parameter.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 
@@ -53,4 +56,7 @@ meta.ave.gen.log(.05, est, se, bystudy = TRUE)
 # Study 3 1.046165 1.478265
 
 
+}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

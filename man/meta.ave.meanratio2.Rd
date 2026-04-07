@@ -41,7 +41,10 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 Computes the estimate, standard error, and confidence interval for a
 geometric average mean ratio from two or more 2-group studies. A Satterthwaite
 adjustment to the degrees of freedom is used to improve the accuracy of the
-confidence intervals. Equality of variances within or across studies is not assumed.
+confidence intervals. Equality of variances within or across studies is not
+assumed.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 m1 <- c(7.4, 6.9)
@@ -57,13 +60,15 @@ meta.ave.meanratio2(.05, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 # Average 0.1759928 0.05738065 0.061437186 0.2905484       1.192429
 # Study 1 0.1609304 0.06820167 0.024749712 0.2971110       1.174603
 # Study 2 0.1910552 0.09229675 0.002986265 0.3791242       1.210526
-#          exp(LL)  exp(UL)       df
-# Average 1.063364 1.337161 66.26499
-# Study 1 1.025059 1.345965 65.69929
-# Study 2 1.002991 1.461004 31.71341
+#          exp(LL)  exp(UL)    df
+# Average 1.063364 1.337161 66.27
+# Study 1 1.025059 1.345965 65.70
+# Study 2 1.002991 1.461004 31.71
 
 
 }
 \references{
 \insertRef{Bonett2020}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

@@ -42,6 +42,8 @@ Computes the estimate, standard error, and confidence interval
 for a  difference in average Spearman correlations for two
 mutually exclusive subgroups of studies. Each subgroup can have
 one or more studies.
+
+For more details, see Section 3.3 of Bonett (2021, Volume 5).
 }
 \examples{
 n <- c(55, 190, 65, 35)
@@ -50,13 +52,15 @@ group <- c(1, 1, 2, 0)
 meta.sub.spear(.05, n, cor, group)
 
 # Should return:
-#                Estimate         SE         LL        UL
-# Set A:            0.525 0.06483629  0.3865928 0.6402793
-# Set B:            0.600 0.08829277  0.3992493 0.7458512
-# Set A - Set B:   -0.075 0.10954158 -0.2760700 0.1564955
+#                Estimate      SE      LL     UL
+# Set A:            0.525 0.06484  0.3866 0.6403
+# Set B:            0.600 0.08829  0.3992 0.7459
+# Set A - Set B:   -0.075 0.10954 -0.2761 0.1565
 
 
 }
 \references{
 \insertRef{Bonett2008a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

@@ -6,14 +6,16 @@ that accommodate residual heteroscedasticity. The exponentiated
 slope estimate for a predictor variable describes a multiplicative
 change in the odds ratio associated with a 1-unit increase in that
 predictor variable, controlling for all other predictor variables
-in the model."><meta property="og:description" content="This function estimates the intercept and slope coefficients in a
+in the model.
+For more details, see Section 3.4 of Bonett (2021, Volume 5)."><meta property="og:description" content="This function estimates the intercept and slope coefficients in a
 meta-regression model where the dependent variable is a log odds
 ratio. The estimates are OLS estimates with robust standard errors
 that accommodate residual heteroscedasticity. The exponentiated
 slope estimate for a predictor variable describes a multiplicative
 change in the odds ratio associated with a 1-unit increase in that
 predictor variable, controlling for all other predictor variables
-in the model."></head><body>
+in the model.
+For more details, see Section 3.4 of Bonett (2021, Volume 5)."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -21,7 +23,7 @@ in the model."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -56,6 +58,7 @@ slope estimate for a predictor variable describes a multiplicative
 change in the odds ratio associated with a 1-unit increase in that
 predictor variable, controlling for all other predictor variables
 in the model.</p>
+<p>For more details, see Section 3.4 of Bonett (2021, Volume 5).</p>
     </div>
 
     <div class="section level2">
@@ -111,6 +114,8 @@ row per predictor.  The matrix has the following columns:</p><ul><li><p>Estimate
 <em>Psychological Methods</em>, <b>20</b>(3), 394–406.
 ISSN 1939-1463, <a href="https://doi.org/10.1037/met0000032" class="external-link">doi:10.1037/met0000032</a>
 .</p>
+<p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
     </div>
 
     <div class="section level2">
@@ -123,20 +128,20 @@ ISSN 1939-1463, <a href="https://doi.org/10.1037/met0000032" class="external-lin
 <span class="r-in"><span><span class="va">x2</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">0</span>, <span class="fl">0</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">X</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/matrix.html" class="external-link">matrix</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">x1</span>, <span class="va">x2</span><span class="op">)</span>, <span class="fl">5</span>, <span class="fl">2</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="fu">meta.lm.oddsratio</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">f1</span>, <span class="va">f2</span>, <span class="va">n1</span>, <span class="va">n2</span>, <span class="va">X</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>        Estimate         SE           z     p         LL         UL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b0  1.541895013 0.69815801  2.20851868 0.027  0.1735305 2.91025958</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b1 -0.004417932 0.04840623 -0.09126784 0.927 -0.0992924 0.09045653</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b2 -1.071122269 0.60582695 -1.76803337 0.077 -2.2585213 0.11627674</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>    exp(Estimate)   exp(LL)   exp(UL)</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b0     4.6734381 1.1894969 18.361564</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b1     0.9955918 0.9054779  1.094674</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> b2     0.3426238 0.1045049  1.123307</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>        Estimate         SE      z     p         LL         UL exp(Estimate)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b0  1.541895013 0.69815801  2.209 0.027  0.1735305 2.91025958     4.6734381</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b1 -0.004417932 0.04840623 -0.091 0.927 -0.0992924 0.09045653     0.9955918</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b2 -1.071122269 0.60582695 -1.768 0.077 -2.2585213 0.11627674     0.3426238</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>      exp(LL)   exp(UL)</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b0 1.1894969 18.361564</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b1 0.9054779  1.094674</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> b2 0.1045049  1.123307</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return:</span></span></span>
-<span class="r-in"><span><span class="co">#        Estimate         SE           z     p         LL         UL</span></span></span>
-<span class="r-in"><span><span class="co"># b0  1.541895013 0.69815801  2.20851868 0.027  0.1735305 2.91025958</span></span></span>
-<span class="r-in"><span><span class="co"># b1 -0.004417932 0.04840623 -0.09126784 0.927 -0.0992924 0.09045653</span></span></span>
-<span class="r-in"><span><span class="co"># b2 -1.071122269 0.60582695 -1.76803337 0.077 -2.2585213 0.11627674</span></span></span>
+<span class="r-in"><span><span class="co">#        Estimate         SE      z     p         LL         UL</span></span></span>
+<span class="r-in"><span><span class="co"># b0  1.541895013 0.69815801  2.209 0.027  0.1735305 2.91025958</span></span></span>
+<span class="r-in"><span><span class="co"># b1 -0.004417932 0.04840623 -0.091 0.927 -0.0992924 0.09045653</span></span></span>
+<span class="r-in"><span><span class="co"># b2 -1.071122269 0.60582695 -1.768 0.077 -2.2585213 0.11627674</span></span></span>
 <span class="r-in"><span><span class="co">#    exp(Estimate)   exp(LL)   exp(UL)</span></span></span>
 <span class="r-in"><span><span class="co"># b0     4.6734381 1.1894969 18.361564</span></span></span>
 <span class="r-in"><span><span class="co"># b1     0.9955918 0.9054779  1.094674</span></span></span>
@@ -154,7 +159,7 @@ ISSN 1939-1463, <a href="https://doi.org/10.1037/met0000032" class="external-lin
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

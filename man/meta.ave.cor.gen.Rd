@@ -30,7 +30,11 @@ Computes the estimate, standard error, and confidence interval for an
 average correlation. Any type of correlation can be used (e.g., Pearson,
 Spearman, semipartial, factor correlation, gamma coefficient, Somers d
 coefficient, tetrachoric, point-biserial, biserial, correlation between
-latent factors, etc.).
+latent factors, etc.). Each study should have the same type of correlation.
+If different types of correlations are used, they are assumed to be
+compatible.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 cor <- c(.396, .454, .409, .502, .350)
@@ -38,16 +42,18 @@ se <- c(.104, .064, .058, .107, .086)
 meta.ave.cor.gen(.05, cor, se, bystudy = TRUE)
 
 # Should return:
-#         Estimate         SE        LL        UL
-# Average   0.4222 0.03853362 0.3438560 0.4947070
-# Study 1   0.3960 0.10400000 0.1753200 0.5787904
-# Study 2   0.4540 0.06400000 0.3200675 0.5701415
-# Study 3   0.4090 0.05800000 0.2893856 0.5160375
-# Study 4   0.5020 0.10700000 0.2651183 0.6817343
-# Study 5   0.3500 0.08600000 0.1716402 0.5061435
+#         Estimate      SE     LL     UL
+# Average   0.4222 0.03853 0.3439 0.4947
+# Study 1   0.3960 0.10400 0.1753 0.5788
+# Study 2   0.4540 0.06400 0.3201 0.5701
+# Study 3   0.4090 0.05800 0.2894 0.5160
+# Study 4   0.5020 0.10700 0.2651 0.6817
+# Study 5   0.3500 0.08600 0.1716 0.5061
 
 
 }
 \references{
 \insertRef{Bonett2008a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

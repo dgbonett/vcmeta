@@ -31,8 +31,8 @@ se <- c(.082, .051, .047, .094)
 meta.chitest(est, se)
 
 # Should return:
-#         Q df         p
-#  2.706526  3 0.4391195
+#      Q df     p
+#  2.707  3 0.439
 
 
 }

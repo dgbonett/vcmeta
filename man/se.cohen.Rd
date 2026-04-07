@@ -27,17 +27,23 @@ assume equal variances. The estimate of Cohen's d, with the standard error
 output from this function, can be used as input in the \link[vcmeta]{meta.ave.gen},
 \link[vcmeta]{meta.lc.gen}, and \link[vcmeta]{meta.lm.gen} functions in
 applications where different types of compatible standardized mean
-differences are used in the meta-analysis.
+differences are used in the meta-analysis. If the means, standard deviations,
+and sample sizes for the two groups are available, use the
+\link[vcmeta]{se.stdmean2} function which does not assume equal variances. The
+standard error for Cohen's d can be very inaccurate if the variances are
+unequal and the sample sizes are unequal.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
-se.cohen(.78, 35, 50)
+se.cohen(.782, 35, 50)
 
 # Should return: 
-#            Estimate        SE
-# Cohen's d:     0.78 0.2288236
+#            Estimate      SE
+# Cohen's d:    0.782 0.22887
 
 
 }
-\seealso{
-\link[vcmeta]{se.stdmean2}
+\references{
+\insertRef{Bonett2021}{vcmeta}
 }

@@ -40,6 +40,8 @@ average mean difference from two or more 2-group studies. A Satterthwaite
 adjustment to the degrees of freedom is used to improve the accuracy of the
 confidence intervals. Equality of variances within or across studies is not
 assumed.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 m1 <- c(7.4, 6.9)
@@ -51,13 +53,15 @@ n2 <- c(40, 60)
 meta.ave.mean2(.05, m1, m2, sd1, sd2, n1, n2, bystudy = TRUE)
 
 # Should return:
-#         Estimate        SE        LL       UL        df
-# Average     1.15 0.2830183 0.5904369 1.709563 139.41053
-# Study 1     1.10 0.4604590 0.1819748 2.018025  71.46729
-# Study 2     1.20 0.3292036 0.5475574 1.852443 109.42136
+#         Estimate        SE        LL       UL     df
+# Average     1.15 0.2830183 0.5904369 1.709563 139.41
+# Study 1     1.10 0.4604590 0.1819748 2.018025  71.47
+# Study 2     1.20 0.3292036 0.5475574 1.852443 109.42
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

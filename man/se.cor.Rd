@@ -28,15 +28,25 @@ output from this function, can be used as input in the
 \link[vcmeta]{meta.ave.cor.gen} function in applications where a
 combination of different types of compatible correlations are
 used in the meta-analysis.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
-se.cor(.40, 0, 55)
-#' # Should return: 
-#               Estimate       SE
-# Correlation:       0.4 0.116487
+se.cor(.427, 0, 55)
+
+# Should return: 
+#               Estimate      SE
+# Correlation:     0.427 0.11339
+
+se.cor(.283, 4, 80)
+# Should return: 
+#               Estimate      SE
+# Correlation:     0.283 0.10767
 
 
 }
 \references{
 \insertRef{Bonett2008a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

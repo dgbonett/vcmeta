@@ -51,6 +51,8 @@ Use the unweighted variance standardizer for 2-group experimental
 designs, and use the weighted variance standardizer for 2-group
 nonexperimental designs. A single-group standardizer can be used
 in either experimental or nonexperimental designs.
+
+For more details, see Section 3.4 of Bonett (2021, Volume 5).
 }
 \examples{
 n1 <- c(65, 30, 29, 45, 50)
@@ -64,12 +66,14 @@ X <- matrix(x1, 5, 1)
 meta.lm.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, X, 0)
 
 # Should return:
-#      Estimate        SE         z p         LL         UL
-# b0 -1.6988257 0.4108035 -4.135373 0 -2.5039857 -0.8936657
-# b1  0.2871641 0.0649815  4.419167 0  0.1598027  0.4145255
+#     Estimate      SE      z p      LL      UL
+# b0   -1.6988 0.41080 -4.135 0 -2.5040 -0.8937
+# b1    0.2872 0.06498  4.419 0  0.1598  0.4145
 
 
 }
 \references{
 \insertRef{Bonett2009a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

@@ -3,11 +3,13 @@
 difference in average Cronbach reliability coefficients for two
 mutually exclusive subgroups of studies. Each set can have one or
 more studies. The number of measurements used to compute the sample
-reliablity coefficient is assumed to be the same for all studies."><meta property="og:description" content="Computes the estimate, standard error, and confidence interval for a
+reliablity coefficient is assumed to be the same for all studies.
+For more details, see Section 3.3 of Bonett (2021, Volume 5)."><meta property="og:description" content="Computes the estimate, standard error, and confidence interval for a
 difference in average Cronbach reliability coefficients for two
 mutually exclusive subgroups of studies. Each set can have one or
 more studies. The number of measurements used to compute the sample
-reliablity coefficient is assumed to be the same for all studies."></head><body>
+reliablity coefficient is assumed to be the same for all studies.
+For more details, see Section 3.3 of Bonett (2021, Volume 5)."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -15,7 +17,7 @@ reliablity coefficient is assumed to be the same for all studies."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">vcmeta</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.5.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">1.6.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,6 +49,7 @@ difference in average Cronbach reliability coefficients for two
 mutually exclusive subgroups of studies. Each set can have one or
 more studies. The number of measurements used to compute the sample
 reliablity coefficient is assumed to be the same for all studies.</p>
+<p>For more details, see Section 3.3 of Bonett (2021, Volume 5).</p>
     </div>
 
     <div class="section level2">
@@ -97,32 +100,32 @@ reliablity coefficient is assumed to be the same for all studies.</p>
 “Varying coefficient meta-analytic methods for alpha reliability.”
 <em>Psychological Methods</em>, <b>15</b>(4), 368–385.
 ISSN 1939-1463, <a href="https://doi.org/10.1037/a0020142" class="external-link">doi:10.1037/a0020142</a>
-.
-
-Bonett DG, Wright TA (2015).
+.</p>
+<p>Bonett DG, Wright TA (2015).
 “Cronbach's alpha reliability: Interval estimation, hypothesis testing, and sample size planning.”
 <em>Journal of Organizational Behavior</em>, <b>36</b>(1), 3–15.
 ISSN 08943796, <a href="https://doi.org/10.1002/job.1960" class="external-link">doi:10.1002/job.1960</a>
 .</p>
+<p>Bonett DG (2021).
+<em>Statistical Methods for Psychologists, Vol 1-5, https://dgbonett.sites.ucsc.edu/</em>.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">n</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">120</span>, <span class="fl">170</span>, <span class="fl">150</span>, <span class="fl">135</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">rel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.89</span>, <span class="fl">.87</span>, <span class="fl">.73</span>, <span class="fl">.71</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">rel</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">.891</span>, <span class="fl">.873</span>, <span class="fl">.734</span>, <span class="fl">.715</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">group</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">1</span>, <span class="fl">1</span>, <span class="fl">2</span>, <span class="fl">2</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">r</span> <span class="op">&lt;-</span> <span class="fl">10</span></span></span>
-<span class="r-in"><span><span class="fu">meta.sub.cronbach</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">n</span>, <span class="va">rel</span>, <span class="va">r</span>, <span class="va">group</span><span class="op">)</span></span></span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>                Estimate         SE        LL        UL</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Set A:             0.88 0.01068845 0.8581268 0.8999386</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Set B:             0.72 0.02515130 0.6684484 0.7668524</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Set A - Set B:     0.16 0.02732821 0.1082933 0.2152731</span>
+<span class="r-in"><span><span class="fu">meta.sub.cronbach</span><span class="op">(</span><span class="fl">.05</span>, <span class="va">n</span>, <span class="va">rel</span>, <span class="fl">10</span>, <span class="va">group</span><span class="op">)</span></span></span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>                Estimate      SE     LL     UL</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Set A:           0.8820 0.01052 0.8605 0.9016</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Set B:           0.7245 0.02474 0.6738 0.7706</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Set A - Set B:   0.1575 0.02689 0.1066 0.2119</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span><span class="co"># Should return: </span></span></span>
-<span class="r-in"><span><span class="co">#                Estimate         SE        LL        UL</span></span></span>
-<span class="r-in"><span><span class="co"># Set A:             0.88 0.01068845 0.8581268 0.8999386</span></span></span>
-<span class="r-in"><span><span class="co"># Set B:             0.72 0.02515130 0.6684484 0.7668524</span></span></span>
-<span class="r-in"><span><span class="co"># Set A - Set B:     0.16 0.02732821 0.1082933 0.2152731</span></span></span>
+<span class="r-in"><span><span class="co">#                Estimate      SE     LL     UL</span></span></span>
+<span class="r-in"><span><span class="co"># Set A:           0.8820 0.01052 0.8605 0.9016</span></span></span>
+<span class="r-in"><span><span class="co"># Set B:           0.7245 0.02474 0.6738 0.7706</span></span></span>
+<span class="r-in"><span><span class="co"># Set A - Set B:   0.1575 0.02689 0.1066 0.2119</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span></span></span>
 </code></pre></div>
@@ -136,7 +139,7 @@ ISSN 08943796, <a href="https://doi.org/10.1002/job.1960" class="external-link">
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer></div>

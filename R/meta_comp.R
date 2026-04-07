@@ -11,6 +11,8 @@
 #' studies. All of the correlations must be either Pearson correlations
 #' or partial correlations.
 #'
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     n      	vector of sample sizes 
@@ -42,14 +44,16 @@
 #' meta.sub.cor(.05, n, cor, 0, group)
 #' 
 #' # Should return:
-#' #                Estimate         SE         LL        UL
-#' # Set A:            0.525 0.06195298  0.3932082 0.6356531
-#' # Set B:            0.600 0.08128008  0.4171458 0.7361686
-#' # Set A - Set B:   -0.075 0.10219894 -0.2645019 0.1387283
+#' #                Estimate      SE      LL     UL
+#' # Set A:            0.525 0.06195  0.3932 0.6357
+#' # Set B:            0.600 0.08128  0.4171 0.7362
+#' # Set A - Set B:   -0.075 0.10220 -0.2645 0.1387
 #' 
 #' 
 #' @references
 #' \insertRef{Bonett2008a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @importFrom stats qnorm
@@ -80,9 +84,9 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
   se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
   ll.diff <- diff - sqrt((ave.A - ll.A)^2 + (ul.B - ave.B)^2)
   ul.diff <- diff + sqrt((ul.A - ave.A)^2 + (ave.B - ll.B)^2)
-  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
-  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
-  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out1 <- t(c(round(ave.A, 4), round(se.ave.A, 5), round(ll.A, 4), round(ul.A, 4)))
+  out2 <- t(c(round(ave.B, 4), round(se.ave.B, 5), round(ll.B, 4), round(ul.B, 4)))
+  out3 <- t(c(round(diff, 4), round(se.diff, 5), round(ll.diff, 4), round(ul.diff, 4)))
   out <- rbind(out1, out2, out3)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
@@ -100,6 +104,8 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #' for a  difference in average Spearman correlations for two 
 #' mutually exclusive subgroups of studies. Each subgroup can have
 #' one or more studies. 
+#'
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -131,14 +137,16 @@ meta.sub.cor <- function(alpha, n, cor, s, group) {
 #' meta.sub.spear(.05, n, cor, group)
 #' 
 #' # Should return:
-#' #                Estimate         SE         LL        UL
-#' # Set A:            0.525 0.06483629  0.3865928 0.6402793
-#' # Set B:            0.600 0.08829277  0.3992493 0.7458512
-#' # Set A - Set B:   -0.075 0.10954158 -0.2760700 0.1564955
+#' #                Estimate      SE      LL     UL
+#' # Set A:            0.525 0.06484  0.3866 0.6403
+#' # Set B:            0.600 0.08829  0.3992 0.7459
+#' # Set A - Set B:   -0.075 0.10954 -0.2761 0.1565
 #' 
 #' 
 #' @references
 #' \insertRef{Bonett2008a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -169,9 +177,9 @@ meta.sub.spear <- function(alpha, n, cor, group) {
   se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
   ll.diff <- diff - sqrt((ave.A - ll.A)^2 + (ul.B - ave.B)^2)
   ul.diff <- diff + sqrt((ul.A - ave.A)^2 + (ave.B - ll.B)^2)
-  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
-  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
-  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out1 <- t(c(round(ave.A, 4), round(se.ave.A, 5), round(ll.A, 4), round(ul.A, 4)))
+  out2 <- t(c(round(ave.B, 4), round(se.ave.B, 5), round(ll.B, 4), round(ul.B, 4)))
+  out3 <- t(c(round(diff, 4), round(se.diff, 5), round(ll.diff, 4), round(ul.diff, 4)))
   out <- rbind(out1, out2, out3)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
@@ -194,6 +202,8 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' is recommended for 2-group nonexperimental designs with simple random
 #' sampling (but not stratified random sampling) within each study. 
 #' Equality of variances within or across studies is not assumed.
+#'
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
 #'    
 #'    
 #' @param     alpha   	alpha level for 1-alpha confidence
@@ -236,14 +246,16 @@ meta.sub.spear <- function(alpha, n, cor, group) {
 #' meta.sub.pbcor(.05,  m1, m2, sd1, sd2, n1, n2, 2, group)
 #' 
 #' # Should return:
-#' #                   Estimate         SE         LL        UL
-#' # Set A:          0.36338772 0.08552728  0.1854777 0.5182304
-#' # Set B:         -0.01480511 0.08741322 -0.1840491 0.1552914
-#' # Set A - Set B:  0.37819284 0.12229467  0.1320530 0.6075828
+#' #                Estimate      SE      LL     UL
+#' # Set A:           0.3634 0.08553  0.1855 0.5182
+#' # Set B:          -0.0148 0.08741 -0.1840 0.1553
+#' # Set A - Set B:   0.3782 0.12229  0.1321 0.6076
 #' 
 #' 
 #' @references
 #' \insertRef{Bonett2020b}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -259,7 +271,7 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
     b <- (n - 2)/(n*p*(1 - p))
     s <- sqrt((df1*sd1^2 + df2*sd2^2)/(df1 + df2))
     d <- (m1 - m2)/s
-    se.d <- sqrt(d^2*(1/df1 + 1/df2)/8 + 1/n1 + 1/n2)
+    se.d <- sqrt(d^2*(1/df1 + 1/df2)/8 + (sd1^2/n1 + sd2^2/n2)/s^2)
     var <- (b^2*se.d^2)/(d^2 + b)^3
     cor <- d/sqrt(d^2 + b)
   }
@@ -294,9 +306,9 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
   se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
   ll.diff <- diff - sqrt((ave.A - ll.A)^2 + (ul.B - ave.B)^2)
   ul.diff <- diff + sqrt((ul.A - ave.A)^2 + (ave.B - ll.B)^2)
-  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
-  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
-  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out1 <- t(c(round(ave.A, 4), round(se.ave.A, 5), round(ll.A, 4), round(ul.A, 4)))
+  out2 <- t(c(round(ave.B, 4), round(se.ave.B, 5), round(ll.B, 4), round(ul.B, 4)))
+  out3 <- t(c(round(diff, 4), round(se.diff, 5), round(ll.diff, 4), round(ul.diff, 4)))
   out <- rbind(out1, out2, out3)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
@@ -314,6 +326,8 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 #' for a difference in average semipartial correlations for two 
 #' subgroups of mutually exclusive studies. Each subgroup can
 #' have one or more studies. 
+#'
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -348,10 +362,15 @@ meta.sub.pbcor <- function(alpha,  m1, m2, sd1, sd2, n1, n2, type, group) {
 #' meta.sub.semipart(.05, n, cor, r2, group)
 #' 
 #' # Should return:
-#' #                Estimate         SE         LL        UL
-#' # Set A:            0.525 0.05955276  0.3986844 0.6317669
-#' # Set B:            0.600 0.07931155  0.4221127 0.7333949
-#' # Set A - Set B:   -0.075 0.09918091 -0.2587113 0.1324682
+#' #                Estimate      SE      LL     UL
+#' # Set A:            0.525 0.05955  0.3987 0.6318
+#' # Set B:            0.600 0.07931  0.4221 0.7334
+#' # Set A - Set B:   -0.075 0.09918 -0.2587 0.1325
+#'
+#'
+#' @references
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -383,9 +402,9 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
   se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
   ll.diff <- diff - sqrt((ave.A - ll.A)^2 + (ul.B - ave.B)^2)
   ul.diff <- diff + sqrt((ul.A - ave.A)^2 + (ave.B - ll.B)^2)
-  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
-  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
-  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out1 <- t(c(round(ave.A, 4), round(se.ave.A, 5), round(ll.A, 4), round(ul.A, 4)))
+  out2 <- t(c(round(ave.B, 4), round(se.ave.B, 5), round(ll.B, 4), round(ul.B, 4)))
+  out3 <- t(c(round(diff, 4), round(se.diff, 5), round(ll.diff, 4), round(ul.diff, 4)))
   out <- rbind(out1, out2, out3)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
@@ -404,6 +423,8 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #' mutually exclusive subgroups of studies. Each set can have one or
 #' more studies. The number of measurements used to compute the sample
 #' reliablity coefficient is assumed to be the same for all studies.
+#'
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -431,21 +452,23 @@ meta.sub.semipart <- function(alpha, n, cor, r2, group) {
 #'        
 #' @examples
 #' n <- c(120, 170, 150, 135)
-#' rel <- c(.89, .87, .73, .71)
+#' rel <- c(.891, .873, .734, .715)
 #' group <- c(1, 1, 2, 2)
-#' r <- 10
-#' meta.sub.cronbach(.05, n, rel, r, group)
+#' meta.sub.cronbach(.05, n, rel, 10, group)
 #' 
 #' # Should return: 
-#' #                Estimate         SE        LL        UL
-#' # Set A:             0.88 0.01068845 0.8581268 0.8999386
-#' # Set B:             0.72 0.02515130 0.6684484 0.7668524
-#' # Set A - Set B:     0.16 0.02732821 0.1082933 0.2152731
+#' #                Estimate      SE     LL     UL
+#' # Set A:           0.8820 0.01052 0.8605 0.9016
+#' # Set B:           0.7245 0.02474 0.6738 0.7706
+#' # Set A - Set B:   0.1575 0.02689 0.1066 0.2119
 #' 
 #' 
 #' @references
-#' * \insertRef{Bonett2010}{vcmeta}
-#' * \insertRef{Bonett2015b}{vcmeta}
+#' \insertRef{Bonett2010}{vcmeta}
+#'
+#' \insertRef{Bonett2015b}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @importFrom stats qnorm
@@ -477,9 +500,9 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
   se.diff <- sqrt(se.ave.A^2 + se.ave.B^2)
   ll.diff <- diff - sqrt((ave.A - ll.A)^2 + (ul.B - ave.B)^2)
   ul.diff <- diff + sqrt((ul.A - ave.A)^2 + (ave.B - ll.B)^2)
-  out1 <- t(c(ave.A, se.ave.A, ll.A, ul.A))
-  out2 <- t(c(ave.B, se.ave.B, ll.B, ul.B))
-  out3 <- t(c(diff, se.diff, ll.diff, ul.diff))
+  out1 <- t(c(round(ave.A, 4), round(se.ave.A, 5), round(ll.A, 4), round(ul.A, 4)))
+  out2 <- t(c(round(ave.B, 4), round(se.ave.B, 5), round(ll.B, 4), round(ul.B, 4)))
+  out3 <- t(c(round(diff, 4), round(se.diff, 5), round(ll.diff, 4), round(ul.diff, 4)))
   out <- rbind(out1, out2, out3)
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- c("Set A:", "Set B:", "Set A - Set B:")
@@ -496,6 +519,8 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 #' difference in the average effect size (any type of effect size) for
 #' two mutually exclusive subgroups of studies. Each subgroup can have one
 #' or more studies. All of the effects sizes should be compatible. 
+#'
+#' For more details, see Section 3.3 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -531,6 +556,10 @@ meta.sub.cronbach <- function(alpha, n, rel, r, group) {
 #' # Set A:           0.9080 0.06170292 0.787064504 1.0289355
 #' # Set B:           0.7525 0.04411916 0.666028042 0.8389720
 #' # Set A - Set B:   0.1555 0.07585348 0.006829917 0.3041701
+#'
+#'
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -578,6 +607,8 @@ meta.sub.gen <- function(alpha, est, se, group) {
 #' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
 #'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
 #' @param    m1    	vector of estimated means for group 1
@@ -608,12 +639,14 @@ meta.sub.gen <- function(alpha, est, se, group) {
 #' meta.lc.mean2(.05, m1, m2, sd1, sd2, n1, n2, v)
 #'
 #' # Should return:
-#' #          Estimate       SE       LL       UL       df
-#' # Contrast     9.95 2.837787 4.343938 15.55606 153.8362
+#' #          Estimate       SE       LL       UL     df
+#' # Contrast     9.95 2.837787 4.343938 15.55606 153.84
 #'
 #'
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @importFrom stats qt
@@ -629,7 +662,7 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   se <- sqrt(var)
   u1 <- var^2*sum(v^2)^2
   u2 <- sum(v^4*var1^2/(n1^3 - n1^2) + v^4*var2^2/(n2^3 - n2^2))
-  df <- u1/u2
+  df <- round(u1/u2, 2)
   t <- qt(1 - alpha/2, df)
   ll <- con - t*se
   ul <- con + t*se
@@ -654,6 +687,8 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' (stdzr = 3) for 2-group nonexperimental designs with simple random sampling.
 #' The stdzr = 1 and stdzr = 2 options can be used with either experimental
 #' or nonexperimental designs.
+#'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param    alpha  alpha level for 1-alpha confidence
@@ -690,12 +725,14 @@ meta.lc.mean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' meta.lc.stdmean2(.05, m1, m2, sd1, sd2, n1, n2, v, 0)
 #' 
 #' # Should return: 
-#' #           Estimate        SE        LL       UL
-#' # Contrast 0.8557914 0.2709192 0.3247995 1.386783
+#' #          Estimate      SE     LL     UL
+#' # Contrast   0.8558 0.27092 0.3248 1.3868
 #' 
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -736,7 +773,7 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
   }
   ll <- con - z*se
   ul <- con + z*se
-  out <- cbind(con, se, ll, ul)
+  out <- cbind(round(con, 4), round(se, 5), round(ll, 4), round(ul, 4))
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- "Contrast"
   return(out)
@@ -754,6 +791,8 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' A Satterthwaite adjustment to the degrees of freedom is used to improve
 #' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
+#'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
@@ -786,12 +825,14 @@ meta.lc.stdmean2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v, stdzr) {
 #' meta.lc.mean.ps(.05, m1, m2, sd1, sd2, cor, n, v)
 #' 
 #' # Should return:
-#' #          Estimate        SE      LL      UL      df
-#' # Contrast      2.5 0.4681205 1.57207 3.42793 107.657
+#' #          Estimate        SE      LL      UL     df
+#' # Contrast      2.5 0.4681205 1.57207 3.42793 107.66
 #' 
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qt
@@ -806,7 +847,7 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
   se <- sqrt(t(v)%*%(diag(var))%*%v)
   u1 <- sum(var*v^2)^2
   u2 <- sum((var*v^2)^2/(n - 1))
-  df <- u1/u2
+  df <- round(u1/u2, 2)
   t <- qt(1 - alpha/2, df)
   ll <- con - t*se
   ul <- con + t*se
@@ -826,6 +867,8 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' Computes the estimate, standard error, and confidence interval for a 
 #' linear contrast of paired-samples standardized mean differences from two or 
 #' more studies. Equality of variances within or across studies is not assumed. 
+#'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
@@ -861,12 +904,14 @@ meta.lc.mean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' meta.lc.stdmean.ps(.05, m1, m2, sd1, sd2, cor, n, v, 0)
 #' 
 #' # Should return:
-#' #            Estimate        SE        LL        UL
-#' # Contrast  0.5127577 0.1346794 0.2487908 0.7767245
+#' #          Estimate      SE     LL     UL
+#' # Contrast   0.5128 0.13468 0.2488 0.7767
 #' 
 #' 
 #' @references
 #' \insertRef{Bonett2009a}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -900,7 +945,7 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
   }
   ll <- con - z*se
   ul <- con + z*se
-  out <- cbind(con, se, ll, ul)
+  out <- cbind(round(con, 4), round(se, 5), round(ll, 4), round(ul, 4))
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- "Contrast"
   return(out)
@@ -918,6 +963,8 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' Satterthwaite adjustment to the degrees of freedom is used to improve
 #' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
+#'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param    alpha 	alpha level for 1-alpha confidence
@@ -955,12 +1002,14 @@ meta.lc.stdmean.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v, stdzr) {
 #' # Should return:
 #' #           Estimate         SE        LL        UL  exp(Estimate)
 #' # Contrast 0.2691627 0.07959269 0.1119191 0.4264064      1.308868
-#' #           exp(LL)  exp(UL)       df
-#' # Contrast 1.118422 1.531743 152.8665
+#' #           exp(LL)  exp(UL)     df
+#' # Contrast 1.118422 1.531743 152.87
 #' 
 #' 
 #' @references
 #' \insertRef{Bonett2020}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qt
@@ -972,6 +1021,7 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
   est <- t(v)%*%logratio
   se <- sqrt(t(v)%*%(diag(var1 + var2))%*%v)
   df <- se^4/sum(v^4*var1^2/(n1 - 1) + v^4*var2^2/(n2 - 1))
+  df <- round(df, 2)
   t <- qt(1 - alpha/2, df)
   ll <- est - t*se
   ul <- est + t*se
@@ -994,6 +1044,8 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' A Satterthwaite adjustment to the degrees of freedom is used to improve
 #' the accuracy of the confidence interval. Equality of variances within or across
 #' studies is not assumed. 
+#'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param    alpha	alpha level for 1-alpha confidence
@@ -1031,12 +1083,14 @@ meta.lc.meanratio2 <- function(alpha, m1, m2, sd1, sd2, n1, n2, v) {
 #' # Should return:
 #' #           Estimate       SE         LL         UL exp(Estimate)
 #' # Contrast 0.0440713 0.008265 0.02767047 0.06047213      1.045057
-#' #           exp(LL)  exp(UL)       df
-#' # Contrast 1.028057 1.062338 98.38086
+#' #           exp(LL)  exp(UL)    df
+#' # Contrast 1.028057 1.062338 98.38
 #'
 #' 
 #' @references
 #' \insertRef{Bonett2020}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @importFrom stats qt
@@ -1047,6 +1101,7 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
   est <- t(v)%*%logratio
   se <- sqrt(t(v)%*%(diag(var))%*%v)
   df <- se^4/sum(v^4*var^2/(n - 1))
+  df <- round(df, 2)
   t <- qt(1 - alpha/2, df)
   ll <- est - t*se
   ul <- est + t*se
@@ -1065,6 +1120,8 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' @description
 #' Computes the estimate, standard error, and confidence interval for an 
 #' exponentiated log-linear contrast of odds ratios from two or more studies.
+#'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1099,6 +1156,8 @@ meta.lc.meanratio.ps <- function(alpha, m1, m2, sd1, sd2, cor, n, v) {
 #' 
 #' @references
 #' \insertRef{Bonett2015}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1129,6 +1188,8 @@ meta.lc.oddsratio <- function(alpha, f1, f2, n1, n2, v) {
 #' Computes the estimate, standard error, and confidence interval for an 
 #' exponentiated log-linear contrast of 2-group proportion ratios from
 #' two or more studies.
+#'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1161,8 +1222,11 @@ meta.lc.oddsratio <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' 
 #' @references
-#' * \insertRef{Price2008}{vcmeta}
-#' * \insertRef{Bonett2015}{vcmeta}
+#' \insertRef{Price2008}{vcmeta}
+#'
+#' \insertRef{Bonett2015}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1197,6 +1261,8 @@ meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
 #' Computes the estimate, standard error, and adjusted Wald confidence interval for a 
 #' linear contrast of 2-group proportion differences from two or more studies.
 #'
+#' For more details, see Section 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     f1     	vector of group 1 frequency counts
@@ -1229,6 +1295,8 @@ meta.lc.propratio2 <- function(alpha, f1, f2, n1, n2, v) {
 #'
 #' @references 
 #' \insertRef{Bonett2014}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #'
 #'
 #' @importFrom stats qnorm
@@ -1263,6 +1331,8 @@ meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
 #' for a linear contrast of paired-samples proportion differences from two or
 #' more studies.
 #'
+#' For more details, see Setion 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     f11    	vector of frequency counts in cell 1,1
@@ -1295,6 +1365,8 @@ meta.lc.prop2 <- function(alpha, f1, f2, n1, n2, v) {
 #' 
 #' @references
 #' \insertRef{Bonett2012}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1328,6 +1400,8 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' from two or more studies. This function assumes that two raters each
 #' provide a dichotomous rating for a sample of objects.
 #'
+#' For more details, see Setion 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
 #' @param     f11    	vector of frequency counts in cell 1,1
@@ -1353,12 +1427,14 @@ meta.lc.prop.ps <- function(alpha, f11, f12, f21, f22, v) {
 #' meta.lc.agree(.05, f11, f12, f21, f22, v)
 #' 
 #' # Should return:
-#' #            Estimate        SE         LL        UL
-#' # Contrast 0.1022939 0.07972357 -0.05396142 0.2585492
+#' #          Estimate      SE      L     UL
+#' # Contrast   0.1023 0.07972 -0.054 0.2585
 #' 
 #' 
 #' @references 
 #' \insertRef{Bonett2022}{vcmeta}
+#'
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qnorm
@@ -1374,7 +1450,7 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
   se <- sqrt(t(v)%*%(diag(var))%*%v)
   ll <- con - z*se
   ul <- con + z*se
-  out <- cbind(con, se, ll, ul)
+  out <- cbind(round(con, 4), round(se, 5), round(ll, 4), round(ul, 4))
   colnames(out) <- c("Estimate", "SE", "LL", "UL")
   rownames(out) <- "Contrast"
   return (out)
@@ -1391,6 +1467,8 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 #' use either an unequal variance (recommended) or an equal variance method. 
 #' A Satterthwaite adjustment to the degrees of freedom is used with the
 #' unequal variance method. 
+#'
+#' For more details, see Setion 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1419,11 +1497,12 @@ meta.lc.agree <- function(alpha, f11, f12, f21, f22, v) {
 #' meta.lc.mean1(.05, m, sd, n, v, eqvar = FALSE)
 #'
 #' # Should return:
-#' #          Estimate       SE        LL        UL       df
-#' # Contrast    -5.35 1.300136 -7.993583 -2.706417 33.52169
+#' #          Estimate       SE        LL        UL    df
+#' # Contrast    -5.35 1.300136 -7.993583 -2.706417 33.52
 #' 
+#'
 #' @references
-#' \insertRef{Snedecor1980}{vcmeta}
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
 #' 
 #' @importFrom stats qt
@@ -1441,7 +1520,8 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
   } else {
     v2 <- diag(sd^2)%*%(solve(diag(n)))
     se <- sqrt(t(v)%*%v2%*%v)
-    df = (se^4)/sum(((v^4)*(sd^4)/(n^2*(n-1))))
+    df <- (se^4)/sum(((v^4)*(sd^4)/(n^2*(n-1))))
+    df <- round(df, 2)
     t2 <- qt(1 - alpha/2, df)
     ll <- est - t2*se
     ul <- est + t2*se
@@ -1460,6 +1540,8 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
 #' @description
 #' Computes the estimate, standard error, and an adjusted Wald confidence 
 #' interval for a linear contrast of proportions from two or more studies.
+#'
+#' For more details, see Setion 3.2 of Bonett (2021, Volume 5).
 #'
 #'
 #' @param     alpha  	alpha level for 1-alpha confidence
@@ -1488,6 +1570,8 @@ meta.lc.mean1 <- function(alpha, m, sd, n, v, eqvar = FALSE) {
 #' @references
 #' \insertRef{Price2004}{vcmeta}
 #'
+#' \insertRef{Bonett2021}{vcmeta}
+#'
 #'
 #' @importFrom stats qnorm
 #' @export
@@ -1514,6 +1598,8 @@ meta.lc.prop1 <- function(alpha, f, n, v) {
 #' Computes the estimate, standard error, and confidence interval for a 
 #' linear contrast of any type of effect size from two or more studies.
 #'
+#' For more details, see Setion 3.2 of Bonett (2021, Volume 5).
+#'
 #'
 #' @param     alpha 	alpha level for 1-alpha confidence
 #' @param     est   	vector of parameter estimates
@@ -1538,7 +1624,12 @@ meta.lc.prop1 <- function(alpha, f, n, v) {
 #' # Should return: 
 #' #          Estimate         SE        LL        UL
 #' # Contrast   0.2275 0.06755461 0.0950954 0.3599046
+#'
+#'
+#' @references
+#' \insertRef{Bonett2021}{vcmeta}
 #' 
+#'
 #' @importFrom stats qnorm
 #' @export
 meta.lc.gen <- function(alpha, est, se, v) {

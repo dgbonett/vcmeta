@@ -35,6 +35,8 @@ average G-index of agreement from two or more studies. This function
 assumes that two raters each provide a dichotomous rating to a sample
 of objects. As a measure of agreement, the G-index is usually preferred
 to Cohen's kappa.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 f11 <- c(43, 56, 49)
@@ -44,14 +46,16 @@ f22 <- c(37, 54, 39)
 meta.ave.agree(.05, f11, f12, f21, f22, bystudy = TRUE)
 
 # Should return:
-#          Estimate         SE        LL        UL
-# Average 0.7843250 0.03540254 0.7149373 0.8537127
-# Study 1 0.7446809 0.06883919 0.6097585 0.8796032
-# Study 2 0.8512397 0.04770701 0.7577356 0.9447437
-# Study 3 0.6981132 0.06954284 0.5618117 0.8344147
+#        Estimate      SE     LL     UL
+# Average  0.7843 0.03540 0.7149 0.8537
+# Study 1  0.7447 0.06884 0.6098 0.8796
+# Study 2  0.8512 0.04771 0.7577 0.9447
+# Study 3  0.6981 0.06954 0.5618 0.8344
 
 
 }
 \references{
 \insertRef{Bonett2022}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

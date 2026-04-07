@@ -28,12 +28,13 @@ A 4-row matrix. The rows are:
 
 The columns are:
 \itemize{
-\item Estimate - odds ratio estimate (single study, ratio, average)
-\item SE - standard error
+\item Estimate - log odds ratio estimate (single study, ratio, average)
+\item SE - standard error of log odds estimate
 \item z - z-value
 \item p - p-value
-\item LL - exponentiated lower limit of the confidence interval
-\item UL - exponentiated upper limit of the confidence interval
+\item exp(Estimate) - exponentiated estimate
+\item exp(LL) - exponentiated lower limit of the confidence interval
+\item exp(UL) - exponentiated upper limit of the confidence interval
 }
 }
 \description{
@@ -42,24 +43,28 @@ original study and a follow-up study. Confidence intervals for the
 ratio of odds ratios and geometric average odds ratio are also
 computed. The confidence level for the ratio of ratios is 1 – 2*alpha, which
 is recommended for equivalence testing.
+
+For more details, see Chapter 4 of Bonett (2021, Volume 5).
 }
 \examples{
 replicate.oddsratio(.05, 1.39, .302, 1.48, .206)
 
 # Should return:
-#                          Estimate        SE          z            p
-# Original:              1.39000000 0.3020000  4.6026490 4.171509e-06
-# Follow-up:             1.48000000 0.2060000  7.1844660 6.747936e-13
-# Original/Follow-up:   -0.06273834 0.3655681 -0.1716188 8.637372e-01
-# Average:               0.36067292 0.1827840  1.9732190 4.847061e-02
-#                         exp(LL)  exp(UL)
-# Original:             2.2212961 7.256583
-# Follow-up:            2.9336501 6.578144
-# Original/Fllow-up:    0.5147653 1.713551
-# Average:              1.0024257 2.052222
+#                        Estimate        SE      z     p
+# Original:            1.39000000 0.3020000  4.603 0.000
+# Follow-up:           1.48000000 0.2060000  7.184 0.000
+# Original/Follow-up: -0.06273834 0.3655681 -0.172 0.864
+# Average:             0.36067292 0.1827840  1.973 0.048
+#                     exp(Estimate)   exp(LL)  exp(UL)
+# Original:               4.0148501 2.2212961 7.256583
+# Follow-up:              4.3929457 2.9336501 6.578144
+# Original/Follow-up:     0.9391892 0.5147653 1.713551
+# Average:                1.4342943 1.0024257 2.052222
 
 
 }
 \references{
+\insertRef{Bonett2021a}{vcmeta}
+
 \insertRef{Bonett2021}{vcmeta}
 }

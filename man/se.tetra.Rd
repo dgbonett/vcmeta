@@ -33,16 +33,20 @@ meta-analysis where some studies have reported Pearson correlations
 between quantitative variables x and y and other studies have reported
 a 2 x 2 contingency table for dichotomous measurements of variables
 x and y.
+
+For more details, see Chapter 1 of Bonett (2021, Volume 5)
 }
 \examples{
 se.tetra(46, 15, 54, 85)
 
 # Should return:
-#                Estimate         SE 
-# Tetrachoric:  0.5135167 0.09358336
+#               Estimate     SE 
+# Tetrachoric:     0.514 0.0936
 
 
 }
 \references{
 \insertRef{Bonett2005}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

@@ -43,6 +43,8 @@ log-linear contrast of paired-sample mean ratios from two or more studies.
 A Satterthwaite adjustment to the degrees of freedom is used to improve
 the accuracy of the confidence interval. Equality of variances within or across
 studies is not assumed.
+
+For more details, see Section 3.2 of Bonett (2021, Volume 5).
 }
 \examples{
 m1 <- c(53, 60, 53, 57)
@@ -57,11 +59,13 @@ meta.lc.meanratio.ps(.05, m1, m2, sd1, sd2, cor, n, v)
 # Should return:
 #           Estimate       SE         LL         UL exp(Estimate)
 # Contrast 0.0440713 0.008265 0.02767047 0.06047213      1.045057
-#           exp(LL)  exp(UL)       df
-# Contrast 1.028057 1.062338 98.38086
+#           exp(LL)  exp(UL)    df
+# Contrast 1.028057 1.062338 98.38
 
 
 }
 \references{
 \insertRef{Bonett2020}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }

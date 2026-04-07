@@ -31,8 +31,10 @@ is TRUE, there is 1 additional row for each study.  The matrix has the following
 Computes the estimate, standard error, and confidence interval for an
 average Pearson or partial correlation from two or more studies. The
 sample correlations must be all Pearson correlations or all partial
-correlations. Use the meta.ave.cor.gen function to meta-analyze any
-combination of Pearson, partial, or Spearman correlations.
+correlations. Use the \link[vcmeta]{meta.ave.cor.gen} function to
+meta-analyze any combination of Pearson, partial, or Spearman correlations.
+
+For more details, see Chapter 2 of Bonett (2021, Volume 5).
 }
 \examples{
 n <- c(55, 190, 65, 35)
@@ -40,15 +42,25 @@ cor <- c(.40, .65, .60, .45)
 meta.ave.cor(.05, n, cor, 0, bystudy = TRUE)
 
 # Should return:
-#         Estimate         SE        LL        UL
-# Average    0.525 0.05113361 0.4176678 0.6178816
-# Study 1    0.400 0.11430952 0.1506943 0.6014699
-# Study 2    0.650 0.04200694 0.5594086 0.7252465
-# Study 3    0.600 0.08000000 0.4171458 0.7361686
-# Study 4    0.450 0.13677012 0.1373507 0.6811071
+#         Estimate      SE     LL     UL
+# Average    0.525 0.05113 0.4177 0.6179
+# Study 1    0.400 0.11431 0.1507 0.6015
+# Study 2    0.650 0.04201 0.5594 0.7252
+# Study 3    0.600 0.08000 0.4171 0.7362
+# Study 4    0.450 0.13677 0.1374 0.6811
+
+n <- c(150, 125, 80)
+cor <- c(.396, .454, .427)
+meta.ave.cor(.05, n, cor, 2, bystudy = TRUE)
+
+# Should return:
+#         Estimate      SE     LL     UL
+# Average   0.4257 0.04603 0.3314 0.5115
 
 
 }
 \references{
 \insertRef{Bonett2008a}{vcmeta}
+
+\insertRef{Bonett2021}{vcmeta}
 }
