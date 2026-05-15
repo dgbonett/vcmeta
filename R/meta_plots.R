@@ -1,4 +1,4 @@
-# replicate.plot
+#  replicate.plot ==============================================================
 #' Plot to compare estimates from original and follow-up studies
 #'
 #'
@@ -148,7 +148,6 @@ replicate.plot <- function(
   }
   col_adj <- c(es_name, ll_name, ul_name)
   
-  
   # Data prep --------------------------------------------
   # Convert matrix to data frame, drop unused columns, save names to name
   as_df <- as.data.frame(result)
@@ -199,7 +198,6 @@ replicate.plot <- function(
     poly_data <- data.frame(x = diamond_xs, y = diamond_ys)
   }
   
-  
   # Make graph ----------------------------------------------
   # Basic graph
   myplot <- ggplot(
@@ -238,7 +236,6 @@ replicate.plot <- function(
         yend = "diff_axis_y"
       )
     )
-
   } 
   
   if (plot_average & !is.null(reference_line)) {
@@ -304,7 +301,7 @@ replicate.plot <- function(
 }
 
 
-# meta.ave.plot 
+# meta.ave.plot ==============================================================
 #' Forest plot for average effect sizes
 #'
 #'
@@ -389,11 +386,9 @@ meta.ave.plot <- function(
   ggtheme = ggplot2::theme_classic()
 ) {
 
-  
   # Options ----------------------------------------------
   is_log <- "exp(Estimate)" %in% colnames(result)
   
-
   # Definitions ------------------------------------------
   avg_name <- "Average"
   se_name <- "SE"
@@ -406,7 +401,6 @@ meta.ave.plot <- function(
     ll_name <- "LL"
     ul_name <- "UL"
   }
-  
   
   # Data prep --------------------------------------------
   # Convert matrix to data frame
@@ -441,7 +435,6 @@ meta.ave.plot <- function(
   diamond_ys <- c(d_y, d_y - diamond_height , d_y, d_y + diamond_height)
   poly_data <- data.frame(x = diamond_xs, y = diamond_ys)
   
-  
   # Make graph ----------------------------------------------
   # Basic graph
   myplot <- ggplot(
@@ -456,7 +449,6 @@ meta.ave.plot <- function(
       xintercept = reference_line, 
       linetype = "dotted"
     )
-    
   }
     
   # CIs
